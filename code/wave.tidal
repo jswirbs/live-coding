@@ -1,0 +1,81 @@
+setcps(120/60/4)
+
+d1 $ s "house*4" # gain 1.3
+
+d3 $ silence
+
+d4 $ s "jungbass" # n "10" # gain 1.2
+-- d4 $ s "jungbass" # n "8"
+
+d5 $ whenmod 8 4 (slow 4) $ n "<e3*4 c3*4>" # "m1"
+
+d6 $ whenmod 8 4 (const $ n "<[e4 ~] [e4 ~] [e4 ~] [a4 b4]>" # s "m3") $ n "<e4 e4 c4 e4>" # s "m3"
+
+
+
+
+
+
+
+d5 $ n (slow 8 $ "[[c4,e4,g4,c5]*4 [e4,g4,b5,e5]*4]" + "<4 -3>") # s "superpiano" # velocity (slow 8 $ range 0.8 1.1 sine) # sustain 8 # gain "0.83"
+d6 $ n (slow 8 $ "[[c6 e5 g5 c6]*4 [e5 g5 b6 e6]*4]" + "<4 -3>") # s "superpiano" # velocity (slow 8 $ range 0.75 1.1 sine) # sustain 8 # gain "0.90" # crush 4
+
+d5 $ n (slow 8 $ "[[c4,e4,g4,c5]*4 [e4,g4,b5,e5]*4]" + "<-8 -15>") # "m1"
+
+d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "8" # accelerate "0.5" # voice "0.5" # pitch1 "0.15" # slide "-0.5" # resonance "0.7" # attack "1" # release "15" # room "0.9" # size "0.5" # orbit "1" # gain 0.8
+
+d7 $ n "0" # s "supernoise"
+d7 $ silence
+unsolo
+
+
+
+d1 $ whenmod 16 12 (rev)
+  $ striate 2
+  $ whenmod 16 12 (striate 4)
+  $ every 4 (rev)
+  $ chop 4
+  $ n (off "<0.5 0.375>" (+7) $ off "<0.125 0.25>" (+12) $ slow 4 ("b5 a4 d5 a3" + "<0 2>"))
+  # s "superhammond" # voice "[1, 5]"
+  # distort (slow 2 $ range 1 3 sine)
+  # crush "4 4 2 1"
+  # gain 0.5
+
+d2 $ whenmod 16 15 (const $
+    s "house house [house*2] [house*2]"
+    # cps (range 0.25 0.5 saw)
+    # distort (range 1 0 saw)
+  )
+  $ whenmod 16 12 (const $
+    s "<[house house house ~] [house house [house house ~ house] [house ~ ~ ~]]>"
+    # cps (slow 3 $ range 0.5 0.25 saw)
+    # distort (slow 3 $ range 0 1 saw)
+  )
+  $ s "<[house house house ~] [house house [house house ~ house] [house ~ ~ ~]]>"
+  # cps(0.5)
+
+
+d3 $ s "[~ ~ ~ sn:1]"
+
+d3 $ (0.125 ~>)
+  $ stut 4 0.125 0.25
+  $ whenmod 16 12 (const $
+    s "electro1*8?"
+    # n (choose[3,4,5])
+    # crush (range 5 3 saw)
+  )
+  $ s "electro1:1*8?"
+  # crush 4
+
+
+d4 $ rev
+  $ chop 128
+  $ loopAt 8
+  $ s "bev"
+  # crush (slow 4 $  6)
+  # cut 1
+  # fshift "50 40"
+  -- # speed "-1"
+  # gain 1.25
+
+d4 silence

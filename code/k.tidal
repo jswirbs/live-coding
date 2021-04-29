@@ -1,0 +1,141 @@
+setcps(120/60/4)
+
+
+do
+  jumpIn' 1 2 $ s "house*4" # gain 1.2
+  jumpIn' 2 1 $ s "ketamine" -- then silence
+
+d1 $ silence
+
+
+do
+  hush
+  d2 $ n "gs4@4 gs4@4 g4@3 gs4@11" # s "superhoover"
+  jumpIn' 1 2 $ s "house*4" # gain 1.2
+  -- [ds, gs, b] [ds, gs, as]
+  jumpIn' 2 2 $ striate "4 2 2 1" $ n "gs4@4 gs4@4 g4@3 gs4@11" # s "superhoover"
+
+d2 $ n "gs4@4 gs4@4 g4@3 gs4@11" # s "superhoover"
+d2 $ n "gs4@4 gs4@5 g4@1 gs4@1 gs4@11" # s "superhoover"
+
+
+d2 $ rev $ palindrome $ rarely (rev) $ chop "2 2 4 2" $ n (off "<0.25 [0.5 1]>" (+5) $ "[ds, gs, b] [ds, gs, b] [ds, gs, as] [ds, gs, as]") # s "superhoover" # detune (slow 2 $ range 2 0 saw) # cutoff 10000
+d3 $ slow 2 $ rarely (rev) $ palindrome $ sometimes (chop 2) $ n (off "<0.25 [0.5 1]>" (+5) $ "[ds gs b ds6] [ds gs as ds6]") # s "superhoover" # detune (slow 2 $ range 2 0 saw)
+
+
+d2 $ rev $ striate 2 $ n (off "<0.25 1 0.125 [0.5 1]>" (+5) $ "0 0 ~ 0 -5 -5 <-2 -7> <~ -12>") # s "superhoover" # detune (slow 2 $ range 2 0 saw)
+d3 $ rev $ striate 2 $ n "<0 0 0 7>" # s "supersaw" # octave 2 # pitch1 0.5 # orbit 1 # room 0.5 # size 0.5 # gain 1.3
+
+
+
+
+-----------------------
+
+setcps(120/60/4)
+
+-- #    Am add9, Am add9, F maj 7, G add9
+-- d1 $ s "house*4" # gain 1.2
+d2 $ n "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>" # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+xfadeIn 3 16 $ striate 2 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw)
+
+xfadeIn 3 16 $ striate 6 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw)
+
+do
+  solo 3
+  solo 4
+  d4 $ s "jungbass:10/2" # gain 1.4 # pan (range 0.2 0.8 saw)
+
+
+do
+  unsolo 3
+  unsolo 4
+  d1 $ s "house*4" # gain 1.2
+
+
+do
+  solo 1
+  solo 2
+
+do
+  hush
+  unsolo 1
+  solo 2
+  solo 3
+  solo 4
+  d2 $ n "[a4, e, a, b, c6]" # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+  xfadeIn 3 4 $ striate 16 $ n (off "<0.125 0.375>" (+12) "[a4, e, a, b, c6]") # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+  xfadeIn 4 4 $ s "pad:0" # pan (fast 3 $ range 0.1 0.9 perlin) # gain 1.7
+
+-- eh?
+hush
+
+do
+  unsolo 1
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  d1 $ s "house*4" # gain 1.2
+  d2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+  d3 $ rarely (palindrome) $ n "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>" # s "superzow" # cutoff (range 1000 2500 sine) # detune (range 0 2 sine) # distort 0.1 # pan (range 0.2 0.8 saw) # gain 1.2
+  d4 $ s "jungbass:10 jungbass:4" # gain 1.4
+
+d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1.1
+
+d5 $ "hh*16?" # n 7 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1
+
+do
+  hush
+  d2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine)
+  d5 $ "hh*16?" # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1.1
+
+-- striate back down by powers of 2
+clutch 2 $ striate 8 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1000 3000 sine)
+
+do
+  d2 $ n "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>" # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+  d5 $ slow 2 $ s "hh [~ ~ ~ hh] hh [808mt 808mt [808mt 808mt] 808mt]" # n "10 10 10 [4 4 3 0]" # distort 0.1
+
+xfadeIn 3 8 $ striate 2 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw)
+
+xfadeIn 4 4 $ s "pad:0" # pan (fast 2 $ range 0.1 0.9 perlin) # gain 1.6
+
+do
+  d6 $ "sn:1*16"
+  clutch 1 $ s "house*4" # gain 1.2
+  clutch 2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine)
+  clutch 3 $ rarely (rev) $ rarely (palindrome) $ n "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.3 # pan (range 0.2 0.8 saw) # gain 1.2
+  clutch 4 $ s "jungbass:10 jungbass:4" # gain 1.4
+  jumpIn' 5 2 $ "hh*16?" # distort (range 0.2 1 perlin) # gain 1.1
+  jumpIn' 6 1 $ (0.125 ~>) "sn:1*8"
+
+
+do
+  d1 $ s "house*16" # gain 1.2
+  d2 $ rev $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 2000 3000 sine)
+  d3 $ rev $ n "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.5 # pan (range 0.2 0.8 saw) # gain 1.1
+  d4 $ s "jungbass:7*4"
+  clutch 1 $ s "house*4" # gain 1.2
+  clutch 2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine)
+  clutch 3 $ rarely (rev) $ rarely (palindrome) $ n "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.3 # pan (range 0.2 0.8 saw) # gain 1.2
+  clutch 4 $ s "jungbass:10 jungbass:4" # gain 1.4
+
+
+do
+  hush
+  d2 $ n "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>" # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
+  d3 $ striate 2 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine)
+  d5 $ "hh*16?" # distort (range 0.2 1 perlin) # gain 1.1
+
+d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "8" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
+  # room "1"
+  # size "0.6" # orbit "1"
+  # gain 0.5 -- bring this b in 0.5->1
+
+xfadeIn 5 8 $ silence
+
+d3 $ silence
+
+d2 $ silence
+
+
+hush

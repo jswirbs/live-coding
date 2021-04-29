@@ -1,0 +1,37 @@
+setcps (120/60/4)
+
+d1 $ sound "bass0*2"
+d2 $ (0.25 ~>) $ slow 2 $ s "print*4" # n "0 1 2 3"
+d3 $ randslice 140 $ s "tvradio" # crush 6 # gain 0.75
+d4 $ whenmod 4 3 (# squiz 4) $ rev $ chop 4 $ s "superzow*4" # n "<c [d b f5 c6]>" # slide 10 # detune 2 # accelerate "-1 1 0 0.15" # waveloss 50 # gain 0.9
+d5 $ s "inception:0" # speed 0.9
+once $ s "industrial:0" # crush 2
+
+d6 $ rev $ chop 16 $ randslice 160 $ s "tvradio" # crush 6 # gain 0.9
+d4 $ whenmod 4 3 (# squiz 4) $ rev $ chop 4 $ s "superpiano*4" # n "c [a b c d e f]" # sustain 10 # detune 6 # accelerate "-4 1 10 0.15" # waveloss 50 # gain 0.85
+unsolo 4
+unsolo 6
+d7 $ s "[hh*3] ~ ~ ~ ~ ~"
+unsolo 7
+hush
+
+
+
+
+
+d2 $ rev $ loopAt 8 $ chop 128 $ sound "bev" -- # smear 0.4
+d2 $ loopAt "<8 4 16>" $ chop 64 $  sound "bev*4" # cut 1
+d2 $ loopAt "16" $ chop 64 $ sound "bev*4" # cut 1
+d2 $ randslice 16 $ sound "bev" # crush 8
+
+
+
+
+
+
+
+
+once $ rev $ chop 8 $ randslice 160 $ s "radio" # crush 6 # gain 0.9
+
+once $ s "print:1"
+d1 $ s "industrial" # n (irand 10)

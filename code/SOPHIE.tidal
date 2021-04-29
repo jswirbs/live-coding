@@ -1,0 +1,47 @@
+setcps(120/60/4)
+
+
+d1 $ slow 2 $ s "SOPHIE_subs*8" # n "6 6 6 6 7 7 7 8"
+
+d2 $ (0.125 ~>) $ slow 2 $ s "SOPHIE_crashes*8" # n "2 2 2 2 1 1 0 0" # gain 0.7 # crush 4
+
+d3 $ whenmod 8 7 (const $ s "SOPHIE_fx*2" # n "7") $ s "SOPHIE_fx*2" # n "6"
+
+d8 $ s "SOPHIE_textures" # n "7"
+unsolo 8
+d8 $ (0.125 ~>) $ slow 2 $ n "0 1 3 ~" # s "UMRU_instrument_one_shots"  # gain 1.3
+
+d1 $ loopAt 4 $ s "UMRU_drum_builds" # n "0"
+d1 $ silence
+
+once $ s "UMRU_drum_builds" # n "0"
+
+once $ s "UMRU_instrument_loops:17"
+
+
+
+
+
+d3 $ loopAt 8 $ rarely (rev) $ striate 16 $ s "UMRU_instrument_loops:15"
+d4 $ loopAt 8 $ rarely (rev) $ chop 64 $ s "UMRU_instrument_loops:16"
+
+do
+  hush
+  d5 $ loopAt 8 $ s "UMRU_instrument_loops:17"
+  d6 $ loopAt 8 $ s "UMRU_drum_builds" # n "0"
+  jumpIn' 3 8 $ loopAt 8 $ rarely (rev) $ striate 16 $ s "UMRU_instrument_loops:15"
+  jumpIn' 4 8 $ loopAt 8 $ rarely (rev) $ chop 64 $ s "UMRU_instrument_loops:16"
+  jumpIn' 6 8 $ slice 2 0 $ loopAt 8 $ s "UMRU_drum_builds" # n "0"
+
+d1 $ n "21 ~ ~ 1" # s "UMRU_stomps"
+
+
+d1 $ n "1 1 1 1" # s "SOPHIE_kicks_dry" # gain 1.5
+
+d2 $ palindrome $ chop 8 $ loopAt 2 $ n "13 [0 1]" # s "SOPHIE_textures"
+
+d3 $ (0.125 ~>) $ s "SOPHIE_snares:3*4"
+
+d4 $ loopAt (slow 2 $ "4 4 2 8") $ rarely (rev) $ chop 64 $ s "UMRU_vocal_loops" # n "[10,11]" # gain 1.1
+
+d5 $ s "SOPHIE_kicks_wet:16*2"

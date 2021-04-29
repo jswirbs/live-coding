@@ -1,0 +1,27 @@
+setcps (120/60/4)
+
+d1 $ slow 4 $ sound "numbers*8" # n (run 8) # crush (rand * 3 + 3.5) # speed 1 -- bring speed incrementally down to 0 to destroy
+clutch 1 $ sound "numbers*8" # n (run 8) # crush 6 # speed 1
+d1 $ sound "numbers:0" # crush 6 # gain 1 # speed 1
+
+
+d2 $ silence -- sound "bd noise2:1 bd moog:1" # pan "0.5 0 0.5 1"
+d2 $ sound "clubkick"
+d3 $ sound "bd*16?" # pan sine # gain (((run 8) / 8) * 0.75 + 0.25)
+
+d4 $ sound "house:7*3 house:7 [house:3*3] house:4"
+
+d5 $ n (slow 8 $ "[[c4,e4,g4,c5]*4 [e4,g4,b5,e5]*4]" + "<12 7>") # s "superpiano" # velocity (slow 8 $ range 0.8 1.1 sine) # sustain 8 # gain "0.83"
+
+d6 $ n (slow 8 $ "[[c6 e5 g5 c6]*4 [e5 g5 b6 e6]*4]" + "<12 7>") # s "superpiano" # velocity (slow 8 $ range 0.75 1.1 sine) # sustain 8 # gain "0.90" # crush 4
+
+
+d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "8" # accelerate "0.5" # voice "0.5" # pitch1 "0.15" # slide "-0.5" # resonance "0.7" # attack "1" # release "15" # room "0.9" # size "0.5" # orbit "1" # gain 0.8
+
+do
+  solo 1
+  solo 8
+  d1 $ sound "numbers:0" # crush 6
+
+d1 $ sound "numbers:0" # crush 6 # speed 0.9
+hush

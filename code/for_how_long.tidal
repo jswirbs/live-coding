@@ -1,0 +1,35 @@
+-- setcps(128/60/4)
+setcps(120/60/4)
+
+d1 $ s "[hh*2] ~ hh ~" # n "8" # speed 1
+d1 $ silence
+d2 $ slow 2 $ s "[sn bd [bd bd] ~] ~" # gain 0.9
+clutch 3 $ s "print*2" # n "3 2" # gain 0.85
+hush
+d4 $ loopAt "2 4 4 8" $ whenmod 4 3 (rev) $ chop "128 256 16 32" $ s "forhowlong:3" # gain 0.94
+d5 $ "[<kyle*3 kyle>] ~ ~ ~" # n "5" # speed 2.3
+d5 $ silence
+
+do
+  clutch 2 $ s "ebd:6*4" # distort 0.1
+  clutch 3 $ s "print ~ print*3 [print [print*2]]" # n (run 4) # gain 0.9 # distort 0.6
+  jumpIn' 4 1 $ loopAt "4 4 8 4" $ rev $ chop 64 $ s "forhowlong:3" # speed 1
+  jumpIn' 5 1 $ loopAt 4 $ s "forhowlong:0" # gain 0.9 # crush 6
+  jumpIn' 6 1 $ slow 2 $ s "<[robobass:0*2] [robobass:1*2]>" # distort 0.3 # crush 4 # gain 1
+
+d3 $ silence
+d7 $ s "sweetbell*8?" # speed (1.875 + sin 1) # pan perlin # crush (5 + perlin * 3) # squiz 4 # gain 1.1
+hush
+
+d8 $ slow 4 $ "superwavemechanics" # n "c" # sustain 12 # accelerate "1" # gain 0.5
+
+once $ s "crow" # distort 0.7 # gain 0.9
+
+
+do
+  solo 5
+  solo 4
+  solo 1
+  solo 8
+
+hush
