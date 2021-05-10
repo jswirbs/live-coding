@@ -59,8 +59,8 @@ do
 
 d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1
 
-d5 $ "hh*16?" # n 7 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1
-d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
+d5 $ "hh*16?" # n 7 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
+d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.8
 
 do
   hush

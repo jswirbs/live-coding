@@ -1,14 +1,32 @@
 setcps(120/60/4)
 
+solo 2
+solo 1
+-- should already be b/w, but
+-- once $ "nastier"
+
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d2 $ slow 2 $ s "nasty"
+  d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
+  unsolo 1
+  unsolo 2
+  unsolo 4
+  unsolo 6
+
+
+
 
 d1 $ s "house*4" # gain 1.2
 d1 $ s "clubkick:0*4" # gain 1
 
-d2 $ slow 2 $ s "nasty"
 
+d2 $ slow 2 $ s "nasty"
+d2 $ silence
 d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
 
-d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75)) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
+d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 d5 $ (0.25 ~>) $ s "sn:3*2"
 d6 $ s "hh*16?"
 d7 $ -- s "superpiano" # n "[c, c5, a, b]" # accelerate 1 # sustain 8 # distort 2 # gain 0.5
@@ -17,10 +35,11 @@ d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 #
 do
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 0.1 # gain 0.7
   solo 7
-  d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
+  d8 $ slow 4 $ s "[kyle:0, kyle:2]" # gain 0.9
   solo 8
 
 do
+  d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
   d9 $ slow 4 $ s "inception"
   solo 9
   solo 1
@@ -36,8 +55,8 @@ do
   unsolo 8
   unsolo 9
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 4
-
-d10 $ s "feelfx" # n (choose[6,7,8,0]) -- # distort 128
+  once $ s "nastier"
+  d10 $ s "feelfx" # n (choose[6,7,8,0]) -- # distort 128
 
 once $ s "kyle:4"
 once $ s "kyle:5"
@@ -59,10 +78,17 @@ do
   d2 $ (0.25 ~>) $ s "sn*2" # n "2 3"
   d5 $ silence
   d10 $ silence
+  -- silence below for graphics (xfade doesn't seem to work?)
+  d3 $ silence
+  d4 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence
+  d9 $ silence
 
 
 -- use house/clubkick above on 1 and transition sn from 5 to 2
--- d1 $ s "house*4"
+d1 $ s "house*4" # gain 1.2
 d2 $ (0.25 ~>) $ s "sn*2" # n "2 3"
 d3 $ (0.125 ~>) $ s "print print [print*2] print" # n "0 1 2 3" # distort 0.5 # gain 0.9
 
@@ -72,7 +98,7 @@ do
   d5 $ s "superzow*4" # n (zownotes + "<0 7 12 7>") # gain 0.6 # slide 50 # attack 0.2 # distort 2 # crush 3
 
 d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.7 # gain 0.9
-d6 $ silence
+d7 $ silence
 d7 $ s "scifi2" # n "<0 0 1 0 1 0 2 2>" # distort 0.3 # crush 6
 
 
@@ -88,12 +114,11 @@ do
   solo 6
 
 do
-  d8 $ randslice 100 $ s "tvradio" # crush 6 # gain 0.9
+  d8 $ randslice 100 $ s "tvradio" # crush 6 # gain 0.7
   solo 8
   solo 1
 
 do
-  clutch 3 $ (0.25 ~>) $ s "circus*2" # n "2 0" # distort 0.4 # gain 0.9
   clutch 9 $ s "[electro1*4] ~ ~ ~" # crush 4 # gain 1.2
   clutch 11 $ s "feelfx" # n (choose[6,7,8,0])
   solo 9
@@ -110,20 +135,21 @@ do
   unsolo 9
   unsolo 11
   d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.7 # gain 0.9
-  d7 $ s "scifi2" # n "<0 0 1 0 1 0 2 2>" # distort 0.3
+  d7 $ s "scifi2" # n "<0 0 1 0 1 0 2 2>" # distort 0.4
   d8 $ rev $ chop 16 $ randslice 160 $ s "tvradio" # crush 6 # gain 0.9
   d10 $ s "~ ~ ~ [electro1:3 electro1:4 electro1:5 electro1:6]" # distort 0.2 # gain 1.2
+  d11 $ (0.25 ~>) $ s "circus*2" # n "2 0" # distort 0.4 # gain 0.9
 
 do
   solo 1
-  solo 3
   solo 7
+  solo 11
   d7 $ s "scifi2" # n "<0 0 1 0 1 0 2 2>" # distort 0.3 # gain 0.82
 
 do
   unsolo 1
-  unsolo 3
   unsolo 7
+  unsolo 11
   hush
   d1 $ s "house*4" # gain 1.2
 

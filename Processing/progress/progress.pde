@@ -18,8 +18,8 @@ void setup() {
   // start oscP5, listening for incoming messages at port 3333
   oscP5 = new OscP5(this,3333);
   
-  //size(800, 450);
-  fullScreen();
+  size(800, 450);
+  //fullScreen();
   background(0);
   frameRate(30);
   
@@ -59,11 +59,11 @@ void draw() {
   fill(house);
   rect(0, 0, width, height);
   
-  if (jungbass > 0) {
-    color c = color(50 * jungbass/100, 0, 50 * jungbass/100);
-    fill(c);
-    perlinWave(width - jungbass/100 * width * 1.1, width * 1.1 - jungbass/100 * width);
-  }
+  //if (jungbass > 0) {
+  //  color c = color(50 * jungbass/100, 0, 50 * jungbass/100);
+  //  fill(c);
+  //  perlinWave(width - jungbass/100 * width * 1.1, width * 1.1 - jungbass/100 * width);
+  //}
   
   house = max(0, house - 1);
   jungbass = max(0, jungbass - 2);
@@ -169,9 +169,9 @@ void oscEvent(OscMessage m) {
   switch(s) {
     case "house":
       if (gain > 0) {
-        house = int(25 * gain);
+        house = int(40 * gain);
       } else {
-        house = int(25);
+        house = int(40);
       }
       break;
     case "jungbass":
