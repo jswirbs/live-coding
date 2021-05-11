@@ -20,6 +20,9 @@ float radius = 0; // diameter of the circle
 float inter = 0.5; // difference between the sizes of two blobs
 float maxNoise = 500;
 
+int aliceReverse = 0;
+int aliceAgain = 0;
+
 
 void setup() {
   // start oscP5, listening for incoming messages at port 3333
@@ -39,16 +42,31 @@ void draw() {
     movieFuk.read();
     if (movieFuk.time() > 24.5 && movieSpeed > 0) { // movie is 25.045s long
       movieSpeed = -1.0;
-    } else if (movieFuk.time() < 23.5 && movieSpeed < 0) {
+    } else if (movieFuk.time() < 23.5 && movieSpeed < 0 && aliceReverse == 0 && aliceAgain == 0) {
       movieSpeed = 1.0;
+    } else if (movieSpeed < 0 && aliceReverse == 1) {
+      movieSpeed = -0.25;
+    } else if (movieSpeed < 0 && aliceAgain == 1) {
+      // calculate speed based on position in movie an how long it will take to get to datamosh
+      float secondsTillDatamosh = 23 - movieFuk.time(); // datamosh is at about second 23
+      movieSpeed = secondsTillDatamosh / 19.2; // about 19.2 seconds of build (8 cycles going from 80->120 cps)
+      aliceAgain = 0;
     }
     movieFuk.speed(movieSpeed);
   }
   
+  // fade in video with transparency (fades in in about 10 seconds, only first few seconds are really transparent though)
+  float videoAlpha = min(256, movieFuk.time() * 10);
+  tint(255, videoAlpha);
   image(movieFuk, 0, 0, width, height);
+  noTint();
   
   blendMode(DIFFERENCE);
   noStroke();
+  
+  // very transparent background to give some movement to circles without house or video
+  fill(30, 30, 30, 30);
+  rect(0, 0, width, height);
   
   fill(house);
   rect(0, 0, width, height);
@@ -204,6 +222,13 @@ void oscEvent(OscMessage m) {
       if (n == 4 && dropped == 0) {
         dropped = 1;
       }
+      break;
+    case "alicereverse":
+      aliceReverse = 1;
+      break;
+    case "aliceagain":
+      aliceReverse = 0;
+      aliceAgain = 1;
       break;
     case "sn":
       dropped = 2;

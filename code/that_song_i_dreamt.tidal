@@ -1,0 +1,180 @@
+setcps(120/60/4)
+
+
+d1 $ s "[house@3 house@3 house@2] ~" # gain 1.2
+
+d1 $ s "[SOPHIE_kicks_fx@3 SOPHIE_kicks_fx@3 SOPHIE_kicks_fx@2] ~" # n 1 # gain 1.2
+
+d2 $ slow 4 $ n "[[fs a fs a cs6 a fs a]*2 [fs a fs a d6 a fs a]*2 [e a e a cs6 a e a]*2 [f a f a cs6 a f a]*2]" # s "superzow" # cutoff 3000
+
+d3 $ (0.125 ~>) $ s "SOPHIE_hihats*4"
+
+do
+  hush
+  d1 $ s "[SOPHIE_kicks_fx@3 SOPHIE_kicks_fx@3 SOPHIE_kicks_fx@2] [SOPHIE_kicks_fx ~ SOPHIE_kicks_fx SOPHIE_kicks_fx@2 SOPHIE_kicks_fx ~ ~ ]" # n 2 # gain 1.2
+  d3 $ s "SOPHIE_hihats*8"
+
+do
+  d1 $ s "SOPHIE_kicks_fx*4" # n 1 # gain 1.2
+  d2 $ rarely (rev) $ striate 4 $ slow 4 $ n "[[fs, a, cs6]*2 [fs, a, d6]*2 [e, a, cs6]*2 [f, a, cs6]*2]" # s "superzow" # cutoff 3000
+  d3 $ (0.125 ~>) $ s "SOPHIE_hihats*4"
+
+
+d4 $ n "fs7*8" # s "superhammond" # sustain 6
+d4 silence
+
+d6 $ rev $ loopAt 8 $ chop 128 $ s "UMRU_vocal_loops" # n "3" # gain 1.6
+d6 silence
+
+-- ARP OUTTA CONTROL
+
+setcps(120/60/4)
+
+d3 $ slow 4 $ n ("a" - "[36, 48]") # s "superzow" # accelerate 2.8 # cutoff (range 800 1500 sine) # sustain 20 # hold 20 # release 10 # attack 0.2 # gain 0.75
+
+do
+  d3 $ silence
+  jumpIn' 1 13 $ s "house*4" # gain 1.2
+  jumpIn' 2 8 $ slow 4 $ (0.125 <~) $ n ("a@1 e@3 f@1 a@3" - "[12, 24]") # s "superzow" # accelerate "-0.29 0 0 0 0.25 0 0 0" # cutoff (range 800 1500 sine) # sustain "1.25 4 4 4 1.25 4 4 4" # release 10 # attack 0.2 # gain 0.75
+
+--
+d1 $ s "house*4" # gain 1.2
+d2 $ slow 4 $ (0.125 <~) $ n ("a@1 e@3 f@1 a@3" - "[12, 24]") # s "superzow" # accelerate "-0.29 0 0 0 0.25 0 0 0" # cutoff (range 800 1500 sine) # sustain "1.25 4 4 4 1.25 4 4 4" # release 10 # attack 0.2 # gain 0.75
+--
+
+-- d8 $ s "pad:0" # gain 0.9
+d8 $ slow 4 $ n ("e*16 a*16" - "24") # s "superhammond" # gain 1.1
+
+
+d3 $ slow 4 $ n (arp "[up down]*2" ("e'min*8 a'min*8" + "[-12 0 12 24 24 12 0 -12]*2")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 1 # gain 0.75
+d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+d3 $ silence
+
+
+d4 $ s "hh*16?" # n (run 8) # gain 1.2 # crush 4
+
+
+do
+  solo 1
+  solo 3
+  solo 5
+  --d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  d5 $ rarely (rev) $ striate 8 $ slow 4 $ n ("e'min a'min" - "12") # s "moogbass" # distort 2 # gain 0.7
+
+do
+  unsolo 1
+  d3 $ gap 2 $ slow 4 $ n (arp "[up down]*2" ("e'min*8 a'min*8" + "[-12 0 12 24 24 12 0 -12]*2")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 1.5 # gain 0.75
+
+unsolo 3
+
+do
+  unsolo 1
+  unsolo 4
+  unsolo 5
+  -- clutchIn 3 8 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  d5 $ slow 4 $ n ("e'min a'min" - "12") # s "moogbass" # distort 2 # gain 0.75
+  d6 $ (0.125 ~>) $ "hh*4" # n 7 # distort (range 0.4 0.8 perlin) # pan (slow 2 $ range 0.25 0.75 sine) # gain 1.1
+  xfadeIn 7 8 $ fast 2 $ s "~ sn:8"
+
+
+do
+  hush
+  --d1 $ s "dr_few" # n "0" # gain 1.2
+  d1 $ s "jungbass:10/2" # pan (range 0.3 1 saw) # gain 1.4
+  d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  --d8 $ s "pad:0" # gain 0.9
+  d8 $ slow 4 $ n ("e*16 a*16" - "24") # s "superhammond" # gain 1.1
+
+do -- 4 cycles
+  xfadeIn 1 8 $ silence
+  -- xfadeIn 3 8 $ silence
+  clutchIn 3 8 $ slow 4 $ n (arp "[up down]" ("[e'min*2] [a'min*2]" + "[12 24 24 12]")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 0.5 # gain 0.75
+  d8 $ slow 4 $ n ("e*8 a*8" - "24") # s "superhammond" # gain 1.1
+  -- clutchIn 1 4 $ s "superzow*16?" # n ("<e e a a>" + "[-12, 0, 12]") # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 4 # crush 4
+  xfadeIn 6 4 $ (0.125 ~>) $ "~ ~ ~ [hh*2]" # n 7 # distort (range 0.4 0.8 perlin) # pan (slow 2 $ range 0.25 0.75 sine) # gain 1.1
+  xfadeIn 1 4 $ n ("a@1" - "[24, 36]") # s "superzow" # accelerate 5 # cutoff (range 800 1500 sine) # sustain 16 # release 10 # attack 1 # gain 0.7
+
+
+do
+  d1 $ s "house*4" # gain 1.2
+  d2 $ slow 4 $ (0.125 <~) $ n ("a@1 e@3 f@1 a@3" - "[12, 24]") # s "superzow" # accelerate "-0.29 0 0 0 0.25 0 0 0" # cutoff (range 800 1500 sine) # sustain "1.25 4 4 4 1.25 4 4 4" # release 10 # attack 0.2 # gain 0.75
+  d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  d5 $ slow 4 $ n ("e'min a'min" - "12") # s "moogbass" # distort 2 # gain 0.75
+  d6 $ (0.125 ~>) $ "hh*4" # n 7 # distort (range 0.4 0.8 perlin) # pan (slow 2 $ range 0.25 0.75 sine) # gain 1.1
+  jumpIn' 7 2 $ fast 2 $ s "~ sn:8"
+  d8 $ slow 4 $ n ("e*16 a*16" - "24") # s "superhammond" # gain 1.1
+  jumpIn' 9 4 $ ghost $ rarely (rev) $ striate 8 $ slow 4 $ n ("e'min a'min" + "12") # s "moogbass" # distort 2 # gain 0.65 # orbit 1 # room 0.5 # size 0.75
+
+setcps(135/60/4)
+
+do
+  setcps(120/60/4)
+  solo 2
+  solo 6
+  solo 8
+  solo 9
+
+do
+  unsolo 6
+  --unsolo 9
+  solo 1
+
+do
+  solo 6
+  d2 $ slow 2 $ (0.125 <~) $ n ("<[a@1 e@3]*2 [f@1 a@3]*2>" - "[12, 24]") # s "superzow" # accelerate "-1.5" # cutoff (range 800 1500 sine) # sustain "1.25 4 4 4 1.25 4 4 4" # release 16 # gain 0.75
+  d6 $ "hh" # n 7 # distort (range 0.4 0.8 perlin) # pan (slow 2 $ range 0.25 0.75 sine) # gain 1.1
+
+
+do
+  hush
+  unsolo 1
+  unsolo 2
+  unsolo 6
+  unsolo 8
+  unsolo 9
+  d1 $ s "jungbass:10/2" # pan (range 0.3 1 saw) # gain 1.4
+  d8 $ slow 4 $ n ("e*16 a*16" - "24") # s "superhammond" # gain 1.1
+  -- then back to the droppppp
+
+
+
+-- fade on out
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d3 $ slow 4 $ n (arp "[up down]*2" ("[e'min*8] [a'min*8]" + "[-12 0 12 24 24 12 0 -12]*2")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.75
+  d7 $ fast 2 $ s "~ sn:1"
+  d8 $ slow 4 $ n ("e*16 a*16" - "24") # s "superhammond" # gain 1.1
+
+do -- after "a"
+  d7 $ silence
+  d3 $ slow 4 $ n (arp "[up down]" ("[e'min*4] [a'min*4]" + "[-12 0 12 24 24 12 0 -12]")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 1 # gain 0.75
+
+do -- right before lowest note
+  d1 $ silence
+  d3 $ slow 4 $ n ("[e ~]*4 [a a ~ ~ ~ ~ ~ ~]" + "-12") # s "superzow" # accelerate "0 [0 -2 ~ ~ ~ ~ ~ ~]" # sustain "0.3 [0.5 10 ~ ~ ~ ~ ~ ~]" # release 100 # cutoff (range 1300 1600 sine) # distort "2 [2 4 0 0 0 0 0 0]" # gain 0.75
+  jumpIn' 8 1 $ silence
+
+hush
+
+
+
+
+
+-- 24
+d7 $ s "UMRU_vocals" # n "24" # gain 1.2 # crush 3 # distort 1
+d7 $ rev $ chop 16 $ s "UMRU_vocals" # n "24" # gain 1.2 # crush 3 # distort 1
+
+d7 $ s "UMRU_vocal_loops" # n "19" # distort 1
+d7 $ silence
+
+d3 $ slow 4 $ n (arp "[up down]*4" ("[e'min*8]*2 [a'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # distort 2 # gain 0.9
+
+
+
+
+
+
+
+--
