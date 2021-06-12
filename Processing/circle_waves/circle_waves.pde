@@ -14,6 +14,9 @@ float circleWidth = 100;
 float numRings = 6; 
 float ringDensity = 3;
 
+PImage movementSymbol;
+int movementSymbolSize = 320;
+
 void setup() {
   size(1280,500);
   //fullScreen();
@@ -21,14 +24,16 @@ void setup() {
   // start oscP5, listening for incoming messages at port 3333
   oscP5 = new OscP5(this,3333);
   
+  movementSymbol = loadImage("movementSymbol.png");
+  
   background(0);
 }
 
 void draw() {
   // blurred motion on black
-  blendMode(BLEND); 
+  //blendMode(BLEND); 
   // glitchy difference
-  //blendMode(DIFFERENCE); 
+  blendMode(DIFFERENCE); 
   
   noStroke();
   // doesn't do anything with black background and DIFFERENCE blendMode
@@ -99,6 +104,11 @@ void draw() {
 
   theta += thetaVelocity;
   thetaNegative -= thetaVelocity;
+  
+  blendMode(BLEND); 
+  // scale the inverse of the scale above to keep it still
+  scale(1.1/(2.2 + 1.5*sin(millis()*0.0005)*0.9));
+  image(movementSymbol, -movementSymbolSize/2.0, -movementSymbolSize/2.0, movementSymbolSize, movementSymbolSize);
 }
 
 

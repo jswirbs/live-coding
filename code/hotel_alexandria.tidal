@@ -5,7 +5,7 @@ let orb2 = orbit 2 # room 0.4 # size 0.5
 let orb3 = orbit 3 # room 0.4 # size 0.5
 
 
-d2 $ slow 8 $ s "alice:0"
+d2 $ slow 8 $ s "alice:0" # fshift "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 45"
 
 do
   -- jumpIn' 2 7 $ s "alice:1"
@@ -38,7 +38,7 @@ d1 $ s "house*4" # gain 1.2
 
 do
   solo 6
-  solo 7 -- ?
+  solo 7
   xfadeIn 7 8 $ silence
 
 
@@ -49,7 +49,8 @@ do
   d1 $ s "house" # gain 1.2
   d2 $ (0.25 ~>) $ s "droplet*2" # gain 1.2
   d3 $ s "sparkles*2"
-  d7 $ silence
+
+d7 $ silence
 
 
 d2 $ s "alice:3" # gain 1.5 -- silence below immediately after
@@ -118,6 +119,7 @@ do -- make a dropped #2 change to the circles
   d8 $ (0.125 ~>) $ s "[<808*4 808*2 808*2 808*2> ~*2 808 ~*2]*2" # n 1 # pan (slow 2 $ range 0.3 0.7 sine) # gain 1.2
   d9 $ whenmod 4 3 (rev . chop 16) $ s "armora:4" # gain 1.4
 
+
 do
   solo 1
   solo 3
@@ -148,7 +150,7 @@ d2 $ loopAt 4 $ s "hotelkyle" # n "[1, 2]" # gain 1.2
 -- distorted
 d3 $ loopAt 2 $ s "hotelkyle:3" # distort 1 # squiz 6 # crush 6 # gain 1
 -- now deconstruct that shit
-d3 $ loopAt 2 $ s "hotelkyle:3" # distort 0 # gain 1
+d3 $ loopAt 2 $ s "hotelkyle:3"
 
 d1 $ silence
 d6 $ silence

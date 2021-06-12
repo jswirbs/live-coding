@@ -33,7 +33,7 @@ do
   d6 $ loopAt 8 $ s "UMRU_drum_builds" # n "0"
   jumpIn' 1 8 $ slow 2 $ s "SOPHIE_subs*8" # n "6 6 6 6 7 7 7 8"
   jumpIn' 3 8 $ loopAt 8 $ maybe_rev $ striate 16 $ s "UMRU_instrument_loops:15"
-  jumpIn' 4 8 $ loopAt 8 $ rarely (rev) $ chop 64 $ s "UMRU_instrument_loops:16"
+  jumpIn' 4 8 $ loopAt 8 $ maybe_rev $ chop 64 $ s "UMRU_instrument_loops:16"
   jumpIn' 6 8 $ slice 2 0 $ loopAt 8 $ s "UMRU_drum_builds" # n "0"
 
 d1 $ n "21 ~ ~ 1" # s "UMRU_stomps"

@@ -35,7 +35,7 @@ do
   d2 $ (0.125 ~>) $ s "electro1*4" # n "10" # crush 6
   d3 $ whenmod 4 3 (const $ n "e3" # s "m2") $ n "e3 [~ ~ a3 b3] ~ ~" # s "m2"
   d4 $ whenmod 4 3 (const $ n "e [~ ~ a a] [a a b b] [b*4]" # s "m3") $ n "e [~ ~ a b] [b b] ~" # s "m3"
-  d5 $ n "<e e e [e e b4 a4]>" # s "m4"
+  d5 $ n ("<e e e [e e b4 a4]>" - "[0, 24]") # s "m4"
 
 
 do
@@ -51,42 +51,51 @@ do
   d2 $ (0.125 ~>) $ s "[electro1*2 ~] ~ ~ ~" # n "13" # crush 5
   solo 2
 
--- 7 6 5 4 3 2 1
 do
-  solo 6
-  d6 $ s "numbers" # n 1 # distort 0.1 # crush 5 # gain 1.1
-
--- 0 and silence
-do
-  unsolo 1
-  unsolo 2
-  unsolo 3
-  unsolo 4
-  unsolo 5
-  solo 6
-  d6 $ s "numbers" # n 0 # distort 0.1 # crush 5
-
-d6 $ silence
-
-
-
-do
-  d3 $ n "e3 ~ ~" # s "m2"
-  solo 6
-  solo 3
-
-do
-  d1 $ s "house*4" # gain 1.2
-  d3 $ n "e3 ~ ~" # s "m2"
-  d6 $ s "numbers*4" # n "0 1 2 3" # distort 0.1 # crush "5 4 3 3" # gain "1.1 0.8 0.8 0.8"
-  solo 1
-  solo 3
-
-do
-  d4 $ (0.25 ~>) $ s "m3*2" # n (choose[4, 4, 9, 11])
   solo 4
+  d3 $ n "e3 ~ ~" # s "m2"
+  d4 $ (0.25 ~>) $ s "m3*2" # n (choose[4, 4, 9, 11])
   d6 $ (0.13 <~) $ s "numbers*8" # n "0 1 2 3" # distort 0.1 # crush "6 5 5 4"
   solo 6
+
+
+
+-- -- 7 6 5 4 3 2 1
+-- do
+--   solo 6
+--   d6 $ s "numbers" # n 1 # distort 0.1 # crush 5 # gain 1.1
+--
+-- -- 0 and silence
+-- do
+--   unsolo 1
+--   unsolo 2
+--   unsolo 3
+--   unsolo 4
+--   unsolo 5
+--   solo 6
+--   d6 $ s "numbers" # n 0 # distort 0.1 # crush 5
+--
+-- d6 $ silence
+--
+--
+--
+-- do
+--   d3 $ n "e3 ~ ~" # s "m2"
+--   solo 6
+--   solo 3
+--
+-- do
+--   d1 $ s "house*4" # gain 1.2
+--   d3 $ n "e3 ~ ~" # s "m2"
+--   d6 $ s "numbers*4" # n "0 1 2 3" # distort 0.1 # crush "5 4 3 3" # gain "1.1 0.8 0.8 0.8"
+--   solo 1
+--   solo 3
+--
+-- do
+--   d4 $ (0.25 ~>) $ s "m3*2" # n (choose[4, 4, 9, 11])
+--   solo 4
+--   d6 $ (0.13 <~) $ s "numbers*8" # n "0 1 2 3" # distort 0.1 # crush "6 5 5 4"
+--   solo 6
 
 do
   unsolo 1
@@ -144,7 +153,7 @@ do
 
 d5 $ n ("e*4" + "<0 5 0 [7 12 7 <5 0>]>" - "12") # s "m3"
 
-d2 $ "[hh*2] [hh*4] sn ~" # n "0 1" # crush "5 4" # gain 1.2
+d2 $ "[hh*2] [hh*4] sn ~" # n "0 1" # crush "5 4" # gain "1.2 1.4"
 
 do
   d4 $ n "<e6 e6 e7 e8> ~ a b" # s "m1"
@@ -153,7 +162,7 @@ do
   jumpIn' 3 1 $ silence
   jumpIn' 5 1 $ silence
   jumpIn' 1 4 $ s "house*4" # gain 1.2
-  jumpIn' 2 4 $ "[hh*2] [hh*4] sn ~" # n "0 1"
+  jumpIn' 2 4 $ "[hh*2] [hh*4] sn ~" # n "0 1" # gain "1.2 1.4"
   jumpIn' 3 4 $ (0.125 ~>) $ s "print*4" # n (run 4) # crush 3
   jumpIn' 4 4 $ fast 4 $ n ("e a b e6" + "<[0] [5 2 3 2] [0] [7 5 3 <3 0>]>") # s "m1"
   jumpIn' 5 4 $ n ("e*4" + "<0 5 0 [7 12 7 <5 0>]>" - "12") # s "m3"
@@ -201,6 +210,7 @@ do
 
 hush
 
+-- could just jump to next part
 
 do
   solo 1

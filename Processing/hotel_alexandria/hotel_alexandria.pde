@@ -68,7 +68,7 @@ void draw() {
   fill(30, 30, 30, 30);
   rect(0, 0, width, height);
   
-  fill(house);
+  fill(house, 200);
   rect(0, 0, width, height);
   
   for (Circle c : circleList) {
