@@ -1,0 +1,111 @@
+setcps(120/60/4)
+
+
+-- chorus vocals
+d5 $ slow 8 $ s "night:3"
+
+-- anthemic synth lead
+d3 $ slow 8 $ s "night:1"
+
+-- bending lead
+d4 $ slow 8 $ s "night:2"
+
+do
+  -- bass
+  d2 $ slow 8 $ s "night:0" # gain 0.9
+  d5 $ slow 8 $ gap 128 $ s "night" # n "[1, 2, 3]"
+
+
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d2 $ slow 2 $ loopAt "8 4 8 4" $ s "night*2" # n "0" # speed "-1" # gain 0.9
+  d3 $ loopAt "8 4" $ s "night" # n "1" # speed "-1"
+  d4 $ slow 2 $ loopAt "8 4 8 4" $ rev $ chop 128 $ s "night" # n "[1, 2, 3]"
+
+
+do
+  hush
+  d1 $ s "house ~ ~ house" # gain 1.2
+  d2 $ slow 2 $ loopAt "8 4 8 4" $ gap 16 $ s "night*2" # n "0" # speed "-1" # gain 0.9
+  d3 $ loopAt "8 4" $ s "night" # n "1" # speed "-1"
+  d4 $ gap 2 $ slow 2 $ loopAt "<8 8 8 4>" $ rev $ chop 128 $ s "night" # n "[2, 3]"
+
+
+d5 $ slow 2 $ s "hh [~ ~ ~ hh] hh [808mt 808mt [808mt 808mt] 808mt]" # n "10 10 10 [4 4 3 0]" # distort 0.1 # gain 1.1
+
+d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
+
+xfadeIn 8 8 $ slow 2 $ arp "updown" $ n "<a'min g'maj g'maj f'maj>" # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
+
+do -- hush and build right before drop
+  hush
+  d1 $ s "house ~ ~ house" # gain 1.2
+  d5 $ slow 2 $ s "hh [~ ~ ~ hh] hh [808mt 808mt [808mt 808mt] [808mt 800mt]]" # n "10 10 10 [4 4 3 0]" # distort (range 0.1 0.4 saw) # gain 1.1
+  d8 $ slow 2 $ arp "updown" $ n "<a'min g'maj g'maj f'maj>" # s "warsawbass" # cutoff (range 1000 4000 sine) # crush (range 12 3 saw) -- # cutoff 2000 # detune 1 # gain 0.9
+  d9 $ slow 2 $ s "sn:3*16" # gain (range 0 1 saw)
+
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d2 $ slow 2 $ loopAt "8 4 8 4" $ s "night" # n "0" # speed "-1" # gain 0.9
+  -- d4 $ slow 2 $ loopAt "8 4 8 4" $ rev $ striate 128 $ s "night" # n "0"
+  d3 $ loopAt "8 4" $ s "night" # n "1" # speed "-1"
+  d4 $ slow 2 $ whenmod 8 4 (const $ loopAt "[8 16] 4 16 8" $ rev $ chop 128 $ s "night" # n "[1, 2, 3]")
+    $ loopAt "8 4 8 [8 4]" $ rev $ chop 128 $ s "night" # n "[1, 2, 3]"
+  d6 $ (0.125 ~>) $ s "hh*4" # crush 5 # gain 1.2
+  d6 $ (0.125 ~>) $ slow 16 $ s "[hh:0*32] [hh*8 hh*8 [[hh*2] hh]*8 [hh*4]*8]" # crush "8 5" # gain 1.2
+  d7 $ slow 16 $ s "[[~ sn:3]*16] ~" # gain 0.9
+  d8 $ whenmod 16 8 (const $ "") $ slow 2 $ arp "updown" $ n "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>" # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
+  d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
+
+-- keeps bass in whole time
+-- d2 $ slow 2 $ loopAt "8 4 8 4" $ s "night*2" # n "0" # speed "-1" # gain 0.9
+
+
+do -- interlude of slow singing n shit
+  hush
+  d1 $ s "hh ~ ~ hh" # gain 1.2
+  d3 $ slow 8 $ s "night" # n "[1, 2, 3]"
+  d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
+
+do
+  d2 $ slow 2 $ loopAt "8 4 8 4" $ gap 16 $ s "night*2" # n "0" # speed "-1" # gain 0.9
+  d7 $ gap 2 $ slow 2 $ loopAt "<8 8 8 4>" $ rev $ chop 128 $ s "night" # n "[2, 3]"
+
+
+do -- build right before drop
+  d1 $ s "hh*4" # gain 1.2
+  d6 $ slow 2 $ s "hh [~ ~ ~ hh] hh [808mt 808mt [808mt 808mt] [808mt 800mt]]" # n "10 10 10 [4 4 3 0]" # distort (range 0.1 0.4 saw) # gain 1.1
+  d8 $ slow 2 $ arp "updown" $ n "<a'min g'maj g'maj f'maj>" # s "warsawbass" # cutoff (range 1000 4000 sine) # crush (range 12 3 saw) -- # cutoff 2000 # detune 1 # gain 0.9
+  d9 $ slow 2 $ s "sn:3*16" # gain (range 0 1 saw)
+
+-- back to drop
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d2 $ slow 2 $ loopAt "8 4 8 4" $ s "night*2" # n "0" # speed "-1" # gain 0.9
+  -- d4 $ slow 2 $ loopAt "8 4 8 4" $ rev $ striate 128 $ s "night" # n "0"
+  d3 $ loopAt "8 4" $ s "night" # n "1" # speed "-1"
+  d4 $ slow 2 $ loopAt "8 4 8 [8 4]" $ rev $ chop 128 $ s "night" # n "[1, 2, 3]"
+  d6 $ (0.125 ~>) $ s "hh*4" # crush 5 # gain 1.2
+  d6 $ (0.125 ~>) $ slow 16 $ s "[hh:0*32] [hh*8 hh*8 [[hh*2] hh]*8 [hh*4]*8]" # crush "8 5" # gain 1.2
+  d7 $ slow 16 $ s "[[~ sn:3]*16] ~" # gain 0.9
+  d8 $ whenmod 16 8 (const $ "") $ slow 2 $ arp "updown" $ n "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>" # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
+  d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
+
+do -- funk up the synths
+  d8 $ slow 2 $ arp "updown" $ n (off "<0.0625 0.0625 0.03125 0.03125>" (+12) $ "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>") # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
+  d9 $ slow 8 $ n (off "0.125" (+"-12") $ "a@7 g@1 b@8 b@7 c6@1 a@7 g@1") # s "default" # crush 7 # gain 1.2
+
+
+
+-- fade out
+do
+  hush
+  d1 $ s "house*4" # gain 1.2
+  d3 $ loopAt "8 4" $ s "night" # n "1" # speed "-1"
+  d6 $ (0.125 ~>) $ s "hh*4" # crush 5 # gain 1.2
+  d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
+
+hush
