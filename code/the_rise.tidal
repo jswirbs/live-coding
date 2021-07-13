@@ -46,6 +46,9 @@ do
   --unsolo 7
   --unsolo 8
 
+d8 $ chop "16 16 16 64" $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # speed (fast 4 $ "1 -1")
+
+
 unsolo 1
 unsolo 7
 
@@ -61,6 +64,8 @@ do
 once $ s "kyle:4"
 once $ s "kyle:5"
 once $ s "kyle:5" # distort 0.5
+
+once $ s "feelfx" # n 7 # distort 1 # speed "0.25"
 
 
 hush
@@ -98,7 +103,7 @@ do
   d5 $ s "superzow*4" # n (zownotes + "<0 7 12 7>") # gain 0.6 # slide 50 # attack 0.2 # distort 2 # crush 3
 
 d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.7 # gain 0.9
-d7 $ silence
+d6 $ silence
 d7 $ s "scifi2" # n "<0 0 1 0 1 0 2 2>" # distort 0.3 # crush 6
 
 

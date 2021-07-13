@@ -1,5 +1,12 @@
 setcps(120/60/4)
 
+do
+  hush
+  d1 $ slow 8 $ s "limewire" # gain 1.4
+
+d1 $ silence
+
+
 
 -- chorus vocals
 d5 $ slow 8 $ s "night:3"
@@ -13,6 +20,7 @@ d4 $ slow 8 $ s "night:2"
 do
   -- bass
   d2 $ slow 8 $ s "night:0" # gain 0.9
+  -- choppy
   d5 $ slow 8 $ gap 128 $ s "night" # n "[1, 2, 3]"
 
 
@@ -59,8 +67,6 @@ do
   d8 $ whenmod 16 8 (const $ "") $ slow 2 $ arp "updown" $ n "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>" # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
   d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
 
--- keeps bass in whole time
--- d2 $ slow 2 $ loopAt "8 4 8 4" $ s "night*2" # n "0" # speed "-1" # gain 0.9
 
 
 do -- interlude of slow singing n shit
@@ -80,7 +86,7 @@ do -- build right before drop
   d8 $ slow 2 $ arp "updown" $ n "<a'min g'maj g'maj f'maj>" # s "warsawbass" # cutoff (range 1000 4000 sine) # crush (range 12 3 saw) -- # cutoff 2000 # detune 1 # gain 0.9
   d9 $ slow 2 $ s "sn:3*16" # gain (range 0 1 saw)
 
--- back to drop
+-- back to drop (get it before cycle or else long loops are fucked)
 do
   hush
   d1 $ s "house*4" # gain 1.2
@@ -95,7 +101,7 @@ do
   d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
 
 do -- funk up the synths
-  d8 $ slow 2 $ arp "updown" $ n (off "<0.0625 0.0625 0.03125 0.03125>" (+12) $ "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>") # s "warsawbass" # cutoff (range 1000 4000 sine) -- # cutoff 2000 # detune 1 # gain 0.9
+  d8 $ slow 2 $ arp "updown" $ n (off "<0.0625 0.0625 0.03125 0.03125>" (+12) $ "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>") # s "warsawbass" # cutoff (range 2000 4000 sine) # gain 0.9 -- # cutoff 2000 # detune 1 # gain 0.9
   d9 $ slow 8 $ n (off "0.125" (+"-12") $ "a@7 g@1 b@8 b@7 c6@1 a@7 g@1") # s "default" # crush 7 # gain 1.2
 
 
@@ -109,3 +115,9 @@ do
   d9 $ slow 8 $ n "a@7 g@1 b@8 b@7 c6@1 a@7 g@1" # s "default" # crush 7 # gain 1.2
 
 hush
+
+
+
+
+
+d8 $ slow 2 $ arp "updown" $ n (off "<0.0625 0.0625 0.03125 0.03125>" (+12) $ "<[a'min*7@7 c6'maj@1] g'maj*8 g'maj*8 f'maj*8>") # s "warsawbass" # attack (range 0.02 0.8 sine) -- # cutoff 2000 # detune 1 # gain 0.9
