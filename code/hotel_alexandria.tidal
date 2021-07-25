@@ -146,7 +146,7 @@ do
   d6 $ slow 4 $ n "fs3@1 b2@3 as2@1 fs3@3" # s "supersaw" # pitch1 1.5 # orb3
 
 
-d2 $ loopAt 4 $ s "hotelkyle" # n "[1, 2]" # gain 1.2
+d2 $ loopAt 4 $ s "hotelkyle" # n "[1, 2]" # gain 1
 
 -- distorted
 d3 $ loopAt 2 $ s "hotelkyle:3" # distort 1 # squiz 6 # crush 6 # gain 1

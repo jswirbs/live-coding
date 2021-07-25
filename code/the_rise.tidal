@@ -23,8 +23,10 @@ d1 $ s "clubkick:0*4" # gain 1
 
 
 d2 $ slow 2 $ s "nasty"
-d2 $ silence
+d3 $ silence
 d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
+d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.7 0.75"
+
 
 d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 d5 $ (0.25 ~>) $ s "sn:3*2"
