@@ -597,27 +597,49 @@ do
   d7 $ slice 2 "0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
 
 
+clutchIn 9 8 $ palindrome $ chop 8 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0.85 0.85 0 0.85" # fshift (slow 2 $ range "-15" "25" sine) # distort (slow 2 $ range "0.2" "0.8" sine)
+
+
 
 do
-  solo 1
+  -- solo 1
   solo 2
   solo 3
-  solo 6
   solo 7
+  solo 9
   d6 $ loopAt 4 $ gap 8 $ s "cyberpunk:3" # gain 0.9
+  d7 $ slice 4 "0 0 0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+  d9 $ chop 8 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0.85 0.85 0 0.85" # fshift (slow 2 $ range "-15" "25" sine) # distort (slow 2 $ range "0.2" "0.8" sine)
 
 do
   unsolo 1
   unsolo 2
-  d6 $ chop 16 $ loopAt 4 $ s "cyberpunk:3" # gain 0.9
+  unsolo 3
+  solo 6
+  d6 $ chop 16 $ loopAt 4 $ s "cyberpunk:3" # gain 0.5
+  xfadeIn 6 6 $ chop 16 $ loopAt 4 $ s "cyberpunk:3" # gain 0.9
   xfadeIn 7 6 $ chop 16 $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
 
-unsolo 3 -- last cycle
+do -- last cycle
+  unsolo 6
+  unsolo 7
+  d9 $ chop 16 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0 0.9 [0 0 0.9 0] 0.9" # fshift (slow 2 $ range "-15" "25" sine) # distort 2
 
 do
   unsolo 6
   unsolo 7
+  unsolo 9
   d3 $ (0.125 ~>) $ s "[hh*4] [hh ~ hh ~] hh hh" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
   --d3 $ (0.125 ~>) $ s "hh*8" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
   d5 $ s "<cyberpunk cyberpunk cyberpunk [~ ~ ~ cyberpunk]>" # n 7 # gain 0.8
   d7 $ slice 2 "0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+  d9 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.9
+
+
+d9 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine)
+
+
+
+
+
+hush
