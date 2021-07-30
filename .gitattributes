@@ -1,2 +1,6 @@
 Processing/progress/data/blue3.mp4 filter=lfs diff=lfs merge=lfs -text
 Processing/MOVEMENT/data/blue3.mp4 filter=lfs diff=lfs merge=lfs -text
+SuperCollider/Custom-samples/boost/000_boost_full.wav filter=lfs diff=lfs merge=lfs -text
+SuperCollider/Custom-samples/gmk/002_gmk_body.wav filter=lfs diff=lfs merge=lfs -text
+SuperCollider/Custom-samples/take_it_all_away/001_take_it_all_away_body.wav filter=lfs diff=lfs merge=lfs -text
+SuperCollider/Custom-samples/boost2/000_boost2_body.wav filter=lfs diff=lfs merge=lfs -text
