@@ -9,11 +9,12 @@ import netP5.*;
 OscP5 oscP5;
 
 int phase = 0;
+int numPhases = 6;
 
 
 void setup() {
-  size(1280,500);
-  //fullScreen();
+  //size(1280,500);
+  fullScreen();
   frameRate(30);
   // start oscP5, listening for incoming messages at port 3333
   oscP5 = new OscP5(this,3333);
@@ -35,40 +36,30 @@ void draw() {
     drawCircleWaves();
   } else if (phase == 1) {
     draw303();
-    if (webcamInitialized) {
-      uninitializeWebcam();
-      webcamInitialized = false;
-    }
   } else if (phase == 2) {
-    drawWebcam(); // maybe??
+    drawCircleWaves();
   } else if (phase == 3) {
     drawHotelAlexandria();
-    if (webcamInitialized) {
-      uninitializeWebcam();
-      webcamInitialized = false;
-    }
   } else if (phase == 4) {
-    // that song I dreamt??
+    draw303();
   } else if (phase == 5) {
-    //drawProgress();
-  } else if (phase == 6) {
-    // outro
+    drawCircleWaves();
   }
 }
 
 
 void mouseClicked() {
   // transition between phases
-  if ((mouseX > width - 20) && (mouseY < 20)) {
+  if ((mouseX > width - width/2) && (mouseY < height/2)) {
     if (mouseButton == LEFT) {
       phase += 1; 
-      if (phase > 6) {
+      if (phase > numPhases - 1) {
         phase = 0;
       }
     } else if (mouseButton == RIGHT) {
       phase -= 1;
       if (phase < 0) {
-        phase = 6;
+        phase = numPhases - 1;
       }
     }
   // otherwise, call the current phases mouseClicked function
@@ -79,15 +70,13 @@ void mouseClicked() {
     } else if (phase == 1) {
       //draw303();
     } else if (phase == 2) {
-      mouseClickedWebcam(); // maybe??
+      mouseClickedCircleWaves();
     } else if (phase == 3) {
       //drawHotelAlexandria();
     } else if (phase == 4) {
       // that song I dreamt??
     } else if (phase == 5) {
-      //drawProgress();
-    } else if (phase == 6) {
-      // outro
+      mouseClickedCircleWaves();
     }
     
   }
@@ -104,10 +93,8 @@ void oscEvent(OscMessage m) {
   } else if (phase == 3) {
     oscEventHotelAlexandria(m);
   } else if (phase == 4) {
-    // that song I dreamt??
+    oscEvent303(m);
   } else if (phase == 5) {
     oscEventProgress(m);
-  } else if (phase == 6) {
-    // outro
   }
 }

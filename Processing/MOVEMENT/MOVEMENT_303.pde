@@ -560,6 +560,12 @@ void oscEvent303(OscMessage m) {
     case ("superpiano"):
       superzow = 4;
       break;
+    case ("superhammond"):
+      m5 = 60;
+      break;
+    case ("moogbass"):
+      m4 = 60;
+      break;
     case ("sn"):
       sn = 20;
       break;

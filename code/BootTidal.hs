@@ -8,11 +8,11 @@ hSetEncoding stdout utf8
 -- total latency = oLatency + cFrameTimespan
 
 -- # START TIDAL NORMALLY (just SuperCollider)
-tidal <- startTidal (superdirtTarget {oLatency = 0.1, oAddress = "127.0.0.1", oPort = 57120}) (defaultConfig {cFrameTimespan = 1/20})
+-- tidal <- startTidal (superdirtTarget {oLatency = 0.1, oAddress = "127.0.0.1", oPort = 57120}) (defaultConfig {cFrameTimespan = 1/20})
 
 -- # START TIDAL CONNECTED TO SuperCollider AND Processing (removing above and adding processing target)
--- processingTarget = Target { oName = "processing", oAddress = "127.0.0.1", oPort = 3333, oBusPort = Nothing, oLatency = 0.01, oWindow = Nothing, oSchedule = Live, oHandshake = False }
--- tidal <- startStream (defaultConfig {cFrameTimespan = 1/20}) [(superdirtTarget, [superdirtShape]), (processingTarget, [superdirtShape])]
+processingTarget = Target { oName = "processing", oAddress = "127.0.0.1", oPort = 3333, oBusPort = Nothing, oLatency = 0.01, oWindow = Nothing, oSchedule = Live, oHandshake = False }
+tidal <- startStream (defaultConfig {cFrameTimespan = 1/20}) [(superdirtTarget, [superdirtShape]), (processingTarget, [superdirtShape])]
 
 :{
 let p = streamReplace tidal

@@ -8,13 +8,108 @@ kill ...
 setcps(120/60/4)
 
 
+
+d1 $ s "bd*4"
+
+d2 $ (0.125 ~>) $ s "hh*4" # distort 1
+
+
+
+
 BOOST
+
+do
+  -- body
+  d1 $ s "boost:0" # gain 1.3
+  jumpIn 1 1 $ silence
+  -- drum loop
+  jumpIn' 2 139 $ s "boost:1"
+
+-- d1 $ s "boost:1"
+
+
+-- d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
+-- bring in harmonies (minus highest one which kyle sings)
+d3 $ slow 4 $ s "[kyle:0, kyle:1]" # gain 0.8
+d3 silence
+
+
+d4 $ slow 2 $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1
+d4 $ s "kyle [kyle*2] ~ ~" # n (choose[3,4,5]) # crush 6 # gain 1
+d4 silence
 
 GMK
 
-TAKE IT ALL AWAY
+-- swirls
+d3 $ slow 4 $ s "gmk:1"
+
+d3 $ rarely (rev) $ chop 32 $ slow 4 $ s "gmk:1"
+d3 silence
+
+-- bass loop
+d4 $ slow 4 $ s "gmk:0"
+d4 $ slow 4 $ slice 8 "0 ~ ~ ~ 0 ~ ~ ~ 0 ~ ~ ~ 0 ~ ~ ~" $ s "gmk:0"
+d4 $ slow 4 $ slice 8 "0 ~ ~ ~ 2 ~ ~ ~ 4 ~ ~ ~ 6 ~ ~ ~" $ s "gmk:0"
+
+do
+  hush
+  -- body
+  d1 $ slow 4 $ s "gmk:2" # gain 1.45
+  jumpIn 1 4 $ silence
+  -- end drum
+  jumpIn' 2 124 $ slow 4 $ s "gmk:3" # gain 1.15
+
+-- d2 $ slow 4 $ s "gmk:3" # gain 1.15
+
+
+d3 $ rarely (rev) $ chop 32 $ slow 4 $ s "gmk:1"
+d3 $ gap 8 $ rarely (rev) $ chop 32 $ slow 4 $ s "gmk:1"
+d3 silence
+
+
+-- TAKE IT ALL AWAY
+
+-- drum loop
+xfadeIn 2 16 $ s "take_it_all_away:0" # gain 0.8
+
+do
+  d1 $ s "take_it_all_away:1" # gain 1.5
+  d3 silence
+  jumpIn 1 1 $ silence
+  jumpIn' 3 200 $ s "take_it_all_away:0" # gain 0.8
+
+-- silence drums when ready
+d2 silence
+
+-- d3 $ s "take_it_all_away:0" # gain 0.8
+
+-- "20" --> "40" --> "60" --> "80" --> "100"
+d2 $ striate 4 $ gap 4 $ slice 200 "80" $ s "take_it_all_away:1" # gain 1.5
+d2 $ striate 4 $ gap 4 $ slice 200 "200" $ s "take_it_all_away:1" # gain 1.5
+d2 silence
+xfadeIn 2 4 silence
+
 
 BOOST 2.0
+
+-- start fucking w it
+d4 $ slow 2 $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1 # speed "0.96"
+d4 silence
+
+once $ s "kyle:4"
+once $ s "kyle:5"
+
+
+-- body
+d1 $ slow 2 $ s "boost2" # gain 1.5
+d1 silence
+
+-- silence shit
+d2 silence
+d3 silence
+
+
+
 
 
 -- **** the_rise ****
@@ -24,12 +119,12 @@ do
   d2 $ slow 2 $ s "nasty"
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
 
-d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.7 0.78" -- after the louder one the voice decent comes in, so wait until that and then bring in voice with next noise
+d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.5 0.8" -- after the louder one the voice decent comes in, so wait until that and then bring in voice with next noise
 
 
 d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 
-d5 $ (0.25 ~>) $ s "sn:3*2"
+d5 $ (0.25 ~>) $ s "sn:3*2" # gain 1.1
 
 d6 $ s "hh*16?"
 
@@ -49,7 +144,7 @@ do
   solo 1
 
 
-d8 $ chop "16 16 16 64" $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # speed (fast 4 $ "1 -1")
+d8 $ gap "16 16 16 64" $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # speed (fast 4 $ "1 -1")
 
 
 unsolo 1
@@ -69,7 +164,7 @@ once $ s "kyle:4"
 once $ s "kyle:5"
 once $ s "kyle:5" # distort 0.5
 
-once $ s "feelfx" # n 7 # distort 1 # speed "0.5" # gain 0.8
+once $ s "feelfx" # n 7 # distort 1 # speed "0.5" # gain 0.85
 
 
 
@@ -105,7 +200,7 @@ do
 
 d1 $ s "house house [house house ~ house] house" # gain 1.2
 
-d2 $ (0.125 ~>) $ s "electro1*4" # n "10" # crush 6
+d2 $ (0.125 ~>) $ s "electro1*4" # n "10" # crush 6 # gain 1.1
 
 d10 $ silence
 d4 $ whenmod 4 3 (const $ n "e [~ a] e [~ a]" # s "m3") $ n "e [~ ~ a b] ~ ~" # s "m3"
@@ -121,6 +216,7 @@ d2 $ silence
 
 
 do
+  d10 $ silence
   unsolo 1
   unsolo 2
   unsolo 3
@@ -148,24 +244,29 @@ do
   d2 $ (0.125 ~>) $ s "[electro1*2 ~] ~ ~ ~" # n "13" # crush 5
   d4 $ every 2 (const $ n ("e" + "[-12, 0, 12, 24]") # s "m3") $ n "e e e e ~ ~ a a a a b b b b b b" # s "m3"
 
+-- do
+--   solo 4
+--   solo 5
+--   solo 6
+--   d3 $ n "e3 ~ ~" # s "m2"
+--   d5 $ slow 2 $ (0.25 ~>) $ s "m3 m3 ~ ~" # n (choose[4, 4, 9, 11])
+--   d6 $ (0.13 <~) $ s "numbers*8" # n "0 1 2 3" # distort 0.1 # crush "6 5 5 4"
 
 do
-  solo 4
-  solo 5
   solo 6
-  d3 $ n "e3 ~ ~" # s "m2"
-  d5 $ slow 2 $ (0.25 ~>) $ s "m3 m3 ~ ~" # n (choose[4, 4, 9, 11])
-  d6 $ (0.13 <~) $ s "numbers*8" # n "0 1 2 3" # distort 0.1 # crush "6 5 5 4"
+  d2 $ (0.125 ~>) $ s "[electro1*2 ~]*4" # n "13" # crush 5
+  d6 $ (0.13 <~) $ s "numbers*8" # n "0 1 2 3" # distort 0.3 # crush "5 4 4 3" # gain 0.8
 
 
 do
   unsolo 1
   unsolo 3
   unsolo 5
+  d2 $ (0.125 ~>) $ s "[electro1*2 ~] ~ ~ ~" # n "13" # crush 5
   d4 $ (0.25 ~>) $ s "m3 ~" # n (choose[4, 4, 9, 11])
   jumpIn' 4 3 $ silence
   solo 6
-  d6 $ s "numbers" # n 0 # distort 0.1 # crush 6 -- 3 2 1 0
+  d6 $ s "numbers" # n 0 # distort 0.3 # crush 4 # gain 0.9 -- 3 2 1 0
 
 
 do
@@ -280,70 +381,8 @@ do
     d1 $ s "house*4" # gain 1.2
     d3 $ s "[print*4?] [print*4?] [print*4?] [~ ~ ~ print]" # n (run 6) # crush 3 # distort "<2 2 2 2 2 2 0 0>" # gain 0.9
     -- clutch 7 $ (0.25 ~>) $ s "limewire limewire limewire ~" # n 0 # gain 1.4
-    d7 $ fast 2 $ s "~ limewire ~ limewire" # n "~ 0 1 0" # gain 1.2
-
-
-
-    -- do
-    --   solo 4
-    --   d4 $ s "m3*16" # n (irand(run 8) - "<0 0 3 0 3 0 3 7>")
-    --   solo 5
-    --   d5 $ (0.125 ~>) $ s "house*4" # n 4
-    --
-    -- do
-    --   unsolo 1
-    --   unsolo 2
-    --   unsolo 3
-    --   unsolo 4
-    --   unsolo 5
-    --   hush
-    --   d1 $ s "house*2" # gain 1.2
-    --   d2 $ s "~ house ~ house" # n 4
-    --   d3 $ n ("<[e ~ ~ a] b e c e e6 a b>" + "<0 5>/8") # s "m3"
-    --   d4 $ n "<e e a b>" # s "m4"
-    --
-    -- d5 $ s "superzow*16?" # n "<e e a b a e6 b [e7 e7 e6 a]>" # detune (range 0 3 saw) # distort 0.3 # gain 0.85
-    --
-    -- do
-    --   d1 $ s "house*4" # gain 1.2
-    --   d2 $ s "house*8" # n 4
-    --   d5 $ s "superzow*16?" # n "<e e a b a e6 b [e7 e7 e6 a]>" # detune (range 0 5 saw) # accelerate (range 0 1.5 saw) # distort 0.5 # gain 0.85
-    --   d6 $ n "[e*8, <e6*8 e6*8 e6*8 e7*8>]" # s "m5"
-    --
-    -- do
-    --   d2 $ (0.125 ~>) $ s "house*4" # n 4
-    --   d5 $ s "superzow*16?" # n "e" # detune (range 0 3 saw) # distort 0.3 # gain 0.85
-    --   d6 $ n ("e4 e4 e4 a3" + "<0 0 5 [7 12]>") # s "m5"
-    --
-    -- do
-    --   solo 4
-    --   solo 6
-    --
-    -- do
-    --   solo 1
-    --   solo 2
-    --   d1 $ s "house" # gain 1.2
-    --   d2 $ s "~ house" # n 4
-    --
-    -- do
-    --   unsolo 1
-    --   unsolo 2
-    --   unsolo 4
-    --   unsolo 6
-    --   d1 $ s "house*4" # gain 1.2
-    --   d2 $ (0.125 ~>) $ s "house*4" # n 4
-    --   d5 $ s "superzow*16?" # n "<e e a b a e6 b [e7 e7 e6 a]>" # detune (range 0 5 saw) # accelerate (range 0 "-1.5" saw) # distort 0.5 # gain 0.85
-    --   d6 $ n ("e4" + "<12 5 10 [3 0]>") # s "m1"
-    --
-    -- do
-    --   solo 4
-    --   solo 6
-    --
-    -- hush
-    --
-    -- do
-    --   unsolo 4
-    --   unsolo 6
+    -- d7 $ fast 2 $ s "~ limewire ~ limewire" # n "~ 0 1 0" # gain 1.2
+    d7 $ (0.25 ~>) $ s "limewire:0*2" # gain 1.3
 
 
 
@@ -358,25 +397,28 @@ LIMEWIRE
 --   hush
 --   d7 $ (0.25 ~>) $ slow 8 $ s "limewire*32" # n 0 # gain (range 1.35 1.45 saw)
 
-setcps(75/60/4)
+setcps(85/60/4)
+
 
 do
   setcps(75/60/4)
   d1 $ whenmod 8 7 (const $ s "house house ~ ~" # gain 1.2) $ s "house*4" # gain 1.2
   d3 $ whenmod 8 7 (const $ silence) $ s "[print*4?] [print*4?] [print*4?] [~ ~ ~ print]" # n (run 6) # crush 3 # distort "<2 2 2 2 2 2 0 0>" # gain 0.9
+  d7 $ fast 2 $ s "~ limewire limewire limewire" # n "~ 0 1 0" # gain 1.2
 
 do
   hush
   setcps(120/60/4)
   -- body
   d1 $ slow 8 $ s "limewire:3" # gain 1.7   -- FIGURE OUT RIGHT VOLUME
+  jumpIn 1 8 silence
   -- end loop
-  -- jumpIn' 2 304 $ slow 8 $ s "limewire:4" # gain 1.7
-
-d1 silence -- THEN SILENCEEEEEEEEEEE
+  jumpIn' 2 152 $ slow 8 $ s "limewire:4" # gain 1.7
 
 
-d2 $ slow 8 $ s "limewire:4" # gain 1.7
+-- d2 $ slow 8 $ s "limewire:4" # gain 1.7
+
+
 
 
 -- **** 10:55 night ****
@@ -509,8 +551,10 @@ do
   d1 $ silence
   d9 $ silence
   d2 $ s "alice:1" # fshift "<45 45 -15 -15>"
-  jumpIn' 3 10 $ s "alice:2" # gain 1.2
-  jumpIn' 6 10 $ silence
+  xfadeIn 3 10 $ gap 16 $ loopAt "8 4" $ s "night" # n "1" # speed "-1" # gain 0.7
+  jumpIn' 6 10 $ s "alice:2" # gain 1.2
+
+xfadeIn 3 4 silence
 
 d4 $ slow 4 $ n "[[[b4, d5, fs5] ~]*24 [[b4, cs5, fs5] ~]*24]" # s "supersaw" # pitch1 3 # orb1
 
@@ -522,12 +566,15 @@ d2 $ silence
 d3 $ s "alice:2" # gain 1.3
 --
 
-d5 $ fast 2 $ n "~ [[b2,b3] ~]" # s "supersaw" # pitch1 3 # orb2
+d5 $ fast 2 $ n "~ [[b2,b3] ~]" # s "supersaw" # pitch1 3 # orb2 # gain 0.75
 
-d6 $ slow 4 $ n "fs3@1 b2@3 as2@1 fs3@3" # s "supersaw" # pitch1 2 # orb3
 
 xfadeIn 7 16 $ slow 4 $ n ("[[b4, d5, fs5]@2 [b4, d5, fs5]@4 [b4, d5, fs5]@1]*4 [[b4, cs5, fs5]@2 [b4, cs5, fs5]@4 [b4, cs5, fs5]@1]*4" + "12") # s "supersaw" # pitch1 2 # orb2 # gain 0.55
 d7 $ silence
+
+do
+  d6 $ slow 4 $ n "fs3@1 b2@3 as2@1 fs3@3" # s "supersaw" # pitch1 2 # orb3
+  d8 $ slow 4 $ s "hotelkyle" # distort 0.1 # pan (slow 2 $ range 0.4 0.6 sine) # gain 1.25
 
 
 d8 $ slow 4 $ s "hotelkyle" # distort 0.1 # pan (slow 2 $ range 0.4 0.6 sine) # gain 1.25
@@ -538,7 +585,7 @@ d8 silence
 
 -- d1 $ s "[hh ~ ~ ~ ~ hh?] hh" # crush 6 # pan (slow 2 $ range 0.2 0.8 sine) # gain 1.3
 
-d1 $ s "house*4" # gain 1.25
+d1 $ s "house*4" # gain 1.3
 
 
 do
@@ -589,18 +636,19 @@ do
   solo 4
   xfadeIn 3 16 $ s "sparkles*2" # gain 1.2
 
---- FOR KYLE
-do -- TEST THIS SHIT OUT
-  solo 5
-  d5 $ slow 8 $ s "alice:0" # fshift "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 45" # gain 1.5
-
-do
-  -- jumpIn' 2 7 $ s "alice:1"
-  solo 6
-  jumpIn' 5 7 $ s "alice:1" # fshift "<45 45 -15 -15>" # gain 1.5
-  jumpIn' 6 11 $ s "alice:2" # gain 1.7
-  -- jumpIn' 7 15 $ slow 4 $ n "[[[b4, d5, fs5] ~]*24 [[b4, cs5, fs5] ~]*24]" # s "supersaw" # pitch1 3 # gain 0.8 # orb1
------
+-- --- FOR KYLE
+-- do -- TEST THIS SHIT OUT
+--   solo 5
+--   d5 $ slow 8 $ s "alice:0" # fshift "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 45" # gain 1.5
+--
+-- do
+--   -- jumpIn' 2 7 $ s "alice:1"
+--   solo 6
+--   d6 $ silence
+--   jumpIn' 5 7 $ s "alice:1" # fshift "<45 45 -15 -15>" # gain 1.5
+--   jumpIn' 6 11 $ s "alice:2" # gain 1.7
+--   -- jumpIn' 7 15 $ slow 4 $ n "[[[b4, d5, fs5] ~]*24 [[b4, cs5, fs5] ~]*24]" # s "supersaw" # pitch1 3 # gain 0.8 # orb1
+-- -----
 
 
 
@@ -617,10 +665,11 @@ do -- immediately after 4 (then count !)
   clutchIn 1 6 $ s "supersaw*16?" # n ("<fs fs as b>" - "12") # accelerate 1 # sustain 6 # distort 1 # gain 0.6 # squiz 4 # crush 4
   d4 $ fast 4 $ n "fs5 ~" # s "supersaw" # pitch1 2 # crush 4 # distort 0.3 # orb3 # gain 0.75 # cps(slow 32 $ range (90/60/4) (120/60/4) saw)
   jumpIn' 7 0 $ s "house*16" # n 0 # gain (slow 8 $ range 0 1.6 saw)
+  -- COUNT COUNT COUNT
 
-d4 $ silence
+-- d4 $ silence
 
-do -- make a dropped #2 change to the circles
+do -- drop back in bby
   setcps(120/60/4)
   unsolo 1
   unsolo 2
@@ -734,7 +783,8 @@ do
   d8 $ slow 4 $ n ("e*16 a*16" - "[24, 36]") # s "superhammond"
   jumpIn 9 4 $ ghost $ rarely (rev) $ striate 8 $ slow 4 $ n ("e'min a'min" + "12") # s "moogbass" # distort 2 # gain 0.65 # orbit 1 # room 0.5 # size 0.75
 
-setcps(130/60/4)
+setcps(125/60/4)
+
 
 do
   setcps(120/60/4)
@@ -753,7 +803,7 @@ do
   d6 $ "hh" # n 7 # distort (range 0.4 0.8 perlin) # pan (slow 2 $ range 0.25 0.75 sine) # gain 1.1
 
 
-do -- builds for 2, then all comes in
+do -- builds for 2, then all comes in -- so get it right before cycle so everything comes in nicely
   hush
   unsolo 1
   unsolo 2
@@ -952,5 +1002,5 @@ do
 
 d2 $ silence
 
-
+d8 silence
 hush
