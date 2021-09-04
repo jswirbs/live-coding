@@ -21,9 +21,19 @@ do
 
 
 d4 $ n "fs7*8" # s "superhammond" # sustain 6
-d4 silencea
+d4 silence
 
-d6 $ rev $ loopAt 8 $ chop 128 $ s "UMRU_vocal_loops" # n "3" # gain 1.6
+d6 $ rev $ loopAt 8 $ chop 64 $ s "UMRU_vocal_loops" # n "3" # gain 1.3
+
+d6 $ rev $ loopAt 16 $ chop 32 $ s "UMRU_vocal_loops" # n "3" # gain 1.3
+
+d3 $ s "hh*8?" # n (slow 2 $ run 8 + 4) # crush 5
+
+d2 $ s "SOPHIE_subs:2" # gain 2
+
+d7 $ rev $ loopAt 16 $ chop 128 $ s "UMRU_vocal_loops" # n "3" # distort 2 # gain 1
+
+
 d6 silence
 
 

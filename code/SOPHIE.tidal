@@ -82,6 +82,7 @@ d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass"
 
 
 
+setcps(120/60/4)
 
 
 d1 $ s "SOPHIE_kicks_wet:14*2"
@@ -89,18 +90,43 @@ d1 $ s "SOPHIE_kicks_wet:14*2"
 
 d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
 
-d3 $ n "e3" # s "warsawbass"
+d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
 
-d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.1
+d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.15
 
-d5 $ n (arp "thumbup" "e'min7 c'maj7") # s "midsaw"
+
+d5 $ n (arp "thumbup" "e'min7 c'maj7" - (slow 4 $ "<0 12>")) # s "midsaw"
 d5 $ n (arp "thumbup" "e'min7 c'maj7" + "12") # s "midsaw" # distort 0.3
 d5 $ silence
 
+d6 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e5'min7 c4'maj7") # crush (slow 2 $ range 12 4 saw) # gain 0.9
 
 
-d2 $ striate 8 $ n (off "0" (+7) $ slow 4 $ "<e3 c3>") # s "moogbass" # cutoff 2000
-d5 $ rarely (rev) $ striate 8 $ rarely (rev) $ n (off "<0.125 0.25>" (+12) $ "e'min7 c'maj7") # s "midsaw"
+do
+  d2 silence
+  d5 silence
+  d6 $ s "noise*16" # gain 1.2
+
+do
+  solo 1
+  solo 2
+  solo 4
+  xfade 2 $ silence
+
+unsolo 1
+
+do
+  unsolo 1
+  unsolo 2
+  unsolo 4
+  d1 $ s "SOPHIE_kicks_wet:14*2" # gain 1.1
+  d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
+  d5 $ s "[~ sn]*2" # n 4
+  d6 $ s "noise*16" # gain 1.2
+
+d7 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw)
+
+d7 $ rarely rev $ chop 2 $ n (slow 2 $ arp "thumbup" "e6'min7 c6'maj7" - (slow 4 $ "<0 12>")) # s "midsaw" # distort 0.4
 
 
 
@@ -123,10 +149,16 @@ d6 $ slow 4 $ n (off "0" (+7) $ "-19@14 -16@2") # s "moogbass" # cutoff 2000 # p
 
 
 do
+  solo 3
   solo 4
   solo 5
   solo 7
   d7 $ (0.125 ~>) $ s "UMRU_fx_impacts:1" # speed "-1"
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 5
 
 
 do
@@ -136,7 +168,7 @@ do
   d5 $ palindrome $ striate 2 $ n ("5 5 5 12 12 12 8 8 8 15 15 15" - "12") # s "warsawbass" # distort (slow 4 $ range 0.25 0.5 sine) --  # cutoff 1000
   d6 $ palindrome $ striate 4 $ n (off "0" (+7) $ "-19@14 -16@2") # s "moogbass" # distort 0.2 # pan (range 0.3 0.7 sine) # gain 1.2
 
-  d5 $ palindrome $ striate 3 $ n ("5 12 8 15" - "12") # s "warsawbass" # distort (slow 4 $ range 0.25 0.5 sine) --  # cutoff 1000
+d5 $ palindrome $ striate 3 $ n ("5 12 8 15" - "12") # s "warsawbass" # distort (slow 4 $ range 0.25 0.5 sine) --  # cutoff 1000
 
 
 d7 silence

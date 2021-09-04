@@ -9,12 +9,6 @@ setcps(120/60/4)
 
 
 
-d1 $ s "bd*4"
-
-d2 $ (0.125 ~>) $ s "hh*4" # distort 1
-
-
-
 
 BOOST
 
@@ -124,7 +118,7 @@ d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.5 0.8" -- after the louder one
 
 d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 
-d5 $ (0.25 ~>) $ s "sn:3*2" # gain 1.1
+d5 $ (0.25 ~>) $ s "sn:3*2" # gain 1
 
 d6 $ s "hh*16?"
 

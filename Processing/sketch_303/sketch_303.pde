@@ -524,13 +524,13 @@ void oscEvent(OscMessage m) {
         house = int(90);
       }
       break;
-    case ("hh"):
+    case "hh":
       hh = height /2;
       break;
-    case ("electro1"):
+    case "electro1":
       hh = height /2;
       break;
-    case ("808"):
+    case "808":
       hh = height /2;
       break;
     case "m1":
@@ -551,7 +551,7 @@ void oscEvent(OscMessage m) {
     case "m6":
       m6 = 60;
       break;
-    case ("supersaw"):
+    case "supersaw":
       if (orbit == 1) {
         m5 = 60;
       } else if (orbit == 2) {
@@ -562,13 +562,19 @@ void oscEvent(OscMessage m) {
         m1 = 60;
       }
       break;
-    case ("superzow"):
+    case "superzow":
+      if (gain >= 0) {
+        superzowSize = 40 * gain;
+      }
       superzow = 4;
       break;
-    case ("superpiano"):
+    case "superhammond":
+      m1 = 60;
+      break;
+    case "superpiano":
       superzow = 4;
       break;
-    case ("sn"):
+    case "sn":
       sn = 20;
       break;
     case "nasty":
@@ -605,8 +611,35 @@ void oscEvent(OscMessage m) {
     case "tvradio":
       radio = 1;
       break;
+    case "SOPHIE_textures":   // 140
+      if (gain < 0) {
+        gain = 1;
+      }
+      
+      if (n % 3 == 1) {
+        m1 = 60 * gain;
+      } else if (n % 3 == 2) {
+        m2 = 60 * gain;
+      } else {
+        m3 = 90 * gain;
+      }
+      break;
+    case "cyberpunk": // 140
+      if (n == 3 || n == 4) {
+        nasty = 200;
+      }
+      break;
     default:
       // TODO: do something simple for all other sounds?
+  }
+  
+  // substring check for 140
+  if (s.contains("SOPHIE_kicks")) {
+    if (gain > 0) {
+      house = int(90 * gain);
+    } else {
+      house = int(90);
+    }
   }
 }
 
