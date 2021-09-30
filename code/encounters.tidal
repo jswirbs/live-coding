@@ -1,0 +1,298 @@
+setcps(130/60/4)
+
+
+d1 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+-- go to size 1 sometimes...
+
+d2 $ s "print:3*3" # crush (slow 6 $ range 4 7 sine)
+d2 $ s "print:3*3" # crunch (slow 6 $ range 4 7 sine)
+d2 silence
+
+d3 $ slow 6 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1 # size 1
+
+d4 $ arp "down" $ n "g5'min" # s "supersaw" # cutoff 2000 # gain 0.6 # orbit 1
+
+
+xfadeIn 5 9 $ s "SOPHIE_kicks_wet*6" # n 5 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 5 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 6 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 7 # gain 1.2
+d5 silence
+
+
+
+do
+  xfade 1 silence
+  d2 $ s "print:3" # crush (slow 6 $ range 4 7 sine)
+  d3 silence
+  d4 $ arp "down" $ n "g4'min" # s "supersaw" # cutoff 2000 # gain 0.6 # orbit 1
+  xfade 4 silence
+  jumpIn' 5 3 $ s "SOPHIE_crashes"
+  -- jumpIn' 6 2 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1.5 # size 4
+
+do
+  hush
+  d1 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+  d2 $ s "print:3*3" # crush (slow 6 $ range 4 7 sine)
+  d3 $ slow 3 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1 # size 0
+  d4 $ arp "down up ~" $ n "g5'min g5'min" # s "supersaw" # cutoff 2000 # crush 3 # gain 0.6 # orbit 1
+  d5 $ s "[SOPHIE_snares*2] [~ SOPHIE_snares] SOPHIE_snares" # n 9
+  d6 $ n "~ ~ [[g5, g6]@2 ~]" # s "moogbass" # gain 1.1
+
+
+do
+  xfadeIn 1 9 $ chop 15 $ n "g2" # s "supersaw" # cutoff "100 50 50" # orbit 1 # room 1 # size 0
+  d2 $ s "print" # crush (slow 6 $ range 3 5 sine)
+  d3 silence
+  d5 $ s "~ sn ~ ~ sn ~" # n 4
+  xfadeIn 6 9 $ n "~ ~ [g2, g3]" # s "moogbass" # gain 1.1
+  -- d7 $ s "hh*12" -- swing?
+
+
+clutchIn 4 9 $ arp "thumbup thumbdown thumbup" $ n (off "0.033333" (+"5") $ "g5'min") # s "supersaw" # crush 1 # distort 0.8 # gain 0.65 # orbit 1
+clutchIn 4 9 $ arp "thumbup thumbdown thumbup" $ n (off "0.033333" (+"5") $ "g5'min*3") # s "supersaw" # crush 1 # distort 0.8 # gain 0.65 # orbit 1
+
+clutchIn 4 9 silence
+
+
+xfadeIn 1 9 silence
+d2 silence
+
+do
+  d5 silence
+  d6 $ n "~ ~ [g5, g6]" # s "moogbass" # gain 1.1
+
+
+
+do
+  hush
+  d1 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 1
+  d2 $ s "print:3*3" # crush (slow 6 $ range 4 7 sine)
+  d3 $ slow 3 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1 # size 1
+  d4 $ arp "down" $ n "g5'min" # s "supersaw" # cutoff 2000 # crush 3 # gain 0.6 # orbit 1
+  d5 $ s "[SOPHIE_snares*2] [~ SOPHIE_snares] SOPHIE_snares" # n 9
+  d6 $ chop 15 $ n "[g5, g6]" # s "moogbass" # gain 1.1 # cutoff ((0 ~>) $ "2000 300 600 300 1000 800 200 1000 100")
+
+
+xfadeIn 5 9 $ s "SOPHIE_kicks_wet*6" # n 5 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 5 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 6 # gain 1.2
+d5 $ s "SOPHIE_kicks_wet*6" # n 7 # gain 1.2
+d5 silence
+
+
+d5 $ chop 15 $ s "SOPHIE_kicks_wet*6" # n 6 # gain 1.3 # cutoff "1000 150 300 150 500 400 100 500 50"
+
+
+
+
+do
+  hush
+  d1 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+  d2 $ s "print:3*3" # crush (slow 6 $ range 4 7 sine)
+  d3 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1 # size 0
+  d4 $ arp "down*3" $ n "[g5'min ~]" # s "supersaw" # cutoff 2000 # gain 0.6 # orbit 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+BRINGING IN SOME GOOD ONES SHIT
+
+setcps(130/60/4)
+
+
+
+let cat = cutoff "1000 150 300 150 500 400 100 500 50"
+
+d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.3 # cat
+
+d2 $ chop 8 $ (0.125 ~>) $ s "hh*4" # crush 9
+
+
+d3 $ s "sn ~ sn" # n 1 # speed "1 -0.25" # gain "0.95 0.8"
+
+
+d4 $ chop 15 $ n "g2" # s "supersaw" # cat  --  # orbit 1 # room 1 # size 0
+
+
+
+
+
+-- fade in that cutoff
+d5 $ slow 2 $ s "good_ones:0 good_ones:2" # cutoff 500
+
+d5 $ gap 16 $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+d5 $ slice 16 "0 0 4 8 0 0 12 16" $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+d5 $ slice 16 "0 0 4 8 0 0 12 16" $ slow 2 $ s "good_ones:0 good_ones:2" # cutoff (slow 4 $ range 500 2000 sine)
+
+
+
+do
+  solo 4
+  solo 5
+  d5 silence
+  jumpIn' 5 1 $ (0.25 ~>) $ slow 2 $ slice "36" "~ ~ 0 1 2 3 4" $ "good_ones:3"
+
+do
+  unsolo 4
+  unsolo 5
+  d5 $ slow 2 $ s "good_ones:0 good_ones:2" # cutoff 800
+
+
+
+d5 $ gap 8 $ rev $ chop 64 $ slow 8 $ s "good_ones:5" -- # distort (range 0.1 0.8 sine)
+clutchIn 5 8 $ gap 16 $ slow 2 $ s "good_ones:0 good_ones:2"
+
+d6 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cutoff 3000
+
+d6 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # gain 0.9
+
+d6 $ slice 32 (slow 2 $ "0 5 <0 0 0 31> <6 7 9 22>") $ slow 8 $ s "good_ones:5" # gain 0.9
+
+
+
+
+
+
+
+
+
+
+
+
+---
+UNS UNS
+
+
+
+setcps(130/60/4)
+
+
+d2 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+
+
+
+d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+
+-- d3 $ chop 8 $ (0.125 ~>) $ s "hh*4" # crush 9
+d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.9
+
+d4 $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.7"
+
+
+d5 $ chop 4 $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 4 sine) # attack 0.2
+d5 $ chop (slow 32 $ "1 2 3 4 5 6 7 8") $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 4 sine) # attack 0.3 # gain (slow 32 $ range 0.8 1.3 saw)
+
+
+
+do
+  hush
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  d2 $ chop 15 $ n "g2" # s "supersaw" # cutoff "100 50 50" # orbit 1 # room 1 # size 0
+  d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.9 # cutoff 3000
+  d4 $ n "~ ~ [g3]" # s "moogbass" # gain 1.1
+
+do
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.25 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  d2 $ chop 15 $ n "g2" # s "supersaw" # cutoff "100 50 50" # orbit 1 # room 1 # size 0
+  xfadeIn 3 8 silence
+  d4 $ ghost $ n "~ ~ [g1, g2, g3]" # s "moogbass" # gain 1.3
+
+do
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 7 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  xfadeIn 2 8 $ chop 15 $ n "g2" # s "supersaw" # cutoff "100 50 50" # orbit 1 # room 1 # size 1
+  xfadeIn 3 8 $ chop 32 $ loopAt 8 $ s "UMRU_hihat_loops" # n 3 # gain 1 # distort 0.1
+  xfadeIn 4 4 silence
+
+xfade 1 silence
+
+xfadeIn 2 7 silence
+
+d4 $ s "[~ ~ sn] [~ sn]" # n 5 # speed "-0.25 1" # gain "1 1"
+
+
+do
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  d2 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+  d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.9
+  d4 $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.7"
+  d5 $ chop (slow 32 $ "1 2 3 4 5 6 7 8") $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 3 sine) # attack 0.3 # gain (slow 32 $ range 0.8 1.45 saw)
+  d6 $ (0.5 ~>) $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
+
+
+
+
+d6 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8
+d6 $ slice 16 "2*4 [5 ~ 9 9]" $ s "SOPHIE_textures" # n 2 # speed "-1"
+
+d6 $ chop 16 $ s "SOPHIE_textures" # n 2 # crush 4 # gain ("0.85 0 0 0 0 0.9 [0 0 0.9 0] 0.9" - "0.1") # fshift (slow 2 $ range "-15" "25" sine) # distort 0.2
+
+
+d7 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # gain 0.9 # cutoff 2000
+d7 $ slice 64 (slow 2 $ "35*8?") $ slow 8 $ s "good_ones:5" # gain 0.9 # cutoff 2000
+d7 $ slice 64 (slow 2 $ "5*8?") $ slow 8 $ s "good_ones:5" # gain 0.9 # cutoff 2000
+d7 $ slice 64 (slow 2 $ "54*8?") $ slow 8 $ s "good_ones:5" # gain 0.9 # cutoff 2000
+d7 silence
+
+
+d7 $ arp "down" $ n "g g4'min@3" # s "superzow" # cutoff 2000 # gain 0.6 # orbit 1 # detune 2 -- # squiz 2
+d7 $ arp "down" $ n "a*4" # s "superzow" # cutoff 2000 # gain 0.6 # orbit 1 # detune 2 -- # squiz 4
+d7 $ arp "down" $ n "g*4" # s "superzow" # cutoff 2000 # gain 0.6 # orbit 1 # detune 2
+d7 $ arp "down" $ n "a4*4" # s "superzow" # cutoff 2000 # gain 0.6 # orbit 1 # detune 2
+d7 silence
+
+
+d5 silence
+d4 silence
+d1 silence
+d3 silence
+d2 silence
+xfadeIn 2 4 silence
+
+hush
+
+
+do
+  hush
+  d2 $ n "[g3, g4] ~ ~ ~" # s "moogbass" # gain 1.1
+  d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.95
+  d4 $ slow 2 $ s "~ ~ ~ sn ~ ~" # n 5 # speed "-0.125" # gain 0.9
+  -- go 4 -> 3 -> 2 -> 1
+  d5 $ chop 4 $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 4 sine) # attack 0.2
+  d6 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
+
+do
+  solo 4
+  solo 3
+  xfadeIn 3 0.5 $ slice 16 "0 0 0 11" $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain (range 0.9 1.2 saw)
+  d4 $ slow 2 $ s "~ ~ ~ sn ~ ~" # n 5 # speed "-0.125" # gain 0.9
+  jumpIn' 4 1 $ "sn:5"
+
+
+
+do
+  unsolo 3
+  unsolo 4
+  hush
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  d2 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0
+  d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.9
+  d4 $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.7"
+  d5 $ chop (slow 32 $ "1 2 3 4 5 6 7 8") $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 3 sine) # attack 0.3 # gain (slow 32 $ range 0.8 1.45 saw)
+  d6 $ (0.5 ~>) $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
+
+d5 silence
+d6 silence
+
+d5 $ arp "down" $ n "g'min [~ <g g g a> ~ ~]" # s "superzow" # attack 0.5 # cutoff 2000
+d6 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
