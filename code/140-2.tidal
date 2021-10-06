@@ -62,12 +62,14 @@ do
 
 -- clutchIn 9 8 $ rarely (rev) $ gap 16 $ s "SOPHIE_textures" # n 5 # gain 0.85
 
-d9 silence
 
-do
-  d7 $ s "SOPHIE_textures"
-  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.8
-
+-- do
+--   xfadeIn 7 8 $ s "SOPHIE_textures" # cutoff 2000
+--   xfadeIn 9 8 silence
+--
+-- do
+--   d7 $ s "SOPHIE_textures"
+--   d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.75
 
 
 
@@ -181,7 +183,7 @@ do
   solo 7
   solo 5
   d4 $ s "SOPHIE_subs" # n "9" # gain 1.1
-  d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1700 # gain 0.85
+  d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1700 # gain 0.9
   d7 $ s "SOPHIE_textures"
 
 do -- back n forth w above
@@ -201,7 +203,7 @@ do
   solo 6
   solo 7
   d4 $ s "SOPHIE_subs" # n "9" # gain 1.1
-  d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1500 # gain 0.85
+  d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1500 # gain 0.9
   d7 $ s "SOPHIE_textures"
 
 do
@@ -250,7 +252,7 @@ do
 do
   solo 7
   solo 8
-  d7 $ slow 2 $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.1 # speed "1.1666"
+  d7 $ slow 2 $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.1 # speed "1.1666" # cutoff 3000
 
 d3 $ (0.125 ~>) $ s "hh hh [hh*2] [hh*2]" # n 1 # distort "0.1 0.2" # crush 4 # pan (range 0.3 0.7 square) # gain "1 1.2"
 
@@ -271,7 +273,7 @@ do
   unsolo 7
   d3 $ (0.125 ~>) $ s "[hh*4] [hh ~ hh ~] hh hh" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
   d4 $ s "SOPHIE_textures"
-  d7 $ slow 2 $ s "kyle kyle ~ [kyle*2] ~ ~ kyle ~" # n (choose[3,4,5]) # crush 6 # gain 1.2 # speed "1.1666"
+  d7 $ slow 2 $ s "kyle kyle ~ [kyle*2] ~ ~ kyle ~" # n (choose[3,4,5]) # crush 6 # gain 1.2 # speed "1.1666" # cutoff 3000
 
 
 d7 $ slow 2 $ s "kyle kyle ~ [kyle*2] ~ ~ ~ ~" # n "<[3 [3 3 3 4] 4 4] 5>" # crush 6 # gain 1.2 # speed "1.1666"
@@ -301,7 +303,7 @@ do
   d6 silence
   d7 silence
   d8 $ (0.25 ~>) $ s "sn:2*2"
-  xfadeIn 6 8 $ gap 32 $ loopAt 4 $ s "cyberpunk:3" # gain 0.8
+  xfadeIn 6 16 $ gap 32 $ loopAt 4 $ s "cyberpunk:3" # gain 0.8
 
 do
   solo 1
@@ -329,9 +331,6 @@ do
   d4 silence
   d5 $ s "<cyberpunk cyberpunk cyberpunk [~ ~ ~ cyberpunk]>" # n 7 # gain 0.8
   d7 $ slice 2 "0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
-
--- ehh wait?
-clutchIn 9 8 $ palindrome $ chop 8 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0.85 0.85 0 0.85" # fshift (slow 2 $ range "-15" "25" sine) # distort (slow 2 $ range "0.2" "0.8" sine)
 
 
 
