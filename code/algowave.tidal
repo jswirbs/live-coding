@@ -3,8 +3,8 @@ setcps(140/60/4)
 
 d1 $ s "house*4" # gain 1.2
 
-xfadeIn 2 8 $ n "e*4" # s "superhammond" # voice 3 # octave 2 # cutoff (slow 4 $ range 100 1000 sine)
-d2 $ arp "up" $ n "e'min <e*2 a*2 e*2 a>" # s "superhammond" # voice 3 # octave 2 # cutoff (slow 4 $ range 100 1000 sine)
+xfadeIn 2 8 $ striate 2 $ slow 2 $ arp "up" $ n "e'min <e*2 a*2 e*2 a>" # s "default" # octave 2 # cutoff (slow 4 $ range 100 1000 sine) # gain 1.7
+d2 $ striate 2 $ slow 2 $ arp "up" $ n "e'min <e*2 a*2 e*2 a>" # s "default" # octave 2 # cutoff (slow 4 $ range 100 1000 sine) # gain 1.7
 
 
 
@@ -25,7 +25,7 @@ do
   d2 $ arp "up" $ n "e'min <e*2 a*2 e*2 a>" # s "default" # octave 2 # cutoff (slow 4 $ range 100 1000 sine) # gain 1.7
   d3 $ arp "down" $ n (off (slow 2 $ "<0.125 0.125 0.5 [0.25 0.5]>") (+"<-5 7>") $ "a'min7@3 <e e e a>" - "12") # s "default" # cutoff 3000 # crush (slow 2 $ range 10 4 saw)
   d4 $ (0.125 ~>) $ s "hh*4" # crush 6.5
-  d5 $ s "~ print ~ print:5" # crush "3.4 6" # gain 0.9
+  d5 $ s "~ print ~ print:5" # crush "3.3 5" # gain 0.9
 
 
 do
@@ -33,7 +33,7 @@ do
   d2 silence
   xfade 3 $ arp "down" $ n (off "0.125" (+"<-5 7>") $ "a'min7@3 <e e e a>") # s "default" # cutoff 2000 # crush (slow 2 $ range 10 3 saw)
   d4 silence
-  d5 $ s "~ print:8 ~ print:9" # crush 5 # gain 0.8
+  d5 $ s "~ print:8 ~ print:9" # crush 4.5 # gain 0.8
 
 do
   d1 $ s "house" # gain 1.2
@@ -75,7 +75,7 @@ do
   d3 $ rarely (gap 16) $ striate 2 $ slow 2 $ arp "up" $ n (off (slow 2 $ "<0.125 0.125 0.5 [0.25 0.5]>") (+"<-5 7>") $ "a'min7@3 <e e e a>" - "12") # s "default" # cutoff 3500 # crush (slow 2 $ range 10 2 saw)
   d4 $ (0.125 ~>) $ s "hh*4" # crush 6.5
   d5 $ s "~ print ~ print:5" # crush "3.4 6" # gain 0.9
-  d6 $ rarely (rev) $ rarely (gap 8) $ striate 8 $ slow 2 $ n ("a'min e'min" + "12") # s "moogbass" # distort 0.4 # gain 0.8
+  d6 $ rarely (rev) $ rarely (gap 8) $ striate 8 $ slow 2 $ n ("a'min e'min" + "12") # s "moogbass" # distort 0.4 # gain 0.75
 
 
 
