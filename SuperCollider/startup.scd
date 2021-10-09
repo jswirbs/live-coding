@@ -5,6 +5,7 @@ This is an example startup file. You can load it from your startup file
 
 (
 s.reboot { // server options are only updated on reboot
+	Server.killAll();
 	// configure the sound server: here you could add hardware specific options
 	// see http://doc.sccode.org/Classes/ServerOptions.html
 	s.options.numBuffers = 1024 * 256; // increase this if you need to load more samples

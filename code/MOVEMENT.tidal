@@ -185,7 +185,6 @@ do
   d9 $ silence
 
 
-
 -- **** 303 ****
 
 -- xxxx I DONT THINK WE WANT THIS
@@ -222,7 +221,7 @@ do
   d2 $ (0.125 ~>) $ s "electro1*4" # n "10" # crush 6
   d3 $ whenmod 4 3 (const $ n "e3" # s "m2") $ n "e3 [~ ~ a3 b3] ~ ~" # s "m2"
   d4 $ whenmod 4 3 (const $ n "e [~ ~ a a] [a a b b] [b*4]" # s "m3") $ n "e [~ ~ a b] [b b] ~" # s "m3"
-  d5 $ n ("<e e e [e e b4 a4]>" - "[0, 24]") # s "m4"
+  d5 $ n ("<e e e [e e b4 a4]>" - "[12, 24]") # s "m4"
 
 
 do
@@ -274,7 +273,7 @@ do
   d2 $ (0.125 ~>) $ s "electro1*4" # n "10" # crush 6
   d3 $ whenmod 4 3 (const $ n "e3" # s "m2") $ n "e3 [~ ~ a3 b3] ~ ~" # s "m2"
   d4 $ whenmod 4 3 (const $ n "e [~ ~ a a] [a a b b] [b*4]" # s "m3") $ n "e [~ ~ a b] [b b] ~" # s "m3"
-  d5 $ n ("<e e e [e e b4 a4]>" - "[0, 24]") # s "m4"
+  d5 $ n ("<e e e [e e b4 a4]>" - "[12, 24]") # s "m4"
   -- jumpIn' 12 1 $ s "color:0"
   -- jumpIn' 12 2 $ silence
 
