@@ -128,6 +128,8 @@ d7 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'm
 
 d7 $ rarely rev $ chop 2 $ n (slow 2 $ arp "thumbup" "e6'min7 c6'maj7" - (slow 4 $ "<0 12>")) # s "midsaw" # distort 0.4
 
+d7 $ fast 2 $ s "default*6" # n (slow 8 $ arp "down" "e5'min7 c4'maj7") # crush (slow 2 $ range 12 4 saw) # gain 0.85 # cutoff 7000
+
 
 do
   solo 1

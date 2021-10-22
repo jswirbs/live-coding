@@ -269,18 +269,18 @@ do
   solo 8
   solo 9
   solo 10
-  xfadeIn 10 6 $ slice 8 "<0 1 2 3 6 6>" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # fshift 100
+  xfadeIn 10 6 $ slice 8 "<0 1 2 3 6 6>" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 do
   unsolo 2
   unsolo 9
-  d10 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # fshift 100
+  d10 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 do
   solo 6
   solo 7
   d7 silence
-  xfadeIn 7 1 $ chop "2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
+  xfadeIn 7 0.5 $ chop "2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
 
 unsolo 1
 
