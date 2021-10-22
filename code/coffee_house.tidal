@@ -135,7 +135,6 @@ do
 
 
 
-
 do
   solo 1
   solo 3
@@ -164,31 +163,63 @@ do
   solo 4
   solo 3
   solo 6
-  -- mongolian chanting...
-    -- slowly fuck it up until it's abstract sounds
+  solo 7
+  d7 $ s "chanting:2" # gain 1.4
+  jumpIn 7 1 silence
+  --
+  xfadeIn 3 48 silence
+  jumpIn 2 40 silence
+  jumpIn 4 46 silence
 
+-- d7 silence
+--
+-- xfadeIn 3 16 silence
+--
+-- unsolo 2
+--
+-- unsolo 4
 
-xfadeIn 3 8 silence
+solo 7
+d7 $ chop 4 $ slice 36 "<7 8 9 10>" $ s "chanting" # gain 1.4
 
-unsolo 2
-
-unsolo 4
+d7 $ slice 36 "11" $ s "chanting" # gain 1.4
 
 do
-  unsolo 3
-  unsolo 6
-  d3 $ chop 16 $ n "0" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 200 8000 100" # orbit 1 # room 1 # size 0 # gain 1.1
+  solo 9
   d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "11" # gain (range "0.4" "1" saw) # crush (range "10" "5" saw)
 
+do
+  unsolo 2
+  unsolo 4
+  unsolo 3
+  unsolo 6
+  unsolo 7
+  unsolo 9
+  d2 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.6
+  d3 $ chop 16 $ n "0" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 200 8000 100" # orbit 1 # room 1 # size 0 # gain 1.1
+  d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "11" # gain (range "0.4" "1" saw) # crush (range "10" "5" saw)
+  d7 $ slice 36 "11" $ s "chanting" # gain 1.4
+
+
+--
+d7 silence
+
+d7 $ slice 36 "<8 9 10 11>" $ s "chanting" # gain 1.4
+d7 $ slice 36 "9" $ s "chanting" # gain 1.4
+d7 $ slice 36 "10" $ s "chanting" # gain 1.4
+d7 $ slice 36 "11" $ s "chanting" # gain 1.4
+
+d7 $ striate 4 $ slice 36 "11" $ s "chanting" # gain 1.4
+d7 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
+
+d7 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
+
+--
 
 
 
-
-
-
-
-xfadeIn 7 8 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.2
-d7 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.2
+xfadeIn 8 8 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.2
+d8 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.2
 
 
 do
@@ -203,7 +234,7 @@ do
 
 do
   d8 $ (0.125 ~>) $ s "UMRU_percussion_impacts" # n "<16 16 16 16 17 9>"
-  d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "<11 11 11 11 19 25>" # gain (range "0.4" "1" saw) # crush (range "10" "5" saw)
+  d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "<11 11 11 11 19 25>" # gain (range "0.4" "1.1" saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0
 
 
 
@@ -215,7 +246,9 @@ do
   solo 8
   d7 $ chop "2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.4
 
-unsolo 7
+unsolo 7 -- ahhhhhh
+
+solo 9 -- knock b4 drop
 
 do
   unsolo 2
@@ -223,6 +256,7 @@ do
   unsolo 6
   unsolo 7
   unsolo 8
+  unsolo 9
   d7 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 4 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.3
 
 
@@ -252,8 +286,10 @@ unsolo 1
 
 do
   d7 $ slow 2 $ chop "4" $ arp "down" $ n "c4'min c3'min c2'min c1'min" # s "default" # squiz 2 # crush (range 10 2 saw) # distort (range 0 0.5 saw) # pan "0.3 0.7 0.3 0.1" # gain 1.25
-  d10 $ rev $ chop 4 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # gain 1 # fshift "-100" # gain 1.1
+  -- d10 $ rev $ chop 4 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # gain 1 # fshift "-100" # gain 1.1
+  d10 $ slice 36 "11" $ s "chanting" # gain 1.4
 
+solo 9 -- knock b4 drop
 
 do
   unsolo 1
@@ -267,7 +303,9 @@ do
   unsolo 9
   unsolo 10
   d7 $ chop "2 1 4 2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 4 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
+  d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
 
+d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
 
 
 do
@@ -292,7 +330,7 @@ do
 
 do
   d3 silence
-  d10 $ rev $ chop 2 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
+  d10 $ rev $ chop 3 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 hush
 
