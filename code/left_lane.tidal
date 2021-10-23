@@ -1,0 +1,169 @@
+setcps(130/60/4)
+
+
+
+d3 $ slow 4 $ n "[f a c6 e6]*4 [[c e g b]*3@3 [c6 b g e]]" # octave 3 # s "supersaw" # cutoff 1000 # distort 0.3
+
+d4 $ slow 4 $ n "[f a c6 e6]*4 [[c e g b]*3@3 [c6 b g e]]" # octave 5 # s "superzow" # cutoff 1200
+
+
+
+d3 $ fast 2 $ n ("[-5 0] [7 0] [7 0] [7 0]" + "<0 0 2 5 0 0 -2 ~>") # s "superzow" # cutoff 1000 # distort 0.2
+
+d3 silence
+
+
+
+
+
+
+
+
+
+d1 $ s "house*4" # gain 1.2
+d1 $ s "SOPHIE_kicks_dry*4" # n "1" # gain 1.2
+
+d1 silence
+
+
+d2 $ n "<[a*4] [a a a b] [e*4] [e e c6 b]>" # s "superhammond" # octave "[2,3,4]" # cutoff 200 # distort (slow 4 $ range 0.1 0.4 saw) # orbit 1 # room 1 # size 0 # gain 0.65
+d2 silence
+
+d2 $ n "<a [a@3 b] e [e@2 c6 b]>" # s "supersaw" # octave 2 # cutoff 1000 # crush 2 # orbit 1 # room 1 # size 0 # gain 0.8
+
+-- E -- 6, 10, 16,
+d2 $ slow 4 $ s "[SOPHIE_subs:14 ~ [~ SOPHIE_subs:14] [~*2 SOPHIE_subs:14*2]] [SOPHIE_subs:14 ~ ~ SOPHIE_subs:14] [SOPHIE_subs:6 ~ ~ SOPHIE_subs:16] [SOPHIE_subs:6 ~ ~ [SOPHIE_subs:16*2]]" # gain 1.2
+
+
+d3 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 32 $ range 0 2000 sine)        --
+
+d4 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superzow" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((8 ~>) $ slow 32 $ range 0 2000 sine)       --
+
+d5 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "warsawbass" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((16 ~>) $ slow 32 $ range 0 2000 sine)       --
+
+d6 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.75 # cutoff ((24 ~>) $ slow 32 $ range 0 2000 sine)       --
+
+
+
+d7 $ s "~ sn ~ sn" # n 1 # cutoff (slow 16 $ range 5000 15000 sine)
+
+d8 $ s "~ sn ~ sn" # n 11 # cutoff ((4 ~>) $ slow 16 $ range 0 3000 sine)
+
+d9 $ (0.125 ~>) $ s "hh*4" # n 8 # crush 6
+
+
+
+-- STRUCTURE --
+
+d3 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 32 $ range 0 2000 sine)        --
+
+
+d2 $ n "<[a*4] [a a a b] [e*4] [e e c6 b]>" # s "superhammond" # octave "[2,3,4]" # cutoff 200 # distort (slow 4 $ range 0.1 0.4 saw) # orbit 1 # room 1 # size 0 # gain 0.65
+
+do
+  d7 $ s "~ sn ~ sn" # n 1 # cutoff (slow 16 $ range 5000 15000 sine)
+  d8 $ s "~ sn ~ sn" # n 11 # cutoff ((4 ~>) $ slow 16 $ range 0 3000 sine)
+
+
+d4 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superzow" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((8 ~>) $ slow 32 $ range 0 2000 sine)       --
+d5 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "warsawbass" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((16 ~>) $ slow 32 $ range 0 2000 sine)       --
+d6 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.75 # cutoff ((24 ~>) $ slow 32 $ range 0 2000 sine)       --
+
+do
+  d7 silence
+  d8 silence
+
+
+d9 $ (0.125 ~>) $ s "hh*4" # n 8 # crush 6
+
+do
+  d7 $ s "~ sn ~ sn" # n 1 # cutoff (slow 16 $ range 5000 15000 sine)
+  d8 $ s "~ sn ~ sn" # n 11 # cutoff ((4 ~>) $ slow 16 $ range 0 3000 sine)
+  d1 $ s "SOPHIE_kicks_dry*4" # n "1" # gain 1.2
+
+
+
+
+
+do
+  hush
+  d1 $ slow 4 $ s "[SOPHIE_subs:14 ~ [~ SOPHIE_subs:14] [~*2 SOPHIE_subs:14*2]] [SOPHIE_subs:14 ~ ~ SOPHIE_subs:14] [SOPHIE_subs:6 ~ ~ SOPHIE_subs:16] [SOPHIE_subs:6 ~ ~ [SOPHIE_subs:16*2]]" # gain 1.2
+  -- short sustain for pulsing
+  d2 $ n "<[a*4] [a a a b] [e*4] [e e c6 b]>" # s "superhammond" # octave "[2,3,4]" # cutoff 200 # distort (slow 4 $ range 0.3 0.5 saw) # orbit 1 # room 1 # size 0 # gain 0.65 # sustain 0.3
+  d3 $ arp "down up" $ n ((whenmod 4 2 (const $ "[e6'min e]*2") $ "[a6'min a]*2") - "[0 12]@2 24") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 8 $ range 1000 2000 sine)        --
+  d9 $ (0.125 ~>) $ s "hh*4" # n 8 # crush 6
+  --
+  clutchIn 3 14 $ arp "down up" $ n ((whenmod 4 2 (const $ "[e6'min e]*2") $ "[a6'min a]*2") - "[0 12]@2 24") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.8 # cutoff (slow 8 $ range 2000 3000 sine)        --
+
+
+do
+  d1 $ s "SOPHIE_subs" # n "<14 14 6 6>" # gain 1.2
+  d2 $ n (slow 2 $ "<[a*4] [e*4]>") # s "superhammond" # octave "[2,3,4]" # cutoff 200 # distort (slow 4 $ range 0.3 0.5 saw) # orbit 1 # room 1 # size 0 # gain 0.6 # sustain 0.4
+  d9 $ s "hh" # n 1 # distort 1 # gain 0.9
+
+do
+  hush
+  d1 $ slow 2 $ s "SOPHIE_subs ~" # n "16" # gain 1.2
+  d3 $ slow 2 $ arp "down" $ n ("[e6'min]*8" - "0 12 24 36 48 60 72 84") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.8 # cutoff (slow 8 $ range 2000 3000 sine)        --
+  jumpIn 10 1 $ s "hh" # n 1 # distort 1 # gain "<0.9 0.7>" # speed "<1 -1>"
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n "1" # gain 1.2
+  d2 $ n "<[a*4] [a a a b] [e*4] [e e c6 b]>" # s "superhammond" # octave "[2,3,4]" # cutoff 200 # distort (slow 4 $ range 0.1 0.4 saw) # orbit 1 # room 1 # size 0 # gain 0.65
+  d3 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 32 $ range 0 2000 sine)        --
+  d4 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superzow" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((8 ~>) $ slow 32 $ range 0 2000 sine)       --
+  d5 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "warsawbass" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((16 ~>) $ slow 32 $ range 0 2000 sine)       --
+  d6 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.75 # cutoff ((24 ~>) $ slow 32 $ range 0 2000 sine)       --
+  d7 $ s "~ sn ~ sn" # n 1 # cutoff (slow 16 $ range 5000 15000 sine)
+  d8 $ s "~ sn ~ sn" # n 11 # cutoff ((4 ~>) $ slow 16 $ range 0 3000 sine)
+  d9 $ (0.125 ~>) $ s "hh*4" # n 8 # crush 6
+  d10 $ s "hh" # n 1 # distort 1 # gain "<0.9 0.7>" # speed "<1 -1>"
+
+
+d12 $ loopAt 1 $ s "~ wood" # 0 -- 0 <-> 2
+
+
+d11 $ n "e6'min ~" # s "warsawbass" # sustain (slow 8 $ range 0.5 1 saw) # attack 0.5 # cutoff 4000     --
+
+d11 $ n "<e e g g>" # s "supersaw" # cutoff 1000
+d11 $ n "<e e g g>" # s "supersaw" # cutoff 1000 # attack 1
+d11 $ n "<~ [~ [~ e e e]] ~ [~ [~ g g g]]>" # s "default" # gain 1.1 # distort 0.2
+
+
+do
+  hush
+  -- start at 0.5 and fuckkkkk
+  let arpdjf = 0.5
+  d1 $ s "SOPHIE_kicks_dry*4" # n "1" # gain 1.2
+  d3 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 32 $ range 0 2000 sine) # djf arpdjf      --
+  d4 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superzow" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((8 ~>) $ slow 32 $ range 0 2000 sine) # djf arpdjf       --
+  d5 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "warsawbass" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((16 ~>) $ slow 32 $ range 0 2000 sine) # djf arpdjf       --
+  d6 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superpiano" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.75 # cutoff ((24 ~>) $ slow 32 $ range 0 2000 sine) # djf arpdjf       --
+  d9 $ (0.125 ~>) $ s "hh*4" # n 8 # crush 6
+  d10 $ n "<e e g g>" # s "supersaw" # cutoff 1000 # gain 0.85 # djf arpdjf
+  d11 $ n "<~ [~ [~ e e e]] ~ [~ [~ g g g]]>" # s "default" # distort 0.2
+
+d9 silence
+
+d1 silence
+
+d12 $ loopAt 1 $ s "~ wood" # 2 -- 0 <-> 2
+
+
+
+
+
+do
+  d1 silence
+  d7 silence
+  d8 silence
+  d9 silence
+
+solo 2
+
+hush
+
+unsolo 2
+
+---
