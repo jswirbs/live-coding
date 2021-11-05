@@ -1,0 +1,73 @@
+setcps(135/60/4)
+
+
+d3 $ n "<f'min7 c'min f'min7 [g f ~ c]>" # s "default" # distort 0.1 # cutoff 800
+
+d4 $ arp "thumbup" $ n "<f'min7 c'min f'min7 g'min>" # s "default" # distort 0.1 # cutoff 1200
+
+d5 $ whenmod 4 3 (gap 8) $ s "XORE_lions" # n "<0 1>" # distort 0.2
+
+d6 $ sometimes (striate 4) $ s "XORE_hats*4" # n 7
+
+d7 $ fast 2 $ s "~ XORE_snares" # n 9
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 9 # gain 1.2
+  d8 $ striate 16 $ "UMRU_fx_atmospheric" # n 4
+
+
+do
+  solo 4
+  solo 6
+  solo 7
+  solo 8
+  d8 $ striate "<16 16 8 24>" $ "UMRU_fx_atmospheric" # n 4
+
+unsolo 6
+
+do
+  unsolo 7
+  solo 3
+  d3 $ n "<f'min7 c'min f'min7 [g f ~ c]>" # s "default" # distort 0.1 # cutoff 800 # octave 6
+  d8 $ rev $ gap 32 $ "UMRU_fx_atmospheric" # n 4 # speed "-1"
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 8
+
+
+d8 $ striate "<16 16 8 24>" $ "UMRU_fx_atmospheric" # n 4
+
+d8 $ gap 8 $ "UMRU_fx_atmospheric" # n 4 # speed "-1"
+
+d8 $ rev $ gap 32 $ "UMRU_fx_atmospheric" # n 4 # speed "-1"
+
+
+
+
+
+
+--
+
+
+
+do
+  solo 4
+  solo 6
+  solo 7
+  solo 8
+
+unsolo 6
+
+do
+  unsolo 7
+  solo 3
+  d3 $ n "<f'min7 c'min f'min7 [g f ~ c]>" # s "default" # distort 0.1 # cutoff 800 # octave 12
+  d8 $ rev $ gap 32 $ "UMRU_fx_atmospheric" # n 4 # speed "-1" # cps (300/60/4)
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 8

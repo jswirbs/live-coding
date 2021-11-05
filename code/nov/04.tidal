@@ -1,0 +1,175 @@
+setcps(135/60/4)
+
+
+
+-- 5
+d2 $ rarely (rev) $ striate 8 $ s "XORE_error" # n 5 # gain 1.1
+
+d3 $ s "XORE_glitch*8?" # n (choose[21,22,28,24]) # gain 1.1
+
+
+-- 1 2  21-24
+d4 $ whenmod 8 4 (const $ s "XORE_glitch" # n 2 # speed 0.5 # gain 1.2) $ s "XORE_glitch" # n 1 # gain 1.2
+d4 $ s "XORE_glitch" # n 2 # speed 0.75
+
+
+
+xfadeIn 1 32 $ s "SOPHIE_kicks_fx*4" # n 4
+
+
+do
+  solo 1
+  solo 2
+  solo 5
+  xfadeIn 1 0.25 $ fast 4 $ loopAt 1 $ s "SOPHIE_kicks_fx" # n 4 # distort 0.2
+  xfadeIn 5 4 $ s "SOPHIE_snares*8" # n 2
+
+do
+  unsolo 1
+  unsolo 2
+  unsolo 5
+  d1 $ chop 4 $ s "SOPHIE_kicks_fx*4" # n 4
+  d5 $ (0.25 ~>) $ s "SOPHIE_snares*2" # n 7 # crush 4 # gain 0.8
+
+
+do
+  solo 1
+  solo 5
+  xfadeIn 1 0.25 $ fast 4 $ loopAt 1 $ s "SOPHIE_kicks_fx" # n 4 # distort 0.2
+  d5 $ (0.25 ~>) $ s "SOPHIE_snares*2" # n 7 # crush 1.5 # gain 0.7
+
+do
+  unsolo 1
+  unsolo 5
+  hush
+  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4
+  d2 $ rarely (rev) $ striate 8 $ s "XORE_error" # n 5 # gain 1.1
+  d3 $ s "XORE_glitch*8?" # n (choose[21,22,28,24]) # gain 1.1
+  d4 $ striate 8 $ s "XORE_glitch" # n 1 # gain 1.2
+  d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 16
+
+
+
+solo 1
+
+do
+  unsolo 1
+  d6 $ s "SOPHIE_kicks_dry*4" # n 3 # gain 1.15
+
+
+
+
+do -- 8
+  solo 1
+  solo 4
+  solo 5
+  -- d1 $ s "SOPHIE_kicks_fx*4" # n 5
+  xfadeIn 1 0.25 $ fast 4 $ loopAt 1 $ s "SOPHIE_kicks_fx" # n 4 # distort 0.2
+
+do -- 6
+  xfadeIn 1 4 $ fast 4 $ loopAt 1 $ s "SOPHIE_kicks_fx" # n 4 # distort 0.2 # cutoff 400
+  xfadeIn 4 4 $ s "SOPHIE_kicks_wet*4" # n 6 # crush 4
+  xfadeIn 5 6 silence
+
+do -- 1
+  hush
+  d1 $ fast 4 $ loopAt 1 $ s "SOPHIE_kicks_fx" # n 4 # distort 0.2 # cutoff 200
+  d4 $ s "SOPHIE_kicks_wet*4" # n 6 # crush 6
+
+d4 silence -- 1
+
+do
+  unsolo 1
+  unsolo 4
+  unsolo 5
+  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4
+  d2 $ rarely (rev) $ striate 8 $ s "XORE_error" # n 5 # gain 1.1
+  d3 $ s "XORE_glitch*8?" # n (choose[21,22,28,24]) # gain 1.1
+  d4 $ striate 8 $ s "XORE_glitch" # n 1 # gain 1.2
+  d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 16
+  d6 $ s "SOPHIE_kicks_dry*4" # n 3 # gain 1.15
+
+
+do
+  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4 # cutoff 3000
+  d6 silence
+  d7 $ n "<e'min e'min e'min a'min*4>" # s "moogbass" # distort 0.2 # gain 0.85
+
+do
+  d5 silence
+  jumpIn 5 1 $ (0.125 ~>) $ s "XORE_hats*4" # n 16
+  jumpIn 6 1 $ s "SOPHIE_kicks_dry*4" # n 3 # gain 1.15
+  d8 $ arp "up" $ n "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>" # s "supersaw" # distort 0.1 # octave "2" # cutoff 300 # gain 1.1
+
+
+
+
+do
+  solo 2
+  solo 3
+  solo 4
+  solo 5
+  solo 7
+  solo 8
+  d8 $ arp "up" $ n "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>" # s "supersaw" # distort 0.2 # octave "7" # cutoff 1000
+
+d8 $ chop 4 $ ghost $ arp "up" $ n "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>" # s "supersaw" # distort 0.2 # octave "7" # cutoff 1000
+d8 $ arp "up" $ n (off "<0.125>" (+"12") "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>") # s "supersaw" # distort 0.2 # octave "7" # cutoff 1000
+
+do
+  unsolo 2
+  unsolo 5
+  solo 9
+  d9 silence
+  xfadeIn 9 4 $ (0.125 ~>) $ s "XORE_snares*4" # n 4 # crush 4 # gain 0.75
+
+do
+  unsolo 3
+  unsolo 4
+  xfadeIn 9 4 $ s "XORE_snares*8" # n 4 # crush 4
+
+do -- get lowww
+  unsolo 7
+  d9 silence
+  d8 $ arp "up" $ n "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>" # s "supersaw" # distort 0.1 # octave "2" # cutoff 300 # gain 1.1
+
+do -- get backkk
+  unsolo 7
+  unsolo 8
+  unsolo 9
+  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4 # cutoff 2500
+  d9 $ fast 2 $ s "~ XORE_snares" # n 1
+
+
+
+
+solo 8
+unsolo 8
+
+
+
+
+
+
+
+
+
+
+d6 $ n "<c'maj*4 g'maj*4 a'min*4 f'maj*4>" # s "default"
+
+d6 $ n "<a'min*4 f'maj*4>" # s "default"
+
+
+
+
+
+
+d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 5
+
+d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 5
+d1 $ striate 2 $ s "SOPHIE_kicks_fx*4" # n 5 # speed "-1"
+
+
+
+
+--

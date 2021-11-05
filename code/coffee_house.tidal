@@ -179,10 +179,10 @@ do
 --
 -- unsolo 4
 
-solo 7
-d7 $ chop 4 $ slice 36 "<7 8 9 10>" $ s "chanting" # gain 1.4
-
-d7 $ slice 36 "11" $ s "chanting" # gain 1.4
+-- solo 7
+do
+  d7 $ chop 4 $ slice 36 "<7 8 9 10>" $ s "chanting" # gain 1.4
+  jumpIn 7 4 $ slice 36 "11" $ s "chanting" # gain 1.4
 
 do
   solo 9
@@ -280,14 +280,14 @@ do
   solo 6
   solo 7
   d7 silence
-  xfadeIn 7 0.5 $ chop "2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
+  xfadeIn 7 0.25 $ chop "2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
 
 unsolo 1
 
 do
   d7 $ slow 2 $ chop "4" $ arp "down" $ n "c4'min c3'min c2'min c1'min" # s "default" # squiz 2 # crush (range 10 2 saw) # distort (range 0 0.5 saw) # pan "0.3 0.7 0.3 0.1" # gain 1.25
   -- d10 $ rev $ chop 4 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # gain 1 # fshift "-100" # gain 1.1
-  d10 $ slice 36 "11" $ s "chanting" # gain 1.4
+  xfadeIn 10 2 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
 
 solo 9 -- knock b4 drop
 
@@ -314,6 +314,8 @@ do
   d3 $ chop 16 $ n "0" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 200 8000 100" # orbit 1 # room 1 # size 0 # gain 1.1
   d4 $ chop 2 $ loopAt 2 $ s "tchami" # n 6 # gain 1.2
   d6 $ whenmod 4 3 (const $ (0.55 ~>) $ s "tchami" # n 1) $ gap 16 $ striate 4 $ (0.45 <~) $ s "tchami" # n 1 # speed "-1" # cutoff 1500
+  d9 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
+  xfadeIn 9 16 silence
   d10 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # gain 1 # fshift 100
 
 do
@@ -321,11 +323,11 @@ do
   d10 $ rev $ chop 64 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 do
-  d6 silence
+  d2 silence
   d10 $ rev $ chop 16 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 do
-  d2 silence
+  d6 silence
   d10 $ rev $ chop 4 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
 
 do

@@ -5,9 +5,9 @@ d1 $ s "house*4" # gain 1.2
 
 d1 $ s "bd*4" # gain 1.5 # n 9
 
-d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.1 -- 5 -> 6 -> 7 (wet and deep)
-d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 -- 5 -> 6 -> 7 (wet and deep)
-d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1 -- 5 -> 6 -> 7 (wet and deep)
+d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.1 
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2
+d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1
 
 d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]"
 
@@ -43,7 +43,7 @@ d5 $ s "~ bend ~" # n "<2 2 2 2 2 2 2 3>" # distort 0.2
 d6 $ loopAt 4 $ s "armora" # n 6 # distort 0.2
 
 do
-  d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1 -- 5 -> 6 -> 7 (wet and deep)
+  d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1
   d3 $ s "hh*32 ~" # distort 0.2 # crush 4
 
 do

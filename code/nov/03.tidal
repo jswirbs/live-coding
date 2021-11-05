@@ -1,0 +1,101 @@
+setcps(135/60/4)
+
+
+1. mood board of some inspo and things i like
+2. beat (some interesting mid percussion)
+3. atmosphere / rumbles within beat
+4. f around w some synth riffs
+5. think about structure, transitions, breaks
+
+
+d1 $ loopAt 4 $ s "XORE_drum_loops"
+d1 $ loopAt 4 $ s "XORE_drum_loops" # n 1
+
+
+d1 $ s "XORE_kicks*4" # gain 1.2
+d2 $ loopAt 4 $ s "XORE_drum_loops" # n 4
+d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 16
+
+d4 $ loopAt 4 $ s "SOPHIE_textures" # n 5
+
+d4 $ loopAt 4 $ s "SOPHIE_textures" # n 13
+d4 $ loopAt 4 $ s "XORE_ambient" # n 7
+
+
+d5 $ n "e2*8?" # s "default" # gain 1.2 # cutoff 300 # room 2
+d5 silence
+
+
+
+d5 $ s "XORE_one_shots*16?" # n 2 # fshift (slow 4 $ range (fast 4 $ range 0 200 square) 300 sine) # crush 4 # cutoff 2000
+
+d5 $ n "e*16?" # s "warsawbass" # fshift ((1 ~>) $ slow 4 $ range 0 100 sine)
+
+
+d6 $ fast 2 $ arp "thumbup" $ n "<cs'min a'maj e'maj b'maj>" # s "warsawbass" # cutoff 1000 -- # fshift ((1 ~>) $ slow 4 $ range 0 100 sine)
+
+d6 $ gap 8 $ n "e'min ~" # s "moogbass" # distort 0.08 # djf (slow 4 $ range 0.4 0.75 sine)
+
+d6 silence
+
+d6 $ chop 16 $ loopAt 4 $ s "UMRU_vocal_loops" # n 7 # cutoff 300 # distort 1 # crush 4
+d6 $ loopAt 4 $ s "UMRU_vocal_loops" # n 9
+
+d6 $ rev $ chop 8 $ s "UMRU_vocals" # n 0 # distort 0.4 # cutoff 500
+
+
+d6 $ arp "down" $ n "e5'min@3 <e4 e4 e4 e4 c4 c4 a3 g3>" # s "warsawbass" # distort "0 0 0 0.1"
+
+d7 $ n "e6*16?" # s "superzow" # gain 0.7 # detune (range 1 4 perlin) # djf 0.35
+
+
+d8 $ s "UMRU_fx_risers" # n 2
+d8 $ s "UMRU_fx_risers" # n 6
+d8 $ s "UMRU_fx_risers" # n 1
+d8 silence
+
+
+
+do
+  solo 2
+  solo 3
+  solo 4
+  solo 6
+  solo 7
+  d4 $ loopAt 4 $ s "SOPHIE_textures" # n 5
+  d6 $ arp "down" $ n "e5'min@3 <e4 e4 e4 e4 c4 c4 a3 g3>" # s "warsawbass" # distort "0 0 0 0.1"
+  d7 $ n "e6*16?" # s "superzow" # gain 0.7 # detune (range 1 5 perlin) # djf 0.38
+
+d7 $ n "e6*16?" # s "superzow" # gain 0.7 # detune (range 1 5 perlin) # djf 0.4 # accelerate 10
+
+
+do
+  unsolo 2
+  unsolo 7
+  d4 $ loopAt 4 $ s "SOPHIE_textures" # n 13
+  d6 $ arp "down" $ n "e5'min@3 <e4 e4 e4 e4 c4 c4 a3 g3>" # s "warsawbass" # distort "0 0 0 0.1" # djf 0.3
+
+do
+  unsolo 3
+  solo 8
+  d4 $ gap (slow 4 $ "1 8 16 32") $ chop 4 $ loopAt 4 $ s "SOPHIE_textures" # n 13
+  d6 $ arp "down" $ n "[e5'min@3 <c4 c4 c4 c4 a3 a3 [g3*2] [g3*4]>]*2" # s "warsawbass" # distort "0 0 0 0.1" # djf (slow 4 $ range 0.3 0.9 sine)
+  d8 $ loopAt 4 $ s "UMRU_fx_risers" # n 1
+  jumpIn 8 1 silence
+
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 6
+  unsolo 8
+  d4 $ loopAt 4 $ s "SOPHIE_textures" # n 5
+  d6 $ arp "down" $ n "[e5'min@3 <c4 c4 a3 g3>]*2" # s "warsawbass" # distort "0 0 0 0.1" # djf 0.3
+  d7 $ n "e6*16?" # s "superzow" # gain 0.62 # detune (range 2 6 perlin) # djf 0.8 # accelerate "-0.05"
+
+
+
+
+
+
+---
