@@ -5,7 +5,7 @@ d1 $ s "house*4" # gain 1.2
 
 d1 $ s "bd*4" # gain 1.5 # n 9
 
-d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.1 
+d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.1
 d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2
 d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1
 
@@ -21,6 +21,7 @@ d3 $ (0.125 ~>) $ s "hh*4" # n 1 # distort 0.2 # crush 4
 d3 silence
 
 
+d13 $ slice 16 "0 0 0 0" $ s "SOPHIE_textures" # cutoff 500
 
 
 d5 $ s "~ bend ~" # n "<2 2 2 2 2 2 2 3>" # distort 0.2
@@ -200,7 +201,7 @@ do
   solo 6
   solo 7
   solo 5
-  d4 $ s "SOPHIE_subs" # n "9" # gain 1.3
+  d4 $ s "SOPHIE_subs" # n "9" # gain 1.2
   d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1700 # gain 0.9
   d7 $ s "SOPHIE_textures"
 
@@ -220,7 +221,7 @@ do
   solo 5
   solo 6
   solo 7
-  d4 $ s "SOPHIE_subs" # n "9" # gain 1.3
+  d4 $ s "SOPHIE_subs" # n "9" # gain 1.2
   d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1500 # gain 0.9
   d7 $ s "SOPHIE_textures"
 

@@ -103,7 +103,6 @@ do
 
 
 
-
 do
   solo 2
   solo 3
@@ -137,15 +136,19 @@ do -- get backkk
   unsolo 7
   unsolo 8
   unsolo 9
-  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4 # cutoff 2500
+  d1 $ striate 4 $ s "SOPHIE_kicks_fx*4" # n 4 -- # cutoff 5000
   d9 $ fast 2 $ s "~ XORE_snares" # n 1
 
 
 
+do
+  solo 8
+  d8 $ arp "up" $ n "<[e'min@3 e6] [e'min@3 e6] [e'min@3 e6] a'min*4>" # s "supersaw" # distort 0.1 # octave "2" # cutoff 300 # gain 1.1
 
-solo 8
+hush
+
 unsolo 8
-
+d8 silence
 
 
 

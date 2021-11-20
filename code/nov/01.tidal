@@ -9,11 +9,13 @@ d5 $ whenmod 4 3 (gap 8) $ s "XORE_lions" # n "<0 1>" # distort 0.2
 
 d6 $ sometimes (striate 4) $ s "XORE_hats*4" # n 7
 
-d7 $ fast 2 $ s "~ XORE_snares" # n 9
 
+solo 3
 
 do
+  unsolo 3
   d1 $ s "XORE_kicks*4" # n 9 # gain 1.2
+  d7 $ fast 2 $ s "~ XORE_snares" # n 9
   d8 $ striate 16 $ "UMRU_fx_atmospheric" # n 4
 
 

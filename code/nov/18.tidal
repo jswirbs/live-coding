@@ -1,0 +1,116 @@
+setcps(130/60/4)
+
+
+d1 $ s "XORE_kicks*4" # n 6 # gain 1.2
+
+d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+
+d3 $ fast 2 $ s "~ XORE_snares" # n 6
+
+d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 300 # room 0.4    --
+
+d5 $ arp "down" $ n "<b'min*4 b'min*4 d6'maj*4 a'maj*4>" # s "superzow" # detune (slow 2 $ range 0.2 2 saw) # distort (range 0.5 0.8 saw) # cutoff 1500 # gain 0.8
+
+
+
+
+
+d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+
+d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+d2 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4
+xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 10
+d2 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort (slow 16 $ range 0 10 sine)
+
+d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
+
+d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+
+
+do
+  d3 $ fast 2 $ s "~ XORE_snares" # n 4
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5    --
+  d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
+  d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+
+
+
+do
+  solo 2
+  solo 4
+  solo 6
+  solo 7
+  xfadeIn 2 6 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
+
+do
+  d3 silence
+  solo 3
+  xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 10
+  xfadeIn 3 7 $ s "XORE_snares*8" # n 4 # distort 0.3
+  xfadeIn 4 8 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # cutoff 300
+
+do
+  d3 $ s "XORE_snares*3@3 ~" # n 4 # distort 0.4
+  d2 $ n "~ ~ ~ [b2,b3]" # s "supersaw" # pitch1 8 # crush 6 # accelerate "-0.2"
+
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  unsolo 6
+  unsolo 7
+  d2 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort (slow 16 $ range 0 10 sine)
+  d3 $ fast 2 $ s "~ XORE_snares" # n 4
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5    --
+  d8 $ s "UMRU_stomps" # n "<2 29 2 9>"
+
+
+
+
+do
+  solo 1
+  solo 2
+  solo 4
+  solo 6
+  solo 7
+  d4 $ n "[[b*3@3 ~] ~]*2" # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
+  clutchIn 6 4 $ (0.25 ~>) $ rarely (ghost) $ n "[fs ~]*2" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
+  clutchIn 7 4 $ (0.25 ~>) $ rarely (ghost) $ n "[fs ~]*2" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+
+do
+  unsolo 1
+  unsolo 2
+  d4 $ n ("[b*4] [b]" + "3 -2") # octave "[2,3]" # s "supersaw" # sustain "0.2 1" # distort 0.2 # accelerate "0 -0.3"
+  d6 $ (0.25 ~>) $ rarely (ghost) $ n "[fs ~]*4" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
+  d7 $ (0.25 ~>) $ rarely (ghost) $ n "[fs ~]*4" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+  xfadeIn 6 1 silence
+  xfadeIn 7 1 silence
+
+do
+  unsolo 1
+  unsolo 4
+  unsolo 6
+  unsolo 7
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5    --
+  d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
+  d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+
+
+
+
+do
+  solo 6
+  solo 7
+  solo 8
+
+hush
+
+do
+  unsolo 6
+  unsolo 7
+  unsolo 8
+
+
+--

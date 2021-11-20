@@ -1,0 +1,57 @@
+setcps(140/60/4)
+
+
+
+d1 $ s "SOPHIE_subs*8?" # n (choose[0,1,2,3,4])
+
+d2 $ s "XORE_error" # n 7
+
+d6 $ sometimes (striate 4) $ s "XORE_hats*4" # n 7
+d6 silence
+
+
+d4 $ fast 2 $ s "~ SOPHIE_percussion" # n 0
+
+
+
+setcps(130/60/4)
+
+d1 $ n (slow 4 $ "[d4 d f a]*4 [a3 c e a]*4") # s "warsawbass"
+
+d2 $ n (slow 4 $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.7
+d2 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.7
+
+d3 $ n (slow 4 $ "d'min a'min") # s "warsawbass" # octave 4 # room 1 # size 0.8 # gain 0.85
+
+d4 $ sometimes (striate 4) $ s "XORE_hats*4" # n 7
+
+d5 $ fast 2 $ s "~ SOPHIE_percussion" # n 0
+
+d6 $ s "XORE_error" # n 7 # room 1 # size 0.8
+
+d7 $ s "SOPHIE_subs*8?" # n (choose[0,1,2,3,4])
+
+
+
+do
+  solo 1
+  solo 2
+  solo 6
+  solo 7
+  d1 $ n (slow 4 $ "[d4 d f a]*8 [a3 c e a]*8") # s "warsawbass"
+  d2 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.7
+
+
+do
+  unsolo 1
+  unsolo 6
+  unsolo 7
+
+unsolo 2
+
+
+
+
+
+
+-- 
