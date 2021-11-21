@@ -129,6 +129,7 @@ do
 
 d11 $ whenmod 4 2 (striate 4) $ n "e6'min ~" # s "warsawbass" # sustain (slow 8 $ range 0.5 1 saw) # attack 0.5 # cutoff 5000     --
 
+
 d11 $ n "<e e g g>" # s "supersaw" # cutoff 1000
 d11 $ n "<e e g g>" # s "supersaw" # cutoff 1000 # attack 1
 d11 $ n "<~ [~ [~ e e e]] ~ [~ [~ g g g]]>" # s "default" # gain 1.1 # distort 0.2
@@ -173,6 +174,8 @@ do
 
 d12 $ loopAt 1 $ s "~ wood" # n 0 -- 0 <-> 2
 
+
+d11 $ whenmod 4 2 (striate 4) $ n "e6'min ~" # s "warsawbass" # sustain (slow 8 $ range 0.5 1 saw) # attack 0.5 # cutoff 5000     --
 
 
 
@@ -229,7 +232,7 @@ do -- BACKKKKKK
 
 
 
-
+d11 silence
 
 
 do
