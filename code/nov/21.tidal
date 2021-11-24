@@ -1,0 +1,93 @@
+setcps(135/60/4)
+
+
+d1 $ s "XORE_kicks*4" # n 11 # gain 1.1
+
+d2 $ s "XORE_hats*8?" # n (choose[3,4])
+
+d3 $ slow 8 $ arp "up" $ n "b'maj7 gs'min7" # s "default"
+d4 $ slow 8 $ arp "up" $ n "b'maj7*8 gs'min7*8" # s "default" # octave 4 # cutoff 800
+
+d5 $ chop 32 $ slow 8 $ n "b gs" # s "superhammond" # octave 3 # voice 2 # room 0.2
+
+d6 $ (2 <~) $ chop 8 $ loopAt 8 $ s "4track_vocals" # n 3 # gain 1.1
+d7 $ (2 <~) $ chop 16 $ loopAt 16 $ s "4track_vocals" # n 2 # gain 1.1
+
+d8 $ (2 <~) $ loopAt 8 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+
+d6 silence
+d7 silence
+
+d6 $ (2 <~) $ chop 8 $ loopAt 8 $ gap 128 $ s "4track_vocals" # n 3 # gain 1.1
+
+
+d6 $ (2 <~) $ slice 16 (slow 4 "4*4 4*4 5*4 [2*2 3*2]") $ s "4track_vocals" # n 1 # gain 1.1
+
+d7 $ (2 <~) $ loopAt 8 $ rev $ gap 64 $ s "4track_vocals" # n 0 # gain 0.8 # distort 0.3
+
+d8 $ (2 <~) $ loopAt 8 $ rev $ chop 256 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+
+
+d6 $ (2 <~) $ slice 16 (slow 4 "4*4 4*4 5*4 [2*2 3*2]") $ s "4track_vocals" # n 1 # gain 1.1
+d8 $ (2 <~) $ loopAt 8 $ gap 256 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+
+do
+  d1 silence
+  d2 silence
+
+do
+  hush
+  d1 $ s "XORE_kicks*4" # n 11 # gain 1.1
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n (choose[3,4])
+  d4 $ slow 8 $ arp "up" $ n "b'maj7*8 gs'min7*8" # s "default" # octave 4 # cutoff 800
+  d7 $ (2 <~) $ loopAt 8 $ rev $ gap 64 $ s "4track_vocals" # n 0 # gain 0.8 # distort 0.3
+  d8 $ (2 <~) $ loopAt 8 $ rev $ chop 256 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+do
+  xfadeIn 1 8 silence
+  d3 $ slow 8 $ arp "up" $ n "b'maj7 gs'min7" # s "default"
+  d6 $ (2 <~) $ slice 16 (slow 4 "4*4 4*4 5*4 [2*2 3*2]") $ s "4track_vocals" # n 1 # gain 1.1
+
+
+
+do
+  jumpIn' 1 0 $ s "XORE_kicks*4" # n 11 # gain 1.1
+  jumpIn' 2 0 $ s "XORE_hats*8?" # n (choose[3,4])
+  jumpIn' 3 0 $ slow 8 $ arp "up" $ n "b'maj7 gs'min7" # s "default"
+  jumpIn' 4 0 $ slow 8 $ arp "up" $ n "b'maj7*8 gs'min7*8" # s "default" # octave 4 # cutoff 800
+  jumpIn' 5 0 $ chop 32 $ slow 8 $ n "b gs" # s "superhammond" # octave 3 # voice 2 # room 0.2
+  d6 $ (2 <~) $ chop 16 $ loopAt 8 $ s "4track_vocals" # n 3 # gain 1.1
+  d7 $ (2 <~) $ chop 32 $ loopAt 16 $ s "4track_vocals" # n 2 # gain 1.1
+  d8 $ (2 <~) $ loopAt 8 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+d6 $ (2 <~) $ slice 16 (slow 4 "4*4 4*4 5*4 [2*2 3*2]") $ s "4track_vocals" # n 1 # gain 1.1
+d8 $ (2 <~) $ loopAt 8 $ gap 256 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+
+
+
+
+
+d6 $ (2 <~) $ chop 16 $ loopAt 8 $ s "4track_vocals" # n 3 # gain 1.1
+d7 $ (2 <~) $ chop 32 $ loopAt 16 $ s "4track_vocals" # n 2 # gain 1.1
+d8 $ (2 <~) $ loopAt 8 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+do
+  hush
+  d6 $ (2 <~) $ chop 16 $ loopAt 8 $ s "4track_vocals" # n 3 # gain 1.1
+  d7 $ (2 <~) $ chop 32 $ loopAt 16 $ s "4track_vocals" # n 2 # gain 1.1
+  d8 $ (2 <~) $ loopAt 8 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+  xfadeIn 6 4 silence
+  xfadeIn 7 4 silence
+  jumpIn 8 4 silence
+
+
+--

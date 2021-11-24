@@ -121,7 +121,6 @@ do
 
 
 
-
 d10 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # cutoff (slow 2 $ range 150 100 sine) # room 0.7 # size 0.8
 
 do
@@ -151,7 +150,7 @@ do
   xfadeIn 13 8 $ (6 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "supersaw" # cutoff (slow 2 $ range 400 600 sine) # room 0.7 # size 0.8 # gain 0.8
 
 do
-  xfadeIn 2 8 $ slow 2 $ n "[e ~]*6@6 ~@2" # s "superhammond" # octave "[2,3]" # cutoff 80
+  xfadeIn 2 8 $ slow 2 $ n "[e ~]*6@6 ~@2" # s "superhammond" # octave "[2,3]" # cutoff 100
   xfadeIn 3 14 silence
   xfadeIn 7 8 silence
   xfadeIn 8 8 $ arp "up" $ n (fast 2 $ "e4 e'min@3") # s "supersaw" # attack 0.125 # waveloss 40 # pitch1 3 # gain 0.9 # cutoff 1000
@@ -188,8 +187,8 @@ do -- (a smidge early... lots to process..)
   d5 $ slow 2 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # squiz 2 # cutoff 1500 # waveloss 30
   d6 $ slow 4 $ rev $ chop 128 $ s "UMRU_fx_atmospheric*2" # n 4 # crush 4 # cutoff 2000 # gain 0.9
   d7 $ slow 2 $ chop 32 $ n "e" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.4 # gain 0.8
-  let freq0 = "1@6 4@1.5 2@0.5"
-  d8 $ arp "up" $ n (fast (slow 8 $ freq0) $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'min@3] [e4 e'min@3]>") # s "supersaw" # attack (0.25 / (slow 8 $ freq0)) # waveloss 40 # pitch1 3 # gain 0.7 # room 1 # size 0.8
+  let freq0 = "2@6 4@1.5 2@0.5"
+  d8 $ arp "up" $ n (fast (slow 8 $ freq0) $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3]>") # s "supersaw" # attack (0.25 / (slow 8 $ freq0)) # waveloss 40 # pitch1 3 # gain 0.8 # room 1 # size 0.8 # cutoff 1500
   d9 $ s "XORE_hats*16" # n 4 # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine)
   d11 $ slow 2 $ s "hh" # n 1 # distort 1
   jumpIn 11 1 silence
@@ -197,45 +196,6 @@ do -- (a smidge early... lots to process..)
 
 
 
-d10 $ s (slow 2 $ "[UMRU_percussion_impacts*4] ~ [UMRU_percussion_impacts*2@2 ~ UMRU_percussion_impacts] [~ UMRU_percussion_impacts]") # n "11" # gain (fast 2 $ range "0.6" "0.9" saw) # crush (fast 2 $ range "10" "5" saw) -- # orbit 1 # room 1 # size 0
-d11 $ slow 2 $ s "hh" # n 1 # distort 1
-
-
-d10 silence
-
-do
-  hush
-  d1 $ s "SOPHIE_kicks_wet*2" # n 7 # gain 1.1
-  d2 $ n "[e ~]*2" # s "superhammond" # octave "[2,3]" # distort 0.1
-  d3 $ slow 2 $ striate 4 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # distort 0.1 # crush 7 # room 0.5 # size 0.5
-  d7 $ slow 2 $ chop 32 $ n "e" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.4 # gain 0.8
-  d8 $ arp "up" $ n (fast 2 $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3]>") # s "supersaw" # attack 0.125 # waveloss 40 # pitch1 3 # gain 0.7 # room 1 # size 0.8
-  d9 $ s "XORE_hats*16" # n 4 # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine)
-
-do
-  xfadeIn 3 8 $ slow 2 $ striate 4 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # distort 0.1 # crush 7 # room 0.5 # size 0.5 # pan 1
-  xfadeIn 7 8 $ slow 2 $ chop 32 $ n "e" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.4 # gain 0.8 # pan 1
-  xfadeIn 8 8 $ arp "up" $ n (fast 2 $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3]>") # s "supersaw" # attack 0.125 # waveloss 40 # pitch1 3 # gain 0.7 # room 1 # size 0.8 # pan 1
-  xfadeIn 9 8 $ s "XORE_hats*16" # n 4 # cutoff 4000 # pan 0
-
-do
-  d1 silence
-  xfadeIn 3 8 silence
-  d8 $ arp "up" $ n (fast 2 $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3]>") # s "supersaw" # attack 0.125 # waveloss 40 # pitch1 3 # gain 0.7 # room 1 # size 0.8 # pan (slow 8 $ range 1 0 saw)
-  d9 $ s "XORE_hats*16" # n 4 # cutoff 4000 # pan (slow 8 $ range 1 0 saw)
-
-d2 silence
-d7 silence
-
-
-
-d10 silence
-d10 $ every 2 (const $ silence) $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "11" # gain (range "0.4" "1.1" saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0
-
-
-
-once $ s "UMRU_fx_misc" # n 25
-once $ s "UMRU_fx_misc" # n 26
 
 
 
@@ -243,15 +203,7 @@ once $ s "UMRU_fx_misc" # n 26
 
 
 
-
-
-
-
-
-
-
-
-
+clutchIn 8 16 silence
 
 do
   solo 1
@@ -274,6 +226,129 @@ hush
 do
   unsolo 5
   unsolo 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+clutchIn 8 16 silence
+
+d10 $ s (slow 2 $ "[UMRU_percussion_impacts*4] ~ [UMRU_percussion_impacts*2@2 ~ UMRU_percussion_impacts] [~ UMRU_percussion_impacts]") # n "11" # gain (fast 2 $ range "0.6" "0.9" saw) # crush (fast 2 $ range "10" "5" saw) -- # orbit 1 # room 1 # size 0
+d11 $ slow 2 $ s "hh" # n 1 # distort 1
+
+once $ s "UMRU_fx_misc" # n 25
+once $ s "UMRU_fx_misc" # n 26
+
+
+xfadeIn 7 8 $ slow 2 $ chop 32 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 0.5 # size 0.2 # gain 0.7
+
+do
+  solo 4
+  solo 5
+  solo 6
+  solo 7
+  xfadeIn 4 8 $ fast 4 $ s "~ UMRU_percussion_misc" # n 16 # cutoff 1200
+  d7 $ slow 2 $ chop 32 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.6 # gain 0.8
+
+do
+  solo 2
+  solo 3
+  solo 9
+  solo 10
+  solo 11
+  solo 12
+  solo 13
+  d9 silence
+  d10 silence
+  d11 silence
+  d12 silence
+  d13 silence
+  xfadeIn 4 8 $ fast 4 $ s "UMRU_percussion_misc*2" # n 16 # cutoff 600 # room 0.9
+  xfadeIn 9 8 $ s "XORE_hats*16" # n 4 # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # room 0.8 # gain 1.1
+  xfadeIn 10 8 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # gain 0.7 # crush 4 # djf 0.5
+  xfadeIn 11 4 $ (2 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "moogbass" # gain 0.7 # crush 4 # djf 0.5
+  xfadeIn 12 6 $ (4 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # gain 0.7 # crush 4 # djf 0.5
+  xfadeIn 13 8 $ (6 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "supersaw" # gain 0.7 # crush 4 # djf 0.5
+
+do
+  xfadeIn 7 8 $ slow 2 $ gap 64 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.6 # gain 0.8
+  xfadeIn 9 16 $ s "XORE_hats*16" # n 5 # gain 0.9 # pan (slow 2 $ range 0.1 0.9 sine)
+  xfadeIn 10 8 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 11 4 $ (2 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "moogbass" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 12 6 $ (4 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 13 8 $ (6 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "supersaw" # gain 0.7 # crush 3 # djf 0.7
+
+
+do
+  xfadeIn 7 8 $ slow 2 $ gap 32 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.6 # gain 0.9
+  xfadeIn 10 8 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 11 4 $ (2 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "moogbass" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 12 6 $ (4 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # gain 0.7 # crush 3 # djf 0.7
+  xfadeIn 13 8 $ (6 ~>) $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "supersaw" # gain 0.7 # crush 3 # djf 0.7
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  unsolo 5
+  unsolo 6
+  solo 1
+  d1 silence
+  xfadeIn 1 4 $ s "SOPHIE_kicks_wet*8" # n 5 # gain 1.1
+  d7 $ slow 2 $ gap 8 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.6 # gain 0.8 # sustain 2
+  d9 $ s "XORE_hats*8" # n 5 # gain 0.9 # pan (slow 2 $ range 0.1 0.9 sine)
+  xfadeIn 10 4 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # gain (slow 4 $ range 0.7 1.3 saw) # cutoff (slow 2 $ range 400 600 sine) # room 0.7 # size 0.8 # djf 0.4 # distort (slow 4 $ range 0 0.4 saw)
+  xfadeIn 11 4 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "moogbass" # gain (slow 4 $ range 0.7 1.3 saw)  # cutoff (slow 2 $ range 400 600 sine) # room 0.7 # size 0.8 # djf 0.4 # distort (slow 4 $ range 0 0.4 saw)
+  xfadeIn 12 4 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # gain (slow 4 $ range 0.7 1.3 saw) # cutoff (slow 2 $ range 400 600 sine) # room 0.7 # size 0.8 # djf 0.4 # distort (slow 4 $ range 0 0.4 saw)
+  xfadeIn 13 4 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "supersaw" # gain (slow 4 $ range 0.7 1.3 saw) # cutoff (slow 2 $ range 400 600 sine) # room 0.7 # size 0.8 # djf 0.4 # distort (slow 4 $ range 0 0.4 saw)
+
+
+
+
+do -- (a smidge early... lots to process..)
+  hush
+  unsolo 1
+  unsolo 7
+  unsolo 9
+  unsolo 10
+  unsolo 11
+  unsolo 12
+  unsolo 13
+  d1 $ slow 2 $ s "SOPHIE_kicks_wet*6@6 ~@2" # n 7 # gain 1.1
+  d2 $ slow 2 $ n "[e ~]*6@6 ~@2" # s "superhammond" # octave "[2,3]" # distort 0.1
+  d3 $ slow 2 $ striate 4 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # distort 0.1 # crush 7 # room 0.5 # size 0.5
+  d4 $ fast 4 $ s "~ UMRU_percussion_misc" # n 16
+  d5 $ slow 2 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # squiz 2 # cutoff 1500 # waveloss 30
+  d6 $ slow 4 $ rev $ chop 128 $ s "UMRU_fx_atmospheric*2" # n 4 # crush 4 # cutoff 2000 # gain 0.9
+  d7 $ slow 2 $ chop 32 $ n "e" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 400 40 90" # room 1 # size 0.4 # gain 0.8
+  let freq0 = "2@6 4@1.5 2@0.5"
+  d8 $ arp "up" $ n (fast (slow 8 $ freq0) $ "<[e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'min@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3] [e4 e'maj@3]>") # s "supersaw" # attack (0.25 / (slow 8 $ freq0)) # waveloss 40 # pitch1 3 # gain 0.8 # room 1 # size 0.8 # cutoff 1500
+  d9 $ s "XORE_hats*16" # n 4 # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine)
+  d11 $ slow 2 $ s "hh" # n 1 # distort 1
+  jumpIn 11 1 silence
+
 
 
 
