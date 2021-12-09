@@ -229,6 +229,7 @@ do -- last 2
   d3 $ chop 32 $ loopAt 8 $ s "UMRU_hihat_loops" # n 3 # gain 1 # distort 0.1
   d4 $ s "~ ~ sn" # n 5 # speed "-0.25" # gain "0.7"
   xfadeIn 5 2 $ slice 16 "0 0 0 11" $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain (range 0.9 1.2 saw)
+  jumpIn 6 1 $ (0.5 ~>) $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
 
 
 do

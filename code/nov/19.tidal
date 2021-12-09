@@ -27,7 +27,7 @@ d4 $ sometimes (striate 4) $ s "XORE_hats*4" # n 7
 
 d5 $ fast 2 $ s "~ SOPHIE_percussion" # n 0
 
-d6 $ s "XORE_error" # n 7 # room 1 # size 0.8
+d6 $ s "XORE_error" # n 7 # room 0.5 # size 0.8
 
 d7 $ s "SOPHIE_subs*8?" # n (choose[0,1,2,3,4])
 
@@ -54,4 +54,4 @@ unsolo 2
 
 
 
--- 
+--
