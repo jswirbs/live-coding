@@ -230,11 +230,11 @@ setcps(140/60/4)
 
 d7 $ s "XORE_error" # n 7 # room 0.5 # size 0.8
 
-d4 $ slow 4 $ s "~@15 SOPHIE_percussion"
+d4 $ slow 4 $ s "~@13 SOPHIE_percussion ~ SOPHIE_percussion"
 
 -- come in right after first SOPHIE_percussion
 do
-  d5 $ n (slow 4 $ "[d4 d f a]*4 [a3 c e a]*4") # s "warsawbass"
+  d5 $ n (slow 4 $ "[d4 d f a]*4 [a3 c e a]*4") # s "warsawbass" # gain 1.05
   d4 $ fast 2 $ s "~ SOPHIE_percussion"
 
 d6 $ n (slow 4 $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.7
@@ -252,10 +252,10 @@ do
 do
   hush
   setcps(140/60/4)
-  d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2 # cutoff 100
+  d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.07 # room 0.2 # cutoff 100
   d4 $ fast 2 $ s "~ SOPHIE_percussion"
   xfadeIn 4 8 $ fast 2 $ s "~ SOPHIE_percussion*3@3" # gain 1.05
-  d5 $ n (slow 4 $ "[d4 d f a]*8 [a3 c e a]*8") # s "warsawbass"
+  d5 $ n (slow 4 $ "[d4 d f a]*8 [a3 c e a]*8") # s "warsawbass" # gain 1.05
   d6 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.7
   d7 $ s "XORE_error" # n 7 # room 0.5 # size 0.8
 
@@ -290,7 +290,7 @@ do -- 1 cycle break
 do
   d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
-  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"
+  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass" # gain 1.05
 
 
 
@@ -301,11 +301,12 @@ do -- 2 cycle break and bring in moogbass synth
   jumpIn 6 2 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "moogbass" # cutoff (slow 4 $ range 4000 6000 sine) # gain 0.95
 
 
+
 do -- 2 before
   d1 silence
   jumpIn 2 2 silence
   d4 silence
-  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8@8 [~ ~ e a]*6@6 [a3 c e a]@2") # s "warsawbass" # cps (range (150/60/4) (140/60/4) saw)
+  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8@8 [~ ~ e a]*6@6 [a3 c e a]@2") # s "warsawbass" # cps (range (150/60/4) (140/60/4) saw) # gain 1.05
   jumpIn 5 2 $ n (slow 4 $ "[d4 d f a]*4 [a3 c e a]*4") # s "warsawbass" # cps(140/60/4)
   jumpIn 7 2 $ s "XORE_error" # n 7 # room 0.5 # size 0.8
 
@@ -323,7 +324,7 @@ do
 do
   setcps(140/60/4)
   hush
-  d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2 # cutoff 100
+  d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.06 # room 0.2 # cutoff 100
   d4 $ fast 2 $ s "~ SOPHIE_percussion"
   xfadeIn 4 8 $ fast 2 $ s "~ SOPHIE_percussion*3@3" # gain 1.05
   d5 $ n (slow 4 $ "[d4 d f a]*8 [a3 c e a]*8") # s "warsawbass" # gain 1.05
@@ -350,7 +351,7 @@ do
   d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   d3 $ s "SOPHIE_crashes*4" # n 3 # cutoff 800 # gain 0.9
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
-  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"
+  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass" # gain 1.05
   d6 $ n (slow 4 $ rarely (off "0.0625" (+12)) $ "~ ~ ~ [d*2] ~ ~ ~ [d*2] ~ ~ ~ [a4*2] ~ ~ ~ [c*2]") # s "superzow" # cutoff (slow 4 $ range 3000 4000 sine) # gain 0.7 # squiz 2
 
 do -- 2 cycle break
@@ -365,7 +366,7 @@ do
   d2 $ n "[~ e]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   d3 $ s "SOPHIE_crashes*4" # n 3 # cutoff 1200 # gain 0.9
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
-  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"
+  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"# gain 1.05
   d6 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "superzow" # cutoff (slow 4 $ range 3000 4000 sine) # gain 0.7 # squiz 2
   d8 $ (0.25 ~>) $ whenmod 4 3 (const $ s "sn [sn*2 ~*2]" # n 2 # gain 0.8) $ s "sn:2*2" # n 2 # gain 0.8
   -- d9 $ rev $ gap "4 8" $ chop 32 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8
@@ -373,6 +374,15 @@ do
 
 do -- 1 cycle break
   d1 $ ghost $ s "100gecs_fx:4 100gecs_fx:22 100gecs_fx:16 ~" # gain "1 1.1" # distort "0@7 0.3"
+  d8 silence
+
+do
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d8 $ (0.25 ~>) $ whenmod 4 3 (const $ s "sn [sn*2 ~*2]" # n 2 # gain 0.8) $ s "sn:2*2" # n 2 # gain 0.8
+
+
+do -- 1 cycle break
+  d1 $ ghost $ s "100gecs_fx:0 100gecs_fx:10 100gecs_fx:6 ~" # gain "1 1.2" # distort "0@7 0.3"
   d8 silence
 
 do
@@ -394,6 +404,7 @@ do
   unsolo 3
 
 do
+  setcps(145/60/4)
   unsolo 6
   hush
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
@@ -407,11 +418,11 @@ do
 
 do
   hush
-  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8@8 [~ ~ e a]*6@6 [a3 c e a]@2") # s "warsawbass" # cps (range (150/60/4) (140/60/4) saw) # sustain (slow 4 $ "0.1@15 3.5")
+  d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8@8 [~ ~ e a]*6@6 [a3 c e a]@2") # s "warsawbass" # cps (range (145/60/4) (100/60/4) saw) # sustain (slow 4 $ "0.1@15 3.5")
   jumpIn' 5 0 silence
   d7 $ loopAt 0.25 $ s "100gecs_fx:25"
   jumpIn' 7 0 silence
-  d8 $ s "100gecs_fx:26"
+  d8 $ s "100gecs_fx:26" # speed "0.96666" -- sample is at 150bpm, looping other siren at 145 so playing this at 145/150=0.9666 speed
   jumpIn 8 1 silence
 
 
