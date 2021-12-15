@@ -143,7 +143,7 @@ d12 $ loopAt 1 $ s "~ wood" # n 0 -- 0 <-> 2
 do
   hush
   -- start at 0.5 and fuckkkkk
-  let arpdjf = 0.8
+  let arpdjf = 0.85
   d1 $ s "SOPHIE_kicks_dry*4" # n "1" # gain 1.2
   d3 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "midsaw" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.9 # cutoff (slow 32 $ range 0 2000 sine) # pan (slow 2 $ range 0.1 0.9 sine) # djf arpdjf      --
   d4 $ arp "down down up up" $ n ((whenmod 4 2 (const $ "e6'min*4") $ "a6'min*4") - "0 12 24 12") # s "superzow" # sustain (slow 8 $ range 0.2 1 saw) # gain 0.6 # cutoff ((8 ~>) $ slow 32 $ range 0 2000 sine) # pan ((1 ~>) $ slow 2 $ range 0.1 0.9 sine) # djf arpdjf       --

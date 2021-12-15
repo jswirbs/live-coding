@@ -393,6 +393,7 @@ do
   hush
   d1 $ chop 8 $ s "SOPHIE_kicks_wet" # n 6 # gain 1.5
   d2 $ n "~ ~ 2 5" # s "default" # cutoff 500 # distort (slow 4 $ range 0.05 0.15 sine) # orbit 2
+  d3 $ fast 2 $ s "~ [hh*2]" # n 8 # crush 8
   d4 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 2 # gain 1.4 -- # cutoff "2000 300 600 300 1000 800 200 1000 100"
   d5 $ n "5*8" # s "superzow" # fshift (slow 4 $ range 0 "-200" saw) # gain 0.75 # cutoff (slow 4 $ range 2000 1000 saw)
 

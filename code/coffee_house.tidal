@@ -202,7 +202,7 @@ do
   unsolo 9
   d2 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.6
   d3 $ chop 16 $ n "0" # s "supersaw" # octave 2 # cutoff "2000 300 600 100 1000 200 8000 100" # orbit 1 # room 1 # size 0 # gain 1.1
-  d4 $ chop 2 $ loopAt 2 $ s "tchami" # n 6 # gain 1.25 # distort 0.4 # djf 0.38
+  d4 $ chop 8 $ loopAt 2 $ s "tchami" # n 6 # gain 1.25 # distort 0.6 # djf 0.38 # pan (range 0.1 0.9 sine)
   d6 $ whenmod 4 3 (const $ (0.55 ~>) $ s "tchami" # n 1) $ gap 16 $ striate 4 $ (0.45 <~) $ s "tchami" # n 1 # speed "-1" # cutoff 1500
   d7 $ slice 36 "11" $ s "chanting" # gain 1.4
   d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "11" # gain (range "0.4" "1" saw) # crush (range "10" "5" saw)
@@ -321,7 +321,7 @@ do
   d7 $ chop "2 1 4 2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 4 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
   d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
 
-d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
+d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 6 $ range 0.1 0.3 sine)
 
 
 do
@@ -349,6 +349,7 @@ do
 do
   d3 silence
   d10 $ rev $ chop 2 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
+  xfadeIn 10 4 silence
 
 hush
 
