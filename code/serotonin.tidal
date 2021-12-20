@@ -220,7 +220,6 @@ hush
 
 
 
-
 TAKE 2
 merged with nov/19
 
@@ -368,7 +367,7 @@ do -- 2 cycle break
 
 do
   d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
-  d2 $ n "[~ e]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
+  d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   d3 $ s "SOPHIE_crashes*4" # n 3 # cutoff 1000 # gain 0.9
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
   d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"# gain 1.05
@@ -397,7 +396,7 @@ do
 
 
 do -- 1 cycle break
-  d1 $ ghost $ striate 2 $ s "100gecs_fx:1 100gecs_fx:3 100gecs_fx:13 100gecs_fx:14" # gain 1.2 # distort "0@7 0.3"
+  d1 $ ghost $ s "100gecs_fx:3 ~ 100gecs_fx:14 100gecs_fx:1" # gain "1 1.2@3" # distort "0@7 0.3"
   d8 silence
 
 do
@@ -421,6 +420,10 @@ do
 
 do
   setcps(145/60/4)
+  unsolo 1
+  unsolo 2
+  unsolo 3
+  unsolo 5
   unsolo 6
   hush
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"

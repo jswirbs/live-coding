@@ -1,0 +1,53 @@
+setcps(130/60/4)
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1.1 # cutoff 6000 -- 5 -> 6 -> 7 (wet and deep)
+
+d2 $ whenmod 8 7 (const $ s "[hh*4] [hh*4] [hh] [hh*4] hh ~ ~ ~" # distort 0.5 # cutoff 2000) $ slow 2 $ (0.0625 ~>) $ s "[hh*4] [hh hh [hh*2] hh]" # n 0 # distort 0.5
+
+d2 $ whenmod 8 7 (const $ s "SOPHIE_hihats*16 SOPHIE_hihats" # n 1 # distort 0.5 # cutoff 1500 # gain 1.1) $ slow 2 $ (0.0625 ~>) $ s "[SOPHIE_hihats*4] [SOPHIE_hihats SOPHIE_hihats [SOPHIE_hihats*2] SOPHIE_hihats]" # n 1 # distort 0.5
+
+d3 $ slow 2 $ n "g [as c6] f ds" # s "superhammond" # octave "[2,3]"
+d3 $ chop 2 $ slow 2 $ n "g [as c6] f ds" # s "supersaw" # octave "[2,3]" # pitch1 2 # cutoff 800 # distort 0.2
+
+d3 silence
+
+d4 $ s "~ popkick [~ popkick] [~ popkick]" # n 4 # distort 0.2
+d4 $ s "~ sn [~ sn] [~ sn]" # n 8 # distort 0.2
+d4 $ s "~ SOPHIE_snares [~ SOPHIE_snares? SOPHIE_snares ~] [~ ~ SOPHIE_snares SOPHIE_snares?]" # n 8 # distort 0.5
+
+
+-- notes -- slow 2 $ "g [as c6] f ds"
+d4 $ slow 2 $ s "good_ones [good_ones*2] good_ones good_ones" # n "6 [7 8] 9 10" # distort 0.4 # cutoff 400
+d4 $ rarely (striate 4) $ ghost $ slow 2 $ s "good_ones [good_ones*2?] good_ones good_ones" # n "6 [7 8] 9 10" # distort 0.1 # cutoff 400 # gain 1.1
+d4 silence
+
+d5 $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+
+d5 silence
+
+d5 $ gap 16 $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+d5 $ slice 16 "0 0 4 8 0 0 12 16" $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+d5 $ slice 16 "0 0 4 8 0 0 12 16" $ slow 2 $ s "good_ones:0 good_ones:2" # cutoff (slow 4 $ range 500 2000 sine)
+
+
+d5 $ slow 4 $ (0.0625 <~) $ "~ good_ones:3"
+
+do
+  d5 silence
+  jumpIn' 1 1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1.1 # cutoff 6000 -- 5 -> 6 -> 7 (wet and deep)
+  jumpIn' 2 1 $ whenmod 8 7 (const $ s "[hh*4] [hh*4] [hh] [hh*4] hh ~ ~ ~" # distort 0.5 # cutoff 2000) $ slow 2 $ (0.0625 ~>) $ s "[hh*4] [hh hh [hh*2] hh]" # n 0 # distort 0.5
+  jumpIn' 3 1 $ slow 2 $ n "g [as c6] f ds" # s "superhammond" # octave "[2,3]"
+  jumpIn' 5 9 $ slow 2 $ s "good_ones:0 good_ones:2"
+
+
+
+d5 $ gap 8 $ rev $ chop 64 $ slow 8 $ s "good_ones:5" # cut 2 # distort (range 0.1 0.8 sine)
+
+
+d6 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2
+d6 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed "-1"
+
+d6 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # cut 2
+
+d6 $ slice 32 (slow 2 $ "0 5 <0 0 0 31> <6 7 9 22>") $ slow 8 $ s "good_ones:5" # cut 2

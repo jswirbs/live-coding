@@ -496,3 +496,40 @@ do
 
 
 hush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d2 $ s "bass*8" # n "0" # cutoff 2000-- # crush 7
+d7 $ slice 4 "0*4" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+
+d7 $ slice 4 "1*4" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+d7 $ slice 4 "2*4" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+d7 $ slice 4 "3*4" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+
+d7 $ slice 8 "7*8" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+
+d7 $ slice 8 "0*8" $ loopAt 4 $ s "cyberpunk:4" # cutoff 200 # room 0.3
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 5
+
+d2 $ s "XORE_hats*8" # n 0 # pan (slow 2 $ range 0.1 0.9 sine)
+d2 silence
+
+d3 $ striate 8 $ s "sparkles*2" # room 1 # size 0.4 # pan (range 0.2 0.8 perlin)

@@ -1,0 +1,205 @@
+setcps(135/60/4)
+
+
+once $ s "XORE_bass" # n 3
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+
+d2 $ s "~ sn ~ sn" # n 5
+
+
+
+-- bubbly stuffs
+d3 $ chop 8 $ s "XORE_bass" # n 3
+d3 $ palindrome $ gap 16 $ s "XORE_bass" # n 3
+d3 $ slice 8 "4*8" $ s "XORE_bass" # n 3
+
+-- faster and a little more progressively chaotic
+d3 $ chop 8 $ s "XORE_bass" # n 34
+d3 $ chop 8 $ s "XORE_bass" # n 35
+d3 $ chop 8 $ s "XORE_bass" # n 36
+
+-- more traditional growly bass
+d3 $ chop 8 $ s "XORE_bass" # n 19
+
+d3 $ chop 8 $ s "XORE_bass" # n 0
+
+-- light and airy
+d3 $ chop 8 $ s "XORE_bass" # n 6
+
+
+
+d4 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.2 # room 0.5
+d4 silence
+d3 silence
+
+
+d5 $ s "typewriter"
+d5 silence
+
+d6 $ gap 2 $ rev $ gap 8 $ loopAt 8 $ s "night:4" # waveloss 30 # cutoff 3000
+
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 6
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 7
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 9
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 10
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 12
+d6 $ chop 8 $ s "XORE_phazing_bass" # n 31
+
+d6 $ chop 8 $ s "XORE_phazing_bass" # n "<6 6 6 6 7 6 9 31>" # cutoff 3000
+
+d6 silence
+
+
+
+d7 $ (0.125 ~>) $ s "[XORE_one_shots*2 ~*2] XORE_one_shots [XORE_one_shots? XORE_one_shots ~ ~] XORE_one_shots" # n "8 8 11 12" # waveloss 30
+
+
+
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+  d3 $ palindrome $ gap 16 $ s "XORE_bass" # n 3
+  d4 $ palindrome $ chop 16 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.25
+  d5 $ chop 16 $ s "XORE_bass" # n 6
+
+d1 silence
+
+do
+  xfadeIn 3 4 silence
+  xfadeIn 5 4 $ s "sn*16" # n 5
+
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+  d2 $ s "~ sn ~ sn" # n 5
+  d3 $ chop 8 $ s "XORE_bass" # n 3
+  d4 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.2 # room 0.5
+  d6 $ chop 8 $ s "XORE_phazing_bass" # n "<6 6 6 6 7 6 9 31>" # cutoff 3000
+  d7 $ (0.125 ~>) $ s "[XORE_one_shots*2 ~*2] XORE_one_shots [XORE_one_shots? XORE_one_shots ~ ~] XORE_one_shots" # n "8 8 11 12" # waveloss 30
+  d8 $ (0.125 ~>) $ s "XORE_hats*4" # n 17
+
+
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+  d3 $ palindrome $ gap 16 $ s "XORE_bass" # n 3
+  d4 $ palindrome $ chop 16 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.25 # room 0.3
+  d5 $ chop 16 $ s "XORE_bass" # n 6
+
+d1 silence
+
+do
+  xfadeIn 3 8 silence
+  xfadeIn 6 8 $ s "sn*16" # n 5
+
+do
+  hush
+  d3 $ palindrome $ gap 16 $ s "XORE_bass" # n 3
+  d4 $ palindrome $ chop 16 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.7 # room 0.15
+  d5 $ chop 16 $ s "XORE_bass" # n 6
+  d6 $ chop 8 $ s "XORE_phazing_bass" # n "<6 6 6 6 7 6 9 31>" # cutoff 3000
+  d7 $ (0.125 ~>) $ s "[XORE_one_shots*2 ~*2] XORE_one_shots [XORE_one_shots? XORE_one_shots ~ ~] XORE_one_shots" # n "8 8 11 12" # waveloss 30
+  d8 $ (0.125 ~>) $ s "XORE_hats*4" # n 17
+  d9 $ n "[a ~]*8" # s "superzow" # cutoff 1000 # detune (slow 2 $ range 2 8 saw)
+
+do
+  unsolo 4
+  unsolo 5
+  unsolo 9
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 # room 0.2
+  d2 $ s "~ sn ~ sn" # n 5
+  d4 $ palindrome $ chop 16 $ rev $ chop 8 $ s "XORE_bass" # n 37 # cutoff 500 # djf 0.25 # room 0.3
+  d9 $ n "[d ~]*8" # s "superzow" # cutoff 1000
+  xfadeIn 9 16 $ n "[d ~]*8" # s "superzow" # cutoff 500
+
+d4 silence
+unsolo 5
+d9 silence
+d9 $ n "[e6 ~]*8" # s "default"
+
+
+
+
+
+do
+  clutchIn 3 8 $ chop 8 $ s "XORE_bass" # n 69 # room 0.7 # cutoff 1000
+  xfadeIn 4 8 silence
+  clutchIn 6 8 silence
+  clutchIn 9 8 silence
+
+
+
+d4 $ n (slow 2 $ "<[e'min*2] [e'min*2] [a'min*2] b'min>") # s "superzow" # release 4 # djf (slow 4 $ range 0.3 0.4 sine) # gain 0.8
+
+d5 $ arp "thumbup" $ n (slow 2 $ "<[e'min*4] [e'min*4] [a'min*4] [b'min*3@3 e6'min]>") # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 50
+
+
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+  d4 $ n (slow 2 $ "<[e'min*2] [e'min*2] [a'min*2] b'min>") # s "superzow" # release 4 # djf (slow 4 $ range 0.3 0.4 sine) # gain 0.8 # octave 4
+
+d8 $ s "XORE_hats*8" # n 0 # cutoff 5000 # pan (slow 4 $ range 0.1 0.9 sine)
+
+d5 $ arp "down" $ n (slow 2 $ "<[e'min*4] [e'min*4] [a'min*4] [b'min*3@3 e6'min]>") # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 0.6 # gain 0.9
+
+
+do
+  xfadeIn 1 4 $ silence
+  xfadeIn 5 4 $ arp "down" $ n (slow 2 $ "<[e'min*4] [e'min*4] [a'min*4] [b'min*3@3 e6'min]>") # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # sustain 0.1 # waveloss 30 # room 0.6 # gain 0.9
+  xfadeIn 9 4 $ s "XORE_hats*16" # n 17 # cutoff 5000 # pan (slow 4 $ range 0.1 0.9 sine)
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2
+  d2 $ s "~ sn ~ sn" # n 5
+  d3 $ chop 8 $ s "XORE_bass" # n 69 # room 0.8 # cutoff 3000
+  d4 $ chop 4 $ n (slow 2 $ "<[e'min*2] [e'min*2] [a'min*2] b'min>") # s "superzow" # release 4 # djf (slow 4 $ range 0.3 0.4 sine) # gain 0.8 # octave 4
+  d5 $ arp "thumbdown" $ n (slow 2 $ "<[e'min*4] [e'min*4] [a'min*4] [b'min*3@3 e6'min]>") # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 0.6 # gain 0.9
+  d8 $ (0.125 ~>) $ s "XORE_hats*4" # n 17
+
+
+
+
+
+
+
+
+
+
+
+d4 $ n "<a'min e'min c'maj <b4'maj d'maj>>" # s "supersaw" # octave "3" # room 0.7 # size 0.3 # distort 0.7 # djf 0.4 # gain 0.7
+
+d4 $ n "<a'min e'min c'maj <b4'maj d'maj>>" # s "supersaw" # octave "8" # room 0.7 # size 0.3 # distort 0.4 # djf 0.4 # gain 0.7
+
+
+d5 $ arp "thumbdown" $ n "<a'min e'min c'maj <b4'maj d'maj>>" # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 0.6 # gain 0.9
+d5 $ arp "thumbdown" $ n "<a'min*2 e'min*2 c'maj*2 <b4'maj*2 d'maj*2>>" # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 0.6 # gain 0.9
+
+d5 $ whenmod 8 7 rev $ arp "thumbdown" $ n "[a b d6 e6]*2" # s "superpiano" # octave 6 # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 0.6 # gain 0.9
+
+xfadeIn 3 8 silence
+
+
+d2 $ s "SOPHIE_claps*4" # n "2"
+d2 $ s "SOPHIE_claps*4" # n "2" # djf (slow 4 $ range 0.35 0.85 sine)
+
+
+d5 $ chop 4 $ n "<a'min e'min c'maj <b4'maj d'maj>>" # s "supersaw" # octave "3" # room 0.7 # size 0.3 # distort 0.9 # djf 0.6 # gain "0.7@3 0"
+d5 silence
+
+
+d3 $ s "SOPHIE_subs ~ ~ [SOPHIE_subs SOPHIE_subs ~ SOPHIE_subs]" # n 3 # gain 1.1
+
+
+--

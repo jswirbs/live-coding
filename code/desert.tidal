@@ -1,0 +1,116 @@
+setcps(135/60/4)
+
+
+d1 $ s "XORE_kicks*4" # gain 1.2
+
+d2 $ slice 16 "0*8" $ s "XORE_bass" # cutoff "[800 1200]*4" # room 0.2
+d2 silence
+
+-- 4 16
+d3 $ s "SOPHIE_subs:4"
+d3 silence
+
+d3 $ s "SOPHIE_subs*8" # n "<0 0 0 0 0 0 1 2>" # cutoff (range 500 2000 sine) # room 0.3 # gain 1.05
+
+
+d4 $ s "XORE_hats*16" # n 15
+
+d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5
+
+d6 $ chop 8 $ n "<c c c c c c a e>" # s "warsawbass" # octave "[2,3]" # room 0.2 # gain "<0.9 0.9 0.9 0.9 0.9 0.9 1.1 1.2>" # cutoff 700 # distort 0.05
+
+
+
+d7 $ rev $ striate 8 $ s "SOPHIE_textures"
+d7 silence
+
+
+
+
+
+
+
+-- STRUCTURE --
+
+
+
+d1 $ s "XORE_kicks*4" # n 7 # gain 1.2
+d1 $ s "XORE_kicks*4" # gain 1.1
+
+d4 $ s "XORE_hats*8" # n 15
+
+d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5
+
+d6 $ chop 8 $ n "<c c c c c c a e>" # s "warsawbass" # octave "[3]" # room 0.2 # gain "<0.9 0.9 0.9 0.9 0.9 0.9 1.1 1.2>" # cutoff 700 # distort 0.05
+
+
+d7 $ rev $ slice 8 "0 0 0 1 1 2 4 7" $ s "SOPHIE_textures" # n 2 # gain 0.8
+d7 $ rev $ slice 8 "3 3 5 6 7 7 7 7" $ s "SOPHIE_textures" # n 2 # gain 0.8
+
+d7 $ rev $ slice 8 (whenmod 8 6 (const $ "3 3 5 6 7 7 7 7") $ "0 0 0 1 1 2 4 7") $ s "SOPHIE_textures" # n 2 # gain 0.8 # hcutoff 1000
+
+d8 $ s "sweetbell? ~" # room 0.8 # size 0.4
+
+d9 $ silence
+
+
+
+do
+  xfadeIn 1 8 silence
+  xfadeIn 4 8 $ s "XORE_hats*16" # n 15 # crush 3
+  xfadeIn 5 8 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # distort 3
+  d8 silence
+
+do
+  xfadeIn 4 2 $ s "XORE_hats*8" # n 15 # crush 2.8 # distort 0.5
+  d7 silence
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2 # hcutoff 1200
+  d2 $ slice 16 "0*8" $ s "XORE_bass" # cutoff "[800 1200]*4" # room 0.4
+  d3 $ s "SOPHIE_subs*8" # n "<0 0 0 0 0 0 1 2>" # cutoff (range 500 2000 sine) # room 0.3 # gain 1.05
+  d4 $ s "sweetbell" # room 1 # size 0.8 # gain 1.1
+  jumpIn 4 1 silence
+  d6 $ chop 8 $ n "<c c c c c c a e>" # s "warsawbass" # octave "[2,3]" # room 0.4 # gain "<0.9 0.9 0.9 0.9 0.9 0.9 1.1 1.2>" # cutoff 700 # distort 0.05
+  d8 $ rarely (ghost) $ chop 2 $ n "<[~ ~ c6 ~ ~ b ~ ~] [~ ~ f ~ ~ e ~ ~]>" # s "superzow" # squiz 2 # djf 0.35 # octave 6
+
+xfadeIn 4 2 $ s "XORE_hats*8" # n 15
+
+do
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d4 $ s "XORE_hats*16" # n 15
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5
+  d7 $ gap 2 $ rev $ slice 8 "0 0 0 1 1 2 4 7" $ s "SOPHIE_textures" # n 2 # gain 0.8 # crush 3
+  d8 $ rarely (ghost) $ chop 2 $ n "<[~ ~ c6 ~ ~ b ~ ~] [~ ~ f ~ ~ e ~ ~]>" # s "superzow" # squiz 2 # djf 0.35
+
+
+
+do
+  xfadeIn 1 2 silence
+  d4 silence
+  d7 silence
+
+
+do
+  hush
+  d1 $ s "XORE_kicks*4" # gain 1.1
+  d4 $ s "XORE_hats*8" # n 15
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5
+  d6 $ chop 8 $ n "<c c c c c c a e>" # s "warsawbass" # octave "[3]" # room 0.2 # gain "<0.9 0.9 0.9 0.9 0.9 0.9 1.1 1.2>" # cutoff 700 # distort 0.05
+  d7 $ rev $ slice 8 (whenmod 8 6 (const $ "3 3 5 6 7 7 7 7") $ "0 0 0 1 1 2 4 7") $ s "SOPHIE_textures" # n 2 # gain 0.8 # hcutoff 1000
+  d8 $ s "sweetbell" # room 1 # size 0.8 # gain 1.1
+  jumpIn 8 1 $ s "sweetbell? ~" # room 0 # size 0
+
+
+
+
+
+
+
+
+
+
+
+
+--

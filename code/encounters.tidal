@@ -331,8 +331,7 @@ do
   d4 $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.7"
   d6 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
   -- d7 $ n "[~ a]*4" # s "superzow" # attack 0.5 # cutoff 2200
-
-clutchIn 7 8 $ n "[a ~]*8" # s "superzow" # attack 0.15 # cutoff 2000 # distort 0.1 # gain 0.7 # orbit 1
+  clutchIn 7 8 $ n "[a ~]*8" # s "superzow" # attack 0.15 # cutoff 2000 # distort 0.1 # gain 0.7 # orbit 1
 
 
 -- loud and wide
