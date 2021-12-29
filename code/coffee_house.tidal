@@ -220,7 +220,7 @@ d7 $ slice 36 "11" $ s "chanting" # gain 1.4
 d7 $ striate 4 $ slice 36 "11" $ s "chanting" # gain 1.4
 d7 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
 
-d7 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
+xfadeIn 7 4 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
 
 --
 
@@ -306,7 +306,7 @@ do
   d7 $ slow 2 $ chop "4" $ arp "down" $ n "c4'min c3'min c2'min c1'min" # s "default" # squiz 2 # crush (range 10 2 saw) # distort (range 0 0.5 saw) # pan "0.3 0.7 0.3 0.1" # gain 1.25
   -- d10 $ rev $ chop 4 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # 0 # gain 1 # fshift "-100" # gain 1.1
   xfadeIn 10 2 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4 # distort (slow 8 $ range 0.1 0.3 sine)
-  d9 $ (0.125 ~>) $ s "<[UMRU_percussion_impacts*16] [[UMRU_percussion_impacts*4] ~ [UMRU_percussion_impacts*4] ~]>" # n "<11 [11 25]>" # gain (range "<0.1 1>" "1.1" saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0
+  d9 $ (0.125 ~>) $ s "<[UMRU_percussion_impacts*16] [[UMRU_percussion_impacts*4] [UMRU_percussion_impacts*2 ~*2] [UMRU_percussion_impacts*4] ~]>" # n "<11 [11 25]>" # gain (range "<0.1 1>" "1.1" saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0
 
 
 do -- dropping

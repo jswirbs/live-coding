@@ -29,7 +29,6 @@ do
   d5 $ slow 2 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # squiz 2 # cutoff 1500 # waveloss 30
   d6 $ slow 4 $ rev $ chop 128 $ s "UMRU_fx_atmospheric*2" # n 4 # crush 4 # cutoff 2000
 
-
 d3 $ slow 2 $ striate 4 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # distort 0.1 # crush 7 # room 0.5 # size 0.5
 
 d2 $ slow 2 $ n "[e ~]*6@6 ~@2" # s "superhammond" # octave "[2,3]" # distort 0.1

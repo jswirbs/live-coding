@@ -54,9 +54,26 @@ do
 
 
 
+-- NO STRUCTURE --
+-- STRUCTURE --
+
+xfadeIn 3 4 $ s "hh*8" # distort 0.2 # crush "5 4@7"
+
+do
+  setcps(140/60/4)
+  d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1
+  d2 $ s "bass*8" # n "0" # cutoff 2000
+  d3 $ s "hh*32 ~" # distort 0.2 # crush 4
+  d5 $ s "~ bend ~" # n "<2 2 2 2 2 2 2 3>" # distort 0.2
+  d6 $ loopAt 4 $ s "armora" # n 6 # distort 0.2
+  d7 $ s "SOPHIE_textures"
 
 
-clutchIn 9 16 $ striate 16 $ s "SOPHIE_textures" # n 5 # speed "-1" # gain 0.65
+--
+
+
+
+clutchIn 9 8 $ striate 16 $ s "SOPHIE_textures" # n 5 # speed "-1" # gain 0.65
 
 clutchIn 9 8 $ rarely (gap 8) $ striate 16 $ s "SOPHIE_textures" # n 5 # speed "-1" # gain 0.8
 
