@@ -18,3 +18,4 @@ recordings/10.55night-demo.m4a filter=lfs diff=lfs merge=lfs -text
 recordings/I_dont_want_to_go_rework[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
 recordings/boost_rework.mp3 filter=lfs diff=lfs merge=lfs -text
 recordings/ filter=lfs diff=lfs merge=lfs -text
+recordings/** filter=lfs diff=lfs merge=lfs -text
