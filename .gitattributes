@@ -4,3 +4,17 @@ SuperCollider/Custom-samples/boost/000_boost_full.wav filter=lfs diff=lfs merge=
 SuperCollider/Custom-samples/gmk/002_gmk_body.wav filter=lfs diff=lfs merge=lfs -text
 SuperCollider/Custom-samples/take_it_all_away/001_take_it_all_away_body.wav filter=lfs diff=lfs merge=lfs -text
 SuperCollider/Custom-samples/boost2/000_boost2_body.wav filter=lfs diff=lfs merge=lfs -text
+recordings/limewire.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/112021[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
+recordings/140[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
+recordings/boost2.0.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/encounters[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
+recordings/grand[[:space:]]master[[:space:]]kush.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/hotel_alexandria_recording_1.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/left_lane[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
+recordings/take[[:space:]]it[[:space:]]all[[:space:]]away.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/10.54[[:space:]]night.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/10.55night-demo.m4a filter=lfs diff=lfs merge=lfs -text
+recordings/I_dont_want_to_go_rework[[:space:]][11_24_21].wav filter=lfs diff=lfs merge=lfs -text
+recordings/boost_rework.mp3 filter=lfs diff=lfs merge=lfs -text
+recordings/ filter=lfs diff=lfs merge=lfs -text

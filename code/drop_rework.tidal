@@ -4,10 +4,11 @@ d1 $ slow 8 $ s "~ ~ ~ CECILE_drop:1 ~ ~ ~ ~"
 
 do
   d1 silence
-  jumpIn' 2 52 $ loopAt 8 $ s "CECILE_drop" # n "<2 3>" # room 0.2
+  jumpIn' 2 52 $ loopAt 8 $ s "CECILE_drop" # n "<2 3>" # room 0.15 # gain 0.95
   jumpIn' 1 52 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1.1
   jumpIn' 3 52 $ fast 2 $ s "~ SOPHIE_claps" # n 5
   jumpIn' 5 52 $ n "[c ~]*4" # s "superhammond" # octave "[2]" # distort 0.1 # room 0.3
+  jumpIn' 6 52 $ s "hh:1" # distort 1
 
 do
   d2 $ chop 8 $ loopAt 8 $ s "CECILE_drop" # n "<2 3>" # room 0.2
@@ -19,14 +20,14 @@ do
 
 
 d4 $ s "[XORE_hats*3]*4" # n 0 # crush 4 # pan (slow 1 $ range 0.3 0.7 sine)
-
+xfadeIn 4 4 $ s "[XORE_hats*3]*4" # n 0 # crush 4 # pan (slow 1 $ range 0.3 0.7 sine)
 
 
 
 d6 $ s "hh:1" # distort 1
-
 d6 $ s "hh:1*2" # distort 1
-
+d6 $ s "hh:1*4" # distort 1
+d6 silence
 
 
 do
@@ -35,7 +36,7 @@ do
   d4 $ s "[XORE_hats*3]*4" # n 0 # crush 4 # pan (slow 1 $ range 0.3 0.7 sine)
   xfadeIn 4 4 silence
   d6 $ s "hh:1" # distort 1
-  xfadeIn 6 1 silence
+  jumpIn 6 1 silence
 
 
 d2 $ slow 8 $ slice 4 "1" $ s "CECILE_drop:4"
@@ -69,14 +70,24 @@ do
   d6 $ every 4 (gap 4) $ s "<hh hh hh hh*4>" # n 1 # distort 1 # waveloss 30
 
 
+d2 $ slice 32 "<0*4 8*4 <14*4 16*4 15*4 [16 ~ 16 16]> 24*4>" $ loopAt 8 $ s "CECILE_drop" # n 3 # room 0.2 # distort 0.5
+
+
 
 d7 $ ghost $ arp "down" $ n ("<fs'min*4 f'maj*4 gs'maj*4 f'min*4>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.7
-d7 $ ghost $ arp "down" $ n ("<fs'min*4 f'maj*4 gs'maj*4 f'min*4>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.65 # squiz 2
+d7 $ ghost $ arp "down" $ n ("<fs'min*4 f'maj*4 gs'maj*4 f'min*4>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.65 # squiz 2
 
 d7 $ ghost $ n ("<fs*12 f*12 gs*12 f*12>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.7
+d7 $ ghost $ n ("<fs*12 f*12 gs*12 f*12>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.65 # squiz 2
+d7 $ ghost $ striate "<4 [4 2] [4 8] 2>" $ n ("<fs*12 f*12 gs*12 f*12>" + "24 12 0 -12") # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.7 # squiz 4 # room 0.2
+
 d7 $ ghost $ n "<fs*12 f*12 gs*12 f*12>" # octave 6 # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.7
 d7 $ ghost $ n "<fs*12 f*12 gs*12 f*12>" # octave 6 # s "superzow" # detune (slow 4 $ range 1.5 3.5 sine) # cutoff 2000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.7 # squiz 2
+
 d7 silence
+
+
+
 
 d2 $ slice 32 "0*2" $ loopAt 8 $ s "CECILE_drop" # n "<2 3>" # room 0.2 # distort 0.3
 
@@ -117,7 +128,7 @@ xfadeIn 2 8 $ slice 32 (whenmod 8 7 (const $ "29 29 30 31") $ "28 29 28 29") $ l
 
 do
   hush
-  d1 $ slow 8 $ s "CECILE_drop:5" # room 0.1
+  d1 $ slow 8 $ s "CECILE_drop:5" # room 0.3 # gain 0.95
 
 hush
 

@@ -429,7 +429,7 @@ do
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
   d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass"
   d6 $ n (slow 4 $ off "0.0625" (+12) $ "d*24?@24 a4*6?@6 c*2?@2") # s "moogbass" # cutoff (slow 4 $ range 2000 4000 sine) # gain 0.9
-  xfadeIn 6 16 silence
+  xfadeIn 6 14 silence
   xfadeIn 7 16 $ loopAt 0.25 $ s "100gecs_fx:25"
 
 
