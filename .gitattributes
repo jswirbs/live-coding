@@ -19,3 +19,7 @@ recordings/I_dont_want_to_go_rework[[:space:]][11_24_21].wav filter=lfs diff=lfs
 recordings/boost_rework.mp3 filter=lfs diff=lfs merge=lfs -text
 recordings/ filter=lfs diff=lfs merge=lfs -text
 recordings/** filter=lfs diff=lfs merge=lfs -text
+recordings/140[[:space:]][01_20_22].wav filter=lfs diff=lfs merge=lfs -text
+recordings/drop[[:space:]]rework[[:space:]][01_20_22].wav filter=lfs diff=lfs merge=lfs -text
+recordings/serotonin[[:space:]][01_08_22].wav filter=lfs diff=lfs merge=lfs -text
+recordings/drop_rework[[:space:]][01_20_22].wav filter=lfs diff=lfs merge=lfs -text
