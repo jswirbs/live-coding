@@ -27,7 +27,6 @@ do
 do
   unsolo 2
   unsolo 4
-
   d2 $ ghost $ slow 4 $ n ("[a f d]*8 [b g d]*8" + "12") # s "warsawbass" # orbit 1 # room 0.5 # size 0.8
   d3 $ ghost $ slow 4 $ n ("d g" - "24") # s "moogbass" # gain 1.3 # orbit 1
   d7 $ ghost $ slow 2 $ n ("[~@5 d@3 e@5 f@3]*3@3 [e@5 d@3 e@5 f@3]@1" - "[12,24]") # s "supersaw" # cutoff 1200

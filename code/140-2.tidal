@@ -423,6 +423,8 @@ do
   xfadeIn 9 16 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.9 # cutoff 2000
 
 
+setcps(140/60/4)
+
 do
   hush
   d6 $ slice 4 "0" $ loopAt 4 $ s "cyberpunk:3" # cutoff 1000
@@ -444,8 +446,9 @@ do
   jumpIn 4 8 $ (0.125 ~>) $ fast 2 $ s "[XORE_hats*2] ~ [XORE_hats] ~" # n 4
 
 
-xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1 # distort 0.2
+xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1 # distort 0.25
 xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.5
+
 
 
 do
@@ -453,11 +456,13 @@ do
   xfadeIn 1 8 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1
   xfadeIn 9 8 $ rev $ gap "1 0 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # cutoff 1200
 
-xfadeIn 7 2 $ slice 4 "2 ~ 2 ~" $ loopAt 4 $ s "cyberpunk:4" # cutoff (slow 2 $ range 550 850 sine) # distort 0.1
+xfadeIn 7 2 $ slice 4 "2 ~ 2 ~" $ loopAt 4 $ s "cyberpunk:4" # cutoff (slow 2 $ range 650 850 sine) # distort 0.1
 
 do
   d1 silence
   d4 silence
+  d9 silence
+  d9 $ rev $ gap "4 0" $ chop 32 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8
 
 
 do
