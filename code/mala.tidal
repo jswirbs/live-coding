@@ -1,0 +1,35 @@
+setcps(130/60/4)
+
+hush
+
+do
+  hush
+  d1 $ s "XORE_kicks" # n 5 # gain 1.2
+  jumpIn 1 1 silence
+  d4 $ slow 2 $ n "e6 e6 e6 d6 c6 c6 c6 b" # octave "[2,3]" # s "supersaw" # sustain "0.5@7 0.25" # distort 0.2 # pitch1 10
+
+do
+  hush
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  d3 $ fast 2 $ s "~ XORE_snares" # n 4
+  d4 $ n (slow 2 $ "e6 e6 e6 d6 c6 c6 c6 b") # octave "[2,3]" # s "supersaw" # sustain 0.4 # cutoff 600 # room 0.5
+
+do -- quick cycle or half cycle before adding in d5 hats
+  d2 silence
+  d3 silence
+
+do
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  d3 $ fast 2 $ s "~ XORE_snares" # n 4
+  d5 $ s "~ [XORE_hats [XORE_hats*2]] [[~ XORE_hats] [XORE_hats ~]] ~" # n 1
+
+do
+  xfadeIn 1 7 $ s "XORE_kicks*8" # n 5 # gain 1.2
+  clutchIn 2 7 $ (0.125 ~>) $ s "XORE_hats*16" # n 4
+  xfadeIn 4 7 $ n (slow 2 $ "e6 e6 e6 d6 c6 c6 c6 b") # octave "[2,3]" # s "supersaw" # sustain 0.4 # cutoff 1000 # djf 0.85
+  d5 silence
+
+xfadeIn 3 4 $ s "XORE_snares*16" # n 4
+
+-- up up and away
