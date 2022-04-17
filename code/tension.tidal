@@ -137,6 +137,7 @@ do
   solo 4
   solo 5
   solo 7
+  d5 $ slow 2 $ n "b g" # s "default" # sustain 0.18 # crush 8 # distort 0.2 # room 0.3 # size 0.8 # gain 0.95
   xfadeIn 7 8 $ rev $ chop 16 $ slice 4 "0" $ loopAt 4 $ s "cyberpunk:4" # gain 1.15 # cutoff (slow 2 $ range 500 600 sine) # speed "-0.8"
 
 do
