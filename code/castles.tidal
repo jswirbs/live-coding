@@ -42,12 +42,16 @@ do
 
 
 
-do
+do -- 4
   xfadeIn 2 8 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.3 # hcutoff 1500
   xfadeIn 5 16 $ (0.125 ~>) $ s "XORE_hats*16" # n 15 # gain 1.1
   xfadeIn 8 8 $ fast 4 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default"
 
-do
+do -- 4
+  clutchIn 3 8 $ fast 4 $ ghost $ arp "down" $ n (sometimes (off "0.125" (+12)) $ "c6 c'min@3") # s "default" # squiz 2 # gain 0.8 # pan (slow 2 $ range 0 1 sine)
+  clutchIn 4 8 $ fast 4 $ ghost $ arp "down" $ n (sometimes (off "0.375" (+"-12")) $ "c6 c'min@3") # s "default" # waveloss 40 # gain 0.8 # pan (slow 2 $ range 1 0 sine)
+
+do -- 4
   xfadeIn 1 8 silence
   xfadeIn 2 8 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.3 # hcutoff 5000 # distort 0.02
   xfadeIn 6 8 $ s "hh*2" # n 1 # distort 0.35
@@ -61,7 +65,10 @@ do
   xfadeIn 12 8 $ s "sn*16" # n 3 # waveloss 10 # djf 0.97 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.8
   xfadeIn 13 8 $ s "sn*16" # n 3 # waveloss 10 # djf 0.3 # pan (slow 2 $ range 0.9 0.1 sine) # gain 0.8
 
-do
+
+do -- 4
+  clutchIn 3 3 silence
+  clutchIn 4 3 silence
   d11 $ s "UMRU_fx_risers" # n 5 # speed "0.9" # waveloss 50 # distort 0.2 # room 1 # size 1 # gain 0.7
   jumpIn 11 1 silence
 
