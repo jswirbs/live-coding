@@ -157,7 +157,7 @@ do
 
 
 
-clutchIn 3 8 silence
+-- clutchIn 3 8 silence
 
 do
   d1 silence
