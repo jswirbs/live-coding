@@ -1,4 +1,4 @@
-setcps(135/60/4)
+setcps(140/60/4)
 
 
 d1 $ s "XORE_kicks*4" # gain 1.2
@@ -31,7 +31,7 @@ d7 silence
 
 
 -- STRUCTURE --
-setcps(135/60/4)
+setcps(140/60/4)
 
 
 d1 $ s "XORE_kicks*4" # n 7 # gain 1.2
@@ -123,7 +123,7 @@ do
 
 --
 
-setcps (145/60/4)
+setcps (140/60/4)
 
 d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.35
 d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.35 # cutoff "2000 300 600 300 1000 800 200 1000 100"
@@ -139,7 +139,7 @@ d4 $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + (slow 2 $ (0.5 ~>) $ "<[12 15
 
 
 -- STRUCTURE --
-setcps (145/60/4)
+setcps (140/60/4)
 
 d3 $ n "<e*4 b*4 g*4 [g@1 ~@3]>" # s "warsawbass" # octave "[2,3]" # room 0.9 # cutoff 1000
 
@@ -182,12 +182,16 @@ do
 do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.35
-  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.2 # crush 5 # room 0.1
-  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 800
-  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
+  d2 $ (0.125 ~>) $ s "[<XORE_hats XORE_hats XORE_hats <[~ XORE_hats@3] [~ XORE_hats*3@3]>> XORE_hats]*2" # n 2 # distort (slow 4 $ range 0 0.4 sine) # crush 7
+  -- d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 800
+  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 4000 # djf 0.3 # sustain 0.1
+  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # octave "[4,5]" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   d5 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # fshift 19
   d6 $ (0.25 ~>) $ s "sn*2" # n 1
 
+  d7 $
+
+unsolo 3
 
 
 d5 $ loopAt 4 $ s "UMRU_fx_atmospheric" # n 4
@@ -214,7 +218,7 @@ clutchIn 4 8 $ ghost $ n ("[[e ~ ~ e ~] ~ [e ~]]*6" + "<[12 15] [7 [7 10@7]] [5 
 
 do
   d1 silence
-  xfadeIn 2 2 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.2 # crush 5 # room 0.1 # cutoff 6000
+  xfadeIn 2 4 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.2 # crush 5 # room 0.1 # cutoff 6000
   d3 $ n "<e*8 b*8 g*8 [g*4 a*4]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 800
   xfadeIn 5 8 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # cutoff 800 # fshift 18
   d6 silence
@@ -230,7 +234,7 @@ do
 
 do
   xfadeIn 2 4 $ s "XORE_hats*8" # n 2 # distort 0.4 # crush 5 # room 0.1 # cutoff 1500 # gain 1.25
-  d3 $ n "<e*4 b*4 g*4 [g*4 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff (slow 4 $ range 800 100 saw) # gain (slow 4 $ range 1 1.3 saw) # sustain "<0.4 0.4 0.4 [0.15 0.07]>"
+  d3 $ n "<e*4 b*4 g*4 [g*4 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff (slow 4 $ range 1200 100 saw) # gain (slow 4 $ range 1 1.3 saw) # sustain "<0.4 0.4 0.4 [0.15 0.07]>"
   -- jumpIn 6 3 silence
   jumpIn 7 4 $ s "SOPHIE_crashes" # n 1 # cutoff 3000 # gain 0.85
 
@@ -243,9 +247,9 @@ do
 do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.35
-  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.2 # crush 5 # room 0.1
-  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 800
-  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
+  d2 $ (0.125 ~>) $ s "[<XORE_hats XORE_hats XORE_hats <[~ XORE_hats@3] [~ XORE_hats*3@3]>> XORE_hats]*2" # n 2 # distort (slow 4 $ range 0 0.4 sine) # crush 7
+  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 4000 # djf 0.3 # sustain 0.1
+  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "supersaw" # octave "[4,5]" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   d5 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # fshift 19
   d6 $ (0.25 ~>) $ s "sn*2" # n 1
   d7 $ s "SOPHIE_crashes" # n 1 # cutoff 3000 # gain 0.85
@@ -281,7 +285,7 @@ d7 $ slow 2 $ gap 16 $ s "SOPHIE_crashes" # n (whenmod 16 14 (const $ 2) $ 1) # 
 
 
 do -- jump in right after cycle starts
-  jumpIn' 2 0 $ ghost $ s "XORE_hats*8" # n 1 # room 0.9 # cutoff 1500 # pan (slow 4 $ range 0.1 0.9 sine) # cps (slow 16 $ range (145/60/4) ((145*2)/60/4) saw)
+  jumpIn' 2 0 $ ghost $ s "XORE_hats*8" # n 1 # room 0.9 # cutoff 1500 # pan (slow 4 $ range 0.1 0.9 sine) # cps (slow 16 $ range (140/60/4) ((140*2)/60/4) saw)
   jumpIn' 2 15 silence
   clutchIn 4 16 $ slow 2 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   xfadeIn 6 16 $ slow 2 $ (0.25 ~>) $ s "sn*2" # n 1
@@ -290,11 +294,11 @@ do -- jump in right after cycle starts
 
 
 do
-  setcps(145/60/4)
+  setcps(140/60/4)
   hush
   d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.02 # room 0.1 # cutoff 1500
   xfadeIn 2 2 silence
-  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
+  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # octave "[4,5]" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   d5 $ hurry 2 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # fshift 19 # hcutoff "1000 1200 1500 2000 2700 4000 6000 9000"
   xfadeIn 5 2 silence
   -- d6 $ (0.25 ~>) $ s "sn*2" # n 1 # cutoff 1000
@@ -304,17 +308,17 @@ do
   -- d8 $ s "SOPHIE_crashes" # gain 1.2 # speed 0.75 # octave 3
   -- xfadeIn 8 1 silence
 
-xfadeIn 4 3 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3]>") # s "superzow" # cutoff (slow 4 $ range 200 500 sine) # distort (slow 8 $ range 0 0.4 sine) # crush (slow 4 $ range 3 6 sine) # gain (slow 8 $ range 0.7 0.6 sine) # pan "0.2 0.8" # room 0.4 # djf 0.25
+xfadeIn 4 3 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3]>") # s "superzow" # octave "[4,5]" # cutoff (slow 4 $ range 200 500 sine) # distort (slow 8 $ range 0 0.4 sine) # crush (slow 4 $ range 3 6 sine) # gain (slow 8 $ range 0.7 0.6 sine) # pan "0.2 0.8" # room 0.4 # djf 0.25
 
 xfadeIn 4 1 silence
 
 do
-  setcps(145/60/4)
+  setcps(140/60/4)
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.35
-  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # distort 0.2 # crush 5 # room 0.1
-  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 800
-  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
+  d2 $ (0.125 ~>) $ s "[<XORE_hats XORE_hats XORE_hats <[~ XORE_hats@3] [~ XORE_hats*3@3]>> XORE_hats]*2" # n 2 # distort (slow 4 $ range 0 0.4 sine) # crush 7
+  d3 $ n "<e*16 b*16 g*16 [g*8 a*8]>" # s "warsawbass" # octave "[2,3]" # room 0.8 # cutoff 4000 # djf 0.3 # sustain 0.1
+  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # octave "[4,5]" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   d5 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # fshift 19
   d6 $ (0.25 ~>) $ s "sn*2" # n 1
   d7 $ s "SOPHIE_crashes" # n 1 # cutoff 3000 # gain 0.85 # speed 0.75
@@ -335,7 +339,7 @@ do
   d2 silence
   d3 $ n "<e*16 b*8 g*4 [g*2 a]>" # s "warsawbass" # octave 3 # room 0.95 # cutoff 1000
   jumpIn 3 4 silence
-  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
+  d4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 [3 15@3]]>") # s "superzow" # octave "[4,5]" # cutoff (slow 4 $ range 700 1300 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.2
   xfadeIn 4 4 $ ghost $ n ("[e e ~ e e ~ ~ e ~] [e e ~ e ~ ~ e? ~]" + "<[12 15] [7 [7 10@7]] [5 3] [3 0]>") # s "superzow" # cutoff (slow 4 $ range 200 400 sine) # distort (slow 8 $ range 0 1 sine) # crush (slow 4 $ range 1.75 5 sine) # gain (slow 8 $ range 0.75 0.6 sine) # pan "0.2 0.8" # room 0.3 # sustain (slow 4 $ range 0.1 0.5 saw)
   d5 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # fshift 19
   xfadeIn 5 4 $ loopAt 4 $ gap 16 $ s "SOPHIE_textures" # n 13 # gain 1.3 # cutoff 600

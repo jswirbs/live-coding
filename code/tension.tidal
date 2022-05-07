@@ -190,7 +190,7 @@ do
   d3 $ (0.125 ~>) $ fast 2 $ s "[XORE_hats*2] ~ [XORE_hats] ~" # n 4
   d4 $ (0.125 ~>) $ gap 16 $ s "~ UMRU_stomps [~ <UMRU_stomps UMRU_stomps UMRU_stomps ~>] ~" # n 4
   d7 $ rev $ chop 16 $ slice 4 "1" $ loopAt 4 $ s "cyberpunk:4" # gain 1.15 # cutoff (slow 2 $ range 500 600 sine) # speed 0.8
-  d5 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0.4 # pan "0.2 0.8" # gain 1.1
+  d5 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0 # pan "0.2 0.8" # gain 1.1
   -- d6 $ slow 4 $ n "b*32" # s "default" # octave 6 # cutoff (range 500 1500 sine) # orbit 5 # room (range 1 0.5 sine) # size (range 0.7 0.1 sine) # pan (slow 2 $ range 0.1 0.9 sine) # fshift (range 120 0 sine) # sustain 0.17 # gain 0.95
   d6 $ slow 2 $ n "b g" # s "default" # sustain 0.18 # crush 8 # distort 0.2 # room 0.3 # size (slow 8 $ range 0.5 1.6 saw) # gain 0.95
 
