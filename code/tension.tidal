@@ -207,8 +207,8 @@ xfadeIn 7 8 $ rev $ chop 16 $ slice 4 "1" $ loopAt 4 $ s "cyberpunk:4" # gain 1.
 do
   d1 silence
   d3 silence
-  d5 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0.4 # pan "0.2 0.8"
-  d6 silence
+  d5 silence
+  d6 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0.4 # pan "0.2 0.8"
   -- d7 silence ??
   d7 $ rev $ chop 16 $ slice 4 "0" $ loopAt 4 $ s "cyberpunk:4" # gain 1.15 # cutoff (slow 2 $ range 500 600 sine) # speed 0.8 # djf 0.6
   d8 $ rev $ gap 2 $ striate 4 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # cutoff 5000
@@ -228,7 +228,7 @@ do
   hush
   d2 $ s "SOPHIE_subs [~ SOPHIE_subs*3@3]" # n (slow 4 $ "3 4") # gain 1.05
   d4 $ (0.125 ~>) $ gap 16 $ s "~ UMRU_stomps [~ <UMRU_stomps UMRU_stomps UMRU_stomps ~>] ~" # n 4
-  d5 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0.4 # pan "0.2 0.8"
+  d6 $ fast 2 $ n "b g" # s "default" # octave (slow 8 $ "6 5") # cutoff (slow 8 $ "400 200") # room 1 # size 0.4 # pan "0.2 0.8"
   -- d6 $ slow 4 $ n "b*32" # s "default" # octave 6 # cutoff (range 500 1500 saw) # orbit 5 # room (range 1 0.5 saw) # size (range 0.7 0.1 sine) # pan (slow 2 $ range 0.1 0.9 sine) # fshift (slow 4 $ range 0 120 square) # sustain 0.17 # gain 0.95
   d7 $ gap (slow 4 $ "8 [16 32]") $ rev $ chop 16 $ slice 4 "2" $ loopAt 4 $ s "cyberpunk:4" # gain 1.15 # cutoff (slow 4 $ range 500 1000 saw) # speed 0.8 # djf 0.5 # fshift (slow 4 $ range 0 "-200" square) # room 0.2 # distort 0.1
   d8 $ rev $ gap 2 $ gap 1 $ striate 4 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # cutoff 5000

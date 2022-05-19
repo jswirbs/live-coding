@@ -155,8 +155,7 @@ do
   d6 $ whenmod 4 3 (const $ (0.55 ~>) $ s "tchami" # n 1) $ gap 16 $ striate 4 $ (0.45 <~) $ s "tchami" # n 1 # speed "-1" # cutoff 1500
 
 
--- playing around a bit
-d7 $ rarely (ghost) $ rarely (rev) $ palindrome $ gap 16 $ chop 2 $ loopAt 2 $ s "tchami" # n 6 # distort 0.4 # squiz 4
+xfadeIn 7 8 $ rarely (ghost) $ rarely (rev) $ palindrome $ gap 16 $ chop 2 $ loopAt 2 $ s "tchami" # n 6 # distort 0.4 # squiz 4 # cutoff (slow 4 $ range 0 800 sine) # size (slow 2 $ range 0 1.1 saw) # room (slow 2 $ range 0 1.3 saw)
 
 
 
@@ -254,7 +253,7 @@ do
   d3 $ whenmod 6 4 (const $ silence) $ chop 16 $ n "0" # s "supersaw" # octave 2 # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 0 # gain 1.1
   d4 $ whenmod 6 4 (const $ silence) $ chop 2 $ loopAt 2 $ s "tchami" # n 6 # gain 1.15
   d5 $ whenmod 6 5 (const $ (0.55 ~>) $ s "tchami" # n 1) $ gap 16 $ striate 4 $ (0.45 <~) $ s "tchami" # n 1 # speed "-1" # cutoff 1500
-  d6 $ n "<-12 -12 -12 -12 [3,15] [3,15]>" # s "moogbass" # cutoff 1000 # gain 1.3
+  d6 $ n "<-12 -12 -12 -12 [3,15] [3,15]>" # s "moogbass" # cutoff 1000 # gain 1.3 # crush 5
   d7 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.2
 
 do
@@ -297,18 +296,20 @@ do
   solo 10
   d7 $ chop "4 4 6 2" $ n "[0@2 ~] [3@2 ~] [0@2 ~] [-1@2 ~]" # s "default" # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.3 # cutoff 1000
   xfadeIn 7 6 $ silence
-  xfadeIn 10 6 $ slice 8 "<0 1 2 3 6 6>" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
+  xfadeIn 10 6 $ slice 8 "<0 1 2 3 6 6>" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100 # room 0.7 # size 0.5
 
 do
   unsolo 2
   unsolo 9
-  d10 $ slice 8 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # fshift 100
+
 
 do
+  jumpIn 1 4 $ s "SOPHIE_kicks_wet*4" # n "5" # gain 1.4 # hcutoff 150
   solo 6
   solo 7
   d7 silence
   xfadeIn 7 0.25 $ chop "2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 2 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
+
 
 unsolo 1
 

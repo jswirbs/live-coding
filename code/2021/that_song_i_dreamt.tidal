@@ -119,7 +119,7 @@ do
   d8 $ slow 4 $ n ("e*16 a*16" - "[24, 36]") # s "superhammond" # gain 1.1
   jumpIn 9 4 $ ghost $ rarely (rev) $ striate 8 $ slow 4 $ n ("e'min a'min" + "12") # s "moogbass" # distort 2 # gain 0.65 # orbit 1 # room 0.5 # size 0.75
 
-setcps(140/60/4)
+setcps(128/60/4)
 
 do
   setcps(120/60/4)

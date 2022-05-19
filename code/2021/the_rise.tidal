@@ -30,13 +30,14 @@ d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.7 0.75"
 
 d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 d5 $ (0.25 ~>) $ s "sn:3*2"
-d6 $ s "hh*16?"
+d6 $ s "hh*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.7 # crush (slow 2 $ range 6 10 tri) # distort 0.3
 -- d7 $ s "superpiano" # n "[c, c5, a, b]" # accelerate 1 # sustain 8 # distort 2 # gain 0.5
-d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 4 # crush 4
+d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz (slow 3 $ range 4 1 saw) # crush (range 3 6 perlin)
 
 do -- fade out
   d2 $ chop 16 $ slow 2 $ s "nasty"
   xfadeIn 2 4 $ chop 16 $ slow 2 $ s "nasty" # djf 0.25
+  clutchIn 6 4 silence
 
 do
   hush
@@ -61,8 +62,8 @@ do
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
   d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
   d5 $ (0.25 ~>) $ s "sn:3*2"
-  d6 $ s "hh*16?"
-  d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 4
+  d6 $ s "hh*16?" # pan (slow 4 $ range 0.1 0.9 sine) # room 0.7 # crush (slow 2 $ range 6 10 tri) # distort 0.3
+  d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz (slow 3 $ range 1 4 saw) # crush (range 3 6 perlin)
   d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
   d9 $ slow 4 $ s "inception" # room 0.3
   once $ s "nastier"

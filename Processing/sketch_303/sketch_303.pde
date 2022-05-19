@@ -40,7 +40,7 @@ float scifiMultiplier = 0;
 float radio = 0;
 
 void setup() {
-  size(1280,500);
+  size(1300,400);
   //fullScreen();
   frameRate(30);
   // start oscP5, listening for incoming messages at port 3333

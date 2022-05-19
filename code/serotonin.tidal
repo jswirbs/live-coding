@@ -277,7 +277,7 @@ do -- 1 before
 do
   setcps(150/60/4)
   hush
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   -- d2 $ n (slow 4 $ "[~ d]*8 [~ a]*8") # s "superhammond" # octave (slow 4 $ "[2,3] 2") # distort 0.1 # room 0.2
   d4 $ (0.175 <~) $ s "2gether_guitars" # n "<0 0 1 1>" # speed 1.5 # distort 0.2 # djf 0.5
@@ -289,7 +289,7 @@ do -- 1 cycle break
   d6 $ (0.175 <~) $ s "2gether_guitars" # n "<0 0 1 1>" # speed 1.5 # distort 0.2 # djf 0.35
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
   d5 $ ghost $ n (slow 4 $ "[~ ~ f a]*8 [~ ~ e a]*8") # s "warsawbass" # gain 1.05
 
@@ -352,7 +352,7 @@ do -- 2 before
 do
   setcps(150/60/4)
   hush
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   d3 $ s "SOPHIE_crashes*4" # n 3 # cutoff 700 # gain 0.9
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
@@ -361,12 +361,12 @@ do
 
 
 do -- 2 cycle break
-  d1 $ slow 2 $ ghost $ s "~@4 100gecs_fx:2 100gecs_fx:23 100gecs_fx:6 ~" # gain "1@5 1.2@3" # distort 0.3
+  d1 $ slow 2 $ ghost $ s "~@4 100gecs_fx:2 100gecs_fx:23 100gecs_fx:6 ~" # gain "1@5 1.08@3" # distort 0.3
   d2 silence
   xfadeIn 4 2 $ s "SOPHIE_percussion*16"
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d2 $ n "[~ d]*4" # s "superhammond" # octave "[2,3]" # distort 0.1 # room 0.2
   d3 $ s "SOPHIE_crashes*4" # n 3 # cutoff 1000 # gain 0.9
   d4 $ fast 2 $ whenmod 8 7 (const $ s "~ [SOPHIE_percussion*2]") $ s "~ SOPHIE_percussion"
@@ -381,7 +381,7 @@ do -- 1 cycle break
   d8 silence
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d8 $ (0.25 ~>) $ whenmod 4 3 (const $ s "sn [sn*2 ~*2]" # n 2 # gain 0.8) $ s "sn:2*2" # n 2 # gain 0.8
 
 
@@ -391,7 +391,7 @@ do -- 1 cycle break
   d8 silence
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d8 $ (0.25 ~>) $ whenmod 4 3 (const $ s "sn [sn*2 ~*2]" # n 2 # gain 0.8) $ s "sn:2*2" # n 2 # gain 0.8
 
 
@@ -400,7 +400,7 @@ do -- 1 cycle break
   d8 silence
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.2 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15 -- good baseline
   d8 $ (0.25 ~>) $ whenmod 4 3 (const $ s "sn [sn*2 ~*2]" # n 2 # gain 0.8) $ s "sn:2*2" # n 2 # gain 0.8
 
 
