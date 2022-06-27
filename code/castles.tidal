@@ -177,7 +177,7 @@ do
 
 do
   -- xfadeIn 2 4 silence
-  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # sustain (slow 4 $ range 0.25 0 saw)
+  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # sustain (slow 4 $ range 0.25 0 saw) # gain (slow 4 $ range 1 1.2 saw)
   xfadeIn 5 4 silence
   xfadeIn 9 4 $ s "XORE_hats*8" # n 15 # cutoff 3000 # pan (slow 2 $ range 0.1 0.9 sine)
   xfadeIn 4 4 $ slow 4 $ slice 16 "1*4" $ s "DJ_DAVE_castles:0" # room 0.8
@@ -240,7 +240,6 @@ do
   d7 $ (0.125 ~>) $ n "c*4" # s "default" # sustain 0.1 # distort 1 # gain 0.78 # room 0.1
   d8 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # distort 0.3
   d9 $ (0.125 ~>) $ s "XORE_hats*4" # n 15
-
 
 
 do

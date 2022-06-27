@@ -70,7 +70,7 @@ do
   hush
   d1 $ chop 15 $ n "g2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # orbit 1 # room 1 # size 1
   d2 $ s "print:3*3" # crush (slow 6 $ range 4 7 sine)
-  d3 $ slow 3 $ s "sweetbellp" # gain 1.2 # orbit 2 # room 1 # size 1
+  d3 $ slow 3 $ s "sweetbell" # gain 1.2 # orbit 2 # room 1 # size 1
   d4 $ arp "down" $ n "g5'min" # s "supersaw" # cutoff 2000 # crush 3 # gain 0.6 # orbit 1
   d5 $ s "[SOPHIE_snares*2] [~ SOPHIE_snares] SOPHIE_snares" # n 9
   d6 $ chop 15 $ n "[g5, g6]" # s "moogbass" # gain 1.1 # cutoff ((0 ~>) $ "2000 300 600 300 1000 800 200 1000 100")

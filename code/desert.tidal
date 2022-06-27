@@ -117,7 +117,7 @@ do
 
 
 
-d
+do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
   d2 $ slice 16 "0*8" $ s "XORE_bass" # cutoff "[800 1200]*4" # room 0.4

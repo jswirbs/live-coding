@@ -100,7 +100,7 @@ xfadeIn 5 8 $ ghost $ arp "<up down up down>" $ n "<[f4'maj@3 f5] [g5 g4'maj@3] 
 
 d3 $ s "SOPHIE_crashes*2" # n 3 # cutoff 3000
 
-d2 $ s "~ [UMRU_percussion_misc*2] ~ UMRU_percussion_misc" # n 16 # cutoff 3000
+d2 $ s "~ [~ UMRU_percussion_misc*2] ~ UMRU_percussion_misc" # n 16 # cutoff 3000
 
 
 do
