@@ -251,6 +251,15 @@ d8 $ slow 4 $ ghost $ n "<[12 9 4 5]>" # s "superpiano" # octave "[4,5,6]" # djf
 
 
 
+---------------------------------------
+ECHOEY DRY PIANO BEAT TYPE THING
+--------
+
+setcps(140/60/4)
+
+
+
+
 -- transition --
 
 do
@@ -280,13 +289,6 @@ do
 
 
 
-
-
----------------------------------------
-ECHOEY DRY PIANO BEAT TYPE THING
---------
-
-setcps(140/60/4)
 
 
 

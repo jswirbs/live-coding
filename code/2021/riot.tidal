@@ -46,7 +46,7 @@ do
 do
   unsolo 1
   unsolo 4
-  d3 $ n "[f4'min, f3'min, f2'min, f1'min]*4" # s "moogbass" # distort 0.5 # gain 0.7 # cutoff 300
+  d3 $ n "[f4'min, f3'min, f2'min, f1'min]*4" # s "moogbass" # distort 0.4 # gain 0.6 # cutoff 300 # room 0.7 # size 0.94
   d4 $ rarely (rev) $ striate 4 $ arp "thumbup" $ slow 6 $ n "f'min f'min f'min f'min d'min df'min" # s "default" # distort 1.5 # gain 0.9
 
 

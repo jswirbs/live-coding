@@ -332,6 +332,7 @@ do -- dropping
   unsolo 8
   unsolo 9
   unsolo 10
+  d1 $ s "SOPHIE_kicks_wet*4" # n "5" # gain 1.4
   d7 $ chop "2 1 4 2" $ arp "down" $ n "c'min c4'min" # s "default" # squiz 4 # crush (slow 4 $ range 7 10 sine) # pan "0.3 0.7 0.3 0.1" # gain 1.25
   d9 $ (0.125 ~>) $ s "~ ~ [UMRU_percussion_impacts*4] ~" # n "<11 11 11 11 19 25>" # gain (range "0.4" "1.1" saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0d10 $ rev $ chop 16 $ slice 36 "11" $ s "chanting" # gain 1.4
 
