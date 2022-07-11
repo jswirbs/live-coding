@@ -95,7 +95,7 @@ do
 d5 silence
 
 xfadeIn 6 8 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8
-d6 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8 # djf (slow 2 $ range 0.5 1 saw)
+d6 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8 # djf (slow 2 $ range 0.5 0.9 saw)
 
 
 do
@@ -166,7 +166,6 @@ do -- quick break
 d1 silence
 
 d6 silence
-
 xfadeIn 3 4 silence
 
 hush

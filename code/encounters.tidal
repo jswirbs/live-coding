@@ -271,12 +271,13 @@ d7 silence
 
 
 do
+  setcps(130/60/4)
   hush
   d2 $ n "[g3, g4] ~ ~ ~" # s "moogbass" # gain 1.1
   d3 $ rarely (striate 2) $ chop 32 $ loopAt 4 $ s "UMRU_hihat_loops" # n 3 # gain 0.95
   d4 $ slow 2 $ s "~ ~ ~ sn ~ ~" # n 5 # speed "-0.125" # gain 0.9
   -- go 4 -> 3 -> 2 -> 1
-  d5 $ chop 4 $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 4 sine) # attack 0.2
+  d5 $ chop 1 $ n "[g <as as a af> g] ~" # s "superzow" # detune (slow 8 $ range 0 4 sine) # attack 0.2
   d6 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # fshift 20
   d7 $ arp "down" $ n "g g4'min@3" # s "superzow" # cutoff 1200 # gain 0.7 # orbit 1 # detune 2 # octave 4
 

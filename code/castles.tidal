@@ -196,7 +196,6 @@ do
 
 
 
-
 do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3
@@ -245,14 +244,13 @@ do
 do
   solo 3
   solo 4
-  solo 6
+
 
 hush
 
 do
   unsolo 3
   unsolo 4
-  unsolo 6
 
 
 
