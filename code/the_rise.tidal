@@ -204,10 +204,9 @@ NEW SOUNDS
 
 setcps(120/60/4)
 
-solo 2
-solo 1
 -- should already be b/w, but
--- once $ "nastier"
+once $ "nastier"
+
 
 do
   hush
@@ -234,17 +233,17 @@ d5 $ (0.25 ~>) $ s "sn:3*2"
 -- d6 $ s "hh*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.7 # crush (slow 2 $ range 6 10 tri) # distort 0.3
 d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
 -- d7 $ s "superpiano" # n "[c, c5, a, b]" # accelerate 1 # sustain 8 # distort 2 # gain 0.5
-d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 2 # crush (range 3 6 perlin)
+d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.65 # squiz 2 # crush (range 3 6 perlin)
 
 do -- fade out // 4
   d2 $ chop 16 $ slow 2 $ s "nasty" # djf (slow 2 $ "0.5 0.45 0.4 0.35 0.3 0.266 0.233 0.2")
-  clutchIn 6 4 silence
+  clutchIn 6 3 silence
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain (slow 4 $ range 4 0 saw) # distort (slow 4 $ range 1 0.1 saw) # gain 0.7 # squiz 2 # crush (range 3 6 perlin)
 
 
 do
   hush
-  d2 $ chop 16 $ slow 2 $ s "nasty" # djf 0.1
+  d2 $ chop 16 $ slow 2 $ s "nasty" # djf 0.085 # room 0.5
   -- xfadeIn 2 4 silence
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 0.1 # gain 0.7
   d8 $ slow 4 $ s "[kyle:0, kyle:2]" # gain 0.9
@@ -262,13 +261,15 @@ do
   d1 silence
   d2 silence
 
+
 do
-  d1 $ s "SOPHIE_kicks_dry*4" # n 6 # gain 1.25
+  jumpIn' 1 0 $ s "SOPHIE_kicks_dry*4" # n 6 # gain 1.25
   d2 $ slow 2 $ s "nasty" # room 0.2
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7
   d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
   d5 $ (0.25 ~>) $ s "sn:3*2"
-  d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
+  -- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
+  d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.1
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 2 # crush (range 3 6 perlin)
   d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
   d9 $ slow 4 $ s "inception" # room 0.3
@@ -295,8 +296,6 @@ do
   unsolo 10
 
 
-
-
 do
   xfade 3 $ silence
   xfade 4 $ silence
@@ -308,6 +307,40 @@ do
 
 hush
 
+
+
+-- #
+
+
+
+xfadeIn 6 8 $ chop 4 $ s "scifi" # n "0" # distort 0.1
+
+do
+  hush
+  d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.1
+  d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
+
+do
+  hush
+  d5 $ (0.25 ~>) $ s "sn:3*2"
+  d6 $ s "scifi" # n "2" # distort 0.1
+  xfadeIn 6 16 $ s "scifi" # n "2" # distort 0.1 # gain 0.65
+  d7 $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # crush 6 # gain 1.2
+  d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
+
+d9 $ ghost $ arp "up" $ s "superpiano*4" # n "<c'maj7 c'maj7 a'min7 b'min7>" # accelerate 1 # room 1 # distort 0.5 # waveloss 20 # gain 0.65
+d10 $ s "superpiano" # n "<c'maj7 c'maj7 a'min7 b'min7>" # accelerate 1 # room 1 # distort 0.5 # waveloss 20 # gain 0.6
+
+xfadeIn 6 8 $ chop 4 $ s "scifi" # n "2" # distort 0.1
+
+
+xfadeIn 9 4 silence
+
+do
+  hush
+  d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
+  d6 $ chop 4 $ s "scifi" # n "2" # distort 0.1
+  d7 $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # crush 6 # gain 1.2
 
 
 --
