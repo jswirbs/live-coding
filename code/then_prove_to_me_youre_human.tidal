@@ -147,7 +147,7 @@ do
 
 do -- 8
   xfadeIn 1 8 $ s "[CXCX_bd]*4" # gain 0.4
-  d4 $ fast 4 $ s "XORE_hats*2" # n 4 # cutoff 10000
+  d4 $ ghost $ fast 4 $ s "XORE_hats*2" # n 4 # cutoff 10000
   clutchIn 5 8 $ gap 64 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.95 # orbit 6
   d11 $ s "UMRU_fx_risers" # n 5 # speed "0.6" # waveloss 50 # distort 0.2 # room 1 # size 1 # gain 0.7
   jumpIn 11 1 silence
@@ -155,8 +155,7 @@ do -- 8
 
 do
   hush
-  d5 $ chop 16 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8 # djf ("0.18 0.2 0.23 0.28 0.35 0.42 0.5@2")
-  jumpIn 5 8 $ chop 16 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+  d5 $ chop 16 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
   d6 $ gap 64 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9 # orbit 6
   xfadeIn 6 12 silence
   -- gain is 0 !!!!!  just to set size to 0.99 for d11 to fade it out slowly
@@ -232,31 +231,38 @@ do
   d5 $ gap 32 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.91
 
 
+d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # sustain (slow 4 $ range 0.2 0.1 saw) # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2
 
 
 
 do
+  setcps(188/60/4)
   d4 $ fast 4 $ s "XORE_hats*2" # n 4 # cutoff 10000
   d5 $ gap 64 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9
 
 do
+  setcps(200/60/4)
   d2 silence
   d5 $ gap 128 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9
 
 do
+  setcps(215/60/4)
   d1 silence
   d5 $ gap 256 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9
 
 do
+  setcps(240/60/4)
   d3 $ gap 16 $ n "b" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2 # gain (slow 2 $ "1 0.9 0.75 0.5")
   d4 $ fast 4 $ s "XORE_hats*2" # n 4 # cutoff 10000
   d5 $ gap 512 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9
   xfadeIn 3 2 silence
   xfadeIn 4 2 silence
-  jumpIn 5 2 $ slice 64 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+  jumpIn 5 2 $ slice 64 "0" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8 # cps(180/60/4)
 
 hush
 
+
+setcps(180/60/4)
 
 
 d2 $ s "SOPHIE_kicks_dry*8" # n (slow 2 $ "2 2 4 3") # gain 1 # cutoff 2000

@@ -66,7 +66,7 @@ d8 silence
 
 xfadeIn 7 8 $ slow 2 $ chop 32 $ n "<e'min e'min e'maj e'maj7>" # s "superpiano" # octave 3 # cutoff "2000 300 600 100 1000 400 40 90" # room 0.5 # size 0.2 # gain 0.7
 
-d12 $ slow 4 $ s "~@3 UMRU_fx_misc" # n 25 # gain 0.9 # cutoff 8000
+d12 $ slow 4 $ s "~@3 UMRU_fx_misc" # n 25 # gain 0.9 # cutoff 4000
 
 do
   solo 4
@@ -127,7 +127,7 @@ do
 d10 $ arp "down" $ n (off "0.25" (+12) $ "[e6 e'min@3]*2" + (fast 2 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "superzow" # cutoff (slow 2 $ range 150 100 sine) # room 0.7 # size 0.8
 
 -- d12 $ loopAt 2 $ s "UMRU_fx_misc" # n 25
-d12 $ slow 4 $ s "~@3 UMRU_fx_misc" # n 25 # gain 0.9 # cutoff 8000
+d12 $ slow 4 $ s "~@3 UMRU_fx_misc" # n 25 # gain 0.9 # cutoff 4000
 
 
 do

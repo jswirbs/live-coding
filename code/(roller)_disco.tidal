@@ -32,7 +32,7 @@ clutchIn 2 4 silence
 
 do
   hush
-  d1 $ s "SOPHIE_kicks_dry*4" # n 4 # gain 1.2
+  d1 $ s "SOPHIE_kicks_dry*4" # n 4 # gain 1.1
   d3 $ s "warsawbass*8" # n "<e3 e3 c3 c3 a2 a2 a2 [g3*3@3 fs3]>" # cutoff 4000 # room 0.5 # gain 1.05
   d6 $ chop 4 $ loopAt 4 $ s "UMRU_instrument_loops" # n 8 # cutoff 500
   xfadeIn 6 16 $ chop 4 $ loopAt 4 $ s "UMRU_instrument_loops" # n 8 # cutoff 2400
@@ -151,7 +151,6 @@ do -- quick break
   d3 $ s "warsawbass" # n "<e3 e3 c3 c3 a2 a2 a2 [g3*3@3 fs3]>" # cutoff 4000 # room 0.5 # gain 1.05
   d4 silence
   d5 silence
-  d8 silence
   -- aaand back
 
 do -- quick break
@@ -161,11 +160,19 @@ do -- quick break
   d5 silence
   -- aaand back
 
+do -- 4 break
+  xfadeIn 2 3 $ s "superpiano*16" # n "e" # gain "[0.3 0.95]*4" # cutoff 1700
+  xfadeIn 4 3 $ s "XORE_hats*16" # gain "[0.3 1]*4" # n 0 # pan (fast 2 $ range (slow 16 $ range 0.5 0.1 saw) (slow 16 $ range 0.5 0.9 saw) square)
+  d5 silence
+  d3 silence
+  d3 $ s "warsawbass*4" # n "<e3 e3 c3 c3 a2 a2 a2 [g3*3@3 fs3]>" # cutoff 4000 # room 0.5 # gain 1.1 # djf (slow 4 $ range 0.5 0.9 saw)
 
 
-d1 silence
 
-d6 silence
+do
+  d1 silence
+  clutchIn 6 8 silence
+
 xfadeIn 3 4 silence
 
 hush

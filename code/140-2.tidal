@@ -216,12 +216,12 @@ do
 
 do
   solo 4
+  solo 5
   solo 6
   solo 7
-  solo 5
   d4 $ s "SOPHIE_subs" # n "9" # gain 1.2
   d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 24 # cutoff 1700 # gain 0.9
-  d7 $ s "SOPHIE_textures"
+  d7 $ s "SOPHIE_textures" # gain 1.1 # djf (slow 4 $ "0.5 0.45 0.4 0.35")
 
 do -- back n forth w above
   unsolo 4

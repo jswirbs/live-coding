@@ -641,6 +641,9 @@ void oscEvent(OscMessage m) {
       house = int(90);
     }
   }
+  if (s.contains("_hats")) {
+    hh = height /2;
+  }
 }
 
 

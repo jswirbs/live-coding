@@ -69,7 +69,7 @@ do
   d5 $ "hh*16?" # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 1.1
 
 -- striate back down by powers of 2
-clutch 2 $ striate 2 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1000 3000 sine)
+clutch 2 $ striate 8 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1000 3000 sine)
 
 do
   d9 $ s "blue5"
