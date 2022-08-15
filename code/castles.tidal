@@ -198,7 +198,7 @@ do
   d5 $ (0.125 ~>) $ slow 2 $ s "XORE_hats*6@3 [[XORE_hats*2]@1 ~ [XORE_hats] ~]" # n 15 # crush (slow 4 $ range 8 6 sine) # gain 1.1 # djf 0.6
   d6 $ whenmod 4 3 (const $ s "DJ_DAVE_castles" # n "<~ 2 3 4>" # gain 0.9) $ sometimes (rev) $ gap 8 $ gap 2 $ s "DJ_DAVE_castles" # n "<~ 2 3 4>" # gain 0.9
   -- d7 $ arp "down" $ n "c c'min@3" # s "default" # squiz (slow 4 $ range 2 4 sine)
-  d7 $ rarely (rev) $ chop 64 $ slow 4 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 1000 # room 0.4 # orbit 7
+  d7 $ rarely (rev) $ chop 64 $ slow 4 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 900 # room 0.4 # orbit 7
 
 
 

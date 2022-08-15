@@ -122,7 +122,7 @@ do
   d1 $ s "SOPHIE_kicks_wet:14*2" # gain 1.1
   d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
   d5 $ s "[~ sn]*2" # n 4
-  d6 $ s "noise*16" # gain 1.2
+  d6 $ s "noise*16" # gain (fast 4 $ "1.25 1.15") # cutoff 2000
 
 d7 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw)
 
@@ -146,6 +146,69 @@ unsolo 1
 unsolo 2
 hush
 unsolo 4
+
+
+
+
+
+do
+  unsolo 1
+  unsolo 2
+  unsolo 4
+  d1 $ s "SOPHIE_kicks_wet:14*2"
+  d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
+  d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 18 # gain 0.6
+  d6 $ s "noise*16" # gain (fast 4 $ "1.25 1.15") # cutoff 2000
+  d7 $ s "SOPHIE_kicks_dry:2*4" # gain 0.8
+  d8 $ s "[~ sn]*2" # n 4 # gain 0.8
+
+d9 $ rarely rev $ chop 2 $ fast 2 $ s "default" # n (arp "up" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw)
+d9 $ ghost $ rarely rev $ chop 2 $ fast 2 $ s "default" # n (arp "up" "e6'min7 c5'maj7") # cutoff 450 # room 0.8 # size 0.3 # gain 0.9
+d9 silence
+
+
+
+do
+  d4 silence
+  d7 silence
+  d8 silence
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.15
+  d6 $ s "noise*8" # gain (fast 4 $ "1.25 1.15") # cutoff 2000 # room 0.5
+
+
+
+
+
+
+do -- solo e
+  hush
+  d1 $ s "SOPHIE_kicks_wet:14*2"
+  d2 $ slow 4 $ n (off "0" (+7) $ "e3") # s "moogbass" # cutoff 2000
+  d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
+  d4 $ n "~ e4 ~ e4" # s "default" # distort 0.25
+  d9 $ slice 16 "0*2" $ slow 4 $ s "inception" # room 0.3
+
+
+solo 9
+
+
+do
+  unsolo 9
+  hush
+  d1 $ s "SOPHIE_kicks_wet:14*2"
+  d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
+  d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 18 # gain 0.6
+  d6 $ s "noise*16" # gain (fast 4 $ "1.25 1.15") # cutoff 2000
+  d7 $ s "SOPHIE_kicks_dry:2*4" # gain 0.8
+  d8 $ s "[~ sn]*2" # n 4 # gain 0.8
+
+d9 silence
+unsolo 9
+
+
+
 
 
 

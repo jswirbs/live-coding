@@ -180,7 +180,7 @@ do
 
 do
   -- 3 > 5 > 8 >> 15
-  setI "note" $ 3
+  setI "note" $ 8
   d6 $ slice 64 "[^note]*4" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
   xfadeIn 6 3 silence
 
