@@ -35,7 +35,7 @@ do
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
   xfadeIn 1 4 silence
   d2 $ slow 4 $ n "d2*4@2 d2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # pitch1 3 # room 0.2 # gain 0.9
-  d3 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
+  xfadeIn 3 2 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
 
 -- aaand back
 
@@ -58,10 +58,10 @@ do
 
 xfadeIn 6 16 silence
 
-d3 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.99 -- fade to djf 1
+d3 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.8 -- fade to djf 1
 
 
-d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 4 # room 0.5 -- # pitch1 2 # room 0.3
+d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 3 # room 0.3 -- # pitch1 2 # room 0.3
 
 
 
