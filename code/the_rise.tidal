@@ -231,7 +231,8 @@ d3 $ slow 8 $ s "nasty:1*2" # distort 1 # gain "0.7 0.75"
 d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
 d5 $ (0.25 ~>) $ s "sn:3*2"
 -- d6 $ s "hh*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.7 # crush (slow 2 $ range 6 10 tri) # distort 0.3
-d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
+-- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
+d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
 -- d7 $ s "superpiano" # n "[c, c5, a, b]" # accelerate 1 # sustain 8 # distort 2 # gain 0.5
 d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.65 # squiz 2 # crush (range 3 6 perlin)
 
@@ -269,13 +270,14 @@ do
   d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
   d5 $ (0.25 ~>) $ s "sn:3*2"
   -- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
-  d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.1
+  d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.1
   d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.7 # squiz 2 # crush (range 3 6 perlin)
   d8 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8
   d9 $ slow 4 $ s "inception" # room 0.3
   once $ s "nastier"
   d10 $ s "feelfx" # n (choose[6,7,8,0]) # gain 0.9 -- # distort 128
 
+once $ s "kyle:3"
 once $ s "kyle:4"
 once $ s "kyle:5"
 once $ s "kyle:5" # distort 0.5
@@ -299,36 +301,46 @@ do
 
 d3 silence
 
-xfadeIn 8 40 $ chop 4 $ s "scifi" # n "<0 0 1 1>" # distort 0.1 # gain 0.9
+xfadeIn 8 40 $ chop 4 $ s "scifi" # n "<0 0 1 1>" # distort 0.1 # gain 0.95
 
 clutchIn 7 32 $ silence
 
-clutchIn 6 16 $ silence
+clutchIn 6 24 $ silence
 
-xfadeIn 5 8 $ silence
+xfadeIn 5 16 $ silence
 
 clutchIn 4 4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ gap 4 $ s "[kyle ~@0.66 kyle ~@0.33 kyle] ~@3" # n (choose[3,4,5]) # crush 7 # gain 1.2
 
+??
+d10 silence
 
--- 4 befort
+-- 4 before
 d2 $ chop 16 $ slow 2 $ s "nasty" # djf (slow 2 $ "0.5 0.45 0.4 0.35 0.3 0.266 0.233 0.2")
 
 do
   hush
-  d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.1
-  d8 $ chop 4 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # room 0.7 # cutoff 500
+  d6 $ chop 4 $ s "scifi" # n "<0 0 1 1>" # distort 0.1 # gain 0.95
+  d7 $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 400
+  d8 $ chop 4 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # room 0.7 # cutoff "<500 600>"
+
+
+do
+  d2 $ s "XORE_hats:15*8" # room 0.2 # cutoff 1200 # distort 0.1 # gain 1.1
+  d3 $ s "XORE_hats:15*8?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.1
+  xfadeIn 4 4 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 0.1 # gain 0.7
+
+
+do
+  hush
+  d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.7 # hcutoff "<500 1300>"
+  -- jumpIn 3 1 silence
+  d6 $ s "scifi" # n "<0 0 1 0 1 0 2 2>" # distort 0.1 # gain 0.95
+  d8 $ chop 4 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # room 0.7 # cutoff "<800 1000>"
   d7 $ whenmod 8 6 (# distort (slow 2 $ (0.01 + 0.07 * (run 8)))) $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 400
   xfadeIn 7 6 $ whenmod 8 6 (# distort (slow 2 $ (0.01 + 0.07 * (run 8)))) $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 2000
   d11 $ slow 8 $ s "~ DJ_DAVE_castles" # n 13 # gain 0.8 # room 0.5 # speed 0.9 -- noise riser
 
 
-
-
-  d11 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.8 # room 0.5 -- noise riser
-  d11 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 2000 -- noise riser come down
-
-
-d11 silence
 
 
 do
@@ -343,12 +355,33 @@ do
   d7 $ chop 64 $ s "scifi" # n "2" # distort 0.1 # cutoff (slow 4 $ 500 + 1000 * (16 - (run 16)))
   jumpIn 7 4 $ s "scifi" # n "2" # distort 0.1 # cutoff ((5 ~>) $ slow 8 $ range 1200 4000 sine)
   d8 $ (0.125 <~) $ slow 4 $ gap 32 $ s (((0.125/4) ~>) $ "[kyle:0, kyle:1, kyle:2]") # gain 0.9
-  d9 $ slow 4 $ s "inception" # room 0.3
+  d9 $ slow 4 $ s "inception" # room 0.4
   once $ s "nastier"
-  d10 $ s "feelfx" # n (choose[6,7,8,0]) # gain 0.9
+  -- d10 $ s "feelfx" # n (choose[6,7,8,0]) # gain 0.9
   d10 $ s "UMRU_fx_impacts" # n (choose[0,11,11]) # gain 0.9
   d11 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.6 -- noise riser come down
   jumpIn 11 1 silence
+
+
+
+
+
+do
+  solo 2
+  solo 4
+  solo 10
+
+-- speed (0.75 originally) --   0.5 > 0.25 > 0
+d4 $ slow 2 $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.5) # gain 1.2
+
+
+do
+  unsolo 2
+  unsolo 4
+  unsolo 10
+
+
+
 
 
 
