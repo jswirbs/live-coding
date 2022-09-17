@@ -24,7 +24,7 @@ do
   unsolo 4
   unsolo 6
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2 # gain 0.9 -- # pitch1 1 -> 8
+  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2 # gain 0.9 -- # pitch1 1 -> 8
   -- d2 $ loopAt 4 $ s "techno_bass_loops:1" # gain 1.1 # room 0.5
   d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
   d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
@@ -34,22 +34,69 @@ do
 do
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
   xfadeIn 1 4 silence
-  d2 $ slow 4 $ n "cs2*4@2 cs2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # pitch1 3 # room 0.2 # gain 0.9
+  d2 $ slow 4 $ n "d2*4@2 d2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # pitch1 3 # room 0.2 # gain 0.9
   xfadeIn 3 2 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
 
 -- aaand back
 
 
-d7 $ slow 2 $ n "cs3" # s "supersaw" # pitch1 6 # accelerate 0.17 # gain 0.9
+
+-- workshopppinggg
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
+  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2 # gain 0.9 -- # pitch1 1 -> 8
+  xfadeIn 3 1 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # cutoff (slow 2 $ range 4000 2800 sine)
+  d4 $ (0.125 ~>) $ s "XORE_hats*16" # n 4 # cutoff 2000
+  -- # d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
+  d5 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95
+  xfadeIn 8 4 $ fast 4 $ arp "down" $ n "d5 d4'min@3" # s "warsawbass"
+
+do
+  hush
+  d1 $ ghost $ s "SOPHIE_kicks_wet*2" # n 7 # gain 1 # room 0.8
+  d2 $ slow 4 $ n "c2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2 # gain 0.9 -- # pitch1 1 -> 8
+  d3 $ (0.125 ~>) $ s "SOPHIE_subs*4" # n 5 # gain 1.1
+  d4 $ (0.125 ~>) $ s "XORE_hats*16" # n 4 # cutoff 2000 # crush 3
+  d5 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # gain 1.1 # cutoff 400 # room 1
+  d6 $ (1 <~) $ rev $ slice 16 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ gap 4 $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95
+  d7 $ slice 128 "[~ <32 32 32 32 32 32 32 [64 16]>]*2" $ loopAt 4 $ s "choir" # gain 1.1 # room 1 # size 0.5 # cutoff 700
+  d8 $ fast 4 $ arp "down" $ n "c5 c4'min@3" # s "warsawbass"
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
+  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2 # gain 0.9 -- # pitch1 1 -> 8
+  d3 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # cutoff (slow 2 $ range 4000 3000 sine)
+  d4 $ (0.125 ~>) $ s "XORE_hats*16" # n 4 # cutoff 2000
+  -- # d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
+  d5 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95
+  d6 $ slice 128 "[~ <[16 32]*7@7 [64 16]>]*2" $ loopAt 4 $ s "choir" # gain 1.1 # room 1 # size 0.5 # cutoff 700
+  d8 $ fast 4 $ arp "down" $ n "d5 d4'min@3" # s "warsawbass"
+
+
+
+do -- fade back to earlier high point, or go to long break?
+  d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
+  xfadeIn 1 4 silence
+  d2 $ slow 4 $ n "d2*4@2 d2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # pitch1 3 # room 0.2 # gain 0.9
+  xfadeIn 3 2 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
+--
+
+
+
+
+
+d7 $ slow 2 $ n "d3" # s "supersaw" # pitch1 6 # accelerate 0.17 # gain 0.9
 d7 silence
 
-d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.2 # pitch1 2 # accelerate 0.2
+d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 2 # accelerate 0.2
 
 
 do
   d1 silence
   xfadeIn 1 16 $ s "incoming:7" # gain 1.1
-  d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.2 # pitch1 2
+  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 2
   d3 $ chop 32 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
   xfadeIn 3 16 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1"
   xfadeIn 4 48 $ chop 4 $ slice 2 "0/4" $ loopAt 8 $ s "choir" # room 1 # size 0.9 # cutoff 2000 # gain 0.8 # orbit 4
@@ -61,14 +108,14 @@ xfadeIn 6 16 silence
 d3 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.8 -- fade to djf 1
 
 
-d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 2 # room 0.3 -- # pitch1 2 # room 0.3
+d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 2 # room 0.2 -- # pitch1 2 # room 0.2
 
 xfadeIn 4 8 silence
 -- maybe fade out d4 here ?
 
 do
   d1 $ s "incoming:7*2" # gain 1.1
-  d2 $ slow 4 $ n "cs2*8" # s "supersaw" # pitch1 7 # room 0.5 # djf 0.5 -- # accelerate (range 0 0.4 saw)
+  d2 $ slow 4 $ n "d2*8" # s "supersaw" # pitch1 7 # room 0.5 # djf 0.5 -- # accelerate (range 0 0.4 saw)
   -- xfadeIn 4 6 silence
   -- d4 $ slow 4 $ n "d3" # s "supersaw" # room 0.2 # accelerate 1.1 # sustain 7.4 # gain 0.8
   -- xfadeIn 7 4 $ s "sn:1*8" # orbit 7 # gain 0.75
@@ -76,9 +123,9 @@ do
 
 do
   d1 $ s "incoming:7*4" # gain 1.1
-  d2 $ slow 4 $ n "cs2*16" # s "supersaw" # pitch1 7 # room 0.5 # djf (range 0.5 0.1 saw)
+  d2 $ slow 4 $ n "d2*16" # s "supersaw" # pitch1 7 # room 0.5 # djf (range 0.5 0.1 saw)
   d3 $ slice 16 "~ 1 ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf "0.97 0.96 0.95 0.94 0.93 0.92 0.90 0.85 0.75 0.6 0.5"
-  d5 $ slow 4 $ n "cs3" # s "supersaw" # room 0.2 # accelerate 1 # gain 0.8
+  d5 $ slow 4 $ n "d3" # s "supersaw" # room 0.2 # accelerate 1 # gain 0.8
   d6 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # gain 0.5
   xfadeIn 6 4 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # room 0.4 # gain 1.2
   xfadeIn 7 4 $ s "sn:1*16" # orbit 7 # gain 0.85
@@ -96,7 +143,7 @@ do
   unsolo 7
   unsolo 10
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  d2 $ n "cs2*4" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
+  d2 $ n "d2*4" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
   d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # gain 0.95
   -- d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
   d5 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95
@@ -109,7 +156,7 @@ do
 do
   hush
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.7
-  d2 $ n "cs2*2" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
+  d2 $ n "d2*2" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
   d3 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.4
   xfadeIn 3 4 $ chop 16 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.43
   d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9 # djf "0.5 0.6 0.7 0.8"
@@ -124,12 +171,12 @@ do
 
 
 --
-d2 $ slow 2 $ n "cs2" # s "supersaw" # sustain 3 # pitch1 8 # distort 0.8 # crush 5 # room 1 # gain 0.8
+d2 $ slow 2 $ n "d2" # s "supersaw" # sustain 3 # pitch1 8 # distort 0.8 # crush 5 # room 1 # gain 0.8
 
 
 do
   solo 2
-  d2 $ slow 2 $ n "cs2" # s "supersaw" # sustain 6 # pitch1 8 # distort 0.8 # crush 5 # room 0.8 # gain 0.85
+  d2 $ slow 2 $ n "d2" # s "supersaw" # sustain 6 # pitch1 8 # distort 0.8 # crush 5 # room 0.8 # gain 0.85
   jumpIn 2 1 silence
   solo 3
   d3 $ chop 16 $ loopAt 4 $ s "techno_drum_loops"
@@ -196,7 +243,7 @@ do -- come in a little early?
 do
   hush
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  d2 $ slow 4 $ n "cs2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 "1@6 2 3" # room 0.4 # djf 0.3 # gain "1.05 1@15"
+  d2 $ slow 4 $ n "d2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 "1@6 2 3" # room 0.4 # djf 0.3 # gain "1.05 1@15"
   -- d2 $ slow 4 $ n "d2*16" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05 # accelerate "0@12 0.15@2 0.48@2"
   d3 $ chop 8 $ loopAt 4 $ s "techno_drum_loops"
   -- d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
@@ -216,7 +263,7 @@ d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "11" # gain (r
 do
   hush
   xfadeIn 1 6 $ s "SOPHIE_subs*4" # gain 1.35 # room 0.1
-  d2 $ slow 4 $ n "cs2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
+  d2 $ slow 4 $ n "d2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
   d3 $ chop 16 $ loopAt 4 $ s "techno_drum_loops"
   xfadeIn 3 4 $ chop 16 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
   d4 $ loopAt 4 $ gap "32 64 [32 64] [128 [256 [512 [1024 2048]]]]" $ s "choir:0" # room 1 # size 0.9 # gain 0.8
@@ -237,7 +284,7 @@ do
 do
   hush
   -- d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  -- d2 $ n "cs2*4" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
+  -- d2 $ n "d2*4" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05
   -- d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops"
   -- d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
   d5 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95
