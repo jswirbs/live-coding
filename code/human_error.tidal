@@ -31,6 +31,7 @@ do
   d6 $ slice 128 "0*2 4*2 ~*2 ~*2 0*2 [~*2 4*2] 116*2 96*2" $ loopAt 4 $ s "choir" # gain 1.1
 
 
+
 do
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
   xfadeIn 1 4 silence
@@ -108,15 +109,13 @@ xfadeIn 6 16 silence
 d3 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.8 -- fade to djf 1
 
 
-d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 2 # room 0.2 -- # pitch1 2 # room 0.2
+d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 3 # room 0.2 -- # pitch1 3 # room 0.2
 
-xfadeIn 4 8 silence
--- maybe fade out d4 here ?
 
 do
   d1 $ s "incoming:7*2" # gain 1.1
   d2 $ slow 4 $ n "d2*8" # s "supersaw" # pitch1 7 # room 0.5 # djf 0.5 -- # accelerate (range 0 0.4 saw)
-  -- xfadeIn 4 6 silence
+  d4 $ chop 4 $ slice 2 "0/4" $ loopAt 8 $ s "choir" # room 1 # size 0.9 # cutoff 1000 # gain 0.8 # orbit 4 # crush (fast 2 $ rev $ 8 + (4 * ((run 64) / 64))) # waveloss (fast 2 $ run 25)
   -- d4 $ slow 4 $ n "d3" # s "supersaw" # room 0.2 # accelerate 1.1 # sustain 7.4 # gain 0.8
   -- xfadeIn 7 4 $ s "sn:1*8" # orbit 7 # gain 0.75
   clutchIn 10 4 $ s "supersaw*16?" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4
@@ -125,6 +124,7 @@ do
   d1 $ s "incoming:7*4" # gain 1.1
   d2 $ slow 4 $ n "d2*16" # s "supersaw" # pitch1 7 # room 0.5 # djf (range 0.5 0.1 saw)
   d3 $ slice 16 "~ 1 ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf "0.97 0.96 0.95 0.94 0.93 0.92 0.90 0.85 0.75 0.6 0.5"
+  d4 $ chop 4 $ slice 2 "0/4" $ loopAt 8 $ s "choir" # room 1 # size 0.9 # cutoff 1000 # gain 0.8 # orbit 4 # crush (fast 2 $ rev $ (4 * ((run 64) / 64))) # waveloss (fast 2 $ 25 + (run 25))
   d5 $ slow 4 $ n "d3" # s "supersaw" # room 0.2 # accelerate 1 # gain 0.8
   d6 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # gain 0.5
   xfadeIn 6 4 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # room 0.4 # gain 1.2

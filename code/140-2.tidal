@@ -368,7 +368,7 @@ do
   unsolo 6
   unsolo 7
   -- d3 $ (0.125 ~>) $ s "[hh*4] [hh ~ hh ~] hh hh" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
-  d3 $ (0.125 ~>) $ s "hh*8" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
+  d3 $ (0.125 ~>) $ s "hh*8" # n 7 # distort 0.1 # crush 6 # gain "1.1 1.3" # pan (range 0.3 0.7 square)
   d4 silence
   d5 $ s "<cyberpunk cyberpunk cyberpunk [~ ~ ~ cyberpunk]>" # n 7 # gain 0.8
   d7 $ slice 2 "0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
