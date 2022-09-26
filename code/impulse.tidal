@@ -3,13 +3,14 @@ setcps(140/60/4)
 
 
 do
-  xfadeIn 3 8 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05 # orbit 2
+  xfadeIn 3 8 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05
   xfadeIn 4 8 $ n ("b" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3
 
 do
   d1 $ s "XORE_kicks*4" # n 5 # gain 1.2 # djf 0.64
   d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4 # djf 0.5
   xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 0
+  d3 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.97 # djf 0.88 # gain 1 # orbit 2
   d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
   d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
 
@@ -26,7 +27,7 @@ do
   d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
   d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
   d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
-
+  xfadeIn 11 16 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.9 # gain 1.05 # orbit 10
 
 
 do
@@ -38,9 +39,9 @@ do
   d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
 
 do
+  xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 10
   d3 silence
   solo 3
-  xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 10
   xfadeIn 3 7 $ s "XORE_snares*8" # n 4 # distort 0.3
   xfadeIn 4 8 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # cutoff 300
 
@@ -64,6 +65,7 @@ do
   d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
   d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
   d8 $ s "UMRU_stomps" # n "<2 3 2 9>" # gain "<1 1 1 1>"
+  d11 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.9 # gain 1.05
 
 
 
@@ -92,7 +94,6 @@ do
   xfadeIn 7 1 silence
 
 do
-  unsolo 1
   unsolo 4
   unsolo 6
   unsolo 7
@@ -104,6 +105,7 @@ do
 xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 9
 xfadeIn 10 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave "[5,7]" # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((9 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.47 # room 1.4 # size 0.4 # orbit 9
 
+xfadeIn 11 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.9 # gain 1.05 # orbit 10
 
 
 
@@ -118,6 +120,7 @@ do -- 4 before
   xfadeIn 7 4 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 2000 sine)
   xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 500 1000 sine) # gain 0.38 # room 1.4 # size 0.6 # orbit 9
   xfadeIn 10 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave "[5,7]" # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((9 ~>) $ slow 16 $ range 500 1000 sine) # gain 0.47 # room 1.4 # size 0.6 # orbit 9
+  xfadeIn 11 4 silence
 
 do -- 1 before
   d1 silence
@@ -131,16 +134,18 @@ do
 
 
 do -- 2 before
-  xfadeIn 6 2 silence
-  xfadeIn 7 2 silence
+  xfadeIn 6 3 silence
+  xfadeIn 7 3 silence
+
 
 do -- 1 before
-  d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # djf 0.7
+  d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # djf 0.65
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b1]" # s "supersaw" # gain 1.2 # djf 0.7
 
 do
   d1 silence
   d3 silence
-  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b1]" # s "supersaw" # gain 1.4 # djf 0.22 # room 0.9
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b1]" # s "supersaw" # gain 1.2 # djf 0.22 # room 0.9
   xfadeIn 5 16 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b1]" # s "supersaw" # gain 1.35 # djf 0.26 # room 0.75
   d6 $ slow 2 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
   d7 $ slow 2 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
@@ -157,32 +162,33 @@ do
   d7 $ slow 2 $ (0.125 ~>) $ n "fs*8" # s "moogbass" # octave 6 # sustain 0.3 # detune 0.4 # squiz 2 # gain 0.75 # cutoff ((2 ~>) $ slow 4 $ range 1000 5000 sine)
   d9 $ (0.625 ~>) $ rarely (ghost) $ n "b4*8" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 8 $ range 1000 3000 sine) # gain 0.4 # room 1.4 # size (range 0.4 0.6 saw) # orbit 9 # fshift (range 0 200 saw)
   d10 $ (0.625 ~>) $ rarely (ghost) $ n "b4*8" # s "moogbass" # octave "[5,7]" # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((9 ~>) $ slow 8 $ range 1000 3000 sine) # gain 0.5 # room 1.4 # size (range 0.4 0.6 saw) # orbit 9 # fshift (range 0 200 saw)
-
+  d11 $ s "~ ~ UMRU_fx_risers:8"
 
 do
   d5 $ fast 4 $ n "~ [b2,b1]" # s "supersaw" # gain 1.4 # djf 0.25 # room 0.9
   d6 $ slow 2 $ (0.125 ~>) $ n "[b4 cs d fs] [fs d cs b4]" # s "superzow" # octave 6 # sustain 0.3 # detune 0.4 # squiz 2 # gain 0.75 # cutoff (slow 4 $ range 1000 5000 sine)
   d7 $ slow 2 $ (0.125 ~>) $ n "[b4 cs d fs] [fs d cs b4]" # s "moogbass" # octave 6 # sustain 0.3 # detune 0.4 # squiz 2 # gain 0.75 # cutoff ((2 ~>) $ slow 4 $ range 1000 5000 sine)
   d11 $ s "SOPHIE_crashes*4" # n 1 # gain 0.88 # room 0.3
-  xfadeIn 11 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.39
+  xfadeIn 11 6 silence
+  xfadeIn 12 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.39
 
 do
-  d3 $ s "XORE_snares*4" # n 4 # room 0.2
-  xfadeIn 11 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.34
+  d3 $ s "XORE_snares*4" # n 4 # room 0.3
+  xfadeIn 12 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.34
 
 do
-  d3 $ s "XORE_snares*8" # n 4 # room 0.2
+  d3 $ s "XORE_snares*8" # n 4 # room 0.3
   d5 $ fast 4 $ n "~ [b2,b1]" # s "supersaw" # gain 1.4 # djf (slow 16 $ range 0.25 0.5 saw) # room (slow 16 $ range 0.9 0.3 saw)
-  clutchIn 11 6 $ s "supersaw*16?" # n "b4 cs d fs" # accelerate 1 # sustain 6 # distort 1 # gain 0.72 # squiz 4 # crush 4 # hcutoff 2000 # pan (fast 16 $ range 0 1 rand)
+  clutchIn 12 6 $ s "supersaw*16?" # n "b4 cs d fs" # accelerate 1 # sustain 6 # distort 1 # gain 0.72 # squiz 4 # crush 4 # hcutoff 2000 # pan (fast 16 $ range 0 1 rand)
 
 do
-  d3 $ s "XORE_snares*16" # n 4 # room 0.2
-  xfadeIn 3 3 $ s "XORE_snares*16" # n 4 # room 0.2 # djf (slow 4 $ range 0.5 1 saw)
+  d3 $ s "XORE_snares*16" # n 4 # room 0.3
+  xfadeIn 3 3 $ s "XORE_snares*32" # n 4 # room 0.2 # djf (slow 4 $ range 0.5 1 saw)
   -- jumpIn 3 3 $ s "XORE_snares*16" # n 4 # room 0.2 # djf (range 0.5 1 saw)
   -- jumpIn 3 3 silence
   d5 $ fast 4 $ n "~ [b2,b1]" # s "supersaw" # gain 1.4 # djf (slow 16 $ range 0.5 0.9 saw) # room (slow 16 $ range 0.3 0 saw)
-  jumpIn 6 3 $ slow 2 $ n "fs*8" # s "superzow" # octave 6 # sustain 0.3 # detune 0.4 # squiz 1.1 # gain 0.78 # cutoff (fast 2 $ range 4000 5000 sine) # fshift (fast 2 $ range 0 50 saw) # room (fast 2 $ range 0.2 0.7 saw)
-  jumpIn 7 3 $ slow 2 $ n "fs*8" # s "moogbass" # octave 6 # sustain 0.3 # detune 0.4 # squiz 1.1 # gain 0.78 # cutoff ((2 ~>) $ fast 2 $ range 4000 5000 sine) # fshift (fast 2 $ range 0 50 saw) # room (fast 2 $ range 0.2 0.7 saw)
+  jumpIn 6 3 $ slow 2 $ n "fs*8" # s "superzow" # octave 6 # sustain 0.3 # detune 0.4 # squiz 1.1 # gain 0.78 # cutoff (fast 2 $ range 4000 5000 sine) # fshift (fast 2 $ range 0 50 saw) # room (fast 2 $ range 0.2 0.8 saw)
+  jumpIn 7 3 $ slow 2 $ n "fs*8" # s "moogbass" # octave 6 # sustain 0.3 # detune 0.4 # squiz 2 # gain 0.9 # cutoff ((2 ~>) $ fast 2 $ range 4000 5000 sine) # fshift (fast 2 $ range 0 50 saw) # room (fast 2 $ range 0.2 1 saw)
 
 
 do
@@ -196,15 +202,16 @@ do
   d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
   d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
   d8 $ s "UMRU_stomps" # n "<2 3 2 9>" # gain "<1 1 1 1>"
-  d11 silence
+  d12 $ s "SOPHIE_crashes" # n 1 # gain 0.88 # room 0.5 # speed "0.5"
+  jumpIn 12 1 silence
 
 
 
-xfadeIn 9 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.1 # orbit 8
-xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.68 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
+xfadeIn 9 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.04 # orbit 8
+xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.63 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
 
 
-xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 9
+xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 8
 xfadeIn 10 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave "[5,7]" # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((9 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.47 # room 1.4 # size 0.4 # orbit 9
 
 
@@ -219,14 +226,12 @@ xfadeIn 7 8 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sust
 
 
 do
-  solo 5
   solo 7
   solo 8
 
 hush
 
 do
-  unsolo 5
   unsolo 7
   unsolo 8
 

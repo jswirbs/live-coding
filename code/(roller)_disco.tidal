@@ -1,6 +1,7 @@
 setcps(135/60/4)
 
 
+
 d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.15 # djf 0.65
 d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.15
 
@@ -93,11 +94,11 @@ do
   d5 $ (0.25 ~>) $ s "[sn*7@7 [sn*2 ~]]/4" # n 2 # cutoff 6000 # distort 0.15
   d6 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8 # cutoff 3000
 
-d5 silence
 
 xfadeIn 6 8 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8
 d6 $ loopAt 4 $ rev $ gap "<32 [32 16]>" $ s "UMRU_instrument_loops" # n 8 # djf (slow 2 $ range 0.5 0.9 saw)
 
+d5 silence
 
 do
   jumpIn' 5 0 silence
@@ -180,6 +181,8 @@ xfadeIn 3 4 silence
 hush
 
 
+d5 silence
+d4 silence
 
 
 --
