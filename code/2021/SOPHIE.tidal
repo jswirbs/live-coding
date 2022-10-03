@@ -158,7 +158,7 @@ do
   d1 $ s "SOPHIE_kicks_wet:14*2"
   d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
   d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
-  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 18 # gain 0.6
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort (range 2 6 perlin) # gain 0.6
   d6 $ s "noise*16" # gain (fast 4 $ "1.25 1.15") # cutoff 2000
   d7 $ s "SOPHIE_kicks_dry:2*4" # gain 0.8
   d8 $ s "[~ sn]*2" # n 4 # gain 0.8
@@ -192,8 +192,12 @@ do -- solo e
 
 solo 9
 
+do
+  solo 4
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 18 # gain 0.6
 
 do
+  unsolo 4
   unsolo 9
   hush
   d1 $ s "SOPHIE_kicks_wet:14*2"
@@ -209,6 +213,17 @@ unsolo 9
 
 
 
+
+do
+  hush
+  -- d1 $ s "SOPHIE_kicks_wet:14*2"
+  d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
+  -- d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.1
+  d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.15
+
+d2 silence
+
+hush
 
 
 
