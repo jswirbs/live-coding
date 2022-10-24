@@ -100,7 +100,7 @@ do
   -- gain is 0 !!!!!  just to set size to 0 for d7
   d7 $ s "hh*16?" # n 1 # distort 0.05 # cutoff 400 # room 0.2 # size 0 # gain 0
   d8 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default" # cutoff 2000
-  xfadeIn 8 6 silence
+  xfadeIn 8 8 silence
   d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 2000 -- noise riser come down
   jumpIn 10 1 silence
   -- gain is 0 !!!!!  just to set size to 0.99 for d11 to fade it out slowly
@@ -123,6 +123,7 @@ do
   -- d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300
   d2 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.2 # cutoff 1000 # distort 0.02 # room 0.1
   d3 $ slow 4 $ gap 32 $ s "DJ_DAVE_castles:0"
+  d4 $ s "SOPHIE_subs*4" # n "4" # gain 0.85
   d16 silence
 
 
@@ -131,6 +132,7 @@ d4 $ s "SOPHIE_subs [~ SOPHIE_subs*3@3]" # n "<3 3 3 4>"
 
 do
   d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # crush (slow 4 $ range 8 6 sine) # gain 1.1 # djf 0.6 # orbit 5
+  d6 $ slow 4 $ gap 64 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 800 # room 0.3 # orbit 6 # gain 0.7
   xfadeIn 6 12 $ slow 4 $ gap 64 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 1200 # room 0.3 # orbit 6 # gain 1.05
 
 
