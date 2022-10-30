@@ -209,7 +209,7 @@ do
 
 
 xfadeIn 9 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.04 # orbit 8
-xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.63 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
+xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.61 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
 
 
 xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 8
