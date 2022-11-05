@@ -1,0 +1,236 @@
+setcps(130/60/4)
+
+d2 $ s "UMRU_bass_one_shots_808*4" # n 4
+d2 $ s "UMRU_bass_one_shots_808*2" # n 6
+d2 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+d2 $ gap 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+d2 $ striate 2 $ gap 8 $ s "UMRU_bass_one_shots_808 UMRU_bass_one_shots_808"
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15
+d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.15
+
+d3 silence
+
+d3 $ n "[~ c]*4" # octave 4 # s "warsawbass"
+
+do
+  hush
+  d4 $ s "UMRU_bass_one_shots" # n 6
+  jumpIn' 4 1 silence
+  jumpIn' 1 8 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15
+  jumpIn' 2 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  xfadeIn 3 8 $ slice 4 "2*2" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+
+xfadeIn 6 1 $ s "[~ XORE_hats*2]*4" # n 11 # squiz 4 -- # cutoff 8000
+d6 silence
+
+d5 $ slice 4 "2*2" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # hcutoff 500
+
+
+d5 $ s "UMRU_bass_one_shots" # n 19
+
+d6 $ loopAt 4 $ s "UMRU_chord_loops" # n 23
+d6 $ slice 4 "2 4 2 4 4 2 4 2" $ palindrome $ chop 32 $ loopAt 4 $ s "UMRU_chord_loops" # n 23
+
+d6 silence
+d6 $ loopAt 4 $ s "UMRU_chord_loops" # n 25
+
+d6 $ (0.018 <~) $ arp "thumbup" $ n "c'min" # s "midsaw" # cutoff 1000
+d6 $ arp "thumbup" $ n "c'min" # s "warsawbass" # cutoff 350 # room 1 # size 0.5
+d6 $ whenmod 8 4 (ghost) $ arp "thumbup" $ n "c'min*4" # s "warsawbass" # cutoff 1500
+
+
+
+--
+--
+--
+
+setcps(130/60/4)
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.12
+  d2 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  d4 $ s "UMRU_bass_one_shots/4" # n 19
+
+d3 $ slice 8 "~ 6 ~ 3" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+
+
+
+d3 $ slice 8 "~ 6 ~ <3 3 3 6>" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.1
+  d3 $ slice 8 "~ 6 ~ <1 2 4 6>" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d5 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 1 # gain 0.9 # cutoff 2000 # room 0.2
+
+
+do
+  d6 $ s "XORE_hats*16" # n 4 # cutoff 5000 # room 0.1 # orbit 5 # gain 0.9
+  xfadeIn 6 8 $ s "XORE_hats*16" # n 4 # cutoff 2500 # room 0.4 # orbit 5
+
+
+-- fade out over 4/8 or so
+d4 silence
+
+do
+  xfadeIn 1 2 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15 # djf 0.7
+  d5 silence
+  xfadeIn 6 2 silence
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15
+  d2 $ gap 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  -- d3 $ gap 16 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d4 $ s "UMRU_bass_one_shots/4" # n 19
+  d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
+
+d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # distort 0.1
+d6 silence
+
+
+
+d7 $ s "DJ_DAVE_castles" # n 12 # cut 1
+d7 $ whenmod 16 12 (# distort (slow 4 $ range 0.05 0.5 saw)) $ s "DJ_DAVE_castles" # n 12 # cut 1
+d7 silence
+
+
+d3 silence
+d5 silence
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15
+  d2 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  d3 $ slice 8 "~ 6 ~ 3" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d4 $ s "UMRU_bass_one_shots/4" # n 19
+  d7 $ s "DJ_DAVE_castles" # n 12 # cut 1 # gain 0 -- GAIN 0 to cancel out whatever "cut" shit happens
+
+d7 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # cutoff 1500 # gain 0.8
+
+
+d3 $ slice 8 "~ 6 ~ <3 3 3 6>" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15
+  d3 $ slice 8 "~ 6 ~ <1 2 4 6>" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d5 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 1 # gain 0.9 # cutoff 2000 # room 0.2
+  d7 $ rarely (rev) $ gap 8 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # cutoff 2000 # gain 0.85
+
+do
+  d6 $ s "XORE_hats*16" # n 0 # room 0.1 # gain 0.75 # crush 5 # orbit 5
+  xfadeIn 6 8 $ s "XORE_hats*16" # n 0 # room 0.2 # gain 0.7 # orbit 5
+
+
+-- fade out over 4/8 or so
+d4 silence
+
+do
+  xfadeIn 1 4 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15 # djf 0.7
+  xfadeIn 5 4 silence
+  clutchIn 6 4 silence
+
+do
+  d2 silence
+  d3 silence
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15
+  d2 $ gap 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  -- d3 $ gap 16 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d4 $ s "UMRU_bass_one_shots/4" # n 19
+  d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
+  d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # distort 0.15
+  clutchIn 8 16 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.15 # gain 0.93
+
+
+d5 silence
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.15
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15
+  d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
+  d7 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.9
+
+
+d9 $ slice 16 "<1 ~>" $ s "choir" # note "-4" # gain 0.9
+
+d9 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.98
+
+
+do
+  hush
+  d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # distort 0.15
+  d7 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.9
+  d8 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.15 # gain 0.93
+  d9 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.98
+
+
+do
+  xfadeIn 4 8 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 0.8 # cutoff 4000
+  xfadeIn 6 8 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+
+
+do
+  d3 silence
+  d4 silence
+  xfadeIn 5 32 $ s "sn:7*16"
+  d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # hcutoff 800 # cutoff 2000
+  d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 300 700 saw)
+
+do
+  d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 700 1400 saw)
+
+do
+  d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 1400 2500 saw)
+  xfadeIn 11 4 $ chop 8 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 0.8 # crush 6.5
+  -- xfadeIn 5 16 $ s "sn:7*16"
+
+do
+  xfadeIn 11 4 $ chop 8 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.82 # room 0.8 # crush 5.5
+  xfadeIn 12 4 $ chop 16 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.82 # room 0.9 # crush 5
+  d1 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # speed "0.5" -- noise riser
+  jumpIn' 1 1 silence
+
+
+d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.1 # gain 0.8 # room 0.9
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15
+  d2 $ gap 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
+  d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  -- d3 $ gap 16 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
+  d4 $ s "UMRU_bass_one_shots/4" # n 19
+  d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
+  d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # distort 0.15
+  d8 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.15 # gain 0.93
+  d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.1 # gain 0.8 # room 0.9 # cutoff 1000
+  d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 1500 3000 sine)
+  d11 $ chop 8 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.9 # room 0.8 # crush 7
+  d12 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 2000 -- noise riser come down
+  jumpIn 12 1 silence
+
+
+do
+  solo 2
+  solo 4
+  solo 8
+
+hush
+
+do
+  unsolo 2
+  unsolo 4
+  unsolo 8
+
+
+-- #

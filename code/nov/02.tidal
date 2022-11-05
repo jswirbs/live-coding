@@ -1,0 +1,49 @@
+setcps(120/60/4)
+setcps(130/60/4)
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10
+
+d2 $ s "[~ sn]*2" # n 1
+
+d3 $ n ("[~ [c2,c3*2]]*4" + "<0 4 7 9>") # s "warsawbass"
+d3 silence
+
+d4 $ ghost $ (0.125 <~) $ n ("[f f [~ f] ~]*2" + "<0 -1 -6 -5>") # s "superpiano" # cutoff 3000 # sustain (slow 2 $ range 0.28 0.4 sine) # crush 5 # gain 0.8
+
+d5 $ gap 32 $ ghost $ n (slow 4 $ "f'min e'min b4'min c'maj") # s "supersaw" # cutoff 1000 # crush 5 # gain 0.9
+d6 $ ghost $ n (slow 4 $ "f'min e'min b4'min c'maj") # s "supersaw" # cutoff 1000 # crush 5 # gain 0.9
+
+d5 $ gap 32 $ ghost $ n (slow 4 $ "c'maj e'min b4'min c'maj") # s "supersaw" # cutoff 1000 # crush 5 # gain 0.82
+d6 $ ghost $ n (slow 4 $ "c'maj e'min b4'min c'maj") # s "supersaw" # cutoff 1000 # crush 6 # gain 0.8
+
+
+d5 $ (0.125 ~>) $ n "<[f*4] [f*4] ~ ~>" # s "default" # sustain 0.2 # crush 5
+
+
+
+d1 silence
+d1 $ s "SOPHIE_kicks_dry*4" # n 18
+d2 $ s "SOPHIE_subs*4" # gain 1 # room 0.2 # cutoff 200
+
+
+
+
+setcps(130/60/4)
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.1
+
+d2 $ fast 4 $ n "[a2]*4" # s "warsawbass" # gain "0.85 0.95 1 1" # sustain 0.2 # distort 0.02
+d2 $ fast 4 $ n "[a2]*2" # s "superhammond" # gain "0.85 0.95 1 1" # distort 0.02
+
+d3 $ chop 16 $ loopAt 4 $ s "techno_drum_loops:2" # cutoff 6000 # gain 0.9
+
+
+
+d5 $ gap 32 $ ghost $ n "a4'min" # s "supersaw" # cutoff 500 # crush 5 # gain 0.75
+d6 $ ghost $ n "a4'min" # s "supersaw" # cutoff 1000 # crush 6 # gain 0.7 # attack 1 # sustain 2 # release 2
+
+
+
+--
