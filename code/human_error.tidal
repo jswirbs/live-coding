@@ -92,10 +92,10 @@ do -- fade back to earlier high point, or go to long break?
 
 
 
-d7 $ slow 2 $ n "cs3" # s "supersaw" # pitch1 6 # accelerate 0.17 # gain 0.9
+d7 $ slow 2 $ n "d3" # s "supersaw" # pitch1 6 # accelerate 0.18 # gain 0.9
 d7 silence
 
-d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.2 # pitch1 2 # accelerate 0.2
+d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 2 # accelerate 0.2
 
 
 do
@@ -232,6 +232,7 @@ do
   let choirRange = "17 19 21 23 26 29 33 38" * 100
   d6 $ slice 128 "[~ <32 32 32 32 32 32 64 16>]*2" $ loopAt 4 $ s "choir" # gain 1 # room 1 # size 0.5 # cutoff (choirRange + 200)
   d7 $ slice 128 "[~ <32 32 32 32 32 32 64 16>]*4" $ loopAt 4 $ s "choir" # gain 1.1 # room 0.5 # cutoff (choirRange)
+  d8 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.85" # room 1 # size 0.5 # gain 1
 
 
 
@@ -249,7 +250,7 @@ do -- come in a little early?
 do
   hush
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  d2 $ slow 4 $ n "d2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 "1@6 2 3" # room 0.4 # djf 0.3 # gain "1.05 1@15"
+  d2 $ slow 4 $ n "d2*12@12 ds2*2@2 a2*2@2" # s "supersaw" # pitch1 "1@6 2 3" # room 0.4 # djf 0.3 # gain 1.05 # distort 0.1
   -- d2 $ slow 4 $ n "d2*16" # s "supersaw" # pitch1 1 # room 0.4 # djf 0.3 # gain 1.05 # accelerate "0@12 0.15@2 0.48@2"
   d3 $ chop 8 $ loopAt 4 $ s "techno_drum_loops"
   -- d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
@@ -281,20 +282,6 @@ do
   d10 silence
 
 
-
-
-
-do
-  xfadeIn 3 6 $ chop 8 $ loopAt 4 $ s "techno_drum_loops" # djf 0.98 # orbit 2
-  xfadeIn 5 6 $ rev $ slice 32 "<0 0 24 30> ~ ~ ~ 1 ~ ~ 1" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.95 # djf "0.7 0.78 0.86 0.9" # orbit 4
-  xfadeIn 6 6 $ slice 128 "[~ <32 32 32 32 32 32 64 16>]*2" $ loopAt 4 $ s "choir" # gain 1.1 # room 1 # size 0.5 # cutoff 500 # orbit 5
-  xfadeIn 7 6 $ slice 128 "[~ <32 32 32 32 32 32 64 16>]*4" $ loopAt 4 $ s "choir" # gain 1.25 # room 0.5 # cutoff 400 # orbit 6
-  xfadeIn 10 3 silence
-
-do
-  hush
-  d4 $ loopAt 1 $ gap "2 16" $ s "choir" # n 1 # room 1 # size 0.9 # gain 0.9 # crush "12 [8 7 6 5]"
-  xfadeIn 5 2 $ s "sn:1*16" # orbit 7 # gain 0.9
 
 
 

@@ -96,8 +96,8 @@ d9 silence
 
 do
   d4 $ loopAt 0.25 $ s "<ABBA_gimme ~ ~ ~ ABBA_gimme ABBA_gimme ~ ~>"
-  d5 $ ghost $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # cutoff 3000
-  -- d4  $ loopAt 0.25 $ s "<~ ~ ~ ~ ABBA_gimme ABBA_gimme ~ ~>"
+  -- d5 $ ghost $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # cutoff 2000
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 7 # gain 0.95 # cutoff 3000
   jumpIn 8 1 $ gap 2 $ loopAt 0.25 $ s "<~ ~ ~ ~ ABBA_gimme ABBA_gimme ~ ~>" # djf 0.43
   d10 silence
 
@@ -133,6 +133,7 @@ do
 
 
 
+
 do
   d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # cutoff 1000
   d9 $ ghost $ n (slow 2 $ "<[~ e]*8 [~ b]*8 [~ b]*8 [~ e]*8>") # s "supersaw" # octave 4 # cutoff (slow 4 $ range 250 400 sine) # sustain 0.12 # room 1 # size (slow 4 $ range 0.7 1.1 saw) # gain 0.7
@@ -147,10 +148,10 @@ xfadeIn 4 16 $ loopAt 0.25 $ s "ABBA_gimme" # distort 0.4
 xfadeIn 5 16 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # cutoff 4000 # gain 0.9
 
 -- xfadeIn 8 16 $ (0.5 <~) $ rarely rev $ ghost $ chop 2 $ n (slow 2 $ "<[^synth0 e*4@1] [^synth1 b*4@1] [^synth2 b*4@1] [^synth3 e*4@1]>") # s "supersaw" # octave 3 # cutoff 1000 # sustain 0.12 # room 0.5 # size 0.4 # gain 0.8
-xfadeIn 8 16 $ (0.25 ~>) $ ghost $ chop 2 $ n ("d*4" + "2") # s "supersaw" # octave 3 # cutoff 1000 # sustain 0.12 # room 0.5 # size 0.4 # gain 0.8
-xfadeIn 9 16 $ ghost $ n (slow 2 $ "<[~ e]*8 [~ b]*8 [~ b]*8 [~ e]*8>") # s "supersaw" # octave 4 # cutoff (slow 4 $ range 2000 3000 sine) # sustain 0.12 # room 0.5 # size 0.4 # gain 0.8
+xfadeIn 8 16 $ (0.25 ~>) $ ghost $ chop 2 $ n ("d*4" + "2") # s "supersaw" # octave 3 # cutoff 1000 # sustain 0.12 # room 0.5 # size 0.4 # gain 0.75
+xfadeIn 9 16 $ ghost $ n (slow 2 $ "<[~ e]*8 [~ b]*8 [~ b]*8 [~ e]*8>") # s "supersaw" # octave 4 # cutoff (slow 4 $ range 2000 3000 sine) # sustain 0.12 # room 0.5 # size 0.4 # gain 0.75
 
-d6 $ ghost $ (0.25 ~>) $ n "^synth3" # s "supersaw" # octave "[4,5]" # cutoff 300 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.85
+-- d6 $ ghost $ (0.25 ~>) $ n "^synth3" # s "supersaw" # octave "[4,5]" # cutoff 300 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.85
 
 clutchIn 6 8 $ ghost $ (0.25 ~>) $ n "^synth3 ~ ^synth3 ~" # s "supersaw" # octave "[4,5]" # cutoff 300 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.85
 
@@ -261,15 +262,15 @@ do
 
 
 
-
-d10 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4
-clutchIn 10 16 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4 # orbit 9
-
-
 d9 silence
 
+
+clutchIn 10 16 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4 # orbit 9
+d10 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4
+
+
 xfadeIn 9 8 $ ghost $ chop 2 $ (0.25 ~>) $ n "^synth3 ^synth3" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # waveloss 30 # distort 0.2 # gain ((1 <~) $ slow 4 $ "0.65@5 0@3")
-d9 $ ghost $ chop 2 $ (0.25 ~>) $ n "^synth3 ^synth3" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.65 # waveloss 30 # distort 0.2
+d9 $ ghost $ chop 2 $ (0.25 ~>) $ n "<[^synth0]*2 [^synth1]*2 [^synth2]*2 [^synth3]*2>" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.65 # waveloss 30 # distort 0.2 # gain ((1 <~) $ slow 4 $ "0.65@3 0@5")
 
 
 
@@ -306,25 +307,46 @@ do
   d4 $ loopAt 0.25 $ s "ABBA_gimme/4" # room 0.2 # cutoff 2000
   d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 7 # gain 0.95
   d6 $ (0.125 ~>) $ s "[CXCX_hh]*4" # n 7
+  d7 $ s "SOPHIE_percussion*16" # n "[5..8]" # crush 2 # cutoff 1500 # hcutoff 5000 # gain "0 0 1 0 1 1 0 1 1 0 0 0 0 1 1 1"
   d8 $ ghost $ (0.25 ~>) $ n ("d*4" + "2") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
-  d9 $ ghost $ (0.25 ~>) $ n (slow 4 $ "~@15 ^synth3") # s "supersaw" # octave "[4,5]" # cutoff 300 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.85
+  d9 $ ghost $ (0.25 ~>) $ n (slow 4 $ "~@31 ^synth3") # s "supersaw" # octave "[4,5]" # cutoff 500 # sustain 0.25 # room "0.2@7 0.8" # size 0.9 # gain 0.5
   -- d10 $ palindrome $ slice 8 "[0 1 2 3 <4 0> <5 1> <6 2> <7 3>]*2" $ loopAt 0.25 $ s "ABBA_gimme" # gain 1.05 # pan (range 0.2 0.8 rand) # room 0.4
   d10 $ rev $ fast 2 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.7 # cutoff 2500 # gain 1.05 # pan (range 0.2 0.8 rand)
+  d11 $ ghost $ n "e*4" # s "warsawbass" # octave "[3]" # cutoff 1000 # sustain 0.15 # room "0.6@7 1" # size 0.8 # orbit 10 # gain 0.8 # distort 0.2
 
 
-d8 $ ghost $ (0.25 ~>) $ n (slow 2 $ "e*4@1 ^synth3") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
+-- d8 $ ghost $ (0.25 ~>) $ n (slow 2 $ "e*4@1 ^synth3") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
+
+-- d11 $ ghost $ (0.25 ~>) $ n (slow 4 $ "<^synth0 ^synth1 ^synth2 ^synth3>") # s "warsawbass" # octave "[2,3]" # cutoff (slow 3 $ range 700 2000 sine) # sustain 0.15 # room "0.6@7 1" # size 0.9 # orbit 10 # gain 0.85 # distort 0.25
+
+
 
 do
+  d1 $ ghost $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 7 # gain 0.95 # cutoff 3000
+  d6 $ (0.125 ~>) $ s "[CXCX_hh]*4" # n 7 # cutoff 4000
+  xfadeIn 7 4 $ s "SOPHIE_percussion*16" # n "[5..8]" # crush 2 # cutoff 2500 # hcutoff 4000 # gain "0 0 1 0 1 1 0 1 1 0 0 0 0 1 1 1"
+
+do
+  d1 $ ghost $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 7 # gain 0.95
+  d6 $ (0.125 ~>) $ s "[CXCX_hh]*4" # n 7
   d7 $ s "SOPHIE_percussion*16" # n "[5..8]" # crush 2 # cutoff 1500 # hcutoff 5000 # gain "0 0 1 0 1 1 0 1 1 0 0 0 0 1 1 1"
   d10 $ palindrome $ slice 8 "[0 1 2 3 <4 0> <5 1> <6 2> <7 3>]*2" $ loopAt 0.25 $ s "ABBA_gimme" # gain 1.05 # pan (range 0.2 0.8 rand) # room 0.4
+
 
 
 d10 $ rev $ fast 2 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.8 # cutoff 2500 # gain 1.05 # pan (range 0.2 0.8 rand)
 d10 $ palindrome $ slice 8 "[0 1 2 3 <4 0> <5 1> <6 2> <7 3>]*2" $ loopAt 0.25 $ s "ABBA_gimme" # gain 1.05 # pan (range 0.2 0.8 rand) # room 0.4
 
+do
+  d7 silence
+  d10 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.4 # cutoff 3000 # gain 1.05
 
-d10 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.4 # cutoff 3000 # gain 1.05
-d10 $ fast 2 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.4 # cutoff 3000 # gain 1.05
+do
+  d10 $ fast 2 $ slice 8 "0 1 2 3 4 5 6 7" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.4 # cutoff 3000 # gain 1.05
+  d6 $ (0.125 ~>) $ s "[CXCX_hh]*4" # n 7 # cutoff 4000
+
 d10 $ fast 2 $ slice 8 "[0 1 2 3 <4 0> <5 1> <6 2> <7 3>]*2" $ loopAt 0.25 $ s "ABBA_gimme" # room 0.4 # cutoff 3000
 
 
@@ -351,8 +373,35 @@ do
 
 
 
-
 --
+
+
+
+
+
+
+do
+  d5 silence
+  d7 silence
+  d8 silence
+  setI "synth0" $ (1 <~) $ "[d ~ d f a] [d6 ~ d6 a f] [d*2]@2" + "2"
+  setI "synth1" $ (1 <~) $ "[d ~ d f a] [d6 ~ d6 a f] [d e f g] a" + "2"
+  setI "synth2" $ (1 <~) $ "[a ~ a c6 e6] [f6 ~ f6 e6 c6] [a*2]@2" + "2"
+  setI "synth3" $ (1 <~) $ "[a ~ e a6 c6] [e6 ~ d6 a6 f6] [d*2]@2" + "2"
+  xfadeIn 11 6 $ ghost $ (0.25 ~>) $ n (slow 4 $ "<^synth0 ^synth1 ^synth2 ^synth3>") # s "warsawbass" # octave "[3,2]" # cutoff (slow 3 $ range 700 2000 sine) # sustain 0.15 # room "0.6@7 1" # size 0.8 # orbit 10 # gain 0.85 # distort 0.25 # squiz 2
+
+
+
+do
+  d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 7 # gain 0.95
+  d7 $ s "SOPHIE_percussion*16" # n "[5..8]" # crush 2 # cutoff 1500 # hcutoff 5000 # gain "0 0 1 0 1 1 0 1 1 0 0 0 0 1 1 1"
+  d8 $ ghost $ (0.25 ~>) $ n ("d*4" + "2") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
+  d10 $ palindrome $ slice 8 "[0 1 2 3 <4 0> <5 1> <6 2> <7 3>]*2" $ loopAt 0.25 $ s "ABBA_gimme" # gain 1.05 # pan (range 0.2 0.8 rand) # room 0.4
+  d11 $ ghost $ (0.25 ~>) $ n (slow 4 $ "<^synth0 ^synth1 ^synth2 ^synth3>") # s "warsawbass" # octave "[3,2]" # cutoff (slow 3 $ range 700 2000 sine) # sustain 0.15 # room "0.6@7 1" # size 0.8 # orbit 10 # gain 0.85 # distort 0.25 # squiz 2
+  d12 $ ghost $ (1.25 ~>) $ n (slow 4 $ "<^synth0 ^synth1 ^synth2 ^synth3>") # s "warsawbass" # octave "[4,5]" # cutoff (slow 3 $ range 3000 5000 sine) # sustain 0.25 # room "0.9@7 1" # size 0.9 # orbit 11 # gain 0.5 # distort 0.1 -- # squiz 2
+
+
+
 
 
 

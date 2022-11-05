@@ -49,6 +49,7 @@ do
   xfadeIn 3 4 $ fast 2 $ arp "down" $ n ("[c2 c3'min@3]" + "<0 12 24 36>") # s "default" # sustain 0.1 # distort (slow 4 $ range 0.05 0.1 sine) # gain 0.95 # pan (slow 2 $ range 0 1 saw) # room 0.5 # djf 0.3 # orbit 9
   xfadeIn 4 4 $ (1 ~>) $ fast 2 $ arp "up" $ n ("[c5 c'min@3]" - "<36 24 13 0>") # s "default" # sustain 0.3 # attack 0.25 # distort (slow 4 $ range 0.1 0.05 sine) # gain 0.95 # pan (slow 2 $ range 1 0 saw) # room 0.5 # djf 0.5 # orbit 10
 
+
 --
 d6 $ gap 8 $ slow 4 $ slice 4 "<0 1 2 3>" $ s "DJ_DAVE_castles" # n 9 # cutoff 1000 # crush 4
 d6 $ slow 16 $ gap 256 $ s "DJ_DAVE_castles" # n 9 # room 0.5 # cutoff 900 # waveloss 30
@@ -309,7 +310,7 @@ do
   d4 $ slow 4 $ slice 16 "1*4" $ s "DJ_DAVE_castles:0" # room 0.5
   d5 $ slice 16 "10*4" $ s "DJ_DAVE_castles:1" # distort 0.1
   d7 $ (0.125 ~>) $ n "c*4" # s "default" # sustain 0.1 # distort 1 # gain 0.78 # room 0.1
-  d8 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # distort 0.3
+  d8 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # distort 0.25 # gain 0.97
   d9 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.93
 
 
