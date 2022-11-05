@@ -331,7 +331,7 @@ d4 $ loopAt 8 $ s "choir" # room 1 # size 0.9
 SLOW C
 
 
-setcps(136/60/4) -- cs
+setcps(137/60/4) -- cs
 -- setcps(143/60/4) -- d
 
 -- better speed for matching d pitch??
@@ -456,6 +456,17 @@ d3 $ slice 16 "~ ~ ~ 1" $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.8 -- fade t
 
 d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 3 # room 0.2 -- # pitch1 3 # room 0.2
 
+d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 4 # room 0.25
+
+do
+  d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 5 # room 0.3
+  xfadeIn 10 8 $ s "SOPHIE_subs*2" # gain 1 # room 0.6 # cutoff 100
+  clutchIn 11 4 $ s "supersaw" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+
+do
+  d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 6 # room 0.4
+  clutchIn 11 4 $ s "supersaw*4?" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+
 
 do
   d1 $ s "incoming:7*2" # gain 1.1
@@ -463,6 +474,7 @@ do
   d4 $ chop 4 $ slice 2 "0/4" $ loopAt 8 $ s "choir" # room 1 # size 0.9 # cutoff 1000 # gain 0.8 # orbit 3 # crush (fast 2 $ rev $ 8 + (4 * ((run 64) / 64))) # waveloss (fast 2 $ run 25)
   -- d4 $ slow 4 $ n "d3" # s "supersaw" # room 0.2 # accelerate 1.1 # sustain 7.4 # gain 0.8
   -- xfadeIn 7 4 $ s "sn:1*8" # orbit 7 # gain 0.75
+  xfadeIn 7 8 $ s "sn:1*16" # orbit 6
   d10 $ s "SOPHIE_subs*2" # gain 1.1 # room 0.6 # cutoff 100
   clutchIn 11 4 $ s "supersaw*16?" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4
 
@@ -474,7 +486,6 @@ do
   d5 $ slow 4 $ n "cs3" # s "supersaw" # room 0.2 # accelerate 1 # gain 0.8
   d6 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # gain 0.5
   xfadeIn 6 4 $ slice 128 "0*2 1*2 ~*2 ~*2 0*2 15*2 ~*2 ~*2" $ loopAt 4 $ s "choir" # room 0.4 # gain 1.2
-  xfadeIn 7 4 $ s "sn:1*16" # orbit 7 # gain 0.9
   d9 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.85" # gain 1.4 # distort 0 # cutoff 5000
   d10 $ s "SOPHIE_subs*4" # room 1 # cutoff 200
   jumpIn 11 3 silence
@@ -603,7 +614,7 @@ do
 
 
 d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <16? 11?>>" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw)
-d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "11" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (fast 4 $ range 0.1 0.9 saw)
+d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ 11>" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (fast 4 $ range 0.1 0.9 saw)
 
 
 
