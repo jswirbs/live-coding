@@ -229,6 +229,8 @@ xfadeIn 7 8 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sust
 do
   solo 7
   solo 8
+  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size "0@3 0.98@5" # orbit 6
+
 
 hush
 

@@ -117,7 +117,7 @@ do
 
 
 
-d16 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.28 # room 1 # size 1 # orbit 16
+d16 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.3 # room 1 # size 1 # orbit 16
 
 
 do
@@ -217,6 +217,7 @@ do
 
 d9 $ s "~ sn ~ sn" # n 1 # djf 0.99 # gain 0.8 # room 0.9
 d9 $ s "~ sn ~ sn" # n 1 # djf 0.99 # gain 0.9
+
 
 
 do

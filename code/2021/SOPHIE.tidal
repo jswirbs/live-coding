@@ -175,7 +175,7 @@ do
   d8 silence
   d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.15
   d6 $ s "noise*8" # gain (fast 4 $ "1.25 1.15") # cutoff 2000 # room 0.5
-
+  d9 $ ghost $ rarely rev $ chop 2 $ fast 2 $ s "default" # n (arp "up" "e6'min7 c5'maj7") # cutoff 450 # room 0.8 # size 0.3 # gain 0.9
 
 
 

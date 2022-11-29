@@ -98,6 +98,8 @@ do
 
 --- # WITH UMRU VOCAL LOOP # ---
 setcps(180/60/4)
+-- or 200bpm and c6 note
+-- or just 185 like a civilized person idk
 
 
 
