@@ -27,7 +27,7 @@ do
   unsolo 4
   unsolo 6
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2
-  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 3  -- # pitch1 1 -> 8
+  d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.2 # pitch1 3 # room 0.2  -- # pitch1 1 -> 8
   -- d2 $ loopAt 4 $ s "techno_bass_loops:1" # gain 1.1 # room 0.5
   d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
   d5 $ slice 32 "0 1 ~ ~ 0 [~ 1] <1 11 30 18> 24" $ loopAt 4 $ s "choir" # room 0.4 # gain 0.9
@@ -122,11 +122,11 @@ d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 4 # room 0.25
 do
   d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 5 # room 0.3
   xfadeIn 10 8 $ s "SOPHIE_subs*2" # gain 1 # room 0.6 # cutoff 100
-  clutchIn 11 4 $ s "supersaw" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 0.8 # gain 0.45 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
 
 do
   d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 6 # room 0.4
-  clutchIn 11 4 $ s "supersaw*4?" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 700 # hcutoff 1200
 
 
 do
@@ -258,7 +258,7 @@ do -- come in a little early?
   -- d4 $ slice 4 "3" $ loopAt 4 $ s "choir" # room 1 # size 0.9 # gain 0.8
   jumpIn' 4 0 $ loopAt 1 $ gap "2 16" $ s "choir" # n 1 # room 1 # size 0.9 # gain 0.9 # crush "12 [8 7 6 5]"
   -- d4 $ loopAt 1 $ s "choir" # n 1 # room 1 # size 0.9 # gain 0.88
-  d8 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.85" # room 1 # size 0.5 # gain 1 # cutoff 4000
+  d8 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.85" # room 1 # size 0.5 # gain 1 # hcutoff 3000
 
 
 do
@@ -276,6 +276,7 @@ do
 
 
 d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <16? 11?>>" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw)
+d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <16 11>>" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw)
 d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "11" # gain (range 0.4 0.85 saw) # crush (range 10 5 saw) # pan (fast 4 $ range 0.1 0.9 saw)
 
 
@@ -287,7 +288,7 @@ do
   xfadeIn 3 4 $ chop 16 $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.5
   d4 $ loopAt 4 $ gap "32 64 [32 64] [128 [256 [512 [1024 2048]]]]" $ s "choir:0" # room 1 # size 0.9 # gain 0.8
   xfadeIn 8 7 $ fast 2 $ s "~ SOPHIE_claps" # n 6 # gain 0.9
-  xfadeIn 10 6 $ s "SOPHIE_subs*4" # gain 1.35 # room 0.1
+  xfadeIn 10 6 $ s "SOPHIE_subs*2 SOPHIE_subs*4" # gain 1.35 # room 0.1
 
 
 do
