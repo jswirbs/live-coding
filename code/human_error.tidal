@@ -40,7 +40,7 @@ do
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
   xfadeIn 1 4 silence
   d2 $ slow 4 $ n "d2*4@2 d2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # room 0.4 # gain 0.9
-  d3 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
+  xfadeIn 3 1 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
 
 -- aaand back
 
@@ -122,11 +122,11 @@ d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 4 # room 0.25
 do
   d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 5 # room 0.3
   xfadeIn 10 8 $ s "SOPHIE_subs*2" # gain 1 # room 0.6 # cutoff 100
-  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 0.8 # gain 0.45 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 0.8 # gain 0.5 # squiz 2 # crush 4 # cutoff 700 # hcutoff 1200
 
 do
   d2 $ slow 4 $ n "d2" # s "supersaw" # sustain 7.6 # pitch1 6 # room 0.4
-  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 700 # hcutoff 1200
+  clutchIn 11 4 $ s "supersaw*4" # n "<d d e g>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 1500 # hcutoff 400
 
 
 do
@@ -387,7 +387,7 @@ do
   d1 $ s "SOPHIE_kicks_dry*4" # n 15 # gain 1.2 # djf 0.72
   xfadeIn 1 4 silence
   d2 $ slow 4 $ n "cs2*4@2 cs2*8@2" # s "supersaw" # pitch1 ((run 8) + 2) # pitch1 3 # room 0.4
-  d3 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
+  xfadeIn 3 1 $ slice 16 (slow 4 $ "1*4 1*8 1*16 1*32") $ loopAt 4 $ s "techno_drum_loops:1" # djf 0.6
 
 -- aaand back
 
@@ -476,11 +476,11 @@ d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 4 # room 0.25
 do
   d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 5 # room 0.3
   xfadeIn 10 8 $ s "SOPHIE_subs*2" # gain 1 # room 0.6 # cutoff 100
-  clutchIn 11 4 $ s "supersaw" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+  clutchIn 11 4 $ s "supersaw*4" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 0.8 # gain 0.5 # squiz 2 # crush 4 # cutoff 700 # hcutoff 1200
 
 do
   d2 $ slow 4 $ n "cs2" # s "supersaw" # sustain 7.6 # pitch1 6 # room 0.4
-  clutchIn 11 4 $ s "supersaw*4?" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 500 # hcutoff 1500
+  clutchIn 11 4 $ s "supersaw*4" # n "<cs cs ds fs>" # accelerate 1 # sustain 6 # distort 1 # gain 0.5 # squiz 2 # crush 4 # cutoff 1500 # hcutoff 400
 
 
 do
@@ -612,6 +612,8 @@ do -- come in a little early?
   -- d4 $ slice 4 "3" $ loopAt 4 $ s "choir" # room 1 # size 0.9 # gain 0.8
   jumpIn' 4 0 $ loopAt 1 $ gap "2 16" $ s "choir" # n 1 # room 1 # size 0.9 # gain 0.9 # crush "12 [8 7 6 5]"
   -- d4 $ loopAt 1 $ s "choir" # n 1 # room 1 # size 0.9 # gain 0.88
+  d8 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.87" # room 1 # size 0.5 # gain 1 # hcutoff 3000
+
 
 do
   hush
@@ -645,7 +647,7 @@ do
 
 do
   d1 silence
-  d5 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.85" # room 1 # size 0.5 # gain 1.3
+  d5 $ slow 4 $ s "~ ~ ~ jungle:4" # speed "0.87" # room 1 # size 0.5 # gain 1.3
   d8 $ fast 2 $ s "~ SOPHIE_claps" # n 6 # gain 0.9 # cutoff "<7000 3000>"
 
 

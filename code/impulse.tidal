@@ -69,6 +69,7 @@ do
 
 
 
+  d8 $ ghost $ ghost $ s "UMRU_stomps" # n "<2 3 2 9>" # gain "<1 1 1 1>"
 
 
 
@@ -209,7 +210,7 @@ do
 
 
 xfadeIn 9 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.04 # orbit 8
-xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.65 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
+xfadeIn 10 4 $ (0.125 ~>) $ rev $ n "[b4 cs d fs]*2" # s "supersaw" # octave "6 7" # sustain "0.5@3 0.75" # detune 0.2 # gain 0.62 # waveloss 30 # room 0.5 # djf 0.8 # cutoff 1200 # pan (slow 4 $ range 0 1 sine) # orbit 9
 
 
 xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 8
@@ -220,23 +221,29 @@ xfadeIn 10 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" #
 
 
 
-xfadeIn 6 8 silence
 xfadeIn 9 8 silence
 xfadeIn 10 8 silence
+xfadeIn 6 8 silence
 xfadeIn 7 8 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75" # distort 0.2
 
+d2 silence
 
 do
   solo 7
   solo 8
-  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size "0@3 0.98@5" # orbit 6
-
+  solo 12
+  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size "0@3 0.987@5" # orbit 6
+  jumpIn 7 1 silence
+  jumpIn 8 1 silence
+  d12 $ s "SOPHIE_crashes" # n 1 # gain 0.8 # room 0.5 # speed "0.5"
+  jumpIn 12 1 silence
 
 hush
 
 do
   unsolo 7
   unsolo 8
+  unsolo 12
 
 
 
