@@ -24,6 +24,7 @@ do
   let p_chords16 = "<[a4, e, a, b, c6]*16 [a4, e, a, b, c6]*16 [c, e, f, a, c6]*16 [g, b, d, a]*16>"
   let p_notes = "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>"
   let p_notes2 = "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>"
+  d12 $ silence
 
 --d7 $ n "a'min*16" # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
 d7 $ n "[a4, e, a, b, c6]*16" # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
@@ -112,7 +113,7 @@ do
 
 do
   d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.95
-  d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.8 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
+  d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.75 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
 
 d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
 d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.75
@@ -134,16 +135,18 @@ do
   d2 $ rev $ striate 16 $ n (off "<0.125 0.375>" (+12) p_chords) # s "supersaw" # cutoff (slow 4 $ range 2000 3000 sine) # gain 0.9
   d3 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.5 # pan (range 0.2 0.8 saw) # gain 1.05
   d4 $ s "jungbass:7*4"
+  d5 silence
   clutch 1 $ s "house*4" # gain 1.2
   clutch 2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine) # gain 0.9
   clutch 3 $ rarely (rev) $ rarely (palindrome) $ n "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.3 # pan (range 0.2 0.8 saw) # gain 1.05
   clutch 4 $ s "jungbass:10 jungbass:4" # gain 1.4
+  clutch 5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
 
 
   d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
 
-  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.5 # gain (range 0.9 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
-  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.8 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)
+  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.5 # gain (range 0.85 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
+  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.75 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)
 
 
 

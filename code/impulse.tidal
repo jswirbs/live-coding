@@ -3,8 +3,8 @@ setcps(140/60/4)
 
 
 do
-  xfadeIn 3 8 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05
-  xfadeIn 4 8 $ n ("b" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3
+  xfadeIn 1 12 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05 # orbit 1
+  xfadeIn 2 12 $ n ("b" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3 # orbit 1
 
 do
   d1 $ s "XORE_kicks*4" # n 5 # gain 1.2 # djf 0.64
@@ -175,7 +175,7 @@ do
 
 do
   d3 $ s "XORE_snares*4" # n 4 # room 0.3
-  xfadeIn 12 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.34
+  xfadeIn 12 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.35
 
 do
   d3 $ s "XORE_snares*8" # n 4 # room 0.3
@@ -229,22 +229,37 @@ xfadeIn 7 8 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sust
 d2 silence
 
 do
+  -- solo 1
+  -- solo 2
+  solo 4
+  solo 5
   solo 7
   solo 8
   solo 12
-  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size "0@3 0.987@5" # orbit 6
+  d4 $ n ("b" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5 # gain 0.98
+  jumpIn 4 1 silence
+  d5 $ n "b" # octave "[2,3]" # s "supersaw" # sustain 0.35 # cutoff 350 # room 0.5 # size 0.985 # gain 0.8
+  jumpIn 5 1 silence
+  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size "0@3 0.985@5" # orbit 6
   jumpIn 7 1 silence
   jumpIn 8 1 silence
   d12 $ s "SOPHIE_crashes" # n 1 # gain 0.8 # room 0.5 # speed "0.5"
   jumpIn 12 1 silence
 
+
 hush
 
 do
+  unsolo 4
+  unsolo 5
   unsolo 7
   unsolo 8
   unsolo 12
 
+
+do -- actually hush size
+  d5 $ n "b" # octave "[2,3]" # s "supersaw" # sustain 0.35 # cutoff 350 # room 0.5 # size 0 # gain 0
+  d7 $ (0.125 ~>) $ n "[b4 cs d fs] ~" # s "superpiano" # octave 6 # sustain "0.5@3 0.75@5" # distort 0.2 # room "0@3 0.2@5" # size 0 # gain 0
 
 
 
