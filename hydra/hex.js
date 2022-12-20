@@ -1,0 +1,12 @@
+
+osc(8,0.001, 1.6)
+  .color(-1.5, -1.5, -1.5)
+  .blend(o0)
+  .rotate(-0.5, -0.5)
+  .modulate(shape(6)
+            .rotate(0.5, 0.5)
+            .scale(2)
+            .repeatX(3, 3)
+            .modulate(o0, () => mouse.x * 0.0005)
+            .repeatY(3, 3))
+  .out(o0)
