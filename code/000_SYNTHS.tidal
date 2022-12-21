@@ -1,0 +1,129 @@
+setcps(140/60/4)
+
+------------------
+---- DEFAULTS ----
+------------------
+
+d1 $ arp "up" $ n "c4'min7*4" # s "supersaw" -- # pitch1 4
+d1 $ n "c5'min7" # s "supersaw" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superzow" -- # detune 2
+d1 $ n "c5'min7" # s "superzow" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superhammond" -- # voice 2
+d1 $ n "c5'min7" # s "superhammond" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superfm"
+d1 $ n "c5'min7" # s "superfm" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superpiano"
+d1 $ n "c5'min7" # s "superpiano" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "supersquare"
+d1 $ n "c5'min7" # s "supersquare" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superpwm"
+d1 $ n "c5'min7" # s "superpwm" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "supercomparator"
+d1 $ n "c5'min7" # s "supercomparator" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superchip"
+d1 $ n "c5'min7" # s "superchip" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superfork"
+d1 $ n "c5'min7" # s "superfork" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "supermandolin"
+d1 $ n "c5'min7" # s "supermandolin" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "superhoover"
+d1 $ n "c5'min7" # s "superhoover" # distort 0
+
+d1 $ arp "up" $ n "c4'min7*4" # s "supernoise"
+d1 $ n "c5'min7" # s "supernoise" # distort 0
+
+
+-- percussion things
+d1 $ arp "up" $ n "c4'min7*4" # s "soskick"
+d1 $ n "c2'min" # s "soskick" # distort 0 # voice 4 # pitch1 2 # pitch2 0.02 # speed 0.2
+
+d1 $ arp "up" $ n "c4'min7*4" # s "soshats"
+d1 $ arp "up" $ n "c4'min7*4" # s "sostoms"
+d1 $ arp "up" $ n "c4'min7*4" # s "sossnare"
+
+
+-- modulated phase mod sines
+d1 $ arp "up" $ n "c4'min7*4" # s "psin"
+d1 $ n "c5'min7" # s "psin" # distort 0
+
+
+-- audio in
+d1 $ arp "up" $ n "c4'min7*4" # s "in"
+d1 $ n "c5'min7" # s "in" # distort 0
+
+
+
+
+
+
+------------------
+----  CUSTOM  ----
+------------------
+
+d1 $ arp "up" $ n "c4'min7*4" # s "warsawbass"
+d1 $ n "c5'min7" # s "warsawbass"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "moogbass"
+d1 $ n "c5'min7" # s "moogbass"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "midsaw"
+d1 $ n "c5'min7" # s "midsaw"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "midsaw"
+d1 $ n "c5'min7" # s "midsaw"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "acid91"
+d1 $ n "c5'min7" # s "acid91"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "acid92"
+d1 $ n "c5'min7" # s "acid92"
+
+d1 $ arp "up" $ n "c5'min7*4" # s "doublebass"
+d1 $ n "c4'min7" # s "doublebass"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 1
+d1 $ n "c5'min7" # s "ikedabass" # cutoff 300
+
+d1 $ arp "up" $ n "c3'min7*4" # s "subbass" # gain 1.2 # room 0.2 # cutoff 1000
+d1 $ n "c3'min7" # s "subbass" # sustain 1
+
+d1 $ arp "up" $ n "c4'min7*4" # s "bladerunnersaw" # gain 1.2 # sustain 0.1
+d1 $ slow 2 $ n "c3'min7" # s "bladerunnersaw"
+
+d1 $ arp "up" $ n "c5'min7*4" # s "laserbeam"
+d1 $ n "c'min7" # s "laserbeam"
+
+d1 $ arp "up" $ n "c5'min7*4" # s "sillyvoice" # gain 1.2
+d1 $ n "c'min7" # s "sillyvoice"
+
+d1 $ arp "up" $ n "c6'min7*4" # s "beating"
+d1 $ n "c'min7" # s "beating"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "phazer" # gain 1
+d1 $ n "c'min7" # s "phazer"
+
+d1 $ n "c'min7" # s "arpoctave"
+d1 $ n "c3" # s "arpoctave"
+d1 $ n "c3*2" # s "arpoctave" # sustain 1
+
+d1 $ arp "up" $ n "c4'min7*4" # s "basslow" # gain 1
+d1 $ n "c3'min7" # s "basslow"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "basshigh" # gain 1
+d1 $ n "c3'min7" # s "basshigh"
+
+
+
+
+--
