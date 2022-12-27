@@ -80,9 +80,6 @@ d1 $ n "c5'min7" # s "moogbass"
 d1 $ arp "up" $ n "c4'min7*4" # s "midsaw"
 d1 $ n "c5'min7" # s "midsaw"
 
-d1 $ arp "up" $ n "c4'min7*4" # s "midsaw"
-d1 $ n "c5'min7" # s "midsaw"
-
 d1 $ arp "up" $ n "c4'min7*4" # s "acid91"
 d1 $ n "c5'min7" # s "acid91"
 

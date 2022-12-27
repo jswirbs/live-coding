@@ -1,0 +1,144 @@
+setcps(200/60/4)
+
+d1 $ s "techno_kicks*3" # gain 1.2 # n 0
+
+d2 $ slow 4 $ n "a g f e" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
+d2 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
+
+d3 $ n "c6 [b c6] a" # s "superzow" # detune 1 # gain 0.8
+d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
+
+d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
+
+d5 $ slow 4 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+d5 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+
+d8 $ s "[~ hh]*3" # n 8 # gain 1.1
+d8 $ s "[~ hh*2]*3" # n 8 # gain 1.1
+
+
+
+do
+  hush
+  d2 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "[2,3]" # s "supersaw" # distort 0.2 # pitch1 1 # gain 0.9
+  d3 $ n "c6 [b c6] a" # octave "6" # s "superzow" # detune (slow 8 $ range 2 0 saw) # gain 0.67
+  d5 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+
+do
+  d1 $ s "techno_kicks*3" # gain 1.2 # n 0 -- # distort 0.5 # crush 3 # octave "[5,9]"
+  d2 $ slow 4 $ n "a g f e" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
+  d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
+  d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
+  d5 $ slow 4 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+  d8 $ s "[~ hh]*3" # n 8 # gain 1.1
+
+
+do
+  solo 2
+  solo 4
+  solo 5
+  solo 8
+  d2 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "[2,3]" # s "supersaw" # distort 0.2 # pitch1 1 # gain 0.9
+  d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid92" # gain 0.88
+  d5 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "5" # s "moogbass" # gain 1.1 # distort 0.02
+
+do
+  d8 silence
+  xfadeIn 8 16 $ s "hh*12" # n 8 # gain 1.1
+  xfadeIn 4 8 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid92" # gain 1 # cutoff 800
+
+do
+  solo 3
+  unsolo 4
+  d3 $ n "c6 [b c6] a" # s "superzow" # detune 1 # gain 0.64
+
+do
+  d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 1.2 # gain 0.6
+  xfadeIn 8 16 $ s "hh*24" # n 8 # gain 1.2 # distort 0.25 # crush 7
+  solo 9
+  xfadeIn 9 16 $ s "[~ sn]*3" # n 4 # gain 1
+
+do
+  d3 $ n "c6 [b c6] a" # octave "[5,6,7]" # s "superzow" # detune 1.6 # gain 0.55
+
+do
+  unsolo 2
+  unsolo 9
+  d3 $ n "c6 [b c6] a" # octave "[5,6,7]" # s "superzow" # detune (slow 8 $ range 1.8 0.2 saw) # gain 0.5
+  d5 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "5" # s "moogbass" # gain 1.1 # distort 0 # sustain (slow 2 $ "1.2@7 0.6") # cutoff (range 1200 500 saw)
+  d8 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.95 # room 1 # cutoff 2000 -- noise riser come down
+  jumpIn 8 1 silence
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  unsolo 5
+  unsolo 8
+  d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
+  d2 $ slow 4 $ n "a g f e" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
+  d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
+  d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
+  d5 $ slow 4 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+  d8 $ ghost $ s "[~ hh]*3" # n 8 # gain 1.2 # distort 0.45 # crush 7
+  d9 silence
+
+d8 $ ghost $ s "hh*6" # n 8 # gain 1.2 # distort 0.75 # crush 7
+
+d1 silence
+d1 $ s "techno_kicks*3" # gain 1.2 # n 0 -- # distort 0.5 # crush 3 # octave "[5,9]"
+d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
+
+
+do
+  d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
+  -- d2 $ n ("[~ a]*3" - "<0 2 4 5>") # octave "[2,3]" # s "supersaw" # distort 0.4 # pitch1 7 # gain 1 # room 0. # sustain 0.13
+  d2 $ n ("[~ a]*3" + "<0 2 3 5>") # octave "[2,3]" # s "supersaw" # distort 0.1 # pitch1 7 # gain 1 # room 0.3 # sustain 0.13
+  d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
+  d4 silence -- $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
+  d5 $ slow 4 $ gap 48 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.2 # distort 0.3
+  d8 $ ghost $ s "hh*6" # n 8 # gain 1.2 # distort 0.75 # crush 7
+  d9 $ s "[~ sn]*3" # n 4 # gain 1
+
+
+do
+  hush
+  d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
+  xfadeIn 1 16 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.3 # crush 3.5
+  d2 $ n "[~ a]*3" # octave "[2,3]" # s "supersaw" # distort 0.5 # pitch1 7 # gain 1 # room 0.3 # sustain 0.15
+  d3 $ n "c6 [b c6] a" # octave "[6]" # s "superzow" # detune 3 # gain 0.75 -- DETUNEEEE
+  d8 $ ghost $ s "hh*6" # n 8 # gain 1.2 # distort 0.75 # crush 7
+  xfadeIn 8 16 silence
+
+
+d1 $ s "techno_kicks*3" # gain 1.2 # n 0 -- # distort 0.5 # crush 3 # octave "[5,9]"
+
+do
+  d2 $ n ("[~ a]*3" - "<0 2 4 5>") # octave "[2,3]" # s "supersaw" # distort 0.5 # pitch1 7 # gain 1 # room 0.3 # sustain 0.15
+  d3 $ n "c6 [b c6] a" # octave "[5]" # s "superzow" # detune 1 # gain 0.75 -- DETUNEEEE
+
+
+d8 $ s "[~ hh]*3" # n 8 # gain 1.1
+
+
+d5 $ slow 4 $ n "<[a g f e] [f e d a4]>" # octave "5" # s "moogbass" # gain 1.1 # distort 0.02
+
+xfadeIn 2 8 silence
+
+d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
+d4 $ ghost $ n ("a*6" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.9 # distort 0.2 # crush 5
+d4 $ ghost $ n ("a*9" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.9 # distort 0.3 # crush 5
+
+
+do
+  d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
+  d2 $ slow 4 $ n "a g f e" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
+  d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
+  d4 $ ghost $ n ("a*<6 6 6 [6 9]>" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.9 # distort 0.2 # crush 5
+  d5 $ slow 4 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.1 # distort 0.01
+  d8 $ ghost $ s "[~ hh]*3" # n 8 # gain 1.2 # distort 0.45 # crush 7
+
+
+
+
+--
