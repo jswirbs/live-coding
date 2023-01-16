@@ -1,0 +1,423 @@
+setcps(140/60/4)
+
+d1 $ s "SOPHIE_subs*4" # n 0
+d1 $ s "bd*4"
+d1 silence
+
+d2 $ n (off (slow 2 $ range 0 0.0625 saw) (+7) $ "[e@7 ~]*8") # s "default" # squiz 2 # fshift (slow 2 $ range 0 (fast 2 $ range 150 50 sine) saw) # distort 0.25
+d2 $ (0.125 ~>) $ n (off (slow 2 $ range 0 0.0625 saw) (+7) $ "[e ~]*4") # s "default" # squiz 2 # fshift (slow 2 $ range 0 (fast 2 $ range 150 50 sine) saw) # distort 0.25
+d2 $ (0.125 ~>) $ n (off 0 (+7) $ "[e ~]*4") # s "default" # squiz 2 # fshift (slow 2 $ range 0 (fast 2 $ range 150 50 sine) saw) # distort 0.25
+
+d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 3
+
+d2 $ n "[e3,e4,e5,e6]" # s "default"
+d4 silence
+
+
+d2 $ n "[e'min ~]*4" # s "superpiano" # squiz 2 # distort 0.25
+
+
+d2 $ n "e'min" # s "warsawbass" # squiz 2
+
+d4 $ (0.25 ~>) $ s "SOPHIE_claps*2"
+
+d5 $ s ""
+
+
+
+
+
+--
+kinda not bad down here
+---
+
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+d2 $ s "jungbass" # n "<<10 4> 10 <4 10> 1>" # gain 1.25
+d2 silence
+
+d3 $ fast 2 $ s "~ ~ XORE_hats ~ XORE_hats XORE_hats <~ XORE_hats> <~ [~ XORE_hats ~ ~ ~ ~ ~ ~]>" # n 5 # crush 5
+d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4
+
+d4 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6
+
+
+d5 $ chop 4 $ loopAt 4 $ s "kyle" # n "0" # distort 0.4 # waveloss 40 # djf 0.25 # room 0.4
+d5 $ chop 4 $ loopAt 4 $ s "kyle" # n "[0,1,2]" # distort 0.4 # waveloss 40 # djf 0.25 # room 0.4
+d5 silence
+
+d6 $ s "kyle" # n (choose[3,4,5]) # distort 0.4 # waveloss 40 # djf 0.35 # room 0.4
+d6 $ s "kyle ~ [~ kyle] [kyle*2]" # n 3 # distort 0.4 # waveloss 40 # djf 0.35 # room 0.4
+
+
+
+do
+  hush
+  d3 $ fast 2 $ s "~ ~ XORE_hats ~ XORE_hats XORE_hats <~ XORE_hats> <~ [~ XORE_hats ~ ~ ~ ~ ~ ~]>" # n 5 # crush 5
+  d4 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6
+  d5 $ chop 4 $ loopAt 4 $ s "kyle" # n "[0,1,2]" # distort 0.4 # waveloss 40 # djf 0.25 # room 0.4
+  d6 $ s "kyle" # n (choose[3,4,5]) # distort 0.4 # waveloss 40 # djf 0.35 # room 0.4
+
+
+
+xfadeIn 7 8 $ gap 8 $ n "17*4" # s "superzow" # fshift (slow 4 $ range 0 "-200" saw) # gain 0.6 # djf 0.8 # cutoff (slow 4 $ range 4000 3000 saw) # pan (slow 2 $ range 0.1 0.9 sine) # waveloss 30 # room 0.8
+d7 $ gap 8 $ n "17*4" # s "superzow" # fshift (slow 4 $ range 0 "-200" saw) # gain 0.6 # djf 0.8 # cutoff (slow 4 $ range 4000 3000 saw) # pan (slow 2 $ range 0.1 0.9 sine) # waveloss 30 # room 0.8
+
+do
+  xfadeIn 3 8 $ fast 2 $ s "~ ~ XORE_hats ~ XORE_hats XORE_hats <~ XORE_hats> <~ [~ XORE_hats ~ ~ ~ ~ ~ ~]>" # n 5 # crush 5 # cutoff 4000 # room 1 # size 0.5
+  xfadeIn 4 8 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6 # djf 0.7
+
+
+do
+  hush
+  d4 $ rev $ striate 16 $ s "<arp:0 arp:0 ~ arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 1 # size 0.7
+  d7 $ gap 8 $ n "17*4" # s "superzow" # fshift (slow 4 $ range 0 "-200" saw) # gain 0.6 # djf 0.8 # cutoff (slow 4 $ range 4000 3000 saw) # pan (slow 2 $ range 0.1 0.9 sine) # waveloss 30 # room 0.8
+  xfadeIn 7 4 silence
+
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d2 $ s "jungbass" # n "<<10 4> 10 <4 10> 1>" # gain 1.25
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4
+  d4 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6
+  d5 $ chop 4 $ loopAt 4 $ s "kyle" # n "0" # distort 0.4 # waveloss 40 # djf 0.25 # room 0.4
+  d6 $ s "kyle" # n (choose[3,4,5]) # distort 0.4 # waveloss 40 # djf 0.35 # room 0.4
+  -- d7 $ gap 16 $ n "17*4" # s "superzow" # fshift (slow 4 $ range 0 "-200" saw) # gain 0.6 # djf 0.8 # cutoff (slow 4 $ range 4000 3000 saw) # pan (slow 2 $ range 0.1 0.9 sine) # waveloss 30 # room 0.8
+
+
+d5 silence
+d6 silence
+
+d5 $ (2 <~) $ loopAt 8 $ rev $ gap 64 $ s "4track_vocals" # n 0 # gain 1 # distort 0.3 # waveloss 20
+d6 $ (2 <~) $ loopAt 8 $ gap 256 $ ghost $ s "4track_vocals" # n 0 # room 0.5 # gain 0.7 # distort 2 # waveloss 20
+
+do
+  hush
+  d5 $ (2 <~) $ chop 32 $ loopAt 16 $ s "4track_vocals" # n 2 # gain 1.1
+  d6 $ (2 <~) $ loopAt 8 $ s "4track_vocals" # n 0 # room 0.5 # gain 0.8
+
+
+d7 silence
+
+
+
+
+
+setcps(140/60/4)
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+d2 $ s "jungbass" # n "<<10 4> 10 <4 10> 1>" # gain 1.25
+d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+d4 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6
+
+d5 $ ghost $ n "<~ ~ [~@6 4*3@3] ~>" # s "default" # octave (slow 4 $ "<5 6>") # distort 0.4 # crush 4 # cutoff 600 # djf 0.9
+
+
+
+d7 $ loopAt 4 $ s "UMRU_vocal_loops" # n 13
+d7 silence
+
+d7 $ slice 16 "0 0 4 8 0 0 12 16" $ slow 2 $ s "good_ones:0 good_ones:2" # cutoff (slow 4 $ range 500 2000 sine)
+d7 silence
+
+d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # cutoff 1000 # distort 0.2
+d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+
+d8 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # cutoff 1000 # distort 0.2
+d8 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # distort 2 # crush 3 # djf 0.4 # cutoff 400 # gain 0.8
+
+d8 $ slice 32 (slow 2 $ "0 5 <0 0 0 31> <6 7 9 22>") $ slow 8 $ s "good_ones:5" # cut 2
+d8 $ slice 32 (slow 2 $ "0 5 <0 31 0 31> <6 32 9 22>") $ slow 8 $ s "good_ones:5" # cutoff 1000 # distort 0.2
+
+d8 $ slow 2 $ s "good_ones:0 good_ones:2" -- # cutoff 500
+
+d8 silence
+
+
+
+
+d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # cutoff 1000 # distort 0.2
+
+xfadeIn 8 8 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # distort 2 # crush 3 # djf 0.4 # cutoff 400 # gain 0.8
+
+
+do
+  xfadeIn 1 4 silence
+  xfadeIn 3 4 silence
+  xfadeIn 8 4 silence
+
+do
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+  d8 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # distort 2 # crush 3 # djf 0.4 # cutoff 400 # gain 0.8
+
+
+do
+  xfadeIn 1 8 silence
+  xfadeIn 2 8 silence
+  xfadeIn 3 8 silence
+  xfadeIn 7 8 silence
+
+d8 $ slice 64 (slow 2 $ "35 35 35 [35 36] [37*4] [37*2] [39 39] [40 40 41 40]") $ slow 8 $ s "good_ones:5" # cutoff 1000 # distort 0.2
+
+do
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d2 $ s "jungbass" # n "<<10 4> 10 <4 10> 1>" # gain 1.25
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+  d8 $ slice 32 (slow 2 $ "0 5 <0 31 0 31> <6 32 9 22>") $ slow 8 $ s "good_ones:5" # cutoff 1000 # distort 0.2
+
+
+
+
+do
+  solo 2
+  solo 3
+  solo 4
+  solo 7
+  solo 8
+
+do
+  xfadeIn 4 8 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 10 # gain "<1.1 1.1 1.1 0.7>" # room 0.2 # size 0.2
+  xfadeIn 8 8 $ slice 32 (slow 2 $ "0 5 <0 31 0 31> <6 32 9 22>") $ slow 8 $ s "good_ones:5" # cutoff 1000 # distort 0.2 # djf 0.8
+
+do
+  xfadeIn 2 8 silence
+  xfadeIn 3 8 $ (0.25 ~>) $ fast 4 $ s "XORE_hats*4" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d7 $ gap 4 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+
+do
+  xfadeIn 3 1 $ (0.25 ~>) $ fast 4 $ s "XORE_hats*8" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d7 $ gap 2 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  unsolo 7
+  unsolo 8
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d2 $ s "jungbass" # n "<<10 4> 10 <4 10> 1>" # gain 1.25
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 29 # crush 4 # distort 0.3 # pan (slow 32 $ range 0.7 0.3 sine)
+  d4 $ rev $ striate 8 $ s "<arp:0 arp:0 arp:0 arp:1>" # crush 5 # gain "<1 1 1 0.8>" # room 0.8 # size 0.6
+  d5 $ ghost $ n "<~ ~ [~@5 4*3@3] ~>" # s "default" # octave (slow 4 $ "<5 6>") # distort 0.4 # crush 4 # cutoff 600 # djf 0.9
+  d7 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+  d8 $ gap 4 $ slice 32 (slow 2 $ "0 5 <0 31 0 31> <6 32 9 22>") $ slow 8 $ s "good_ones:5" # hcutoff 1000 # distort 0.4 # room 0.4 # delay (fast 4 $ range 0.25 1 square)
+
+
+
+d7 $ slice 64 ("0*8") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+
+
+
+
+
+do
+  solo 2
+  solo 3
+  solo 4
+  solo 8
+  d8 $ slow 4 $ ghost $ n "<[12 9 4 5]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # gain 0.9 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10
+
+
+
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  -- unsolo 8
+  d8 $ ghost $ n "<[12 9 4 5]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # gain 0.9 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square)
+
+
+
+-- fuck w the size and room and
+d8 $ slow 4 $ ghost $ n "<[12 9 4 5]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70
+  # room 1
+  # size 0.3
+  # gain 0.7
+  # distort (slow 4 $ range 0 0.3 sine)
+  # pan (fast 2 $ range 0.2 0.8 square)
+  # sustain 10
+
+
+
+
+
+
+---------------------------------------
+ECHOEY DRY PIANO BEAT TYPE THING
+--------
+
+setcps(140/60/4)
+
+
+
+
+-- transition --
+
+do
+  solo 2
+  d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain 1.1
+
+do
+  solo 4
+  d4 $ gap "<1 2 8 16>" $ s "XORE_error" # n 1 # gain 1.1
+
+do
+  unsolo 2
+  unsolo 4
+  unsolo 8
+  hush
+  d1 $ s "SOPHIE_kicks_wet SOPHIE_kicks_wet [~ SOPHIE_kicks_wet] [SOPHIE_kicks_wet*2]" # n 10 # gain 1.2
+  d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain 1.1
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d4 $ gap "<1 2 8 16>" $ s "XORE_error" # n 1 # gain 1.1
+  d8 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+
+do
+  solo 8
+  d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+
+
+
+
+
+d8 $ slow 4 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # waveloss 20 # pan (fast 2 $ range 0.25 0.75 square) # sustain 5 # gain 0.8
+d8 $ ghost $ slow 4 $ n "<[5 5 12 14 9 7 4 9]>" # s "superpiano" # octave "[4,5,6]" # waveloss 20 # pan (fast 2 $ range 0.25 0.75 square) # sustain 5 # gain 0.8
+
+
+solo 8
+d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+
+
+d8 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+d1 $ s "SOPHIE_kicks_wet SOPHIE_kicks_wet [~ SOPHIE_kicks_wet] [SOPHIE_kicks_wet*2]" # n 10 # gain 1.2
+
+
+d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain "1.2 1.1"
+
+d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+
+
+d4 $ gap "<1 2 8 16>" $ s "XORE_error" # n 1 # gain 1.1
+
+
+do
+  -- drum build
+  xfadeIn 1 4 silence
+  xfadeIn 2 4 silence
+  xfadeIn 3 4 $ (0.25 ~>) $ fast 4 $ s "[XORE_hats*4]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine) # gain 1.1
+  d5 $ chop 4 $ loopAt 4 $ s "UMRU_drum_builds" # n 2
+
+
+do
+  solo 8
+  d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+-- fade from the above d8 to clean
+  d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.6 0.7 sine) # waveloss 50 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.03 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 7 # gain 0.8
+
+d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.5 0.6 sine) # waveloss 30 # room 0.6 # size 0.3 # distort (slow 4 $ range 0 0 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 6 # gain 0.8
+
+
+
+d8 $ slow 4 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[3,4,5,6]" # djf (slow 4 $ range 0.5 0.55 sine) # waveloss 5 # room 0.3 # size 0.2 # djf 0.4 # pan (fast 2 $ range 0.25 0.75 square) # gain 0.85
+
+do
+  d5 silence
+  solo 5
+  xfadeIn 5 4 $ chop 16 $ loopAt 4 $ s "UMRU_drum_builds" # n 2
+  d8 $ slow 4 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[3,4,5,6]" # djf (slow 4 $ range 0.5 0.55 sine) # waveloss 5 # room 0.3 # size 0.2 # djf 0.4 # pan (fast 2 $ range 0.25 0.75 square) # gain 0.85 # sustain "1.7@3 0.5"
+
+
+
+
+do
+  hush
+  unsolo 5
+  unsolo 8
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain "1.2 1.1"
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d4 $ gap "<1 2 8 16>" $ s "XORE_error" # n 1 # gain 1.1
+  d5 $ chop 8 $ loopAt 8 $ s "UMRU_drum_loops_full" # n 8
+  d8 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+do
+  d1 $ whenmod 4 3 (const $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2) $ s "SOPHIE_kicks_wet*8" # n 10 # gain 1.2
+  d2 $ s "SOPHIE_subs" # n 4 # gain 1.1
+  d5 $ gap 16 $ chop 8 $ loopAt 8 $ s "UMRU_drum_loops_full" # n 0
+  -- this d8 will overload cpu, then hit the solo d8 above and have the computer resolve to that
+  --  d8 $ fast 2 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+  d7 silence
+  d8 $ fast 2 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # waveloss 20 # distort (slow 4 $ range 0.4 0.8 sine) # pan (fast 2 $ range 0.1 0.9 square) # gain 0.8
+  d9 silence
+
+d3 $ (0.25 ~>) $ fast 4 $ s "~ XORE_hats" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+
+do
+  jumpIn 1 3 silence
+  xfadeIn 2 4 $ gap 8 $ s "SOPHIE_subs" # n 4 # gain 1.1
+  d3 silence
+  -- clutchIn 8 4 silence
+  d9 $ chop 4 $ loopAt 4 $ s "UMRU_drum_builds" # n 5 # distort 0.2 # gain "1.1 1.15 1.2 1.25"
+  d8 $ n "<[5 12 9 4]*6@3 [5 12 9 ~]>" # s "superpiano" # octave "[4,5,6,7]" # waveloss 20 # distort (slow 4 $ range 0.4 0.8 sine) # pan (fast 2 $ range 0.1 0.9 square) # gain 0.8
+
+
+
+do
+  hush
+  unsolo 5
+  unsolo 8
+  d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.2
+  d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain "1.2 1.1"
+  d3 $ (0.25 ~>) $ fast 4 $ s "~ [XORE_hats*2]" # n 23 # crush 5 # distort 0.4 # pan (slow 32 $ range 0.7 0.3 sine)
+  d5 $ chop 8 $ loopAt 8 $ s "UMRU_drum_loops_full" # n 8
+  d7 $ n "<f'maj@2 e'min c'maj>" # s "supersaw" # octave "[4,5]" # resonance 0.3 # cutoff 600 # djf 0.16
+  d8 $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6,7]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 70 # room 1 # size 0.3 # distort (slow 4 $ range 0 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 10 # gain 0.8
+
+
+d7 $ n "<<f'maj [a4,f]>@2 e'min c'maj>" # s "supersaw" # octave "[4,5]" # resonance 0.3 # cutoff 600 # djf 0.16
+d9 $ n "<<f*32? a4*32?>@2 e*16? c*16?>" # s "superzow" # squiz 2 # cutoff 2000 # distort 0.2 # gain 0.8
+d9 silence
+
+solo 8
+
+hush
+
+unsolo 8
+
+
+------------------------------------------------
+
+
+
+d2 $ s "SOPHIE_subs" # n "<5 5 6 6>" # gain "1.2 1.1"
+
+d7 $ n "<f'maj@2 e'min c'maj>" # s "supersaw" # octave "[4,5]" # resonance 0.3 # cutoff 600 # djf 0.12
+
+d8 $ slow 4 $ ghost $ n "<[5 12 9 4]>" # s "superpiano" # octave "[4,5,6]" # djf (slow 4 $ range 0.7 0.8 sine) # waveloss 85
+  # room 1
+  # size 0.3
+  # gain 0.7
+  # distort (slow 4 $ range 0 0.3 sine)
+  # pan (fast 2 $ range 0.2 0.8 square)
+  # sustain 10

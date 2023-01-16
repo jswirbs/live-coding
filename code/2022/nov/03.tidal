@@ -1,0 +1,23 @@
+setcps(126/60/4)
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.1
+
+d2 $ slow 8 $ n "e@6 c@2" # octave "[2,3]" # s "supersaw" # cutoff 1000
+
+d3 $ gap 32 $ n "<e'min e'min e'min e'min e'min e'min c'min c'min>" # octave 3 # s "supersaw" # pitch1 2
+
+
+d4 $ slice 59 "42" $ s "DIZZEE_bonkers:2" # gain 0.8 # crush 5 # hcutoff 1000
+d4 $ slice 59 "42" $ s "DIZZEE_bonkers:2" # gain 0.8 # crush 5 # hcutoff 1000 # cutoff 5000
+
+-- some people think im bonkers
+d4 $ slice 59 "42" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+
+d4 $ slice 118 (slow 2 $ "84 84 84 85") $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # hcutoff 1000 # cutoff 5000
+d4 $ slice 118 "85*2" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # hcutoff 1000 # cutoff 5000
+d4 silence
+
+
+d5 $ (0.125 ~>) $ s "UMRU_snares*4" # n 19
+
+d6 $ s "XORE_hats*16" # n "<4 4 4 4 4 4 5 [3 3 1 2]>" # pan (slow 5 $ range 0.3 0.7 sine) # gain 0.9

@@ -1,0 +1,244 @@
+setcps(140/60/4)
+
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 10 # gain 1.15
+
+-- C: 11, 12, 15 ; D#: 13
+d2 $ slow 2 $ s "SOPHIE_subs ~ ~ [SOPHIE_subs*2] ~ [SOPHIE_subs*2] ~ <~ SOPHIE_subs>" # n (choose[11,12,13,15]) # gain 1.2 # distort "0 0.05"
+
+
+d3 $ (0.125 ~>) $ gap 4 $ s "UMRU_hihats*8 UMRU_hihats*8?" # n (slow 4 $ "<0 2>") # crush ((2 ~>) $ slow 4 $ "<10 3>") # cutoff 2500
+
+d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 -- 20
+
+
+d5 $ (0.5 ~>) $ chop 8 $ loopAt 4 $ s "2021" # n 0
+
+d5 $ (0.5 ~>) $ chop 8 $ loopAt 4 $ s "2021" # n 0 # cutoff 1000
+
+
+
+d5 $ slice 16 "5*4" $ s "2021" # n 0 # cutoff 1000
+
+do
+  d2 silence
+  d3 silence
+  d5 $ slice 16 "5*8" $ s "2021" # n 0 # cutoff 1000
+
+do
+  d1 silence
+  d5 $ slice 16 "5*16" $ s "2021" # n 0 # cutoff 1000
+
+do
+  d3 silence
+  d5 $ slice 16 "5*32" $ s "2021" # n 0 # cutoff 1000
+
+
+d5 $ (0.5 ~>) $ loopAt 4 $ s "2021" # n 0 # cutoff 1000
+
+
+
+do
+  setcps(140/60/4)
+  hush
+  d1 $ s "SOPHIE_kicks_wet*4" # n 10 # gain 1.15
+  d2 $ slow 2 $ s "SOPHIE_subs ~ ~ [SOPHIE_subs*2] ~ [SOPHIE_subs*2] ~ <~ SOPHIE_subs>" # n (choose[11,12,13,15]) # gain 1.2 # distort "0 0.05"
+  d3 $ (0.125 ~>) $ gap 4 $ s "UMRU_hihats*8 UMRU_hihats*8?" # n (slow 4 $ "<0 2>") # crush ((2 ~>) $ slow 4 $ "<10 3>") # cutoff 2500
+  d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 -- 20
+  d5 $ (0.5 ~>) $ chop 8 $ loopAt 4 $ s "2021" # n 1 # cutoff 1000
+
+
+
+
+do
+  d2 silence
+  d5 $ slice 16 "5*4" $ s "2021" # n 0 # cutoff 1000
+
+do
+  d1 silence
+  d5 $ slice 16 "5*8" $ s "2021" # n 0 # cutoff 1000
+
+do
+  xfadeIn 3 8 $ (0.125 ~>) $ gap 4 $ s "UMRU_hihats*8 UMRU_hihats*8?" # n (slow 4 $ "<0 2>") # crush ((2 ~>) $ slow 4 $ "<10 3>") # cutoff 1000 # room 0.5
+  d5 $ slice 16 "5*16" $ s "2021" # n 0 # cutoff 1000
+
+do
+  xfadeIn 4 8 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 # cutoff 1000 # room 0.3
+  d5 $ slice 16 "5*32" $ s "2021" # n 0 # cutoff 1000
+
+clutchIn 5 2 $ slice 16 "5*64" $ s "2021" # n 0 # cutoff 1000
+
+clutchIn 5 2 $ slice 16 "5*80" $ loopAt 4 $ gap 4 $ s "2021" # n 0 # cutoff 1000
+
+clutchIn 5 2 $ slice 16 "5*96" $ loopAt 4 $ gap 8 $ s "2021" # n 0 # cutoff 1000 # fshift "-5" # gain 0.9 # crush 8 # distort 0.05
+
+clutchIn 5 2 $ slice 16 "5*112" $ loopAt 4 $ gap 8 $ s "2021" # n 0 # cutoff 1000 # fshift "-10" # gain 0.85 # crush 4 # distort 0.15
+
+clutchIn 5 8 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.8 # crush 1.4 # distort 0.2
+
+
+
+d5 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.8 # crush 1.4 # distort 0.2
+d5 silence
+
+
+
+-- djf that shit downnnn
+d5 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.8 # crush 1.4 # distort 0.2
+  # djf 0.5
+
+
+do
+  xfadeIn 3 8 silence
+  xfadeIn 4 8 silence
+  -- d7 ?????
+  jumpIn 7 7 $ slice 8 "~ <~ 7>" $ s "2021" # n 0 # cutoff 2000 # speed (slow 4 $ range 0.6 0.9 perlin)
+
+d5 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.8 # crush 1.4 # distort 0.2
+  # djf 0.4 -- aaand down
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_wet*4" # n 10 # gain 1.3
+  d2 $ slow 2 $ s "SOPHIE_subs ~ ~ [SOPHIE_subs*2] ~ [SOPHIE_subs*2] ~ <~ SOPHIE_subs>" # n (choose[11,12,13,15]) # gain 1.2 # distort "0 0.05"
+  d3 $ (0.125 ~>) $ gap 4 $ s "UMRU_hihats*8 UMRU_hihats*8?" # n (slow 4 $ "<0 2>") # crush ((2 ~>) $ slow 4 $ "<10 3>") # cutoff 2500
+  d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 21
+  d5 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.75 # crush 1.4 # distort 0.2
+  d7 $ whenmod 4 2 (const $ silence) $ slice 8 "~ <~ 7>" $ s "2021" # n 0 # cutoff 2000 # speed (slow 4 $ range 0.6 0.9 perlin)
+
+
+d7 silence
+
+xfadeIn 8 8 $ chop 2 $ loopAt 2 $ s "2021" # n (slow 2 $ "5") # gain 1.2 # djf 0.8
+d8 silence
+
+
+do
+  solo 2
+  solo 3
+  solo 5
+  solo 8
+  d8 $ chop 2 $ loopAt 2 $ s "2021" # n (slow 4 $ "4 5") # gain 1.2 # djf 0.8
+
+do
+  unsolo 2
+  unsolo 3
+  unsolo 5
+  unsolo 7
+  unsolo 8
+  d7 $ whenmod 4 2 (const $ silence) $ slice 8 "~ <~ 7>" $ s "2021" # n 0 # cutoff 2000 # speed (slow 4 $ range 0.6 0.9 perlin)
+  d6 $ slice 16 "5*4" $ s "2021" # n 3 # cutoff (slow 16 $ range 800 5000 sine) # gain "<0 1>"
+
+
+
+
+d8 $ slice 64 (slow 2 $ "0 0 [2 [2 4]] 2 0 [0 0] 8 12") $ slow 8 $ s "good_ones:5" # cut 2 # speed (fast 4 $ "<-1 [-1@3 -1.5] -0.75 -0.5>") # cutoff 800 # distort 0.8 # hcutoff 1000
+d8 silence
+
+
+xfadeIn 6 4 silence
+
+xfadeIn 8 8 silence
+
+
+
+
+
+do
+  xfadeIn 2 8 silence
+  xfadeIn 3 8 silence
+  xfadeIn 5 8 silence
+  xfadeIn 8 8 silence
+  xfadeIn 9 8 silence
+  xfadeIn 10 8 silence
+  xfadeIn 6 8 $ slice 16 "5*4" $ s "2021" # n 3 # cutoff 1000 # gain "<0 1>"
+
+do
+  d1 silence
+  d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 -- 20
+  xfadeIn 4 8 $ (0.25 ~>) $ s "UMRU_snares*2" # n (whenmod 4 3 (const $ 17) $ 19) # cutoff 300 # room 0.4
+  xfadeIn 7 8 silence
+
+
+d6 $ (0.5 ~>) $ chop 8 $ loopAt 4 $ s "2021" # n 1 # cutoff 1000
+
+
+d6 $ slice 16 "5*4" $ s "2021" # n 0 # cutoff 1000
+
+xfadeIn 6 3 $ slice 16 "5*4" $ s "2021" # n 0
+xfadeIn 6 1 $ slice 16 "5*4" $ s "2021" # n 0 # distort 0.5
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_wet*4" # n 10 # gain 1.2
+  d2 $ slow 2 $ s "SOPHIE_subs ~ ~ [SOPHIE_subs*2] ~ [SOPHIE_subs*2] ~ <~ SOPHIE_subs>" # n (choose[11,12,13,15]) # gain 1.2 # distort "0 0.05"
+  d3 $ (0.125 ~>) $ gap 4 $ s "UMRU_hihats*8 UMRU_hihats*8?" # n (slow 4 $ "<0 2>") # crush ((2 ~>) $ slow 4 $ "<10 3>") # cutoff 2500
+  d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 -- 20
+  d5 $ (0.5 ~>) $ chop 8 $ loopAt 4 $ s "2021" # n 1 # cutoff 1000
+  d8 $ gap 4 $ chop 2 $ loopAt 2 $ s "2021" # n (slow 4 $ "4 5") # gain 1.2 # djf 0.8
+  -- d10 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 400 # fshift "-26" # gain 0.8 # crush 1.4 # distort 0.05
+  d10 $ slice 16 "5*128" $ loopAt 4 $ gap 8 $ s "2021" # n 2 # cutoff 1000 # fshift "-26" # gain 0.75 # crush 1.4 # distort 0.2
+
+
+
+
+
+
+
+do
+  solo 3
+  solo 4
+  solo 5
+  solo 8
+  xfadeIn 3 8 silence
+  xfadeIn 4 8 silence
+  -- everything you do, everything you do, ~, everything you say, everything you say, ~
+  d5 $ (0.5 ~>) $ loopAt 4 $ slice 16 "0 1 2 0 1 2 3 7 8 9 10 8 9 10 3 3" $ s "2021" # n 1 # cutoff 1200
+
+xfadeIn 5 8 silence
+
+
+d8 $ slice 16 "5*4" $ s "2021" # n 0 # cutoff 1000
+
+hush
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 5
+  unsolo 8
+
+
+
+
+
+
+
+
+
+d6 $ slow 2 $ n "[ds*2 ~@2]*2 [cs*2 ~@2]*2" # s "supersaw" # octave 3 # djf 0.2 # gain 1.1 # room 0.5 # cutoff 200
+d6 silence
+
+
+
+
+
+d5 $ (0.25 ~>) $ s "UMRU_snares*2" # n 21
+
+-- 11 13 19 20
+d4 $ (0.25 ~>) $ s "UMRU_snares*2" # n 19 -- 20
+
+
+d6 $ gap 2 $ slice 16 "5*4" $ s "2021" # n 0 # cutoff 1000
+d6 silence
+d7 $ slice 8 "~ <~ 7>" $ s "2021" # n 0 # cutoff 2000 # speed (slow 4 $ range 0.6 0.9 perlin)
+
+d8 $ chop 2 $ loopAt 2 $ s "2021" # n (slow 4 $ "4 5") # gain 1.2 # djf 0.8
+
+
+d6 silence
+d8 $ rev $ gap 2 $ gap 8 $ loopAt 2 $ s "2021" # n 4 # gain 1.2 # distort 0.3 # cutoff 2000
+
+
+
+d4 $ slice 16 "5*2" $ loopAt 4 $ s "2021" # n 0 # cutoff 1000 # gain 0.9

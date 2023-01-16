@@ -1,0 +1,81 @@
+
+-- BONKERS --
+setcps(126/60/4)
+
+do
+  d1 $ slice 24 23 $ s "DIZZEE_bonkers:0" # gain 0.9
+  jumpIn' 1 1 silence`
+
+d3 $ s "SOPHIE_kicks_dry*4" # n 10
+d3 $ s "SOPHIE_subs*4" # gain 0.9
+d3 silence
+
+do
+  d1 $ s "DIZZEE_bonkers:0" # gain 0.85
+  jumpIn' 1 1 silence
+  jumpIn' 2 24 $ s "DIZZEE_bonkers:2" # gain 0.9
+
+d2 silence
+
+
+
+-- "BONKERS"
+
+-- 1. could always just do a short little remixed bit
+-- 2. could do a short little remixed bit after (or maybe before) a normal section
+--   a. transitioned via song builds
+
+-- A. can always use the builds from this elsewhere.. they're good and pretty isolated from song
+
+setcps(126/60/4)
+
+d1 $ slice 96 "~ ~ ~ 95" $ s "DIZZEE_bonkers:0" # gain 0.9
+d1 $ slice 96 "94*4" $ s "DIZZEE_bonkers:0" # gain 0.9
+
+d1 $ slice 192 "190*8" $ s "DIZZEE_bonkers:0" # gain 0.9
+
+
+d1 $ slice 59 "<0 1 2 3>" $ s "DIZZEE_bonkers:2" # gain 0.9
+d1 $ slice 59 "<54 51 52 53>" $ s "DIZZEE_bonkers:2" # gain 0.9
+
+
+-- break/build // fade in from another song via this lol
+do
+  hush
+  d1 $ slice 96 "94*4" $ s "DIZZEE_bonkers:0" # gain 0.9
+  jumpIn 1 3 $ slice 96 "94 94 94 95" $ s "DIZZEE_bonkers:0" # gain 0.9
+
+
+d4 $ slice 96 (slow 4 $ "~ ~ ~ [~ ~ ~ 95]") $ s "DIZZEE_bonkers:0" # gain 0.9 # cutoff 2000 # distort 0.3
+
+d5 $ slice 192 ((0.125 ~>) $ "190*4") $ s "DIZZEE_bonkers:0" # gain 0.9 # cutoff 600 # note "<[4 0] [4 0] [-3 -1] [0 2]>"
+
+d5 $ slice 192 "190*8" $ s "DIZZEE_bonkers:0" # gain 0.9 # note "<[4 0] [4 0] [-3 -1] [0 2]>" # crush 3
+d5 silence
+
+-- nothing crazy bout me
+d3 $ slice 59 "45" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+
+-- some people think im bonkers
+d3 $ slice 59 "42" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+
+d3 $ slice 118 "84*2" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+d3 $ slice 118 "85*2" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+d3 silence
+
+d3 $ slice 236 "~ 170 171 172" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+
+d3 silence
+
+d6 $ fast 2 $ s "~ SOPHIE_snares" # n "<2 3>"
+
+do
+  d1 $ slice 59 "<54 51 52 53>" $ s "DIZZEE_bonkers:2" # gain 0.9
+  d3 $ whenmod 4 3 (const $ slice 236 "~ 170 ~ ~" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000) $ slice 236 "~ 170 171 172" $ s "DIZZEE_bonkers:2" # gain 0.9 # crush 4 # cutoff 2000
+  d4 $ slice 96 (slow 4 $ "~ ~ ~ [~ ~ ~ 95]") $ s "DIZZEE_bonkers:0" # gain 0.9 # distort 0.25
+  d5 silence
+  d6 silence
+
+
+
+--
