@@ -208,8 +208,8 @@ do
   d6 $ (0.125 ~>) $ s "[CXCX_hh]*4" # n 7
   d8 $ ghost $ (0.25 ~>) $ n (slow 2 $ "e*4@1 ^synth3") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
   d9 $ ghost $ (0.25 ~>) $ n (slow 4 $ "~@15 ^synth3") # s "supersaw" # octave "[4,5]" # cutoff 300 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.85
-  d10 $ striate 2 $ s "ABBA_gimme:0*4" # speed 1.1 # room 0.3 # distort 0.4 # cutoff 2000 # gain "<0.8 [0.9 1]>"
-  clutchIn 10 4 $ striate 2 $ s "ABBA_gimme:0*4" # speed 1.1 # room 0.3 # distort 0.4 # cutoff 4000 # gain "<0.8 [0.9 1]>"
+  d10 $ striate 2 $ s "ABBA_gimme:0*4" # speed 1.1 # room 0.3 # distort 0.4 # cutoff 2000 # gain "<0.75 [0.8 0.9]>"
+  clutchIn 10 4 $ striate 2 $ s "ABBA_gimme:0*4" # speed 1.1 # room 0.3 # distort 0.4 # cutoff 4000 # gain "<0.75 [0.8 0.9]>"
 
 
 
