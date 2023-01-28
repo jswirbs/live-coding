@@ -66,6 +66,6 @@ s.reboot { // server options are only updated on reboot
 		~dirt.soundLibrary.addMIDI(\m6, ~midi6Out);
 	};
 
-	s.latency = 0.5; // increase this if you get "late" messages
+	s.latency = 0.3; // increase this if you get "late" messages
 };
 );
