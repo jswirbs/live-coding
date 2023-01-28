@@ -1,0 +1,270 @@
+setcps(168/60/4)
+
+d1 $ s "SOPHIE_kicks_wet*4" # n 6
+d2 $ n "8 9 10 11" # s "SOPHIE_hard"
+
+d2 $ n ("8 8 8 8" + "<0 1 2 3>") # s "SOPHIE_hard"
+d2 $ gap 8 $ n ("8 8 8 8" + "<0 1 2 3>") # s "SOPHIE_hard"
+d2 $ gap 16 $ n ("8 8 8 8" + "<0 1 2 3>") # s "SOPHIE_hard"
+d2 $ (0.125 ~>) $ gap 8 $ n ("8 8 8 8" + "<0 1 2 3>") # s "SOPHIE_hard" # cutoff 1000
+
+d2 $ n ("9*8") # s "SOPHIE_hard" # cutoff 1000
+d2 $ n ("[8 9 10 11]*2") # s "SOPHIE_hard" # cutoff 1000
+
+
+d3 $ (0.125 ~>) $ s "SOPHIE_claps*4" # n 5
+
+d4 $ s "SOPHIE_hard*4" # n 4
+
+d4 $ s "SOPHIE_hard*2" # n 6
+d4 $ s "SOPHIE_hard" # n 7
+
+d4 $ gap 2 $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+
+
+d5 #
+
+
+
+do
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6
+  d2 $ n ("9*8") # s "SOPHIE_hard" # cutoff 1000
+  d3 $ (0.125 ~>) $ s "SOPHIE_claps*4" # n 5
+  d4 $ slice 2 "~ 0" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+  d5 $ s "XORE_hats(<14 11>, 16)" # n 15 # cutoff 8000
+
+do
+  -- d1 silence -- $ s "SOPHIE_kicks_wet*4" # n 6
+  d2 $ n ("10*8") # s "SOPHIE_hard" # cutoff 1000
+  -- d3 $ (0.125 ~>) $ s "SOPHIE_claps*4" # n 5
+  d4 $ slice 2 "~ 1" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+
+
+
+do
+  xfadeIn 1 16 silence
+  d2 $ n ("9*8") # s "SOPHIE_hard" # cutoff 1000
+  d3 $ (0.125 ~>) $ s "SOPHIE_claps*8" # n 5 # cutoff 4000
+  xfadeIn 3 8 $ (0.125 ~>) $ s "SOPHIE_claps*8" # n 5 # cutoff 2000
+  d4 $ slice 2 "~ 0" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+  d5 $ slice 2 "0" $ s "SOPHIE_hard" # n 7 # cutoff 500 # room 0.4 # size 0.8
+
+do
+  d2 $ n ("10*4") # s "SOPHIE_hard" # cutoff 1000
+  d4 $ slice 2 "~ 1" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+
+do
+  d2 $ n "9*2" # s "SOPHIE_hard" # cutoff 1000
+  d3 $ (0.125 ~>) $ s "SOPHIE_claps*8" # n 5 # cutoff 1000
+  xfadeIn 3 8 $ (0.125 ~>) $ s "SOPHIE_claps*8" # n 5 # cutoff 500
+  d4 $ slice 2 "~ 0" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+
+
+do
+  d2 $ n "10" # s "SOPHIE_hard" # cutoff 1000
+  xfadeIn 3 4 $ (0.125 ~>) $ s "SOPHIE_claps*8" # n 5
+  d4 $ slice 2 "~ 1" $ s "SOPHIE_hard" # n 7 # cutoff 5000 # distort 0.2
+  d5 $ slice 2 "1" $ s "SOPHIE_hard" # n 7 # cutoff 500 # room 0.4 # size 0.8
+
+-- aaaand back
+
+
+
+do
+  -- solo 1
+  solo 2
+  -- d1 $ s "SOPHIE_kicks_wet*4" # n 6
+  d2 $ n "8 9 10 11" # s "SOPHIE_hard"
+
+do
+  unsolo 1
+  unsolo 2
+  d1 $ s "SOPHIE_kicks_wet*4" # n 6
+  d2 $ n ("9*8") # s "SOPHIE_hard" # cutoff 1000
+  d3 $ (0.25 ~>) $ s "SOPHIE_hard*2" # n 0 # cutoff 1000
+  d4 $ slice 5 "0*4" $ s "SOPHIE_hard" # n 7 # cutoff 1000
+  d5 $ s "XORE_hats(<12>, 16)" # n 20 # cutoff 4000
+
+
+d6 $ s
+
+
+d3 $ s "SOPHIE_hard*4" # n 0
+d3 $ (0.25 ~>) $ s "SOPHIE_hard*2" # n 0
+
+d4 $ s "SOPHIE_hard*4" # n 0 # note
+
+
+
+
+setcps(125/60/4)
+
+
+d1 $ s "techno_kicks(<5 2 5 3>, 8)" # n 3 # cutoff 1000 # gain 1.2
+d1 $ s "techno_kicks*4" # n 3 # cutoff 1000 # gain 1.2
+d1 $ s "techno_kicks*2 ~*2" # n 3 # cutoff 1000 # gain 1.2
+d1 $ s "techno_kicks*8" # n 3 # cutoff 1000 # gain 1.2
+
+
+d2 $ slow 4 $ s "misc_vocals" # n 0
+d2 $ gap 16 $ loopAt 4 $ s "misc_vocals" # n 0 # cutoff 2000
+d2 $ gap "<8 [8 4] 16 16>" $ chop 4 $ loopAt 4 $ s "misc_vocals" # n 0 # cutoff 2000
+
+d2 $ palindrome $ chop 64 $ loopAt 4 $ s "misc_vocals" # n 0 # cutoff 2000
+d2 $ palindrome $ chop 64 $ loopAt 4 $ s "misc_vocals" # n 0
+
+d2 silence
+
+
+
+d3 $ slow 4 $ s "~ misc_vocals" # n 1
+
+
+
+d5 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 3500 # room 0.3
+
+
+d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 20 # cutoff 5000
+
+
+
+d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c [~ c] ~ c ~@4" # s "warsawbass" # octave 3 # gain 1.2 # room 0.4 # waveloss 25
+
+
+d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
+d7 silence
+
+
+
+
+d2 silence
+
+d8 $ (0.25 ~>) $ s "XORE_snares*2" # n 6 # room 0.1 # gain 0.95
+
+d1 silence
+
+d2 $ gap 16 $ loopAt 4 $ s "misc_vocals" # n 1 # cutoff 4000
+
+
+d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c*8" # s "warsawbass" # octave 3 # gain 1.2 # room 0.1
+
+
+do
+  xfadeIn 4 8 $ (0.125 ~>) $ s "XORE_hats*8" # n 20 # cutoff 6000
+  xfadeIn 5 8 $ s "XORE_hats(16, 16)" # n 20 # cutoff 4500 # room 0.3
+  xfadeIn 8 8 $ (0.25 ~>) $ s "XORE_snares*8" # n 6 # room 0.1 # gain 0.95
+
+
+
+
+do
+  d1 $ s "techno_kicks(<5 2 5 3>, 8)" # n 3 # cutoff 1000 # gain 1.2
+  d2 $ slow 4 $ s "misc_vocals" # n 0
+  d3 $ slow 4 $ s "~ misc_vocals" # n 1
+  d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 20 # cutoff 5000
+  d5 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 3500 # room 0.3
+  d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c [~ c] ~ c ~@4" # s "warsawbass" # octave 3 # gain 1.2 # room 0.4
+  d6 $ ghost $ chop 16 $ n "c" # s "warsawbass" # octave 3 # gain 1 # room 0.2
+  d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2 # room 0.25 # cutoff 700
+  xfadeIn 8 1 $ s "XORE_snares*8" # n 6 # room 0.2 # cutoff (slow 4 $ range 4000 3300 sine) # gain 0.8
+
+
+d6 $ ghost $ chop 16 $ n "c" # s "acid92" # octave 3 # gain 1.1 # room 0.1 # cutoff 800
+
+d9 silence
+
+
+
+do
+  xfadeIn 7 8 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.1 # cutoff 300
+  d2 $ slice 32 "7 12 ~@2" $ slow 4 $ s "misc_vocals" # n 0
+  xfadeIn 8 2 $ slice 64 "~@4 ~ 35 ~ 56" $ slow 4 $ s "misc_vocals" # n 0 # room 0.5 # cutoff 500
+
+
+do
+  d5 $ s "XORE_hats(<11 7>, 16)" # n 20 # cutoff 3500 # room 0.3
+  d7 silence
+
+do
+  d1 silence
+  d2 silence
+  d6 $ (ghost) $ n "c c c c" # sustain 0.15 # s "warsawbass" # octave 3 # gain 1.2 # room 0.2
+  xfadeIn 6 8 $ (ghost) $ n "c c c c" # sustain 0.08 # s "warsawbass" # octave 3 # gain 1.1
+
+do
+  d4 silence
+  xfadeIn 5 2 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 4500 # room 0.3
+  d6 silence
+
+
+
+
+do
+  d1 $ s "techno_kicks(<5 2 5 3>, 8)" # n 3 # cutoff 1000 # gain 1.2
+  d2 $ chop 4 $ slow 4 $ s "misc_vocals" # n 0
+  d3 $ slow 4 $ s "~ misc_vocals" # n 1
+  d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 20 # cutoff 5000
+  d5 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 3500 # room 0.3
+  -- d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c [~ c] ~ c ~@4" # s "warsawbass" # octave 3 # gain 1.2 # room 0.4
+  -- d6 $ ghost $ chop 16 $ n "c" # s "warsawbass" # octave 3 # gain 1 # room 0.2
+  d6 $ ghost $ chop 16 $ n "c" # s "acid91" # octave 3 # gain 1 # room 0.1 # cutoff 500 # distort (slow 4 $ range 0.05 0.1 sine)
+  d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2 # room 0.25 # cutoff 700
+  clutchIn 8 2 $ s "XORE_snares*8" # n 6 # room 0.2 # cutoff (slow 4 $ range 4000 3300 sine) # gain 0.8
+
+
+
+d2 $ slice 16 "<4 5 3 3>" $ slow 4 $ s "misc_vocals" # n 0
+d2 $ gap "<[4 0] [4 0] 2 2>" $ gap 4 $ slice 16 "<4 5 3 3>" $ slow 4 $ s "misc_vocals" # n 0 # room 0.2
+
+
+do
+  d6 $ ghost $ chop 16 $ n "c" # s "acid91" # octave 3 # gain 1 # room 0 # cutoff 500 # distort (slow 4 $ range 0.02 0.05 sine)
+  clutchIn 6 8 $ (0.125 ~>) $ ghost $ gap 8 $ n "c" # s "acid91" # octave 3 # gain 1 # room 0 # cutoff 500 # distort (slow 4 $ range 0.02 0.05 sine)
+  d7 silence
+  d8 $ (0.25 ~>) $ s "XORE_snares*2" # n 6 # room 0.1 # gain 0.95
+
+
+
+do
+  d1 silence
+  d2 silence
+  d6 silence
+  xfadeIn 5 4 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 4500 # room 0.3
+
+
+
+do
+  d1 $ s "techno_kicks(<5 2 5 3>, 8)" # n 3 # cutoff 1000 # gain 1.2
+  d2 $ slice 16 "<4 5 3 3>" $ slow 4 $ s "misc_vocals" # n 0
+  d3 $ slow 4 $ s "~ misc_vocals" # n 1
+  d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 20 # cutoff 5000
+  d5 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 3500 # room 0.3
+  d6 $ (0.125 ~>) $ ghost $ gap 8 $ n "c" # s "acid91" # octave 3 # gain 1.1 # room 0.2 # cutoff 600
+  d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2 # room 0.25 # cutoff 700
+  xfadeIn 8 1 $ s "XORE_snares*4" # n 6 # room 0.2 # cutoff (slow 4 $ range 4000 3300 sine) # gain 0.8
+  d9 silence
+
+
+d7 silence
+
+do
+  d7 $ s "SOPHIE_kicks_wet" # n 18 # gain 1.2 # room 0.25 # cutoff 700 # speed 0.5
+  d8 $ (0.25 ~>) $ s "XORE_snares*2" # n 6 # room 0.1 # gain 0.95
+
+
+d1 silence
+
+do
+  d1 $ s "techno_kicks(<5 2 5 3>, 8)" # n 3 # cutoff 1000 # gain 1.2
+  d2 $ gap "<[4 0] [4 0] 2 2>" $ gap 4 $ slice 16 "<4 5 3 3>" $ slow 4 $ s "misc_vocals" # n 0 # room 0.4
+  d9 $ ghost $ gap 32 $ n ("c" - (run 16)) # s "acid91" # octave 6 # gain 0.7 # room 0.6 # cutoff (slow 8 $ range 800 1200 sine) # distort (slow 4 $ range 0.25 0.15 sine)
+
+d9 silence
+
+
+d10 $ s "SOPHIE_hard*4" # n "3" # cutoff 2000
+
+
+
+
+--
