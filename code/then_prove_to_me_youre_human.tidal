@@ -119,7 +119,7 @@ do
   d5 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # crush 6
 
 do
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.05 # gain 0.9 # voice 2 # djf (slow 8 $ range 0.5 0.7 saw)
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.05 # gain 0.9 # voice 2 # djf (slow 8 $ range 0.5 0.7 saw) # room 0.1
   d4 $ slow 8 $ s "[SOPHIE_claps*8]*4 [SOPHIE_claps*16]*4" # n 5 # djf (range 0.3 1 saw)
   d5 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # crush ("6 5.66 5.33 5 4.66 4.33 4 3.5")
 
@@ -129,7 +129,7 @@ do
   hush
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
   d5 $ gap 16 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.1 # room 1 # size 0.4 # gain 0.85
 
 
@@ -141,7 +141,7 @@ do
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 -- tighter
   d4 $ ghost $ fast 4 $ s "~ [XORE_hats*2]" # n 4 # cutoff 10000
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
   d5 $ gap 32 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.92
 
 
@@ -173,7 +173,7 @@ d5 $ slice 32 "[0 1]*2" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 d5 $ slice 32 "0*4" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 
 do
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2 # room 0.1
   d4 $ s "SOPHIE_claps*4" # n 5 # djf 0.33
   d5 $ slice (slow 4 $ "32 64") (slow 4 $ "0*8@8 2*4@4 ~@4") $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
 
@@ -206,7 +206,7 @@ do
   d5 $ slice 64 "15*16" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
 
 do
-  d3 $ gap 16 $ n "b" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2 # gain "1 0.9 0.75 0.5"
+  d3 $ gap 16 $ n "b" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2 # gain "1 0.9 0.75 0.5" # room 0.1
   d4 $ s "SOPHIE_claps*4" # n 5 # orbit 9 # speed "1@3 -0.75"
   d5 $ slice 64 "15*32" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
 
@@ -215,7 +215,7 @@ do
   hush
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
   d5 $ gap 16 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.1 # room 1 # size 0.4 # gain 0.85
 
 
@@ -227,13 +227,13 @@ do
   d1 $ s "[CXCX_bd]*4" # gain 1
   -- d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
   d2 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 -- tighter
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2 # room 0.1
   d4 $ ghost $ fast 4 $ s "~ [XORE_hats*2]" # n 4 # cutoff 10000
   -- d4 $ fast 4 $ s "~ [XORE_hats*2]" # n 4
   d5 $ gap 32 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.91
 
 
-d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # sustain (slow 4 $ range 0.2 0.1 saw) # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2
+d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # sustain (slow 4 $ range 0.2 0.1 saw) # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2 # room 0.1   
 
 
 

@@ -91,7 +91,7 @@ do
 do
   d5 $ slow 2 $ whenmod 2 1 (gap (slow 2 $ "<16 32>")) $ s "SOPHIE_crashes" # n 1 # gain 0.9 # cutoff 1000
   d7 $ slice 10 0 $ loopAt 10 $ s "FOOD_vocal_loops" # n 4 # cutoff 4000 # room 0.3
-  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # distort 0.07 # sustain 0.5 # gain 0.75
+  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # distort 0.06 # sustain 0.5 # gain 0.75
 
 
 
@@ -99,6 +99,7 @@ do
   xfadeIn 2 8 $ slow 4 $ n "a*12@3 g*4" # octave 2 # s "supersaw" # room 0.2 # orbit 1 # cutoff 100 # orbit 1
   xfadeIn 4 16 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.9 # cutoff 2000 # room 0.2
   xfadeIn 5 8 $ slow 2 $ whenmod 2 1 (gap (slow 2 $ "<16 32>")) $ s "SOPHIE_crashes" # n 1 # gain 0.9 # cutoff 500
+  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # distort 0.09 # sustain 0.25 # gain 0.75
 
 
 do
@@ -169,7 +170,7 @@ do
   -- d5 $ slow 2 $ whenmod 2 1 (gap (slow 2 $ "<16 32>")) $ s "SOPHIE_crashes" # n 1 # gain 0.8 # cutoff 900
   d6 $ rev $ gap 16 $ s "SOPHIE_crashes" # n 1 # gain 0.82 # cutoff 400 # room 0.7 # size 0.8
   d8 silence
-  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.2 # sustain 0.25 # gain 0.7
+  -- d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.2 # sustain 0.25 # gain 0.7
   xfadeIn 9 8 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # sustain 0.23 # distort 0.15 # gain 0.78
 
 
@@ -177,7 +178,7 @@ do
   d5 $ slow 2 $ whenmod 2 1 (gap (slow 2 $ "<16 32>")) $ s "SOPHIE_crashes" # n 1 # gain 0.8 # cutoff 900
   d7 $ slice 10 "<2 3 4 5>" $ loopAt 10 $ s "FOOD_vocal_loops" # n 4 # cutoff 4000
   d8 $ s "XORE_hats*16" # n 4 # cutoff 4000 # room 0.1 # orbit 4 # gain 0.9
-  xfadeIn 8 8 $ s "XORE_hats*16" # n 4 # cutoff 2800 # room 0.25 # orbit 4
+  xfadeIn 8 8 $ s "XORE_hats*16" # n 4 # cutoff 1800 # room 0.25 # orbit 4
   xfadeIn 9 8 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.2 # sustain 0.23 # gain 0.75
 
 do

@@ -1,6 +1,6 @@
 SLOW C
 
-setcps(137/60/4) -- cs
+setcps(136.5/60/4) -- cs
 -- setcps(143/60/4) -- d
 
 -- JUST MAKE A COPY OF THE SAMPLE AND PITCH IT CORRECTLY IN LOGIC ??? for 140 bpm
