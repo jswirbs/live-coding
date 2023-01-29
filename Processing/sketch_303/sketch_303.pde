@@ -524,8 +524,8 @@ void oscEvent(OscMessage m) {
         house = int(90);
       }
       break;
-    case "hh":
-      hh = height /2;
+    case "sn":
+      sn = 20;
       break;
     case "electro1":
       hh = height /2;
@@ -568,14 +568,17 @@ void oscEvent(OscMessage m) {
       }
       superzow = 4;
       break;
+    case "default":
+      if (gain >= 0) {
+        superzowSize = 40 * gain;
+      }
+      superzow = 4;
+      break;
     case "superhammond":
       m1 = 60;
       break;
     case "superpiano":
       superzow = 4;
-      break;
-    case "sn":
-      sn = 20;
       break;
     case "nasty":
       nasty = 200;
@@ -586,6 +589,9 @@ void oscEvent(OscMessage m) {
       } else {
         nastier = 0;
       }
+      break;
+    case "choir":
+      nasty = 200;
       break;
     case "kyle":
       xincr = 0.07;
@@ -641,8 +647,11 @@ void oscEvent(OscMessage m) {
       house = int(90);
     }
   }
-  if (s.contains("_hats")) {
+  if (s.contains("_hats") || s.contains("_hihats") || s.contains("_hh")) {
     hh = height /2;
+  }
+  if (s.contains("_sn") || s.contains("_snare") || s.contains("_clap")) {
+    sn = 20;
   }
 }
 

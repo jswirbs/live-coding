@@ -181,12 +181,12 @@ do
 d9 $ slice 16 "<<1 1 1 8> ~>" $ s "choir" # note "-4" # gain 0.9
 
 do
-  d8 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.75 # cutoff 6000 # distort 0.1
   d9 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.98
+  d10 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.75 # cutoff 3000 # distort 0.1
 
 do
-  xfadeIn 8 8 $ (0.125 ~>) $ ghost $ ghost $ s "techno_hats*4" # n 0 # gain 0.75
-  xfadeIn 10 8 $ slice 8 "<1 1 1 4 5 5 7 7>" $ s "choir" # note "8" # gain 0.85 # cutoff (slow 8 $ range 600 1600 saw) # room 0.3 # orbit 9
+  xfadeIn 10 8 $ (0.125 ~>) $ ghost $ ghost $ s "techno_hats*4" # n 0 # gain 0.75 # cutoff 6000
+  xfadeIn 11 8 $ slice 8 "<1 1 1 4 5 5 7 7>" $ s "choir" # note "8" # gain 0.85 # cutoff (slow 8 $ range 600 1600 saw) # room 0.3 # orbit 9
 
 
 do
@@ -234,6 +234,7 @@ d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "def
 
 do
   hush
+  once $ s "nastier"
   d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.15 # cutoff 5000
   -- d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.25 -- 5 -> 6 -> 7 ...
   -- d1 $ s "techno_kicks*4" # n 0 # gain 1.2
