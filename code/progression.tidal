@@ -114,7 +114,7 @@ do
 
 do
   d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.95
-  d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.75 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
+  -- d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.75 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
 
 d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
 d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.75
@@ -169,7 +169,6 @@ do
 
 d1 $ silence
 
-xfadeIn 4 16 $ loopAt 0.25 $ s "ABBA_gimme"
 
 
 d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"

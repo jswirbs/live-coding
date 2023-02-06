@@ -178,7 +178,7 @@ do
   d5 $ slow 2 $ whenmod 2 1 (gap (slow 2 $ "<16 32>")) $ s "SOPHIE_crashes" # n 1 # gain 0.8 # cutoff 900
   d7 $ slice 10 "<2 3 4 5>" $ loopAt 10 $ s "FOOD_vocal_loops" # n 4 # cutoff 4000
   d8 $ s "XORE_hats*16" # n 4 # cutoff 4000 # room 0.1 # orbit 4 # gain 0.9
-  xfadeIn 8 8 $ s "XORE_hats*16" # n 4 # cutoff 1800 # room 0.25 # orbit 4
+  xfadeIn 8 8 $ s "XORE_hats*16" # n 4 # cutoff 2000 # room 0.25 # orbit 4
   xfadeIn 9 8 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.2 # sustain 0.23 # gain 0.75
 
 do

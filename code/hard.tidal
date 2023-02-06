@@ -85,6 +85,8 @@ do
   d4 $ slice 5 "0*4" $ s "SOPHIE_hard" # n 7 # cutoff 1000
   d5 $ s "XORE_hats(<12>, 16)" # n 20 # cutoff 4000
 
+do
+  d2 $ n ("10*8") # s "SOPHIE_hard" # cutoff 1000
 
 d6 $ s
 
@@ -146,7 +148,6 @@ d1 silence
 d2 $ gap 16 $ loopAt 4 $ s "misc_vocals" # n 1 # cutoff 4000
 
 
-d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c*8" # s "warsawbass" # octave 3 # gain 1.2 # room 0.1
 
 
 do
@@ -163,7 +164,7 @@ do
   d3 $ slow 4 $ s "~ misc_vocals" # n 1
   d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 20 # cutoff 5000
   d5 $ s "XORE_hats(<14 11>, 16)" # n 20 # cutoff 3500 # room 0.3
-  d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c [~ c] ~ c ~@4" # s "warsawbass" # octave 3 # gain 1.2 # room 0.4
+  -- d6 $ slow 2 $ whenmod 4 1 (ghost) $ n "c [~ c] ~ c ~@4" # s "warsawbass" # octave 3 # gain 1.2 # room 0.4
   d6 $ ghost $ chop 16 $ n "c" # s "warsawbass" # octave 3 # gain 1 # room 0.2
   d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2 # room 0.25 # cutoff 700
   xfadeIn 8 1 $ s "XORE_snares*8" # n 6 # room 0.2 # cutoff (slow 4 $ range 4000 3300 sine) # gain 0.8
@@ -210,8 +211,6 @@ do
   d6 $ ghost $ chop 16 $ n "c" # s "acid91" # octave 3 # gain 1 # room 0.1 # cutoff 500 # distort (slow 4 $ range 0.05 0.1 sine)
   d7 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2 # room 0.25 # cutoff 700
   -- clutchIn 8 2 $ s "XORE_snares*8" # n 6 # room 0.2 # cutoff (slow 4 $ range 4000 3300 sine) # gain 0.8
-  d8 $ (0.25 ~>) $ s "XORE_snares*2" # n 6 # room 0.2 # gain 0.95 # cutoff (slow 4 $ range 5000 4000 sine)
-
 
 
 
@@ -264,8 +263,10 @@ do
 d9 silence
 
 
-d10 $ s "SOPHIE_hard*4" # n "3" # cutoff 2000
+d10 $ s "SOPHIE_hard*4" # n 3 # cutoff 2000
+d10 silence
 
+d10 $ slow 2 $ chop 8 $ s "SOPHIE_hard*4" # n "<0 3>" # cutoff 800 # room 0.8 # size 0.8
 
 
 
