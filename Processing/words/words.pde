@@ -21,7 +21,8 @@ float r = random(256);
 float g = random(256);
 float b = random(256);
 
-String[] words = new String[]{"LUCY", "FERRY"};
+// String[] words = new String[]{"LUCY", "FERRY"};
+String[] words = new String[]{"HARD", "CORE", "SOFT", "WARE"};
 // we increment on first kick, so initializing this to -1 will start us on word 0
 int wordsCounter = -1;
 

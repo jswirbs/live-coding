@@ -101,6 +101,7 @@ do
   d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5 # gain 0.98
   d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
   d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+  d8 $ s "UMRU_stomps" # n "<2 3 2 9>" # gain "<1 1 1 1>"
 
 
 xfadeIn 9 4 $ (0.625 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 9
