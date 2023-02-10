@@ -302,16 +302,16 @@ setcps(150/60/4)
 
 
 do
-  d1 $ s "techno_kicks*4" # gain 1.2 # n 3
+  d1 $ s "techno_kicks*4" # gain 1.1 # n 3
   d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
   d6 $ rarely (ghost) $ s "~ FOOD_hihats [~ FOOD_hihats] ~" # n "18" # cutoff (slow 8 $ range 4000 1000 saw)
-  xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine)
+  xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine) # orbit 6
 
 
-d1 $ whenmod 4 3 (const $ silence) $ s "techno_kicks*4" # gain 1.2 # n 3
+do
+  d1 $ whenmod 4 3 (const $ silence) $ s "techno_kicks*4" # gain 1.2 # n 3
+  d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 11>>" # gain (range 0.4 0.75 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw) # room 0.5 # size 0.9
 
-
-d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 11>>" # gain (range 0.4 0.75 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw) # room 0.5 # size 0.9
 
 do
   d1 silence
@@ -327,7 +327,7 @@ do
   d7 $ s "XORE_hats*16" # n 4 # cutoff 3300 # room 0.18 # pan (slow 6 $ range 0.25 0.75 sine) # gain (fast 8 "1 0.8")
 
 do
-  d1 $ chop 8 $ s "SOPHIE_kicks_wet" # n 6 # gain 1.2
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet" # n 6 # gain 1.2 # orbit 1
   d4 $ arp "down" $ n ("<a'min*4 a'min*4 f'maj*4 d'min*4>") # octave "[4]" # s "acid91" # room 0.2 # cutoff 1000 # gain 0.9
   d7 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine)
 
@@ -359,7 +359,7 @@ do -- 4
   d11 $ n ("a a ~ a a ~ a ~" + "<0 0 0 [~]>") # octave 6 # s "superzow" # gain 0.62 # room 0.4 # cutoff 3000 # detune (slow 4 $ range 2 6 saw)
   d12 $ slow 4 $ s "~@3 SOPHIE_hard" # n 7 # cutoff 3000 # room 0.3 # speed "0.94"
 
-xfadeIn 5 1 silence
+xfadeIn 5 1 $ (0.125 ~>) $ s "techno_hats*16" # n 3 # djf 0.94 # gain 0.8
 
 do
   hush
@@ -402,7 +402,7 @@ do
 
 
 do -- 4 // early...
-  jumpIn' 5 0 $ n ("e6*8") # octave 5 # s "acid92" # cutoff (slow 4 $ range 500 2000 saw) # room 0.5 # gain 1 # fshift (slow 4 $ range 0 "-200" saw) # orbit 4
+  jumpIn' 5 0 $ n ("e6*8") # octave 5 # s "acid92" # cutoff (slow 4 $ range 600 2000 saw) # room 0.5 # gain 1 # fshift (slow 4 $ range 0 "-200" saw) # orbit 4
   d9 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 11>>" # gain (range 0.4 0.75 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 0.9 0.1 saw) # room 0.5 # size 0.9
   jumpIn' 10 0 $ slice 4 "0*8" $ s "SOPHIE_hard" # n 6 # cutoff 1200 # room 0.2 # djf (slow 4 $ 0.2 + (0.25 * run(64) * (1/64)))
   xfadeIn 11 4 silence
@@ -461,20 +461,20 @@ do
 d5 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 5000
 
 
-d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
-
-
-xfadeIn 7 8 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.8 # size 0.8 # cutoff 400 # gain 0.9 # sustain 0.07 # orbit 6
+do
+  d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
+  xfadeIn 7 8 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.8 # size 0.8 # cutoff 400 # gain 0.9 # sustain 0.07 # orbit 6
 
 
 do
   d1 silence
-  d8 $ ghost $ s "~ sn ~ sn" # n 1 # cutoff 1800 # gain 1.15
-  clutchIn 4 16 silence
-  clutchIn 5 16 silence
+  clutchIn 4 8 silence
+  xfadeIn 5 12 silence
   d6 silence
   xfadeIn 7 16 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 1 # size 0.9 # cutoff 500 # gain 0.9 # sustain 0.05 # orbit 6
+  d8 $ ghost $ s "~ sn ~ sn" # n 1 # cutoff 1800 # gain 1.15
   xfadeIn 9 16 silence
+
 
 do
   d2 silence
@@ -482,8 +482,8 @@ do
   d8 silence
 
 
-do
-  d9 $ (0.125 ~>) $ s "<[UMRU_percussion_impacts*16] [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "11" # gain (range "<0.4 0.7>" 0.75 saw) # crush (range "10" "5" saw) -- # orbit 1 # room 1 # size 0
+do -- 2
+  d9 $ (0.125 ~>) $ s "<[UMRU_percussion_impacts*16] [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<16 11>" # gain (range "<0.4 0.7>" 0.75 saw) # crush (range "10" "5" saw) # room 0.5 # size 0.9 -- # orbit 1 # room 1 # size 0
   d12 $ slow 4 $ s "~@14 SOPHIE_hard ~" # n 6 # cutoff 3000 # gain 1.05 # pan "<0.8 0.2>"
 
 
@@ -509,6 +509,7 @@ do
   xfadeIn 4 4 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.2 # size 0.5 # cutoff 4000 # gain 0.8 # sustain 0.1 # orbit 3
   d7 silence
   d8 silence
+
 
 do
   d1 silence
