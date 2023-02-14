@@ -1,4 +1,5 @@
 setcps(132/60/4)
+setcps(136/60/4)
 
 
 d3 $ chop 16 $ loopAt 16 $ s "DANNY_blue" # n 0
@@ -31,14 +32,14 @@ do
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.1
   d2 $ s "SOPHIE_subs*8" # n 5
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4
-  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
+  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2400
 
 d3 $ loopAt 1 $ s "DANNY_blue" # n 4 # djf 0.82
 
 do
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4
   d4 $ ghost $ s "[~ XORE_hats*2]*4" # n 4 # cutoff 7500 # room 0.25
-  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 3 # cutoff 2500
+  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 3 # cutoff 2600
 
 do
   d2 $ s "SOPHIE_subs*8" # n 5 # distort 0.2
@@ -78,8 +79,6 @@ do -- need better riser
   d9 $ s "UMRU_fx_risers" # n 1 # speed 0.47 # hcutoff 2000 # note 12
   -- d9 $ loopAt 1 $ s "UMRU_fx_risers" # n 1 # speed 0.5 # cutoff 6000
   jumpIn 9 1 silence
-
-xfadeIn 10 2 $ slice 16 "<7 5 4 3>" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-0.25" # djf 0.7 # accelerate 1 # gain 1.2
 
 
 d2 $ s "~@2 SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
@@ -125,7 +124,7 @@ do
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.1
   d2 $ s "SOPHIE_subs*8" # n 5
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4
-  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
+  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2400
   d6 $ s "~ sn ~ sn" # n 2 # room 1 # size 0.9 # gain 0.55
 
 

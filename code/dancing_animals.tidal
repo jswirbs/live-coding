@@ -106,7 +106,7 @@ do
   xfadeIn 1 8 $ s "techno_kicks*4" # gain 1.2 # n 3 # djf 0.5
   d2 silence
   d7 $ slice 10 "<2 3 4 5>" $ loopAt 10 $ s "FOOD_vocal_loops" # n 4 # cutoff 4000
-  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # sustain 0.5 # gain 0.75 # cutoff 1200
+  d9 $ (0.125 ~>) $ slow 4 $ n "a*12@3 g*4" # octave 3 # s "supersquare" # room 0.3 # sustain 0.25 # gain 0.75 # cutoff 1200
   xfadeIn 9 8 silence
 
 

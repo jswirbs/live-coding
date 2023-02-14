@@ -181,10 +181,10 @@ d9 $ slice 16 "<<1 1 1 8> ~>" $ s "choir" # note "-4" # gain 0.9
 
 do
   d9 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.98
-  d10 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.92 # cutoff 3000 # distort 0.1
+  d10 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.95 # cutoff 3300 # distort 0.1
 
 do
-  xfadeIn 10 8 $ (0.125 ~>) $ ghost $ ghost $ s "techno_hats*4" # n 0 # gain 0.75
+  xfadeIn 10 8 $ (0.125 ~>) $ ghost $ ghost $ s "techno_hats*4" # n 0 # gain 0.78
   xfadeIn 11 8 $ slice 8 "<1 1 1 4 5 5 7 7>" $ s "choir" # note "8" # gain 0.85 # cutoff (slow 8 $ range 600 1600 saw) # room 0.3 # orbit 9
 
 
@@ -205,7 +205,7 @@ do
 
 do
   d3 silence
-  xfadeIn 4 8 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 1 # cutoff 1600
+  xfadeIn 4 16 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 1 # cutoff 1600
   xfadeIn 5 32 $ s "sn:7*16"
   d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8 # hcutoff 800 # cutoff 2000
   d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 300 700 saw) # orbit 9
