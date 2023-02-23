@@ -160,7 +160,7 @@ do
   d4 $ s "UMRU_bass_one_shots/4" # n 19
   d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
   d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.84 # distort 0.15
-  d7 $ rarely (rev) $ palindrome $ striate 4 $ chop 2 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # gain 0.85
+  d7 $ rarely (rev) $ gap 5 $ palindrome $ striate 4 $ chop 2 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # gain 0.85
 
 
 clutchIn 7 16 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.15 # gain 0.94
@@ -181,7 +181,7 @@ d9 $ slice 16 "<<1 1 1 8> ~>" $ s "choir" # note "-4" # gain 0.9
 
 do
   d9 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.98
-  d10 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.95 # cutoff 3300 # distort 0.1
+  xfadeIn 10 8 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 0 # gain 0.95 # cutoff 3000 # distort 0.1
 
 do
   xfadeIn 10 8 $ (0.125 ~>) $ ghost $ ghost $ s "techno_hats*4" # n 0 # gain 0.78
@@ -262,6 +262,7 @@ do
   d2 $ gap 8 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1"
   d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain 0.8
   d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
+  d10 silence
   d12 $ slice 8 "<1 1 1 4 6 6 7 ~>" $ s "choir" # note "8" # gain 0.7 # room 0.8 # size 0.5 # cutoff (slow 4 $ range 1000 1800 sine) # orbit 11
 
 

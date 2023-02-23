@@ -121,17 +121,17 @@ do
   unsolo 4
   d1 $ s "SOPHIE_kicks_wet:14*2" # gain 1.1
   d2 $ slow 4 $ n (off "0" (+7) $ "<e3 c3>") # s "moogbass" # cutoff 2000
-  d5 $ s "[~ sn]*2" # n 4
+  d5 $ s "[~ sn]*2" # n 4 # cutoff 2500
   d6 $ s "noise*16" # gain (fast 4 $ "1.25 1.15") # cutoff 2000
 
-d7 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw)
+d7 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw) # cutoff 4000
 
 d7 $ rarely rev $ chop 2 $ n (slow 2 $ arp "thumbup" "e6'min7 c6'maj7" - (slow 4 $ "<0 12>")) # s "midsaw" # distort 0.4
 
-d7 $ fast 2 $ s "default*6" # n (slow 8 $ arp "down" "e5'min7 c4'maj7") # crush (slow 2 $ range 12 4 saw) # gain 0.85 # cutoff 7000
+d7 $ fast 2 $ s "default*6" # n (slow 8 $ arp "down" "e5'min7 c4'maj7") # crush (slow 2 $ range 12 4 saw) # gain 0.85 # cutoff 6000
 
 
-clutchIn 7 4 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw)
+clutchIn 7 4 $ rarely rev $ chop 2 $ fast 2 $ s "default*3" # n (slow 8 $ arp "down" "e6'min7 c5'maj7") # crush (slow 2 $ range 12 4 saw) # cutoff 4000
 clutchIn 7 4 $ rarely rev $ chop 2 $ n (slow 2 $ arp "thumbup" "e6'min7 c6'maj7" - (slow 4 $ "<0 12>")) # s "midsaw" # distort 0.4
 
 xfadeIn 7 8 silence

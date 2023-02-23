@@ -337,7 +337,7 @@ do
   xfadeIn 12 24 $ slow 4 $ s "~@15 SOPHIE_hard" # n (choose[0,3,4]) # cutoff 800 # room 0.5 # pan "<0.8 0.2>"
 
 
-d8 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[4]" # s "subbass" # gain 0.95 # room 0.8 # size 0.8 # cutoff 3000 # sustain 1.2 # pan (range 0.2 0.4 perlin)
+d8 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[4]" # s "subbass" # gain 0.97 # room 0.8 # size 0.8 # cutoff 3000 # sustain 1.2 # pan (range 0.2 0.4 perlin)
 
 
 d10 $ n ("a a ~ a a ~ a ~" + "<3 3 0 5>") # octave 5 # s "default" # gain 0.95 # room 0.4 # cutoff 4000 # pan (range 0.7 0.9 perlin)
@@ -358,7 +358,7 @@ do -- 4
 -- 2
 do
   xfadeIn 5 2 $ s "XORE_hats*16" # n 4 # cutoff 4000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine)
-  xfadeIn 7 1 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 5000 # room 0.2
+  xfadeIn 7 1 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 5000
 
 
 do
@@ -422,7 +422,6 @@ do
   d1 $ s "techno_kicks*4" # gain 1.2 # n 0
   d2 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[2,3]" # s "acid91" # room 0.2 # cutoff 1500 # gain 0.9
   d3 $ n "~ ~ a a" # octave 5 # s "acid91" # sustain "2" # room 0.6 # size 0.85 # cutoff 1000 # gain 0.7
-  -- d4 $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.2 # cutoff 2000 # gain 0.9
   d4 $ n (slow 4 $ "[e6 c6]*8@2 [c6 a]*4 [a f]*4") # octave "[4]" # s "acid92" # room 0.2 # cutoff 2000 # gain 1
   d5 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 4000
   d6 $ rarely (ghost) $ s "~ FOOD_hihats [~ FOOD_hihats] ~" # n "18" # cutoff (slow 8 $ range 4000 1000 saw)
@@ -436,13 +435,15 @@ do
 
 do
   jumpIn' 5 0 $ n ("e6*8") # octave 5 # s "acid92" # cutoff (slow 4 $ range 2500 5000 saw) # room 0.3 # gain 0.9 # fshift (slow 4 $ range 4 "-200" saw) # orbit 4 -- # pan (slow 2 $ range 0.2 0.8 sine)
-  xfadeIn 7 10 silence
+  d7 $ s "XORE_hats*8" # n 4 # cutoff 4000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine)
+  xfadeIn 7 16 silence
 
   jumpIn' 5 0 $ n ("e6*8") # octave 5 # s "acid92" # cutoff (slow 4 $ range 5000 8000 saw) # room 0.3 # gain 0.9 # fshift (slow 4 $ range "-200" "-400" saw) # orbit 4 -- # pan (slow 2 $ range 0.2 0.8 sine)
 
 
 do
   d5 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 4000
+  d7 silence
   d8 $ s "~ sn ~ sn" # n 1
 
 
@@ -450,7 +451,7 @@ d2 $ n ("a a ~ a a ~ a ~" - "<0 0 0 4>") # octave "[2,3]" # s "acid91" # room 0.
 
 do
   d1 silence
-  d8 silence
+  -- d8 silence
 
 do
   d1 $ s "techno_kicks*4" # gain 1.2 # n 3
@@ -460,6 +461,7 @@ do
 
 
 do
+  xfadeIn 1 8 $ s "techno_kicks*4" # gain 1.2 # n 3 # djf 0.63
   d5 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 5000
   xfadeIn 7 8 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.8 # size 0.8 # cutoff 300 # gain 0.9 # sustain 0.07 # orbit 6 # pan (fast 4 $ range 0 1 rand)
 
@@ -470,7 +472,7 @@ do
   clutchIn 4 12 silence
   xfadeIn 5 16 silence
   d6 silence
-  xfadeIn 7 16 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 1 # size 0.9 # cutoff 500 # gain 0.9 # sustain 0.05 # orbit 6 # pan (fast 4 $ range 0 1 rand)
+  xfadeIn 7 16 $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 1 # size 0.95 # cutoff 500 # gain 0.9 # sustain 0.05 # orbit 6 # pan (fast 4 $ range 0 1 rand)
   d8 $ ghost $ s "~ sn ~ sn" # n 1 # cutoff 2000 # gain 1.2
   xfadeIn 9 24 silence
   d12 $ slow 4 $ s "~@15 SOPHIE_hard" # n (choose[0,3,4]) # cutoff 2000 # room 0.1 # pan "<0.8 0.2>"
@@ -480,7 +482,7 @@ do
 do
   d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.25 # room 0.3 # cutoff 100
   xfadeIn 2 8 silence
-  xfadeIn 7 16 $ ghost $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 1 # size 0.997 # cutoff 1000 # gain 0.9 # sustain 0.03 # orbit 6 # pan (fast 4 $ range 0 1 rand)
+  xfadeIn 7 16 $ ghost $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 1.05 # size 0.999 # cutoff 1000 # gain 0.93 # sustain 0.03 # orbit 6 # pan (fast 4 $ range 0 1 rand)
   d8 silence
 
 
@@ -508,6 +510,10 @@ do
   -- d12 $ (0.01 <~) $ slice 2 (slow 4 $ "1") $ s "SOPHIE_hard" # n 6 # cutoff 3000 # room 0.3 # pan "<0.8 0.2>" # speed 0.92
 
 
+-- <5 5 4 4>  //  don't do [octave 6] it hurts
+d4 $ ghost $ ghost $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[5]" # s "acid91" # room 0.2 # size 0.5 # gain 0.8 # sustain 0.08 # orbit 3 # pan (fast 4 $ range 0.3 0.7 rand)
+
+
 d1 $ (0.125 ~>) $ s "<~ [~ ~ [techno_kicks*4] ~]>" # n "<~ 3>" # gain (range 1 1.2 saw)
 
 do
@@ -533,7 +539,7 @@ do
   d6 silence
   d9 silence
   d12 $ slow 4 $ s "~@14 SOPHIE_hard ~" # n (choose[0,3,4]) # cutoff 1500 # pan "<0.8 0.2>" # speed "0.5"
-  jumpIn 3 3 $ n "~ ~ ~ a" # octave 5 # s "acid91" # sustain "0.5" # room 0.6 # size 0.85 # cutoff 1000 # gain 0.7
+  jumpIn 3 3 $ n "~ ~ ~ a" # octave 5 # s "acid91" # sustain 0.25 # room 0.6 # size 0.85 # cutoff 1000 # gain 0.7
 
 hush
 

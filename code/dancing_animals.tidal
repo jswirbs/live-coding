@@ -124,7 +124,7 @@ do
 do
   d1 $ silence
   d2 $ slow 2 $ n "[a4, e, a, b, c6, e6]" # octave "2" # s "bladerunnersaw" # room 0.4 # gain 1
-  jumpIn 2 4 $ slow 2 $ n "[a4, e, a, b, c6, e6]" # octave "<2 3>" # s "bladerunnersaw" # room 0.5 # gain "<1 0.85>"
+  jumpIn 2 4 $ slow 2 $ n "[a4, e, a, b, c6, e6]" # octave "<2 3>" # s "bladerunnersaw" # room 0.5 # gain "<1 [1 0.88]>"
   d3 $ n "a4 e a b c6 e6 <[c e f a c6 e6] [g b d a a6 g6]>@6" # octave 4 # s "basslow" # cutoff 1200
   d7 $ slice 20 "14*2" $ loopAt 10 $ s "FOOD_vocal_loops" # n 4 # cutoff 4000
   xfadeIn 7 12 silence
