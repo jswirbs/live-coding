@@ -8,6 +8,8 @@ setcps(130/60/4)
 --   xfadeIn 4 16 $ n ("c" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3 # orbit 2
 
 GET INTRO OF ACTUAL SONG ??
+try it reversed?
+make initial c synth freaky/interesting at beginning or come in cooler?
 
   -- crush in from 0
   d10 $ ghost $ fast 2 $ (0.125 ~>) $ gap 8 $ (0.125 <~) $ arp "down" $ n ("[c2 c3'min@3]" + "<0 12 24 36>") # s "supersaw" # sustain 0.3 # distort (slow 4 $ range 0.2 0.8 sine) # crush 0.37 # gain 0.62 # pan (fast 8 $ range 0 1 rand) # room 0.5 # djf 0.5 # cutoff 1000 # orbit 9
@@ -23,26 +25,30 @@ do
   d3 $ slice 4 0 $ loopAt 4 $ s "DJ_DAVE_castles" # cutoff 200 # room 0.5
   d4 $ slice 4 3 $ loopAt 4 $ s "DJ_DAVE_castles" # hcutoff 5000 # room 0.1
 
+d3 $ slow 8 $ rev $ chop 32 $ s "DJ_DAVE_castles" # number 16 # cutoff 2000 # room 0.3 # gain (rev $ "0.85 0.87 0.9 0.95 1.05 1.12 1.17 [1.17 1.1 1.02 0.95]")
+d3 $ slow 8 $ chop 64 $ s "DJ_DAVE_castles" # number 16
+
+
 -- some intro
 
+
+
+jumpIn' 3 0 $ slow 8 $ rev $ chop 32 $ s "DJ_DAVE_castles" # number 16 # cutoff 2000 # room 0.3 # gain (rev $ "0.85 0.87 0.9 0.95 1.05 1.12 1.17 [1.17 1.1 1.02 0.95]")
+
+
 do
-  -- hush
-  -- xfadeIn 1 4 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # hcutoff 500
-  xfadeIn 7 4 $ n "c" # s "default"
+  xfadeIn 7 4 $ n "c" # s "default" # cutoff 2000
 
 do
   xfadeIn 1 8 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # hcutoff 230
-  xfadeIn 3 8 silence
-  xfadeIn 4 12 silence
   xfadeIn 7 8 $ n "c" # s "default" # squiz 2
   xfadeIn 8 8 $ whenmod 8 7 (const $ arp "up" $ n "c6 c'min@3" # s "default") $ arp "down" $ n "c6 c'min@3" # s "default"
-
+  clutchIn 10 8 silence
 
 do
-  -- d3 silence
-  -- d4 silence
   d2 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.2 # cutoff 1000 # room 0.4
-  d8 $ fast 2 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default" # cutoff 2000
+  d3 $ slow 8 $ rev $ chop 32 $ s "DJ_DAVE_castles" # number 16 # cutoff 2000 # room 0.3 # gain (rev $ "0.8 0.84 0.86 0.93 1.05 1.12 1.17 [1.17 1.1 1.02 0.95]")
+  d8 $ fast 2 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default" # cutoff 2000 # gain 1.05
   d9 $ s "DJ_DAVE_castles" # n 12
   jumpIn 9 1 silence
 
@@ -63,7 +69,7 @@ do
 do
   d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # djf 0.5
   d2 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.2 # cutoff 1000 # room 0.2
-  d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 15
+  d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.95
   d6 $ slow 16 $ gap 256 $ s "DJ_DAVE_castles" # n 9 # room 0.5 # cutoff 900 # waveloss 30
   d7 $ gap "2@3 16" $ slow 4 $ slice 16 ("0 ~ 0 0" + "<0 6 14 [5 2]>") $ s "DJ_DAVE_castles" # n 9 # crush "6@3 3" # gain "0.85 ~ 0.85 0.65" # hcutoff 1000
   d8 $ fast 2 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default" # cutoff 2000
@@ -158,7 +164,7 @@ d4 $ s "SOPHIE_subs [~ SOPHIE_subs*3@3]" # n "<3 3 3 4>"
 
 do
   d5 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # crush (slow 4 $ range 8 6 sine) # gain 1.1 # djf 0.6 # orbit 4
-  d6 $ slow 4 $ gap 64 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 800 # room 0.3 # orbit 5 # gain 0.85
+  d6 $ slow 4 $ gap 64 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 800 # room 0.3 # orbit 5 # gain 0.88
   xfadeIn 6 12 $ slow 4 $ gap 64 $ s "DJ_DAVE_castles" # n "<10 11>" # cutoff 1200 # room 0.3 # orbit 5 # gain 1.05
 
 
@@ -205,7 +211,7 @@ do -- 4
   d6 $ slow 4 $ s "~ ~ ~ DJ_DAVE_castles" # n "<3 4>" # gain 0.95
   d7 $ n "c" # s "default" # squiz 2 # gain 0.95
 
-d7 $ n "c" # s "default" # squiz (slow 4 $ range 2 4 saw) # gain 0.95
+d7 $ n "c" # s "default" # squiz (slow 4 $ range 2.02 4 saw) # gain 0.95
 
 do
   d7 $ n "c" # s "default" # squiz (slow 4 $ range 4 6 saw) # gain 0.95
@@ -267,13 +273,13 @@ do
 
 
 do
-  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # gain 1.15
+  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # gain 1.1
   d3 $ slow 4 $ rev $ chop 16 $ s "DJ_DAVE_castles:0"
   xfadeIn 9 0.25 $ s "XORE_hats*16" # n 15 # cutoff 4000 # pan (slow 2 $ range 0.1 0.9 sine)
 
 do
   -- xfadeIn 2 4 silence
-  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # sustain (slow 4 $ range 0.25 0 saw) # gain (slow 4 $ range 1.15 1.4 saw)
+  d2 $ n "[~ c]*4" # s "superhammond" # octave "[2,3,4]" # cutoff 300 # sustain (slow 4 $ range 0.25 0 saw) # gain (slow 4 $ range 1.1 1.4 saw)
   xfadeIn 5 4 silence
   xfadeIn 4 4 $ slow 4 $ slice 16 "1*4" $ s "DJ_DAVE_castles:0" # room 0.8
   xfadeIn 9 4 $ s "XORE_hats*8" # n 15 # cutoff 3000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 1.1
@@ -310,7 +316,7 @@ d6 $ sometimes (rev) $ gap 8 $ gap 2 $ s "DJ_DAVE_castles" # n "<3 2 3 4>" # gai
 
 
 
-d6 $ slow 4 $ chop 2 $ s "~ DJ_DAVE_castles" # n "<3 2 3 4>" # djf 0.24 # room 1 # speed 0.5 # pan (range 0.2 0.8 rand)
+d6 $ slow 4 $ chop 2 $ s "~ DJ_DAVE_castles" # n "<3 2 3 4>" # djf 0.25 # room 1 # speed 0.5 # pan (range 0.2 0.8 rand)
 
 
 do
