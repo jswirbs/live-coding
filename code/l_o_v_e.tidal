@@ -1,0 +1,248 @@
+setcps(144/60/4)
+
+
+d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love"
+d2 $ loopAt 4 $ s "SOPHIE_love:0" # cutoff 2000 # room 0.4 # distort 0.1
+d2 $ loopAt 4 $ gap 128 $ s "SOPHIE_love:0" # cutoff 2000 # room 0.4 # distort 0.1
+
+-- jump!
+d8 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0"
+
+d2 $ loopAt 4 $ slice 32 "<0*8 8*8 16*8 24*8>" $ s "SOPHIE_love"
+d2 $ (0.125 ~>) $ loopAt 4 $ slice 32 (fast 4 $ "<0*4 8*4 16*4 24*4>") $ s "SOPHIE_love"
+
+d2 $ loopAt 4 $ slice 32 "[0*4 1*4]*4" $ s "SOPHIE_love"
+d2 $ loopAt 4 $ slice 32 "[8*4 9*4]*4" $ s "SOPHIE_love"
+d2 $ loopAt 4 $ slice 32 "[16*4 17*4]*4" $ s "SOPHIE_love"
+d2 $ loopAt 4 $ slice 32 "[24*4 25*4]*4" $ s "SOPHIE_love"
+d2 $ loopAt 4 $ slice 32 ("[0*4 1*4]*4" + "0 8 16 24") $ s "SOPHIE_love" -- # cutoff 3000
+
+
+d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 2 # gain 1.05
+
+d4 $ loopAt 4 $ chop 4 $ s "SOPHIE_love" # n 1
+d4 $ loopAt 4 $ gap "128 [128 96] 64 32" $ s "SOPHIE_love" # n 1 # cutoff 3000 # distort 0.3
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.25
+
+
+d4 $ n "gs'min" # s "superzow" # octave 4 # gain 0.6
+d4 $ striate 2 $ arp "down" $ n "gs'min" # s "superzow" # octave 4 # gain 0.6
+d4 $ n (slow 4 $ "<gs'min*4 gs'maj*4>") # s "superzow" # octave 4 # gain 0.6
+d4 $ n "gs ~" # s "supersaw" # octave 4 # gain 0.8
+d4 silence
+
+d4 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ chop 16 $ n "gs" # s "supersaw" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 600 # room 0.15
+d4 $ chop 16 $ n "gs" # s "warsawbass" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 1000 # room 0.2
+
+d5 $ s "SOPHIE_claps" # n 5
+d5 $ (0.125 ~>) $ s "SOPHIE_hihats*4" # n 3 # cutoff 4000
+d5 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 8000
+
+d6 $ s "[~ SOPHIE_claps]*2" # n 5
+d6 $ s "~ SOPHIE_claps ~ [~@3 SOPHIE_claps] ~" # n 5
+d6 silence
+
+
+
+d1 $ s "techno_kicks*4" # n 0 # gain 1.2
+
+
+d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.2 # distort 0.1 # crush 2 # gain (fast 4 $ "0.94 1.15")
+d5 $ s "techno_hats*16" # n 2 # cutoff 2000 # room 0.2
+
+
+
+
+---------------
+-- STRUCTURE --
+---------------
+setcps(144/60/4)
+
+
+
+d1 $ loopAt 4 $ s "SOPHIE_love" # n 1 # room 0.5
+
+
+d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love"
+
+
+xfadeIn 3 4 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.1 # crush 2 # gain (fast 4 $ "1 1.2")
+
+do
+  hush
+  d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # cutoff 2000 # room 0.2
+  d3 $ loopAt 4 $ s "SOPHIE_love" # n 2 # room 0.5
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.25
+  d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love"
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 # room 0.5 # cutoff 4000
+  d4 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ chop 16 $ n "gs" # s "supersaw" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 600 # room 0.15
+  d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.1 # crush 2 # gain (fast 4 $ "0.94 1.2")
+
+xfadeIn 5 4 silence
+
+do
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 8000
+  d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.5
+
+
+do
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 # cutoff 1300 # room 0.7 # size 0.8
+  d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.1 # crush 2 # gain (fast 4 $ "0.94 1.2")
+  d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room 0.5 # cutoff 1000
+  d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.73 # fshift 20
+
+
+do
+  d1 silence
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 2
+  -- d4 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ gap 16 $ n "gs" # s "supersaw" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 600 # room 0.15 # fshift "-3400"
+  d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room 0.5 # cutoff 1000 # fshift (slow 4 $ range 0 "-200" saw)
+
+do
+  d6 silence
+  d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room (slow 4 $ range 0.5 0.7 sine) # size (slow 4 $ range 0 0.25 saw) # cutoff 1000 # fshift (slow 4 $ range "-200" "-400" saw)
+
+do
+  d5 $ s "techno_hats*16" # n 2 # cutoff 700 # room 0.7 # crush 2.5 # gain (fast 4 $ "0.94 1.2")
+  xfadeIn 5 8 silence
+  d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room (slow 4 $ range 0.7 0.9 sine) # size (slow 4 $ range 0.25 0.7 saw) # cutoff 1000 # fshift (slow 4 $ range "-400" "-600" saw)
+
+do
+  d7 silence
+  d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room (slow 4 $ range 0.9 1.1 sine) # size (slow 4 $ range 0.7 0.99 saw) # cutoff 1000 # fshift (slow 4 $ range "-600" "-800" saw)
+  xfadeIn 10 4 $ s "sn*16" # n 7 # gain 1.1
+
+
+
+-- narrow and focused
+do
+  hush
+  -- d1 $ chop 8 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.3 # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.3
+  -- d2 $ chop 15 $ n "gs2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # room 0.8 # size 0
+  d2 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ chop 16 $ n "gs" # s "supersaw" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 600 # room 0.15
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 2
+  d4 $ (0.75 ~>) $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.8" # hcutoff 2000
+  -- d5 $ n "[a ~]*8" # s "superzow" # attack 0.5 # cutoff 2000 # distort 0.2 # fshift (slow 2 $ range 0 "-100" saw) # orbit 1
+  d5 $ loopAt 4 $ chop 4 $ s "SOPHIE_love" # n 1 # room 0.2 # cutoff 6000
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 8000
+  d7 $ chop 16 $ loopAt 4 $ s "SOPHIE_love"
+  d8 silence
+  d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # fshift 20
+
+
+
+d4 silence
+
+-- loud and wide
+do
+  hush
+  d1 $ chop 8 $ s "SOPHIE_kicks_wet*2" # n 7 # gain 1.25 -- # cutoff "2000 300 600 300 1000 800 200 1000 100"
+  -- d1 $ s "techno_kicks*4" # n 0 # gain 1.2
+  -- d2 $ chop 15 $ n "gs2" # s "supersaw" # cutoff "2000 300 600 300 1000 800 200 1000 100" # room 2 # size 1
+  d2 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ chop 16 $ n "gs" # s "supersaw" # octave 2 # gain ("[0.5 0.75 0.88 0.86]*4" + "0.05") # cutoff 600 # room 0.15 # room 2 # size 1
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 2 # gain 1.1 # room 0.9 # cutoff 1000
+  d4 $ s "hh*8" # n "0" # crush 4 # gain 1.1 # orbit 1
+  -- d5 $ n "[a6 ~]*8" # s "superzow" # attack 0.5 # cutoff 2000 # distort 0.2 # fshift (slow 2 $ range 0 "-100" saw) # gain 0.9 # orbit 1 # room 1 # size 1
+  d5 $ ghost $ loopAt 4 $ gap 32 $ s "SOPHIE_love" # n 1 # cutoff 2000 # room 0.9
+  -- get low version of this from split tracks?
+  d6 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # fshift 20 # orbit 1
+  d7 $ loopAt 4 $ gap "128@15 2" $ s "SOPHIE_love:0" # cutoff 2000 # room 1 # distort 0.1
+  d8 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0" # cutoff 2000 # room 0.4 # distort 0.1
+
+d9 $ (0.5 ~>) $ s "SOPHIE_claps" # n 5 # speed "-0.5" # cutoff 1700 # orbit 1 # waveloss 20 # gain 1.05
+
+
+
+do -- don't jump
+  d4 silence
+  d6 silence
+  d7 silence
+
+do
+  hush
+  d5 $ loopAt 4 $ chop 4 $ s "SOPHIE_love" # n 1 # room 0.2 # cutoff 6000
+  xfadeIn 7 8 $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 2 # cutoff 4000
+  d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # fshift 20 # cutoff 2000
+
+d8 $ (0.125 ~>) $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 4 # cutoff 3000 # room 0.4 # size 0.6
+
+
+do
+  d4 $ slow 4 $ n "[~ ~ ~ [gs gs gs ~]] ~@3" # s "default" # sustain 0.05 # distort 0 # gain 1.2
+  d6 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # cutoff 600 # room 0.5 # size 0.4
+
+d10 $ slow 4 $ n "~ [~ ~ ~ [gs gs gs ~]] ~@2" # octave 6 # s "default" # sustain 0.05 # distort 0 # gain 1.2
+
+do
+  d11 $ slow 4 $ n "~@2 [~ ~ ~ [gs gs gs ~]] ~" # octave 7 # s "default" # sustain 0.05 # distort 0.2 # gain 1.2
+  d1 $ slice 2 (slow 4 $ 0) $ loopAt 8 $ s "risers" # n 0
+
+do
+  jumpIn 12 1 $ slow 4 $ n "~@3 [~ ~ ~ [gs gs gs ~]]" # octave 8 # s "default" # sustain 0.05 # distort 0.4 # gain 1.2
+  d8 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0"
+  d1 $ slice 2 (slow 4 $ 1) $ loopAt 8 $ s "risers" # n 0
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.25
+  d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love"
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 # cutoff 1500 # room 0.6
+  d4 $ fast 4 $ whenmod 16 15 (const $ silence) $ slow 4 $ chop 16 $ n "gs" # s "supersaw" # octave 2 # gain "[0.5 0.75 0.88 0.86]*4" # cutoff 600 # room 0.15
+  d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.1 # crush 2 # gain (fast 4 $ "0.94 1.2")
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 8000
+  d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.5
+  d8 $ chop 2 $ n "gs8'min*8" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.3") # distort 0.3 # crush 1.5 # detune (slow 4 $ range 1.75 2.75 sine) # room 0.4 # cutoff 1200
+  d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.73 # fshift 20
+
+clutchIn 8 7 $ chop 2 $ n ("gs8'min*8" - "<0 1 2 [3 3 3 [2 1]]>") # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.3") # distort 0.3 # crush 1.5 # detune (slow 4 $ range 1.75 2.75 sine) # room 0.4 # cutoff 1200 # orbit 7
+
+
+d10 $ slice 16 (slow 4 $ "0 2 4 6") $ loopAt 8 $ s "risers" # n 0 # cutoff 5000 # room 0.2
+d10 $ slice 16 (slow 4 $ "8 10 12 14") $ loopAt 8 $ s "risers" # n 0 # cutoff 5000 # room 0.2
+
+
+do
+  d2 $ loopAt 4 $ slice 32 "[0 8 16 24]" $ s "SOPHIE_love"
+  xfadeIn 5 8 silence
+  d6 silence
+  d10 $ slice 16 (slow 4 $ rev $ "8 10 12 14") $ loopAt 8 $ s "risers" # n 0 # cutoff 2000 # room 0.3 # speed "-1"
+
+d10 $ slice 16 (slow 4 $ "6 4 2 0") $ loopAt 8 $ s "risers" # n 0 # cutoff 2000 # room 0.3 # speed "-1"
+
+d11 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0"
+
+do
+  d1 $ s "techno_kicks*4" # n 0 # gain 1.15
+  d2 $ loopAt 4 $ slice 32 ("[0*4 1*4]*4" + "0 8 16 24") $ s "SOPHIE_love" -- # cutoff 3000
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.9
+  xfadeIn 8 1 $ chop 2 $ n ("gs8'min*8" - "<0 1 2 [3 3 3 [2 1]]>") # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.3") # distort 0.3 # crush 1.5 # detune (slow 4 $ range 2 4 sine) # room 0.4 # cutoff 1200 # orbit 7
+  d10 silence
+  d11 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0" # cutoff 2000 # room 0.2 # gain 0.95
+
+clutchIn 2 8 $ loopAt 4 $ slice 32 "[0 8 16 24]" $ s "SOPHIE_love"
+
+do
+  d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.18 # crush 1.8 # gain (fast 4 $ "0.94 1.2")
+  d8 $ chop 2 $ n "gs8'min*8" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.3") # distort 0.5 # crush 1 # detune (slow 4 $ range 2 3 sine) # room 0.4 # cutoff 1100 # orbit 7
+  xfadeIn 8 16 silence
+
+
+
+do
+  hush
+  d2 $ loopAt 4 $ slice 32 "[0 8 16 24]" $ s "SOPHIE_love"
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 -- # cutoff 1500 # room 0.6
+
+d3 silence
+
+hush
+
+
+--
