@@ -43,7 +43,7 @@ do
 
 do
   d2 $ s "SOPHIE_subs*8" # n 5 # distort 0.2
-  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 3 # crush 6.5 -- # cutoff 2000
+  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 3 # crush 6 # room 0.2 # gain 0.95
   d6 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain 0.9
 
 
@@ -63,7 +63,7 @@ do
 
 
 do
-  d2 $ s "SOPHIE_subs*2" # n 5 # gain 1.2
+  d2 $ s "SOPHIE_subs*2" # n 5 # gain 1
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4 # cutoff 1000
   d7 $ slice 32 "21*2" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
   d8 $ slice 32 (slow 2 $ "<14*4 10*4 8*4 7*4>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
@@ -80,15 +80,14 @@ do -- need better riser
   -- d9 $ loopAt 1 $ s "UMRU_fx_risers" # n 1 # speed 0.5 # cutoff 6000
   jumpIn 9 1 silence
 
-
-d2 $ s "~@2 SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
+d2 $ s "SOPHIE_subs SOPHIE_subs SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
 
 
 do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.1
-  d2 $ s "SOPHIE_subs*8" # n 5
-  jumpIn 2 1 $ whenmod 4 3 (const $ s "SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5) $ s "SOPHIE_subs*4" # n 5
+  d2 $ s "SOPHIE_subs*8" # n 5 # gain 1.2
+  jumpIn 2 1 $ whenmod 4 3 (const $ s "SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.2) $ s "SOPHIE_subs*4" # n 5 # gain 1.2
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4
   d8 $ slice 32 (slow 2 $ "<14*4 10*4 8*4 7*4>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
 
@@ -101,31 +100,40 @@ do
 
 do
   d1 silence
-  d2 $ s "SOPHIE_subs*4" # n 5
+  d2 $ s "SOPHIE_subs*4" # n 5 # gain 1.05
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4 # cutoff 70
   d8 $ slice 256 (slow 2 $ "<112*16 80*16 64*16 56*16>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.75
+  xfadeIn 9 15 $ s "sn*16" # n 4
 
-
-d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0*8 4*8 14*8 13*8>") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
-d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0 4 14 13>*8") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
-
-
-xfadeIn 6 8 $ s "sn*16" # n 4
+d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0*8 4*8 14*8 13*8>") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2500 # room 0.2 # gain 0.95
 
 do
-  d9 $ s "UMRU_fx_risers" # n 1 # speed 0.47 # hcutoff 2000 # note 12
+  d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0 4 14 13>*8") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
+  xfadeIn 5 4 $ (0.125 ~>) $ chop 2 $ slice 16 (slow 2 $ "<0 4 14 13>*8") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 4000
+  xfadeIn 9 2 $ s "sn*16" # n 4 # djf (slow 2 $ range 0.5 0.95 saw)
+  d10 $ s "UMRU_fx_risers" # n 1 # speed 0.47 # hcutoff 2000 # note 12
   -- d9 $ loopAt 1 $ s "UMRU_fx_risers" # n 1 # speed 0.5 # cutoff 6000
-  jumpIn 9 1 silence
+  jumpIn 10 1 silence
 
 
 -- aaand back
 do
   hush
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.1
-  d2 $ s "SOPHIE_subs*8" # n 5
+  d2 $ s "SOPHIE_subs*8" # n 5 # gain 1
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4
   d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2400
   d6 $ s "~ sn ~ sn" # n 2 # room 1 # size 0.9 # gain 0.55
 
 
 --
+
+
+
+do
+  hush
+  d1 $ s "techno_kicks*4" # n 0 # gain 1.05
+  d2 $ s "SOPHIE_subs*8" # n 5 # gain 1
+  -- d3 $ loopAt 1 $ s "DANNY_blue" # n 4
+  d5 $ (0.125 ~>) $ gap 8 $ slice 2 "<0 1>" $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2400
+  d6 $ s "~ sn ~ sn" # n 2 # room 1 # size 0.9 # gain 0.55
