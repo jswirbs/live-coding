@@ -238,7 +238,7 @@ d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # sustain (slow 4 $ range
 
 
 do
-  setcps(180/60/4)
+  setcps(190/60/4)
   d4 $ fast 4 $ s "XORE_hats*2" # n 4 # cutoff 10000
   d5 $ gap 64 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9
 

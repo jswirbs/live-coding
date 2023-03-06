@@ -445,12 +445,12 @@ do
   -- jumpIn 2 8 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.2
   jumpIn 9 7 $ rev $ gap 2 $ striate 4 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # cutoff 5000
   jumpIn 1 8 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 -- good baseline
-  jumpIn 2 8 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.5
+  jumpIn 2 8 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.4
   jumpIn 4 8 $ (0.125 ~>) $ fast 2 $ s "[XORE_hats*2] ~ [XORE_hats] ~" # n 4
 
 
 xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1 # distort 0.25
-xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.5
+xfadeIn 2 2 $ (0.125 ~>) $ s "SOPHIE_subs SOPHIE_subs ~ [~ SOPHIE_subs]" # n 0 # gain 1.4
 
 
 
@@ -468,7 +468,7 @@ do
 
 
 do
-  d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.4 -- good baseline
+  d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 -- good baseline
   d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 7
   d8 $ (0.25 ~>) $ s "sn:2*2"
   d9 $ rev $ gap "4 8" $ chop 32 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.75

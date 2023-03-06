@@ -160,7 +160,7 @@ do
   d4 $ s "UMRU_bass_one_shots/4" # n 19
   d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7
   d6 $ slice 32 "[~ <5 5 5 5 3 3 4 4 8 8 8 8 22 23 24 25>]*4" $ s "UMRU_bass_one_shots" # n 6 # gain 0.84 # distort 0.15
-  d7 $ rarely (rev) $ gap 5 $ palindrome $ striate 4 $ chop 2 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # gain 0.85
+  d7 $ rarely (rev) $ palindrome $ striate 4 $ chop 2 $ s "DJ_DAVE_castles" # n 0 # cut 1 # pan (slow 8 "0.3 0.4 0.5 0.6 0.7 0.6 0.5 0.4") # gain 0.85
 
 
 clutchIn 7 16 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.15 # gain 0.94
