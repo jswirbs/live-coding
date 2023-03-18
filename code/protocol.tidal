@@ -1,0 +1,240 @@
+setcps(150/60/4)
+
+
+d7 $ chop 4 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.8
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+d1 $ s "techno_kicks*4" # n 2 # cutoff 1000 # gain 1.2
+d1 $ s "SOPHIE_kicks_wet*4" # n 18 # cutoff 1000 # gain 1.2
+
+xfadeIn 2 8 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000 # orbit 1
+d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain (fast 4 $ range (slow 16 $ range 0.85 1.25 saw) 1.25 square) # room 0.25 # cutoff 1000
+d2 $ arp "up" $ n ("[c*2]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "warsawbass" # gain 1.1 # room 0.25 # cutoff 4000
+d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "warsawbass" # gain "[0.75 1]*4" # room 0.25 # cutoff 4000
+
+do
+  d3 $ n "~@3 [<~ ~ ~ [~@2 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7
+  clutchIn 3 16 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # orbit 2 # pan (range 0.1 0.9 rand)
+  jumpIn' 4 0 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72
+
+
+d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # pan (range 0.1 0.9 rand)
+
+d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # cutoff (slow 4 $ range 1300 2200 saw)
+d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # cutoff (slow 4 $ range 2200 4000 saw)
+d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # cutoff (slow 4 $ range 4000 8000 saw)
+d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.85 # room 0.15 # size 0.7 # cutoff (slow 4 $ range 8000 14000 saw)
+d3 $ n "[~ [c5 c6 c7 ~]]*2" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # cutoff (slow 4 $ range 8000 14000 saw)
+d3 $ n "[c5 c6 c7 ~]*4" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 -- # cutoff (slow 4 $ range 8000 14000 saw)
+
+
+d4 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72
+d4 $ (0.125 ~>) $ s "techno_hats*4" # n 6 # cutoff 5000 # gain 0.85
+
+d1 silence
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+  d5 $ s "XORE_hats*16" # gain "[0.8 1]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square) # cutoff 6000
+
+
+
+
+do
+  d1 silence
+  xfadeIn 3 24 silence
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square) # cutoff 6000
+  -- d6 $ (0.25 ~>) $ s "[SOPHIE_snares*7@7 [SOPHIE_snares*2 ~]]/4" # n 8 # note "-2" # cutoff 5000
+  d8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 1
+  xfadeIn 8 8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 1 # room 0.2 # size 0.2 # orbit 6
+
+
+do
+  d6 silence
+  -- d4 $ (0.125 ~>) $ s "techno_hats*4" # n 6 # cutoff 3000 # gain 0.85
+  xfadeIn 4 8 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72 # djf 0.8
+  xfadeIn 8 8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 1 # room 0.4 # size 0.4 # orbit 6
+  -- jumpIn' 9 0 $ arp "up" $ n "c5'min7*2" # s "doublebass" # gain 1.1 # room 0.2
+
+
+do
+  d4 silence
+  -- d4 $ (0.125 ~>) $ s "techno_hats*4" # n 6 # cutoff 3000 # gain 0.85
+  xfadeIn 4 12 $ s "techno_hats*16" # gain 0.7 # djf 0.6
+  xfadeIn 8 8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 0.97 # room 0.6 # size 0.6 # orbit 6
+  --- xfadeIn 9 8 $ ghost $ arp "up" $ n "c6'min7*2" # s "doublebass" # gain 1.2 # room 0.4 # size 0.4 # orbit 7
+  xfadeIn 10 8 $ arp "up" $ n "c4'min7*4" # s "basshigh" # gain 0.7 # cutoff (slow 4 $ range 2400 3000 saw) # sustain 0.1
+
+
+do
+  xfadeIn 2 8 silence
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 8 $ range 0.1 0.3 saw) (slow 8 $ range 0.7 0.5 saw) square) # cutoff 7000 # crush (slow 4 $ range 10 5 saw)
+  xfadeIn 8 8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 0.92 # room 0.8 # size 0.8 # orbit 6 # hcutoff 300
+  -- xfadeIn 9 4 $ ghost $ ghost $ arp "up" $ n "c6'min7*2" # s "doublebass" # gain 1.2 # room 0.6 # size 0.6 # orbit 7 # sustain 0.16
+  jumpIn' 10 0 $ arp "up" $ n "c4'min7*4" # s "basshigh" # gain 0.72 # cutoff (slow 4 $ range 3000 6000 saw) # sustain 0.1
+
+do
+  jumpIn' 3 0 $ n "~@3 [<~ ~ ~ [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7
+  jumpIn' 4 0 $ s (slow 4 $ "techno_hats*60@60 ~*4@4") # gain (slow 4 $ range 0.7 0.95 saw) # djf (slow 4 $ range 0.6 1.05 saw)
+  jumpIn' 5 0 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 8 $ range 0.3 0.5 saw) (slow 8 $ range 0.5 0.7 saw) square) # cutoff 7000 # crush (slow 4 $ range 5 3 saw)
+  -- jumpIn' 9 0 $ ghost $ ghost $ arp "up" $ n "c6'min7*2" # s "doublebass" # gain 1.2 # room 0.6 # size 0.6 # orbit 7 # djf (slow 4 $ range 0.6 1 saw) # sustain (slow 4 $ range 0.16 0.08 saw)
+  jumpIn' 10 0 $ arp "up" $ n "c4'min7*4" # s "basshigh" # gain 0.75 # cutoff (slow 4 $ range 6000 10000 saw) # sustain (slow 4 $ range 0.1 0.05 saw)
+  d11 $ slice 8 "<0 1 2 3>" $ loopAt 8 $ s "misc_vocals" # n 1 # gain 0.7
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+  d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+  xfadeIn 2 8 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0 1.25]*4" # room 0.25 # cutoff 1000 # orbit 1
+  d3 $ n "~@3 [<c5 c6 c5 c7>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # sustain 0.15 # pan (range 0.1 0.9 rand)
+  d7 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 500 # room 0.2 # gain 0.85
+  d11 $ slice 8 "<4 5 6 7>" $ loopAt 8 $ s "misc_vocals" # n 1 # gain 0.7
+  jumpIn 11 4 silence
+
+d3 $ n "~@3 [<c5 c6 c7 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # sustain 0.15 # pan (range 0.1 0.9 rand)
+
+do
+  d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+  d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # pan (range 0.1 0.9 rand) # orbit 2
+  d4 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 8 $ range 0.5 0.25 saw) (slow 8 $ range 0.5 0.75 saw) square) # cutoff 7000
+  d6 $ (0.25 ~>) $ s "[sn*7@7 [sn*2 ~]]/4" # n 2 # cutoff 5000 # gain 0.95
+  d7 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.85
+
+
+
+clutchIn 3 16 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # pan (range 0.1 0.9 rand) # orbit 2
+
+d7 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.85 # distort 0.06
+
+
+
+
+do
+  clutchIn 3 4 $ n "~ [<c6? c5?> ~@3] ~ [<c5?*3 c6?*3 c7?*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.82 # room 0.3 # size 0.7 # cutoff 900 # pan (range 0.1 0.9 rand) # orbit 2
+  d6 silence
+  d7 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.85
+  d8 $ arp "up" $ n "c4'min7*4" # s "ikedabass" # gain 0.92 # sustain 0.08 # room 0.3
+
+
+do
+  d3 $ n "<c6? c5?> [<c6?*3 c5?*3>@3 ~] <c6? c7?> [<c5?*3 c6?*3 c7?*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.82 # room 0.3 # size 0.7 # cutoff 900 # pan (range 0.1 0.9 rand)
+  d4 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 1200 # room 0.1 # gain 0.75
+  xfadeIn 4 10 silence
+  clutchIn 8 4 $ ghost $ arp "up" $ n "c4'min7*2" # s "ikedabass" # gain 0.98 # sustain 0.06 # room 0.3 # orbit 7
+
+
+do
+  d1 silence
+  xfadeIn 2 8 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[1.25 1.25]*4" # room 0.25 # cutoff 1200 # orbit 1
+  clutchIn 3 8 $ n (off "0.25" (+12) $ "<c6? c5?> [<c6?*3 c5?*3>@3 ~] <c6? c7?> [<c5?*3 c6?*3 c7?*3 [c5 c6 c7]>@3 ~]") # s "basslow" # gain 0.82 # room 0.3 # size 0.7 # cutoff 900 # pan (range 0.1 0.9 rand)
+  d4 silence
+  xfadeIn 7 16 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # room 1 # size 0.998 # gain 1
+  clutchIn 8 8 $ ghost $ arp "up" $ n (off "0.25" (+12) $ "c4'min7") # s "ikedabass" # gain 0.9 # sustain 0.06 # room 0.5 # cutoff 3000 # orbit 7
+
+
+do
+  xfadeIn 2 4 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[1.25 1.25]*4" # room 0.25 # cutoff 1500 # orbit 1 # distort 0.04
+  clutchIn 3 8 $ n (off "0.125" (+19) $ off "0.25" (+12) $ "<c6? c5?> [<c6?*3 c5?*3>@3 ~] <c6? c7?> [<c5?*3 c6?*3 c7? ~>@3 ~]") # s "basslow" # gain 0.82 # room 0.3 # size 0.7 # cutoff 900 # pan (range 0.1 0.9 rand)
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 8 $ range 0.1 0.3 saw) (slow 8 $ range 0.7 0.5 saw) square) # cutoff 7000 # crush (slow 4 $ range 10 5 saw)
+
+do
+  jumpIn' 2 0 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 ~ ~]>") # octave 3 # s "subbass" # gain "[1.25 1.25]*4" # room 0.25 # cutoff (slow 4 $ range 1500 2500 saw) # hcutoff (slow 4 $ range 0 400 saw) # orbit 1 # distort (slow 4 $ range 0.035 0.15 saw)
+  jumpIn' 5 0 $ s (slow 4 $ "XORE_hats*60@60 ~@4") # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 8 $ range 0.3 0.5 saw) (slow 8 $ range 0.5 0.7 saw) square) # cutoff 7000 # crush (slow 4 $ range 5 3 saw) # orbit 4
+  jumpIn' 8 0 $ ghost $ arp "down" $ n (off "0.25" (+12) $ "c4'min7" + "<12 0 -12 -24>") # s "ikedabass" # gain 0.9 # sustain 0.06 # room 0.5 # cutoff 3000 # orbit 7 # pan (range 0.1 0.9 rand)
+  jumpIn' 9 0 $ n "~@3 [<~ ~ ~ [c7 c6 c5]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+  d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+  xfadeIn 2 8 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0 1.25]*4" # room 0.25 # cutoff 1000 # orbit 1
+  d3 $ n "~@3 [<c5 c6 c5 c7>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # sustain 0.15 # pan (range 0.1 0.9 rand)
+  d7 $ chop 16 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.85
+  d11 $ slice 8 "<4 5 6 7>" $ loopAt 8 $ s "misc_vocals" # n 1 # gain 0.6
+  jumpIn 11 4 silence
+
+do
+  d1 $ s "~ ~ [~ SOPHIE_kicks_dry] SOPHIE_kicks_dry*2" # n 2 # cutoff 1000 # gain 1.2
+  jumpIn' 3 0 $ n ("c1*16" + (12 * "[0 1 2 3 4 5 6 7]") ) # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # sustain 0.15 # pan (range 0.1 0.9 rand)
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+  d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+  d3 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # pan (range 0.1 0.9 rand)
+  d4 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square) # cutoff 8000
+  d6 $ (0.25 ~>) $ s "[sn*7@7 [sn*2 ~]]/4" # n 2 # cutoff 5000 # gain 0.95
+  -- play around with notes here w clutchIn...
+  clutchIn 8 8 $ ghost $ arp "up" $ n (off "0.25" (+12) $ "c4'min7") # s "ikedabass" # gain 0.85 # sustain 0.05 # room 0.5 # size 0.3 # cutoff 700 # orbit 7 # pan (range 0.1 0.9 rand)
+
+
+clutchIn 3 16 $ n "~@3 [<c5*3 c6*3 c5*3 [c5 c6 c7]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7 # pan (range 0.1 0.9 rand)
+
+
+clutchIn 8 4 $ ghost $ arp "up" $ n "c4'min7" # s "ikedabass" # gain 0.9 # sustain 0.08 # room 0.3 # cutoff 2000 # orbit 7 # pan (range 0.1 0.9 rand)
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 2 # cutoff 1000 # gain 1.2
+  d2 $ arp "up" $ n ("[c*4]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.85 1.25]*4" # room 0.25 # cutoff 1000
+  xfadeIn 2 8 $ arp "up" $ n ("[c*2]*4" + "<0 3 -2 [5 5 5 [~ ~ 3 2]]>") # octave 3 # s "subbass" # gain "[0.8 1.15]*4" # room 0.15 # cutoff 500 # orbit 1
+  d3 $ n "~@3 [<c5 c6 c5 c7>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.5 # sustain 0.15 # cutoff 800 # pan (range 0.1 0.9 rand)
+  clutchIn 3 8 silence
+  d4 $ (0.125 ~>) $ s "techno_hats*4" # cutoff 8000 # gain 0.72
+  d5 $ s "XORE_hats*16" # gain "[0.81 1.02]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square) # cutoff 8000
+
+
+d2 silence
+
+
+d6 $ n "~@3 [<~ ~ ~ [c7 c6 c5]>@3 ~]" # s "basslow" # gain 0.9 # room 0.15 # size 0.7
+
+hush
+
+
+
+
+--
+
+d8 $ n ("c" + "<0 3 -2 [-7@3 ~]>") # octave 3 # s "warsawbass" # cutoff 200 # room 0.3 # distort 0.025
+d8 silence
+
+
+
+d8 $ loopAt 4 $ gap 64 $ s "hyperpop_vocals" # n 3 # gain 0.8 # fshift "-15"
+d8 $ palindrome $ loopAt 4 $ gap 32 $ s "hyperpop_vocals" # n 3 # gain 0.8 # fshift "-15"
+
+d8 $ palindrome $ chop 16 $ loopAt 4 $ s "hyperpop_vocals" # n 3 # gain 0.8 # fshift "-15"
+
+
+once $ s "techno_stabs:0"
+
+
+d8 silence
+
+d1 $ arp "up" $ n "c4'min7*4" # s "basslow" # gain 1
+d1 $ n "c3'min7" # s "basslow"
+
+d1 $ arp "up" $ n "c4'min7*4" # s "basshigh" # gain 0.9 # cutoff (slow 4 $ range 2500 2800 saw)
+
+
+
+d6 silence
+
+d5 $ s "XORE_hats*16" # gain "[0.8 1]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square)
+
+
+do
+  hush
+  d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.15
+  d5 $ s "superpiano*16" # n "c" # gain "[0.65 0.85]*4" # cutoff 1700
+  d3 $ s "warsawbass*8" # n "<e3 e3 c3 c3 a2 a2 a2 [g3*3@3 fs3]>" # cutoff 4000 # room 0.5 # gain 1.05
+  d4 $ s "XORE_hats*16" # gain "[0.8 1]*4" # n 3 # pan (fast 2 $ range (slow 16 $ range 0.5 0.2 saw) (slow 16 $ range 0.5 0.8 saw) square)
+  d5 $ (0.25 ~>) $ s "[sn*7@7 [sn*2 ~]]/4" # n 2 # cutoff 6000 # distort 0.15
+  d6 $ loopAt 4 $ gap "<32 [32 [16*3@3 1]]>" $ s "UMRU_instrument_loops" # n 8 # cutoff 3000
