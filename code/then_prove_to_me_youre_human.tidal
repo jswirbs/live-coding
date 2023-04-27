@@ -106,17 +106,21 @@ setcps(180/60/4)
 xfadeIn 5 8 $ chop 64 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 d5 $ chop 16 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 
+d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.7 # size 0.98 # gain 0.6
+d6 $ n "ds'min ~" # s "moogbass"
 
 do
   hush
   d4 $ s "SOPHIE_claps*4" # n 5 # djf 0.3
   xfadeIn 4 4 $ s "SOPHIE_claps*4" # n 5 # djf 0.5
   d5 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+  d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.7 # size 0.98 # gain 0.5
 
 
 do
   d4 $ s "SOPHIE_claps*4" # n 5 # djf (slow 8 $ range 0.45 0.3 saw)
   d5 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # crush 6
+  d6 silence
 
 do
   d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.05 # gain 0.9 # voice 2 # djf (slow 8 $ range 0.5 0.7 saw) # room 0.1
@@ -124,12 +128,11 @@ do
   d5 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # crush ("6 5.66 5.33 5 4.66 4.33 4 3.5")
 
 
-
 do
   hush
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1 # sustain 0.15
   d5 $ gap 16 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.1 # room 1 # size 0.4 # gain 0.85
 
 
@@ -141,7 +144,7 @@ do
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 -- tighter
   d4 $ ghost $ fast 4 $ s "~ [XORE_hats*2]" # n 4 # cutoff 10000
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1 # sustain 0.17
   d5 $ gap 32 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.92
 
 
@@ -215,7 +218,7 @@ do
   hush
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1 # sustain 0.16
   d5 $ gap 16 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.1 # room 1 # size 0.4 # gain 0.85
 
 
@@ -227,7 +230,7 @@ do
   d1 $ s "[CXCX_bd]*4" # gain 1 # distort 0.15
   -- d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
   d2 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 -- tighter
-  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2 # room 0.1
+  d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # crush (slow 4 $ range 8 6 sine) # gain 0.85 # voice 2 # room 0.1 # sustain 0.18
   d4 $ ghost $ fast 4 $ s "~ [XORE_hats*2]" # n 4 # cutoff 10000
   -- d4 $ fast 4 $ s "~ [XORE_hats*2]" # n 4
   d5 $ gap 32 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.91

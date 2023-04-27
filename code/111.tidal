@@ -48,9 +48,9 @@ d6 $ whenmod 8 4 (ghost) $ arp "thumbup" $ n "c'min*4" # s "warsawbass" # cutoff
 --
 --
 --
-setcps(130/60/4)
 
 -- faster? just have to adjust speed of risers (anything else?)
+
 setcps(135/60/4)
 
 
@@ -148,7 +148,8 @@ do
 
 do
   d3 $ slice 8 "~ 6 ~ 6" $ s "UMRU_bass_one_shots" # n 6 # gain (slow 4 $ range 0.8 0.95 saw) # djf (slow 4 $ range 0.9 0.8 saw) # room 1 # distort (slow 4 $ range 0 0.2 saw)
-  d8 $ slow 4 $ chop 16 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # cutoff (run 16 * 125) -- noise riser
+  -- d8 $ slow 4 $ chop 16 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # cutoff (run 16 * 125) -- noise riser
+  d8 $ slow 4 $ chop 16 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # cutoff (run 16 * 125) # speed 1.15 -- noise riser
 
 
 do
@@ -224,8 +225,8 @@ do
   xfadeIn 13 8 $ slice 8 "<1 1 1 4 6 6 7 ~>" $ s "choir" # note "8" # gain 0.8 # room 1 # size 0.5 # cutoff (slow 4 $ range 1000 3000 saw) # orbit 9
   -- d1 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # speed "0.5" -- noise riser
   d1 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # speed "0.518" -- 135 BPM
+  -- d1 $ slow 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.5 # speed "0.532" -- 138 BPM
   jumpIn' 1 1 silence
-
 
 
 d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.3 # gain 0.8 # room 0.9 # orbit 8
@@ -246,7 +247,7 @@ do
   d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.1 # gain 0.77 # room 0.9 # cutoff 1000
   d10 $ chop 4 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.8 # room 1 # cutoff (slow 4 $ range 1500 3000 sine)
   d11 $ chop 8 $ slice 16 "<1 1 1 8 12 13 14 15>" $ s "choir" # note "-4" # gain 0.9 # room 0.8 # crush 7
-  d12 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 2000 -- noise riser come down
+  d12 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.75 # room 0.6 # cutoff 2500 -- noise riser come down
   jumpIn 12 1 silence
 
 

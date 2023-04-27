@@ -132,16 +132,16 @@ do
   unsolo 4
   unsolo 8
   unsolo 9
-  d3 $ (0.125 ~>) $ s "[[hh*4 ~] hh]*2" # n 1 # distort 0.2 # crush 4 # gain 1.1 # pan (range 0.3 0.7 square)
+  d3 $ (0.125 ~>) $ s "[[hh*4 ~] hh]*2" # n 1 # distort 0.2 # crush 4 # gain 1.03 # pan (range 0.3 0.7 square)
   d4 $ s "SOPHIE_subs" # n "<6 6 6 7>" # gain 1.1
   d8 $ (0.25 ~>) $ s "sn:2*2"
   d7 $ s "SOPHIE_textures"
-  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.8
+  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.73
 
 
 
 d3 $ s "hh*32 ~" # n 1 # distort 1 # crush 4 # gain 0.9
-d3 $ (0.125 ~>) $ s "[[hh*4 ~] hh]*2" # n 1 # distort 0.2 # crush 4 # gain 1.1 # pan (range 0.3 0.7 square)
+d3 $ (0.125 ~>) $ s "[[hh*4 ~] hh]*2" # n 1 # distort 0.2 # crush 4 # gain 1.03 # pan (range 0.3 0.7 square)
 
 
 do
@@ -154,7 +154,7 @@ do
   xfadeIn 9 16 $ silence
   d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1.1 # gain 1
   d3 $ s "hh*32 ~" # n 1 # distort 1 # crush 4 # gain 0.9
-  xfadeIn 3 8 $ s "hh*32 ~" # n 1 # distort 1 # crush 4 # gain 0.8
+  xfadeIn 3 8 $ s "hh*32 ~" # n 1 # distort 1 # crush 4 # gain 0.7
 
 do
   d1 $ s "SOPHIE_kicks_wet*4" # n 5 # gain 1.1 -- 5 -> 6 -> 7 (wet and deep)
@@ -175,22 +175,22 @@ do -- aaaand back
   unsolo 4
   unsolo 9
   d1 $ s "SOPHIE_kicks_dry*4" # n "[8,10]" # gain 1.1
-  d3 $ s "[hh*16 ~] [hh*4]" # n 1 # distort 1 # crush "4 5" # gain "0.9 1.1" -- # fshift "-100"
+  d3 $ s "[hh*16 ~] [hh*4]" # n 1 # distort 1 # crush "4 5" # gain "0.9 1.03" -- # fshift "-100"
   d4 $ s "SOPHIE_subs" # n "<6 6 6 7>" # gain 1.1
-  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.8
+  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.75
 
 
 do
   d3 $ s "[hh*16 ~] [hh*4]" # n 1 # distort 1 # crush "4 5" # gain "0.8 1" # fshift "-150"
-  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.8 # fshift "-50"
+  d9 $ rev $ chop 8 $ s "SOPHIE_textures" # n 2 # gain 0.75 # fshift "-50"
 
 do
   d3 $ s "[hh*16 ~] [hh*4]" # n 1 # distort 1 # crush "4 5" # gain "0.8 1"
-  d9 $ striate 16 $ s "SOPHIE_textures" # n 2 # gain 0.8
+  d9 $ striate 16 $ s "SOPHIE_textures" # n 2 # gain 0.75
 
 do
   d3 $ s "[hh*16 ~] [hh*4]" # n 1 # distort 1 # crush "4 5" # gain "0.8 1"
-  d9 $ gap 8 $ rev $ striate 8 $ s "SOPHIE_textures" # n 2 # gain 0.8 # fshift "200"
+  d9 $ gap 8 $ rev $ striate 8 $ s "SOPHIE_textures" # n 2 # gain 0.75 # fshift "200"
 
 
 
@@ -257,17 +257,17 @@ do
   unsolo 5
   unsolo 6
   unsolo 7
-  d3 $ (0.125 ~>) $ s "hh*4" # n 7 # distort 0.1 # crush 6 # gain 1.1 # pan (range 0.3 0.7 sine)
+  d3 $ (0.125 ~>) $ s "hh*4" # n 7 # distort 0.1 # crush 6 # gain 1.05 # pan (range 0.3 0.7 sine)
   d4 $ s "SOPHIE_subs" # n "9" # gain 1.1
   d5 $ s "UMRU_percussion_misc ~ ~ [~ UMRU_percussion_misc?]" # n 19 # crush (range 5 9 perlin) # cutoff 1600
-  d7 $ gap 8 $ s "SOPHIE_textures"
-  d10 $ striate 8 $ s "SOPHIE_subs" # n "<6 6 6 7>" # gain 1.4
+  d7 $ gap 8 $ s "SOPHIE_textures" # gain 0.95
+  d10 $ striate 8 $ s "SOPHIE_subs" # n "<6 6 6 7>" # gain 1.3
 
 
 
-d7 $ gap 4 $ s "SOPHIE_textures"
-d7 $ palindrome $ gap 8 $ s "SOPHIE_textures"
-d7 $ gap 8 $ s "SOPHIE_textures"
+d7 $ gap 4 $ s "SOPHIE_textures" # gain 0.95
+d7 $ palindrome $ gap 8 $ s "SOPHIE_textures" # gain 0.95
+d7 $ gap 8 $ s "SOPHIE_textures" # gain 0.95
 
 
 d9 $ s "SOPHIE_textures" # n 5 # gain 0.9
@@ -294,7 +294,7 @@ do
   solo 8
   d7 $ slow 2 $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.1 # speed "1.1666" # cutoff 3000
 
-d3 $ (0.125 ~>) $ s "hh hh [hh*2] [hh*2]" # n 1 # distort "0.1 0.2" # crush 4 # pan (range 0.3 0.7 square) # gain "1 1.2"
+d3 $ (0.125 ~>) $ s "hh hh [hh*2] [hh*2]" # n 1 # distort "0.1 0.2" # crush 4 # pan (range 0.3 0.7 square) # gain "0.95 1.2"
 
 do -- go to this for 2 cycles
   unsolo 7
@@ -384,7 +384,7 @@ do
   solo 9
   d6 $ loopAt 4 $ gap 8 $ s "cyberpunk:3" # gain 0.9
   d7 $ slice 4 "0 0 0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
-  d9 $ chop 8 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0.85 0.85 0 0.85" # fshift (slow 2 $ range "-15" "25" sine) # distort (slow 2 $ range "0.2" "0.8" sine)
+  d9 $ chop 8 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.82 0 0 0 0.82 0.82 0 0.82" # fshift (slow 2 $ range "-15" "25" sine) # distort (slow 2 $ range "0.2" "0.8" sine)
 
 do
   unsolo 1
@@ -398,7 +398,7 @@ do
 do -- last cycle
   unsolo 6
   d7 $ slice 8 "0 0 0 0 0 0 0 0" $ loopAt 4 $ s "cyberpunk:4" # cutoff 100
-  d9 $ chop 16 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.85 0 0 0 0 0.9 [0 0 0.9 0] 0.9" # fshift (slow 2 $ range "-15" "25" sine) # distort 2
+  d9 $ chop 16 $ s "SOPHIE_textures" # n 2 # crush 4 # gain "0.82 0 0 0 0 0.85 [0 0 0.85 0] 0.85" # fshift (slow 2 $ range "-15" "25" sine) # distort 2
 
 do
   unsolo 6
@@ -408,8 +408,8 @@ do
   --d3 $ (0.125 ~>) $ s "hh*8" # n 7 # distort 0.1 # crush 6 # gain "1.15 1.4" # pan (range 0.3 0.7 square)
   d5 $ s "<cyberpunk cyberpunk cyberpunk [~ ~ ~ cyberpunk]>" # n 7 # gain 0.8
   d7 $ slice 2 "0 0" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
-  d9 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.9
-  d9 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.7 # cutoff 5000
+  -- d9 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.9
+  d9 $ rev $ slice 8 "0 ~ ~ ~ 2 5 6 7" $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8 # cutoff 5000
 
 
 
@@ -470,7 +470,7 @@ do
 do
   d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 -- good baseline
   d4 $ (0.125 ~>) $ s "XORE_hats*4" # n 7
-  d8 $ (0.25 ~>) $ s "sn:2*2"
+  d8 $ (0.25 ~>) $ s "sn:2*2" # gain 0.95
   d9 $ rev $ gap "4 8" $ chop 32 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.75
 
 
@@ -499,7 +499,7 @@ do
   d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 -- good baseline
   -- d4 $ (0.125 ~>) $ s "hh*4" # n 1 # crush 4
   d4 $ (0.125 ~>) $ s "[XORE_hats*2 ~ XORE_hats ~]*2" # n 4 # crush (slow 8 $ range 4 7 sine)
-  d9 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.8
+  d9 $ rev $ gap "2 4 0 0" $ chop 8 $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.75
 
 
 

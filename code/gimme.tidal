@@ -283,7 +283,7 @@ clutchIn 10 16 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4 
 d10 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4
 
 
-xfadeIn 9 8 $ ghost $ chop 2 $ (0.25 ~>) $ n "^synth3 ^synth3" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # waveloss 30 # distort 0.2 # gain ((1 <~) $ slow 4 $ "0.65@5 0@3")
+xfadeIn 9 8 $ ghost $ chop 2 $ (0.25 ~>) $ n "^synth3 ^synth3" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # waveloss 30 # distort 0.2 # gain ((1 <~) $ slow 4 $ "0.65@5 0@3") # orbit 8
 d9 $ ghost $ chop 2 $ (0.25 ~>) $ n "<[^synth0]*2 [^synth1]*2 [^synth2]*2 [^synth3]*2>" # s "supersaw" # octave "[4,5]" # cutoff 600 # sustain 0.12 # room "0.2@7 0.8" # size 0.4 # gain 0.65 # waveloss 30 # distort 0.2 # gain ((1 <~) $ slow 4 $ "0.65@3 0@5")
 
 
