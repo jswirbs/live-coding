@@ -28,8 +28,7 @@ do
   d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 0.93 0.73 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
   d8 $ chop 4 $ n p_notes2 # s "default" # sustain 0.1 # distort 0.2 # gain (range 0.9 0.7 saw) # hcutoff (range 700 200 saw) # pan (range 0.1 0.9 saw) # squiz 2
   xfadeIn 8 6 silence
-  d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 5000 -- noise riser come down
-  xfadeIn 10 8 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.6 # cutoff 4000 -- noise riser come down
+  d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.8 # cutoff 4000 -- noise riser come down
 
 
 
@@ -110,9 +109,9 @@ do
   d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7 # room 0.3
   -- d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.75 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
 
-d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.9
+d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7
 
-d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.72
+d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.58
 
 
 -- or just skip to good
@@ -159,6 +158,7 @@ do
   d3 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.5 # pan (range 0.2 0.8 saw) # gain 0.93
   d4 $ s "jungbass:7*4" # speed 0.8
   d5 silence
+  d6 $ (0.125 ~>) "sn:1*4"
   -- d6 $ (0.125 ~>) "sn:1*4"
   clutch 1 $ s "house*4" # gain 1.25
   clutch 2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine) # gain 0.78

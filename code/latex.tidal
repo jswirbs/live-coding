@@ -1,0 +1,272 @@
+https://youtu.be/L8EjCPFmZ1Q?t=1911
+
+setcps(140/60/4)
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2 # djf 0.64
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+  d7 $ chop 4 $ loopAt 16 $ s "techno_textures" # n 13 # fshift "-15" # cutoff 1200 # room 0.25 # gain 0.98
+
+do
+  let p_notes2 = "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>"
+  clutchIn 8 16 $ palindrome $ chop 4 $ n (p_notes2 + 2) # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
+
+do
+  let p_notes2 = "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>"
+  let p_chords16 = "<[a4, e, a, b, c6]*16 [a4, e, a, b, c6]*16 [c, e, f, a, c6]*16 [g, b, d, a]*16>"
+  clutchIn 8 16 $ chop 4 $ n (p_notes2 + 2) # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw) # squiz 2
+  xfadeIn 9 16 $ n (p_chords16 + 2) # s "default" # sustain 0.1 # gain (range 0.85 0.75 saw) # cutoff (range 1200 800 saw) # pan (range 0.1 0.9 saw) # room 0.9 # size 0.99
+
+
+
+
+do
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  -- d3 $ slow 2 $ s "[~ XORE_snares]*4" # n "<0 3 2 1>"
+  d3 $ slow 2 $ s "[~ XORE_snares]*4" # n 1 # distort 0.4
+  -- d4 $ n ("[b*3@3 ~] ~@3" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
+  -- d4 $ n ("[b*3@3 ~] ~@3" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5
+  d4 $ n ("[b*3@3 ~] ~@3" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.1 # cutoff 1000 # room 0.1 # orbit 3
+
+
+  d4 $ n ("[b*3@3 ~] ~@3" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.1 # cutoff 400 # room 0.6 # size 0.8 # orbit 3 # gain 0.92
+
+
+  d5 $ n ("~@2 [~ ~ ~ b] ~" + "<0 0 3 5>") # octave "4" # s "supersaw" # sustain 0.12 # distort 0.3 # hcutoff 600 # cutoff 2000
+
+  d5 $ n ("~@2 [~ ~ ~ b] ~" + "<7 7 3 -2>") # octave "4" # s "supersaw" # sustain 0.12 # distort 0.3 # hcutoff 600 # cutoff 2000
+
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2 # djf 0.64
+  d3 silence
+
+d2 $ silence
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  d3 $ slow 2 $ s "[~ XORE_snares]*4" # n 1 # distort 0.4
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+
+
+
+do
+  d1 silence
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 5 # gain 0.9
+  d6 $ (0.25 ~>) $ slow 2 $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[1@3 2] ~" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
+
+do
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 4 # gain 0.9
+  d6 $ (0.25 ~>) $ slow 2 $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[1@3 2] ~" # detune 8 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+  d4 $ n ("[b*3@3 ~] ~@3" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.1 # cutoff 1000 # room 0.1 # orbit 3
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+  d6 $ n ("~@2 [~ ~ ~ b] ~" + "<0 0 3 5>") # octave "4" # s "supersaw" # sustain 0.12 # distort 0.1 # hcutoff 900 # cutoff 1000 # room 0.3
+
+
+
+  d6 $ fast 2 $ (0.25 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[0.1@3 0.2] ~" # detune (slow 8 $ range 0.2 1.5 sine) # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
+  d6 $ fast 2 $ (0.25 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[1@3 2] ~" # detune (slow 8 $ range 0.2 1.5 sine) # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
+
+
+
+
+
+
+
+
+
+do
+  xfadeIn 1 12 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05 # orbit 1
+  xfadeIn 2 12 $ n ("b" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3 # orbit 1
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2 # djf 0.64
+  d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 4
+  xfadeIn 2 8 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort 0
+  d3 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.97 # djf 0.88 # gain 1 # orbit 2
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+
+d4 silence
+
+xfadeIn 1 2 silence
+
+do
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+  d2 $ (0.125 ~>) $ chop 4 $ s "XORE_hats*4" # n 4 # distort (slow 16 $ range 0 10 sine)
+  d3 $ fast 2 $ s "~ XORE_snares" # n 4
+  d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # cutoff 500 # room 0.5
+  -- d4 $ n ("[b*3@3 ~] [~ ~ b ~] [b ~ b ~] ~" + "<0 0 3 -2>") # octave "2" # s "supersaw" # sustain 0.2 # room 0.1 # pitch1 2     --
+  d5 $ fast 4 $ whenmod 16 12 (# accelerate (slow 4 $ range 0 "-0.2" saw)) $ n "~ [b2,b3]" # s "supersaw" # pitch1 5 # crush 6 # gain 0.9
+  d6 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 0 5000 sine)
+  d7 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
+  xfadeIn 11 16 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.9 # gain 1.05 # orbit 10
+
+
+
+
+
+  d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+
+  d4 $ n "[d cs]*4" # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # cutoff 1000 # room 0.2 # orbit 3 # accelerate "[-0.2 0.2]*4"
+
+
+  d4 $ n ("[d cs]*4" + 5) # octave "[2,3]" # s "supersaw" # sustain 0.19 # distort 0.17 # cutoff 1500 # room 0.2 # orbit 3 # accelerate "[-0.2 0.13]*4"
+  d4 $ n ("[d <cs cs cs cs cs cs cs ~>]*4" + 2) # octave "[2,3]" # s "supersaw" # sustain 0.18 # distort 0.2 # cutoff 1300 # room 0.2 # orbit 3 # accelerate "[-0.2 0.15]*4"
+
+
+
+
+
+setcps(140/60/4)
+
+
+runMarkov 8 [[2,3], [1,3]] 0 4
+markovPat 8 1 [[3,5,2], [4,4,2], [0,1,0]]
+
+
+
+
+d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+
+
+d4 $ arp "up" $ n (slow 2 $ "a4*32" + (fast 4 $ "0 1 0 1 1 0 1 1")) # octave 3 # s "acid91" # gain 0.75 # hcutoff (slow 4 $ range 500 1000 sine)
+
+
+d2 $ arp "up" $ n ("a4" + "0 1 1 1 0 1 1 1") # octave "[3]" # s "acid92" # cutoff (range 1000 3000 perlin)
+d3 $ arp "up" $ n ("a4" + "0 1 0 1 0 1 0 1") # octave "[3]" # s "subbass" # room 0.1 # gain 1.2 # cutoff 500
+
+
+d5 $ s "XORE_hats*16" # n "<3 4>" # cutoff 8000
+d5 $ s "XORE_hats*16" # n "<3 4>" # cutoff 8000 # squiz "<0 0 2 2>"
+
+d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.95
+
+d7 $ palindrome $ gap 16 $ s "UMRU_stomps" # n 5 # gain 0.7 # room 0.2
+d8 $ slice 16 (slow 2 $ "~ ~ ~ ~ ~ 0 ~ ~ 0 @8") $ s "UMRU_stomps" # n 5 # gain 0.7 # room 0.3 # cutoff 5000
+
+
+
+
+do
+  solo 3
+  solo 4
+  solo 6
+  solo 7
+  solo 8
+
+
+do
+  solo 5
+  d5 silence
+  xfadeIn 4 8 $ arp "up" $ n (slow 2 $ "a4*48" + (fast 4 $ "0 1 0 1 1 0 1 1")) # octave 3 # s "acid91" # gain 0.75 # hcutoff (slow 4 $ range 3000 4000 sine)
+  xfadeIn 5 8 $ s "XORE_hats*16" # n "5" # cutoff 8000 # squiz 2
+  xfadeIn 6 8 $ (0.125 ~>) $ s "techno_hats*8" # n 2 # gain 0.95
+  xfadeIn 3 7 $ arp "up" $ n ("a4*16" + "0 1 0 1 0 1 0 1") # sustain (slow 4 $ range 0.1 0.07 saw) # octave "[3]" # s "subbass" # room 0.1 # gain 1.2 # cutoff 500
+
+
+do
+  unsolo 3
+  unsolo 4
+  unsolo 5
+  unsolo 6
+  unsolo 7
+  unsolo 8
+  d3 $ arp "up" $ n ("a4" + "0 1 0 1 0 1 0 1") # octave "[3]" # s "subbass" # room 0.1 # gain 1.2 # cutoff 500
+  d4 $ arp "up" $ n (slow 2 $ "a4*32" + (fast 4 $ "0 1 0 1 1 0 1 1")) # octave 3 # s "acid91" # gain 0.75 # hcutoff (slow 4 $ range 200 700 sine) # distort 0.1
+  d5 $ s "XORE_hats*16" # n "<3 4>" # cutoff 8000 # squiz 2
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.95
+
+
+d9 $ s ""
+
+
+
+
+
+--
+setcps(158/60/4)
+
+d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+
+
+d2 $ (0.125 ~>) $ n "[a3]*4" # s "ikedabass" # cutoff 400 # gain 1 # distort 0.08 # sustain (range (slow 4 $ range 0.15 0.3 sine) 0.4 sine)
+d3 silence
+
+d3 $ slow 8 $ arp "up" $ n "[c a4]*16 [a f]*16" # octave 5 # s "superzow" # detune (range 0.8 1.8 sine) # cutoff (range 4000 10000 sine) # gain 0.78
+d3 $ slow 8 $ arp "up" $ n "[c a4]*16 [a f]*16" # s "superzow" # detune (range 0.8 1.8 sine) # cutoff (range 4000 10000 sine) # gain 0.8 # squiz 2
+
+d4 $ slow 8 $ arp "up" $ n "[c a4]*16 [a f]*16" # octave 4 # s "warsawbass" # cutoff (range 8000 3000 sine) # gain 0.9 # distort 0.15
+
+d4 silence
+
+
+d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.95
+d6 $ s "techno_hats*8" # n 2 # gain 0.95
+
+
+
+
+
+
+
+
+
+
+--
+setcps(154/60/4)
+
+
+d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
+d1 $ s "XORE_kicks*4" # n 5 # gain 1.2
+d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
+d1 $ s "CXCX_bd*4" # n 5 # gain 1.2
+
+d1 $ s "techno_kicks*4" # n 4 # gain 1.15 # cutoff 1200 # room 0.3
+
+d1 $ slow 2 $ s "SOPHIE_kicks_wet*2@2 [SOPHIE_kicks_wet*2@2] [~ SOPHIE_kicks_wet] SOPHIE_kicks_wet*3@3 ~" # n "0 1" # gain 1.1
+
+
+d2 $ (0.125 ~>) $ s "~ techno_hats techno_hats ~" # n 6
+d2 $ (0.125 ~>) $ ghost $ s "~ techno_hats techno_hats ~" # n 6 # distort 0.2 # crush 3
+
+
+d3 $ n "<e c>" # octave 2 # s "supersaw" # distort 0.4 # crush (slow 8 $ range 4 6 sine) # pitch1 2
+d3 $ n "<e c>" # octave 2 # s "superhammond" # distort 0.4 # crush (slow 8 $ range 4 6 sine) # voice 3
+
+
+d4 $ n ("<e c>" + "0 [1 1] 1 0 1 0 1 0") # s "superpiano"
+d4 $ ghost $ n "0 1 0 1 1 0 1 1" # s "superpiano" # octave "[4,5,6]" # waveloss 20 # pan (fast 2 $ range 0.25 0.75 square) # sustain 5 # gain 0.8
+d4 $ ghost $ n ("<e c>" + "0 1 0 1 1 0 1 1") # s "superpiano" # octave "[5,6]" # waveloss 50 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 4 # gain 0.8
+d4 $ ghost $ n ("<e c>" + "0 [1 1] 1 0 1 0 1 0 0 1 0 1 1 0 1 1") # s "superchip" # octave "[5,6]" # room 0.8 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 0.08 # gain 0.65
+d4 $ ghost $ n ("<e c>" + "0 [1 1] 1 0 1 0 1 0 0 1 0 1 1 0 1 1") # s "laserbeam" # octave "[5,6]" # room 0.8 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 0.09 # gain 0.7
+d4 $ ghost $ n ("<e'min c'maj>" + "0 1 0 1 1 0 1 1") # s "acid91" # octave "[5,6]" # waveloss 20 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 0.09 # gain 0.65
+
+d4 silence
+
+d4 $ ghost $ n ("<e'min c'maj>" + "0 1 0 1 1 0 1 1") # s "acid91" # octave "[5,6]" # waveloss 20 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain 0.09 # gain 0.65
+d4 silence
+
+
+d6 $ (0.02 <~) $ s "CXCX_samples" # n 1 # speed 0.88 # waveloss 30 # distort 0.2 # room 0.6
+d6 $ s "CXCX_samples?*8" # n (choose[2,3,4,5]) # speed 0.88 # waveloss 30 # distort 0.2 # room 0.3 # gain 0.95
+d6 silence
+
+
+d7 $ s "~ CXCX_sn [~ CXCX_cp] CXCX_sn" # crush 5 # cutoff 7000 # gain 0.95
+d8 $ s "<~ [~ ~ [~ CXCX_cp*2] CXCX_cp*2]>" # crush 2 # cutoff 5000 # gain 0.95
+d7 silence
+
+d8 $ slice 4 "0*4" $ loopAt 4 $ s "cyberpunk:4" # gain 0.9
+d8 $ slice 4 "0*2" $ loopAt 4 $ s "cyberpunk:4" # gain 1.1 # cutoff (slow 2 $ range 1000 1300 sine)
+d8 $ slice 4 "3*2" $ loopAt 4 $ s "cyberpunk:4" # gain 1.1 # cutoff (slow 2 $ range 1000 1300 sine)
+d8 silence
+
+
+--

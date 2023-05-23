@@ -15,6 +15,7 @@ d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(
 
 d5 $ (0.25 ~>) $ s "sn:3*2"
 
+??? find something more interesting
 d6 $ (0.125 ~>) $ s (slow 4 $ "[techno_hats*2 ~] techno_hats*15@15") # n 0 # distort 0.6 # gain 0.9 # cutoff 5000
 -- d6 $ (0.125 ~>) $ s "techno_hats*4" # n 1 # distort 0.2 # gain 0.9 # cutoff 9000
 
@@ -61,7 +62,7 @@ do
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.6
   d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
   d5 $ (0.25 ~>) $ s "sn:3*2"
-  jumpIn' 6 0 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.6 # gain 0.9 # cutoff 5000
+  jumpIn' 6 0 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.6 # gain 0.85 # cutoff 1700 # room 0.3
   d7 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 0.9
   -- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.05
   -- d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.63 # squiz 2 # crush (range 3 6 perlin) # pan (slow 4 $ range 0.8 0.2 perlin)
@@ -114,7 +115,7 @@ d2 $ chop 16 $ slow 2 $ s "nasty" # djf (slow 2 $ "0.5 0.45 0.4 0.35 0.3 0.266 0
 do
   hush
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort "<0.25 0.5>" # gain 0.7 # hcutoff "200 400"
-  d4 $ s "sn:1*4" # cutoff (slow 8 $ range 0 200 saw)
+  d4 $ s "sn:1*2" # cutoff (slow 8 $ range 0 200 saw)
   d6 $ chop 4 $ s "scifi" # n "<0 0 1 1>" # distort 0.1 # gain 0.95
   d7 $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 400
   d8 $ chop 4 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # room 0.7 # cutoff "<500 600>"
@@ -129,7 +130,7 @@ do
   d8 $ chop 4 $ slow 4 $ s "[kyle:0, kyle:1, kyle:2]" # gain 0.8 # room 0.7 # cutoff "<800 1000>"
   d7 $ whenmod 8 6 (# distort (slow 2 $ (0.01 + 0.07 * (run 8)))) $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 400
   xfadeIn 7 6 $ whenmod 8 6 (# distort (slow 2 $ (0.01 + 0.07 * (run 8)))) $ whenmod 8 6 (# room (slow 2 $ (0.1 * (run 8)))) $ fast 2 $ s "kyle ~@0.66 kyle ~@0.33 kyle" # n (slow 2 $ "<3 4 5 5>") # gain 1.1 # cutoff 2000
-  d11 $ slow 8 $ s "~ DJ_DAVE_castles" # n 13 # gain 0.8 # room 0.5 # speed 0.9 -- noise riser
+  d11 $ slow 8 $ s "~ DJ_DAVE_castles" # n 13 # gain 0.7 # room 0.5 # speed 0.9 -- noise riser
 
 
 
@@ -142,15 +143,15 @@ do
   d5 $ (0.25 ~>) $ s "sn:3*2"
   -- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2
   d6 $ s "XORE_hats:15*8?" # pan (slow 4 $ range 0.9 0.1 sine) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.1
-  d7 $ chop 64 $ s "scifi" # n "2" # distort 0.1 # cutoff (slow 4 $ 500 + 1000 * (16 - (run 16)))
+  d7 $ chop 64 $ s "scifi" # n "2" # distort 0.1 # cutoff (slow 4 $ 1500 + 1000 * (16 - (run 16)))
   -- jumpIn 7 4 $ s "scifi" # n "2" # distort 0.1 # cutoff ((5 ~>) $ slow 8 $ range 1200 4000 sine)
-  jumpIn 7 4 $ fast 8 $ slice 8 "0" $ s "scifi" # n "2" # distort 0.1 # cutoff ((40 ~>) $ slow 64 $ range 1200 4000 sine) -- weird trick to get cutoff range to work with longer sample
+  jumpIn 7 4 $ fast 8 $ slice 8 "0" $ s "scifi" # n "2" # distort 0.1 # cutoff ((40 ~>) $ slow 64 $ range 1500 4000 sine) -- weird trick to get cutoff range to work with longer sample
   d8 $ (0.125 <~) $ slow 4 $ gap 32 $ s (((0.125/4) ~>) $ "[kyle:0, kyle:1, kyle:2]") # gain 0.9
   d9 $ slow 4 $ s "inception" # room 0.4
   once $ s "nastier"
   -- d10 $ s "feelfx" # n (choose[6,7,8,0]) # gain 0.9
   d10 $ slow 2 $ s "UMRU_fx_impacts" # n (choose[0,11,11]) # gain 0.85
-  d11 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.6 -- noise riser come down
+  d11 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 -- noise riser come down
   jumpIn 11 1 silence
 
 
@@ -158,7 +159,7 @@ d5 silence
 
 do
   d5 $ (0.25 ~>) $ s "sn:3*2"
-  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.6 # gain 0.9 # cutoff 5000
+  d6 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 10 # gain 1 # hcutoff 17000
   d8 $ (0.125 <~) $ slow 4 $ gap 32 $ gap 8 $ s (((0.125/4) ~>) $ "[kyle:1, kyle:2]") # gain 0.85 # waveloss 20 # distort 0.3 # hcutoff 1000
 
 

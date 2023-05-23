@@ -92,7 +92,7 @@ xfadeIn 5 4 $ s "techno_hats*16" # n 2 # cutoff 1200 # room 0.5 # distort 0 # cr
 
 do
   -- d6 $ s "~ [techno_hats*2] ~ techno_hats ~ techno_hats ~ techno_hats" # n 2 # cutoff 6000
-  d6 $ chop 16 $ s "~ [techno_hats*2] ~ techno_hats ~ techno_hats ~ techno_hats" # n 0 # cutoff 1200 # room 0.08 # waveloss 10 # gain 0.96
+  d6 $ chop 16 $ s "~ [techno_hats*2] ~ techno_hats ~ techno_hats ~ techno_hats" # n 0 # cutoff 1400 # room 0.08 # waveloss 10 # gain 0.96
   d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.5
 
 
@@ -127,7 +127,7 @@ do
 do
   d7 silence
   d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 4 $ range 1.5 2 sine) # room (slow 4 $ range 0.9 1.1 sine) # size (slow 4 $ range 0.7 0.99 saw) # cutoff 1000 # fshift (slow 4 $ range "-600" "-800" saw)
-  xfadeIn 10 4 $ slow 4 $ s "sn*62@14 ~" # n 7 # gain 1.1
+  xfadeIn 10 4 $ slow 4 $ s "sn*62@14 ~" # n 7 # gain 0.9
   jumpIn 11 3 $ (0.75 ~>) $ s "sn ~ sn" # n 5 # speed "1 -0.25" # gain "0.9 0.8" # hcutoff 2000
 
 
