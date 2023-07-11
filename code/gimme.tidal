@@ -274,9 +274,6 @@ do
   -- d8 silence
   d8 $ ghost $ (0.25 ~>) $ n ("d*4" + "2") # s "supersaw" # octave 3 # cutoff 500 # sustain 0.12 # room 0.4 # size 0.4 # gain 0.85
 
-d2 silence
-
-d9 silence
 
 
 clutchIn 10 16 $ slow 2 $ striate 4 $ s "ABBA_gimme:0*8" # speed 1.1 # room 0.4 # orbit 9

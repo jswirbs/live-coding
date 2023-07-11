@@ -40,6 +40,8 @@ d5 $ slow 16 $ s "LABRINTH_forever" # n 3 # gain 0.9 # cutoff 1000 # room 0.5
 d8 $ gap 16 $ n (slow 2 $ "<e fs g g>") # octave "[5,6,7]" # s "moogbass" # gain 0.9 # sustain 0.1 # djf (slow 7 $ range 0.3 0.75 sine)
 d8 silence
 
+d6 $ slow 8 $ rev $ chop 128 $ s "LABRINTH_forever" # n 1 # gain 0.8 # cutoff 700 # room 0.5
+
 
 
 
@@ -49,10 +51,10 @@ clutchIn 5 24 $ slow 4 $ rev $ chop 32 $ slice 4 0 $ s "LABRINTH_forever" # room
 
 do
   d1 $ s "XORE_kicks*4" # n 5 # gain 1.05 # cutoff 4000
-  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5
+  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5 # hcutoff 3000
 
 do
-  xfadeIn 6 8 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.6 # cutoff 600 # room 0.5 # orbit 5
+  xfadeIn 6 8 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.67 # cutoff 600 # room 0.5 # orbit 5
   d7 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.05 # cutoff 1000 # sustain 0.2
 
 
@@ -69,8 +71,8 @@ do
 
 do
   d1 $ s "XORE_kicks*4" # n 5 # gain 1.05 # cutoff (whenmod 16 12 (const $ slow 4 $ range 4000 0 saw) $ 4000)
-  d2 $ whenmod 16 12 (const $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf "0.5 0.48 0.46 0.44 0.42 0.4 0.38 0.36") $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5
-  d6 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.72 # cutoff 700 # room 0.5
+  d2 $ whenmod 16 12 (const $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # hcutoff 3000 # djf "0.5 0.48 0.46 0.44 0.42 0.4 0.38 0.36") $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5 # hcutoff 3000
+  d6 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.74 # cutoff 700 # room 0.5
   xfadeIn 6 16 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.85 # cutoff 800 # room 0.5 # orbit 5
   -- triggering these prematurely just to get them lined up
   jumpIn 10 4 $ (0.5 <~) $ slow 16 $ s "LABRINTH_forever" # n 2 # room 0.3 # gain 0.9
@@ -79,8 +81,10 @@ do
 
 do -- trigger 4, 5 before
   hush
+  d1 $ s "jungbass:10/2" # gain 1.1
+  jumpIn 1 1 silence
   d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.34
-  xfadeIn 2 8 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46
+  xfadeIn 2 8 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46 # hcutoff 3000
   d4 $ (0.5 <~) $ slow 16 $ s "LABRINTH_forever" # n 2 # room 0.3 # gain 0.9
   d5 $ slow 16 $ s "LABRINTH_forever" # n 3 # gain 0.9 # cutoff 1000 # room 0.5
   d6 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.8 # cutoff 700 # room 0.5
@@ -88,31 +92,24 @@ do -- trigger 4, 5 before
 
 
 
-do
-  d8 $ n (slow 8 $ "e fs e e") # octave 3 # s "superhammond" # voice 1 # gain 0.98 # sustain 1.6
-  -- d8 $ n (slow 8 $ "e fs e e") # octave 3 # s "superhammond" # voice "[0,1]" # gain 0.95 # sustain 1.6
-  -- more subtle riser with a breif gap at end?
-  -- d10 $ loopAt 8 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # cutoff 3000
 
+d8 $ n (slow 8 $ "e fs e e") # octave 2 # s "warsawbass" # gain 1.2 # sustain 1.6 # cutoff 400 # room 0.4 -- # pan (slow 3 $ range 0.25 0.75 sine)
 
-d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf "0.46 0.45 0.44 0.42 0.4 0.38 0.36 0.34"
+d7 $ loopAt 4 $ s "risers" # n 4 # gain 0.6 # cutoff 7000 # room 0.25
 
-d3 $ (0.125 ~>) $ slow 2 $ s "~@3 [XORE_hats*3@3 ~]" # n 15 # speed 0.75 # gain 0.85 # crush 4
+d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # hcutoff 3000 # djf "0.46 0.45 0.44 0.42 0.4 0.38 0.36 0.34"
 
 do
   -- d1 $ s "XORE_kicks*4" # n 17 # gain 1.2 # cutoff 4000
   d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 # cutoff 4000
-  d2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops"
+  d2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # hcutoff 3000
   d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # speed 0.75
   -- d6 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "superhammond" # voice 1 # gain 1 # sustain 0.2
   d6 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.8 # cutoff 500 # room 0.5
-  d7 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1 # cutoff 500 # sustain 0.2
-  xfadeIn 7 8 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.05 # cutoff 800 # sustain 0.2
-  d8 $ n (slow 8 $ "e fs e e") # octave 3 # s "superhammond" # voice 1 # gain 1 # sustain 1.6
-  d9 silence
-  -- d9 CRASH
-  -- d10 $ loopAt 8 $ s "DJ_DAVE_castles" # n 14 # gain 0.58 # hcutoff 3500
-  -- jumpIn 10 1 silence
+  d7 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.03 # cutoff 500 # sustain 0.2
+  xfadeIn 7 8 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.09 # cutoff 800 # sustain 0.2
+  d8 $ n (slow 8 $ "e fs e e") # octave 2 # s "warsawbass" # gain 1.2 # sustain 1.6 # cutoff 600 # room 0.4
+  d9 $ s "jungbass:10/8" # gain 1
 
 
 
@@ -123,8 +120,8 @@ d10 $ (0.5 ~>) $ s "LABRINTH_forever" # n 4
 
 do
   hush
-  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5
-  xfadeIn 2 12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46
+  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.5 # hcutoff 3000
+  xfadeIn 2 12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46 # hcutoff 3000
   d4 $ (0.5 <~) $ slow 16 $ s "LABRINTH_forever" # n 2 # room 0.3 # gain 0.9
   d5 $ slow 16 $ s "LABRINTH_forever" # n 3 # gain 0.9 # cutoff 1000 # room 0.5
   d6 $ chop 16 $ slow 16 $ s "LABRINTH_forever" # n 1 # gain 0.8 # cutoff 500 # room 0.5
@@ -133,11 +130,8 @@ do
 
 
 
-
 -- quick break during main part
-do
-  d10 $ (0.5 ~>) $ s "LABRINTH_forever" # n 4 # cutoff 2000
-  d11 $ (0.125 ~>) $ slow 4 $ s "~@7 [XORE_hats*3@3 ~]" # n 15 # speed 0.75 # gain 0.85 # crush 4
+d10 $ (0.5 ~>) $ s "LABRINTH_forever" # n 4
 
 do
   d1 $ s "XORE_kicks*4" # n 5 # gain 1.05 # cutoff 4000
@@ -150,21 +144,21 @@ do
 do
   -- d1 $ s "XORE_kicks*4" # n 17 # gain 1.2 # room 0.05 # cutoff 4000
   d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 # cutoff 4000
-  d2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops"
-  d7 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.05 # cutoff 800 # sustain 0.2
-  d10 $ palindrome $ chop 4 $ slice 4 "1 2 3 ~" $ s "LABRINTH_forever" # n 4 # gain "1(9,16)" # cutoff 2000 # distort 0.12 # waveloss 15
-  clutchIn 10 12 silence
-  d11 silence
+  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46 # hcutoff 3000
+  d7 $ n ((0.125 ~>) $ slow 8 $ "e*8 fs*8 e*8 [e*6@6 fs*2@2]") # octave 3 # s "warsawbass" # gain 1.09 # cutoff 800 # sustain 0.2
+  -- d10 $ palindrome $ chop 4 $ slice 4 "1 2 3 ~" $ s "LABRINTH_forever" # n 4 # gain "1(9,16)" # cutoff 2200 # distort 0.12 # waveloss 15
+
+
 
 
 
 
 -- fade out
-xfadeIn 2 4 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46
+xfadeIn 2 4 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf 0.46 # cutoff 3000
 
 do
   d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.2 # cutoff 4000 # djf (slow 4 $ range 0.5 0.15 saw)
-  d2 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # djf "0.46 0.45 0.44 0.42 0.4 0.38 0.36 0.34"
+  clutchIn 10 4 silence
 
 d10 $ (0.5 ~>) $ s "LABRINTH_forever" # n 4
 

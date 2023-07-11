@@ -137,7 +137,7 @@ do
   d1 $ s "techno_kicks*3" # gain 1.1 # n 0 # distort 0.5 # crush 3 # octave "[5,9]"
   d2 $ slow 4 $ n "a g f e" # octave "[2,3]" # s "supersaw" # distort 0.3 # pitch1 3 # gain 0.9
   d3 $ n "c6 [b c6] a" # octave "[5,6]" # s "superzow" # detune 2 # gain 0.67
-  d4 $ ghost $ n ("a*<6 6 6 [6 9@2]>" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.9 # distort 0.2 # crush 5
+  d4 $ n ("a [a a] [a a]" + "<0 2 3 <5 7 5 10>>") # s "acid91" # gain 0.88
   d5 $ slow 4 $ n "a g f e" # octave "5" # s "moogbass" # gain 1.1 # distort 0.3 # waveloss 10
   d8 $ ghost $ s "[~ hh]*3" # n 8 # gain 1.2 # distort 0.45 # crush 7
 
