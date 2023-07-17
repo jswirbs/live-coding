@@ -8,7 +8,7 @@ d3 $ gap 2 $ loopAt 16 $ s "DANNY_blue" # n 0
 
 d3 $ gap 4 $ loopAt 16 $ s "DANNY_blue" # n 0
 
-d4 $ s "XORE_hats*8" # n 16 # cutoff 2000 # room 0.4
+xfadeIn 4 4 $ s "XORE_hats*8" # n 16 # cutoff 2500 # room 0.6
 
 
 do
@@ -18,8 +18,11 @@ do
   d4 $ chop 4 $ loopAt 16 $ s "DANNY_blue" # n 1
 
 
-xfadeIn 2 4 $ s "SOPHIE_subs*8" # n 5
+xfadeIn 2 4 $ s "SOPHIE_subs*8" # n 5 # gain 1.1
 
+do -- 2
+  d10 $ s "UMRU_fx_risers" # n 1 # speed 0.94 # hcutoff 1000 # crush 4 # gain 0.7 # room 0.7
+  jumpIn 10 1 silence
 
 do
   hush
@@ -71,8 +74,8 @@ do
 
 
 xfadeIn 2 4 $ s "SOPHIE_subs*8" # n 5
-d2 $ s "SOPHIE_subs SOPHIE_subs SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
 
+d2 $ s "SOPHIE_subs SOPHIE_subs SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
 
 do
   hush

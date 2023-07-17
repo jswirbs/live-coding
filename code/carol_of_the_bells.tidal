@@ -117,8 +117,9 @@ do
 d1 $ s "techno_kicks*3" # gain 1.2 # n 0 -- # distort 0.5 # crush 3 # octave "[5,9]"
 
 do
+  d1 $ s "techno_kicks*3" # gain 1.2 # n 0
   d2 $ n ("[~ a]*3" - "<0 2 4 5>") # octave "[2,3]" # s "supersaw" # distort 0.5 # pitch1 7 # gain 1 # room 0.3 # sustain 0.15
-  d3 $ n "c6 [b c6] a" # octave "[5]" # s "superzow" # detune 1 # gain 0.75 -- DETUNEEEE
+  d3 $ n "c6 [b c6] a" # octave "[5]" # s "superzow" # detune 1 # gain 0.75
 
 
 d8 $ s "[~ hh]*3" # n 8 # gain 1.1
