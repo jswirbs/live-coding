@@ -18,7 +18,7 @@ do
   d4 $ chop 4 $ loopAt 16 $ s "DANNY_blue" # n 1
 
 
-xfadeIn 2 4 $ s "SOPHIE_subs*8" # n 5 # gain 1.1
+xfadeIn 2 8 $ s "SOPHIE_subs*8" # n 5 # gain 1.1
 
 do -- 2
   d10 $ s "UMRU_fx_risers" # n 1 # speed 0.94 # hcutoff 1000 # crush 4 # gain 0.7 # room 0.7
@@ -67,13 +67,11 @@ do
 
 do
   hush
+  xfadeIn 2 8 $ s "SOPHIE_subs*8" # n 5
   d3 $ loopAt 1 $ s "DANNY_blue" # n 4 # cutoff 200
   xfadeIn 3 4 $ loopAt 1 $ s "DANNY_blue" # n 4 # cutoff 50
   d8 $ slice 32 (slow 2 $ "<14*4 10*4 8*4 7*4>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
 
-
-
-xfadeIn 2 4 $ s "SOPHIE_subs*8" # n 5
 
 d2 $ s "SOPHIE_subs SOPHIE_subs SOPHIE_subs*2@1 SOPHIE_subs*4@1" # n 5 # gain 1.05
 

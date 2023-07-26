@@ -6,6 +6,7 @@ do
   let p_notes = "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>"
   let p_notes2 = "<[a4 e a b c6 e6]*2 [a4 e a b c6 e6]*2 [c e f a c6 e6]*2 [g b d a a6 g6]*2>"
   d12 $ silence
+  d15 $ s "blue0"
 
 
 clutchIn 8 16 $ palindrome $ chop 4 $ n p_notes2 # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
@@ -24,12 +25,13 @@ d4 $ slow 4 $ s "pad:0" # pan (fast 3 $ range 0.1 0.9 perlin) # gain 1
 
 
 do
+  d15 $ s "blue1"
   d4 silence
   d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 0.93 0.73 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
   d8 $ chop 4 $ n p_notes2 # s "default" # sustain 0.1 # distort 0.2 # gain (range 0.9 0.7 saw) # hcutoff (range 700 200 saw) # pan (range 0.1 0.9 saw) # squiz 2
   xfadeIn 8 6 silence
   d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.8 # cutoff 4000 -- noise riser come down
-
+  xfadeIn 10 8 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.8 # cutoff 3800
 
 
 do -- 8 / 16
@@ -37,6 +39,7 @@ do -- 8 / 16
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.5 # gain (range 0.9 0.75 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.85 saw)
 
 do
+  d15 $ s "blue2"
   xfadeIn 3 16 $ striate 6 $ n p_notes # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw) # gain 0.9
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.8 0.63 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.85 saw)
 
@@ -44,6 +47,7 @@ do
 
 do
   hush
+  d15 $ s "blue3"
   xfadeIn 2 8 $ n "[~ a4]*4" # s "superhammond" # octave "[3]" # cutoff 400 # gain 1.1
   d3 $ striate 6 $ n p_notes # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw) # gain 0.9
   d4 $ s "jungbass:10/2" # speed 0.8 # pan (range 0.3 1 saw) # gain 1.3
@@ -61,11 +65,13 @@ do
 
 
 do
+  d15 $ s "blue4"
   solo 1
   solo 2
   solo 3
   solo 7
   solo 8
+  solo 15
   d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # orbit 0 # djf 0.7
   xfadeIn 2 8 silence
   d7 $ n p_chords16 # s "default" # sustain 0.5 # distort 0.3 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
@@ -85,6 +91,8 @@ do
 
 do
   hush
+  unsolo 15
+  jumpIn 15 1 $ s "blue5"
   unsolo 1
   unsolo 2
   unsolo 3
@@ -106,12 +114,14 @@ do
 
 
 do
-  d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7 # room 0.3
+  d5 $ "hh*16?" # n 0 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.78 # room 0.3
   -- d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.7 # gain (range 0.75 0.7 saw) # hcutoff (range 1000 500 saw) # pan (range 0.1 0.9 saw)
 
-d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7
+d15 $ s "blue6"
 
-d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.58
+d5 $ "XORE_hats*16?" # n 15 # distort (range 0.1 0.3 perlin) # pan (range 0.25 0.75 perlin) # gain 0.75
+
+d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.63
 
 
 -- or just skip to good
@@ -137,6 +147,9 @@ xfadeIn 3 4 $ striate 2 $ n p_notes # s "superzow" # cutoff (range 800 3000 sine
 xfadeIn 6 4 $ s "pad:0" # pan (fast 2 $ range 0.1 0.9 perlin) # gain 1.4
 
 
+
+d15 $ s "blue6"
+d15 $ s "blue7"
 
 do
   d6 $ "sn:1*16"
@@ -171,18 +184,23 @@ do
 
 
 
-xfadeIn 7 0.5 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 1.15 0.95 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
+xfadeIn 7 4 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 1.15 0.95 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
 -- d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.5 # gain (range 0.9 0.75 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.85 saw)
 
 do
   hush
+  d15 $ s "blue8"
   d1 $ slow 4 $ "jungbass:9" # speed (range 0.5 0.0625 saw) # gain (range 2.5 0.8 saw) # pan (range 0.25 0.9 saw) # room 0.25
   jumpIn 1 1 silence
+  d2 $ striate 16 $ n (off "<0.125 0.375>" (+12) "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>") # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine) # gain 0.7
+  clutchIn 2 4 silence
   -- d2 $ n "<[a4, e, a, b, c6] [a4, e, a, b, c6] [c, e, f, a, c6] [g, b, d, a]>" # s "supersaw" # cutoff (slow 4 $ range 1000 2000 sine)
   d3 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.5 # pan (range 0.2 0.8 saw) # gain 0.85
   -- d3 $ striate 2 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine)
   d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7 # cutoff 8000
   xfadeIn 5 16 $ silence
+  d6 $ (0.125 ~>) "sn:1*4"
+  xfadeIn 6 8 $ silence
   -- d5 $ sometimes (rev) $ striate 2 $ s "808mt [808mt 808mt [808mt 808mt] 808mt]" # n "10 10 10 [4 4 3 0]" # distort 0.1
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.75 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)
   d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
@@ -197,7 +215,7 @@ do
 d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
   # room "1"
   # size "0.6" # orbit "5"
-  # gain 0.6 -- bring this b in 0.5->0.85
+  # gain 0.85 -- bring this b in 0.5->0.85
 
 
 clutchIn 3 8 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 300 sine) # detune (range 0 2 sine) # distort 0.1 # pan (range 0.2 0.8 saw) # gain 0.97
@@ -206,10 +224,14 @@ clutchIn 3 8 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 300 sine) # d
 xfadeIn 3 16 silence
 
 xfadeIn 7 16 silence
+
 d7 $ silence
 
+do
+  d15 $ s "blue9"
+  d8 silence
 
-d8 silence
+
 
 
 
