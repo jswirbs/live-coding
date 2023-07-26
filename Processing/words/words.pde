@@ -6,12 +6,13 @@ OscP5 oscP5;
 
 float cps = 0;
 float cycle = 0;
-boolean colorActive = true;
+boolean colorImgs = false;
 
 PFont f;
 
 boolean kickTrigger = false;
-int kickDuration = 0;
+int kickN = 0;
+//int kickDuration = 0;
 
 int imgCount = 13;
 PImage[] imgs = new PImage[imgCount];
@@ -23,12 +24,13 @@ float b = random(256);
 
 // String[] words = new String[]{"LUCY", "FERRY"};
 String[] words = new String[]{"HARD", "CORE", "SOFT", "WARE"};
-// we increment on first kick, so initializing this to -1 will start us on word 0
-int wordsCounter = -1;
+int wordAlpha = 256;
+String word = "";
+
 
 void setup() {
-  size(1300,700);
-  //fullScreen();
+  //size(1300,700);
+  fullScreen();
   frameRate(30);
   // start oscP5, listening for incoming messages at port 3333
   oscP5 = new OscP5(this,3333);
@@ -41,22 +43,27 @@ void setup() {
     imgs[i] = loadImage(fileName + ".png");
   }
   
-  printArray(PFont.list());
-  f = createFont("Futura-Bold", 350);
+  //printArray(PFont.list());
+  //f = createFont("Futura-Bold", 350);
+  //f = createFont("PTMono-Bold", 400); // not full screen
+  f = createFont("PTMono-Bold", 550); // full screen
+  
   textFont(f);
 }
 
 void draw() {
   blendMode(BLEND);
-  background(0);
   
   // Displays the image at its actual size at point (0,0)
-  image(imgs[imgCounter], 0, 0);
+  image(imgs[imgCounter], 0, 0, width, height);
+  filter(INVERT);
+  filter(POSTERIZE, 12);
   // Displays the image at point (0, height/2) at half of its size
   //image(img, 0, height/2, img.width/2, img.height/2);
+
   
   if (kickTrigger) {
-    kickDuration = 20;
+    //kickDuration = 9;
     kickTrigger = false;
     
     imgCounter++;
@@ -68,19 +75,28 @@ void draw() {
     g = random(256);
     b = random(256);
     
-    wordsCounter++;
-    if (wordsCounter >= words.length) {
-      wordsCounter = 0;
+    if (kickN == 18) {
+      wordAlpha = 256;
+      int wordIndex = (int) ((cycle - (int) cycle) * 4);
+      word = words[wordIndex];
     }
   }
   
+  
   blendMode(DIFFERENCE);
   
-  if (kickDuration > 0) {
-    textAlign(CENTER);
+  textAlign(CENTER);
+  fill(r, g, b, wordAlpha);
+  wordAlpha -= 7;
+  text(word, width/2, height - height/3.5);
+   
+   
+  if (colorImgs) {
+    r = random(256);
+    g = random(256);
+    b = random(256);
     fill(r, g, b);
-    text(words[wordsCounter], width/2, height - height/3.5);
-    kickDuration--;
+    rect(0, 0, width, height);
   }
 }
 
@@ -151,6 +167,10 @@ void oscEvent(OscMessage m) {
 
   if (s.contains("_kicks")) {
     kickTrigger = true;
+    kickN = int(n);
+  }
+  if (s.contains("color")) {
+    colorImgs = !colorImgs;
   }
   //if (s.contains("_hats") || s.contains("_hh")) {
   //  hh = height /2;
