@@ -299,6 +299,7 @@ do
 
 -- keep bass and transition to something else
 do
+  unsolo 15
   unsolo 2
   unsolo 4
   unsolo 8

@@ -153,6 +153,7 @@ do
   d7 $ slow 2 $ (0.125 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((8 ~>) $ slow 16 $ range 0 5000 sine)
   xfadeIn 9 8 $ (0.625 ~>) $ rarely (ghost) $ n "b4*8" # s "superzow" # octave "[5,7]" # sustain "0.5@3 0.75" # detune 0.2 # squiz 2 # cutoff ((1 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.38 # room 1.4 # size 0.4 # orbit 9
   xfadeIn 10 12 $ (0.625 ~>) $ rarely (ghost) $ n "b4*8" # s "moogbass" # octave "[5,7]" # sustain "0.5@3 0.75" # distort 0.2 # cutoff ((9 ~>) $ slow 16 $ range 1000 3000 sine) # gain 0.47 # room 1.4 # size 0.4 # orbit 9
+  d15 $ s "nasty" # gain 0
 
 
 xfadeIn 11 1 $ s "XORE_hats*8" # n 3 # cutoff (slow 8 $ range 8000 5000 sine) # distort (slow 8 $ range 0 0.3 sine)
@@ -173,6 +174,7 @@ do
   d11 $ s "SOPHIE_crashes*4" # n 1 # gain 0.88 # room 0.3
   xfadeIn 11 6 silence
   xfadeIn 12 4 $ s "SOPHIE_crashes*8" # n 3 # djf 0.39
+  d15 $ s "nasty*4" # gain 0
 
 do
   d3 $ s "XORE_snares*4" # n 4 # room 0.3
@@ -207,7 +209,8 @@ do
   d11 silence
   d12 $ s "SOPHIE_crashes" # n 1 # gain 0.88 # room 0.5 # speed "0.5"
   jumpIn 12 1 silence
-
+  d15 $ s "nasty" # gain 0
+  once $ s "nastier"
 
 
 xfadeIn 9 4 $ (0.125 ~>) $ rarely (ghost) $ n "<b4 cs d fs>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.04 # orbit 8
@@ -270,6 +273,25 @@ do -- actually hush size
 
 
 
+do -- TO  !!!
+  setcps(135/60/4)
+  unsolo 4
+  unsolo 5
+  unsolo 7
+  unsolo 8
+  unsolo 12
+  d1 $ s "techno_kicks*4" # gain 1.1 # n 3
+  d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
+  xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine) # orbit 6
+
+
+
+  do
+    d1 $ s "techno_kicks*4" # gain 1.1 # n 3
+    d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
+    d6 $ rarely (ghost) $ s "~ FOOD_hihats [~ FOOD_hihats] ~" # n "18" # cutoff (slow 8 $ range 4000 1000 saw)
+    xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine) # orbit 6
+    xfadeIn 10 8 silence
 
 
 

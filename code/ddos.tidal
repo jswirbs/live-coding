@@ -313,17 +313,15 @@ d5 $ slow 2 $ slice 8 "0*8" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
 d5 $ slow 2 $ slice 8 "3*8" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
 d5 $ slow 2 $ slice 8 (slow 8 $ "[0*16@16 3*8@8 0*4@4 [3 1 2 3]@4] [0*12@12 1*4@4 3*6@6 1*2@2 0*4@4 [4 5 6 7]@4]") $ s "please_dont_stop" # cutoff 1000 # gain 0.9
 d5 $ every 2 (swingBy (1/3) 6) $ slow 2 $ slice 8 (slow 8 $ "[0*16@16 3*8@8 0*4@4 [3 1 2 3]@4] [0*12@12 1*4@4 3*6@6 1*2@2 0*4@4 [4 5 6 7]@4]") $ s "please_dont_stop" # cutoff 1000 # gain 0.9
-d5 $ every 2 (swingBy (1/3) 6) $ slow 2 $ slice 8 (slow 8 $ "[0*16@16 3*8@8 0*4@4 [3 1 2 3]@4] [0*12@12 1*4@4 3*6@6 1*2@2 0*4@4 [4 5 6 7]@4]") $ s "please_dont_stop" # cutoff 1000 # gain 0.8 # distort 0.3 # crush 3
 
 
 -- 11 22 23 30
-d5 $ slice 90 "1*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
-d5 $ slice 64 "30*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
-d5 $ slice 64 "23*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
+d5 $ slice 90 "1*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.94
+d5 $ slice 64 "30*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.94
+d5 $ slice 64 "23*16" $ s "please_dont_stop" # cutoff 1000 # gain 0.94
 d5 $ slice (slow 8 $ "[90 64]") (slow 8 $ "1*44@44 0*4@4 1*6@6 0@2 [0 <1 ~> 2 <3 ~> 4 <5 ~> 6 7]@8 30*48@48 <23*16 23*8>@16") $ s "please_dont_stop" # cutoff 900 # gain 0.9 # room 0.15
 
 d5 $ slice (50 + run 30) "0*16" $ s "please_dont_stop" # cutoff 900 # gain 0.95
-d5 $ slice (50 + (range $ 0 30 sine)) "0*16" $ s "please_dont_stop" # cutoff 900 # gain 0.95
 d5 $ slice (50 + run 20) "23*16" $ s "please_dont_stop" # cutoff 900 # gain 0.95
 d5 $ slice (50 + run 20) "25*16" $ s "please_dont_stop" # cutoff 900 # gain 0.95
 d5 $ slice (50 + run 12) "59*16" $ s "please_dont_stop" # cutoff 900 # gain 0.95
@@ -339,6 +337,37 @@ d5 $ slow 2 $ gap 16 $ s "please_dont_stop" # cutoff 1000 # crush 3.5 # distort 
 
 
 
+-- equally strange to here
+do
+  hush
+  d4 $ n "~ ~ a a" # octave 5 # s "acid91" # sustain "2" # room 0.6 # size 0.85 # cutoff 1000 # gain 0.7
+  d7 $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.7 # size 0.7 # cutoff 700 # gain 0.68 # orbit 6
+  d13 $ (0.04 <~) $ slice 2 (slow 4 $ "1") $ s "SOPHIE_hard" # n 6 # cutoff 400 # room 0.6 # size 0.98 # pan "<0.8 0.3>" # speed 0.5 # orbit 11
+  xfadeIn 13 64 silence
+
+xfadeIn 2 16 $ n "3*8" # s "techno_kicks" # gain 1.1 # cutoff 500
+
+do
+  d2 silence
+  d6 $ s "techno_hats*8" # gain "0@5 0.85*3@3" # n 8
+
+do
+  d1 $ n ("0 0 0 <0 [<0*2 [~ 0] 0*2 ~>]>" + "3") # s "techno_kicks" # gain 1.1
+  d2 $ n "3*8" # s "techno_kicks" # gain 1.2 # cutoff 42
+  xfadeIn 2 16 silence
+  xfadeIn 4 8 $ n "~ ~ a a" # octave 5 # s "acid91" # sustain "2" # room 0.4 # size 0.5 # cutoff 400 # gain 0.7 # orbit 3
+  d6 $ s "techno_hats*8" # gain "[0.66 0.85]*4" # n 8
+  d7 $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.7 # size 0.7 # cutoff 400 # gain 0.68 # orbit 6 # sustain 0.08
+  xfadeIn 7 16 silence
+
+d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain 0.8 # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.85 # pan (range 0.9 0.1 sine)
+
+d2 $ s "[ ~ warsawbass*2]*4" # n (slow 8 $ "[d6 cs6]*3@3 [d6 [cs6 a]] [fs e]*4@4") # octave "[2,3]" # sustain 0.095 # room 0.2
+
+d7 $ fast 2 $ s "~ SOPHIE_claps" # n 5 # gain 0.98 # cutoff 1200
+--
+
+
 
 --
 
@@ -347,6 +376,7 @@ xfadeIn 5 16 $ slow 2 $ slice 8 "0*8" $ s "please_dont_stop" # cutoff 1000 # gai
 
 do
   -- xfadeIn 6 8 $ s "XORE_hats*4" # gain "[0.7 0.9]*4"
+  xfadeIn 2 8 silence
   xfadeIn 6 8 $ s "techno_hats*4" # gain "[0.66 0.85]*4" # n 8
   xfadeIn 7 8 silence
 
@@ -368,6 +398,7 @@ do
   d5 $ slice (slow 8 $ "[90 64]") (slow 8 $ "1*44@44 0*4@4 1*6@6 0@2 [0 <1 ~> 2 <3 ~> 4 <5 ~> 6 7]@8 30*48@48 <23*16 23*8>@16") $ s "please_dont_stop" # cutoff 900 # gain 0.9 # room 0.15
 
 
+
 --
 
 d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain "~@4 0.15 0.1 0.09 0.08" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.85 # pan (range 0.9 0.1 sine)
@@ -387,22 +418,27 @@ do
 -- sustain UPPP
 d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain "0.08@7 1.2" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.83 # pan (range 0.9 0.1 sine)
 d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain "0.1@7 1.5" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.83 # pan (range 0.9 0.1 sine)
+d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain "0.12@7 1.8" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.83 # pan (range 0.9 0.1 sine)
 
 do
   d2 $ s "[~ warsawbass*2]*4" # n (slow 8 $ "[d6 cs6]*3@3 [d6 [cs6 a]] [fs e]*4@4") # octave "[2,3]" # sustain 0.095 # room 0.2 # cutoff 180
   -- d4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "1@4 1@3 2" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.8 # pan (range 0.9 0.1 sine) # release 8
-  d4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "3.5@4 1.4@3 5" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain "<0.66 0.59> 0.8" # pan (range 0.9 0.1 sine) # release 8
+  d4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "2@4 1.4@3 3" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain "<0.66 0.59> 0.8" # pan (range 0.9 0.1 sine) # release 8
   -- xfadeIn 6 16 $ s "XORE_hats*16" # gain "[0.7 0.9]*4" # djf 0.8
-  xfadeIn 6 16 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8 # djf 0.9
-  xfadeIn 7 16 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.85 0.65]" # djf 0.8
+  xfadeIn 6 8 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8 # djf 0.9
+  xfadeIn 7 8 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.85 0.65]" # djf 0.8
 
+  d4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "2.5@4 1.4@3 3.5" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain "<0.66 0.59> 0.8" # pan (range 0.9 0.1 sine) # release 8
 
 
 do
   -- d6 $ s "XORE_hats*16" # gain "[0.7 0.9]*4" # djf (slow 8 $ range 0.8 1.05 saw)
+  d4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "3@4 1.4@3 4.75" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain "<0.66 0.59> 0.8" # pan (range 0.9 0.1 sine) # release 8
+  jumpIn 4 4 $ ghost $ n (slow 8 $ "[~@17 d ~@12 d6 cs6 b a] [~@17 fs4 ~@12 cs6 b a gs]") # s "moogbass" # sustain "3.5@4 1.4@3 5.5" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain "<0.66 0.59> 0.8" # pan (range 0.9 0.1 sine) # release 8
   d6 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8 # djf (slow 8 $ range 0.9 1.05 saw)
   xfadeIn 6 8 $ s "techno_hats*16" # gain "[0.33 0.45]*4" # n 8 # djf (slow 8 $ range 0.9 1.05 saw)
   d7 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.85 0.65]" # djf (slow 8 $ range 0.8 1.05 saw)
+  xfadeIn 7 8 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.4" # djf (slow 8 $ range 0.8 1.05 saw)
   xfadeIn 5 8 $ slow 2 $ slice 8 "0*8" $ s "please_dont_stop" # cutoff 1000 # gain 0.9
   -- xfadeIn 8 8 $ slow 2 $ chop 2 $ s "please_dont_stop" # hcutoff 11000 # gain 0.7
 
@@ -432,6 +468,8 @@ do
   -- d7 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.85 0.65]"
   d8 $ slow 2 $ chop 2 $ s "please_dont_stop" # hcutoff 10000 # gain 0.9
   d9 $ slow 2 $ chop 2 $ s "please_dont_stop" # cutoff 300 # gain 1.1
+  d15 $ s "color/4" -- color for WORDS visuals
+  jumpIn 15 1 silence
 
 
 do
@@ -440,14 +478,16 @@ do
   jumpIn' 7 0 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.85 0.65]"
   d8 silence
   d9 silence
+  d15 $ s "color*4" -- color for WORDS visuals
 
 
-xfadeIn 8 8 $ slow 2 $ chop 2 $ s "please_dont_stop" # hcutoff 10000 # gain 0.9
-xfadeIn 9 8 $ slow 2 $ chop 2 $ s "please_dont_stop" # cutoff 300 # gain 1.1
 
+xfadeIn 8 4 $ slow 2 $ chop 2 $ s "please_dont_stop" # hcutoff 10000 # gain 0.9
+xfadeIn 9 4 $ slow 2 $ chop 2 $ s "please_dont_stop" # cutoff 300 # gain 1.1
 
-xfadeIn 8 8 silence
-xfadeIn 9 8 silence
+xfadeIn 8 4 silence
+xfadeIn 9 4 silence
+
 
 d1 silence
 

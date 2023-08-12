@@ -36,7 +36,7 @@ d8 $ slow 4 $ rev $ slice 16 "0 0 0 0 1 1 3 5 7 9 11 13 15 15 15 15" $ s "hotelk
 d1 $ s "[hh ~ ~ ~ ~ hh?] hh" # crush 6 # pan (slow 2 $ range 0.2 0.8 sine) # gain 1.2
 
 d1 $ s "house*4" # gain 1.3
-d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.4
+d1 $ s "SOPHIE_kicks_dry*4" # n 8 # gain 1.3
 
 do
   solo 6
@@ -99,7 +99,7 @@ do -- immediately after 4 (then count !)
   d10 $ s "aliceagain"
   solo 7
   clutchIn 1 6 $ s "supersaw*16?" # n ("<fs fs as b>" - "12") # accelerate 1 # sustain 6 # distort 1 # gain 0.6 # squiz 4 # crush 4
-  d4 $ fast 4 $ n "fs5 ~" # s "supersaw" # pitch1 2 # gain 0.8 # crush 4 # distort 0.3 # orb3 # cps(slow 32 $ range (90/60/4) (120/60/4) saw)
+  d4 $ fast 4 $ n "fs5 ~" # s "supersaw" # pitch1 2 # gain 0.8 # crush 6 # distort 0.3 # orb3 # cps(slow 32 $ range (90/60/4) (120/60/4) saw)
   jumpIn' 7 0 $ s "house*16" # n 0 # gain (slow 8 $ range 0 1.6 saw)
 
 d4 $ silence

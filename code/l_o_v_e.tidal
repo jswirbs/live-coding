@@ -90,19 +90,23 @@ do
 
 xfadeIn 5 4 $ s "techno_hats*16" # n 2 # cutoff 1200 # room 0.5 # distort 0 # crush 4 # gain (fast 4 $ "1 1.2") # orbit 4
 
+d5 silence
+
 do
   -- d6 $ s "~ [techno_hats*2] ~ techno_hats ~ techno_hats ~ techno_hats" # n 2 # cutoff 6000
   d6 $ chop 16 $ s "~ [techno_hats*2] ~ techno_hats ~ techno_hats ~ techno_hats" # n 0 # cutoff 1400 # room 0.08 # waveloss 10 # gain 0.96
-  d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.5
+  d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.4 # gain 0.95
+  xfadeIn 7 8 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.3 # cutoff 5000
 
 
-d6 silence
+d7 silence
 
 do
   d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # cutoff 500 # room 0.4 # size 0.7
   d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 # cutoff 1300 # room 0.7 # size 0.8
   d5 $ s "techno_hats*16" # n 2 # cutoff 1000 # room 0.5 # distort 0.1 # crush 2 # gain (fast 4 $ "0.94 1.2")
   d6 $ chop 16 $ s "[~ techno_hats]*4" # n 0 # cutoff 2500 # waveloss 40 # gain 1.05
+  d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.3 # cutoff 5000
   d8 $ chop 16 $ n "gs8'min" # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 0 1? 1 0 0 0 0" - "0.25") # distort 0.2 # crush 1 # detune (slow 2 $ "1 1.25 1.5 1.75 2 2.25 2.5 2.75 3") # room 0.5 # cutoff 1000
   d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.73 # fshift 20
 
@@ -235,6 +239,8 @@ do
   xfadeIn 11 4 $ slice 128 ("[~ 127]*4") $ loopAt 16 $ s "risers" # n 0 # room 0.4 # size 0.3 # cutoff 4000 # gain 0.7
 
 
+d8 $ (0.125 ~>) $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 4 # cutoff 3000 # room 0.4 # size 0.6
+
 
 -- do
 --   clutchIn 8 8 $ chop 2 $ n ("gs8'min*8") # s "superzow" # octave 4 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.4") # distort 0.3 # crush 1.5 # detune (slow 4 $ range 1.75 2.75 sine) # room 0.4 # cutoff 1200 # orbit 7 # fshift (slow 4 $ range 0 "-600" saw)
@@ -250,6 +256,7 @@ do
   d5 $ s "techno_hats*16" # n 2 # cutoff 1200 # room 0.5 # distort 0 # crush 4 # gain (fast 4 $ "1 1.2")
   xfadeIn 5 8 silence
   d6 silence
+  d8 $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 2 # cutoff 2000 # gain 0.9
   d9 silence
   d10 $ gap 2 $ slice 16 (slow 4 $ rev $ "8 10 12 14") $ loopAt 8 $ s "risers" # n 0 # cutoff 3000 # room 0.3 # speed "-1"
   d11 silence
@@ -267,6 +274,7 @@ do
   d2 $ loopAt 4 $ slice 32 ("[0*4 1*4]*4" + "0 8 16 24") $ s "SOPHIE_love" -- # cutoff 3000
   d6 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.9
   d7 $ sometimes (ghost) $ s "[~ SOPHIE_claps]*2" # n 5 # distort 0.5
+  d8 $ (0.125 ~>) $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 4 # cutoff 3000 # room 0.4 # size 0.6
   d9 $ rev $ gap 4 $ striate 4 $ ghost $ s "SOPHIE_textures" # n 2 # distort (slow 2 $ range "0.2" "0.8" sine) # gain 0.73 # fshift 20
   d10 silence
   d11 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0" # cutoff 2000 # room 0.2 # gain 0.95
@@ -283,13 +291,15 @@ do
   -- xfadeIn 8 10 silence
   -- d12 $ chop 2 $ n ("gs8'min*8") # s "superzow" # octave 5 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.4") # distort 0.5 # crush 1 # detune (slow 4 $ range 3 2 sine) # room 0.4 # cutoff 1200 # orbit 7 # fshift (slow 4 $ range "-600" 0 saw)
   -- xfadeIn 12 10 silence
+  d8 $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 2 # cutoff 2000 # gain 0.9
+  xfadeIn 8 24 silence
   d9 silence
 
 
 do
   hush
   d2 $ loopAt 4 $ slice 32 "[0 8 16 24]" $ s "SOPHIE_love"
-  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1 # room 0.5 # cutoff 8000
+  d3 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # n 1
 
 d3 silence
 

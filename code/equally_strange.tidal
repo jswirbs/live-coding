@@ -297,8 +297,10 @@ d2 $ palindrome $ chop 36 $ loopAt 4 $ s "misc_vocals" # n 9
 
 setcps(150/60/4)
 
-  d10 $ ghost $ fast 2 $ (0.125 ~>) $ gap 8 $ (0.125 <~) $ arp "down" $ n ("[a2 a3'min@3]" + "<0 12 24 36>") # s "supersaw" # sustain 0.3 # distort (slow 4 $ range 0.2 0.8 sine) # crush 0.2 # gain 0.62 # pan (fast 8 $ range 0 1 rand) # room 0.5 # djf 0.5 # cutoff 1000 # orbit 9
+  d10 $ ghost $ fast 2 $ (0.125 ~>) $ gap 8 $ (0.125 <~) $ arp "down" $ n ("[a2 a3'min@3]" + "<0 12 24 36>") # s "supersaw" # sustain 0.3 # distort (slow 4 $ range 0.2 0.8 sine) # crush 0.3 # gain 0.62 # pan (fast 8 $ range 0 1 rand) # room 0.5 # djf 0.5 # cutoff 1000 # orbit 9
   d10 silence
+
+  xfadeIn 4 16 silence
 
 
 do
@@ -306,7 +308,7 @@ do
   d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
   d6 $ rarely (ghost) $ s "~ FOOD_hihats [~ FOOD_hihats] ~" # n "18" # cutoff (slow 8 $ range 4000 1000 saw)
   xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine) # orbit 6
-  d10 silence
+  xfadeIn 10 8 silence
 
 
 do
@@ -341,14 +343,14 @@ do
 d8 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[4]" # s "subbass" # gain 0.97 # room 0.8 # size 0.8 # cutoff 3000 # sustain 1.2 # pan (range 0.2 0.4 perlin)
 
 
-d10 $ n ("a a ~ a a ~ a ~" + "<3 3 0 5>") # octave 5 # s "default" # gain 0.95 # room 0.4 # cutoff 4000 # pan (range 0.7 0.9 perlin)
+d10 $ n ("a a ~ a a ~ a ~" + "<3 3 0 5>") # octave 5 # s "default" # gain 0.95 # room 0.35 # cutoff 5000 # pan (range 0.7 0.9 perlin) # distort 0.03
 
 
 do -- 4
   d2 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[2,3]" # s "acid92" # room 0.2 # cutoff (slow 4 $ range 2000 900 saw) # gain 1.05
   xfadeIn 4 8 silence
   xfadeIn 5 6 $ (0.125 ~>) $ s "techno_hats*16" # n 3 # gain 0.95
-  d11 $ n ("a a ~ a a ~ a ~" + "<0 0 0 0>") # octave 6 # s "superzow" # gain 0.62 # room 0.4 # cutoff 3000 # detune (slow 4 $ range 0 2 saw) # pan (range 0.3 0.7 rand)
+  d11 $ n ("a a ~ a a ~ a ~" + "<0 0 0 0>") # octave 6 # s "superzow" # gain 0.62 # room 0.4 # cutoff (slow 4 $ range 2000 3000 saw) # detune (slow 4 $ range 0 2 saw) # pan (range 0.3 0.7 rand)
 
 do -- 4
   d2 $ n ("a a ~ a a ~ a ~" + "<0 0 2 3>") # octave "[2,3]" # s "acid92" # room 0.2 # cutoff (slow 4 $ range 900 0 saw) # gain 1.05
@@ -559,7 +561,7 @@ hush
 
 
 
--- to fade from this to progress...
+-- fade to something else...å
 -- do this as last of 4
 do
   d9 silence
@@ -573,8 +575,17 @@ do
   d13 $ (0.04 <~) $ slice 2 (slow 4 $ "1") $ s "SOPHIE_hard" # n 6 # cutoff 400 # room 0.6 # size 0.98 # pan "<0.8 0.3>" # speed 0.5 # orbit 11
   xfadeIn 13 64 silence
 
--- and get to 130 bpm (or do this in slowdown above)
-setcps(130/60/4)
+
+
+  -- PROGRESS
+  do
+    hush
+    d7 $ n "~ ~ a a" # octave 5 # s "acid91" # sustain "2" # room 0.6 # size 0.85 # cutoff 1000 # gain 0.7
+    d8 $ n (slow 4 $ "[e6 c6 a e6 c6 a e6 c6]*2@2 [c6 a f c6 a f c6 a] [a f d a f d a f]") # octave "[4]" # s "acid91" # room 0.7 # size 0.7 # cutoff 700 # gain 0.68 # orbit 6
+    d13 $ (0.04 <~) $ slice 2 (slow 4 $ "1") $ s "SOPHIE_hard" # n 6 # cutoff 400 # room 0.6 # size 0.98 # pan "<0.8 0.3>" # speed 0.5 # orbit 11
+    xfadeIn 13 64 silence
+
+
 --
 
 
