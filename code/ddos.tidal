@@ -523,4 +523,19 @@ d1 silence
 
 
 
+
+
+d3 $ slow 8 $ n (arp "[thumbup thumbdown]*4" ("[d'min*8]*2 [fs'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # s "superzow" # cutoff (range 1300 1600 sine) # pan (fast 2 $ range 0.2 0.8 sine) # distort 2 # gain 0.75
+
+d5 $ slow 8 $ n (arp "[thumbdown thumbup]*4" ("[d'min*8]*2 [fs'min*8]*2" + "[-12 0 12 24 24 12 0 -12]*4")) # octave 6 # s "superzow" # hcutoff (range 2000 2500 sine) # pan (fast 2 $ range 0.8 0.2 sine) # distort 0.5 # gain 0.7 # sustain (fast 4 $ range 0.15 0.1 sine)
+
+
+d2 $ s "[ ~ warsawbass]*4" # n (slow 8 $ "d6@7 cs6 fs@6 e@2") # octave "[2,3]" # room 0.7 # cutoff 900
+
+
+d10 $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" - "[12,24]") # s "moogbass" # distort 3 # gain 0.6 # room 0.8 # size 0.98 # sustain 0.4
+d11 $ (0.5 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[12,24]") # s "moogbass" # distort 3 # gain 0.55 # room 0.8 # size 0.98 # sustain 0.4 # djf 0.8
+d12 $ (1.875 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[24]") # s "moogbass" # distort 3 # gain 0.6 # room 0.8 # size 0.98 # sustain 0.2 # djf 0.5
+
+
 --

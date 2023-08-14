@@ -122,7 +122,7 @@ do
 setcps(128/60/4)
 
 do
-  setcps(120/60/4)
+  -- setcps(120/60/4)
   solo 2
   solo 6
   solo 8

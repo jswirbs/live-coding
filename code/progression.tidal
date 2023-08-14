@@ -168,7 +168,7 @@ xfadeIn 6 4 $ s "pad:0" # pan (fast 2 $ range 0.1 0.9 perlin) # gain 1.4
 do
   d15 $ s "blue7"
   d6 $ "sn:1*16"
-  clutch 1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # orbit 0
+  clutchIn 1 2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # orbit 0
   clutch 2 $ striate 16 $ n (off "<0.125 0.375>" (+12) p_chords) # s "supersaw" # cutoff (slow 4 $ range 1500 3000 sine) # gain 0.78
   clutch 3 $ rarely (rev) $ rarely (palindrome) $ n p_notes2 # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # distort 0.3 # pan (range 0.2 0.8 saw) # gain 0.93
   clutch 4 $ s "jungbass:10 jungbass:4" # speed 0.8 # gain 1.4
@@ -217,7 +217,7 @@ do
   -- d3 $ striate 2 $ n "<[a4 e a b c6 e6] [a4 e a b c6 e6] [c e f a c6 e6] [g b d a a6 g6]>" # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine)
   d5 $ "UMRU_hihats*16?" # n 9 # distort (range 0.2 1 perlin) # pan (range 0.25 0.75 perlin) # gain 0.7 # cutoff 8000
   xfadeIn 5 16 $ silence
-  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.75 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)
+  d7 $ n p_chords16 # s "default" # sustain 0.1 # distort 0.5 # gain (range 1 0.88 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
   d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
     # room "1"
     # size "0.6" # orbit "5"
@@ -230,10 +230,11 @@ do
 d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
   # room "1"
   # size "0.6" # orbit "5"
-  # gain 0.7-- bring this b in 0.5->0.85
+  # gain 0.85  -- bring this b in 0.5->0.85
 
-
-clutchIn 3 8 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 300 sine) # detune (range 0 2 sine) # distort 0.1 # pan (range 0.2 0.8 saw) # gain 0.97
+do
+  d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.75 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)
+  clutchIn 3 8 $ rev $ n p_notes2 # s "superzow" # cutoff (range 800 300 sine) # detune (range 0 2 sine) # distort 0.1 # pan (range 0.2 0.8 saw) # gain 0.97
 
 
 xfadeIn 3 16 silence
