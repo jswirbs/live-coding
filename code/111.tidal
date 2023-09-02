@@ -231,7 +231,7 @@ do
   jumpIn' 1 1 silence
 
 
-d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.3 # gain 0.8 # room 0.9 # orbit 8
+d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # distort 0.35 # gain 0.8 # room 0.9 # orbit 8
 
 do
   hush
@@ -308,12 +308,16 @@ do
   d4 $ s "UMRU_bass_one_shots/4" # n 19 # gain 1.1
   -- d5 $ s "[~ SOPHIE_snares]*2" # n 44 # gain 0.7 # cutoff 2000
   d7 $ slice 16 "<<1 1 1 8> ~>" $ s "choir" # note "-4" # gain 0.9 # cutoff 300 # room 0.9
-  xfadeIn 7 12 silence
+  -- xfadeIn 7 16 silence
   -- d8 $ slow 8 $ n "[g*4 ~@3]*3@3 [g*4 [~@3 g] ds*4 [c*2 <c*2 as*2>]]" # s "default" # distort 0.1 # gain 0.9 # cutoff 300
   -- clutchIn 8 12 silence
   -- d9 $ (1 ~>) $ slow 8 $ n ("[g*4 ~@3]*3@3 [g*4 [ds*2 as4*2] ~@2]" + "7") # s "default" # gain 0.75 # room 0.9 # cutoff 200
   -- clutchIn 9 12 silence
+  xfadeIn 4 24 silence
 
+
+
+setcps(140/60/4)
 
 xfadeIn 4 32 $ s "UMRU_bass_one_shots/4" # n 19 # gain 0.75
 

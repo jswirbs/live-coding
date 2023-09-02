@@ -15,6 +15,12 @@ make initial c synth freaky/interesting at beginning or come in cooler?
   d10 $ ghost $ fast 2 $ (0.125 ~>) $ gap 8 $ (0.125 <~) $ arp "down" $ n ("[c2 c3'min@3]" + "<0 12 24 36>") # s "supersaw" # sustain 0.3 # distort (slow 4 $ range 0.2 0.8 sine) # crush 0.2 # gain 0.62 # pan (fast 8 $ range 0 1 rand) # room 0.5 # djf 0.5 # cutoff 1000 # orbit 9
 
 
+  do
+    xfadeIn 3 16 $ (0.125 ~>) $ rarely (ghost) $ n "<c d ds g>" # s "moogbass" # octave 6 # sustain "0.5@3 0.75" # distort 0.2 # room 1 # size 0.99 # djf 0.88 # gain 1.05 # orbit 3
+    xfadeIn 4 16 $ n ("c" + "<0 0 3 -2>") # octave "[2,3]" # s "supersaw" # sustain 0.2 # distort 0.2 # sustain 0.3 # cutoff 1000 # room 0.3 # orbit 3
+
+
+
 xfadeIn 3 16 $ slow 8 $ rev $ chop 32 $ s "DJ_DAVE_castles" # number 16 # cutoff 2000 # room 0.3 # gain (rev $ "0.85 0.87 0.9 0.95 1.05 1.12 1.17 [1.17 1.1 1.02 0.95]")
 
 
@@ -47,7 +53,9 @@ do
   xfadeIn 1 8 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # hcutoff 230
   xfadeIn 7 8 $ n "c" # s "default" # squiz 2
   xfadeIn 8 8 $ whenmod 8 7 (const $ arp "up" $ n "c6 c'min@3" # s "default") $ arp "down" $ n "c6 c'min@3" # s "default"
-  clutchIn 10 8 silence
+  -- clutchIn 10 8 silence
+  xfadeIn 3 7 silence
+  xfadeIn 4 7 silence
 
 do
   d2 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles:1" # gain 1.2 # cutoff 1000 # room 0.4
@@ -291,6 +299,7 @@ do
   xfadeIn 5 4 silence
   xfadeIn 4 4 $ slow 4 $ slice 16 "1*4" $ s "DJ_DAVE_castles:0" # room 0.8
   xfadeIn 9 4 $ s "XORE_hats*8" # n 15 # cutoff 3000 # pan (slow 2 $ range 0.1 0.9 sine) # gain 1.1
+
 
 
 do

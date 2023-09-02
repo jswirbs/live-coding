@@ -274,7 +274,7 @@ do -- actually hush size
 
 
 do -- TO  !!!
-  setcps(135/60/4)
+  setcps(145/60/4)
   unsolo 4
   unsolo 5
   unsolo 7
@@ -287,11 +287,66 @@ do -- TO  !!!
 
 
   do
+    setcps(150/60/4)
     d1 $ s "techno_kicks*4" # gain 1.1 # n 3
     d2 $ fast 4 $ n "~ a" # s "subbass" # octave 2 # gain 1.3 # room 0.3 # cutoff 1000
+    d3 silence
     d6 $ rarely (ghost) $ s "~ FOOD_hihats [~ FOOD_hihats] ~" # n "18" # cutoff (slow 8 $ range 4000 1000 saw)
     xfadeIn 7 8 $ s "XORE_hats*12" # n 4 # cutoff 3000 # room 0.2 # pan (slow 6 $ range 0.25 0.75 sine) # orbit 6
+    xfadeIn 9 8 silence
     xfadeIn 10 8 silence
+    xfadeIn 11 8 silence
+
+
+
+--
+
+do -- 4
+  xfadeIn 5 16 $ (0.125 ~>) $ s "XORE_hats*16" # n 15
+  xfadeIn 8 8 $ fast 4 $ ghost $ arp "down" $ n "b6 b'min@3" # s "default" # orbit 7
+
+do -- 4
+  clutchIn 3 8 $ fast 4 $ ghost $ arp "down" $ n (sometimes (off "0.125" (+12)) $ "b6 b'min@3") # s "default" # squiz 2 # gain 0.8 # pan (slow 2 $ range 0 1 sine)
+  clutchIn 2 8 $ fast 4 $ ghost $ arp "down" $ n (sometimes (off "0.375" (+"-12")) $ "b6 b'min@3") # s "default" # waveloss 40 # gain 0.8 # pan (slow 2 $ range 1 0 sine)
+  d15 $ chop 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 7 # crush 8 # gain 1.2 # note "-1"
+
+do -- 4
+  xfadeIn 1 8 silence
+  xfadeIn 6 8 $ s "hh*2" # n 1 # distort 0.35
+  xfadeIn 7 8 $ s "hh*16?" # n 1 # distort 0.05 # cutoff 400 # room 0.4 # size 1.2 # gain 1.2
+  clutchIn 8 7 silence
+  xfadeIn 9 8 $ ghost $ arp "down" $ n "b6 b'min@3" # s "default" # cutoff 2000
+  d10 $ s "UMRU_fx_risers" # n 13 # room 0.5 # speed "1.32" # gain 1
+  jumpIn 10 1 silence
+  xfadeIn 4 8 $ s "sn*16" # n 3 # waveloss 10 # djf 0.97 # pan (slow 2 $ range 0.1 0.9 sine) # gain 0.8
+  xfadeIn 14 8 $ s "sn*16" # n 3 # waveloss 10 # djf 0.3 # pan (slow 2 $ range 0.9 0.1 sine) # gain 0.8
+  -- d15 $ chop 4 $ slow 4 $ s "DJ_DAVE_castles" # n 7 # crush 7 # gain 1.1
+  -- d15 $ chop 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 8 # crush 7 # gain 1 # note "-1"
+  -- d16 $ s "DJ_DAVE_castles" # n 15 # room 0.3 # cutoff 2000 # gain 1.1 # note "-1"
+  -- jumpIn 16 1 silence
+
+do -- 4
+  xfadeIn 2 3 silence
+  clutchIn 3 3 silence
+  d10 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.8 # room 0.5 # note "-1" -- noise riser
+  d11 $ s "UMRU_fx_risers" # n 5 # speed 1.1 # waveloss 50 # distort 0.2 # room 1 # size 1 # gain 0.8
+  jumpIn 11 1 silence
+  -- d15 $ chop 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 8 # crush 5 # distort "0.1@3 0.25" # note "-1"
+
+
+do
+  setcps(130/60/4)
+  hush
+  xfadeIn 3 12 $ loopAt 4 $ chop 4 $ s "DJ_DAVE_castles"
+  -- gain is 0 !!!!!  just to set size to 0 for d7
+  d7 $ s "hh*16?" # n 1 # distort 0.05 # cutoff 400 # room 0.2 # size 0 # gain 0
+  d8 $ ghost $ arp "down" $ n "c6 c'min@3" # s "default" # cutoff 2000
+  xfadeIn 8 10 silence
+  d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 2000 -- noise riser come down
+  jumpIn 10 1 silence
+  -- gain is 0 !!!!!  just to set size to 0.99 for d11 to fade it out slowly
+  d11 $ s "UMRU_fx_risers" # n 5 # speed "0.9" # waveloss 50 # distort 0.2 # room 1 # size 0.992 # gain 0
+
 
 
 

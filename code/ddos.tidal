@@ -345,7 +345,7 @@ do
   d13 $ (0.04 <~) $ slice 2 (slow 4 $ "1") $ s "SOPHIE_hard" # n 6 # cutoff 400 # room 0.6 # size 0.98 # pan "<0.8 0.3>" # speed 0.5 # orbit 11
   xfadeIn 13 64 silence
 
-xfadeIn 2 16 $ n "3*8" # s "techno_kicks" # gain 1.1 # cutoff 500
+xfadeIn 2 8 $ n "3*8" # s "techno_kicks" # gain 1.1 # cutoff 500
 
 do
   d2 silence
@@ -362,7 +362,7 @@ do
 
 d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain 0.8 # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.85 # pan (range 0.9 0.1 sine)
 
-d2 $ s "[ ~ warsawbass*2]*4" # n (slow 8 $ "[d6 cs6]*3@3 [d6 [cs6 a]] [fs e]*4@4") # octave "[2,3]" # sustain 0.095 # room 0.2
+jumpIn' 2 0 $ s "[ ~ warsawbass*2]*4" # n (slow 8 $ "[d6 cs6]*3@3 [d6 [cs6 a]] [fs e]*4@4") # octave "[2,3]" # sustain 0.095 # room 0.2
 
 d7 $ fast 2 $ s "~ SOPHIE_claps" # n 5 # gain 0.98 # cutoff 1200
 --
@@ -533,9 +533,9 @@ d5 $ slow 8 $ n (arp "[thumbdown thumbup]*4" ("[d'min*8]*2 [fs'min*8]*2" + "[-12
 d2 $ s "[ ~ warsawbass]*4" # n (slow 8 $ "d6@7 cs6 fs@6 e@2") # octave "[2,3]" # room 0.7 # cutoff 900
 
 
-d10 $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" - "[12,24]") # s "moogbass" # distort 3 # gain 0.6 # room 0.8 # size 0.98 # sustain 0.4
-d11 $ (0.5 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[12,24]") # s "moogbass" # distort 3 # gain 0.55 # room 0.8 # size 0.98 # sustain 0.4 # djf 0.8
-d12 $ (1.875 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[24]") # s "moogbass" # distort 3 # gain 0.6 # room 0.8 # size 0.98 # sustain 0.2 # djf 0.5
+d10 $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" - "[12,24]") # s "moogbass" # distort 3 # gain 0.55 # room 0.8 # size 0.98 # sustain 0.4
+d11 $ (0.5 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[12,24]") # s "moogbass" # distort 3 # gain 0.53 # room 0.8 # size 0.98 # sustain 0.4 # djf 0.8
+d12 $ (1.875 ~>) $ ghost $ slow 8 $ n ("~@15 d'min ~@15 fs'min ~@15 fs'min ~@15 d'min" + "[24]") # s "moogbass" # distort 3 # gain 0.58 # room 0.8 # size 0.98 # sustain 0.2 # djf 0.5
 
 
 --
