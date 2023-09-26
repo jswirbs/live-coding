@@ -34,7 +34,7 @@ d6 $ s "~ [SOPHIE_percussion*3]" # n 0
 
 
 d1 $ s "techno_kicks*4" # n (slow 16 $ "0 1 2 3") # gain 1.2
-d2 $ s "hotel/12" # gain 1.2
+d2 $ s "hotel/12" # gain 1.2 # room 0.15
 
 
 
@@ -84,6 +84,12 @@ d9 $ slow 2 $ slice 8 "[0 ~ 1 ~] [0 [1 2 3]]" $ s "sword" # n 1 # gain 1.1 # roo
 
 
 
+
+
+
+
+
+
 --
 
 setcps(150/60/4)
@@ -100,30 +106,37 @@ d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort
 d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid92" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 10000 2000 sine) # crush 5 # room 0.3 # size 0.6
 d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid92" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 10000 2000 sine) # crush 5 # room 0.3 # size 0.6 # hcutoff 1000
 
+d3 $ rarely (palindrome) $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
+
 
 -- hcutoff high to low
-d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.15 # hcutoff 2000
+d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.15 # hcutoff 2500
 
 
 do
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.25
   -- alchemy -- tidal space // play around with it, but motion has been good and using mod wheel is key
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ slow 8 $ s "tidal_space" # n 0 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 0 # gain 1.3
+  xfadeIn 11 16 $ chop 8 $ slow 8 $ s "tidal_space" # n 0 # gain 1.7
 
+
+d1 silence
 
 do
+  d1 $ s "techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000
   d2 $ fast 4 $ s "~@3 UMRU_kicks" # n 1 # gain "<0.75 0.9 0.8 1.05>"
-  d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 800 # hcutoff 50 # gain 0.9
-  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  d6 $ n "~ 2 ~ 2" # s "FOOD_claps"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 1 # gain 1.7
+  d3 $ rarely (palindrome) $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
+  d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 900 # hcutoff 50 # gain 0.9
+  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.25 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
+  d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.95
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 1 # gain 1.72
 
 
 
 
 
-
+--
 d7 $ n (slow 4 $ "[~@2 [~ ~ ~ [1,<4 4 5 5>]] ~]*4" + "<0 0 3 5>") # octave "[5]" # s "moogbass" # sustain (range 0.12 0.2 sine) # distort 0 # hcutoff 600 # cutoff 6000 # room 0.6 # size 0.7 # waveloss 10 # gain 0.92
 d7  $ n ("~@2 [~ ~ ~ [1, 2]] ~" + "<0 0 3 5>") # octave "[5]" # s "moogbass" # sustain (range 0.12 0.2 sine) # distort 0 # hcutoff 600 # cutoff 6000 # room 0.6 # size 0.7 # waveloss 10 # gain 0.92
 d7 $ ghost $ n ("~@2 [~ ~ ~ [3 4]] ~" + "<0 0 3 5>") # octave "[5]" # s "moogbass" # sustain (range 0.12 0.2 sine) # distort 0 # hcutoff 600 # cutoff 6000 # room 0.6 # size 0.7 # waveloss 10 # gain 0.92
@@ -132,7 +145,7 @@ d7 silence
 
 d7 $ ghost $ n ("~@2 [~ 1 ~] -2" + "<0 0 3 -2>") # octave "[5]" # s "moogbass" # sustain (range 0.12 0.2 sine) # distort 0 # hcutoff 600 # cutoff 6000 # room 0.6 # size 0.7 # waveloss 10 # gain 0.92
 d7 $ ghost $ n ("~@2 [~ <4 4 5 5> ~] <1 1 0 0>" + "<0 0 3 -2>") # octave "[5]" # s "moogbass" # sustain (range 0.12 0.2 sine) # distort 0.1 # hcutoff 600 # cutoff 6000 # room 0.6 # size 0.7 # waveloss 10 # gain 0.92
-
+--
 
 
 
@@ -141,24 +154,31 @@ d7 $ ghost $ n ("~@2 [~ <4 4 5 5> ~] <1 1 0 0>" + "<0 0 3 -2>") # octave "[5]" #
 d6 silence
 
 do
+  xfadeIn 1 8 $ s "techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000 # djf 0.64
   xfadeIn 4 8 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.15 # hcutoff 500
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
   xfadeIn 5 8 silence
   d6 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n (irand 11) # triode 10 # gain 1.05 # crush 4.5 # room 0.1
   -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   d7 $ (0.125 ~>) $ s "techno_hats*14@14 [techno_hats*3]@2" # n 2 # distort 0.2 # crush 5 # gain 0.9 # cutoff 7000 # room 0.1
-  d11 silence
+  -- d11 silence
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 3 # gain 1.7
 
+
+d1 silence
 
 do
+  d1 $ s "techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000
+  d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 1200 # gain 0.9
-  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  d6 $ n "~ 2 ~ 2" # s "FOOD_claps"
+  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.25 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
+  d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.95
   -- d7 $ (0.125 <~) $ slow 2 $ s "techno_hats*7@7 [techno_hats techno_hats?]" # n 8 # distort 0.2 # crush 6
   -- d7 $ (0.125 ~>) $ s "techno_hats*14@14 [techno_hats*3]@2" # n 2 # distort 0.2 # crush 5 # gain 0.9 # cutoff 7000 # room 0.1
   d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 2 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 2 # gain 1.72
+  d12 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n (irand 11) # triode 10 # gain 1.05 # crush 4.5 # room 0.2 # cutoff 2700
 
 
 
@@ -171,29 +191,30 @@ do
   d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid92" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 8 $ range 10000 2000 sine) # crush 5 # room 0.3 # size 0.6 # hcutoff (range 0 150 saw)
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 1000 # gain 0.9
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.6 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  d6 $ n "~ 2 ~ 2" # s "FOOD_claps"
+  d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.95
   -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   d9 $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 4 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 4 # gain 1.72
+  jumpIn 12 1 $ slow 8 $ s "UMRU_fx_impacts" # n 2 # gain 1.3
 
 
 do
   d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid92" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 10000 2000 sine) # crush 5 # room 0.3 # size 0.6 # hcutoff (range 0 300 saw)
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff (range 1000 500 saw) # gain 0.9
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain (range 0.6 0.25 saw) # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  xfadeIn 6 8 $ n "~ 2 ~ 2" # s "FOOD_claps" # djf 0.5
+  xfadeIn 6 8 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.95 # djf 0.5
   d7 silence
   d9 $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 5 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 5 # gain 1.72
 
 
 do
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff (range 500 120 saw) # gain 0.9
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain (range 0.25 0 saw) # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # djf (slow 8 $ range 0.5 0.3 saw)
-  xfadeIn 7 8 $ s "sn*16" # n 15 # room 0.3 # size 0.2 # gain 0.9
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 6 # gain 1.7
+  d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.95 # djf (slow 8 $ range 0.5 0.3 saw)
+  xfadeIn 7 8 $ s "sn*16" # n 15 # room 0.3 # size 0.2 # gain 1
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 6 # gain 1.72
 
 
 do
@@ -205,10 +226,11 @@ do
   d7 $ slow 4 $ s "SOPHIE_crashes" # n 1 # gain 0.7
   jumpIn 7 1 silence
   d9 $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
-  jumpIn 2 1 $ ghost $ slow 8 $ s "~@127 UMRU_kicks" # n 1 # gain "1.2"
+  jumpIn 2 1 $ ghost $ slow 8 $ s "~@127 UMRU_kicks" # n 1 # gain 1.2
   -- d11 $ n "e ds cs@2" # s "m1"
   -- jumpIn 11 6 silence
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 7 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 7 # gain 1.72
+  d12 $ slow 8 $ s "UMRU_fx_impacts" # n 2 # gain 1.18
 
 
 
@@ -218,23 +240,26 @@ do
   d2 $ fast 4 $ s "~@3 UMRU_kicks" # n 1 # gain "<0.75 0.9 0.8 1.05>"
   d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 1200 # hcutoff 50 # gain 0.9
-  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
-  d6 $ n "~ 2 ~ 2" # s "FOOD_claps"
+  d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.25 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
+  d6 $ n "~ 2 ~ 2" # gain 0.95 # s "FOOD_claps"
   d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
+  -- d11 $ ghost $ n "e ds cs cs4" # octave "[5,7]" # s "superzow" # gain 0.7 # detune (slow 2 $ range 0.2 2 sine) # accelerate 0.02 # cutoff 1000
+  d12 $ ghost $ slow 8 $ s "UMRU_fx_impacts" # n 2 # gain 1.3
+  jumpIn 12 1 silence
 
 
-  do
+  do -- ?
     hush
-    d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.1 # distort 0.05 # crush 7.5 # cutoff 6000
+    d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.12 # distort 0.05 # crush 7.5 # cutoff 6000
     d2 $ fast 4 $ s "~@3 UMRU_kicks" # n 1 # gain "<0.75 0.9 0.8 1.05>"
-    d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
+    d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 8000 2000 sine) # room 0.1 # size 0.6
     d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.35 # cutoff 1200 # hcutoff 50 # gain 0.9
     d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.8 # distort 0.12 # room 0.2 # crush 6 # cutoff 1200 # hcutoff 200 # triode 30
     -- d6 $ n "~ 2 ~ 2" # s "FOOD_claps"
     -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
     d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
-
+    -- d11 $ ghost $ n "e ds cs cs4" # octave "[5,7]" # s "superzow" # gain 0.7 # detune (slow 2 $ range 0.2 2 sine) # accelerate 0.02 # cutoff 4000 # distort 0.4
 
 
 
@@ -246,27 +271,29 @@ d10 $ loopAt 2 $ (1 <~) $ s "risers:2/4" # room 0.7 # size 0.8 # cutoff (slow 9 
 d7 silence
 
 do
+  d3 $ rarely (palindrome) $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 2000 sine) # room 0.1 # size 0.6
   d7 $ (0.125 ~>) $ s "techno_hats*14@14 [techno_hats*3]@2" # n 2 # distort 0.2 # crush 5 # gain 0.9 # cutoff 7000 # room 0.1
   d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # distort 0.3 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   xfadeIn 1 7 $ s "SOPHIE_kicks_wet*4" # n 6 # gain "1.12 1.05 0.99 0.93" # distort 0.05 # crush 7.5 # cutoff 6000
   xfadeIn 7 8 $ (0.125 ~>) $ s "techno_hats*14@14 [techno_hats*3]@2" # n 2 # distort 0.2 # crush 5 # gain 0.9 # cutoff 4000 # room 0.3 # orbit 6
-  xfadeIn 9 8 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # distort 0.5 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine) # gain 0.94
+  xfadeIn 9 8 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 30 # distort 0.5 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine) # gain 0.94
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 8 # gain 1.75
 
 
 d1 $ s "SOPHIE_kicks_wet SOPHIE_kicks_wet SOPHIE_kicks_wet*2 SOPHIE_kicks_wet*4" # n 6 # gain 1.1 # distort 0.05 # crush 7.5 # cutoff 6000
 
 do
   d1 $ s "techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000
+  d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 8000 2000 sine) # room 0.1 # size 0.6
   d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 8 # gain 1.7
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 9 # gain 1.74
 
 
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 9 # gain 1.7
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 10 # gain 1.7
 
-
+d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 9 # gain 1.72
+d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 10 # gain 1.72
 
 -- alchemy -- tidal space // play around with it, but motion has been good and using mod wheel is key
 d11 $ n "e ds cs@2" # s "m1"
@@ -274,6 +301,11 @@ d11 $ n "e ds cs@2" # s "m1"
 d11 silence
 
 
+
+d1 $ s "techno_kicks techno_kicks techno_kicks*2 techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000
+d1 $ s "techno_kicks*4" # n 3 # gain 1.2 # distort 0.05 # crush 7.5 # cutoff 6000
+
+d1 silence
 
 do
   hush
@@ -285,8 +317,8 @@ do
   d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   d10 $ loopAt 2 $ (1 <~) $ s "risers:2/4" # room 0.7 # size 0.8 # cutoff (slow 9 $ range 5000 4000 sine)
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 11 # gain 1.7
-
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 11 # gain 1.72
+  d12 $ slow 8 $ s "UMRU_fx_impacts" # n 2 # gain 1.2
 
 d5 silence
 
@@ -300,7 +332,7 @@ do
   xfadeIn 4 6 silence
   d9 $ swingBy (1/12) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ slow 8 $ s "tidal_space" # n 12 # gain 1.7
+  d11 $ slow 8 $ s "tidal_space" # n 12 # gain 1.72
 
 
 do
