@@ -493,7 +493,7 @@ d1 silence
 
 do
   d1 $ n ("0 0 0 <0 [<0*2 [~ 0] 0*2 ~>]>") # s "techno_kicks" # gain 1.1
-  d5 $ slice (slow 8 $ "[90 64]") (slow 8 $ "1*44@44 0*4@4 1*6@6 0@2 [0 <1 ~> 2 <3 ~> 4 <5 ~> 6 7]@8 30*48@48 <23*16 23*8>@16") $ s "please_dont_stop" # cutoff (slow 3 $ range 900 1200 sine) # gain 0.9 # room 0.3 # size 0.3
+  d5 $ slice (slow 8 $ "[90 64]") (slow 8 $ "1*44@44 0*4@4 1*6@6 0@2 [0 <1 ~> 2 <3 ~> 4 <5 ~> 6 7]@8 30*48@48 <23*16 23*8>@16") $ s "please_dont_stop" # cutoff (slow 3 $ range 900 1200 sine) # gain 0.9 # room 0.2 # size 0.3
   -- d7 $ fast 2 $ s "~ SOPHIE_claps" # n 12 # gain 0.85 # cutoff 1000
   d8 $ slow 2 $ slice 8 "0*8" $ s "please_dont_stop" # hcutoff 10000 # gain 0.95 # distort 0.02
   d9 $ slow 2 $ slice 8 "0*8" $ s "please_dont_stop" # cutoff 300 # gain 1.15 # distort 0.02
@@ -510,7 +510,7 @@ do
   d1 $ n ("0 0 0 <0 [<0*2 [~ 0] 0*2 ~>]>" + "3") # s "techno_kicks" # gain 1.1
   d2 $ s "[ ~ warsawbass*2]*4" # n (slow 8 $ "[d6 cs6]*3@3 [d6 [cs6 a]] [fs e]*4@4") # octave "[2,3]" # sustain 0.095 # room 0.2 # cutoff 900 # djf (slow 8 $ range 0.5 0 saw)
   d4 $ ghost $ n (slow 8 $ "[~@30 d6 cs6 b a] [~@30 cs6 b a gs]") # s "moogbass" # sustain "0.08@7 0.1" # room (slow 8 $ range 0.3 0.6 sine) # size 0.4 # gain 0.85 # pan (range 0.9 0.1 sine)
-  d5 $ slice "64" "23*8" $ s "please_dont_stop" # cutoff 800 # gain 0.88 # room 0.3 # size 0.3
+  d5 $ slice "64" "23*8" $ s "please_dont_stop" # cutoff 800 # gain 0.88 # room 0.2 # size 0.3
   -- d6 $ s "XORE_hats*16" # gain "[0.7 0.9]*4"
   d6 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
 
