@@ -40,7 +40,7 @@ do
   xfadeIn 2 8 $ chop 16 $ slow 2 $ s "nasty" # djf 0.08 # room 0.5 # orbit 1
   -- d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 0.1 # gain 0.7 # pan (range 0.8 0.2 perlin)
   d7 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 0.9 # cutoff 2000 # room 0.2
-  -- d8 $ slow 4 $ s "[kyle:0, kyle:2]" # gain 0.9
+  d8 $ slow 4 $ s "[kyle:0, kyle:2]" # gain 0.9
 
 
 do
@@ -62,7 +62,7 @@ do
   d3 $ slow 2 $ s "<nasty:1 ~>" # distort 1 # gain 0.6
   d4 $ slow 2 $ whenmod 4 3 (const $ s "[kyle:3(3, 8)]*4" # speed ((12 - run 12)/(12*4) + 0.75) # gain 1.2) $ s "kyle" # n (choose[3,4,5]) # crush 6 # gain 1.2
   d5 $ (0.25 ~>) $ s "sn:3*2"
-  jumpIn' 6 0 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.6 # gain 0.85 # cutoff 1700 # room 0.3
+  jumpIn' 6 0 $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.6 # gain 0.88 # cutoff 1700 # room 0.3
   d7 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.1 # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 0.9
   -- d6 $ s "XORE_hats:15*16?" # pan (slow 4 $ range 0.8 0.2 rand) # room 0.2 # cutoff ((2~>) $ slow 4 $ range 10000 5000 sine) # crush (slow 2 $ range 6 10 tri) # distort 0.2 # gain 1.05
   -- d7 $ s "superpiano*16?" # n "<c c a b>" # accelerate 1 # sustain 4 # distort 1 # gain 0.63 # squiz 2 # crush (range 3 6 perlin) # pan (slow 4 $ range 0.8 0.2 perlin)

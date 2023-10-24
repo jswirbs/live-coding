@@ -179,7 +179,7 @@ do
   d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   -- d11 $ n "e ds cs@2" # s "m1"
   d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 2 # gain 1.72 # room 0.2
-  d12 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n (irand 11) # triode 10 # gain 1.1 # crush 4.5 # room 0.2 # cutoff 2700
+  d12 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n (irand 11) # triode 10 # gain 1 # crush 4.5 # room 0.2 # cutoff 2700
 
 
 
