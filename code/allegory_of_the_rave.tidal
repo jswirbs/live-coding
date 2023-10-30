@@ -122,10 +122,10 @@ do
 
 
 
-  d4 $ ghost $ n "(slow 3 $ "ds d c ds d c ds d c ds d c")" # s "beating" # octave "6" # cutoff 220 # hcutoff 250 # room 0.7 # size 0.9 # voice 1
+  d4 $ ghost $ n (slow 3 $ "ds d c ds d c ds d c ds d c") # s "beating" # octave "6" # cutoff 220 # hcutoff 250 # room 0.7 # size 0.9 # voice 1
   d4 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "beating" # octave "[6]" # cutoff 500 # hcutoff 500 # room 0.2 # sustain "0.8"
   d4 silence
-unsolo 4
+  unsolo 4
 
 
 
@@ -186,6 +186,9 @@ do
 
 
 
+
+
+--
 
 d7 silence
 
