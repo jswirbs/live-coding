@@ -88,11 +88,14 @@ xfadeIn 10 16 $ (0.125 ~>) $ n "<c6*2 d6*2 ds6*2 f6*2>" # s "beating" # octave 6
 
 do
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
+  d4 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.7 # size 0.8 # sustain 0.18
+  xfadeIn 4 12 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.8 # size 0.8 # sustain 0.18 # gain 1.1 # orbit 3
   xfadeIn 11 8 $ (0.525 ~>) $ n "<f6 ds6 d6 c6>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.3 # size 0.5 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw) # distort 0.15
 
 
 do
   xfadeIn 2 8 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0 # size 0 # gain 1
+  jumpIn 4 7 silence
   xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.85 0.9]*4" # n 3 # room 0.3 # size 0.8 # distort 0.3
   d6 silence
   d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
@@ -121,11 +124,6 @@ do
 
 
 
-
-  d4 $ ghost $ n (slow 3 $ "ds d c ds d c ds d c ds d c") # s "beating" # octave "6" # cutoff 220 # hcutoff 250 # room 0.7 # size 0.9 # voice 1
-  d4 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "beating" # octave "[6]" # cutoff 500 # hcutoff 500 # room 0.2 # sustain "0.8"
-  d4 silence
-  unsolo 4
 
 
 
@@ -191,6 +189,9 @@ do
 
 
 
+d10 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave 6 # room 0.8 # size 0.8 # sustain 0.18 # gain 0.75 # pan (fast 2 $ range 0.2 0.8 square)
+
+
 
 
 --
@@ -204,7 +205,7 @@ do
   d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
   d7 silence
   clutchIn 8 8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
-
+  xfadeIn 10 10 silence
 
 do
   d4 silence
@@ -214,6 +215,7 @@ do
   xfadeIn 11 3 silence
   d9 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.6 # cutoff 5000 # room 0.2
   jumpIn 9 1 silence
+
 
 d2 silence
 

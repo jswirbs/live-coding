@@ -194,7 +194,15 @@ do
 
 
 
-d5 $ (0.125 ~>) $ gap 2 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.4 0.25 sine) # room 0.3 # speed "-1"
+
+do
+  d1 silence
+  d5 $ (0.125 ~>) $ gap 2 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.4 0.25 sine) # room 0.3 # speed "-1"
+
+do
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks]" # n 0 # gain 1.2
+  d5 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine) # gain "[0 0.9 0.95 1@5]*2"
+
 
 
 
