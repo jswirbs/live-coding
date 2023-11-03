@@ -109,8 +109,19 @@ d3 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid92" # distort
 d3 $ rarely (palindrome) $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 3000 sine) # room 0.1 # size 0.6
 
 
--- hcutoff high to low
-d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.15 # hcutoff 2500
+
+----
+
+
+jumpIn' 3 0 $ swingBy (1/6) 3 $ n "1 1 ~ 1 1 1 [1 1] 0" # octave 3 # s "acid91" # distort (slow 8 $ range 0.4 0.55 saw) # cutoff (slow 4 $ range 10000 3000 sine) # room 0.05 # size 0.3
+
+
+d2 $ s "~@15 UMRU_kicks" # n 1 # gain 1.1
+
+do
+  d1 $ s "techno_kicks*4" # n 3 # gain 1.2 # djf 0.63
+  -- hcutoff high to low
+  d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.1 # room 0.15 # hcutoff 2500
 
 
 do
