@@ -97,10 +97,10 @@ d3 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # room 0.7 # size 0.9 # gain (slow 
 
 
 
-
+-- FULL VOCALS
 d4 $ s "EG_lights" # n 5 # gain 1.2 # room 0.4 # size 0.9 # speed 1.20833333333333333333333333333
 
-do -- FULL VOCALS
+do
   hush
   d3 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # gain 1.2 # room 0.7 # size 0.9
   d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.78 # room 0.6 # cutoff 2500 -- noise riser come down
@@ -109,8 +109,8 @@ do -- FULL VOCALS
 
 
 do
-  d7 $ ghost $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.9 # djf 0.37
-  xfadeIn 7 24 $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.85 # djf 0.5
+  d7 $ ghost $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.92 # djf 0.37
+  xfadeIn 7 24 $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.88 # djf 0.5
   -- d7 $ s "~ XORE_snares ~ XORE_snares" # n 6 # gain 0.9
   -- d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.78 # room 0.6 # cutoff 2200 # hcutoff 300 -- noise riser come down
   -- jumpIn 8 2 silence
@@ -149,12 +149,18 @@ do
 d1 silence
 d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf 0.63
 d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf (slow 2 $ range 0.63 0.72 saw)
-d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # room 0.12
+
+do
+  d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # room 0.12
+  d11 $ s "SOPHIE_crashes" # n 0 # gain 0.63
+  jumpIn 11 1 silence
 
 
 
+--
 d6 silence
 d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 15
+d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # crush 5 # distort 0.5
 d6 $ (0.125 ~>) $ s "[[techno_hats*2 ~] techno_hats]*2" # n 3 # gain 0.82
 
 d7 silence
@@ -162,24 +168,22 @@ d7 $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.88
 d7 $ s "~ XORE_snares ~ XORE_snares" # n 6 # gain 0.9
 
 
-
 d8 $ ghost $ n "<b a b <b [e6@3 d6]>>" # s "moogbass" # octave 6 # room 0.8 # size 0.8 # sustain "2 1" # gain 0.75 # cutoff 900
 d8 silence
 
 
-
 d3 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.4 # room 0.3 # size 0.9 # cutoff 2000
 d3 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 2 # gain 1.2 # room 0.7 # size 0.9
+--
 
 
 
 
-
-d4 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.33 # room 0.2 # size 0.9 # hcutoff 1000 # speed 2
+d4 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # room 0.2 # size 0.9 # gain "[1.33 1.1]*4" # hcutoff "[1000 800]*4" # speed 2 # distort "[0 0.2]*4"
 
 
 do
-  xfadeIn 4 8 $ chop 8 $ loopAt 4 $ s "EG_lights" # n 3 # gain 1.2 # room 0.4 # size 0.9 # orbit 3
+  xfadeIn 4 12 $ chop 8 $ loopAt 4 $ s "EG_lights" # n 3 # gain 1.2 # room 0.4 # size 0.9 # orbit 3
   d5 $ loopAt 4 $ gap 128 $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
 
 
@@ -195,8 +199,12 @@ do
   d1 silence
   d9 silence
 
+    d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf 0.63
+    -- d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf (slow 2 $ range 0.63 0.72 saw)
+
 
 do
+  d1 silence
   -- xfadeIn 2 8 $ s "[~ supersaw*2]*4" # n ("<b a b g>") # octave "[2,3]" # room 0.3 # gain 0.8 # hcutoff 10 # djf 0.72
   xfadeIn 2 8 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # djf 0.72 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine)
   xfadeIn 3 8 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # gain 1.2 # room 0.8 # size 0.98
@@ -215,7 +223,7 @@ do
   xfadeIn 7 12 silence
 
 do
-  d2 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine) # djf (slow 4 $ range 0.8 0.9 saw)
+  jumpIn' 2 0 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine) # djf (slow 4 $ range 0.8 0.9 saw)
   d5 $ loopAt 4 $ gap "32 [16 8]" $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
   d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.7 # room 0.5 -- noise riser
   jumpIn 9 3 $ silence
@@ -240,13 +248,6 @@ do
 
 
 
-  d4 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 3 # gain 1.2 # room 0.4 # size 0.9
-
-
-  d5 $ loopAt 4 $ gap 64 $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
-  d5 $ loopAt 4 $ gap 128 $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
-
-
 
 
 
@@ -267,11 +268,12 @@ do
   jumpIn 8 1 silence
 
 do
-  d2 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain "[0.8@51 ~@13]/4" # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine) # djf (slow 4 $ range 0.6 0.7 saw) # sustain (slow 4 $ range 0.1 0.06 saw)
+  d2 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain "[0.8@3 ~@1]/4" # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine) # djf (slow 4 $ range 0.6 0.7 saw) # sustain (slow 4 $ range 0.1 0.06 saw)
   d5 $ loopAt 4 $ gap "32 [16 8]" $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
   jumpIn 7 3 silence
   d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 -- noise riser
   jumpIn 8 1 silence
+
 
 do
   hush
@@ -289,10 +291,6 @@ do -- ONE CYCLE EARLY  //  END VOCALS
   d5 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 3 # gain 1.2 # room 0.4 # size 0.9
   xfadeIn 5 3 silence
   -- jumpIn 7 1 $ s "~ XORE_snares ~ XORE_snares" # n 6 # gain 0.9 # djf (slow 4 $ range 0.7 0.9 saw)
-
--- do
---  d7 $ s "~ XORE_snares ~ XORE_snares" # n 6 # gain 0.9 # djf (slow 4 $ range 0.9 1.0 saw)
---  jumpIn 7 3 silence
 
 
 
@@ -319,18 +317,23 @@ do
 do
   d1 silence
   d5 $ loopAt 4 $ gap 128 $ s "EG_lights" # n 4 # gain 1.2 # room 0.4 # size 0.9
-  jumpIn 11 1 $ slow 4 $ s "SOPHIE_crashes" # n 2 # gain 0.58
+  xfadeIn 12 8 silence
+
+xfadeIn 6 4 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # djf 0.95
 
 do
   d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # room 0.12
   d4 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 3 # gain 1.2 # room 0.4 # size 0.9
   d5 $ loopAt 4 $ gap 128 $ s "EG_lights" # n 4 # gain 1.25 # room 0.5 # size 0.9
+  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 15
+  d11 $ s "SOPHIE_crashes" # n 0 # gain 0.55
   jumpIn 11 1 silence
 
 
 
 
-d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.33 # room 0.2 # size 0.9 # hcutoff 1000 # speed 2
+-- d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.33 # room 0.2 # size 0.9 # hcutoff "1000 800" # speed 2
+d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # room 0.2 # size 0.5 # gain "[1.33 1.1]*4" # hcutoff "[1000 800]*4" # speed 2 # distort "[0 0.2]*4"
 
 
 
@@ -339,7 +342,7 @@ d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.33 
 
 do
   d2 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine) # djf (slow 4 $ range 0.6 0.72 saw)
-  xfadeIn 6 12 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # cutoff 4800
+  xfadeIn 6 4 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # cutoff 4800
 
 
 do
@@ -348,11 +351,12 @@ do
   d2 silence
   d3 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # gain 1.2 # room 0.7 # size 0.9
   d10 silence
+  d6 silence
   d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.6 # cutoff 2500 # hcutoff 400 -- noise riser come down
   jumpIn 8 1 silence
   -- d11 $ s "SOPHIE_crashes" # n 0 # gain 0.6
   -- jumpIn 11 1 silence
-  d11 $ slow 4 $ s "SOPHIE_crashes" # n 2 # gain 0.58
+  d11 $ s "SOPHIE_crashes" # n 0 # gain 0.55
   jumpIn 11 1 silence
 
 
@@ -362,7 +366,7 @@ do
   jumpIn 7 7 silence
   xfadeIn 9 4 silence
   jumpIn 12 4 silence
-  d11 $ s "SOPHIE_crashes" # n 0 # gain 0.6
+  d11 $ s "SOPHIE_crashes" # n 0 # gain 0.5
   jumpIn 11 1 silence
 
 do

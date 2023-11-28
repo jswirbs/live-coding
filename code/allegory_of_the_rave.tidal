@@ -1,10 +1,11 @@
-setcps(145/60/4)
+setcps(148/60/4)
 
 
 
-d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.86
+d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
 
-d4 $ s "<XORE_error ~> ~ ~ [~ XORE_error]" # n "8 7" # gain "<0.9 0.9 0.7 0.9> 0.9"
+-- d4 $ s "<XORE_error ~> ~ ~ [~ XORE_error]" # n "8 7" # gain "<0.85 0.85 0.7 0.85> 0.85" # squiz (slow 6 $ range 2 6 sine)
+
 
 do
   -- d1 $ s "SOPHIE_kicks_wet*4" # n "[15@7 18]/8" # gain 1.1 # distort "0 0 0.05 0.1"
@@ -21,8 +22,8 @@ do
 
 d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
 
-d5 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
 d5 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+d5 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
 
 d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
 d7 silence
@@ -40,15 +41,19 @@ d4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~
 
 
 
-
-d1 silence
+do
+  d1 silence
+  d5 silence
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.2
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave "[2,3]" # sustain 0.17 # room 0.5 # size 0.4 # gain 1.05
+  d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
   d4 $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~ 4*2 4*2]") $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.1
   jumpIn 4 4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~ 4*2 4*2]") $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.1
-  d7 $ s "<XORE_error ~> ~ ~ [~ XORE_error]" # n "8 7"
+  jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+  -- d7 $ s "<XORE_error ~> ~ ~ [~ XORE_error]" # n "8 7"
 
 
   -- d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.9 0.4 saw)
@@ -56,51 +61,114 @@ do
 
 
 
+d6 $ ghost $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+
+d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+
+
+
+
+-- might be forcing it idk...
+do
+  d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
+  d4 silence
+  xfadeIn 4 4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+  xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+
+
+  d4 $ (0.125 ~>) $ slice 128 "14*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+  d4 $ (0.125 ~>) $ slice 128 "13*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+  d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+
+do
+  d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave "[2,3]" # sustain 0.17 # room 0.5 # size 0.4 # gain 1.05
+  d4 $ silence
+  d9 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.1 # cutoff 3000
+  d5 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
+
+clutchIn 4 4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~ 4*2 4*2]") $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.1
+--
+
+
+
 d1 silence
-xfadeIn 5 4 silence
+
+-- play around with bringing in this acid hting or other stuff from later?
+do
+  d1 $ s "techno_kicks*4" # n 2 # gain 1.2
+  d8 $ n "~@2 [c,<d ds c [d] d c [d] [ds]>] ~" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.16 # size 0.5 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
+  clutchIn 8 16 $ (0.125 ~>) $ n "[c,<d*4 ds*4 c*4 [c ~ d ~ d ~ ds ~] d*4 c*4 [d ~ c ~ d ~ ds ~] [ds ~ d ~ ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 8000 sine) # room (slow 4 $ range 0.12 0 sine) # size 0.5 # sustain (slow 3 $ range 0.09 0.13 sine) # gain (range 0.85 0.4 saw)
+  -- d8 silence
+
+
+
+
+
+
+
+-- xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+
+do -- 8
+  xfadeIn 2 8 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.4 # size 0.4 # gain 0.9 # cutoff 200 # orbit 1
+  xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+  -- xfadeIn 5 8 $ s "techno_hats*32" # gain "[0.66 0.85]*4" # n 8 # distort 0.3
+  clutchIn 8 8 $ n "~@2 [c,<d ds c [d] d c [d] [ds]>] ~" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.16 # size 0.5 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
+  xfadeIn 10 4 $ s "sn*16" # n 15 # room 0.1 # size 0.2 # gain 0.85 # orbit 9
+
+-- 4
+xfadeIn 10 3 $ s "sn*16" # n 15 # room 0.1 # size 0.2 # gain 1.05 # orbit 9 # djf (slow 4 $ range 0.5 1 saw)
+
+-- d1 silence
 
 do
   hush
   d1 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.4 # size 0.4 # gain 0.9 # cutoff 200
   xfadeIn 1 8 silence
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 4 # sustain 0.17 # room 0.4 # size 0.4 # gain 0.9 # cutoff 200
-  d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.86
-  xfadeIn 3 8 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 4000 8000 sine) # room 0.05 # size 0.9 # detune (slow 12 $ range 0.1 2.2 sine) # sustain (slow 3 $ range 0.085 0.13 sine) # gain 0.86
+  d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
+  xfadeIn 3 8 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 4000 8000 sine) # room 0.05 # size 0.9 # detune (slow 12 $ range 0.1 2.2 sine) # sustain (slow 3 $ range 0.085 0.13 sine) # gain 0.82
   d7 $ s "<XORE_error ~> ~ ~ [~ XORE_error]" # n "8 7" # cutoff 6000 # gain 0.8
   xfadeIn 7 8 silence
-  xfadeIn 8 32 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
+  xfadeIn 8 32 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # orbit 7 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
   -- xfadeIn 8 32 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c d d ds d c ds c] d*8 ds*8 [c ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
-  d9 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.5 # cutoff 4000 # room 0.3
-  jumpIn 9 1 silence
+  d9 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1 # hcutoff 1500
+  xfadeIn 9 8 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 0.65 # hcutoff 1200
+  d10 $ s "sn*16" # n 15 # room 0.1 # size 0.2 # gain 1.05 # orbit 9 # djf 1 # hcutoff (slow 4 $ range 0 9000 saw)
+  xfadeIn 10 4 silence
+  d11 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.5 # cutoff 4000 # room 0.3
+  jumpIn 11 1 silence
 
 
 
 
-d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
-xfadeIn 9 16 $ (0.125 ~>) $ n "c6*4" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
+do
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+  xfadeIn 9 16 $ (0.125 ~>) $ n "c6*4" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # orbit 8 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
+  xfadeIn 10 32 $ (0.125 ~>) $ n "<c6*2 d6*2 ds6*2 f6*2>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.1 # size 0.4 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
+  xfadeIn 11 8 $ (0.125 ~>) $ slice 128 "13*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 0.8 # hcutoff 1500
 
 
-
-xfadeIn 5 24 $ s "techno_hats*16" # gain "[0.73 0.9]*4" # n 3 # room 0.3 # size 0.8 # distort 0.1
-xfadeIn 10 16 $ (0.125 ~>) $ n "<c6*2 d6*2 ds6*2 f6*2>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.1 # size 0.4 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
-
+-- xfadeIn 5 24 $ s "techno_hats*16" # gain "[0.73 0.9]*4" # n 3 # room 0.3 # size 0.8 # distort 0.1
+-- xfadeIn 10 16 $ (0.125 ~>) $ n "<c6*2 d6*2 ds6*2 f6*2>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.1 # size 0.4 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
 
 
 do
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
-  d4 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.7 # size 0.8 # sustain 0.18
-  xfadeIn 4 12 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.8 # size 0.8 # sustain 0.18 # gain 1.1 # orbit 3
+  -- d4 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.7 # size 0.8 # sustain 0.18
+  -- xfadeIn 4 12 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave "[3]" # room 0.8 # size 0.8 # sustain 0.18 # gain 1.1 # orbit 3
+  xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.73 0.9]*4" # n 3 # room 0.2 # size 0.6 # distort 0.1 # gain 0.8
+  -- d6 silence
+  -- d11 $ (0.125 ~>) $ slice 128 "14*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 0.9 # hcutoff 1500
   xfadeIn 11 8 $ (0.525 ~>) $ n "<f6 ds6 d6 c6>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.3 # size 0.5 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw) # distort 0.15
+
 
 
 do
   xfadeIn 2 8 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0 # size 0 # gain 1
-  jumpIn 4 7 silence
-  xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.85 0.9]*4" # n 3 # room 0.3 # size 0.8 # distort 0.3
-  d6 silence
-  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
-
-
+  -- jumpIn 4 7 silence
+  xfadeIn 5 8 $ s "techno_hats*16" # gain "[0.85 0.9]*4" # n 3 # room 0.4 # size 0.9 # distort 0.3
+  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
+  -- xfadeIn 10 4 $ s "sn*16" # n 15 # room 0.1 # size 0.2 # gain 0.9 # orbit 9 # djf 1 # hcutoff (slow 4 $ range 9000 0 saw)
 
 
 
@@ -109,31 +177,33 @@ do
 --   d1 $ chop 8 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
 --   -- xfadeIn 5 1 $ s "techno_hats*8" # gain "[0.66 0.85]*4" # n 8 # distort 0.1
 
+-- d1 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
+
+
 d5 silence
 
-d1 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave "[2,3]" # sustain 0.17 # room 0.5 # size 0.4 # gain 1.05
-  d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.2 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.86
+  d3 $ n "~ ~ [~ c*2] c*2" # s "superzow" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.2 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
   -- d5 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8 # distort 0.1
   d5 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
   d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
-  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
+  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
 
 
 
 
 
+  do
+    d6 $ ghost $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+    d7 silence
 
-do
-  d6 $ ghost $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
-  d7 silence
+  do
+    d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+    d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
 
-do
-  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
-  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
 
 
 
@@ -153,12 +223,30 @@ d4 $ slice 64 "0 [~ 16] ~ 15" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
   d4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~ 4*2 4*2]") $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
-  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.83
-  d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.9 0.4 saw)
+  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
+  d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
   d9 silence
   d10 $ (0.125 ~>) $ n "<c6*2 d6*2 ds6*2 f6*2>" # s "acid92" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.1 # size 0 # sustain 0.08 # gain (range 0.9 0.4 saw)
   d10 silence
   d11 $ (0.525 ~>) $ n "<f6 ds6 d6 c6>" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.4 # size 0.8 # sustain 0.8 # gain (range 0.9 0.4 saw) # distort 0.2
+
+
+
+
+
+
+do
+  d6 $ ghost $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+  d7 silence
+
+  do
+    d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+    d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
+
+
+
+
+
 
 
 
@@ -169,8 +257,9 @@ do
   d1 $ s "techno_kicks*2 [<<techno_kicks ~> ~> techno_kicks]*2" # n 2 # gain 1.2 # hcutoff 80
   xfadeIn 1 5 $ s "techno_kicks*2 [<<~ techno_kicks> ~> techno_kicks]*2" # n 2 # gain 1.2 # hcutoff 125
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
-  xfadeIn 4 4 $ slice 64 "0 1 2 3" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
-  d8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.9 0.4 saw)
+  d4 $ slice 64 "0 1 2 3" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+  xfadeIn 4 10 silence
+  d8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
 
 d1 silence
 
@@ -181,45 +270,83 @@ do
   -- d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.9 0.4 saw)
 
   do
+    -- d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave "[2,3]" # sustain 0.17 # room 0.5 # size 0.4 # gain 1.05
     -- d9 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
     d4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~ 4*2 4*2]") $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
-    d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.9 0.4 saw)
+    d8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basshigh" # octave 6 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
 
 
 
 
 
-d10 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave 6 # room 0.8 # size 0.8 # sustain 0.18 # gain 0.75 # pan (fast 2 $ range 0.2 0.8 square)
 
 
+
+
+do
+  d5 silence
+  -- jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 2 $ range 1700 2800 sine) # room 0.25
+  d7 silence
+  d10 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave 6 # room 0.8 # size 0.8 # sustain 0.18 # gain 0.75 # pan (fast 2 $ range 0.2 0.8 square)
+
+
+  d6 $ slice 4 "~ 0 ~ [0*2]" $ s "SOPHIE_claps" # n 5 # gain "0.93@3 [0.95 0.89]" # cutoff (slow 2 $ range 1700 2800 sine) # room 0.2
+
+do
+  -- jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
+  jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+  d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
+
+
+
+
+
+  do
+    d6 $ ghost $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+    d7 silence
+
+    do
+      d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 0.78]"
+      d7 $ fast 2 $ slice 4 "~ 0" $ s "UMRU_snares" # n 19 # gain 0.8
 
 
 --
+
+d10 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ ~ ~ c c ~ ~ ~") # s "ikedabass" # octave 6 # room (slow 4 $ range 0.8 0.2 saw) # size (slow 4 $ range 0.8 0.2 saw) # sustain 0.18 # gain 0.75 # pan (fast 2 $ range 0.2 0.8 square)
 
 d7 silence
 
 
 do
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
-  -- d4 silence
+  d5 silence
   d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 2 $ range 2000 2700 sine)
   d7 silence
-  clutchIn 8 8 $ (0.125 ~>) $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "beating" # octave 6 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.09 0.14 sine) # gain (range 0.9 0.4 saw)
-  xfadeIn 10 10 silence
+  d8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 1000 10000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.85 0.4 saw)
+  xfadeIn 8 8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 800 2000 sine) # room 0.1 # size 0.3 # sustain (slow 3 $ range 0.09 0.12 sine) # gain (range 0.72 0.35 saw)
+  d10 silence
+
 
 do
-  d4 silence
+  -- d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.15 # cutoff 900
+  d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.0
+  xfadeIn 4 8 silence
   d5 silence
   d6 silence
-  d8 silence
-  xfadeIn 11 3 silence
-  d9 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.6 # cutoff 5000 # room 0.2
+  clutchIn 8 7 silence
+  -- xfadeIn 11 3 silence
+  -- d9 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.6 # cutoff 5000 # room 0.2
   jumpIn 9 1 silence
 
 
-d2 silence
+do
+  d1 silence
+  d2 silence
+  d11 silence
 
-d1 silence
 d3 silence
 
 
