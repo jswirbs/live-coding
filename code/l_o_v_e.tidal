@@ -292,7 +292,7 @@ do
   -- xfadeIn 8 10 silence
   -- d12 $ chop 2 $ n ("gs8'min*8") # s "superzow" # octave 5 # gain ("1 0 0 1 0 1 1? 0 1 <0 0 0 1> 1? 1 <0 0 0 1> <0 0 0 1> <0 0 0 1> 0" - "0.4") # distort 0.5 # crush 1 # detune (slow 4 $ range 3 2 sine) # room 0.4 # cutoff 1200 # orbit 7 # fshift (slow 4 $ range "-600" 0 saw)
   -- xfadeIn 12 10 silence
-  d8 $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 2 # cutoff 2000 # gain 0.9
+  d8 $ chop 64 $ loopAt 4 $ s "SOPHIE_love" # speed 2 # cutoff 2000 # gain 0.93
   xfadeIn 8 24 silence
   d9 silence
 

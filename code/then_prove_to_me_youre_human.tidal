@@ -133,6 +133,7 @@ do
   d1 $ s "[CXCX_bd]*4" # gain 1
   d2 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.2
   d3 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.2 # gain 0.9 # voice 2 # room 0.1 # sustain 0.15
+  -- d4 $ slow 8 $ s "[SOPHIE_claps*16]*4 [SOPHIE_claps*8]*4" # n 5 # djf (range 1 0.2 saw) # gain (range 0.9 0.2 saw)
   d5 $ gap 16 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.1 # room 1 # size 0.4 # gain 0.85
 
 

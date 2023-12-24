@@ -39,13 +39,15 @@ do -- 8 / 16
   d15 $ s "blue2"
   xfadeIn 3 8 $ striate 2 $ n p_notes # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw) # gain 0.88
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.5 # gain (range 0.9 0.75 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.85 saw)
-  jumpIn 10 1 silence
+  -- jumpIn 10 1 silence
+  d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.8 # cutoff 3300 # speed "<1 -1>" # orbit 9 -- noise riser come down
 
 do
   d15 $ s "blue1"
   xfadeIn 3 8 $ striate 6 $ n p_notes # s "superzow" # cutoff (range 800 3000 sine) # detune (range 0 2 sine) # pan (range 0.2 0.8 saw) # gain 0.9
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.8 0.63 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.85 saw)
-
+  d10 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.8 # cutoff 3000 # speed "<1 -1>" # orbit 9 -- noise riser come down
+  jumpIn 10 1 silence
 
 
 do
@@ -86,7 +88,7 @@ do
   xfadeIn 1 8 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.3 # orbit 0 # djf 0.8
   xfadeIn 2 8 silence
   d7 $ n p_chords16 # s "default" # sustain 0.5 # distort 0.3 # gain (range 1 0.8 saw) # hcutoff (range 1000 300 saw) # pan (range 0.1 0.9 saw)
-  d9 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.9 # crush (slow 4 $ range 4 2 saw)
+  d9 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # crush (slow 4 $ range 4 2 saw)
   jumpIn 9 4 silence
 
 
@@ -230,7 +232,7 @@ do
 d8 $ s "supernoise" # midinote ((irand 10) + 30) # sustain "10" # accelerate "0.5" # voice "0.6" # pitch1 "0.15" # slide "-0.5" # resonance "1" # attack "1" # release "15"
   # room "1"
   # size "0.6" # orbit "5"
-  # gain 0.8  -- bring this b in 0.5->0.85
+  # gain 0.6  -- bring this b in 0.5->0.85
 
 do
   d7 $ n p_chords16 # s "default" # sustain 0.25 # distort 0.9 # gain (range 0.75 0.6 saw) # hcutoff (range 100 300 saw) # pan (range 0.1 0.9 saw)

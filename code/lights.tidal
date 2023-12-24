@@ -93,7 +93,9 @@ d6 silence
 
 
 --
-d3 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # room 0.7 # size 0.9 # gain (slow 4 $ 0.3 + (run 16) * (0.9 / 16))
+do
+  resetCycles
+  d3 $ chop 4 $ loopAt 4 $ s "EG_lights" # n 1 # room 0.7 # size 0.9 # gain (slow 4 $ 0.3 + (run 16) * (0.9 / 16))
 
 
 
@@ -200,7 +202,7 @@ do
   d9 silence
 
     d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf 0.63
-    -- d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf (slow 2 $ range 0.63 0.72 saw)
+    d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # djf (slow 2 $ range 0.63 0.72 saw)
 
 
 do
@@ -334,7 +336,7 @@ do
 
 -- d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # gain 1.33 # room 0.2 # size 0.9 # hcutoff "1000 800" # speed 2
 d12 $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" # n 2 # room 0.2 # size 0.5 # gain "[1.33 1.1]*4" # hcutoff "[1000 800]*4" # speed 2 # distort "[0 0.2]*4"
-
+d12 silence
 
 
 

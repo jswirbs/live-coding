@@ -456,9 +456,7 @@ do
 
 d2 $ n ("a a ~ a a ~ a ~" - "<0 0 0 4>") # octave "[2,3]" # s "acid91" # room 0.2 # cutoff 1500 # gain 0.9
 
-do
-  d1 silence
-  -- d8 silence
+d1 silence
 
 do
   d1 $ s "techno_kicks*4" # gain 1.2 # n 3
