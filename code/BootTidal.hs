@@ -16,7 +16,7 @@ tidal <- startStream (defaultConfig {cFrameTimespan = 1/20}) [(superdirtTarget, 
 
 :{
 let p = streamReplace tidal
-    hush = streamHush tidal
+    -- hush = streamHush tidal
     list = streamList tidal
     mute = streamMute tidal
     unmute = streamUnmute tidal
@@ -71,6 +71,18 @@ let setI = streamSetI tidal
     setR = streamSetR tidal
     setB = streamSetB tidal
 :}
+
+
+---- CUSTOM SETUP ----
+
+-- sends tick pattern to supercollider which will then display basic clock information
+let hush = do streamHush tidal; p "tick" $ "0*4" # s "tick"
+p "tick" $ "0*4" # s "tick"
+
+bpm b = setcps (b/4/60)
+
+----------------------
+
 
 :set prompt "tidal> "
 :set prompt-cont ""

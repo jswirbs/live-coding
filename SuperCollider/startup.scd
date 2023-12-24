@@ -31,6 +31,7 @@ s.reboot { // server options are only updated on reboot
 			~d4 = ~dirt.orbits[3]; ~d5 = ~dirt.orbits[4]; ~d6 = ~dirt.orbits[5];
 			~d7 = ~dirt.orbits[6]; ~d8 = ~dirt.orbits[7]; ~d9 = ~dirt.orbits[8];
 			~d10 = ~dirt.orbits[9]; ~d11 = ~dirt.orbits[10]; ~d12 = ~dirt.orbits[11];
+			~d13 = ~dirt.orbits[12]; ~d14 = ~dirt.orbits[13]; ~d15 = ~dirt.orbits[14];
 		);
 
 
@@ -64,8 +65,17 @@ s.reboot { // server options are only updated on reboot
 		~midi6Out = MIDIOut.newByName("IAC Driver", "Tidal6");
 		~midi6Out.latency = 0;
 		~dirt.soundLibrary.addMIDI(\m6, ~midi6Out);
+
+		/*~lc = LinkClock.new.latency_(Server.default.latency);
+		~lc.numPeers;
+		~ltmc = LinkToMidiClock(~midi1Out, ~lc);
+		~ltmc.start;*/
 	};
 
-	s.latency = 0.3; // increase this if you get "late" messages
+	s.latency = 0.1; // increase this if you get "late" messages
 };
+
+// Start Tidal clock popup
+this.executeFile("/Users/justinswirbul/Library/Application\ Support/SuperCollider/tidal_clock_popup.scd");
+
 );
