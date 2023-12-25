@@ -5,6 +5,10 @@ import Sound.Tidal.Context
 import System.IO (hSetEncoding, stdout, utf8)
 hSetEncoding stdout utf8
 
+-- for custom resetCycles impl
+-- import Sound.Tidal.Tempo
+import qualified Sound.Tidal.Tempo as T
+
 -- total latency = oLatency + cFrameTimespan
 
 -- # START TIDAL NORMALLY (just SuperCollider)
@@ -27,7 +31,8 @@ let p = streamReplace tidal
     asap = once
     nudgeAll = streamNudgeAll tidal
     all = streamAll tidal
-    resetCycles = streamResetCycles tidal
+    -- resetCycles = streamResetCycles tidal
+    resetCycles = T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = 0})
     setcps = asap . cps
     xfade i = transition tidal True (Sound.Tidal.Transition.xfadeIn 4) i
     xfadeIn i t = transition tidal True (Sound.Tidal.Transition.xfadeIn t) i

@@ -63,6 +63,7 @@ do
 
 
 do
+  resetCycles
   hush
   d1 $ s "SOPHIE_kicks_dry" # n 18 # gain 1.25 # room 0.2
   d2 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 5 # distort 0.7 # room 0.4
