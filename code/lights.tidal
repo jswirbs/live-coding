@@ -99,7 +99,7 @@ do
 
 
 
--- FULL VOCALS
+-- FULL VOCALS  //  > 1 early
 d4 $ s "EG_lights" # n 5 # gain 1.2 # room 0.4 # size 0.9 # speed 1.20833333333333333333333333333
 
 do
