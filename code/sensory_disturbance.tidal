@@ -308,8 +308,8 @@ do
   d4 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0 # room 0.4 # cutoff 1400 # hcutoff 50 # gain 0.93
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.6 # distort 0.25 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
   d6 $ n "~ 2 ~ 2" # s "FOOD_claps" # gain 0.92 # crush (range 4 8 perlin) # fshift (slow 3 $ range 0 1000 sine) # room (slow 4 $ range 0 0.05 sine)
-  d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.88
-  -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0.3 # crush 4 # cutoff 12000 # gain 0.9
+  -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.88
+  d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0.3 # crush 4 # cutoff 12000 # gain 0.9
   d9 $ swingBy (1/10) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   -- d11 $ ghost $ n "e ds cs cs4" # octave "[5,7]" # s "superzow" # gain 0.7 # detune (slow 2 $ range 0.2 2 sine) # accelerate 0.02 # cutoff 1000
   d12 $ ghost $ slow 8 $ s "UMRU_fx_impacts" # n 2 # gain 1.3

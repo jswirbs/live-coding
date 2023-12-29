@@ -105,7 +105,7 @@ do
   jumpIn' 2 0 $ s "superpiano*16" # n "e" # gain "[0.75 0.95]*4" # cutoff 1700 # fshift (slow 8 $ range 0 "-200" saw)
 
 do
-  jumpIn' 4 0 silence
+  xfadeIn 4 8 silence
   jumpIn' 2 0 $ s "superpiano*16" # n "e" # gain "[0.75 0.95]*4" # cutoff 1700 # fshift (slow 8 $ range "-200" "-400" saw) # room (slow 8 $ range 0 0.2 saw) # orbit 1
 
 do

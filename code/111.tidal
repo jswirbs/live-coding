@@ -55,6 +55,7 @@ setcps(135/60/4)
 
 
 do
+  resetCycles
   hush
   d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.12
   d2 $ s "UMRU_bass_one_shots_808 ~ ~ UMRU_bass_one_shots_808" # n "5 1" # gain 0.9
