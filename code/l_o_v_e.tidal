@@ -75,6 +75,8 @@ xfadeIn 4 4 $ s "~ [XORE_hats*2] ~ <XORE_hats XORE_hats XORE_hats ~>" # n 1 # wa
 
 
 do
+  resetCycles
+  bpm 144
   hush
   d2 $ chop 4 $ loopAt 4 $ s "SOPHIE_love" # cutoff 2000 # room 0.2
   d3 $ loopAt 4 $ s "SOPHIE_love" # n 2 # room 0.5
@@ -266,7 +268,7 @@ do
 d10 $ gap 2 $ slice 16 (slow 4 $ "6 4 2 0") $ loopAt 8 $ s "risers" # n 0 # cutoff 3000 # room 0.3 # speed "-1"
 
 do
-  d1 $ s "techno_kicks*3@3 ~" # n 0 # gain 1.2
+  d1 $ s "techno_kicks*3@3 ~" # n 2 # gain 1.25 # room 0.15
   d7 silence
   d11 $ loopAt 4 $ slice 16 "~@15 15" $ s "SOPHIE_love:0"
 

@@ -101,10 +101,10 @@ setcps(180/60/4)
 -- or 200bpm and c6 note
 -- or just 185 like a civilized person idk
 
-
-
-xfadeIn 5 8 $ chop 64 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
-d5 $ chop 16 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+do
+  resetCycles
+  xfadeIn 5 8 $ chop 64 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+  -- d5 $ chop 16 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 
 d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.7 # size 0.98 # gain 0.6
 d6 $ n "ds'min ~" # s "moogbass"
@@ -161,7 +161,7 @@ do -- 8
 
 do
   hush
-  d5 $ chop 16 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
+  d5 $ chop 16 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8 # djf (0.9 - (0.4 * (run 32) / 32))
   d6 $ gap 64 $ gap 4 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort (range 0.1 0.17 perlin) # room 1 # size 0.4 # gain 0.9 # orbit 6
   xfadeIn 6 6 silence
   -- gain is 0 !!!!!  just to set size to 0.99 for d11 to fade it out slowly
@@ -195,6 +195,7 @@ do
   d5 $ slice 64 "15*4" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
   d6 silence
 
+
 do
   xfadeIn 3 6 $ n "[~ b]*4" # s "superhammond" # octave "[1,2,3]" # distort 0.1 # gain 0.9 # voice 2
   xfadeIn 4 4 $ s "SOPHIE_claps*4" # n 5 # orbit 5
@@ -204,6 +205,7 @@ do
 do
   d4 $ s "SOPHIE_claps*8" # n 5 # orbit 9
   d5 $ slice 64 "15*8" $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # distort 0.02 # room 0.8 # size 0.2 # gain 0.9
+
 
 do
   d4 $ s "SOPHIE_claps*16" # n 5 # orbit 9
