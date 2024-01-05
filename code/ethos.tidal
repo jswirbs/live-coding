@@ -102,7 +102,7 @@ d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0*8 4*8 14*8 13*8>") $ loopAt 2 $ s "DANN
 do
   d5 $ (0.125 ~>) $ slice 16 (slow 2 $ "<0 4 14 13>*8") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 2000
   xfadeIn 5 4 $ (0.125 ~>) $ chop 2 $ slice 16 (slow 2 $ "<0 4 14 13>*8") $ loopAt 2 $ s "DANNY_blue" # n 2 # cutoff 4000
-  xfadeIn 9 2 $ s "sn*16" # n 4 # djf (slow 2 $ range 0.5 0.95 saw)
+  xfadeIn 9 2 $ s "sn*16" # n 4 # djf (slow 2 $ range 0.5 0.95 saw) # crush (slow 2 $ range 12 2 saw) # gain 1.1
   d10 $ s "UMRU_fx_risers" # n 1 # speed 0.94 # hcutoff 1000 # crush 4 # gain 0.7 # room 0.7
   -- d9 $ loopAt 1 $ s "UMRU_fx_risers" # n 1 # speed 0.5 # cutoff 6000
   jumpIn 10 1 silence

@@ -224,7 +224,7 @@ do
   xfadeIn 4 8 $ slow 8 $ n "cs*4 cs*4 e*4 ds*4" # octave 4 # s "arpoctave" # sustain 1 # distort 0.12 # room 0.2 # hcutoff 500
   d5 $ slow 8 $ n "cs?*8 cs?*8 e?*8 ds?*8" # octave 4 # s "arpoctave" # sustain 0.6 # distort 0.3 # room 0.2 # crush 6 # cutoff 5000 # hcutoff 200 # triode 30
   xfadeIn 5 8 silence
-  d6 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n 7 # triode 10 # gain 1 # crush 4.5 # room 0.1 # cutoff 7000
+  d6 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n 7 # triode 10 # gain 1 # crush 4.5 # room 0.1 # cutoff (slow 3 $ range 7000 5500 sine)
   -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 0 # distort 0.3 # crush 3.5 # cutoff 10000 # gain 0.9
   d7 $ (0.125 ~>) $ s "techno_hats*14@14 [techno_hats*3]@2" # n 2 # distort 0.2 # crush 5 # gain 0.9 # cutoff 7000 # room 0.1
   -- d11 silence
@@ -244,7 +244,7 @@ do
   d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0.3 # crush 4 # cutoff 12000 # gain 0.85
   -- d11 $ n "e ds cs@2" # s "m1"
   d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 2 # gain 1.72 # room 0.2
-  d12 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n 7 # triode 10 # gain 1 # crush 4.5 # room 0.2 # cutoff 8000
+  d12 $ s "~ FOOD_claps [~ FOOD_claps] [<~ FOOD_claps?> FOOD_claps]" # n 7 # triode 10 # gain 1 # crush 4.5 # room 0.2 # cutoff (slow 3 $ range 7000 5500 sine)
 
 
 
@@ -372,7 +372,7 @@ do
   -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0.3 # crush 4 # cutoff 12000 # gain 0.9
   d9 $ swingBy (1/10) 3 $ slice 32 "31 ~ ~ <~ [29 27]>" $ loopAt 2 $ s "risers:2" # triode 20 # room 0.5 # size 0.8 # cutoff (slow 9 $ range 10000 5000 sine)
   -- d11 $ n "e ds cs@2" # s "m1"
-  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 10 # gain 1.74 # room 0.2
+  d11 $ chop 8 $ slow 8 $ s "tidal_space" # n 10 # gain 1.75 # room 0.2
 
 
 

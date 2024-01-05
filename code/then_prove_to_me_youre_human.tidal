@@ -106,15 +106,15 @@ do
   xfadeIn 5 8 $ chop 64 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
   -- d5 $ chop 16 $ loopAt 16 $ s "UMRU_vocal_loops" # n 2 # room 0.8
 
-d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.7 # size 0.98 # gain 0.6
-d6 $ n "ds'min ~" # s "moogbass"
+d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.65 # size 0.98 # gain 0.6
+-- d6 $ n "ds'min ~" # s "moogbass"
 
 do
   hush
   d4 $ s "SOPHIE_claps*4" # n 5 # djf 0.3
   xfadeIn 4 4 $ s "SOPHIE_claps*4" # n 5 # djf 0.5
   d5 $ chop 8 $ loopAt 8 $ s "UMRU_vocal_loops" # n 2 # room 0.8
-  d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.7 # size 0.98 # gain 0.5
+  d6 $ slow 2 $ n "fs" # s "moogbass" # octave "[2,5]" # cutoff 700 # room 0.65 # size 0.98 # gain 0.5
 
 
 do

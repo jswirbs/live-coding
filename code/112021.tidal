@@ -26,6 +26,7 @@ d7 $ slow 2 $ chop 32 $ n "e" # s "supersaw" # octave 2 # cutoff "2000 300 600 1
 setcps(135/60/4)
 
 do
+  resetCycles
   d5 $ slow 2 $ n "~@6.5 e@1.5" # s "midsaw" # speed "-1" # squiz 2 # cutoff 1500 # waveloss 30
   d6 $ slow 4 $ rev $ chop 128 $ s "UMRU_fx_atmospheric*2" # n 4 # crush 4 # cutoff 2000
 

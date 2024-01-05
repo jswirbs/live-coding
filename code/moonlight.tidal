@@ -87,14 +87,14 @@ bpm 140
 do
   bpm 140
   resetCycles
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <~ XORE_kicks>]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
   -- d2 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2500 # waveloss 10
   d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.1
   d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.35 0.65 sine)
 
 
 do
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <~ XORE_kicks>]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
   jumpIn' 2 0 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2200 # waveloss 10
   d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.1
   d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
@@ -102,12 +102,12 @@ do
   d7 silence
 
 
-  d6 $ rev $ chop 8 $ loopAt 2 $ s "techno_textures" # n 15 # gain 1.1 # waveloss 10 # hcutoff 500
-  d6 $ palindrome $ chop "16 32 [[8 16] 32] 64" $ loopAt 2 $ s "techno_textures" # n 15 # gain 1.1 # waveloss 10 # cutoff 4000 # hcutoff 500
 
   d6 $ slice 16 "<0 [0 [~ 0] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
   d6 $ slice 16 "<[0 ~ [~ 0] ~] [0 [~ 0] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
+  -- <1 - higher, should come first  //  0 - lower pitch, comes second>  we're starting on cycle 3 in practice
 
+  --
   d6 $ slice 32 "2*4" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
   d6 $ slice 32 "<[0 1 ~@6] [[0 <~ 1>] [~ 5] [~ 6] [~ 10]]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
   d6 $ fast 2 $ rev $ palindrome $ slice 32 "<[0 1 ~@6] [[0 <~ 1>] [~ 5] [~ 6] [~ 10]]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
@@ -118,21 +118,23 @@ do
 
   d6 $ slice 32 "1" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
 
-
-  --
   d7 $ (0.25 <~) $ slice 32 "[11 10 ~@6]" $ loopAt 4 $ s "DJ_DAVE_castles" # n "<10 11>*16" # gain 0.98 # room 0.9 # size 0.3 # cutoff 3000 # speed "<0.95 0.84 0.84 0.95>"
   d8 $ slice 32 "[11 10 ~@6]" $ loopAt 4 $ s "DJ_DAVE_castles" # n "<10 11>*16" # gain 1 # room 0.9 # size (slow 4 $ "0 .997@15") # speed "<0.95 0.8 0.8 0.95>"
   --
 
 
+jumpIn' 8 0 $ (0.125 ~>) $ s "XORE_hats*2@2 ~ XORE_hats" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.95 # cutoff 8000 # room 0.25
+-- d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 6000 # waveloss 20 # gain 0.85 # room 0.2
 
-do
-  d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
-  d2 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2500 # waveloss 10
+
+
+-- do
+--   d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
+--   d2 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2500 # waveloss 10
 
 do
   -- d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] [~ <~ XORE_kicks>]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] ~" # n 0 # gain 1.2
   d2 silence
   -- d3 silence
   xfadeIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8" # hcutoff 300
@@ -163,19 +165,15 @@ do
 
 do
   hush
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
   d2 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2500 # waveloss 10
   d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.1
   d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
   d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine)
   -- d6 $ fast 2 $ rev $ palindrome $ slice 32 "<[0 1 ~@6] [[0 <~ 1>] [~ 5] [~ 6] [~ 10]]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
   d6 $ slice "<25 24 25 24>" "<[2 ~ [~ 2] ~] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
-  d7 silence
   d9 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
 
-
-  d1 silence
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks]" # n 0 # gain 1.2
 
 
 
@@ -183,25 +181,25 @@ do
 xfadeIn 9 4 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
 
 do
-  d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.95
+  d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 4 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.92
   -- d5 $ slice 32 "0 ~ 1 ~ 2 ~ 3" $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.95
   -- d8 $ (0.125 ~>) $ s "techno_hats*4" # crush 3 # cutoff 8000 # waveloss 20 # gain 0.9
   d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 6000 # waveloss 20 # gain 0.85 # room 0.2
-  jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.75
+  jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.7
 
 
 
 
 do
   xfadeIn 2 4 silence
-  xfadeIn 9 4 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.77
+  xfadeIn 9 4 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.73
 
 do
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
   d2 $ s "[<~ techno_kicks> ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2500 # waveloss 10
   d5 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine) # gain "[0 0.9 0.95 1@5]*2"
   d6 $ slice "<25 24 25 24>" "<[~ <~ 2> [~ 2] ~] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
-  d7 $ slow 2 $ slice 24 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 1.05
+  d7 $ slow 2 $ slice 24 "0" $ slow 4 $ s "techno_textures" # n "19 10 19 19" # distort 0.5 # waveloss 10 # gain 1.05
   d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 4500 # waveloss 30 # gain 0.87 # room 0.2
   jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
 
@@ -210,16 +208,19 @@ do
 
 do
   d1 $ slow 2 $ s "XORE_kicks ~@6 XORE_kicks" # n 0 # gain 1.2 # room 0.2
-  d5 $ (0.125 ~>) $ gap 2 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.4 0.25 sine) # room 0.3 # speed "-1" # gain 0.95
+  d2 $ s "[<~ techno_kicks> ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2000 # waveloss 10
+  d5 $ (0.125 ~>) $ gap 2 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.33 0.24 sine) # room 0.5 # speed "-1" # gain 0.95
 
 do
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks]" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
+  d2 $ s "[<~ techno_kicks> ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2500 # waveloss 10
   d5 $ gap 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine) # gain "[0 0.9 0.95 1@5]*2"
-  -- jumpIn' 9 0  $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.75
+  jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.7
 
 
-jumpIn' 9 0  $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.75
+jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.7
 
+jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
 
 
 
@@ -230,10 +231,12 @@ jumpIn' 9 0  $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # wave
 --   d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
 --   d2 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2500 # waveloss 10
 
+-- d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.6 # gain "1.1 0.8" # tremolodepth 1 # tremolorate 9
+
 do
   -- d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
-  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] [~ <~ XORE_kicks>]" # n 0 # gain 1.2
-  xfadeIn 1 8 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] [~ <~ XORE_kicks>]" # n 0 # gain 1.1 # djf 0.62
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] ~" # n 0 # gain 1.2
+  xfadeIn 1 8 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] ~" # n 0 # gain 1.1 # djf 0.62
   d2 silence
   -- d3 silence
   xfadeIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8" # hcutoff 300
@@ -244,7 +247,7 @@ do
   d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1.1
   d8 silence
   xfadeIn 9 8 silence
-  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.8 # size 0.8
+  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 10 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.8 # size 0.8
 
 
 do
@@ -256,15 +259,16 @@ do
   d6 $ slice "<24 25>" "<[0 1 ~@6] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.15 # distort 0.05 # waveloss 10 # room 0.25 # cutoff 5000
   d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 19 # gain 1
   xfadeIn 7 8 $ chop 8 $ slow 4 $ s "techno_textures" # n 19 # gain 1.05 # djf 0.8
-  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.92
+  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 10 19 19" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.92
 
 do
-  d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.4 # cutoff (slow 2 $ range 2000 0 saw)
-  d4 $ slow 2 $ n "~@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
+  d3 $ s (slow 2 $ "~ FOOD_snares ~ FOOD_snares ~ FOOD_snares ~ ~") # n 12 # distort 0.1 # waveloss 10 # room 0.3 # cutoff (slow 2 $ range 2000 0 saw) # orbit 3
+  -- d4 $ slow 2 $ n "~@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
+  d4 silence
   -- d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (0.2) # room 0.5 # speed "-1"
   d6 $ slice "<24 25>" "<[0 1 ~@6] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.1 # distort 0 # waveloss 0 # room 0.3 # cutoff 4000
   d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1
-  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.98
+  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 10 19 19" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.98
 
 
 hush
@@ -273,7 +277,73 @@ hush
 
 
 
+--
 
+
+do
+  -- d1 $ s "XORE_kicks*4" # n 0 # gain 1.2
+  d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] ~" # n 0 # gain 1.2
+  xfadeIn 1 8 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>] ~" # n 0 # gain 1.1 # djf 0.62
+  d2 silence
+  -- d3 silence
+  xfadeIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8" # hcutoff 300
+  -- d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine) # speed "-1"
+  d5 silence
+  -- d6 $ slice 16 "<[0 ~ [~ 0] ~] [0 [~ 0] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
+  -- d6 $ slice "<24 25>" "<[0 1 ~@6] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.15 # distort 0.08 # waveloss 20 # room 0.2 # cutoff 6000
+  d6 $ slice "3" "<[0 ~ [~ 0] ~] [1 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.12 # waveloss 25 # tremolodepth 1 # tremolorate 9
+  d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1.1
+  d8 silence
+  xfadeIn 9 8 silence
+  d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.8 # size 0.8
+
+
+do
+  d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.4 # cutoff (slow 2 $ range 2000 0 saw)
+  -- d4 silence
+  d4 $ slow 2 $ n "[c2,c3]" # s "supersaw" # accelerate "-1 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8" # hcutoff 100 # sustain 16
+  jumpIn 4 1 silence
+  -- d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (0.2) # room 0.5 # speed "-1"
+  -- d6 $ slice "<24 25>" "<[0 1 ~@6] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.1 # distort 0 # waveloss 0 # room 0.3 # cutoff 4000
+  xfadeIn 6 8 $ swingBy (1/24) 3 $ slice "150" "8*16" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
+  d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1
+  d10 $ slow 8 $ gap "32 64 128 [256 [512 1024]]" $ s "techno_textures" # n "19 19 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.98
+
+
+
+
+  do
+    hush
+    d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
+    d2 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2500 # waveloss 10
+    d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.1
+    d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
+    d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.4 0.6 sine) # hcutoff 200 # gain 0.93
+    -- d6 $ fast 2 $ rev $ palindrome $ slice 32 "<[0 1 ~@6] [[0 <~ 1>] [~ 5] [~ 6] [~ 10]]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
+    -- d6 $ slice "<25 24 25 24>" "<[2 ~ [~ 2] ~] [2 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25
+    d6 $ swingBy (1/24) 3 $ slice "150" "8*16" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25 # room 0.1
+    d7 $ slow 2 $ slice "24 28" "0 [0 [~ 0] ~ ~]" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 1.05
+    d9 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
+
+
+    d6 $ swingBy (1/24) 3 $ slice "150" "8*16" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.1 # waveloss 25 # room 0.1
+    d6 $ slice "3" "<[0 ~ [~ 0] ~] [1 [~ 2] ~ ~]>" $ loopAt 4 $ s "annabelle" # n "<0 1>" # gain 1.2 # distort 0.12 # waveloss 25 # tremolodepth 1 # tremolorate 9
+
+
+    -- d10 $ (0.125 ~>) $ slow 8 $ gap 64 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.9
+    -- d10 $ (0.125 ~>) $ slow 8 $ gap 2 $ gap 64 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.9
+    -- d10 $ (0.125 ~>) $ slow 8 $ chop 2 $ striate 32 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.85 # size 0.9
+
+
+    d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1
+    d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 19 # gain 1
+
+
+    d7 $ slow 2 $ slice 24 "0" $ slow 4 $ s "techno_textures" # n "19 19 19 10" # distort 0.5 # waveloss 10 # gain 1.05
+    d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 4500 # waveloss 30 # gain 0.87 # room 0.2
+
+    d4 $ slow 2 $ n "[c2,c3]@7 ~" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.6 # gain "1.1 0.8" # tremolodepth 1 # tremolorate 9
+    d10 $ slow 2 $ n "~@7 [~ [c4,c5]]" # s "supersaw" # accelerate (slow 2 $ range "-0.6" 0.6 perlin) # waveloss 5 # distort "0.1 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.2 # gain "0.97 0.8"
 
 
 -------------------------------------------
