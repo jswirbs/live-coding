@@ -224,7 +224,6 @@ do
 -- d8 $ slow 4 $ swingBy (1/16) 16 $ n "[g ~]*16" # s "ikedabass" # octave "[6]" # gain 0.6 # cutoff 1000
 
 do
-  -- d1 $ s "~@3 SOPHIE_kicks_dry*9@9" # n 8 # gain 1.2 # room 0.2 # distort 0.2 # crush 6
   d1 $ s "SOPHIE_kicks_dry" # n 8 # gain 1.2 # room 0.2 # distort 0.2 # crush 6
   d2 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 2 # distort 0.2 # room 0.4
   d5 $ whenmod 4 3 (ghost) $ s "~@3 SOPHIE_claps*9@9" # n 3
