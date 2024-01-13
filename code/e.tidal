@@ -1,0 +1,217 @@
+bpm 130
+
+
+
+
+-- dmin
+d3 $ (0.125 ~>) $ slice 16 "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.9
+
+d4 $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+d4 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+d4 $ rev $ palindrome $ chop 16 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+d4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.9
+d4 silence
+
+d5 $ slow 4 $ s "misc_vocals" # n 8 # room 0.1
+d5 silence
+
+
+
+d2 $ chop 4 $ loopAt 4 $ s "XORE_ambient" # n 14 # gain 1.2 # room 0.2
+d2 $ chop 4 $ loopAt 4 $ s "XORE_drum_loops" # n 16
+
+d6 $ loopAt 4 $ gap 128 $ s "techno_drum_loops" # n 2 # speed "-1"
+d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3
+d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5
+d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 7
+
+d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.4 # gain 1.05
+
+d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 7 # djf 0.8 # cutoff 3000
+
+xfadeIn 1 8 silence
+xfadeIn 3 8 silence
+
+
+d3 silence
+
+
+
+--
+bpm 140
+
+
+-- maybe just fade in kick?? it jums in later
+
+do
+  hush
+  resetCycles
+  xfadeIn 4 16 $ ghost $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+  xfadeIn 5 8 $ chop 16 $ slow 2 $ s "techno_textures" # n 11 # room 0.4
+
+--   d2 $ chop 4 $ loopAt 4 $ s "XORE_drum_loops" # n 16
+--   d2 $ slice 8 "0*2" $ loopAt 4 $ s "XORE_drum_loops" # n 16
+--   d2 $ slice 16 "0*4" $ loopAt 4 $ s "XORE_drum_loops" # n 16
+--
+-- do
+--   xfadeIn 1 8 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 0.9 # djf 0.65
+--   xfadeIn 5 8 silence
+
+do
+  xfadeIn 1 1.5 silence
+  d4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.9
+  d5 silence
+
+do
+  hush
+  d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d2 $ chop 4 $ loopAt 4 $ s "XORE_drum_loops" # n 16
+  -- d3 $ (0.125 ~>) $ slice 16 "0*4" $ s "misc_vocals" # n 9 # room 0.1
+  d4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.9
+  -- d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.3 # cutoff 1000 # hcutoff 300
+
+
+-- d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.65
+
+do
+  -- d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.4
+  d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3
+
+
+do
+  d3 $ (0.125 ~>) $ slice "16 20" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.8 # fshift "[0 -120]/8" # djf 0.4
+  xfadeIn 3 2 $ (0.125 ~>) $ slice "16 20" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  d8 $ ghost $ s "sostoms*4 ~@3" # n "[d ds e f] ~@3" # distort 0.2 # gain 0.8 # cutoff 3000 # hcutoff 200 # room 0.3 # size 0.8 # waveloss 25 # pan (fast 4 $ range 0 1 saw)
+
+
+
+
+
+  d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.65
+  d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+
+  d7 $ degradeBy 0.85 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+
+
+
+do
+  -- d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 7 # djf 0.8 # cutoff (slow 4 $ range 2000 1000 sine)
+  d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.65
+  xfadeIn 1 8 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.8
+  d3 $ (0.125 ~>) $ slice "20 24" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  d7 $ degradeBy 0.7 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+
+
+
+do
+  xfadeIn 1 8 silence
+  d3 $ (0.125 ~>) $ slice "24 28" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  xfadeIn 6 1 $ loopAt 4 $ gap 128 $ s "techno_drum_loops" # n 2 # speed "-1"
+  d7 $ degradeBy 0.5 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
+  d8 $ ghost $ s "sostoms*4 ~@3" # n "[f e ds d] ~@3" # distort 0.2 # gain 0.8 # cutoff 3000 # hcutoff 200 # room 0.3 # size 0.8 # waveloss 25 # pan (fast 4 $ range 1 0 saw)
+
+
+do
+  d3 $ (0.125 ~>) $ slice "40 48" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  xfadeIn 3 14 $ slice "32" "0 ~@3" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8"
+  d7 $ degradeBy 0.4 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # hcutoff 200
+  -- xfadeIn 8 8 silence
+
+
+
+clutchIn 6 8 silence
+
+do
+  d4 silence
+  xfadeIn 5 8 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.7 # cutoff 500
+  -- xfadeIn 7 6 $ ghost $ degradeBy 0.25 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # hcutoff 200
+  xfadeIn 7 6 $ ghost $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+
+
+do
+  d2 silence
+  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.25 # cutoff 150
+  d7 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+
+do
+  hush
+  d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d2 $ chop 4 $ loopAt 4 $ s "XORE_drum_loops" # n 16
+  d3 $ slice "32" "0 ~ ~ [<~ ~ 0 ~> <0 ~ ~ ~> ~]" $ s "misc_vocals" # n 9 # room 0.4 # size 0.3 # gain 0.85 # fshift "[0 -120]/8" # djf 0.85
+  -- d4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.9
+  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.7 # cutoff 500
+  -- d7 $ degradeBy 0.2 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # djf 0.8
+  -- d7 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+  d7 $ slice 32 "[16 17 ~@2] 28 26 20" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+
+
+do
+  d1 $ gap 2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.85
+  -- d3 silence
+  d4 $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.05 # gain 0.9
+  d7 silence
+
+do
+  d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d2 $ chop 4 $ loopAt 4 $ s "XORE_drum_loops" # n 16
+  d3 $ slice "32" "0 ~ ~ [<~ ~ 0 ~> <0 ~ ~ ~> ~]" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  d4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.9
+  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.4
+  d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3
+  d7 $ degradeBy 0.5 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # djf 0.8
+
+
+
+
+d8 $ ghost $ s "sostoms*4 ~@3" # n "[d ds e f] ~@3" # distort 0.5 # gain 0.8 # cutoff 3000 # hcutoff 200 # room 0.3 # size 0.8 # waveloss 25 # sustain 0.06 # pan (fast 4 $ range 0 1 saw)
+
+do
+  d1 $ gap 2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.85
+  jumpIn 1 7 silence
+  jumpIn 3 6 $ slice "32" "0 ~@3" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8"
+  d4 $ slice 16 "[8*8 8*8 14*8 [13*4@4 10*3@3 ~]]/8" $ s "misc_vocals" # n 10 # gain 0.85 # room 0.2 # size 0.9 # cutoff 5000 # fshift (slow 8 $ range 0 "-80" saw)
+  xfadeIn 6 8 $ slice 16 "[2]*4" $ loopAt 4 $ s "techno_drum_loops" # n 3
+  d7 silence
+  xfadeIn 11 4 $ s "sostoms*16" # n (slow 8 $ run 64) # octave 4 # squiz "4@6 6 4" # gain 0.8
+
+
+
+
+do
+  d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d3 $ slice "32" "0 ~ ~ [<~ ~ 0 ~> <0 ~ ~ ~> ~]" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  d4 $ slow 4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.85 # room 0.5 # size 0.5 # cutoff 4000
+  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.4
+  d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3
+  d7 $ degradeBy 0.5 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # djf 0.8
+  d11 $ degradeBy 0.3 $ sometimes (palindrome) $ s "sostoms*16" # n (slow 4 $ run 32) # octave 4 # squiz "4@6 6 4" # gain 0.7 # pan (slow 4 $ range 0.1 0.9 saw)
+
+
+
+
+
+d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.75
+
+do
+  d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
+  d6 silence
+  d7 silence
+
+clutchIn 11 4 silence
+d2 silence
+
+do
+  hush
+  d3 $ slice "32" "0 ~ ~ [<~ ~ 0 ~> <0 ~ ~ ~> ~]" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
+  jumpIn' 3 1 silence
+  d4 $ slow 4 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.85 # room 0.5 # size 0.5 # cutoff 4000
+  jumpIn' 4 1 silence
+  d5 $ chop 16 $ slow 2 $ s "techno_textures" # n 11 # room 0.4
+  xfadeIn 5 3 silence
+  d8 $ ghost $ s "sostoms*4 ~@3" # n "[d ds e f] ~@3" # distort 0.5 # gain 0.8 # cutoff 3000 # hcutoff 200 # room 0.3 # size 0.8 # waveloss 25 # sustain 0.06 # pan (fast 4 $ range 0 1 saw)
+  jumpIn 8 1 silence
+
+
+
+--
