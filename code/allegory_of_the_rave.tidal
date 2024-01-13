@@ -43,7 +43,7 @@ d4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~
 
 do
   d1 silence
-  d5 silence
+  xfadeIn 5 1 silence
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.2

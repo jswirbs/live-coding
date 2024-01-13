@@ -124,7 +124,7 @@ do
   -- xfadeIn 2 10 $ s "[~ supersaw*2]*4" # n ("<b a b g>") # octave "[2,3]" # room 0.3 # gain 0.8 # hcutoff 10 # djf 0.6 # cutoff 1800
   xfadeIn 2 10 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # djf 0.6 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine)
   d3 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 2 # gain 1.2 # room 0.7 # size 0.9
-  d10 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 8 # gain 1.45 # room 0.8 # size 0.9
+  d10 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 8 # gain 1.5 # room 0.9 # size 0.9
   -- d10 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n "8" # gain 1.4 # room 0.8 # size 0.8
 
 
@@ -141,7 +141,7 @@ do
   d1 $ s "techno_kicks*4" # n 2 # cutoff 5000 # gain 1.2 # room 0.12
   d2 $ s "[~ supersaw*2]*4" # n ("[b a <g g b g> <e e g e>]/4") # octave "[2,3]" # gain 0.8 # hcutoff 10 # room (slow 12 $ range 0.2 0.35 sine) # cutoff (slow 12 $ range 1600 1900 sine) # distort (slow 3 $ range 0.1 0.25 sine)
   d7 $ s "~ SOPHIE_claps ~ SOPHIE_claps" # n 5 # gain 0.85
-  d10 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 8 # gain 1.45 # room 0.9 # size 0.9
+  d10 $ (0.012 <~) $ chop 4 $ loopAt 4 $ s "EG_lights" # n 8 # gain 1.5 # room 0.9 # size 0.9
   d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.8 # room 0.6 # cutoff 2500 -- noise riser come down
   jumpIn 8 1 silence
 
