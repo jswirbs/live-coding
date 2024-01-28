@@ -99,8 +99,9 @@ do
   d1 $ s "[XORE_kicks ~ ~ XORE_kicks] [~ XORE_kicks] [~ XORE_kicks] [~ <XORE_kicks ~>]" # n 0 # gain 1.2
   jumpIn' 2 0 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] ~" # n 4 # gain 1 # cutoff 2200 # waveloss 10
   d3 $ s "~ FOOD_snares ~ FOOD_snares" # n 12 # distort 0.1 # waveloss 10 # room 0.1
-  d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
-  jumpIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
+  -- d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
+  -- jumpIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
+  d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
   d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.35 0.65 sine)
   d7 silence
 
@@ -603,7 +604,7 @@ do
     d2 $ (0.125 ~>) $ n "<c6*4 b*4 a*4 b*4>" # s "supersaw" # octave 2 # distort 0.1 # room 0.5 # sustain 0.18 # gain (range 1 0.7 saw)
     d2 silence
 
-    xfadeIn 6 4 $ (0.125 ~>) $ s "XORE_hats*16" # n 15 # crush 5 # waveloss 20 # gain 0.95 # room 0.1 # djf (slow 8 $ range 1.1 0.7 saw)
+    xfadeIn 6 8 $ (0.125 ~>) $ s "XORE_hats*16" # n 15 # crush 5 # waveloss 20 # gain 0.95 # room 0.1 # djf (slow 8 $ range 1.1 0.7 saw)
 
  d2 silence
 --

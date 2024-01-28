@@ -14,6 +14,7 @@ do
   d11 silence
   d12 silence
 
+
   -- any panning movement for d4? or too much...? i think too much, maybe just a little randomness (with bounds)
   d4 $ swingBy (1/8) 4 $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine)
   d4 $ swingBy (1/8) 4 $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (range 0.3 0.7 rand)
@@ -43,13 +44,16 @@ do
   d6 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 2 # gain 0.91 # cutoff (slow 4 $ range 7000 9000 sine)
   d10 $ s "UMRU_stomps/2" # n 4 # gain 1.1 # room 1 # size 0.85 # speed "0.5"
   jumpIn 10 1 silence
-  d11 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.8 # cutoff 900 # speed 0.77
-  d12 $ (1.86 ~>) $ slow 4 $ s "loneliness" # room 0.85 # size 0.8 # cutoff 900 # speed 0.77
+  d11 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.8 # cutoff 850 # speed 0.77
+  d12 $ (1.86 ~>) $ slow 4 $ s "loneliness" # room 0.85 # size 0.8 # cutoff 850 # speed 0.77 # gain 0.95
 
+
+  d10 $ loopAt 4 $ (1 <~) $ s "risers:2" # room 0.75 # size 0.93 # cutoff 9000 # hcutoff 200 # fshift 20
 
 do
-  d11 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77
-  d12 $ (1.86 ~>) $ slow 4 $ s "loneliness" # room 0.85 # size 0.97 # cutoff 3000 # speed 0.77
+  d10 silence
+  d11 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77 # gain 0.96
+  d12 $ (1.86 ~>) $ slow 4 $ s "loneliness" # room 0.85 # size 0.97 # cutoff 3000 # speed 0.77 # gain 0.95
 
 
 
@@ -65,7 +69,7 @@ do
 
 
 
-  d2 $ slow 4 $ n (off "0" (+7) $ "<a e>") # octave 2 # s "moogbass" # cutoff 2000 # room 1 # size 0.9 # tremolodepth 1 # tremolorate 8 # gain 1.15 # pan 0
+  d2 $ slow 4 $ n (off "0" (+7) $ "<a e>") # octave 2 # s "moogbass" # cutoff 2000 # room 1 # size 0.9 # tremolodepth 1 # tremolorate 8 # gain 1.15
 
 
 
@@ -76,11 +80,12 @@ do
 xfadeIn 6 16 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 8
 
 
-d12 $ (1.86 ~>) $ slow 2 $ s "loneliness" # room 0.85 # size 0.97 # cutoff 3000 # speed 0.77
+d12 $ (1.86 ~>) $ slow 2 $ s "loneliness" # room 0.85 # size 0.97 # cutoff 3000 # speed 0.77 # gain 0.96
 d11 silence
 
-d2 $ slow 4 $ n (off "0" (+7) $ "<a [e@7 ~]>") # octave 3 # s "moogbass" # cutoff 2000 # room 0.8 # size 0.9 # tremolodepth 1 # tremolorate 8 # gain 1.08 # sustain 7
+d2 $ slow 4 $ n (off "0" (+7) $ "<a [e@7 ~]>") # octave 3 # s "moogbass" # cutoff 2000 # room 0.8 # size 0.9 # tremolodepth 1 # tremolorate 8 # gain 1.05 # sustain 7
 -- d10 $ loopAt 4 $ s "risers" # n 4 # room 0.45 # cutoff 5000
+d10 $ loopAt 4 $ (1 <~) $ s "risers:2" # room 0.8 # size 0.97 # cutoff 8000 # hcutoff 200 # fshift 20
 
 do
   -- d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.2 # room 0.2
@@ -88,15 +93,20 @@ do
   d2 $ slow 4 $ n (off "0" (+7) $ "<a e>") # octave 4 # s "moogbass" # cutoff 2000 # room 0.5 # size 0.9 # tremolodepth 1 # tremolorate 8
   d4 $ swingBy (1/8) 4 $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8")
   d5 $ n "[[a2,a3]*2 [a2,a4]*2 [e2,e3]*2 [e2,e3]*2]/8" # s "warsawbass" # gain 1.1 # room 0.3 # distort 0.2 # waveloss 6
-  -- d6 $ fast 4 $ every 2 (ghost) $ s "techno_hats*4" # gain "[0.65 0.9]" # n 2
   d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 8 # gain 0.96
+  -- d6 $ chop 4 $ loopAt 4 $ gap "[128 64]*8" $ s "techno_drum_loops" # n 8 # gain 0.96
   d10 $ s "UMRU_stomps/2" # n 4 # gain 1.1 # room 1 # size 0.85 # speed "0.5"
   jumpIn 10 1 silence
-  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77
+  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77 # gain 0.96
   d12 silence
 
 
-  d7 $ fast 2 $ s "~ UMRU_snares" # n (slow 16 $ "10 11") # room 0.1 # gain "0.97 0.92"
+do
+  d7 $ fast 2 $ s "~ UMRU_snares" # n (slow 16 $ "10 11") # room 0.1 # gain "0.97 0.91"
+
+do
+  d6 $ chop 4 $ loopAt 4 $ gap "[128 64]*8" $ s "techno_drum_loops" # n 8 # gain 0.96
+  d7 $ ghost $ fast 2 $ s "~ UMRU_snares" # n (slow 16 $ "10 11") # room 0.3 # gain "0.97 0.91"
 
 
   --
@@ -118,17 +128,17 @@ do
 
 
 
-  d11 $ gap 32 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.8 # size 0.9 # cutoff 5000 # speed 0.77 # gain 1.05
-  d12 $ gap 32 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "~ happiness" # room 0.8 # size 0.9 # cutoff 3000 # speed 0.77 # gain 1.05
+  d11 $ gap 24 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.8 # size 0.9 # cutoff 5000 # speed 0.77 # gain 1
+  d12 $ gap 32 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "~ happiness" # room 0.8 # size 0.9 # cutoff 3000 # speed 0.77 # gain 1
 
-  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77
+  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.96 # cutoff 3000 # speed 0.77 # gain 0.92
 
 
 
 
 
 do
-  d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.2 # room 0.5 # hcutoff 180
+  d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.2 # room 0.5 # hcutoff 175
   d4 $ ghost $ swingBy (1/8) 4 $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8")
   d5 silence
   -- d6 $ ghost $ swingBy (1/8) 4 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2
@@ -137,7 +147,7 @@ do
   d7 $ fast 2 $ s "~ UMRU_snares" # n 10
   xfadeIn 7 16 silence
   d9 silence
-  d10 $ s "UMRU_stomps/2" # n 4 # gain 1.1 # room 1 # size 0.9 # speed "0.5"
+  d10 $ s "UMRU_stomps/2" # n 4 # gain 1.1 # room 1.1 # size 0.92 # speed "0.5"
   jumpIn 10 1 silence
 
 
@@ -146,9 +156,10 @@ do
   d2 $ slow 4 $ n (off "0" (+7) $ "<a e>") # octave 4 # s "moogbass" # cutoff 1300 # room 0.5 # size 0.9 # tremolodepth 1 # tremolorate 8
   d3 silence
   -- xfadeIn 3 8 $ gap 24 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff 300 # gain 1 # room 0.8 # size 0.98 # orbit 2
-  xfadeIn 3 8 $ chop 16 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff 300 # gain 1 # room 0.8 # size 0.98 # orbit 2 # tremolodepth 0.9 # tremolorate 8
+  xfadeIn 3 8 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff 300 # gain 0.97 # room 0.9 # size 0.985 # orbit 2 # tremolodepth 0.9 # tremolorate 8
 
 
+  d10 $ loopAt 4 $ (1 <~) $ s "risers:2" # room 0.8 # size 0.97 # cutoff 8000 # hcutoff 200 # fshift 20 # orbit 2
 
 
 do
@@ -157,7 +168,8 @@ do
   -- xfadeIn 1 6 silence
   d2 silence
   d3 silence
-  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # speed 0.77 # gain 1.07 # cutoff 6000
+  d10 silence
+  d11 $ slow 2 $ whenmod 2 2 (0.1 <~) $ s "happiness" # speed 0.77 # gain 1.03 # cutoff 6000
   d12 silence
   -- d10 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.92 # room 0.6 # cutoff 4500 -- noise riser come down
   -- jumpIn 10 1 silence
@@ -167,8 +179,8 @@ do
 
 do
   d4 $ ghost $ swingBy (1/8) 4 $ ghost $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8")
-  clutchIn 4 16 $ ghost $ swingBy (1/8) 4 $ ghost $ slow 4 $ n "<[c6]*2 [b]*2>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8")
-  d5 silence
+  -- clutchIn 4 16 $ ghost $ swingBy (1/8) 4 $ ghost $ slow 4 $ n "<[c6]*2 [b]*2>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8")
+  clutchIn 4 16 $ ghost $ swingBy (1/8) 4 $ ghost $ slow 4 $ n "<[c6]*2 [b]*2>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (range 0.2 0.8 rand)
   xfadeIn 11 24 silence
 
 

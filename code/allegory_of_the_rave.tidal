@@ -43,7 +43,7 @@ d4 $ rarely (rev) $ slice 64 (slow 4 $ "[0 1 2 3] [2 1 ~ 7] [0 [~ 16] ~ 15] [1 ~
 
 do
   d1 silence
-  xfadeIn 5 1 silence
+  xfadeIn 5 1.25 silence
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.2
@@ -265,7 +265,7 @@ d1 silence
 
 do
   d1 $ s "techno_kicks*2 [<<techno_kicks ~> ~> techno_kicks]*2" # n 2 # gain 1.2 # hcutoff 80
-  xfadeIn 1 5 $ s "techno_kicks*2 [<<~ techno_kicks> ~> techno_kicks]*2" # n 2 # gain 1.2 # hcutoff 150
+  xfadeIn 1 5 $ s "techno_kicks*2 [<<~ techno_kicks> ~> techno_kicks]*2" # n 2 # gain 1.2 # hcutoff 170
   d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain 1.05
   d4 $ slice 64 "0 1 2 3" $ s "DJ_DAVE_castles" # n 15 # crush 8 # gain 1.2
   xfadeIn 4 10 silence
@@ -306,7 +306,7 @@ do
 
 do
   -- d5 $ s "techno_hats*16" # gain "[0.7 0.85]*4" # n 2 # cutoff 5500 # room 0.1
-  xfadeIn 5 8 silence
+  xfadeIn 5 10 silence
   -- jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.66 0.85]*4" # n 8
   d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 2 $ range 1700 2800 sine) # room 0.25
   d7 silence
@@ -378,9 +378,38 @@ hush
 
 
 
+--
+
+do
+  bpm 145
+  d1 $ s "SOPHIE_kicks_dry" # n 18 # gain 1.25 # room 0.2
+  d2 $ (0.125 ~>) $ n "[d*4 ds*4 c*8@2]/4" # s "warsawbass" # octave 3 # sustain 0.17 # room 0.2 # size 0.4 # gain (range 1 0.8 saw)
+  d3 $ n "~ ~ [~ 7*2] 7*2" # s "superzow" # octave 5 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
+  xfadeIn 2 8 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 5 # distort 0 # room 0.2 # gain 0.8
+  d12 $ slow 4 $ gap 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.9 # room 0.3 # speed 2
+  xfadeIn 12 24 silence
+
+do
+  bpm 143
+  d1 $ s "SOPHIE_kicks_dry*2" # n 18 # gain 1.25 # room 0.2
+  d3 $ n "<[~ ~ [~ 7*2] 7*2] <[~ ~ 7*3 7*3] [~ 7*9@3]>>" # s "superzow" # octave 5 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
+
+do
+  bpm 141
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.25 # room 0.2
+  d3 $ n "<[~ ~ [~ 7*2] 7*2] <[~ 7*9@3] ~>>" # s "superzow" # octave 5 # cutoff (slow 8 $ range 5000 7000 sine) # room 0.05 # size 0.8 # detune (slow 12 $ range 0.2 2 sine) # sustain (slow 3 $ range 0.09 0.11 sine) # gain 0.82
+
+  d1 $ s "SOPHIE_kicks_dry*8" # n 18 # gain 1.25 # room 0.2
+  d1 $ s "SOPHIE_kicks_dry*4 SOPHIE_kicks_dry*8" # n 18 # gain 1.25 # room 0.2
 
 
-
+do
+  resetCycles
+  bpm 140
+  hush
+  d1 $ s "SOPHIE_kicks_dry" # n 18 # gain 1.25 # room 0.2
+  d2 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 5 # distort 0.7 # room 0.4
+  d3 $ s "~@3 superzow*9@9" # n "7" # octave 5 # gain 0.85 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5
 
 
 --
