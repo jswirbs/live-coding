@@ -1,0 +1,228 @@
+bpm 168
+
+
+
+d4 $ chop 32 $ slow 32 $ s "moirae"
+
+d4 $ palindrome $ gap 128 $ slow 32 $ s "moirae"
+
+
+
+d4 $ slice 64 "0*2" $ s "moirae"
+d4 $ slice 128 "18*4" $ s "moirae"
+d4 $ slice 128 "<15*4 15*4 16*4 16*4 17*4 17*4 18*4 18*4>" $ s "moirae"
+d4 $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae"
+d4 $ (0.125 ~>) $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae" # distort 0.12
+d4 $ ((slow 2 $ choose[0.125, 0]) ~>) $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae" # distort 0.2
+d4 $ every 2 ((slow 2 $ choose[0.125, 0]) ~>) $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae" # distort 0.2
+
+
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.2 # room 0
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # room 0.3
+d1 $ slice 3 "0*4" $ s "SOPHIE_kicks_dry" # n 18 # gain 1.2 # room 0
+
+d1 $ s "FOOD_kicks*4" # n 5 # gain 1.15 # cutoff 800 # room 0.2 # hcutoff 100
+d1 silence
+d6 $ gap 8 $ s "SOPHIE_subs*4" # n 0 # gain 1.2
+d6 silence
+
+
+
+d2 $ s "FOOD_808s/4" # n 5 # tremolodepth 0.8 # tremolorate 4 # gain 1.2
+
+
+d6 $ chop 4 $ loopAt 4 $ s "BABII_vocal_loops" # n 0
+d6 $ chop 4 $ loopAt 4 $ s "BABII_vocal_loops" # n 7
+d6 $ slow 2 $ s "BABII_vocal_shots" # n "<21 <22 23>>"
+d6 $ slow 2 $ s "BABII_vocal_shots ~@6 <~ BABII_vocal_shots>" # n "<21 <22 [20 23]>>" # crush 5 # cutoff 4000
+d6 silence
+
+
+
+
+
+do
+  bpm 168
+  resetCycles
+  d4 $ chop 32 $ slow 32 $ s "moirae"
+
+do
+  d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.75 # room 0.7 # cutoff 2300 -- noise riser come down
+  jumpIn 8 1 silence
+
+
+
+do -- listen to that breakcore song and take notes on drums
+  -- d7 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0.3 # crush 4 # cutoff 12000 # gain 0.9
+  jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*2@2 techno_hats*2 techno_hats" # n 6 # distort 0.3 # crush 6 # gain 0.85
+  jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16??" # n 6 # distort 0.3 # crush 3 # cutoff 12000 # gain 0.85
+  -- d9 $ s "~ snares ~ snares" # n 3
+  jumpIn' 9 0 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.2 # room 0.05
+  --
+
+d6 $ slow 2 $ s "BABII_vocal_shots" # n "<21 <22 23>>" # gain 0.85
+
+
+
+
+do
+  hush
+  d4 $ s "moirae" # n 1
+  xfadeIn 4 2 $ slice 4 "3*4" $ s "moirae" # n 1
+
+  xfadeIn 4 2 $ slice 4 "1*4" $ s "moirae" # n 1
+
+do
+  d1 $ loopAt 2 $ s "risers" # n 4
+  xfadeIn 4 2 $ slice 4 "0*4" $ s "moirae" # n 1
+  d6 $ slow 2 $ s "~ ~@6 <~ BABII_vocal_shots>" # n "<21 <22 [20 23]>>"
+
+
+do
+  -- d1 $ s "SOPHIE_kicks_dry*4" # n 18 # gain 1.2 # room 0
+  -- d1 $ s "FOOD_kicks*4" # n 5 # gain 1.15 # cutoff 800 # room 0.2
+  d1 $ s "FOOD_kicks FOOD_kicks [FOOD_kicks FOOD_kicks*2] FOOD_kicks*2" # n 5 # gain 1.15 # cutoff 1200 # room 0.1
+  d3 $ gap 16 $ slice 4 "2*4" $ s "moirae" # n 1
+  -- d3 $ (0.0625 ~>) $ gap 16 $ slice 4 "2*4" $ s "moirae" # n 1
+  -- d3 $ ((slow 4 $ range 0.125 0 saw) ~>) $ gap 16 $ slice 4 "2*4" $ s "moirae" # n 1
+  d4 $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae"
+  d6 $ slow 2 $ s "BABII_vocal_shots ~@6 <~ BABII_vocal_shots>" # n "<21 <22 [20 23]>>" # crush 5 # cutoff 4000
+
+
+
+d1 $ s "FOOD_kicks*3@3 ~" # n 5 # gain 1.15 # cutoff 1200 # room 0.1
+
+do
+  d1 $ s "FOOD_kicks*4" # n 5 # gain 1.15 # cutoff 800 # room 0.2
+  d2 $ s "FOOD_808s/4" # n 5 # tremolodepth 0.8 # tremolorate 4 # gain 1.2
+  -- d2 $ s "~ ~ [~ FOOD_kicks*2] FOOD_kicks*2" # n 5 # gain 1.15 # cutoff 800 # room 0
+  jumpIn' 3 0 $ s "~ ~ [~ basslow*2] basslow*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.2 sine) # size 0.2 # distort (slow 12 $ range 0 0.12 sine) # cutoff 2000
+  d4 $ every 2 ((slow 2 $ choose[0.125, 0]) ~>) $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "moirae" # distort 0.2
+  d7 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*2@2 techno_hats*2 techno_hats" # n 6 # distort 0.3 # crush 6 # gain 0.85
+  d8 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16??" # n 6 # distort 0.3 # crush 3 # cutoff 12000 # gain 0.85
+  d9 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.2 # room 0.05
+
+
+  d5 $ (0.125 ~>) $ slice 10 "0*4" $ s "BABII_vocal_shots" # n 20 # crush 4 # cutoff 1000 # gain 0.9
+  d5 $ (0.125 ~>) $ slice 10 "0*4" $ s "BABII_vocal_shots" # n 23 # crush 3 # cutoff 1700 # gain 0.92
+  d5 $ (0.125 ~>) $ slice 10 "1*4" $ s "BABII_vocal_shots" # n 21 # crush 3 # cutoff 1200 # gain 0.9
+
+  d5 $ seqPLoop [(0, 4, ((0.125 ~>) $ slice 10 "0*4" $ s "BABII_vocal_shots" # n 20 # crush 4 # cutoff 1000 # gain 0.9 # fshift "-10")),
+                 (4, 6, ((0.125 ~>) $ slice 8 "0*4" $ s "BABII_vocal_shots" # n 23 # crush 4 # cutoff 1300 # gain 0.93)),
+                 (6, 8, ((0.125 ~>) $ slice 10 "1*4" $ s "BABII_vocal_shots" # n 21 # crush 3 # cutoff 1200 # gain 0.9))
+                ]
+
+
+
+  d5 $ slow 4 $ n ("a'min e'min" - "12") # s "moogbass" # distort 2 # gain 0.75 # tremolodepth 0.7 # tremolorate 6
+  d5 $ slow 4 $ n ("a'min e'min" - "12") # s "moogbass" # distort 2 # gain 0.75 # tremolodepth 1 # tremolorate 12
+  d5 $ arp "thumbup" $ slow 4 $ n ("a'min*4 <a'min*4 e'min*4>" + "12") # s "moogbass" # distort 2 # gain 0.75 # tremolodepth 1 # tremolorate (slow 2 $ range 2 4 sine) # hcutoff 200
+  d5 silence
+
+
+
+
+d2 $ s "[~ superzow]*4" # n (slow 16 $ "a@15 b c6@8 b@4 g@4") # octave 3 # detune 0
+d2 $ s "[~ supersaw]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3
+d2 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
+d2 silence
+
+d2 $ s "[basslow ~]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
+d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
+d4 silence
+
+d2 $ s "~ ~ [~ basslow*2] basslow*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.2 0.4 sine) # size 0.6 # distort (slow 12 $ range 0 0.12 sine)
+-- d2 $ s "~ ~ [~ supersaw*2] supersaw*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.2 0.4 sine) # size 0.6 # distort (slow 12 $ range 0 0.12 sine) # pitch1 1
+
+
+d3 $ s "[~ moogbass]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave "[4 5]*4" # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
+d3 $ s "[moogbass moogbass]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave "[4 5]*4" # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
+d3 silence
+
+
+
+
+
+
+do
+  d7 silence
+  -- d8 silence
+  d5 silence
+
+
+do
+  hush
+  d1 $ whenmod 8 7 (const $ s "FOOD_kicks FOOD_kicks [FOOD_kicks FOOD_kicks*2] FOOD_kicks*2" # n 5 # gain 1.15 # cutoff 800 # room 0.2) $ s "FOOD_kicks*4" # n 5 # gain 1.15 # cutoff 800 # room 0.2
+  d2 $ s "FOOD_808s/4" # n 5 # tremolodepth 0.8 # tremolorate 4 # gain 1.2
+  -- d3 $ s "~ ~ [~ basslow*2] basslow*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.2 0.4 sine) # size 0.6 # distort (slow 12 $ range 0 0.12 sine)
+  d3 $ s "~ ~ [~ basslow*2] basslow*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.1 sine) # distort (slow 12 $ range 0 0.1 sine)
+  d6 $ slow 2 $ s "BABII_vocal_shots ~@6 <~ BABII_vocal_shots>" # n "<21 <22 [20 23]>>" # crush 5 # cutoff 2000
+  d9 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.2 # room 0.05
+  d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.72 # room 0.7 # cutoff 2000 -- noise riser come down
+  jumpIn 8 1 silence
+
+
+d3 silence
+
+do
+  d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine) # cutoff 1200
+  d4 $ s "[basslow ~]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine) # cutoff 1000
+
+
+  xfadeIn 5 2 $ arp "thumbup" $ slow 4 $ n ("a'min*4 <a'min*4 e'min*4>" + "12") # s "moogbass" # distort 2 # gain 0.75 # tremolodepth 1 # tremolorate (slow 2 $ range 2 4 sine) # hcutoff 200
+
+do
+  d5 $ gap 16 $ arp "thumbup" $ slow 4 $ n ("a'min*4 <a'min*4 e'min*4>" + "12") # s "moogbass" # distort 0.2 # gain 1 # tremolodepth 1 # tremolorate (slow 2 $ range 2 4 sine) # hcutoff 300 # cutoff 1800
+  d8 $ rarely (ghost) $ s "[<techno_hats ~> techno_hats] ~ [~ techno_hats] <~ ~ ~ techno_hats>" # n 6 # distort 0.3 # crush 6 # gain "[0.75 0.85] ~ 0.85 0.75"
+
+
+do
+  xfadeIn 5 8 $ slice 128 "<15*4 15*4 16*4 16*4 17*4 17*4 18*4 18*4>" $ s "moirae"
+  d7 $ (0.125 ~>) $ slice 10 "0*4" $ s "BABII_vocal_shots" # n "20" # crush 4 # cutoff 1000 # gain 0.9
+
+
+
+d1 $ s "FOOD_kicks*3@3 ~" # n 5 # gain 1.15 # cutoff 1200 # room 0.1
+
+do
+  hush
+  d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine) # cutoff 1200
+  d4 $ s "[basslow ~]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine) # cutoff 1000
+  d5 $ slice 128 "<15*4 15*4 16*4 16*4 17*4 17*4 18*4 18*4>" $ s "moirae"
+  d6 $ slow 2 $ s "BABII_vocal_shots ~@6 <~ BABII_vocal_shots>" # n "<21 <22 [20 23]>>" # crush 5 # cutoff 2000
+  d7 $ (0.125 ~>) $ slice 10 "0*4" $ s "BABII_vocal_shots" # n "20" # crush 4 # cutoff 1000 # gain 0.9
+  d9 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.2 # room 0.3 # cutoff 1800
+
+
+d4 silence
+
+do
+  d4 $ chop 32 $ slow 32 $ s "moirae"
+  xfadeIn 3 16 silence
+  d5 silence
+  d9 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.18 # room 0.4 # cutoff 1300
+  xfadeIn 9 16 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 3 # distort 0.12 # room 0.5 # cutoff 500
+  d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.75 # room 0.7 # cutoff 2300 -- noise riser come down
+  jumpIn 8 1 silence
+
+
+xfadeIn 7 16 silence
+
+d6 $ slow 2 $ s "BABII_vocal_shots" # n "<21 <22 23>>" # gain 0.8 # room 0.4 # cutoff 2400
+
+
+
+
+-- UNTIL WE FOLD INTO EACHOTHER AGAIN
+
+do
+  hush
+  d4 $ s "moirae" # n 1
+  xfadeIn 4 2 $ slice 4 "3*4" $ s "moirae" # n 1
+
+  xfadeIn 4 4 silence
+
+
+--
