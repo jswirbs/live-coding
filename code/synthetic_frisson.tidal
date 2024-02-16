@@ -43,8 +43,8 @@ do
 do
   d5 $ (0.125 ~>) $ slow 2 $ s "superzow*8" # n "b4" # octave 6 # cutoff (slow 7 $ range 800 1600 sine) # room 0.4 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.63 0.55 sine)
   xfadeIn 5 8 $ (0.125 ~>) $ slow 2 $ s "superzow*8" # n ((choose[11,9,7,6,4,2,1,-1])) # octave "<7 6>" # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.8 0.7 sine)
+  xfadeIn 10 32 silence
 
-xfadeIn 10 32 silence
 
 d5 $ (0.125 ~>) $ slow 2 $ s "superzow*8" # n "b a g fs e d cs b4" # octave "<7 6>" # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.82 0.72 sine)
 d5 $ (0.125 ~>) $ slow 2 $ s "superzow*8" # n "b a g fs e <d a> cs b4" # octave "<7 6>" # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.82 0.72 sine)
@@ -56,21 +56,20 @@ do
   d5 $ (0.125 ~>) $ slow 2 $ s "superzow*8" # n "b4*8" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.88 0.77 sine)
 
 
-  d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3 # gain 0.96
-  d6 $ (0.125 ~>) $ s "[[UMRU_hihats*2 ~] UMRU_hihats]*2" # n 1 # gain 1 # cutoff 3500 # room 0.2
 
-  d7 $
+  -- d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 3 # gain 0.96
+  -- d6 $ (0.125 ~>) $ s "[[UMRU_hihats*2 ~] UMRU_hihats]*2" # n 1 # gain 1 # cutoff 3500 # room 0.2
 
 
-  d1 $ s "techno_kicks*4" # n 0 # gain 1.2 # room 0
+
 
   xfadeIn 1 4 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # djf 0.66
 
   d1 $ s "SOPHIE_kicks_wet*4" # n 6 # gain 1.15
   d1 $ s "SOPHIE_kicks_wet*4" # n 14 # gain 1.15
   d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # room 0.3
-
   d1 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.15 # room 0.2
+
 
 do
   d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # room 0.3
