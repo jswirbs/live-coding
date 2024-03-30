@@ -160,7 +160,7 @@ do
 
 clutchIn 8 8 silence
 
-d7 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*2 ~" # n 6 # distort 0.3 # crush 6 # gain 0.85
+d7 $ rarely (ghost) $ (0.125 ~>) $ s "<[techno_hats*4] [techno_hats*2 ~]>" # n 6 # distort 0.3 # crush 6 # gain 0.85
 
 do
   hush
@@ -183,7 +183,8 @@ do
   d10 silence
 
 do
-  d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0.12 0 sine) # cutoff 1200
+  d2 $ s "FOOD_808s/4" # n 5 # tremolodepth 0.8 # tremolorate 4 # gain 1.2
+  d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 3 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0.14 0 sine) # cutoff 1200
   d4 $ s "[basslow ~]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0.12 0 sine) # cutoff 1000
   -- d10 $ s "[~ supersaw]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # sustain 0.1 # distort (slow 12 $ range 0 0.12 sine) # cutoff 700 # gain 0.95  -- d3 $ s "~ ~ [~ supersaw*2] supersaw*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave "[2,3]" # sustain 0.12 # distort (slow 12 $ range 0 0.12 sine) # cutoff 800
 
@@ -262,7 +263,7 @@ do
 
 xfadeIn 4 4 $ slice 8 "2*8" $ s "aether" # n 1 # room 0.2 # cutoff 800
 
-do
+do -- not early
   d1 $ loopAt 2 $ gap 32 $ s "risers" # n 4 # gain 0.8 # room 0.9 # size 1
   xfadeIn 2 2 $ s "FOOD_kicks*8" # n 5 # gain 0.95 # cutoff (slow 2 $ range 50 900 saw) # room 0.1 # hcutoff (slow 2 $ range 600 1000 saw)
   d6 $ slow 4 $ s "~@15 BABII_vocal_shots" # n "23" # gain 0.72 # room 0.2 # fshift "-20"
@@ -292,8 +293,8 @@ do
   d10 $ chop 8 $ slow 8 $ s "aether" # n 2
 
 
-xfadeIn 1 4 silence
 
+xfadeIn 1 4 silence
 
 do
   d1 $ s "FOOD_kicks*8" # n 5 # gain 1.15 # cutoff 800 # room 0.1 # hcutoff 60
@@ -305,10 +306,8 @@ do
   d6 $ ghost $ s "superzow*8" # n "c6 b g b <c6 d6> <b c6> <g b> <b d6>" # octave 6 # distort 0.4 # detune (slow 8 $ range 1.7 2.8 sine) # hcutoff 100 # sustain 0.14 # squiz 2 # room 0.3 # size 0.5 # gain 0.78 # cutoff 1200 # orbit 6 # pan (range 0.1 0.9 saw)
   -- d6 $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16]) # distort 0.1 # detune (slow 8 $ range 1.3 2 sine) # hcutoff 200 # sustain 0.17 # squiz 4 # room 0.2 # size 0.7 # gain 0.75 # cutoff 7000
   -- d8 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.95 # room 0.75 # cutoff 1900 -- noise riser come down
-  d8 $ loopAt 4 $ gap 64 $ s "DJ_DAVE_castles" # n 14 # gain "[0.88 0]/2" # room 0.5 # size 0.3 -- noise riser come down
-  jumpIn 8 4 $ (0.0625 <~) $ loopAt 4 $ rev $ gap 64 $ s "DJ_DAVE_castles" # n 14 # gain "0 0.88@63" # room 0.5 # size 0.3 # speed "-1" # orbit 7
-
-
+  d8 $ loopAt 4 $ gap 64 $ s "DJ_DAVE_castles" # n 14 # gain "[0.88 0]/2" # room 0.6 # size 0.6 -- noise riser come down
+  jumpIn 8 4 $ (0.0625 <~) $ loopAt 4 $ rev $ gap 64 $ s "DJ_DAVE_castles" # n 14 # gain "0 0.88@63" # room 0.6 # size 0.6 # speed "-1" # orbit 7
 
 
 
@@ -327,7 +326,7 @@ do
   -- jumpIn' 3 0 $ s "~ ~ [~ basslow*2] basslow*2" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.2 sine) # size 0.2 # distort (slow 12 $ range 0 0.12 sine) # cutoff 2000
   d3 $ s "[~ basslow]*4" # n (slow 8 $ "a@14 b c6@9 b@4 g@4") # octave 2 # room (slow 8 $ range 0.05 0.15 sine) # distort (slow 12 $ range 0 0.12 sine)
   -- d4 $ every 2 ((slow 2 $ choose[0.125, 0]) ~>) $ slice 256 "<30*4 30*4 32*4 [32*3@3 33] 34*4 34*4 36*4 38*4>" $ s "aether" # distort 0.2
-  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[12,14,16,19]) # distort 0.35 # detune (slow 8 $ range 1.5 3 sine) # hcutoff 200 # sustain 0.17 # squiz 0 # room 0.4 # size 0.7 # gain 0.8 # cutoff 800 # pan (range 0.2 0.8 rand)
+  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[11,12,14,16,19]) # distort 0.35 # detune (slow 8 $ range 1.5 3 sine) # hcutoff 200 # sustain 0.17 # squiz 0 # room 0.4 # size 0.7 # gain 0.8 # cutoff 800 # pan (range 0.2 0.8 rand)
   -- d6 $ rarely (ghost) $ s "superzow*8" # n "19 12 16 11 12 14 9 9" # distort 0.35 # detune (slow 8 $ range 1.5 3 sine) # hcutoff 200 # sustain 0.17 # squiz 0 # room 0.4 # size 0.7 # gain 0.8 # cutoff 800 # pan (range 0.2 0.8 rand)
   jumpIn 6 1 $ rarely (ghost) $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16,19]) # distort 0.35 # detune (slow 8 $ range 1.5 3 sine) # hcutoff 200 # sustain 0.17 # squiz 0 # room 0.4 # size 0.7 # gain 0.8 # cutoff 800 # pan (range 0.2 0.8 rand) # orbit 5
   d7 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*2@2 techno_hats*2 techno_hats" # n 6 # distort 0.3 # crush 6 # gain 0.85
@@ -349,7 +348,7 @@ do
                  (4, 6, ((0.125 ~>) $ slice 12 "0*4" $ s "BABII_vocal_shots" # n 23 # crush 4 # cutoff 1300 # gain 0.93)),
                  (6, 8, ((0.125 ~>) $ slice 14 "2*4" $ s "BABII_vocal_shots" # n 21 # crush 3 # cutoff 1200 # gain 0.9))] # distort 0.1
   -- d6 $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16,19,23]) # distort 0.3 # detune (slow 8 $ range 1.7 3 sine) # hcutoff 200 # sustain 0.06 # squiz 2 # room 0.5 # size 0.7 # gain 0.82 # cutoff 600 # pan (range 0.2 0.8 rand)
-  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16,19,23]) # distort 0.5 # crush 2 # detune (slow 8 $ range 1.7 3 sine) # hcutoff 300 # sustain 0.06 # room 0.4 # size 0.4 # gain 0.77 # cutoff 12000 # pan (range 0.2 0.8 rand)
+  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16,19,23]) # distort 0.5 # crush 2 # detune (slow 3 $ range 1.7 4 sine) # hcutoff 300 # sustain 0.06 # room 0.4 # size 0.4 # gain 0.79 # cutoff 12000 # pan (range 0.2 0.8 rand)
   d10 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 6000
 
 
@@ -364,15 +363,16 @@ do
 do
   xfadeIn 2 16 silence
   xfadeIn 3 16 $ slice 128 "<15*4 15*4 16*4 16*4 17*4 17*4 18*4 18*4>" $ s "aether"
-  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16]) # distort 0.4 # crush 2 # detune (slow 8 $ range 1.4 2.5 sine) # hcutoff 400 # sustain 0.055 # room 0.4 # size 0.4 # gain 0.76 # cutoff 9000 # pan (range 0.2 0.8 rand)
+  d6 $ rarely (ghost) $ s "superzow*8" # n (choose[12,11,12,11,12,14,9,16]) # distort 0.4 # crush 2 # detune (slow 3 $ range 1.4 2.5 sine) # hcutoff 400 # sustain 0.055 # room 0.4 # size 0.4 # gain 0.76 # cutoff 9000 # pan (range 0.2 0.8 rand)
   -- d10 $ gap 8 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 8000
   d7 $ (0.125 ~>) $ s "techno_hats*2@2 techno_hats*2 techno_hats" # n 6 # distort 0.3 # crush 6 # gain 0.85
   d8 silence
 
 do
+  xfadeIn 1 8 $ s "FOOD_kicks*4" # n 5 # gain 1.1 # cutoff 800 # room 0
   xfadeIn 4 8 $ slice 4 "2*4" $ s "aether" # n 1 # room 0.2 # cutoff 1000
   clutchIn 5 8 silence
-  d6 $ s "superzow*8" # n (choose[12,11,12,11,12,14,9]) # distort 0.3 # crush 2 # detune (slow 8 $ range 0.5 1.7 sine) # hcutoff 400 # sustain 0.05 # room 0.4 # size 0.4 # gain 0.75 # cutoff 8000 # pan (range 0.2 0.8 rand)
+  d6 $ s "superzow*8" # n (choose[12,11,12,11,12,14,9]) # distort 0.3 # crush 2 # detune (slow 3 $ range 0.5 1.7 sine) # hcutoff 400 # sustain 0.05 # room 0.4 # size 0.4 # gain 0.75 # cutoff 8000 # pan (range 0.2 0.8 rand)
   clutchIn 6 7 silence
   -- xfadeIn 6 8 silence
   d7 $ (0.125 ~>) $ s "techno_hats*4" # n 6 # distort 0 # gain 0.8 # cutoff 8000
@@ -382,10 +382,20 @@ do
   -- d10 $ gap 8 $ gap 4 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 8000
   xfadeIn 12 8 silence
 
-xfadeIn 1 4 silence
+  -- xfadeIn 1 4 silence
+  --
+  -- d10 $ gap 8 $ gap 4 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 8000
+  -- d10 silence
 
-d10 $ gap 8 $ gap 4 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 8000
-d10 silence
+do
+  d1 $ s "FOOD_kicks*2" # n 5 # gain 1.1 # cutoff 800 # room 0
+  d10 $ gap 8 $ gap 4 $ chop 8 $ slow 8 $ s "aether" # n 2 # room 0.2 # cutoff 8000
+
+do
+  d1 silence
+  d10 silence
+  d9 $ s "~ snares [~ <~ snares*2>] [snares <~ snares>]" # n 3 # distort 0.2 # room 0.05
+
 
 do
   hush
@@ -397,6 +407,8 @@ do
   -- d11 $ slow 2 $ s "BABII_vocal_shots" # n "21" # gain 0.8 # room 0.3 # cutoff 800
   -- jumpIn 11 1 silence
   xfadeIn 4 4 silence
+
+
 
 
 

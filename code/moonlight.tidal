@@ -102,6 +102,7 @@ do
   -- d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "0.97 0.8"
   -- jumpIn 4 8 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
   d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
+  d4 $ slow 2 $ n "[c2,c3]@7 [~ [c4,c5]]" # s "supersaw" # accelerate "-0.15 0" # waveloss 5 # distort "0.05 0.7" # pitch1 3 # cutoff (slow 3 $ range 4000 2000 sine) # hcutoff "500 0" # room 0.4 # gain "<1.05 0.97 0.97 0.97> 0.8" # tremolodepth "<0.7 0 0 0>" # tremolorate 8.7 # orbit 3
   d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 8 $ range 0.35 0.65 sine)
   d7 silence
 
@@ -190,14 +191,16 @@ do
 
 
 -- xfadeIn 9 4 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 7000 # room 0.25
+
 xfadeIn 9 4 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.73
 
--- do
---   d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 4 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.92
---   -- d5 $ slice 32 "0 ~ 1 ~ 2 ~ 3" $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.95
---   -- d8 $ (0.125 ~>) $ s "techno_hats*4" # crush 3 # cutoff 8000 # waveloss 20 # gain 0.9
---   d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 6000 # waveloss 20 # gain 0.83 # room 0.2
---   jumpIn' 9 0 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.7
+do
+  d2 silence
+  d5 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 4 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.92
+  -- d5 $ slice 32 "0 ~ 1 ~ 2 ~ 3" $ loopAt 4 $ s "techno_textures" # n 12 # djf (slow 3 $ range 0.37 0.25 sine) # room 0.45 # speed "-1" # gain 0.95
+  -- d8 $ (0.125 ~>) $ s "techno_hats*4" # crush 3 # cutoff 8000 # waveloss 20 # gain 0.9
+  -- d8 $ (0.125 ~>) $ s "techno_hats*2@2 ~ techno_hats" # cutoff 6000 # waveloss 20 # gain 0.83 # room 0.2
+  -- xfadeIn 9 3 $ s "XORE_hats*8" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 4 # waveloss 20 # gain 0.73
 
 
 
@@ -272,7 +275,7 @@ do
   d7 $ chop 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1.1
   d8 silence
   d9 $ s "XORE_hats*16" # n 5 # gain "[0.8 1 0.92 1]*2" # crush 5 # waveloss 20 # gain 0.9 # cutoff 5000 # room 0.25
-  xfadeIn 9 5 silence
+  xfadeIn 9 6 silence
   d10 $ slow 2 $ slice 32 "0" $ slow 4 $ s "techno_textures" # n "19 10 19 10" # distort 0.2 # waveloss 10 # gain 0.9 # cutoff 4000 # room 0.8 # size 0.8
 
 

@@ -86,7 +86,7 @@ do
 
 
   -- sustain uppp (after fading in 1 & 2)
-  d7 $ fast 2 $ (0.25 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[3@3 4] ~" # detune (slow 8 $ range 0.2 1.5 sine) # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
+  d7 $ fast 2 $ (0.25 ~>) $ rarely (ghost) $ n "[b4 cs d fs] ~" # s "superzow" # octave 6 # sustain "[0.2@3 0.4] ~" # detune (slow 8 $ range 0.2 1.5 sine) # squiz 2 # gain 0.75 # cutoff (slow 16 $ range 1000 5000 sine)
 
 
 

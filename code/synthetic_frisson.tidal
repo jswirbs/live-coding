@@ -78,9 +78,9 @@ do
   d10 $ (2 <~) $ palindrome $ chop 8 $ slow 8 $ s "FOOD_fx" # n 11 # room 0.3 # cutoff 8000 # gain 0.6 # speed 0.75
 
 
-  d9 $ slow 4 $ s "inception" # room 0.5 # fshift "<0 0 -18 -18>"
-  d9 $ s ""
-  d9 $ slow 4 $ n "<> ~" # s "warsawbass" # gain 1.1 # room 0.3 # distort 0.2 # waveloss 6
+  -- d9 $ slow 4 $ s "inception" # room 0.5 # fshift "<0 0 -18 -18>"
+  -- d9 $ s ""
+  -- d9 $ slow 4 $ n "<> ~" # s "warsawbass" # gain 1.1 # room 0.3 # distort 0.2 # waveloss 6
 
   d9 $ (0.125 <~) $ chop 4 $ slow 16 $ s "horns" # gain 1.2 # room 0.2
   d9 $ (0.125 <~) $ slow 16 $ s "horns" # gain 1.2 # room 0.2

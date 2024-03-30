@@ -138,11 +138,11 @@ do
 
 do
   d1 silence
-  d5 silence
+  -- d5 silence
   d7 $ s "CXCX_hh*12" # gain 1.1 # distort 0.2 # crush 3.5 # cutoff 10000
   jumpIn' 10 0 $ whenmod 3 2 (const $ s "acid92*12" # n (choose[7,7,7,9,9,10,14,19]) # octave 6 # gain 1.2 # cutoff 6000 # distort 0.1 # pan (range 0.1 0.9 rand)) $ n "d*12" # octave 6 # s "acid92" # gain 1.2 # cutoff 6000 # distort 0.3
 
-  d5 $ ghost $ rarely (ghost) $ s "~ SOPHIE_claps [~ <SOPHIE_claps SOPHIE_claps SOPHIE_claps ~>] [<~ [~ SOPHIE_claps] ~ [SOPHIE_claps*3]>]" # n 3
+  -- d5 $ ghost $ rarely (ghost) $ s "~ SOPHIE_claps [~ <SOPHIE_claps SOPHIE_claps SOPHIE_claps ~>] [<~ [~ SOPHIE_claps] ~ [SOPHIE_claps*3]>]" # n 3
 
 d1 $ slow 2 $ s "SOPHIE_kicks_dry*4 [SOPHIE_kicks_dry SOPHIE_kicks_dry [SOPHIE_kicks_dry ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]]" # n 18 # gain 1.2 # room 0.2 # distort 0.2 # crush 5
 
