@@ -232,6 +232,7 @@ unsolo 2
 
 d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92
 d3 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.92
+d3 $ (0.125 ~>) $ s "techno_hats*4" # n 8 # gain 0.88 # room ((2 ~>) $ slow 4 $ range 0 0.05 sine)
 d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92
 d3 $ (0.125 ~>) $ s "FOOD_hihats*4" # n 2 # gain 0.92
 
@@ -315,8 +316,8 @@ do
   d8 $ (0.125 ~>) $ slow 4 $ gap 16 $ s "BABII_vocal_loops" # n 12 # gain 0.88
 
 
-  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.05 sine)
-  d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
+  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
+  d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
 
 
   d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.2 # crush 2 # gain 0.58 # room 0.15
@@ -371,9 +372,10 @@ do
 
 
 do
-  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
+  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   d10 $ (2.1 <~) $ slow 8 $ s "BABII_risers" # n 2
-  -- d12 $ whenmod 2 1 (const $ silence) $ s "~@2 [~ UMRU_percussion_misc] UMRU_percussion_misc" # n "~@2 5 6" # cutoff 800 # distort 0.2 # crush 3 # gain 0.9
+  -- d12 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8
+  d12 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 14 ~ 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8
 
 
 do
@@ -384,11 +386,13 @@ do
   d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   -- d8 $ slow 4 $ gap 16 $ s "BABII_vocal_loops" # n 12 # gain 0.9
   d8 $ (0.125 ~>) $ slice 32 "<15 ~ <15 31> ~>" $ s "BABII_vocal_loops" # n 8 # gain 0.8
-  -- d12 silence
+  d12 silence
 
 
 -- ??
 xfadeIn 3 4 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 0.9 # djf 0.97
+clutchIn 3 4 silence
+d3 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
 
 do
   d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
@@ -433,16 +437,18 @@ do
 d8 silence
 
 do
-  -- d4 $ whenmod 4 3 (const $ sometimes (ghost) $ s "SOPHIE_claps SOPHIE_claps SOPHIE_claps*2 SOPHIE_claps*4" # n 12 # gain 0.8) $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.8
+  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
   d8 $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 8 # gain 0.8
   d12 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8
 
 
-d1 silence
+do
+  d1 silence
+  d3 silence
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
-  d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
+  d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   -- d4 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.85
   d4 silence
   d8 $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 12 # gain 0.8
@@ -450,17 +456,17 @@ do
   d12 silence
 
 
-do
-  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
-  d4 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.82
-  -- d8 $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 12 # gain 0.7 # distort 0.2 # crush 6 # room 0.2 # cutoff 5000
+
+d4 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.82
+
+d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
 
 
 do
   d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   d8 $ (0.125 ~>) $ slow 4 $ gap 16 $ s "BABII_vocal_loops" # n 12 # gain 0.85
-  d12 $ whenmod 4 3 (const $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8)
-      $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.2 # crush 2 # gain 0.6 # room 0.15
+  d11 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8
+  d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.2 # crush 2 # gain 0.6 # room 0.15
 
 
 
@@ -469,12 +475,20 @@ d4 silence
 do
   d3 silence
   d4 silence
+  d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n 8 # cutoff 1800 # hcutoff 500 # distort 0.2 # crush 2 # gain 0.65 # room 0.2
 
+
+-- ??
+d1 silence
+d1 $ s "~@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
 
 do
+  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
   d8 $ (0.125 ~>) $ slice "<64 64 32 32>" "~ ~ ~ <~ <10 11> ~ 1>" $ s "BABII_vocal_loops" # n 8 # gain 0.78
   d9 $ (0.125 ~>) $ slice 16 "~ 2" $ s "BABII_vocal_loops" # n 12 # gain 0.9
+  d11 silence
   d12 silence
+
 
 hush
 
