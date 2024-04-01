@@ -1,0 +1,244 @@
+bpm 140
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # room 0.3
+d1 $ s "techno_kicks*4" # n 2 # gain 1.2 # room 0.1
+d1 silence
+
+d4 $ (0.125 ~>) $ s "techno_hats*4" # n 1
+d4 silence
+
+d2 $ n "c6" #s "default" # sustain 0.3
+
+d3 $ n "a2" # s "warsawbass" # sustain 0.8 # room 0.3
+d3 silence
+
+resetCycles
+
+d2 $ stack [(n "a"),
+            (slow (1 + 1/16) $ n "g"),
+            (slow (1 + 2/16) $ n "f"),
+            (slow (1 + 3/16) $ n "e"),
+            (slow (1 + 4/16) $ n "d"),
+            (slow (1 + 5/16) $ n "cs"),
+            (slow (1 + 6/16) $ n "bf4"),
+            (slow (1 + 7/16) $ n "a4"),
+            (slow (1 + 8/16) $ n "g4"),
+            (slow (1 + 9/16) $ n "f4"),
+            (slow (1 + 10/16) $ n "e4"),
+            (slow (1 + 11/16) $ n "d4"),
+            (slow (1 + 12/16) $ n "cs4"),
+            (slow (1 + 13/16) $ n "bf3"),
+            (slow (1 + 14/16) $ n "a3"),
+            (slow (1 + 15/16) $ n "g3")
+           ] # s "warsawbass" # sustain 0.2 # octave 6
+
+d2 $ fast 2 $ stack [(n "a"),
+           (slow (1 + 1/128) $ n "g"),
+           (slow (1 + 2/128) $ n "f"),
+           (slow (1 + 3/128) $ n "e"),
+           (slow (1 + 4/128) $ n "d"),
+           (slow (1 + 5/128) $ n "cs"),
+           (slow (1 + 6/128) $ n "b4"),
+           (slow (1 + 7/128) $ n "a4"),
+           (slow (1 + 8/128) $ n "g4"),
+           (slow (1 + 9/128) $ n "f4"),
+           (slow (1 + 10/128) $ n "e4"),
+           (slow (1 + 11/128) $ n "d4"),
+           (slow (1 + 12/128) $ n "cs4"),
+           (slow (1 + 13/128) $ n "b3"),
+           (slow (1 + 14/128) $ n "a3"),
+           (slow (1 + 15/128) $ n "g3"),
+           (slow (1 + 16/128) $ n "f3"),
+           (slow (1 + 17/128) $ n "e3"),
+           (slow (1 + 18/128) $ n "d3"),
+           (slow (1 + 19/128) $ n "cs3"),
+           (slow (1 + 20/128) $ n "b3"),
+           (slow (1 + 21/128) $ n "a2")
+          ] -- # s "warsawbass" # sustain 0.2 # octave 6
+          # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.9 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (range 0.3 0.7 saw)
+
+
+
+d2 $ stack [(n "a"),
+           (slow (1 + 1/32) $ n "g"),
+           (slow (1 + 2/32) $ n "f"),
+           (slow (1 + 3/32) $ n "e"),
+           (slow (1 + 4/32) $ n "d"),
+           (slow (1 + 5/32) $ n "cs"),
+           (slow (1 + 6/32) $ n "bf4"),
+           (slow (1 + 7/32) $ n "a4"),
+           (slow (1 + 8/32) $ n "g4"),
+           (slow (1 + 9/32) $ n "f4"),
+           (slow (1 + 10/32) $ n "e4"),
+           (slow (1 + 11/32) $ n "d4"),
+           (slow (1 + 12/32) $ n "cs4"),
+           (slow (1 + 13/32) $ n "bf3"),
+           (slow (1 + 14/32) $ n "a3"),
+           (slow (1 + 15/32) $ n "g3"),
+           (slow (1 + 16/32) $ n "f3"),
+           (slow (1 + 17/32) $ n "e3"),
+           (slow (1 + 18/32) $ n "d3"),
+           (slow (1 + 19/32) $ n "cs3"),
+           (slow (1 + 20/32) $ n "bf2"),
+           (slow (1 + 21/32) $ n "a2"),
+           (slow (1 + 22/32) $ n "g2"),
+           (slow (1 + 23/32) $ n "f2"),
+           (slow (1 + 24/32) $ n "e2"),
+           (slow (1 + 25/32) $ n "d2"),
+           (slow (1 + 26/32) $ n "cs2"),
+           (slow (1 + 27/32) $ n "bf1"),
+           (slow (1 + 28/32) $ n "a1"),
+           (slow (1 + 29/32) $ n "g1"),
+           (slow (1 + 30/32) $ n "f1"),
+           (slow (1 + 31/32) $ n "e1")
+          ] # s "warsawbass" # sustain 0.2 # octave 6
+
+
+d2 $ stack [(n "a9"),
+           (slow (1 + 1/64) $ n "g9"),
+           (slow (1 + 2/64) $ n "f9"),
+           (slow (1 + 3/64) $ n "e9"),
+           (slow (1 + 4/64) $ n "d9"),
+           (slow (1 + 5/64) $ n "cs9"),
+           (slow (1 + 6/64) $ n "bf8"),
+           (slow (1 + 7/64) $ n "a8"),
+           (slow (1 + 8/64) $ n "g8"),
+           (slow (1 + 9/64) $ n "f8"),
+           (slow (1 + 10/64) $ n "e8"),
+           (slow (1 + 11/64) $ n "d8"),
+           (slow (1 + 12/64) $ n "cs8"),
+           (slow (1 + 13/64) $ n "bf7"),
+           (slow (1 + 14/64) $ n "a7"),
+           (slow (1 + 15/64) $ n "g7"),
+           (slow (1 + 16/64) $ n "f7"),
+           (slow (1 + 17/64) $ n "e7"),
+           (slow (1 + 18/64) $ n "d7"),
+           (slow (1 + 19/64) $ n "cs7"),
+           (slow (1 + 20/64) $ n "bf6"),
+           (slow (1 + 21/64) $ n "a6"),
+           (slow (1 + 22/64) $ n "g6"),
+           (slow (1 + 23/64) $ n "f6"),
+           (slow (1 + 24/64) $ n "e6"),
+           (slow (1 + 25/64) $ n "d6"),
+           (slow (1 + 26/64) $ n "cs6"),
+           (slow (1 + 27/64) $ n "bf5"),
+           (slow (1 + 28/64) $ n "a5"),
+           (slow (1 + 29/64) $ n "g5"),
+           (slow (1 + 30/64) $ n "f5"),
+           (slow (1 + 31/64) $ n "e5"),
+           (slow (1 + 32/64) $ n "d5"),
+           (slow (1 + 33/64) $ n "cs5"),
+           (slow (1 + 34/64) $ n "bf4"),
+           (slow (1 + 35/64) $ n "a4"),
+           (slow (1 + 36/64) $ n "g4"),
+           (slow (1 + 37/64) $ n "f4"),
+           (slow (1 + 38/64) $ n "e4"),
+           (slow (1 + 39/64) $ n "d4"),
+           (slow (1 + 40/64) $ n "cs4"),
+           (slow (1 + 41/64) $ n "bf3"),
+           (slow (1 + 42/64) $ n "a3"),
+           (slow (1 + 43/64) $ n "g3"),
+           (slow (1 + 44/64) $ n "f3"),
+           (slow (1 + 45/64) $ n "e3"),
+           (slow (1 + 46/64) $ n "d3"),
+           (slow (1 + 47/64) $ n "cs3"),
+           (slow (1 + 48/64) $ n "bf2"),
+           (slow (1 + 49/64) $ n "a2"),
+           (slow (1 + 50/64) $ n "g2"),
+           (slow (1 + 51/64) $ n "f2"),
+           (slow (1 + 52/64) $ n "e2"),
+           (slow (1 + 53/64) $ n "d2"),
+           (slow (1 + 54/64) $ n "cs2"),
+           (slow (1 + 55/64) $ n "bf1"),
+           (slow (1 + 56/64) $ n "a1"),
+           (slow (1 + 57/64) $ n "g1"),
+           (slow (1 + 58/64) $ n "f1"),
+           (slow (1 + 59/64) $ n "e1"),
+           (slow (1 + 60/64) $ n "d1"),
+           (slow (1 + 61/64) $ n "cs1"),
+           (slow (1 + 62/64) $ n "bf0"),
+           (slow (1 + 63/64) $ n "a0")
+          ] # s "warsawbass" # sustain 0.2 # octave 6 # room 0.2 # size 0.4
+
+
+
+
+d2 $ stack [(n "a8"),
+           (slow (1 + 1/256) $ n "g8"),
+           (slow (1 + 2/256) $ n "f8"),
+           (slow (1 + 3/256) $ n "e8"),
+           (slow (1 + 4/256) $ n "d8"),
+           (slow (1 + 5/256) $ n "cs8"),
+           (slow (1 + 6/256) $ n "bf7"),
+           (slow (1 + 7/256) $ n "a7"),
+           (slow (1 + 8/256) $ n "g7"),
+           (slow (1 + 9/256) $ n "f7"),
+           (slow (1 + 10/256) $ n "e7"),
+           (slow (1 + 11/256) $ n "d7"),
+           (slow (1 + 12/256) $ n "cs7"),
+           (slow (1 + 13/256) $ n "bf6"),
+           (slow (1 + 14/256) $ n "a6"),
+           (slow (1 + 15/256) $ n "g6"),
+           (slow (1 + 16/256) $ n "f6"),
+           (slow (1 + 17/256) $ n "e6"),
+           (slow (1 + 18/256) $ n "d6"),
+           (slow (1 + 19/256) $ n "cs6"),
+           (slow (1 + 20/256) $ n "bf5"),
+           (slow (1 + 21/256) $ n "a5"),
+           (slow (1 + 22/256) $ n "g5"),
+           (slow (1 + 23/256) $ n "f5"),
+           (slow (1 + 24/256) $ n "e5"),
+           (slow (1 + 25/256) $ n "d5"),
+           (slow (1 + 26/256) $ n "cs5"),
+           (slow (1 + 27/256) $ n "bf4"),
+           (slow (1 + 28/256) $ n "a4"),
+           (slow (1 + 29/256) $ n "g4"),
+           (slow (1 + 30/256) $ n "f4"),
+           (slow (1 + 31/256) $ n "e4"),
+           (slow (1 + 32/256) $ n "d4"),
+           (slow (1 + 33/256) $ n "cs4"),
+           (slow (1 + 34/256) $ n "bf3"),
+           (slow (1 + 35/256) $ n "a3"),
+           (slow (1 + 36/256) $ n "g3"),
+           (slow (1 + 37/256) $ n "f3"),
+           (slow (1 + 38/256) $ n "e3"),
+           (slow (1 + 39/256) $ n "d3"),
+           (slow (1 + 40/256) $ n "cs3"),
+           (slow (1 + 41/256) $ n "bf2"),
+           (slow (1 + 42/256) $ n "a2"),
+           (slow (1 + 43/256) $ n "g2"),
+           (slow (1 + 44/256) $ n "f2"),
+           (slow (1 + 45/256) $ n "e2"),
+           (slow (1 + 46/256) $ n "d2"),
+           (slow (1 + 47/256) $ n "cs2")
+          ] # s "warsawbass" # sustain 0.2 # octave 6 # room 0.2 # size 0.4
+
+
+-- how to do this programmatically?
+
+
+--
+bpm 144
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.2 # room 0.3
+
+d2 $ (0.125 ~>) $ n "fs*4" # s "supersaw" # octave 2
+d2 $ (0.125 ~>) $ n "fs*4" # s "supersaw" # octave 2 # sustain 0.2
+d2 $ (0.125 ~>) $ n ("[[gs*3@3 ~]*4]/3" - "<0 4>/4") # s "supersaw" # octave 2 # sustain "[0.2 0.4]" # pitch1 2 # cutoff 1000 # room 0.1
+d2 silence
+
+
+d3 $ n "[[6 ~ 5 4 3 ~]*4]/3" # s "warsawbass"
+d3 $ ghost $ n "[[8 ~ 6 5 3 ~]*4]/3" # s "beating" # octave 6 # room 0.5 # size 0.3 # gain 0.9 # sustain 0.12
+
+
+
+d5 $ slow 2 $ striate 3 $ s "cyberpunk cyberpunk ~@2" # n "7 6 ~@2" # fshift 12 # cutoff 9000 # gain 0.9
+d6 $ (0.25 ~>) $ s "cyberpunk*2" # n 9 # fshift 12 # gain 0.9
+
+
+d7 $ ""
+
+
+--

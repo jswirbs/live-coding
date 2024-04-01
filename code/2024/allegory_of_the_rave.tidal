@@ -306,12 +306,12 @@ do
 
 
 
-
+-- try slowing cps through the breakdown
 do
   xfadeIn 4 10 silence
   d5 $ sometimes (ghost) $ (0.25 ~>) $ s "[~ techno_hats] [~ techno_hats] [~ techno_hats*2] techno_hats*2" # gain "0.8 0.825 0.85 [0.66 0.85]" # n 2
   xfadeIn 5 12 silence
-  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff 2500 # room 0.25
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff 2500 # room 0.25 # cps (slow 4 $ range (147/60/4) (133/60/4) saw)
   d7 silence
   d10 $ n (slow 4 $ "~ c ~ c c [~ as4] ~ c ~ <~ c> ~ c ds [~ d] ~ c") # s "ikedabass" # octave 6 # room 0.8 # size 0.8 # sustain 0.18 # gain 0.75 # pan (fast 2 $ range 0.2 0.8 square)
   d13 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n 5 # room 0.5 # size 0.8 # hcutoff 600 # cutoff 6000 # gain 0.75 # orbit 3
@@ -320,6 +320,7 @@ do
   d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 4 $ range 2500 800 saw) # room 0.25
 
 do
+  bpm 147
   d4 $ gap 4 $ chop 16 $ slice 4 "1" $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # gain 0.85
   jumpIn' 5 0 $ s "techno_hats*16" # gain "[0.66 0.83]*4" # n 8
   d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.85@3 [0.88 <0.77 0.83>]"
@@ -351,7 +352,7 @@ do
   d5 silence
   -- d4 $ (0.125 ~>) $ slice 128 "1*4" $ s "DJ_DAVE_castles" # n 15 # crush 9 # gain 1.1
   d4 $ gap 4 $ chop 16 $ slice 4 "1" $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # cutoff 10000 # gain 0.85
-  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 2 $ range 2000 2700 sine)
+  d6 $ s "~ SOPHIE_claps ~ [SOPHIE_claps*2]" # n 5 # gain "0.9@3 [0.92 0.85]" # cutoff (slow 2 $ range 2000 2700 sine) # cps (slow 4 $ range (147/60/4) (133/60/4) saw)
   d7 silence
   d8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 1000 8000 sine) # room 0.2 # size 0.9 # sustain (slow 3 $ range 0.11 0.15 sine) # gain (range 0.8 0.4 saw)
   xfadeIn 8 8 $ (0.125 ~>) $ ghost $ n "[c,<d*8 ds*8 c*8 [c c d ds d c ds c] d*8 c*8 [d ds c c d c ds c] [ds ds d f ds f ds d]>]" # s "basslow" # octave 7 # cutoff (slow 12 $ range 800 2000 sine) # room 0.1 # size 0.3 # sustain (slow 3 $ range 0.09 0.12 sine) # gain (range 0.72 0.35 saw)
@@ -372,8 +373,10 @@ do
   -- xfadeIn 11 3 silence
   -- d9 $ s "DJ_DAVE_castles/4" # n 14 # gain 0.6 # cutoff 5000 # room 0.2
   jumpIn 9 1 silence
-  d13 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n 10 # room 0.6 # size 0.85 # hcutoff 600 # cutoff 5000 # gain 0.65 # orbit 4
+  d13 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n 10 # room 0.6 # size 0.85 # hcutoff 600 # cutoff 5000 # gain 0.65 # orbit 4 # cps (range (133/60/4) (50/60/4) saw)
   xfadeIn 13 8 silence
+
+  bpm 5
 
 
 do
@@ -385,6 +388,40 @@ hush
 
 
 
+
+--
+
+
+d3 $ (0.25 ~>) $ s "sn*2" # n 1
+
+d4 $ n "~ c ~ c*2 c c c*2 c" # s "superzow" # detune 1 # triode 0.25 # gain 0.8
+d4 $ n "~ c ~ c c c c*2 c" # s "superzow" # detune 1 # triode 0.25 # gain 0.8
+d4 $ swingBy (slow 4 $ range (1/2) (1/12) sine) 8 $ n "~ c ~ c c c c*2 c" # s "superzow" # detune (slow 8 $ range 0.8 1.2 sine) # triode (slow 5 $ range 0.22 0.44 sine) # gain 0.8
+d4 $ swingBy (1/6) 8 $ n "~ c ~ c c c c*2 c" # s "superzow" # detune (slow 8 $ range 0.8 1.2 sine) # triode (slow 5 $ range 0.22 0.44 sine) # gain 0.8
+
+
+-- fade in from cutoff 50 to thousands
+d5 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 7 # room 0.1 # cutoff 50
+
+d5 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 7 # room 0.1
+d5 silence
+
+d6 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 9
+d6 $ ghost $ chop 4 $ loopAt 2 $ s "techno_drum_loops" # n 9 # cutoff 5000
+d6 silence
+
+
+d6 $ s "SOPHIE_percussion*16" # n 0 # gain ((0 ~>) $ slow 8 $ range 0.2 0.85 sine)
+d7 $ s "SOPHIE_percussion*16" # n 11 # gain (((8/3) ~>) $ slow 8 $ range 0.2 0.85 sine) # cutoff 2000 # triode 2
+d8 $ s "SOPHIE_percussion*16" # n 12 # gain (((2*8/3) ~>) $ slow 8 $ range 0.2 0.85 sine) # cutoff 1000
+
+do
+  d6 silence
+  d7 silence
+  d8 silence
+
+
+--
 
 
 
