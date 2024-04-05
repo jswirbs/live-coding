@@ -1,0 +1,257 @@
+-- poly rhythm w rising chords
+
+bpm 140
+
+d3 $ n "e'min f'maj g'maj a'min" # s "superpiano"
+d3 $ arp "up" $ n "e'min f'maj g'maj a'min" # s "superpiano"
+
+
+d3 $ n "e g b" # s "superpiano"
+d4 $ n "f a c" # s "superpiano"
+d5 $ n "g b d" # s "superpiano"
+d6 $ n "a c e" # s "superpiano"
+
+
+d3 $ stack [
+  (n "e ~@3"),
+  (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+  (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3")] # s "acid92"
+
+d4 $ stack [
+  (n "~ f ~@2"),
+  (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+  (pressBy (slow 16 $ (run 16)/16) $ n "~ c ~@2")] # s "acid92"
+
+d5 $ stack [
+  (n "~@2 g ~"),
+  (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+  (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d ~")] # s "acid92"
+
+d6 $ stack [
+  (n "~@3 a"),
+  (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c"),
+  (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e")] # s "acid92"
+
+
+-- allll together now
+d3 $ sometimes (ghost) $ stack [
+    (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c ~@2"),
+    (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d ~"),
+    (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e")
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 3000 sine) # gain 0.9 # distort (range 0 (slow 16 $ range 0 0.3 saw) rand) # pan (range 0.3 0.7 rand)
+
+
+-- 4 notes, slight gap as nothing moves at 32
+d3 $ sometimes (ghost) $ stack [
+    (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
+    -- (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
+    -- (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
+    -- (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6")
+    -- (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7")
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 3000 sine) # gain 0.85 # distort (range 0 (slow 16 $ range 0 0.3 saw) rand) # pan (range 0.3 0.7 rand)
+
+
+-- 4 notes, slight gap as nothing stays the same, gives a it a little swing
+d3 $ sometimes (ghost) $ stack [
+    -- (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    -- (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    -- (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    -- (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7")
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 3000 sine) # gain 0.85 # distort (range 0 (slow 16 $ range 0 0.3 saw) rand) # pan (range 0.3 0.7 rand)
+
+
+-- 5 notes, fills the 32 bar pattern
+d3 $ sometimes (ghost) $ stack [
+    (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7")
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 3000 sine) # gain 0.85 # distort (range 0 (slow 16 $ range 0 0.3 saw) rand) # pan (range 0.3 0.7 rand)
+
+
+-- 64 bars with 8 notes, anchoring first note, one gap at end (64)
+d3 $ sometimes (ghost) $ stack [
+    (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "b6 ~@3"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "e7 ~@3"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "g7 ~@3"),
+    (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~ c7 ~@2"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~ f7 ~@2"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "~ a7 ~@2"),
+    (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~@2 d7 ~"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~@2 g7 ~"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "~@2 b7 ~"),
+    (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~@3 e7"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~@3 a7"),
+    (pressBy (slow 65 $ (run 56)/56) $ n "~@3 c8")
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 5000 sine) # gain (slow 16 $ range 0.87 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (range 0.3 0.7 rand) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
+
+
+-- f w effects
+  -- can play with tremolorate to get kolsch like effect
+  --
+
+
+resetCycles
+
+d1 $ s "XORE_kicks*4" # n 0 # gain 1.1
+
+
+d2 $ fast 4 $ n "~ <e f g a e*2 f*2 g*2 a*2>" # octave 3 # s "warsawbass" # room 0.6 # size 0.2 # gain 1.12 # sustain "<<0.2 0.1>@4 0.08@4>" # triode 4 # cutoff (slow 16 $ range 800 1500 sine)
+d2 silence
+
+d2 $ stack [
+    (slow 8 $ s "FOOD_808s" # n 9), -- A
+    (slow 8 $ slice "2@6 3 16" "~@4 0 1 2 [~ 9]*4" $ s "FOOD_808s" # n 3) -- E
+  ] # room 0.1 # cutoff 2000
+
+  d2 $ chop 64 $ slow 4 $ s "techno_textures" # n 5
+  d2 $ chop 64 $ loopAt 4 $ s "techno_textures" # n 9 # room 0.2
+
+  d9 $ swingBy (1/6) 3 $ n "<[a a ~ a a a a*2 e]*4@4 [e e ~ e e e e*2 a]*4@4>" # octave 3 # s "acid91" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 8000 3000 sine) # resonance (slow 4 $ range 0.1 0 sine) # room 0.1 # size 0.2 # gain 0.92
+  -- b 30s
+  d2 $ swingBy (1/6) 3 $ n "<[a*2 a ~ a <a ~> a a*2 e]*4@4 [e*2 e ~ e <e ~> e e*2 a]*4@4>" # octave 3 # s "tb3" # sustain 0.15
+
+  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff 3000 # gain 1.1
+
+
+
+d4 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats techno_hats [techno_hats*2 ~] techno_hats" # n 8 # gain 0.9
+d4 $ sometimes (ghost) $ s "techno_hats*16" # n 8 # gain "[0.55 0.8]*4"
+xfadeIn 4 2 $ sometimes (ghost) $ s "techno_hats*16" # n 8 # gain "[0.55 0.8]*4" # cutoff 8000
+d4 silence
+
+
+d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 12
+d5 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.9
+
+
+d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n 0 # gain 0.85
+d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n "<5 4>" # gain 0.85
+d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n "[11@2 10 <[11 10]*8 [11 10]*16>]/16" # gain 0.85
+
+
+d7 $ chop 8 $ loopAt 8 $ s "<~ ~ ~ risers>" # n 1 # cutoff 4000 # room 0.2 # gain 0.9
+d7 silence
+
+  d8 $ loopAt 8 $ rev $ gap 64 $ s "<risers ~ ~ ~>" # n 1 # cutoff 3000 # room 0.1 # gain 0.9
+  d8 $ loopAt 8 $ rev $ gap 64 $ gap 384 $ s "<risers ~ ~ ~>" # n 1 # cutoff 3000 # room 0.1 # gain 0.9
+  d8 silence
+
+
+
+
+
+
+do
+  d1 silence
+  d4 silence
+
+
+
+-- xfadeIn 4 2 $ sometimes (ghost) $ s "techno_hats*16" # n 8 # gain "[0.55 0.8]*4"
+d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n "[11@2 10 <[11 10]*8 [11 10]*16>]/16" # gain 0.85
+
+xfadeIn 2 24 silence
+
+d5 silence
+xfadeIn 5 8 $ (0.25 ~>) $ s "sn*8" # n 3 # gain 0.7
+xfadeIn 5 8 $ (0.25 ~>) $ s "sn*16" # n 3 # gain 0.9
+
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 0 # gain 1.1
+  -- d2 $ stack [
+  --     (slow 8 $ s "FOOD_808s" # n 9), -- A
+  --     (slow 8 $ slice "2@6 3 16" "~@4 0 1 2 [~ 9]*4" $ s "FOOD_808s" # n 3) -- E
+  --   ] # room 0.1 # cutoff 2000
+  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff (range 3000 5000 rand) # gain 1.1
+  d4 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats techno_hats [techno_hats*2 ~] techno_hats" # n 8 # gain 0.9
+  -- d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 12 # gain 0.95
+  d5 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.9
+
+
+
+
+
+
+
+
+
+--

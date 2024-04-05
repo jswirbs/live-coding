@@ -1,0 +1,155 @@
+-- phonky perc + umru chord chops
+
+bpm 140
+
+
+
+do
+  hush
+  resetCycles
+  -- food synth stretch c
+  d1 $ s "FOOD_one_shots" # n 26
+  jumpIn 1 1 silence
+  -- into chops of it as its fading away (1 2 3 1 2 3 ...)
+  xfadeIn 2 8 $ fast 2 $ slice 64 "30 30 30 ~" $ s "FOOD_one_shots" # n 26
+
+
+
+xfadeIn 2 4 $ fast 2 $ slice 64 "30 30 30 ~" $ s "FOOD_one_shots" # n 26
+d2 $ fast 4 $ slice 128 "20 20 20 ~" $ s "FOOD_one_shots" # n 26
+d2 silence
+
+
+kick cuts in
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+
+
+phonky perc
+
+d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] [~@3 UMRU_percussion_misc] ~" # gain 0.82 # cutoff (slow 16 $ range (range 500 1200 rand) (range 7000 9000 rand) sine) # resonance (fast 1.5 $ range 0.18 0 sine)
+d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] ~ UMRU_percussion_misc" # n 9
+d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] ~ UMRU_percussion_misc" # n 16
+d3 silence
+
+d4 $ s "[~ snares]*2" # n 8
+d4 $ s "[~ sn]*2" # n 2
+d4 $ s "[~ UMRU_snares]*2" # n 2 # cutoff (slow 8 $ range 10000 6000 sine)
+
+
+
+
+d5 $ chop 16 $ slow 8 $ s "UMRU_chord_loops" # n 10
+d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
+d5 $ chop "16 8" $ slow 8 $ s "UMRU_chord_loops" # n 10
+d5 silence
+
+
+
+d6 $ rarely (rev) $ striate 8 $ slow 4 $ n "c c" # octave 5 # s "moogbass" # distort (slow 2 $ range 0.8 2 sine) # cutoff (slow 3 $ range 500 2000 sine) # gain 0.7
+d6 $ slice 64 "0" $ s "UMRU_chord_loops" # n 24
+d6 $ slice 64 "<0 3 8 10>" $ s "UMRU_chord_loops" # n 24 # room 0.1 # hcutoff 100
+d6 $ slice 64 "<0 3 8 10>" $ s "UMRU_chord_loops" # n 24 # room 0.1 # distort 0.2
+d6 $ slow 32 $ gap 512 $ s "UMRU_chord_loops" # n 24 # room 0.1 # distort 0.2
+
+d6 $ slice 64 "[0*16 16*16 32*16 48*16]/8" $ s "UMRU_chord_loops" # n 10 # cutoff (slow 8 $ range 800 1200 sine) # distort 0.18 # room (slow 4 $ range 0 "<0.1 0.2>" sine)
+
+
+
+d7 $ chop 32 $ loopAt 16 $ s "UMRU_fx_atmospheric*2" # n 5 # cutoff 2000 # room 0.2 # gain 0.9
+d7 $ randslice 8 $ s "XORE_ambient" # n 23 # gain 1.1
+d7 $ randslice 8 $ s "XORE_ambient" # n "[26 28]/8" # gain 0.95 # room 0.4 # size 0.9
+d7 silence
+
+
+
+d8 $ s "[~ acid92]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.2 # cutoff (range 1800 2200 perlin)
+-- d8 $ swingBy (1/6) 4 $ s "[~ acid92*2]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.2 # cutoff (range 1800 2200 perlin)
+d8 silence
+d9 $ s "[~ warsawbass]*4" # n "[a c6 b [b bs]]/8" # octave 2 # room 0.3 # cutoff (range 1800 2200 perlin) # sustain 0.2
+
+
+
+-- ending -- fade frome first lowwwww --> second highhh and kinda roomyyyy --? back to low but extra roomy
+d5 $ chop 16 $ loopAt 8 $ s "UMRU_chord_loops" # n 10 # cutoff 100 # room 0.2 # size 0.0
+
+  --
+  d5 $ chop 16 $ loopAt 8 $ s "UMRU_chord_loops" # n 10 # cutoff 100 # room 0.2 # size 0.0
+  d5 $ chop 16 $ loopAt 8 $ s "UMRU_chord_loops" # n 10 # cutoff 9000 # room 0.8 # size 0.8
+  d5 $ chop 16 $ loopAt 8 $ s "UMRU_chord_loops" # n 10 # cutoff 100 # room 0.9 # size 0.99
+  --
+
+do
+  xfadeIn 1 24 silence
+  xfadeIn 2 24 silence
+  xfadeIn 3 24 silence
+  xfadeIn 4 24 silence
+  xfadeIn 6 24 silence
+
+do
+  xfadeIn 8 16 silence
+  xfadeIn 9 16 $ n "[a c6 b [b bs]]/8" # s "warsawbass" # octave 2 # room 0.3 # cutoff (range 1000 1200 perlin)
+
+
+do
+  xfadeIn 7 16 silence
+  xfadeIn 9 16 silence
+
+
+
+
+
+
+
+-- dj daddy trance esque baseline
+
+bpm 148
+
+d1 $ s "XORE_kicks*4" # n 10 # gain 1.1
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 $ s "SOPHIE_kicks_dry*4" # n 16 # gain 1.1
+d1 $ s "SOPHIE_kicks_dry*4" # n 14 # gain 1.1
+
+
+
+d2 $ (0.125 ~>) $ arp "down" $ n "c3'min7" # s "subbass" # room 0.3 # size 0.7 # distort 0.05
+d2 $ (0.125 ~>) $ arp "down" $ n "c3'min7" # s "default" # room 0.4 # size 0.6 # distort 0.05 # cutoff 1000 # sustain 0.22
+d2 $ (0.125 ~>) $ arp "down" $ n "c3'min7" # s "default" # room 0.4 # size 0.6 # distort 0.07 # cutoff 1200 # crush 5 # sustain 0.2
+
+d2 $ (0.125 ~>) $ arp "down" $ n "c3'min7" # s "default" # room 0.4 # size 0.6 # distort 0.05 # cutoff 1000 # sustain 0.22
+d2 $ (0.125 ~>) $ arp "down" $ n "bf g ef c" # octave 3 # s "default" # room 0.4 # size 0.6 # distort 0.05 # cutoff 1000 # sustain 0.22
+d2 $ (0.125 ~>) $ n "<bf bf bf bf c6 c6 c6 c6> g ef [c <~ <c ef>>]" # octave 3 # s "default" # gain 1.1 # room 0.5 # size 0.6 # distort 0.05 # cutoff 1000 # sustain "0.22@3 <0.22 0.15>"
+
+
+d4 $ (0.125 ~>) $ slow 1 $ n "c3'min7" # octave 3 # s "arpoctave" # gain 0.9 # room 0.3 # size 0 # cutoff 1200
+
+
+d3 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 6000 # gain 0.9
+d3 $ (0.125 ~>) $ s "techno_hats*4" # n 4 # cutoff 5000
+d3 $ (0.25 ~>) $ s "FOOD_claps*2" # n 7
+d3 $ (0.125 ~>) $ s "SOPHIE_claps*4" # n "<5 5 5 5 6 6 6 6>"
+d3 $ (0.125 ~>) $ s "SOPHIE_claps*4" # n 12
+d3 $ (0.125 ~>) $ s "SOPHIE_hihats*4" # n 2 # gain 0.8
+d3 silence
+
+
+d4 $ fast 2 $ swingBy (1/6) 2 $ n "c c c ~" # s "moogbass" # sustain 0.1
+d4 $ fast 4 $ swingBy (1/6) 2 $ n "c'min7 c'min7 c'min7" # s "moogbass" # octave 6 # sustain 0.08 # cutoff 1000 # distort 0.05 # resonance 0.1
+d4 $ fast 4 $ swingBy (1/6) 2 $ n "c c c" # s "acid91" # octave 7 # sustain 0.08 # gain 0.8
+d4 $ fast 2 $ swingBy (1/6) 2 $ n "c c c" # s "supersaw" # octave 6 # sustain 0.08 # gain 0.8
+d4 silence
+
+d4 $ fast 2 $ n "c*4" # s "acid91" # octave 6 # sustain 0.08 # gain 0.8 # room (slow 16 $ range 0.1 0 sine) # cutoff (slow 16 $ range 500 4000 sine) # resonance (slow 8 $ range 0 0.3 sine)
+
+
+d5 $ rarely (rev) $ striate 8 $ slow 4 $ n "c'min7*2 [c6, g, ef]*2" # octave 6 # s "moogbass" # distort (slow 2 $ range 0.8 2 sine) # cutoff (slow 3 $ range 500 2000 sine) # gain 0.7
+d5 silence
+
+
+
+d5 $ chop 64 $ loopAt 64 $ s "EG_lights" # n 7
+d5 $ chop 64 $ gap 64 $ s "EG_lights" # n 7
+d5 $ swingBy (1/6) 2 $ gap 16 $ slice 64 "<0 1 2 3>" $ s "EG_lights" # n 7
+d5 silence
+
+--

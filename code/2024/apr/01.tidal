@@ -1,0 +1,35 @@
+bpm 150
+
+
+d1 $ s "techno_kicks*4"
+
+d2 $ chop 16 $ loopAt 16 $ s "misc_vocals" # n 3
+d2 $ loopAt 16 $ gap 256 $ s "misc_vocals" # n 3
+d2 $ loopAt 16 $ gap 512 $ s "misc_vocals" # n 3
+
+d3 $ chop 16 $ loopAt 16 $ s "misc_vocals" # n 2
+d3 silence
+
+d4 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 9
+d4 $ (0.125 ~>) $ s "techno_hats*4" # n 6 # gain 0.9
+d4 silence
+
+d5 $ slow 2 $ s "techno_textures" # n 1 # speed 0.9375
+
+
+
+
+bpm 140
+
+d1 $ s "techno_kicks*4" # n 2 # gain 1.1
+
+d4 $ (0.125 ~>) $ fast 4 $ every 4 (ghost) $ s "techno_hats" # n 7 # gain 0.9
+
+
+
+d5 $ (0.25 <~) $ chop 8 $ loopAt 2 $ s "techno_textures" # n 4 # hcutoff 1000 # room 0.2
+d5 $ (0.25 <~) $ chop 8 $ loopAt 2 $ s "techno_textures" # n 4 # cutoffbus 1 (slow 4 $ range 1000 6000 sine) # roombus 2 (slow 3 $ range 0.05 0.3 sine)
+d5 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 3
+
+d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 5
+d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 8
