@@ -1,0 +1,152 @@
+bpm 100
+
+
+
+do
+  resetCycles
+  d3 $ (4 <~) $ chop 32 $ loopAt 32 $ s "KYLE_words" -- guitar chords
+  d4 $ (4 <~) $ chop 32 $ loopAt 32 $ s "KYLE_words" # n 1 # room 0.15 -- vocals
+
+
+d4 $ (4 <~) $ chop 16 $ loopAt 16 $ stack [
+    (s "KYLE_words" # n 2),
+    (s "KYLE_words" # n 3),
+    (s "KYLE_words" # n 4 # gain 0.9),
+  ] # room 0.15 -- vocals
+
+
+
+d10 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain 0.85
+
+do
+  d1 $ s "XORE_kicks*4" # n 4 # gain 1 # cutoff 1000
+  d2 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9
+
+
+
+
+
+do -- gs c cs
+  d5 $ slow 2 $ n (off "0" (+7) $ "<e3>") # s "moogbass" # cutoff (slow 7 $ range 1800 2300 sine) # room 0.57 # size 0.9 # gain 0.75
+  d6 $ slow 2 $ n (off "0" (+7) $ "~ [gs*4 a*4]") # s "moogbass" # cutoff (slow 7 $ range 1800 2300 sine) # hcutoff 500 # room 0.57 # size 0.9 # gain 0.7 # tremolodepth 0.8 # tremoloratebus 1 (fast 2 $ range 16 1 saw)
+
+
+
+
+
+
+  -- d8 $ rarely (ghost) $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "e3" # distort (range 0.1 0.2 rand) # room 0.4 # gain 1.1
+  d8 $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "e" # octave 3 # distort 0 # room 0.4 # gain 1.12
+  d8 $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "a gs e@2" # octave 3 # distort 0 # room 0.4 # gain 1.12
+
+
+  d8 $ slow 2 $ n "[e fs gs a]*2 [cs6 b a <gs b>]*2" # s "warsawbass" # octave 3 # distort 0 # room 0.4 # gain 1
+  d8 $ slow 2 $ n "[e fs gs a]*2 [cs6 b a <gs b>]*2" # s "basslow" # octave 2 # distort 0 # room 0 # gain 1.05 # cutoff 1300 # sustain 0.25 # release 0.4
+  --
+
+
+
+d9 $ sometimes (ghost) $ fast 2 $ n "<a b a e6> gs <a a e e> gs" # s "acid92" # room (slow 8 $ range 0.05 0.15 sine) # gain 0.9
+d9 $ ghost $ fast 2 $ n "<a b a e6> <gs@3 a> <a@2 e@2> gs" # s "acid92" # room (slow 8 $ range 0.05 0.15 sine) # gain 0.9
+d9 silence
+
+
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 4 # gain 1 # cutoff 1000
+  xfadeIn 1 7 $ s "XORE_kicks*4" # n 4 # gain 0.85 # cutoff 500
+  xfadeIn 2 7 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9 # cutoff 4000
+  d8 silence
+  d8 $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "e" # octave 3 # distort 0 # room 0.4 # gain 1.12
+  d9 $ ghost $ fast 2 $ n "<a b a e6> gs <a a e e> gs" # s "acid92" # room (slow 8 $ range 0.4 0.6 sine) # size 0.8 # gain 0.9 # cutoff 800
+  xfadeIn 9 16 silence
+  d10 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain 1 # cutoff 4000 # room 0.2
+  xfadeIn 10 7 silence
+  d11 silence
+
+
+
+
+xfadeIn 10 1 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain "0.87" # orbit 9 # cutoff "4000"
+
+do
+  -- xfadeIn 1 1 $ s "XORE_kicks*4" # n 4 # gain 1 # cutoff 1000
+  -- xfadeIn 2 1 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9
+  -- -- xfadeIn 2 2 silence
+  -- xfadeIn 10 1 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain 0.85 # orbit 9
+  d1 $ s "XORE_kicks*4" # n 4 # gain "0.83 0.85 0.9 0.97" # cutoff "600 700 800 1000"
+  -- d2 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9 # cutoff "500 800 1600 4000"
+  xfadeIn 2 1 silence
+  d10 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain "0.88 0.9 0.94 1" # orbit 9 # cutoff "4500 6000 8000 12000"
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 4 # gain 1 # cutoff 1000
+  d2 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9
+  d8 $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "a gs e@2" # octave 3 # distort 0 # room 0.4 # gain 1.12
+  d9 $ sometimes (ghost) $ fast 2 $ n "<a b a e6> gs <a a e e> gs" # s "acid92" # room (slow 8 $ range 0.05 0.15 sine) # gain 0.9
+  d10 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain 0.85
+
+
+
+
+do
+  d2 silence
+  d6 $ slow 2 $ n (off "0" (+7) $ "~ [gs*4 a*4]") # s "moogbass" # cutoff (slow 7 $ range 1800 2300 sine) # hcutoff 500 # room 0.57 # size 0.9 # gain 0.7 # tremolodepth 0.8 # tremoloratebus 1 (fast 2 $ range 16 1 saw)
+  d11 $ rarely (ghost) $ s "~ ~ [~ default] default*2" # n (choose[4, 4, 8, 9]) # distort (range 0.1 0.2 rand)
+
+  d2 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9
+
+
+d11 silence
+
+
+
+
+
+
+do
+  d1 $ s "XORE_kicks*4" # n 4 # gain 1 # cutoff 1000
+  xfadeIn 1 7 $ s "XORE_kicks*4" # n 4 # gain 0.85 # cutoff 500
+  xfadeIn 2 7 $ (0.25 ~>) $ s "sn*2" # n 1 # gain 0.9 # cutoff 4000
+  d6 silence
+  d8 $ s "[~ <~ warsawbass>] [~ <~ warsawbass>] [~ warsawbass*2] warsawbass*2" # n "e" # octave 3 # distort 0 # room 0.4 # gain 1.12
+  d9 $ ghost $ fast 2 $ n "<a b a e6> gs <a a e e> gs" # s "acid92" # room (slow 8 $ range 0.4 0.6 sine) # size 0.8 # gain 0.9 # cutoff 800
+  xfadeIn 9 16 silence
+  d10 $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain 1 # cutoff 4000 # room 0.2
+  xfadeIn 10 7 silence
+  d11 silence
+  d4 $ (4 <~) $ chop 16 $ loopAt 16 $ stack [ -- verse 2
+      (s "KYLE_words" # n 2),
+      (s "KYLE_words" # n 3 # gain 0.95),
+      (s "KYLE_words" # n 4 # gain 0.9)
+    ] # room 0.15 -- vocals
+
+
+
+  d4 $ slice 32 "<24 25 26 27>" $ loopAt 32 $ s "KYLE_words" # n 1 # room 0.15 -- vocals
+  d4 $ slice 32 "<28 29 30 31>" $ loopAt 32 $ s "KYLE_words" # n 1 # room 0.15 -- vocals
+
+d4 silence
+
+
+
+
+d4 $ gap 32 $ slice 32 "<24 25 26 27>" $ loopAt 32 $ s "KYLE_words" # n 1 # room 0.15 -- vocals
+d4 $ palindrome $ chop 8 $ slice 32 "<24 25 26 27>" $ loopAt 32 $ s "KYLE_words" # n 1 # room 0.25 # squiz 2 # cutoff 2000
+
+
+
+do
+  solo 6
+  solo 8
+
+
+
+  do
+    hush
+    unsolo 6
+    unsolo 8
+
+--

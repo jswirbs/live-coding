@@ -1,3 +1,37 @@
+-- bloopy rising chords
+
+bpm 150
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 18
+
+d3 $ ghost $ n ("[e'min e'min e'min ~]*4" + "0 2 3 5") # s "acid92"
+d3 $ n ("[e'min e'min e'min ~]*4" + "0 2 3 5") # s "acid92"
+
+
+d3 $ swingBy (1/16) 4 $ n ("[e e e ~]*4" + "0") # s "acid92"
+d3 $ swingBy (1/12) 4 $ n ("[e e e]*4" + "0") # s "acid92"
+
+
+d3 $ ghost $ n (off 0 (+12) $ "[e e e ~]*4" + "0 2 3 5") # s "acid92"
+
+
+d1 silence
+d3 $ ghost $ n (off (0.125) (+12) $ "[e e e ~]*4" + "0 2 3 5") # s "acid92"
+d3 $ ghost $ ghost $ n (off (0.125) (+12) $ off (0.375) (+5) $ "[e e e ~]*4" + "0 2 3 5") # s "acid92"
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 18
+  d3 $ n "[e'min*3@3 ~ f'maj*3@3 ~ g'maj*3@3 ~ a'min*3@3 ~]" # s "acid92"
+
+do
+  d3 $ ghost $ n "[e'min*3@3 ~ f'maj*3@3 ~ g'maj*3@3 ~ a'min*3@3 ~]" # s "acid92"
+  d4 $ (0.125 ~>) $ s "techno_hats*4" # n 3
+
+
+
+
 -- poly rhythm w rising chords
 
 bpm 140
@@ -56,22 +90,22 @@ d3 $ sometimes (ghost) $ stack [
     (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
     (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
     (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
-    -- (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
     (n "~ f ~@2"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
     (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
-    -- (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
     (n "~@2 g ~"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
     (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
-    -- (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
     (n "~@3 a"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
-    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6")
-    -- (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7")
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7")
   ] # s "basslow" # cutoff (slow 16 $ range 1300 3000 sine) # gain 0.85 # distort (range 0 (slow 16 $ range 0 0.3 saw) rand) # pan (range 0.3 0.7 rand)
 
 
@@ -127,7 +161,7 @@ d3 $ sometimes (ghost) $ stack [
 
 -- 64 bars with 8 notes, anchoring first note, one gap at end (64)
 d3 $ sometimes (ghost) $ stack [
-    (n "e ~@3"),
+    -- (n "e ~@3"),
     (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
     (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
     (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
@@ -135,7 +169,8 @@ d3 $ sometimes (ghost) $ stack [
     (pressBy (slow 40 $ (run 40)/40) $ n "b6 ~@3"),
     (pressBy (slow 48 $ (run 48)/48) $ n "e7 ~@3"),
     (pressBy (slow 56 $ (run 56)/56) $ n "g7 ~@3"),
-    (n "~ f ~@2"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "b7 ~@3"),
+    -- (n "~ f ~@2"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
     (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
@@ -143,7 +178,8 @@ d3 $ sometimes (ghost) $ stack [
     (pressBy (slow 40 $ (run 40)/40) $ n "~ c7 ~@2"),
     (pressBy (slow 48 $ (run 48)/48) $ n "~ f7 ~@2"),
     (pressBy (slow 56 $ (run 56)/56) $ n "~ a7 ~@2"),
-    (n "~@2 g ~"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~ c8 ~@2"),
+    -- (n "~@2 g ~"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
     (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
@@ -151,20 +187,23 @@ d3 $ sometimes (ghost) $ stack [
     (pressBy (slow 40 $ (run 40)/40) $ n "~@2 d7 ~"),
     (pressBy (slow 48 $ (run 48)/48) $ n "~@2 g7 ~"),
     (pressBy (slow 56 $ (run 56)/56) $ n "~@2 b7 ~"),
-    (n "~@3 a"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~@2 d8 ~"),
+    -- (n "~@3 a"),
     (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
     (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
     (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
     (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7"),
     (pressBy (slow 40 $ (run 40)/40) $ n "~@3 e7"),
     (pressBy (slow 48 $ (run 48)/48) $ n "~@3 a7"),
-    (pressBy (slow 65 $ (run 56)/56) $ n "~@3 c8")
+    (pressBy (slow 56 $ (run 56)/56) $ n "~@3 c8")
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~@3 e8")
   ] # s "basslow" # cutoff (slow 16 $ range 1300 5000 sine) # gain (slow 16 $ range 0.87 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (range 0.3 0.7 rand) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
 
 
 -- f w effects
   -- can play with tremolorate to get kolsch like effect
-  --
+  -- can mute certain notes in the stack to glitch/stutter it up
+    --- remove first anchor notes to get a little swing
 
 
 resetCycles
@@ -183,11 +222,12 @@ d2 $ stack [
   d2 $ chop 64 $ slow 4 $ s "techno_textures" # n 5
   d2 $ chop 64 $ loopAt 4 $ s "techno_textures" # n 9 # room 0.2
 
-  d9 $ swingBy (1/6) 3 $ n "<[a a ~ a a a a*2 e]*4@4 [e e ~ e e e e*2 a]*4@4>" # octave 3 # s "acid91" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 8000 3000 sine) # resonance (slow 4 $ range 0.1 0 sine) # room 0.1 # size 0.2 # gain 0.92
+  d2 $ swingBy (1/6) 3 $ n "<[a a ~ a a a a*2 e]*4@4 [e e ~ e e e e*2 a]*4@4>" # octave 3 # s "acid91" # distort (slow 8 $ range 0.2 0.4 saw) # cutoff (slow 4 $ range 8000 3000 sine) # resonance (slow 4 $ range 0.1 0 sine) # room 0.1 # size 0.2 # gain 0.92
   -- b 30s
   d2 $ swingBy (1/6) 3 $ n "<[a*2 a ~ a <a ~> a a*2 e]*4@4 [e*2 e ~ e <e ~> e e*2 a]*4@4>" # octave 3 # s "tb3" # sustain 0.15
 
-  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff 3000 # gain 1.1
+  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff 3000 # gain 1.05
+  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff 1000 # gain 1 -- come in muted at first
 
 
 
@@ -206,7 +246,7 @@ d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2"
 d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n "[11@2 10 <[11 10]*8 [11 10]*16>]/16" # gain 0.85
 
 
-d7 $ chop 8 $ loopAt 8 $ s "<~ ~ ~ risers>" # n 1 # cutoff 4000 # room 0.2 # gain 0.9
+d7 $ chop 8 $ loopAt 8 $ s "<~ ~ ~ risers>" # n 1 # cutoff 3300 # room 0.5 # size 0.9918 # gain 0.8
 d7 silence
 
   d8 $ loopAt 8 $ rev $ gap 64 $ s "<risers ~ ~ ~>" # n 1 # cutoff 3000 # room 0.1 # gain 0.9
@@ -230,9 +270,11 @@ d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2"
 xfadeIn 2 24 silence
 
 d5 silence
-xfadeIn 5 8 $ (0.25 ~>) $ s "sn*8" # n 3 # gain 0.7
-xfadeIn 5 8 $ (0.25 ~>) $ s "sn*16" # n 3 # gain 0.9
+xfadeIn 5 8 $ s "sn*8" # n 3 # gain 0.7
+xfadeIn 5 8 $ s "sn*16" # n 3 # gain 0.9 # djf (slow 8 $ range 0.4 1 saw)
 
+
+d4 $ (0.125 ~>) $ s "~ ~ [techno_hats*2 ~] techno_hats" # n 6 # gain 0.9
 
 
 do
@@ -241,10 +283,12 @@ do
   --     (slow 8 $ s "FOOD_808s" # n 9), -- A
   --     (slow 8 $ slice "2@6 3 16" "~@4 0 1 2 [~ 9]*4" $ s "FOOD_808s" # n 3) -- E
   --   ] # room 0.1 # cutoff 2000
-  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff (range 3000 5000 rand) # gain 1.1
-  d4 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats techno_hats [techno_hats*2 ~] techno_hats" # n 8 # gain 0.9
+  d2 $ chop 2 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff (range 3000 5000 rand) # gain 1.05
+  d4 $ sometimes (ghost) $ (0.125 ~>) $ s "techno_hats techno_hats [techno_hats*2 ~] techno_hats" # n 6 # gain 0.88
   -- d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 12 # gain 0.95
   d5 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.9
+  d8 $ s "sn*16" # n 3 # gain 0.9 # djf 1.05
+  xfadeIn 8 3 silence
 
 
 

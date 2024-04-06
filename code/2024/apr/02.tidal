@@ -20,53 +20,71 @@ d2 $ fast 4 $ slice 128 "20 20 20 ~" $ s "FOOD_one_shots" # n 26
 d2 silence
 
 
-kick cuts in
-
+-- kick cuts in
 d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
 
 
-phonky perc
 
-d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] [~@3 UMRU_percussion_misc] ~" # gain 0.82 # cutoff (slow 16 $ range (range 500 1200 rand) (range 7000 9000 rand) sine) # resonance (fast 1.5 $ range 0.18 0 sine)
-d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] ~ UMRU_percussion_misc" # n 9
-d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] ~ UMRU_percussion_misc" # n 16
-d3 silence
-
-d4 $ s "[~ snares]*2" # n 8
-d4 $ s "[~ sn]*2" # n 2
+-- snare pls
+d4 $ s "[~ UMRU_snares]*2" # n 19 # cutoff (slow 8 $ range 10000 6000 sine) # speed 1.1 # gain 0.8
 d4 $ s "[~ UMRU_snares]*2" # n 2 # cutoff (slow 8 $ range 10000 6000 sine)
+d4 $ s "[~ snares]*2" # n 5 # room 0.01
+
+
+
+-- phonky perc
+d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] [~@3 UMRU_percussion_misc] ~" # gain 0.82 # cutoff (slow 16 $ range (range 500 1200 rand) (range 7000 9000 rand) sine) # resonance (fast 1.5 $ range 0.18 0 sine)
+
+d3 $ stack [
+    (s "~ [UMRU_percussion_misc] [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8),
+    (slow 4 $ s "~@14 [~ UMRU_percussion_misc] ~" # n 6 # cutoff "<5000 2500>" # room "<0.1 0.5>" # size "<0.2 0.85>")
+  ]
 
 
 
 
-d5 $ chop 16 $ slow 8 $ s "UMRU_chord_loops" # n 10
-d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
-d5 $ chop "16 8" $ slow 8 $ s "UMRU_chord_loops" # n 10
-d5 silence
 
+
+do
+  d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 200 # room 0.5 # size 0.2
+  xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 1000 # room 0.4 # size 0.1
+
+xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 2500 # room 0.2 # size 0.05
+xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 5000 # room 0.1 # size 0
+xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
+
+  --
+  d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
+  d5 $ chop "16 8" $ slow 8 $ s "UMRU_chord_loops" # n 10
+  d5 silence
+  --
 
 
 d6 $ rarely (rev) $ striate 8 $ slow 4 $ n "c c" # octave 5 # s "moogbass" # distort (slow 2 $ range 0.8 2 sine) # cutoff (slow 3 $ range 500 2000 sine) # gain 0.7
 d6 $ slice 64 "0" $ s "UMRU_chord_loops" # n 24
 d6 $ slice 64 "<0 3 8 10>" $ s "UMRU_chord_loops" # n 24 # room 0.1 # hcutoff 100
-d6 $ slice 64 "<0 3 8 10>" $ s "UMRU_chord_loops" # n 24 # room 0.1 # distort 0.2
-d6 $ slow 32 $ gap 512 $ s "UMRU_chord_loops" # n 24 # room 0.1 # distort 0.2
+d6 $ slice 64 "<0 3 8 10>" $ s "UMRU_chord_loops" # n 24 # room 0.2 # distort 0.25 # hcutoff 500 # gain "<0.8 1.1 0.75 1.2>"
 
-d6 $ slice 64 "[0*16 16*16 32*16 48*16]/8" $ s "UMRU_chord_loops" # n 10 # cutoff (slow 8 $ range 800 1200 sine) # distort 0.18 # room (slow 4 $ range 0 "<0.1 0.2>" sine)
-
-
-
-d7 $ chop 32 $ loopAt 16 $ s "UMRU_fx_atmospheric*2" # n 5 # cutoff 2000 # room 0.2 # gain 0.9
-d7 $ randslice 8 $ s "XORE_ambient" # n 23 # gain 1.1
-d7 $ randslice 8 $ s "XORE_ambient" # n "[26 28]/8" # gain 0.95 # room 0.4 # size 0.9
-d7 silence
+xfadeIn 6 8 $ slow 32 $ gap 512 $ s "UMRU_chord_loops" # n 24 # room 0.1 # distort 0.2
 
 
 
-d8 $ s "[~ acid92]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.2 # cutoff (range 1800 2200 perlin)
--- d8 $ swingBy (1/6) 4 $ s "[~ acid92*2]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.2 # cutoff (range 1800 2200 perlin)
-d8 silence
-d9 $ s "[~ warsawbass]*4" # n "[a c6 b [b bs]]/8" # octave 2 # room 0.3 # cutoff (range 1800 2200 perlin) # sustain 0.2
+
+do
+  -- d5 $ slice 64 "[0*16 16*16 32*16 48*16]/8" $ s "UMRU_chord_loops" # n 10 # cutoff (slow 8 $ range 800 1200 sine) # distort 0.18 # room (slow 4 $ range 0 "<0.1 0.2>" sine)
+  -- d5 $ sometimes (rev) $ slice 64 "[0*16 16*16 32*16 48*16]/8" $ s "UMRU_chord_loops" # n 10 # cutoff (slow 8 $ range 800 1200 sine) # distort 0.18 # room (slow 4 $ range 0 "<0.1 0.2>" sine)
+  d5 $ slice 64 "[0?*16 16?*16 32?*16 48?*16]/8" $ s "UMRU_chord_loops" # n 10 # cutoff (slow 8 $ range 800 1200 sine) # distort 0.18 # room (slow 4 $ range 0 "<0.1 0.2>" sine)
+  d6 silence
+  xfadeIn 7 16 $ randslice 8 $ s "XORE_ambient" # n "[26 28]/8" # gain 0.95 # room 0.4 # size 0.9
+
+
+
+
+do
+  d8 $ s "[~ acid92]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.1 # cutoff (range 1800 2200 perlin)
+  -- d8 $ swingBy (1/6) 4 $ s "[~ acid92*2]*4" # n "[a c6 b [b bs]]/8" # octave 3 # room 0.2 # cutoff (range 1800 2200 perlin)
+  -- d8  show silence
+  d9 $ s "[~ warsawbass]*4" # n "[a c6 b [b bs]]/8" # octave 2 # room 0.3 # cutoff (range 1800 2200 perlin) # sustain 0.2
 
 
 
@@ -137,6 +155,7 @@ d4 $ fast 2 $ swingBy (1/6) 2 $ n "c c c ~" # s "moogbass" # sustain 0.1
 d4 $ fast 4 $ swingBy (1/6) 2 $ n "c'min7 c'min7 c'min7" # s "moogbass" # octave 6 # sustain 0.08 # cutoff 1000 # distort 0.05 # resonance 0.1
 d4 $ fast 4 $ swingBy (1/6) 2 $ n "c c c" # s "acid91" # octave 7 # sustain 0.08 # gain 0.8
 d4 $ fast 2 $ swingBy (1/6) 2 $ n "c c c" # s "supersaw" # octave 6 # sustain 0.08 # gain 0.8
+d4 $ sometimes (ghost) $ fast 4 $ n "c c c ~" # s "acid91" # octave 6 # sustain 0.08 # gain 0.8 # room (slow 16 $ range 0.1 0 sine) # cutoff (slow 16 $ range 500 4000 sine) # resonance (slow 8 $ range 0 0.3 sine)
 d4 silence
 
 d4 $ fast 2 $ n "c*4" # s "acid91" # octave 6 # sustain 0.08 # gain 0.8 # room (slow 16 $ range 0.1 0 sine) # cutoff (slow 16 $ range 500 4000 sine) # resonance (slow 8 $ range 0 0.3 sine)
