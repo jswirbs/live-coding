@@ -11,7 +11,7 @@ do
   d1 $ s "FOOD_one_shots" # n 26
   jumpIn 1 1 silence
   -- into chops of it as its fading away (1 2 3 1 2 3 ...)
-  xfadeIn 2 8 $ fast 2 $ slice 64 "30 30 30 ~" $ s "FOOD_one_shots" # n 26
+  xfadeIn 2 8 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26
 
 
 
@@ -22,6 +22,11 @@ d2 silence
 
 -- kick cuts in
 d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 $ fast 2 $ s "SOPHIE_kicks_dry*3@3 ~" # n 1 # gain 1.1 # hcutoff 60
+
+d5 $ (0.0625 <~) $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 100
+d1 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.3
+
 
 
 
@@ -36,15 +41,51 @@ d4 $ s "[~ snares]*2" # n 5 # room 0.01
 d3 $ ((range "-0.02" 0.02 perlin) ~>) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc ~ ~] [~@3 UMRU_percussion_misc] ~" # gain 0.82 # cutoff (slow 16 $ range (range 500 1200 rand) (range 7000 9000 rand) sine) # resonance (fast 1.5 $ range 0.18 0 sine)
 
 d3 $ stack [
-    (s "~ [UMRU_percussion_misc] [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8),
+    (whenmod 4 3 (const $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] ~" # n 8) $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8),
     (slow 4 $ s "~@14 [~ UMRU_percussion_misc] ~" # n 6 # cutoff "<5000 2500>" # room "<0.1 0.5>" # size "<0.2 0.85>")
-  ]
+  ] # gain 0.9
+
+d3 silence
+
+
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.3
+  d2 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26 # hcutoff 300 # distort 0.15
+  d6 silence
+
+do
+  d2 $ fast 2 $ slice 64 "~ 30 ~ 30" $ s "FOOD_one_shots" # n 26 # hcutoff 400 # distort 0.25
+  d3 $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8 # gain 0.9
+  d4 silence
+
+do
+  d1 silence
+  d3 $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] ~" # n 8 # gain 0.9
+
+
+do
+  d1 $ fast 2 $ s "SOPHIE_kicks_dry*3@3 ~" # n 1 # gain 1.1 # hcutoff 60 # orbit 0
+  d2 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26
+  d3 $ stack [
+      (whenmod 4 3 (const $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] ~" # n 8) $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8),
+      (slow 4 $ s "~@14 [~ UMRU_percussion_misc] ~" # n 6 # cutoff "<5000 2500>" # room "<0.1 0.5>" # size "<0.2 0.85>")
+    ] # gain 0.9
+  d4 $ s "[~ UMRU_snares]*2" # n 19 # cutoff (slow 8 $ range 10000 6000 sine) # speed 1.1 # gain 0.8
+  d5 $ (0.0625 <~) $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 100
+  d6 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.15 # orbit 5
+
+
+  d7 $ s "soshats*16" # fshift (slow 3 $ range 0 "-300" sine) # sustain (choose[0.06,0.06,0.1])
+  d7 $ s "soshats*16" # fshift (slow 3 $ range 0 "-300" sine) # sustain (choose[0.06,0.06,0.1]) # cutoff 5000 # room 0.3
 
 
 
 
 
 
+-- mehhh
 do
   d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 200 # room 0.5 # size 0.2
   xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 1000 # room 0.4 # size 0.1
@@ -57,6 +98,12 @@ xfadeIn 5 8 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
   d5 $ chop "<16 8>" $ slow 8 $ s "UMRU_chord_loops" # n 10
   d5 $ chop "16 8" $ slow 8 $ s "UMRU_chord_loops" # n 10
   d5 silence
+  --
+
+  --
+  d5 $ (0.25 <~) $ chop 8 $ loopAt 2 $ s "techno_textures" # n 4 # hcutoff 1000 # room 0.2
+  d5 $ (0.25 <~) $ chop 8 $ loopAt 2 $ s "techno_textures" # n 4 # cutoffbus 1 (slow 4 $ range 1000 6000 sine) # roombus 2 (slow 3 $ range 0.05 0.3 sine)
+  d5 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 3
   --
 
 

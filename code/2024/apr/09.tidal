@@ -1,0 +1,91 @@
+bpm 140
+
+
+d1 $ s "XORE_kicks*4" # n 0
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 silence
+
+d2 $ fast 2 $ n "e e e ~" # s "default" # distort 0.1 # room 0.1 # sustain (slow 8 $ range 0.18 0.21 sine)
+d2 $ fast 2 $ n "e e e ~" # s "warsawbass" # distort 0.1 # room 0.1 # sustain (slow 8 $ range 0.18 0.21 sine)
+d2 $ fast 2 $ n "e e e ~" # s "moogbass" # octave "[5,6]" # distort 0.1 # room 0.1 # sustain (slow 8 $ range 0.18 0.21 sine)
+d2 silence
+
+d2 $ slow 2 $ n "e*12@6 f*2 d*2" # octave 3 # s "warsawbass" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.18 0.2 sine)
+d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.08 0.1 sine)
+
+-- b37
+d2 $ slow 2 $ n "e*12@6 f*2 d*2" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain 0.2
+d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.08 0.1 sine)
+
+
+
+
+d3 $ slow 2 $ n "[~@4 ~ e e e] ~" # s "default" # distort 0.08 # room 0.2
+d3 $ n "~@4 ~ e e e" # s "default" # distort 0.08 # room 0.2
+d3 $ fast 2 $ n "~ [f ~ d e]" # s "default" # distort 0.08 # room 0.2
+d3 $ fast 2 $ n "~ [f d ~ e]" # s "default" # distort 0.08 # room 0.2
+
+
+d3 $ fast 2 $ n "~ [f d ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
+d3 $ fast 2 $ n "~ [f ~ d e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
+d3 $ fast 2 $ n "~ [f ~ ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
+
+d3 silence
+
+
+
+
+d5 $ slow 2 $ s "~ SOPHIE_snares [~ SOPHIE_snares] ~ ~ SOPHIE_snares [~ SOPHIE_snares] SOPHIE_snares*2" # n 8
+d5 $ slow 2 $ s "~ sn <~ ~ ~ [~ sn]> <sn sn sn ~> ~ sn [~ sn] sn*2" # n 2 # gain 0.9
+d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares [~ snares] snares*2" # n 3 # gain 0.92
+d5 $ fast 2 $ s "~ sn" # n 2 # gain 0.9
+
+
+d6 $ s "techno_hats*16" # n 2 # gain 0.9
+d6 $ s "XORE_hats*16" # n 15 # gain 1.05
+d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8
+d6 silence
+
+
+d7 $ (1 ~>) $ chop 2 $ loopAt 2 $ s "techno_textures" # n 1 # fshift "-10"
+
+
+d8 $ (0.25 <~) $ slow 4 $ s "~ BABII_risers" # n 5 # room "0 0.2" # size "0 0.2"
+d8 $ (0.25 <~) $ slow 4 $ gap 64 $ s "~ BABII_risers" # n 5 # room "0 0.2" # size "0 0.2"
+d8 $ slow 2 $ loopAt 2 $ s "~ BABII_risers" # n 6
+d8 $ (0.12 ~>) $ slow 8 $ s "~@3 risers" # n 4
+
+d8 $ whenmod 8 6 (const $ slow 2 $ s "CXCX_samples*32" # n 3 # gain (range 0.2 1 saw) # hcutoff 600 # cutoff 4000) $ silence
+d8 $ whenmod 4 2 (const $ slow 2 $ slice 8 "[0*4 1*4 2*4 3*4 4*4 5*4 6*4 7*4]" $ s "ABBA_gimme" # gain "0.6 0.7 0.8 0.8 0.9 1 1.1") $ silence
+d8 $ whenmod 8 6 (const $ slow 2 $ slice 8 "4*32" $ s "ABBA_gimme" # gain "0.6 0.7 0.8 0.8 0.9 1 1.1 1.2" # cutoff 7000 # hcutoff 100 # fshift "-20") $ silence
+
+
+resetCycles
+
+
+
+
+
+
+do
+  d1 silence
+  d5 silence
+  d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8 # cutoff 5000
+  xfadeIn 6 8 silence
+
+  d6 $ s "UMRU_hihats*16" # n 1 # gain 0.8
+
+do
+  d3 $ fast 2 $ n "~ [f ~ d e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.85
+  jumpIn 1 1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+  jumpIn 5 1 $ slow 2 $ s "~ sn <~ ~ ~ [~ sn]> <sn sn sn ~> ~ sn [~ sn] sn*2" # n 2 # gain 0.9
+  jumpIn 6 1 $ s "UMRU_hihats*16" # n 0 # gain 0.8
+
+
+
+
+
+solo 2
+unsolo 2
+
+--

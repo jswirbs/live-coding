@@ -36,6 +36,69 @@ do
 -- d1 $ slice 54 "<0 1>" $ s "FOX_drain" # n 1
 
 
+-- do
+--   hush
+--   -- d2 $ slice 54 "<2 3 4 5>" $ s "FOX_drain" # n 0 # room 0.3
+--   -- d3 $ slice 54 "<2 3 4 5>" $ s "FOX_drain" # n 2 # room 0.3
+--   -- d4 $ slice 54 "<2 3 4 5>" $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100
+--   -- d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 3000 -- noise riser
+--   d2 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
+--   jumpIn 2 4 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
+--   d3 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.3
+--   d4 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100
+--   xfadeIn 4 8 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100 # gain 1.15
+--   d8 $ slice 54 "<0 1>" $ loopAt 54 $ s "FOX_drain" # n 2 # cutoff 4000 # gain 0.9
+--   xfadeIn 8 10 silence
+--   jumpIn 9 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 3000 -- noise riser
+
+
+
+-- do
+--   -- d4 $ slice 54 "<18 19 20 21>" $ s "FOX_drain" # n 4 # room 0.3 # cutoff 3000 # hcutoff 200
+--   -- d8 $ s "UMRU_fx_impacts" # n 2
+--   -- jumpIn 8 1 silence
+--   -- d9 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown
+--   -- jumpIn 9 1 silence
+--   d2 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
+--   d4 $ slice 54 "<18 19 20 21>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 2000 # hcutoff 200
+--   -- d8 $ s "UMRU_fx_impacts" # n 2
+--   -- jumpIn 8 1 silence
+--   d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown
+--   jumpIn 9 1 silence
+--   -- d6 $ slice 108 "68*2" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
+--   d6 $ slice 216 "137*2" $ loopAt 54 $ s "FOX_drain" # n 1 # cutoff 8000
+--
+--
+-- do
+--   -- d4 $ slice 54 "<22 23 24 25>" $ s "FOX_drain" # n 4 # room 0.3 # cutoff 3000 # hcutoff 200
+--   -- d5 $ slice 54 "<6 7 8 9>" $ s "FOX_drain" # n 1 # room 0.3 # gain 1.1
+--   -- d6 $ chop 2 $ slice 54 "34" $ s "FOX_drain" # n 1 # gain 1.1
+--   d2 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
+--   d4 $ slice 54 "<22 23 24 25>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 2000 # hcutoff 200
+--   d5 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 1 # room 0.3 # gain 1.1
+--   -- d6 $ chop 2 $ slice 54 "34" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
+--   -- d6 $ slice 216 "137*4" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
+--   d6 $ slice 216 "[137*4 137*4 137*8 [137*4 137*2 137 ~]]/4" $ loopAt 54 $ s "FOX_drain" # n 1 # cutoff 8000
+
+
+
+-- do
+--   hush
+--   -- d3 $ slice 54 "<26 27 28 29>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.3
+--   d2 $ slice 54 "<27 28 29 30 31 32 33 ~>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
+--   d4 $ slice 54 "<27 28 29 30 31 32 33 34>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 2000 # hcutoff 200
+--   xfadeIn 4 8 $ slice 54 "<27 28 29 30 31 32 33 34>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100
+--   -- jumpIn 4 4 $ slice 54 "<30 31 32 33>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100
+--   -- d5 $ slice 54 "<~ ~ 0 1>" $ loopAt 54 $ s "FOX_drain" # n 1 # room 0.2
+--   xfadeIn 5 6 $ (0.125 ~>) $ slice 432 "<279 278> 281 283 285" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 6000 # hcutoff 100 # gain 1.1
+--   xfadeIn 6 8 $ slice 216 "[137*32 [137*32 [137*28@28 137*8@4 ~@32]]]/8" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1 # room 0.2 # size 0.2
+--   jumpIn 9 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 6000 -- noise riser
+--   -- better riser?
+
+
+
+
+
 do
   hush
   -- d2 $ slice 54 "<2 3 4 5>" $ s "FOX_drain" # n 0 # room 0.3
@@ -45,47 +108,21 @@ do
   d2 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
   jumpIn 2 4 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
   d3 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.3
-  d4 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100
-  xfadeIn 4 8 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100 # gain 1.15
+  d5 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100
+  xfadeIn 5 8 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 4000 # hcutoff 100 # gain 1.15
   d8 $ slice 54 "<0 1>" $ loopAt 54 $ s "FOX_drain" # n 2 # cutoff 4000 # gain 0.9
   xfadeIn 8 10 silence
-  jumpIn 9 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 3000 -- noise riser
-
-
-
-
-do
-  -- d4 $ slice 54 "<18 19 20 21>" $ s "FOX_drain" # n 4 # room 0.3 # cutoff 3000 # hcutoff 200
-  -- d8 $ s "UMRU_fx_impacts" # n 2
-  -- jumpIn 8 1 silence
-  -- d9 $ slow 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown
-  -- jumpIn 9 1 silence
-  d2 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
-  d4 $ slice 54 "<18 19 20 21>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 2000 # hcutoff 200
-  -- d8 $ s "UMRU_fx_impacts" # n 2
-  -- jumpIn 8 1 silence
   d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown
-  jumpIn 9 1 silence
-  -- d6 $ slice 108 "68*2" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
-  d6 $ slice 216 "137*2" $ loopAt 54 $ s "FOX_drain" # n 1 # cutoff 8000
+  jumpIn 9 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 3000 -- noise riser
+  --   jumpIn 9 1 silence
+
+
+solo 4
+unsolo 4
 
 
 do
-  -- d4 $ slice 54 "<22 23 24 25>" $ s "FOX_drain" # n 4 # room 0.3 # cutoff 3000 # hcutoff 200
-  -- d5 $ slice 54 "<6 7 8 9>" $ s "FOX_drain" # n 1 # room 0.3 # gain 1.1
-  -- d6 $ chop 2 $ slice 54 "34" $ s "FOX_drain" # n 1 # gain 1.1
-  d2 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
-  d4 $ slice 54 "<22 23 24 25>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 2000 # hcutoff 200
-  d5 $ slice 54 "<6 7 8 9>" $ loopAt 54 $ s "FOX_drain" # n 1 # room 0.3 # gain 1.1
-  -- d6 $ chop 2 $ slice 54 "34" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
-  -- d6 $ slice 216 "137*4" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
-  d6 $ slice 216 "[137*4 137*4 137*8 [137*4 137*2 137 ~]]/4" $ loopAt 54 $ s "FOX_drain" # n 1 # cutoff 8000
-
-
-
-
-do
-  hush
+  -- hush
   -- d3 $ slice 54 "<26 27 28 29>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.3
   d2 $ slice 54 "<27 28 29 30 31 32 33 ~>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
   d4 $ slice 54 "<27 28 29 30 31 32 33 34>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 2000 # hcutoff 200
@@ -94,15 +131,18 @@ do
   -- d5 $ slice 54 "<~ ~ 0 1>" $ loopAt 54 $ s "FOX_drain" # n 1 # room 0.2
   xfadeIn 5 6 $ (0.125 ~>) $ slice 432 "<279 278> 281 283 285" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 6000 # hcutoff 100 # gain 1.1
   xfadeIn 6 8 $ slice 216 "[137*32 [137*32 [137*28@28 137*8@4 ~@32]]]/8" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1 # room 0.2 # size 0.2
+  d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown
   jumpIn 9 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # cutoff 6000 -- noise riser
   -- better riser?
 
 
 
-
 do
   hush
-  d1 $ s "techno_kicks*4" # gain 1.1
+  d1 $ s "techno_kicks" # gain 1.1 # room 0.1
+  d1 $ slice 8 "0 1 2 3" $ s "SOPHIE_kicks_wet" # n 6 # gain 1.2
+  d1 $ s "techno_kicks*4" # gain 1.1 # room 0.1 # n 1
+  -- d1 $ s "UMRU_stomps" # n 4 # speed 0.75 # room 0.3 # gain 1.1
   d2 $ slice 54 "<35 36 37 38 39 40 41 42>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0.3
   d3 $ slice 54 "<35 36 37 38 39 40 41 42>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.3
   d4 $ slice 54 "<35 36 37 38 39 40 41 42>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 3500 # hcutoff 100
@@ -122,6 +162,7 @@ do
 
 
 d1 silence
+-- d1 $ s "techno_kicks*4" # gain "0.75 0.7 0.65 0.6"
 
 do
   -- d1 $ s "techno_kicks*4" # gain 1.1
@@ -130,7 +171,7 @@ do
   d4 $ slice 108 "<71 73 75 79>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100 # panbus 2 "[<-0.8 0.8>]*54"
   d10 $ slice 432 "~@3 <280 282>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100
   d6 $ slice 108 "68*2" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
-  d7 $ (0.125 ~>) $ fast 4 $ every 4 (ghost) $ rarely (ghost) $ s "techno_hats" # n 7 # gain 0.9
+  d7 $ (0.125 ~>) $ fast 4 $ every 4 (ghost) $ rarely (ghost) $ s "techno_hats" # n 7 # gain 0.88
 
 
 
@@ -138,9 +179,9 @@ d10 $ (0.125 ~>) $ slice 432 "280*4" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.
 
 do
   d5 silence
-  d7 $ ghost $ (0.125 ~>) $ s "techno_hats*4" # n 7 # gain 0.9
-  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 5 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.9 # tremolodepth 0.6 # tremolorate 9
-  xfadeIn 9 8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 6 # s "moogbass" # cutoff 1200 # distort 0.5 # hcutoff 100 # gain 0.7 # tremolodepth 0.8 # tremolorate 9 # pan "0.5@5 0.2 0.8"
+  d7 $ ghost $ (0.125 ~>) $ s "techno_hats*4" # n 7 # gain 0.88
+  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 5 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.85 # tremolodepth 0.6 # tremolorate 9
+  xfadeIn 9 8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 6 # s "moogbass" # cutoff 1200 # distort 0.5 # hcutoff 100 # gain 0.68 # tremolodepth 0.8 # tremolorate 9 # pan "0.5@5 0.2 0.8"
   d10 $ (0.125 ~>) $ slice 432 "<280*4 282*4>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
   d11 $ (0.125 ~>) $ slice 432 "[344*16@4 338*8@2 339*4 [340 341 342 343]]/8" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
   -- d11 $ (0.125 ~>) $ slice 432 "343*4" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
@@ -162,13 +203,13 @@ do
   d1 silence
   d7 silence
   d9 silence
-  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 4 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.9 # tremolodepth 0.6 # tremolorate 4.5 # room 0.1
+  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 4 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.85 # tremolodepth 0.6 # tremolorate 4.5 # room 0.1
 
 
 do
   xfadeIn 2 8 $ (0.125 ~>) $ gap 8 $ (0.125 <~) $ slice 54 "<35 36 37 38 39 40 41 42>" $ loopAt 54 $ s "FOX_drain" # n 0 # room 0 # gain 1 # distort 0
   xfadeIn 4 16 silence
-  xfadeIn 9 16 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 6000 # hcutoff 100 # gain 1.2
+  xfadeIn 9 16 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 6000 # hcutoff 100 # gain 1.05
 
 do
   xfadeIn 2 8 silence
@@ -177,22 +218,23 @@ do
   -- jumpIn 9 7 silence
   xfadeIn 10 8 silence
   jumpIn 11 7 silence
-  jumpIn 12 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # size 0.99 # cutoff 4000 -- noise riser
+  jumpIn 12 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.7 # room 0.5 # size 0.99 # cutoff 4000 -- noise riser
+
 
 
 
 do
-  hush
+  -- hush
   d11 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.6 # room 0.5 # size 0.99 # cutoff 4000 -- noise riser comedown
   jumpIn 11 1 silence
   -- d3 $ slice 54 "<35 36 37 38 39 40 41 42>" $ loopAt 54 $ s "FOX_drain" # n 2 # room 0.2 # cutoff 4000
-  xfadeIn 3 3 silence
+  d3 silence
   xfadeIn 5 4 $ (0.125 ~>) $ slice 432 "<279 278> 281 283 285" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 4000 # hcutoff 100 # gain 0.9
   d6 silence
-  xfadeIn 9 4 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 6000 # hcutoff 100 # gain 0.9
+  -- xfadeIn 9 4 $ slice 54 "<2 3 4 5>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.3 # cutoff 6000 # hcutoff 100 # gain 0.9
   -- d10 $ (0.125 ~>) $ slice 432 "[~@7 [~@5 279 280 ~]]/8" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 10000 # gain 1.1 # speed 1 -- bitch
   jumpIn 10 2 $ slice 432 "[280 ~@62 279]/8" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 10000 # gain 1.1 # speed 1 -- bitch
-  d12 silence
+  d12 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.6 # room 0.6 # cutoff 3000 -- noise riser comedown
   jumpIn 12 4 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.6 # room 0.5 # size 0.99 # cutoff 2500 # hcutoff 800 -- noise riser
 
   xfadeIn 5 2 silence
@@ -215,7 +257,7 @@ do
   d5 $ slice 54 "<~ ~ ~ ~ ~ ~ 0 1>" $ loopAt 54 $ s "FOX_drain" # n 1 # room 0.2
   -- d6 $ slice 108 "68*2" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
   d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 4 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 1 # tremolodepth 0.6 # tremolorate 4.5
-  xfadeIn 9 8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 6 # s "moogbass" # cutoff 1200 # distort 0.5 # hcutoff 100 # gain 0.7 # tremolodepth 0.8 # tremolorate 9 # pan "0.5@5 0.2 0.8"
+  xfadeIn 9 8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 6 # s "moogbass" # cutoff 1200 # distort 0.5 # hcutoff 100 # gain 0.68 # tremolodepth 0.8 # tremolorate 9 # pan "0.5@5 0.2 0.8"
   -- d10 $ slice 432 "~@3 <280 282>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100
   -- d10 $ slice 432 "~ <280 282 284 286 288 290 292 294> ~ ~" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 5000 # hcutoff 0 # gain 1.1
   d10 $ slice 432 "<280*4 280*4 282*4 282*4 284*4 284*4 292*4 294*4>" $ loopAt 54 $ s "FOX_drain" # n 3 # room "0.2 0.4@3" # cutoff "6000 4000@3" # hcutoff 50 # gain "[[1.1 0.95 0.85 0.8] <[0.75 0.7 0.65 0.6]@3 [1.1 1.13 1.16 1.2]>]*27"
@@ -224,7 +266,7 @@ do
 
 do
   d1 silence
-  d12 $ slice 432 "~@7 283" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 4000 # hcutoff 100 # gain 1.1
+  d12 $ slice 432 "~@7 283" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.2 # cutoff 4000 # hcutoff 100 # gain 1.1 -- "i'm a"
 
 do
   -- d1 $ s "techno_kicks*4" # gain 1.1
@@ -233,7 +275,7 @@ do
   d5 silence
   d6 $ slice 108 "68*2" $ loopAt 54 $ s "FOX_drain" # n 1 # gain 1.1
   d7 $ (0.125 ~>) $ fast 4 $ every 4 (ghost) $ rarely (ghost) $ s "techno_hats" # n 7 # gain 0.9
-  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 5 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.87 # tremolodepth 0.6 # tremolorate 9
+  d8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 5 # s "moogbass" # cutoff 1200 # distort 0.1 # gain 0.85 # tremolodepth 0.6 # tremolorate 9
   -- xfadeIn 9 8 $ slow 2 $ n "as@6 [~ fs] [~ f]" # octave 6 # s "moogbass" # cutoff 1200 # distort 0.5 # hcutoff 100 # gain 0.73 # tremolodepth 0.8 # tremolorate 9 # pan "0.5@5 0.2 0.8"
   -- d10 $ (0.125 ~>) $ slice 432 "<280*4 282*4>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
   -- d11 $ (0.125 ~>) $ slice 432 "[344*16@4 338*8@2 339*4 [340 341 342 343]]/8" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
@@ -250,7 +292,7 @@ do
   -- d1 $ s "techno_kicks*4" # gain 1.1
   d1 $ s "techno_kicks*4" # gain 1.15 # n 2
   d4 $ slice 108 "<71 73 75 79>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100 # panbus 2 "[<-0.8 0.8>]*54"
-  d7 $ ghost $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 7 # gain 0.9
+  d7 $ ghost $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 7 # gain 0.88
   d10 $ slice 432 "~@3 <280 282>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 4000 # hcutoff 100
   -- d10 $ (0.125 ~>) $ slice 432 "<280*4 282*4>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000
   -- d11 $ slice 54 "<43 44 45 46>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3 # cutoff 5000 # hcutoff 500
@@ -264,14 +306,14 @@ do
   --   d12 $ s "SOPHIE_claps*3@3 [SOPHIE_claps ~ ~ SOPHIE_claps]" # n "15@7 15" # gain 0.8 # cutoff 8000
   --   -- d12 $ s "SOPHIE_claps*3@3 [SOPHIE_claps ~ ~ SOPHIE_claps]" # n "10" # gain 0.8
   --
-  -- d7 $ ghost $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 7 # gain 0.9
+  -- d7 $ ghost $ (0.125 ~>) $ ghost $ s "techno_hats*4" # n 7 # gain 0.88
 
 
 
 
 do
   d6 silence
-  xfadeIn 7 2 $ (0.125 ~>) $ s "techno_hats*4" # n 7 # gain 0.9
+  xfadeIn 7 2 $ (0.125 ~>) $ s "techno_hats*4" # n 7 # gain 0.82
   d8 silence
   d11 $ (0.125 ~>) $ slice 432 "[344*16@4 338*8@2 339*4 [340 341 342 343]]/8" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.1 # cutoff 10000 # fshift (fast 27 $ "0 -20 -40 -60 -90 -120 -150 -180")
   -- xfadeIn 12 2 $ s "SOPHIE_claps*3@3 [SOPHIE_claps ~ ~ SOPHIE_claps]" # n "15@7 15" # gain 0.8 # cutoff 5000 # room 0.1
@@ -283,6 +325,8 @@ do
   jumpIn 1 1 silence
   d4 $ slice 54 "<43 44 45 46 47 48 49 50>" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0.3
   xfadeIn 4 8 $ slice 54 "<43 44 45 46 47 48 49 50>" $ loopAt 54 $ s "FOX_drain" # n 4 # room 0.15
+  d7 $ (0.125 ~>) $ s "techno_hats*4" # n 7 # gain 0.75
+  xfadeIn 7 4 silence
   d10 $ (0.125 ~>) $ slice 432 "343*4" $ loopAt 54 $ s "FOX_drain" # n 3 # room 0 # cutoff 9000 # fshift (fast 27 $ "[-210 -240 -270 -300 -340 -380 -420 -460 -500 -540 -580 -620 -660 -700 -740 -780]/2")
   xfadeIn 10 7 silence
   d11 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.6 # cutoff 3000 -- noise riser comedown

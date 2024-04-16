@@ -8,6 +8,9 @@ d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
 d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
 d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
 d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [[~ 0] 0]" $ n "8 1" # s "SOPHIE_subs"
+d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
+d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # hcutoff 20
+
 
 solo 2
 unsolo 2
@@ -66,11 +69,16 @@ d11 silence
 do
   bpm 142
   hush
-  resetCycles
-  d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
+  -- resetCycles
+  T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -1})
+  -- d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
+  d1 $ s "~ ~ ~ [XORE_kicks*3@3 ~]" # n 14
+  jumpIn 1 1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
   -- fs  g g
-  d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
-  -- d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
+  d2 $ n "~ ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  jumpIn 2 1 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  -- d2 $ slice "2@2 4 2" "~ ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
+  -- jumpIn 2 1 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
 
 
 
@@ -92,12 +100,13 @@ do
 do
   d1 silence
   -- d2 silence
-  d2 $ n "8 ~ ~ [~ 1]" # s "SOPHIE_subs"
+  -- d2 $ n "8 ~ ~ [~ 1]" # s "SOPHIE_subs"
+  d2 $ slice "2@2 4 2" "[0 1] ~ ~ [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
   d9 silence
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
-  d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
+  d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
   -- d3 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.92
   d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   d4 silence
@@ -147,7 +156,7 @@ do
 do
   d1 silence
   -- d2 silence
-  d2 $ n "8 ~ ~ [~ 1]" # s "SOPHIE_subs"
+  d2 $ n "8 ~ ~ [~ 1]" # s "SOPHIE_subs" # gain 0.95
   -- d4 silence
   d8 silence
   d12 silence
@@ -155,7 +164,8 @@ do
 do
   hush
   d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
-  d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
+  d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  -- d2 $ slice "2@2 4 2" "~ ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
 
 
 do
@@ -168,7 +178,7 @@ do
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
   -- d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
-  d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
+  d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
   -- d3 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.92
   d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
   -- d8 $ slow 4 $ gap 16 $ s "BABII_vocal_loops" # n 12 # gain 0.9

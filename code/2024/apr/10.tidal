@@ -1,0 +1,114 @@
+bpm 142
+
+
+d1 $ s "UMRU_kicks*4" # n 1
+d1 $ s "UMRU_kicks*4" # n 1
+d1 $ s "UMRU_kicks UMRU_kicks*2 [~ <~ ~ UMRU_kicks UMRU_kicks>] UMRU_kicks" # n "<1 1 10 10>"
+
+d2 $ n "c c c ds c c c d" # octave 4 # s "tb3" # ccn 16 # ccv "30" # sustain "[0.2 0.2 0.2 0.3]*2"
+d2 $ n "fs*3@3 a fs*3@3 gs" # octave 3 # s "tb3" # ccn 16 # ccv "30" # sustain "[0.2 0.2 0.2 0.3]*2"
+d2 $ n "fs fs a fs fs fs gs fs" # octave 3 # s "tb3" # ccn 16 # ccv "30" # sustain "[0.2 0.2 0.2 0.3]*2"
+d2 $ n "[fs*6@6 <a gs> fs]" # octave 3 # s "tb3" # ccn 16 # ccv "30" # sustain "[0.2 0.2 0.2 0.3]*2"
+
+
+
+d3 $ slow 8 $ chop 16 $ s "UMRU_lead_loops" # n 1
+d3 $ slow 8 $ chop 32 $ s "UMRU_lead_loops" # n 1
+d3 $ slow 4 $ gap 64 $ s "UMRU_lead_loops" # n 1
+d3 $ slow 8 $ gap 64 $ s "UMRU_lead_loops" # n 1
+d3 $ (0.125 ~>) $ slow 4 $ gap 64 $ s "UMRU_lead_loops" # n 1
+
+
+d4 $ slow 8 $ chop 16 $ s "UMRU_lead_loops" # n 2
+d4 $ slow 8 $ chop 32 $ s "UMRU_lead_loops" # n 2 # cutoff 800 # room 0.3
+d4 $ slow 8 $ gap 64 $ s "UMRU_lead_loops" # n 2
+
+d4 $ rev $ slow 8 $ chop 32 $ s "UMRU_lead_loops" # n 2 # cutoff 800 # room 0.3
+
+d4 $ slice 32 "15*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 32 "31*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 32 "22*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 32 "27*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 32 "3*4" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 64 "5*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "7*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "14*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "20*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "24*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "28*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "30*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "31*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "36*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "45*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "55*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "62*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "63*4" $ s "UMRU_lead_loops" # n 2
+
+
+d4 $ slice 64 "20*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "24*4" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 64 "36*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "45*4" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 64 "5*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "63*4" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 64 "55*4" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 64 "31*4" $ s "UMRU_lead_loops" # n 2
+
+
+d4 $ slice 128 "40*8" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 128 "39*8" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 128 "72*8" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 128 "90*8" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 128 "11*8" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 128 "126*8" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 128 "110*8" $ s "UMRU_lead_loops" # n 2
+d4 $ slice 128 "61*8" $ s "UMRU_lead_loops" # n 2
+
+d4 $ slice 128 "61*8" $ s "UMRU_lead_loops" # n 2
+
+d4 silence
+
+
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n 2
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n 5
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n 6
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n 9
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n 10
+
+d5 $ loopAt 4 $ chop 4 $ s "UMRU_hihat_loops" # n "<2 6>"
+
+
+d6 $ slice 16 "~ <2 14>" $ s "UMRU_hihat_loops" # n 5 # cutoff 7000
+d6 $ slice 64 "~ 56 ~ 56 ~ 57 58 59" $ s "UMRU_hihat_loops" # n 5 # cutoff 7000
+d6 $ slice 64 "~ 56 ~ 56 ~ 57 58 59" $ loopAt 4 $ s "UMRU_hihat_loops" # n 5
+d5 silence
+d6 silence
+
+
+d6 $ s "[<~ ~ ~ [~ <UMRU_snares UMRU_snares*2>]> UMRU_snares]*2" # n "[0 0 0 [0 1]]/2"
+d6 $ s "[~ UMRU_snares]*2" # n 2
+d6 $ s "[~ UMRU_snares]*2" # n 3
+d6 $ s "[~ UMRU_snares]*2" # n 13
+d6 $ s "[~ UMRU_snares]*2" # n 19
+d6 $ s "[~ UMRU_snares]*2" # n 27
+
+
+
+
+d7 $ (0.125 ~>) $ n "[gs*16 fs*16]/8" # octave 3 # s "subbass"
+d7 silence
+
+d7 $ slice 24 0 $ loopAt 12 $ s "SOPHIE_hard" # n 12
+d7 $ slice 24 "[0 1 2 3]/2" $ loopAt 16 $ s "SOPHIE_hard" # n 12
+d7 $ slow 2 $ palindrome $ chop 16 $ slice 12 "0" $ loopAt 16 $ s "SOPHIE_hard" # n 12 # room 0.2
+
+
+
+--

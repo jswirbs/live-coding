@@ -1,0 +1,117 @@
+bpm 140
+
+
+
+d3 $ chop 16 $ slow 4 $ s "BABII_vocal_loops" # n 4
+d3 $ chop 16 $ slow 4 $ s "BABII_vocal_loops" # n 21
+d3 $ chop 16 $ slow 4 $ s "BABII_vocal_loops" # n 23
+
+d3 $ slice 8 "~@3 3" $ s "BABII_vocal_loops" # n 23
+d3 $ slice 8 "~@3 7" $ s "BABII_vocal_loops" # n 23
+
+d3 silence
+
+
+d4 $ slow 4 $ s "BABII_vocal_shots" # n "<6 7>"
+d4 silence
+
+d1 $ s "techno_kicks*4" # n 2
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 $ s "SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry*2 ~" # n 1 # gain 1.1
+d1 $ s "[~ SOPHIE_kicks_dry]*3@3 SOPHIE_kicks_dry" # n 1 # gain 1.1
+
+d2 $ (1.25 <~) $ slow 2 $ s "SOPHIE_subs ~ ~ ~ ~ SOPHIE_subs [~ SOPHIE_subs] ~" # n "13 <13 [1 13]>" # room 0.2
+
+
+resetCycles
+
+d1 $ s "[~ SOPHIE_kicks_dry]*3@3 SOPHIE_kicks_dry" # n 1
+
+d2 $ slow 2 $ s "~ SOPHIE_subs ~ ~ ~ ~ SOPHIE_subs [~ SOPHIE_subs]" # n "13 <[13 1] 13>" # room 0.2
+
+d5 $ s "SOPHIE_claps*4" # n 19
+
+
+d6 $ slice 6 "~ <0 1 4 5> ~@6" $ s "SOPHIE_textures" # n 5 # gain 0.9
+d6 $ slice 6 "~ <0 1 4 5> ~@6" $ s "SOPHIE_textures" # n 5 # gain 0.9 # cutoff 1000 # room 0.4
+
+
+d7 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 5 # room 0.2
+d6 $ loopAt 4 $ gap 32 $ s "SOPHIE_textures" # n 10
+d7 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 11
+d6 $ loopAt 4 $ gap 32 $ s "SOPHIE_textures" # n 13
+d7 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 15
+d7 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 16
+
+
+
+
+
+
+
+--
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 $ s "SOPHIE_kicks_wet*4" # n 18 # gain 1.1
+d1 $ s "SOPHIE_kicks_wet*4" # n 12 # gain 1
+
+
+d2 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 5 # room 0.2 # gain "[0 1@3]*16" # cutoff 500
+d2 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 5 # room 0.2 # gain "[0 1]*16"
+d2 $ loopAt 4 $ gap 128 $ s "SOPHIE_textures" # n 5 # room 0.2
+
+
+d3 $ s "FOOD_808s ~ ~ <FOOD_808s ~ [~ FOOD_808s] ~>" # n 4
+d3 $ slow 2 $ s "[FOOD_808s ~ ~ <FOOD_808s [~ FOOD_808s]>] [FOOD_808s ~ ~ <~ [FOOD_808s FOOD_808s]>]" # n "4@7 <4 [6 8]>" # room 0.1 # size 0.4
+
+
+d4 $ ghost $ (0.125 ~>) $ s "XORE_hats*4" # n 1 # gain (slow 8 $ range 0.9 0.5 sine)
+d5 $ ghost $ (0.125 ~>) $ s "XORE_hats*4" # n 2 # gain (slow 8 $ range 0.5 0.9 sine)
+
+
+d6 $ gap 4 $ chop 16 $ slice 4 "1" $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # gain 0.85
+d6 silence
+
+
+--
+
+bpm 130
+
+
+https://www.instagram.com/p/C5viTQaITJJ/?img_index=2
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+d1 silence
+
+-- b45, b37
+d6 $ n "[e ~ ~ e] [~ ~ f ~] [~ ~ ~ f8] [d ~ d ~]" # octave 3 # s "tb3"
+
+
+d3 $ slow 2 $ s "[FOOD_808s ~ ~ <FOOD_808s [~ FOOD_808s]>] [FOOD_808s ~ ~ [FOOD_808s FOOD_808s]]" # n "4@7 <4 [6 8]>" # room 0.5 # size 0.7 # cutoff 700
+
+
+
+
+
+do
+  d1 silence
+  d4 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 0 # gain 0.9
+  xfadeIn 7 6 silence
+
+
+d4 silence
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+  d4 silence
+  d6 $ n "[e ~ ~ e] [~ ~ f ~] [~ ~ ~ f8] [d ~ d ~]" # octave 3 # s "tb3"
+  d7 silence
+
+
+d4 $ ghost $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 0 # gain 0.9
+
+
+d7 $ s "sostoms*16" # gain "[0.8 1]*4" # n "[e f d a]"
+
+
+--

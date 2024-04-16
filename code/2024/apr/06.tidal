@@ -1,0 +1,36 @@
+bpm 140
+
+d1 $ s "SOPHIE_subs*2@4 ~ SOPHIE_subs*2@4 ~"
+d1 $ s "SOPHIE_subs" # n 1
+
+d2 $ s "SOPHIE_textures" # cutoff 2000 # room 0.2 # gain 0.9
+
+
+d2 $ (0.125 ~>) $ s "XORE_hats*4" # n 1
+d2 $ (0.25 ~>) $ s "sn*2" # n 1
+d2 $ s "~ ~ sn ~ ~ sn ~ ~" # n 1
+d2 $ s "~ ~ UMRU_percussion_misc ~ ~ UMRU_percussion_misc ~ ~" # n 2
+d2 $ s "[~ ~ sn ~] [~ sn ~ ~]" # n 1
+d2 $ s "~ ~ XORE_glitch? ~ ~ XORE_error? ~ ~" # n (range 0 9 rand) # waveloss 20 # cutoff 3000 # gain 0.85
+
+d2 silence
+
+d3 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # room "[0.05 0]*2"
+d3 $ s "techno_hats*16" # n 4 # gain "[0.8 1]*4"
+d3 $ s "SOPHIE_claps*16" # n 14 # gain "[0.7 0.8]*4" # cutoff 7000
+
+
+d4 $ s "XORE_kicks*8" # n 12
+d4 $ s "techno_kicks*8" # n 2
+d4 silence
+
+
+
+d5 $ slow 2 $ n "[cs2,cs3]@7 [~ [cs4,cs5]]" # s "superzow" # accelerate "-0.17 0" # waveloss "0 10" # distort "0.1 0.6" # cutoff (slow 3 $ range 4000 2000 sine) # room 0.3 # gain "0.68 0.65" # tremolodepth "0.4 0" # tremolorate 8
+d5 $ n "[~@7 [cs4,cs5]]" # s "superzow" # accelerate "-0.17 0" # waveloss "0 10" # distort "0.1 0.6" # cutoff (slow 3 $ range 4000 2000 sine) # room 0.3 # gain "0.68 0.65" # tremolodepth "0.4 0" # tremolorate 8
+d5 silence
+
+
+
+
+--

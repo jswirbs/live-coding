@@ -1,0 +1,35 @@
+bpm 120
+
+
+d1 $ s "XORE_kicks*4"
+
+d2 $ stack [
+    (slow (7/16) $ n "e*7" # sustain "0.13@2 0.25 0.13@4"),
+    (slow (5/16) $ n "a*5" # sustain "0.12@4 0.25"),
+    (slow (9/16) $ n ("c6*9" + (fast (9/16) "<0 0 2 2>")) # sustain "0.1@7 0.25 0.1")
+  ] # s "doublebass" # cutoff 2000
+
+
+d2 $ stack [
+    (slow (7/16) $ n "e*7" # sustain "0.13@2 0.18 0.13@4"),
+    (slow (5/16) $ n "a*5" # sustain "0.12@4 0.17"),
+    (slow (9/16) $ n ("c6*9" + (fast (9/16) "<0 0 2 2>")) # sustain "0.1@7 0.16 0.1")
+  ] # s "warsawbass"
+
+
+d2 $ stack [
+    (slow (7/16) $ n "e*7" # sustain "0.12@2 0.15 0.12@4"),
+    (slow (5/16) $ n "a*5" # sustain "0.12@4 0.15"),
+    (slow (9/16) $ n ("c6*9" + (fast (9/16) "<0 0 2 2>")) # sustain "0.12@7 0.15 0.12")
+  ] # s "midsaw" # cutoff (slow 8 $ range 1500 4000 sine)
+
+
+d2 $ slow (7/16) $ n "0*7" # s "midsaw" # sustain 0.15
+d2 $ n "0*16" # s "supersaw"
+
+
+d3 $ s "soshats*16" # cutoff 2000 # resonance 0.6
+d3 $ s "soshats*16" # cutoff 8000 # resonance 0.6
+d3 $ s "soshats*16" # fshift (slow 3 $ range 0 "-300" sine)
+
+d7 silence
