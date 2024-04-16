@@ -70,19 +70,22 @@ do
   bpm 142
   hush
   -- resetCycles
-  T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -1})
+  T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -2})
   -- d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
-  d1 $ s "~ ~ ~ [XORE_kicks*3@3 ~]" # n 14
-  jumpIn 1 1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
+  d1 $ slow 2 $ s "~@7 [XORE_kicks*3@3 ~]" # n 14
+  jumpIn 1 2 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
   -- fs  g g
-  d2 $ n "~ ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
-  jumpIn 2 1 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  d2 $ slow 2 $ n "~@6 [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  jumpIn 2 2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
   -- d2 $ slice "2@2 4 2" "~ ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
   -- jumpIn 2 1 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
+  -- d10 $ (0.63 <~) $ slow 2 $ s "BABII_risers" # n 5
+  d10 $ loopAt 2 $ s "BABII_risers" # n 2 # cutoff 4000 # gain 0.9
+  jumpIn 10 1 silence
 
 
 
-d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.05 sine)
+d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.06 sine)
 
 
 do
@@ -279,7 +282,6 @@ do
 
 -- ??
 d1 silence
--- d1 $ s "~@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
