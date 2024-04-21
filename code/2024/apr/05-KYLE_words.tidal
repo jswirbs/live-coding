@@ -1,5 +1,6 @@
-bpm 100
+-- WHERE THE WORDS COME FROM
 
+bpm 100
 
 
 do
@@ -49,7 +50,6 @@ do -- gs c cs
 d9 $ sometimes (ghost) $ fast 2 $ n "<a b a e6> gs <a a e e> gs" # s "acid92" # room (slow 8 $ range 0.05 0.15 sine) # gain 0.9
 d9 $ ghost $ fast 2 $ n "<a b a e6> <gs@3 a> <a@2 e@2> gs" # s "acid92" # room (slow 8 $ range 0.05 0.15 sine) # gain 0.9
 d9 silence
-
 
 
 
