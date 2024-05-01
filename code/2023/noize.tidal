@@ -12,7 +12,7 @@ d11 $ gap 2 $ (1 ~>) $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 16 $ s "EG_lights" #
 d11 $ (1 ~>) $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 32 $ s "EG_lights" # n 2 # gain 1.5 # room 0.5 # size 0.9 # hcutoff 1000 # speed 4
 d11 $ (1 ~>) $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 32 $ s "EG_lights" # n 2 # gain 1.5 # room 0.5 # size 0.9 # hcutoff 1000 # speed 4
 d12 $ (1 ~>) $ (0.012 <~) $ chop 4 $ loopAt 4 $ gap 32 $ s "EG_lights" # n 2 # gain 1.5 # room 0.5 # size 0.9 # hcutoff 1000 # speed 8
-d12 silence
+d11 silence
 
 
 

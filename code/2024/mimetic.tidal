@@ -4,6 +4,11 @@ bpm 142
 d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
 d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
 
+-- softer/bassier kicks?
+d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "11@3 [11 14@3]"
+d1 $ s "SOPHIE_kicks_dry*3@3 [SOPHIE_kicks_dry*3@3 ~]" # n "1@3 [1 14@3]"
+
+
 -- fs  g g
 d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
 d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
@@ -70,7 +75,7 @@ do
   bpm 142
   hush
   -- resetCycles
-  T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -2})
+  T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -2.1})
   -- d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
   d1 $ slow 2 $ s "~@7 [XORE_kicks*3@3 ~]" # n 14
   jumpIn 1 2 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
@@ -80,7 +85,8 @@ do
   -- d2 $ slice "2@2 4 2" "~ ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
   -- jumpIn 2 1 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
   -- d10 $ (0.63 <~) $ slow 2 $ s "BABII_risers" # n 5
-  d10 $ loopAt 2 $ s "BABII_risers" # n 2 # cutoff 4000 # gain 0.9
+  -- d10 $ loopAt 2 $ s "BABII_risers" # n 2 # cutoff 4000 # gain 0.9
+  d10 $ (2.1 <~) $ slow 8 $ s "BABII_risers" # n 2
   jumpIn 10 1 silence
 
 
@@ -284,7 +290,7 @@ do
 d1 silence
 
 do
-  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "14@3 [14 14@3]"
   d8 $ (0.125 ~>) $ slice "<64 64 32 32>" "~ ~ ~ <~ <10 11> ~ 1>" $ s "BABII_vocal_loops" # n 8 # gain 0.78
   d9 $ (0.125 ~>) $ slice 16 "~ 2" $ s "BABII_vocal_loops" # n 12 # gain 0.9
   d11 silence
