@@ -28,6 +28,8 @@ d3 $ fast 2 $ n "~ [f d ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 
 d3 $ fast 2 $ n "~ [f ~ d e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
 d3 $ fast 2 $ n "~ [f ~ ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
 
+d3 $ fast 2 $ n (randcat ["~ [f ~ d e]", "~ [f ~ d e]", "~ [f d ~ e]", "~ [f d ~ e]", "~ [f ~ ~ e]"]) # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.85
+
 d3 silence
 
 
@@ -39,7 +41,7 @@ d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares 
 d5 $ fast 2 $ s "~ sn" # n 2 # gain 0.9
 
 
-d7 $ (1 ~>) $ chop 2 $ loopAt 2 $ s "techno_textures" # n 1 # fshift "-10"
+d7 $ (1 ~>) $ chop 2 $ loopAt 2 $ s "techno_textures" # n 1 # fshift "-110"
 
 
 d6 $ s "techno_hats*16" # n 2 # gain 0.9
@@ -74,35 +76,80 @@ do
   -- d2 $ slow 2 $ n "e*12@6 f*2 d*2" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain 0.2
   d5 silence
   d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8 # cutoff 5000
-  xfadeIn 6 8 silence
+  xfadeIn 6 10 silence
+  d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 26 # gain 0.7 # room 0.4 # size 0.9
+
 
 
 do
   d3 $ fast 2 $ n "~ [f d ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
   d6 $ s "UMRU_hihats*16" # n 1 # gain 0.8
-
+  d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 28 # gain 1 # room 0.4 # size 0.9
+  xfadeIn 10 8 silence
+  d11 $ chop 8 $ loopAt 8 $ s "risers" # cutoff 4000 # gain 0.9
+  -- subtle riser?
 
   d3 $ fast 2 $ n "~ [f ~ d e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.85
 
 do
   d1 $ s "techno_kicks*4" # n 3 # gain 1.1
-  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.08 # room 0.12 # sustain (slow 3 $ range 0.08 0.1 sine)
+  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 6 # gain 1.05
   -- d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.08 0.1 sine)
   -- d5 $ slow 2 $ s "~ sn <~ ~ ~ [~ sn]> <sn sn sn ~> ~ sn [~ sn] sn*2" # n 2 # gain 0.9
   d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares [~ snares] snares*2" # n 3 # gain 0.94
   d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8
+  d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 26 # gain 0.7 # room 0.4 # size 0.9
+  d11 silence
 
 
 
-  d3 $ fast 2 $ n "~ [f d ~ e]" # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.8
+
+  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 3 # gain 0.95
 
 do
+  d1 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] [~ <techno_kicks ~>]" # n 3 # gain 1.1
+  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 3 # gain 0.95
   d5 $ ghost $ fast 2 $ s "~ sn" # n 2 # gain 0.9
-  d6 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.8
+  -- d5 silence
+  d6 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.85
+  d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 28 # gain 1 # room 0.4 # size 0.9
 
 
-  d6 $ ghost $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.8
 
+-- d6 silence
+do
+  jumpIn' 1 0 $ s "techno_kicks ~@3" # n 3 # gain 1.1
+  xfadeIn 6 1 $ (0.125 ~>) $ s "UMRU_hihats*16" # n 0 # gain 0.85
+
+
+do
+  -- d1 $ slow 2 $ s "techno_kicks*6@6 [<~ techno_kicks> <techno_kicks techno_kicks*2>] techno_kicks*2" # n 3 # gain 1.1
+  d1 $ slow 4 $ s "techno_kicks*14@14 [techno_kicks techno_kicks*2] techno_kicks*2" # n 3 # gain 1.1
+  -- d1 $ s "techno_kicks*4" # n 3 # gain 1.1
+  d3 $ fast 2 $ n (randcat ["~ [f ~ d e]", "~ [f ~ d e]", "~ [f d ~ e]", "~ [f d ~ e]", "~ [f ~ ~ e]"]) # s "acid91" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.85
+  -- d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares [~ snares] snares*2" # n 3 # gain 0.94
+  d6 $ ghost $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n 0 # gain 0.85
+  d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 26 # gain 0.7 # room 0.4 # size 0.9
+
+
+
+  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 6 # gain 1.05
+
+do
+  d1 $ s "techno_kicks*4" # n 3 # gain 1.1
+  d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 6 # gain 1.05
+  -- d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.08 0.1 sine)
+  -- d5 $ slow 2 $ s "~ sn <~ ~ ~ [~ sn]> <sn sn sn ~> ~ sn [~ sn] sn*2" # n 2 # gain 0.9
+  d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares [~ snares] snares*2" # n 3 # gain 0.94
+  d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8
+  d7 silence
+
+
+
+-- d7 $ whenmod 4 3 (const $ sometimes (ghost) $ s "SOPHIE_claps SOPHIE_claps SOPHIE_claps*2 SOPHIE_claps*4" # n 12 # gain 0.8) $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.8
+d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
+-- d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 4 [4 [4,10]] ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
+d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 26 25 ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
 
 
 

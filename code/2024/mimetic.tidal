@@ -115,6 +115,8 @@ do
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "3@3 [3 14@3]" # gain "1.1@13 1@3"
+  -- d1 $ s "SOPHIE_kicks_dry*3@3 [SOPHIE_kicks_dry XORE_kicks XORE_kicks ~]" # n "1@13 14@3"
   d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
   -- d3 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # gain 0.92
   d3 $ ghost $ (0.125 ~>) $ ghost $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
@@ -229,6 +231,10 @@ do
   -- d1 silence
   d1 $ s "~@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
   d3 silence
+  -- try claps here and/or in next blook -- !!!!!!!!!
+  d4 $ (0.25 ~>) $ rarely (ghost) $ s "SOPHIE_claps*2" # n 5 # gain 0.8
+  ---------
+
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"

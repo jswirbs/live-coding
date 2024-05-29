@@ -4,6 +4,9 @@ setcps(140/60/4)
 ---- DEFAULTS ----
 ------------------
 
+d1 $ arp "up" $ n "c4'min7*4" # s "default"
+d1 $ n "c5'min7" # s "default" # distort 0
+
 d1 $ arp "up" $ n "c4'min7*4" # s "supersaw" -- # pitch1 4
 d1 $ n "c5'min7" # s "supersaw" # distort 0
 
