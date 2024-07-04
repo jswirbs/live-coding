@@ -1,0 +1,502 @@
+bpm 130
+
+d1 $ s "SOPHIE_subs*4"
+d1 $ s "SOPHIE_subs*4" # n 2
+d1 $ s "SOPHIE_subs*4" # n 8
+d1 $ s "SOPHIE_subs*4" # n 15
+
+
+
+do
+  hush
+  resetCycles
+  bpm 130
+  -- note: E
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  -- d1 $ s "SOPHIE_subs*4" # n 10
+
+
+xfadeIn 2 16 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+-- d2 $ swingBy (1/6) 4 $ s "~ [UMRU_percussion_impacts ~ ~ UMRU_percussion_impacts] UMRU_percussion_impacts*2 UMRU_percussion_impacts" # n 10
+d2 silence
+
+
+d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 100 saw) # gain 0.9
+d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 20 # gain 0.9
+d3 silence
+
+
+do
+  xfadeIn 1 14 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # djf 0.66
+  xfadeIn 4 8 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
+
+
+d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 800 # gain 1.05
+
+  d5 $ swingBy (1/12) 8 $ (0.5 <~) $ chop 16 $ slice 16 7 $ s "DJ_DAVE_castles" # speed 0.25 # room 0.5 # size 0.7
+  d5 $ swingBy (1/12) 8 $ (0.5 <~) $ chop 16 $ slice 16 4 $ s "DJ_DAVE_castles" # n 9 # room 0.5 # size 0.7
+  d5 $ swingBy (1/12) 8 $ chop 64 $ loopAt 16 $ s "DJ_DAVE_castles" # n 9 # room 0.5 # size 0.9 # cutoff 300 # hcutoff 300 # gain 0.9
+
+
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
+  d6 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 11 # gain 0.88 # hcutoff 200
+  -- d6 silence
+
+
+  d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
+
+
+  --
+  d6 $ n "[~ e*2] e [~ ~ ~ e] [~ e] fs" # s "tb3"
+  d6 $ s "~ ~ [~ cyberpunk] [~ cyberpunk]" # n 7 # speed 1
+  d10 $ chop 16 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  d10 silence
+
+  d7 $ s "~ sn ~ sn" # n 2 # gain 0.9
+  d7 $ s "sn*16" # n 7
+  --
+
+  xfadeIn 1 14 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # djf 0.66
+
+
+
+
+-- d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.64 # room 0.5 # cutoff 1800 -- noise riser
+d9 $ loopAt 4 $ gap 128 $ s "DJ_DAVE_castles" # n 13 # gain 0.75 # room 0.7 # size 0.7 # cutoff 2500 -- noise riser
+
+do -- try different d1s -- SOPHIE_textures # n 0 #
+  -- d1 $ s "SOPHIE_subs*4" # n 10 # gain "1 0.93 0.9 0.85" # room 0.5 # size 0.98
+  -- d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain "1 0.96 0.92 0.88"
+  d1 $ s "SOPHIE_subs*4" # n 16 # djf (range 0.3 0.22 saw) # hcutoff 175
+  xfadeIn 1 20 silence
+  xfadeIn 2 16 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  xfadeIn 6 8 silence
+  d7 silence
+  xfadeIn 7 28 $ s "snares*16" # n 14 # distort 0.2
+  xfadeIn 8 20 silence
+  -- d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.75 # room 0.7 # cutoff 2100 -- noise riser come down
+  d9 $ loopAt 4 $ gap 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.95 # room 0.7 # size 0.7 # cutoff 3000 -- noise riser come down
+  -- jumpIn 9 4 silence
+  xfadeIn 9 24 silence
+  xfadeIn 11 20 silence
+
+
+do -- 4
+  d1 silence
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 2000 3000 saw) # gain 0.95
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 2000 saw) # gain 0.9
+  -- xfadeIn 5 16 silence
+  xfadeIn 5 8 silence
+  -- d6 $ loopAt 2 $ gap 32 $ s "techno_textures" # n 11 # gain 0.88
+  d6 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 11 # gain 0.9 # hcutoff 250 # tremolodepth 0.7 # tremolorate 8 # room 0.3 # size 0.9
+  xfadeIn 6 16 silence
+
+do -- 4
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 3000 5000 saw) # gain 0.95
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 2000 5000 saw) # gain 0.9
+
+do -- 4
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 5000 8000 saw) # gain 0.95
+  xfadeIn 2 4 $ (0.25 <~) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 5000 8000 saw) # djf 0.7 # gain 0.95
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 8000 saw) # gain 0.9
+  xfadeIn 3 4 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 8000 saw) # gain 0.9 # djf 0.8
+
+
+do -- 2
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 8000 12000 saw) # djf (slow 8 $ range 0.7 1.05 saw) # gain 0.95
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 8000 12000 saw) # gain 0.9  # djf (slow 4 $ range 0.7 1.1 saw)
+  xfadeIn 7 2 $ s "snares*16" # n 14 # distort 0.2 # djf (slow 4 $ range 0.8 1.4 saw)
+
+do -- 2
+  -- d2 silence
+  xfadeIn 2 2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  d3 silence
+  d4 silence
+  d7 $ s "[~ snares*3@3]*4" # n 14 # distort (slow 2 $ range 0.2 0.4 saw) # djf (slow 2 $ range 1.1 0.7 saw)
+  d10 $ gap 16 $ slice 96 "~@7 <~ ~ ~ 61>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  -- d2 silence
+  d3 silence
+  d4 silence
+  -- d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 800 # gain 1.05
+  d5 silence
+  -- d6 silence
+  d7 $ s "[~ snares*3@3]*4" # n 14 # djf 0.5
+  xfadeIn 7 8 $ s "[~ snares*3@3]*4" # n 14 # djf 0.85
+  d8 silence
+  d9 silence
+  -- jumpIn 10 3 $ gap 4 $ slice 16 1 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  -- d10 $ slice 128 "2 4 ~ 8 ~ 2 ~ 10" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2 # room 0.2 # distort 0.1
+  -- d11 $ gap 16 $ slice 16 0 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  -- d11 $ gap 16 $ slice 16 15 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2 # speed "-1"
+  d10 $ gap 16 $ slice 96 "~@7 <~ ~ ~ 61>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+
+
+
+xfadeIn 4 4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+
+-- d1 $ s "SOPHIE_subs*4" # n 10 # gain "1 0.93 0.9 0.85" # room 0.5 # size 0.98
+-- d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain "1 0.96 0.92 0.88"
+d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # djf (range 0.73 0.8 saw)
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  -- d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 100 saw) # gain 0.95
+  d3 $ (0.125 ~>) $ s "[<UMRU_hihats*2 UMRU_hihats> ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 100 saw) # gain 0.9
+  d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 800 # gain 1.05
+  -- d6 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 11 # gain 0.88
+  -- d7 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 1.07
+  d7 $ s "~ sn ~ sn" # n 2 # gain 0.9
+  -- d10 $ slice 96 "2 ~ 4 8 ~ 2 ~ 10" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  -- d10 $ slice 128 "2 4 ~ 8 ~ 2 ~ 10" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2 # distort 0.1
+  d11 silence
+
+
+
+
+  xfadeIn 1 12 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # djf 0.66
+  d1 silence
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  d11 $ n "e4?*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.88 # fshift (range (slow 4 $ range 0 "-10" saw) (slow 4 $ range "-10" "-30" saw) saw) # crush 5 # cutoff (slow 4 $ range 5000 2000 sine) # hcutoff (slow 4 $ range 1000 200 saw) # orbit 10
+  xfadeIn 11 4 $ n "e4?*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.88 # fshift (range (slow 4 $ range 0 "-10" saw) (slow 4 $ range "-10" "-30" saw) saw) # crush 5 # cutoff (slow 16 $ range 500 5000 sine) # hcutoff 200 # orbit 10
+  -- d12 $ n "[~ e4]*3@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # hcutoff 300
+
+
+
+xfadeIn 3 16 silence
+
+
+xfadeIn 2 16 silence
+
+
+do
+  -- d1 $ s "SOPHIE_subs*4" # n 10 # gain "1 0.93 0.9 0.85" # room 0.5 # size 0.98
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain "1 0.96 0.92 0.88"
+  -- d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # djf (range 0.72 0.76 saw)
+  xfadeIn 1 12 silence
+  xfadeIn 7 8 $ s "~ sn ~ sn" # n 2 # gain 1 # djf 0.92
+  -- d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.7 # cutoff 1000 -- noise riser come down
+  -- jumpIn 9 3 $ loopAt 4 $ s "DJ_DAVE_castles" # n 13 # gain 0.63 # room 0.5 # cutoff 1800 -- noise riser
+  d9 $ loopAt 4 $ gap 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.95 # room 0.7 # size 0.7 # cutoff 3000 -- noise riser come down
+  jumpIn' 9 4 $ loopAt 4 $ gap 128 $ s "DJ_DAVE_castles" # n 13 # gain 0.76 # room 0.7 # size 0.7 # cutoff 3000 -- noise riser
+  xfadeIn 10 8 silence
+  clutchIn 11 31 silence
+  clutchIn 12 8 silence
+
+
+do
+  d1 silence
+  xfadeIn 4 16 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.6 0.75 sine)
+  xfadeIn 5 16 $ loopAt 4 $ gap 128 $ s "techno_textures" # n 11 # room 0.7 # hcutoff 200 # cutoff 800 # gain 1 # orbit 4
+  d7 silence
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 0 1 saw) # crush (slow 4 $ range 12 9 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  -- d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.7 # cutoff 1000 -- noise riser come down
+  -- jumpIn 9 1 silence
+  -- d9 silence
+  d9 $ loopAt 4 $ gap "64 64 32 16" $ s "DJ_DAVE_castles" # n 14 # gain 0.88 # room 0.5 # size 0.7 # cutoff 1500 -- noise riser come down
+  -- jumpIn 9 4 silence
+  xfadeIn 9 12 silence
+
+  -- low
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 1 2 saw) # crush (slow 4 $ range 9 7 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 2 3 saw) # crush (slow 4 $ range 7 6 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 4 saw) # crush (slow 4 $ range 6 5 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+
+  -- high
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 1 2 saw) # crush (slow 4 $ range 9 7 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.6 0.66 saw)
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 2 3 saw) # crush (slow 4 $ range 7 6 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.66 0.73 saw)
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 4 saw) # crush (slow 4 $ range 6 5 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.73 0.77 saw)
+
+
+do
+  hush
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 4 saw) # crush (slow 4 $ range 6 5 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  -- d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 4 saw) # crush (slow 4 $ range 6 5 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf 0.8
+  d10 $ gap 16 $ slice 96 "~@7 <~ ~ ~ 61>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+
+do
+  -- d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # distort 0
+  d1 $ slice 8 "0*4" $ s "SOPHIE_subs" # n 16 # gain 1.1 # distort 0.15
+  -- d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw)
+  d2 silence
+  d3 silence
+  d4 silence
+  d5 $ loopAt 4 $ gap 128 $ s "techno_textures" # n 11 # room 0.7 # hcutoff 150 # cutoff 800 # gain 1.15
+  -- d6 silence
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 2 # distort 0.15 # crush 5 # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.7 # tremolorate 2 # room 0.8 # size 0.4 # gain 1.0
+  -- d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 4 saw) # crush (slow 4 $ range 6 5 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  -- d9 $ n "~ e e e ~ e ~ e" # s "acid91" # sustain 0.1 # squiz 1.28 # gain 0.8 # hcutoff 700
+  -- d9 silence
+  d9 $ loopAt 4 $ s "DJ_DAVE_castles" # n 14 # gain 0.73 # room 0.7 # cutoff 2000 -- noise riser come down
+  jumpIn 9 1 silence
+  -- jumpIn 10 3 $ gap 4 $ slice 16 1 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  -- d10 $ slice 128 "2 4 ~ 8 ~ 2 ~ 10" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2 # room 0.2 # distort 0.1
+  -- d11 $ gap 16 $ slice 16 0 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  -- d11 $ gap 16 $ slice 16 15 $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2 # speed "-1"
+  d10 $ gap 16 $ slice 96 "~@7 <~ ~ ~ 61>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # triode 2
+  d11 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # cutoff (slow 8 $ range 300 500 sine) # room 0.4 # size 0.5
+
+
+
+
+d1 silence
+
+do
+  d1 $ slice 8 "0*4" $ s "SOPHIE_subs" # n 16 # gain 1.05 # distort 0.1
+  -- d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d7 $ s "~ sn ~ sn" # n 2 # gain 0.9
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 2 $ range 5 3 perlin) # distort 0.06 # crush (slow 16 $ range 5 7.5 sine) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d11 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # cutoff (slow 16 $ range 1000 1700 sine)
+
+
+
+do -- 4
+  d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 2 $ range 5 3 perlin) # distort 0.06 # crush (slow 16 $ range 5 7.5 sine) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.63 0.68 saw)
+  xfadeIn 11 3 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # cutoff (slow 4 $ range 1500 2000 saw)
+
+do -- 4
+  xfadeIn 1 6 $ s "SOPHIE_kicks_dry*4" # n 10 # gain "1 0.96 0.92 0.88"
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 2 $ range 5 3 perlin) # distort 0.06 # crush (slow 16 $ range 5 7.5 sine) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.68 0.8 saw)
+  d11 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # cutoff (slow 4 $ range 2000 3000 saw)
+
+  -- d1 silence
+
+do
+  d1 $ slice 8 "0*4" $ s "SOPHIE_subs" # n 16 # gain 1.05 # distort 0.1
+  d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 2 $ range 5 3 perlin) # distort 0.06 # crush (slow 16 $ range 5 7.5 sine) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d11 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.93 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5
+
+
+
+
+  d1 silence
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05 # distort 0
+  d3 $ (0.125 ~>) $ s "[<UMRU_hihats*2 UMRU_hihats> ~]*4" # n 10 # hcutoff (slow 8 $ range 4000 100 sine) # gain 0.82 # orbit 2
+  -- d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+  d11 $ n "e4*12@3 e4" # s "basshigh" # sustain 0.08 # gain 0.95 # fshift (range (slow 4 $ range 0 "-30" saw) (slow 4 $ range "-30" "-90" saw) saw) # crush 5 # cutoff (slow 16 $ range 500 5000 sine)
+
+
+
+do
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats ~]*4" # n 10 # hcutoff (slow 8 $ range 4000 100 sine) # gain 0.82 # orbit 2
+  -- xfadeIn 3 2 $ (0.125 ~>) $ ghost $ ghost $ sometimes (ghost) $ sometimes (ghost) $ s "[UMRU_hihats ~]*4" # n 10 # hcutoff (slow 8 $ range 4000 7000 sine) # gain 0.82 # orbit 2
+  jumpIn 3 8 $ (0.125 ~>) $ rarely (ghost) $ s "[UMRU_hihats ~]*4" # n 10 # hcutoff (slow 8 $ range 4000 100 sine) # gain 0.82 # orbit 2
+  d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
+
+
+
+
+do
+  d9 $ loopAt 4 $ gap 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.88 # room 0.7 # cutoff 3000 -- noise riser come down
+  xfadeIn 9 12 silence
+
+do
+  d2 silence
+  d3 silence
+  -- d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 8 $ range 4000 100 sine) # gain 0.82 # orbit 2
+  -- d4 silence
+  d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.8 0.92 sine) # room 0
+  d7 silence
+  -- d9 silence
+  -- d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 2 $ range 5 3 perlin) # distort 0.06 # crush (slow 16 $ range 5 7.5 sine) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1 # djf (slow 4 $ range 0.6 0.66 saw)
+  clutchIn 11 20 silence
+
+  d4 silence
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain "1 0.96 0.92 0.88"
+  xfadeIn 1 12 silence
+  d3 silence
+  d4 silence
+  d5 silence
+  xfadeIn 8 2 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 4 3 saw) # crush (slow 4 $ range 5 6 saw) # accelerate (slow 4 $ range 0 "-0.3" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d10 $ silence
+
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 3 2 saw) # crush (slow 4 $ range 6 7 saw) # accelerate (slow 4 $ range 0 "-0.2" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 2 1 saw) # crush (slow 4 $ range 7 9 saw) # accelerate (slow 4 $ range 0 "-0.1" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  -- d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 1 0.1 saw) # crush (slow 4 $ range 9 12 saw) # accelerate (slow 4 $ range 0 "0" saw) # sustain 1.5 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+  d8 $ (0.125 ~>) $ n "[e2,e1]" # s "supersaw" # pitch1 (slow 4 $ range 1 0.1 saw) # crush (slow 4 $ range 9 12 saw) # accelerate (slow 4 $ range 0 "0" saw) # sustain "[1.5@3 10]/4" # release 8 # tremolodepth 0.6 # tremolorate 2 # room 0.5 # size 0.4 # gain 1.1
+
+
+hush
+
+
+
+
+
+
+
+d11 $ chop 32 $ loopAt 2 $ s "STRFKR_atlantis" # n 0 # room (slow 2 $ range 0 0.3 sine) # gain 1.2 # squiz (slow 4 $ range 2 4 sine)
+
+
+
+d11 $ slice 16 "<8 9 10 11 12 13 14 15>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 800 # triode 4 # squiz 1.2
+d11 $ slice 16 "<8 9 10 11 12 13 14 15>" $ loopAt 16 $ s "mona_lisa" # cutoff 800 # hcutoff 700 # triode 1 # squiz 1.6
+d11 $ slice 16 "<8 9 10 11 12 13 14 15>" $ loopAt 16 $ s "mona_lisa" # cutoff 2000 # hcutoff 1000 # triode 1 # squiz 1
+
+
+d11 $ rarely (rev) $ palindrome $ chop 32 $ slice 4 "[<2 3>]/4" $ loopAt 16 $ s "mona_lisa" # cutoff 1260 # hcutoff 1000 # triode 2 # squiz 1.1 # gain 0.9
+
+
+
+
+d8 $ chop 128 $ slow 8 $ s "BABII_vocal_loops" # cutoff 3000 # room 0.1 # size 0.8
+d8 $ whenmod 8 4 (palindrome) $ chop 128 $ slow 8 $ s "BABII_vocal_loops" # cutoff 3000 # room 0.1 # size 0.8
+d8 silence
+
+d11 $ chop 2 $ loopAt 2 $ s "STRFKR_atlantis" # n 0 # room 0.2 # gain 1.12 # squiz (slow 4 $ range 2 4 sine)
+d8 $ slice 8 "7*4" $ loopAt 2 $ s "STRFKR_atlantis" # n 0 # room 0.7 # gain 1.1
+d8 $ slice 8 "3*4" $ loopAt 2 $ s "STRFKR_atlantis" # n 0 # room 0.7 # gain 1.1
+d8 $ slice 8 "4*4" $ loopAt 2 $ s "STRFKR_atlantis" # n 0 # room 0.7 # gain 1.1
+
+
+d8 $ n ("e0*16" + (12 * "[0 1 2 3 4 5 6 7]") ) # s "basshigh" # gain 0.9 # room 0.15 # size 0.7 # sustain 0.1 # pan (fast 4 $ range 0.2 0.8 perlin) # cutoff 1000 # squiz 1.3
+
+d8 $ slow 2 $ n "e*12@6 f*2 d*2" # octave 3 # s "warsawbass" # distort 0.1 # room 0.2 # sustain (slow 3 $ range 0.15 0.18 sine) # gain 1.05
+d8 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.1 # room 0.2 # sustain (slow 3 $ range 0.08 0.1 sine) # gain 1.03
+-- b37
+d8 $ slow 2 $ n "e*12@6 f*2 d*2" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain 0.2
+d8 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "tb3" # distort 0.1 # room 0.1 # sustain (slow 3 $ range 0.08 0.1 sine)
+
+
+d9 $ slow 2 $ n "a4 e a b c6 e6 f6 a6" # s "warsawbass" # octave 4 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.8 0.7 sine) tremolorate 9 # orbit 8
+
+
+d9 $ n "a4 e a b c6 e6 f6 a6" # s "basshigh" # octave 6 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.9 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.7 0.6 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8 # hcutoff 200
+d10 $ n "[a4 e a b c6 e6 f6 a6]*2" # s "basshigh" # octave 7 # djf (slow 5 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.15 0.3 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 9 # hcutoff 400
+d11 $ n "[a4 e a b c6 e6 f6 a6]*4" # s "basshigh" # octave 8 # djf (slow 6 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.6 0.5 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 10 # hcutoff 800
+d12 $ n "[a4 e a b c6 e6 f6 a6]*8" # s "basshigh" # octave 9 # djf (slow 7 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.5 0.4 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 11 # hcutoff 1000
+
+
+d9 $ n "e a b c6 e6 f6 a6 c7" # s "basshigh" # octave 6 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.9 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.7 0.6 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8 # hcutoff 200
+d10 $ n "[e a b c6 e6 f6 a6 c7]*2" # s "basshigh" # octave 7 # djf (slow 5 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.15 0.3 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 9 # hcutoff 400
+d11 $ n "[e a b c6 e6 f6 a6 c7]*4" # s "basshigh" # octave 8 # djf (slow 6 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.6 0.5 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 10 # hcutoff 800
+d12 $ n "[e a b c6 e6 f6 a6 c7]*8" # s "basshigh" # octave 9 # djf (slow 7 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.5 0.4 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 11 # hcutoff 1000
+
+
+do -- trancey breakdown of some sorts?
+  hush
+  d3 $ gap 4 $ loopAt 16 $ s "DANNY_blue" # n 0
+  xfadeIn 3 12 silence
+  d4 $ chop 4 $ loopAt 16 $ s "DANNY_blue" # n 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+d7 $ slow 4 $ s "~@3 BABII_risers" # n 5
+d7 $ s "FOOD_808s/4" # n 0
+d7 $ slow 2 $ slice 2 "1*2" $ s "FOOD_808s" # n 0
+d7 silence
+
+
+
+
+
+d1 $ s "SOPHIE_subs*4" # n 10
+d1 $ slice 3 "0*4" $ s "SOPHIE_subs" # n 10
+
+d1 silence
+
+do
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+  d7 $ s "FOOD_808s/4" # n 0 # tremolodepth 1 # tremolorate 8 # hcutoff 150
+
+
+  d7 $ slow 2 $ s "XORE_bass" # n 34
+
+  d7 $ stack [
+    (slow 2 $ s "XORE_bass" # n 34),
+    ((0.062 <~) $ slow 2 $ slice 3 "~@3 2" $ s "XORE_bass" # n 34),
+    (slow 2 $ slice 10 "~@15 2" $ s "XORE_bass" # n 34 # distort (slow 2 $ range 1 2.3 sine))
+  ] # cutoff 10000 # gain 0.95
+
+d7 silence
+
+d7 $ n "e2/4" # s "superzow" # tremolodepth 0.5 # tremolorate 8 # room 0.2 # detune (slow 16 $ range 1 4 sine) # gain 0.92
+
+
+
+
+
+--
+  d6 $ slice 16 "0(5,8)" $ s "SOPHIE_subs" # n "<3 3 3 4>" # s "SOPHIE_subs" # distort 0.1 # triode 2 # crush 8
+  d6 $ s "~ ~ SOPHIE_kicks_dry ~ ~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry" # gain 0.8 # n 10 # distort 0.6 # crush 4 # hcutoff 100 # squiz 1.5
+  d6 $ s "~ ~ SOPHIE_kicks_dry ~ ~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry" # gain 0.8 # n 10 # distort 0.6 # crush 4 # hcutoff 100 # squiz 1.5
+
+
+  d6 $ (4 ~>) $ chop 16 $ loopAt 16 $ s "nebula" # n 6 -- # distort 0.6 # crush 4 # hcutoff 100 # squiz 1.5
+  d6 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # crush 7 # gain 0.9 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+
+  d7 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 3 # distort 0.1 # crush 8 # hcutoff 100 # squiz 1.05
+  d7 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 5 # triode "[1 2 3 4 5 4 3 2]" # gain 0.9
+  d7 silence
+
+  d6 silence
+
+
+  resetCycles
+
+  do
+    xfadeIn 6 8 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # cutoff 500 # crush 5 # gain 0.85 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+    d7 $ (4 ~>) $ chop 16 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 5 # triode "[1 2 3 4 5 4 3 2]" # gain 0.9
+    xfadeIn 7 8 $ (4 ~>) $ chop 16 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 6 # triode "[1 2 3 4 5 4 3 2]" # gain 0.9
+
+  do
+    xfadeIn 6 8 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # cutoff 1200 # crush 6 # gain 0.9 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+    xfadeIn 7 8 $ (4 ~>) $ chop 16 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 8 # triode "[1 2 3 4 5 4 3 2]" # gain 0.9
+
+  do
+    xfadeIn 6 8 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # cutoff 4000 # crush 7 # gain 0.92 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+    xfadeIn 7 8 $ (4 ~>) $ chop 16 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 10 # triode "[1 2 3 3 3 3 2 2]" # gain 0.9
+
+  do
+    xfadeIn 6 8 $ (4 ~>) $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # crush 8 # gain 0.94 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+    xfadeIn 7 8 $ (4 ~>) $ chop 16 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 14 # triode "[0]" # gain 0.9
+
+
+
+  do
+    d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.05
+    d2 $ (0.25 <~) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff (slow 8 $ range 100 2000 saw)
+    d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 5000 100 saw)
+    d4 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 1000
+    d5 $ chop 2 $ loopAt 2 $ s "techno_textures" # n 11 # gain 0.88
+    -- d6 $ chop 8 $ loopAt 8 $ s "nebula" # n 6 # hcutoff 100 # crush 7 # gain 0.9 # tremolodepth (range 0.5 0.8 sine) # tremolorate 12
+    -- d7 $ chop 8 $ loopAt 8 $ s "nebula" # n 3 # hcutoff 100 # crush 5 # triode "[1 2 3 4 5 4 3 2]" # gain 0.9
+
+    d7 silence
+    d6 silence
+--

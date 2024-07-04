@@ -51,15 +51,15 @@ d1 $ s "SOPHIE_kicks_dry SOPHIE_kicks_dry [SOPHIE_kicks_dry ~ SOPHIE_kicks_dry] 
 
 resetCycles
 
+  do
+    hush
+    jumpIn' 1 0 $ s "SOPHIE_kicks_dry" # n 18 # gain 1.25 # room 0.2
+    jumpIn' 2 0 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 5 # distort 0.7 # room 0.4
+    jumpIn' 3 0 $ s "~@3 superzow*9@9" # n "7" # octave 5 # gain 0.85 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5
 
 
-do
-  hush
-  jumpIn' 1 0 $ s "SOPHIE_kicks_dry" # n 18 # gain 1.25 # room 0.2
-  jumpIn' 2 0 $ n "<g as a gs>" # octave 2 # s "supersaw" # sustain 0.4 # pitch1 5 # distort 0.7 # room 0.4
-  jumpIn' 3 0 $ s "~@3 superzow*9@9" # n "7" # octave 5 # gain 0.85 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5
 
-
+--
 
 
 do
@@ -131,9 +131,10 @@ do
   -- d10 $ ghost $ s "~@3 superzow*9@9" # n (choose[7,9,9,10,14,19,7,7]) # octave 7 # gain 0.7 # detune (slow 4 $ range 0.7 3 saw) # distort 0.1 # room 0.5 # size 0.7 # pan (range 0.1 0.9 rand) # cutoff 3000
 
 
+    d3 $ ghost $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 6 # gain 0.8 # detune (slow 4 $ range 0.7 3 saw) # distort 0.4 # room 0.5 # pan (range 0.1 0.9 rand)
+    d3 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # gain 0.85 # octave 5 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5 # pan (range 0.1 0.9 rand)
 
-  d3 $ ghost $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 6 # gain 0.8 # detune (slow 4 $ range 0.7 3 saw) # distort 0.4 # room 0.5 # pan (range 0.1 0.9 rand)
-  d3 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # gain 0.85 # octave 5 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5 # pan (range 0.1 0.9 rand)
+
 
 
 -- clutchIn 10 4 silence
@@ -168,7 +169,7 @@ do
 
 do
   -- d3 $ s "~@3 superhammond*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 5 # gain 0.97 # voice 4 # distort 0.7 # room 0.3 # size 0.4 # pan (range 0.1 0.9 rand) # hcutoff 200
-  d3 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 5 # gain 0.98 # detune (slow 3 $ range 1.9 1.4 sine) # distort 0.7 # crush 3 # room 0.2 # sustain 0.12 # pan (range 0.1 0.9 rand)
+  d3 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 5 # gain 0.98 # detune (slow 3 $ range 1.9 1.4 sine) # distort 0.9 # crush 3 # room 0.2 # sustain 0.12 # pan (range 0.1 0.9 rand)
   d5 $ whenmod 4 3 (ghost) $ rarely (ghost) $ s "~ FOOD_claps [~ <FOOD_claps FOOD_claps FOOD_claps ~>] [<~ [~ FOOD_claps] ~ [FOOD_claps*3]>]" # n 2 # gain 1.05 # room 0.1
   d9 $ gap 8 $ s "~ breath*3@3" # gain 1.6 # room 0.4 # speed 1
 
@@ -299,7 +300,7 @@ do
 
 
 
-do  -- [ideally start right after `whenmo 3 2` (d10)]
+do  -- [ideally start right after `whenmod 3 2` (d10)]
   d3 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # gain 0.8 # octave 5 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # room 0.5 # pan (range 0.1 0.9 rand)
   d4 $ s "~@3 superzow*9@9" # n (choose[7,7,7,9,9,10,14,19]) # octave 2 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # crush 2 # room 0.4 # cutoff (range 800 1200 perlin) # sustain 0.1 # gain 1
   -- d4 $ s "~@3 superzow*9@9" # n (choose[7,7,9,9,10,14,19,7]) # octave 2 # detune (slow 3 $ range 0.8 1.1 sine) # distort 0.3 # crush 2 # room 0.4 # cutoff (range 800 1200 perlin) # sustain 0.1 # gain 1

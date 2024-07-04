@@ -1,0 +1,31 @@
+
+d1 $ s "bd(3,8)"
+d1 $ s "bd(5,8)"
+
+d1 $ s "bd [~ ~ ~ bd] [~ bd] bd*2 bd"
+
+
+-- tresillo pattern == https://www.youtube.com/watch?v=GJ4Rce8QEs0
+d2 $ slow 2 $ n "e@3 e@3 e@2" # s "superzow"
+d2 $ n "e@3 e@3 e@2" # s "superzow" -- make it work for trancey stuff?
+d2 $ fast 2 $ n "e@3 e@3 e@2" # octave 6 # s "moogbass" # sustain 0.1 -- make it work for trancey stuff?
+d2 silence
+
+
+bpm 138
+
+d1 $ s "SOPHIE_kicks_dry(<5 [5@3 8]>,8)" # n 1 # gain 1.1
+
+
+d3 $ chop 2 $ loopAt 2 $ s "STRFKR_atlantis" # n 0
+d4 $ chop 2 $ loopAt 2 $ s "STRFKR_atlantis" # n 1
+d4 silence
+
+
+
+
+do
+  -- resetCycles
+  d1 $ s "[SOPHIE_kicks_dry ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [<~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry*2> <SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry*2>]" # n 1 # gain 1.1
+  d5 $ s "soshats*16" # n 0 # freq (slow 4 $ range "200" "1000" saw) # resonance (slow 2 $ range 0.5 1 sine) # triode 4
+  clutchIn 5 4 $ s "soshats*16?" # n 0 # freq (slow 4 $ range "300" "1000" saw) # resonance (slow 2 $ range 0.5 1 sine) # triode 4
