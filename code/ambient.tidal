@@ -1,0 +1,147 @@
+bpm 120
+
+
+do
+  d3 $ gap 4 $ loopAt 16 $ s "DANNY_blue" # n 0
+  xfadeIn 3 12 silence
+  d4 $ chop 4 $ loopAt 16 $ s "DANNY_blue" # n 1 # room 0.2
+
+
+d4 $ slice 32 "5*2" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7 # room 0.2
+d4 $ slice 32 "21*2" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7 # room 0.2 # size 0.4 # tremolodepth 0.7 # tremolorate 8
+d4 silence
+
+d5 $ slice 32 (slow 2 $ "<14*4 10*4 8*4 7*4>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
+d5 $ slice 256 (slow 2 $ "<112*16 80*16 64*16 56*16>") $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.75
+d5 silence
+
+
+
+
+xfadeIn 4 16 silence
+
+d1 $ loopAt 0.5 $ s "ABBA_gimme" # gain 1.1 # room 0.9 # size 0.95 # tremolodepth 0.8 # tremolorate 3
+
+d1 $ chop 64 $ loopAt 64 $ s "CELINE_drop" # n 4 # cutoff 500 # hcutoff 500
+
+
+
+d2 $ slow 4 $ n (off "0" (+7) $ "<a e>") # octave 2 # s "moogbass" # cutoff 2000 # room 1 # size 0.9 # tremolodepth 1 # tremolorate 8 # gain 1.15
+
+d3 $ slow 4 $ n (off "0" (+7) $ "<a e>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 0.8 # cutoff 2000
+d3 silence
+
+
+
+-- 6, 8, 10, 13
+d1 $ ghost $ chop 32 $ loopAt 8 $ s "SOPHIE_textures" # n "<6 8 10 13>" # room 0.3 # size 0.9 # cutoff 3000
+
+
+
+
+
+
+-- XORE_ambient
+
+bpm 130
+bpm 100
+
+d1 $ chop 16 $ loopAt 16 $ s "XORE_ambient" # n 0
+
+d2 $ randslice 16 $ s "XORE_ambient" # n (range 0 50 rand)
+d2 $ randslice 12 $ s "XORE_ambient" # n (range 0 50 rand)
+
+
+d1 $ chop 16 $ loopAt 16 $ s "choir"
+
+
+
+
+d3 $ ghost $ (0.125 ~>) $ slow 2 $ s "default*16" # n ((choose[11,9,7,6,4,2,1,-1])) # octave "<<8 6> 7>" # cutoff (slow 7 $ range 1000 4000 sine) # room 0.5 # size 0.98 # sustain (slow 5 $ range 0.12 0.19 sine) # gain (slow 7 $ range 0.77 0.66 sine)
+
+clutchIn 3 16 $ ghost $ (0.125 ~>) $ slow 2 $ s "default*4" # n ((choose[11,9,7,6,4,2,1,-1])) # octave "<<8 6> 7>" # cutoff (slow 7 $ range 1000 4000 sine) # room 0.5 # size 0.98 # sustain (slow 5 $ range 0.12 0.19 sine) # gain (slow 7 $ range 0.77 0.66 sine)
+
+
+clutchIn 3 16 $ ghost $ (0.125 ~>) $ slow 2 $ s "default" # n ((choose[11,9,7,6,4,2,1,-1])) # octave "<<8 6> 7>" # cutoff (slow 7 $ range 1000 4000 sine) # room 0.5 # size 0.98 # sustain (slow 5 $ range 0.12 0.19 sine) # gain (slow 7 $ range 0.77 0.66 sine)
+
+
+d3 $ ghost $ (0.125 ~>) $ slow 2 $ s "default" # n ((choose[11,9,7,6,4,2,1,-1])) # octave "<<8 6> 7>" # cutoff (slow 7 $ range 1000 4000 sine) # room 0.5 # size 0.98 # sustain (slow 5 $ range 0.12 0.19 sine) # gain (slow 7 $ range 0.77 0.66 sine)
+
+d2 silence
+
+xfadeIn 1 8 silence
+
+
+
+
+
+--
+
+
+do
+  bpm 100
+  d2 $ chop 8 $ slice 2 "1/2" $ loopAt 4 $ s "techno_textures" # n 9 # room 0.8 # size 0.8 # gain 1.1
+
+
+
+bpm 130
+
+
+bpm 75
+
+
+do
+  bpm 50
+  d2 $ chop 8 $ slice 2 "1/2" $ loopAt 4 $ s "techno_textures" # n 9 # room 0.8 # size 0.8 # gain 1.1
+
+do
+  bpm 30
+  d2 $ chop 16 $ slice 2 "1/2" $ loopAt 4 $ s "techno_textures" # n 9 # room 0.8 # size 0.8 # gain 1.1
+  xfadeIn 2 0.25 silence
+
+
+
+
+
+
+
+
+
+--
+
+
+do
+  bpm 80
+  resetCycles
+  -- d2 $ slice 144 "<0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>" $ s "SMERZ_talk"
+  -- d3 $ slice 144 "<0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15>" $ s "SMERZ_talk" # n 1 # n 1 # cutoff 1000 # room 0.5 # size 0.8 # gain 0.85 # distort 0.2
+  -- d2 $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk"
+  -- d3 $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # n 1 # cutoff 1000 # room 0.5 # size 0.8 # gain 0.8 # distort 0.1
+  d2 $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # cutoff 1000 # room 0.7 # size 0.95 # gain 0.9 # speed (80/150)
+  d3 $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # n 1 # cutoff 1000 # room 0.7 # size 0.95 # gain 0.8 # waveloss 25 # speed (80/150)
+
+
+
+  d4 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+  d4 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # cutoff 700 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (40/150)
+  d4 silence
+
+
+  d4 $ slice 144 "83" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+  d4 $ slice 144 "90" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+  d4 $ slice 144 "<91 92>" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+  d4 $ slice 144 "96" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+  d4 $ slice 144 "97" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
+
+
+
+  d5 $ ghost $ slow 2 $ s "default?*16" # n ((choose[-2,-2,-2,0,1,1,-4])) # octave "<<8 6> 7>" # cutoff (slow 7 $ range 1000 4000 sine) # room 0.5 # size 0.98 # sustain (slow 5 $ range 0.12 0.19 sine) # gain (slow 7 $ range 0.77 0.66 sine) # waveloss (range 0 75 rand)
+  d5 silence
+
+
+
+  xfadeIn 2 8 silence
+
+  hush
+
+--
