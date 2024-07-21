@@ -323,6 +323,11 @@ do
 
 
 
+
+
+
+---
+NEW AND IMPROVED
 ---
 
 bpm 140
@@ -341,22 +346,35 @@ do
 
 
 d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
-d1 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2000
+-- d1 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2000
 
 
--- ??
-d10 $ loopAt 8 $ s "BABII_risers" # n 6
-d10 silence
-
-d9 $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.7 # room 0.3 # size 0.9
+d4 $ s "[~ UMRU_snares]*2" # n 19 # cutoff (slow 8 $ range 10000 6000 sine) # speed 1.1 # gain 0.84
 
 
 
+do
+  -- ??
+  xfadeIn 1 8 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1 # hcutoff 100
+  d10 $ (1.25 ~>) $ loopAt 8 $ s "BABII_risers" # n 6
+  jumpIn 10 2 silence
+  d9 $ (0.5 <~) $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.63 # room 0.3 # size 0.9 # cutoff 2200
+  xfadeIn 9 8 $ (0.5 <~) $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.72 # room 0.3 # size 0.9 # cutoff 3000
 
-d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.92
-d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.92
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
+  d9 $ (0.5 <~) $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.75
+
+
+
+d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.882
+d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.882
 d3 silence
 
+
+d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
+d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
 
 
@@ -366,9 +384,10 @@ d3 silence
 
 
 do
-  d1 $ s "techno_kicks*2" # n 4 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.3
+  d1 $ s "SOPHIE_kicks_dry*2" # n 1 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.3
   d2 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26 # hcutoff 300 # distort 0.15
   d6 silence
+  xfadeIn 11 4 silence
 
 do
   d2 $ fast 2 $ slice 64 "~ 30 ~ 30" $ s "FOOD_one_shots" # n 26 # hcutoff 400 # distort 0.25
@@ -388,38 +407,41 @@ do
   d4 $ s "[~ UMRU_snares]*2" # n 19 # cutoff (slow 8 $ range 10000 6000 sine) # speed 1.1 # gain 0.84
   -- d5 $ (0.0625 <~) $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 100
   d6 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.15 # orbit 5
+  -- d9 $ slow 8 $ chop 8 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
+  d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
+  d9 $ slice 32 "<0 0 2 9> <3 3 <2 3> <3 9>>" $ s "BABII_vocal_loops" # n 16 # gain 0.74
+
+
+  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
+
+
+
+  -- vocal shits (Gmin)
   d9 $ slow 8 $ chop 8 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
 
+  d9 $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
+
+
+  d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
+  d9 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
+  d9 $ rev $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain "[0.78 0.6 0.78 0.68]*4"
 
 
 
+  -- b42 (stabby, bouncy bass)
+  d8 $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "tb3" # sustain "[0.2 [0.08 0.1] 0.2 0.2]*2"
+  d8 $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "tb3" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
 
--- vocal shits (Gmin)
-d9 $ slow 8 $ chop 8 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
-
-d9 $ slow 4 $ gap 64 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
-
-
-d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
-d9 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
-d9 $ rev $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain "[0.78 0.6 0.78 0.68]*4"
-
-
-
--- b42 (stabby, bouncy bass)
-d8 $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "tb3" # sustain "[0.2 [0.08 0.1] 0.2 0.2]*2"
-d8 $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "tb3" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
-
-d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
-d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 3 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
-d8 silence
+  d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
+  d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 3 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
+  d8 silence
 
 
   -- ??
-  d9 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
-  d9 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
-  d9 $ (2 <~) $ chop 128 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 8 $ "<[0 1 [1 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
-  d9 silence
+  d10 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
+  d10 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
+  d10 $ (2 <~) $ chop 128 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 8 $ "<[0 1 [1 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
+  d10 silence
 
 
 
@@ -428,18 +450,21 @@ xfadeIn 8 16 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "a
 
 xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 1000
 xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 300
-xfadeIn 1 8 $ silence
+xfadeIn 1 16 $ silence
 
 xfadeIn 8 16 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.2 # size 0.4
 xfadeIn 8 16 $ sometimes (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.6 # size 0.99
 xfadeIn 8 16 $ ghost $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.4 [0.16 0.6] 0.4 0.2]*2" # room 0.6 # size 0.99
 
 
+xfadeIn 10 8 $ fast 2 $ ghost $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
+-- xfadeIn 10 8 $ fast 2 $ ghost $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
 
-xfadeIn 10 8 $ fast 2 $ ghost $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1500
-
+d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
 d10 $ fast 2 $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
 d10 $ fast 2 $ n "<[c d ef f] [d ef f g]>" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+d10 silence
+
 
 
 do
@@ -451,22 +476,31 @@ do
   d6 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.15 # orbit 5
   d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 3 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
   -- d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
+  d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
 
 
-d4 silence
+  -- ??
+  xfadeIn 10 8 $ fast 2 $ ghost $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
+
+  d11 silence
+  d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
+
+  d4 silence
 
 do
   -- d1 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 2000
   d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.1
-  d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.92
+  -- d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88
   d4 $ s "[~ UMRU_snares]*2" # n 19 # cutoff (slow 8 $ range 10000 6000 sine) # speed 1.1 # gain 0.84
   d8 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 3 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
   -- xfadeIn 10 2 $ fast 2 $ ghost $ slow (5/4) $ n "c d ef f g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.8 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1500
   d9 $ gap 32 $ s "BABII_vocal_loops" # n 16 # gain 0.76
   -- d9 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
+  -- d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
+  d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
-
-
+d10 silence
 
 
 
