@@ -368,15 +368,10 @@ do
 
 
 
-d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.882
-d3 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.882
-d3 silence
 
 
 d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
 d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
-
-
 
 
 
@@ -388,6 +383,7 @@ do
   d2 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26 # hcutoff 300 # distort 0.15
   d6 silence
   xfadeIn 11 4 silence
+  d12 silence
 
 do
   d2 $ fast 2 $ slice 64 "~ 30 ~ 30" $ s "FOOD_one_shots" # n 26 # hcutoff 400 # distort 0.25
@@ -411,6 +407,8 @@ do
   d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
   d9 $ slice 32 "<0 0 2 9> <3 3 <2 3> <3 9>>" $ s "BABII_vocal_loops" # n 16 # gain 0.74
 
+
+  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6 # cutoff 3000 # room 0.2
 
   d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
 
@@ -448,22 +446,25 @@ do
 
 xfadeIn 8 16 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 4 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2"
 
-xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 1000
-xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 300
-xfadeIn 1 16 $ silence
-
-xfadeIn 8 16 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.2 # size 0.4
-xfadeIn 8 16 $ sometimes (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.6 # size 0.99
-xfadeIn 8 16 $ ghost $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.4 [0.16 0.6] 0.4 0.2]*2" # room 0.6 # size 0.99
+xfadeIn 1 8 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1 # djf 0.66
 
 
-xfadeIn 10 8 $ fast 2 $ ghost $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
--- xfadeIn 10 8 $ fast 2 $ ghost $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
+  xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 1000
+  xfadeIn 1 8 $ s "techno_kicks*4" # n 4 # gain 1 # cutoff 300
+  xfadeIn 1 16 $ silence
 
-d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
-d10 $ fast 2 $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
-d10 $ fast 2 $ n "<[c d ef f] [d ef f g]>" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
-d10 silence
+  xfadeIn 8 16 $ rarely (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.2 # size 0.4
+  xfadeIn 8 16 $ sometimes (ghost) $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.2 [0.08 0.3] 0.4 0.2]*2" # room 0.6 # size 0.99
+  xfadeIn 8 16 $ ghost $ n "c c*2 c6 gs c [c gs6] g gs" # octave 5 # s "acid92" # sustain "[0.4 [0.16 0.6] 0.4 0.2]*2" # room 0.6 # size 0.99
+
+
+  xfadeIn 10 8 $ fast 2 $ ghost $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
+  -- xfadeIn 10 8 $ fast 2 $ ghost $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.9 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1000
+
+  d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+  d10 $ fast 2 $ n "c d ef g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+  d10 $ fast 2 $ n "<[c d ef f] [d ef f g]>" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+  d10 silence
 
 
 
@@ -496,17 +497,12 @@ do
   -- xfadeIn 10 2 $ fast 2 $ ghost $ slow (5/4) $ n "c d ef f g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.1 0.4 sine) # gain 0.8 # sustain (slow 3 $ range 0.16 0.25 sine) # cutoff 1500
   d9 $ gap 32 $ s "BABII_vocal_loops" # n 16 # gain 0.76
   -- d9 $ chop 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
-  -- d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+  d10 $ fast 2 $ n "[[c d ef f g]/5]*4" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 4 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.85 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
   d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
   d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
 d10 silence
-
-
-
-
-
-
+clutchIn 10 16 silence
 
 
 
