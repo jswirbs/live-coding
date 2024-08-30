@@ -7,6 +7,14 @@
 --
 
 
+-- try starting at cycle -16 and clutchIn d3 until cycle 0
+-- and/or some reversed notes? speed -1?
+
+
+-- try a version taking sounds and ideas from mimetic/reality to get this into that mood, i.e. get them in conversation with each other in a more consistent sonic landscape
+-- think about a longer form performance / show interwining them a bit more (maybe with happiness & loneliness?)
+
+
 bpm 130
 
 
@@ -48,7 +56,7 @@ d3 $ sometimes (ghost) $ stack [
     (pressBy (slow 48 $ (run 48)/48) $ n "~@3 a7"),
     (pressBy (slow 56 $ (run 56)/56) $ n "~@3 c8")
     -- (pressBy (slow 64 $ (run 64)/64) $ n "~@3 e8")
-  -- ] # s "basslow" # cutoff (slow 16 $ range 120 2000 saw) # gain (slow 16 $ range 0.87 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (fast 4 $ range 0.5 "<0.2 0.8>" saw) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
+  -- ] # s "basslow" # cutoff (slow 16 $ range 300 1900 saw) # gain (slow 16 $ range 0.87 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (fast 4 $ range 0.5 "<0.2 0.8>" saw) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
   ] # s "basslow" # cutoff (slow 16 $ range 1300 5000 sine) # gain (slow 16 $ range 0.84 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (fast 4 $ range 0.5 "<0.25 0.75>" saw) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
 
 
@@ -57,8 +65,10 @@ solo 1
 
 do
   unsolo 1
+  d1 silence
   bpm 130
   resetCycles
+  -- T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = 8})
   xfadeIn 1 32 $ s "XORE_kicks*4" # n 3 # gain 1.1
   xfadeIn 10 32 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.92
 
@@ -71,42 +81,48 @@ d5 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.92
 
 
 
-d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.32
-d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.4 # djf 0.44
+d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.3 # djf 0.32
+d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.09 # room 0.3 # djf 0.4
 
 
 do -- 16 breakdown
   d4 silence
   d5 silence
   d10 silence
+  d11 silence
   -- d2 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 5 # gain 0.92 # cutoff 1200 # tremolodepth 0.5 # tremolorate 8
   -- xfadeIn 2 8 $ chop 16 $ loopAt 4 $ s "techno_textures" # n 5 # gain 0.96 # cutoff 2500 # tremolodepth 0.3 # tremolorate 8
-  d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.65
+  d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.65
 
 
 do
   xfadeIn 1 8 $ s "XORE_kicks*4" # n 3 # gain 1.1 # hcutoff 150
   -- xfadeIn 2 8 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 8 # gain 1.1
-  -- xfadeIn 2 8 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.8
-  xfadeIn 2 6 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.78
+  -- xfadeIn 2 8 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.8
+  xfadeIn 2 6 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.78
   xfadeIn 10 8 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.9
+  -- xfadeIn 11 8 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0.9 1]*4" # cutoff 5000 # distort (range 0.02 0.09 perlin) # crush 8
 
 
--- d2 silence
--- d2 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
-xfadeIn 2 2 $ loopAt 8 $ slice "64@15 128" "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 34 [36 37] [38 39]]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
-xfadeIn 2 2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 17 18 19]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
+
+xfadeIn 2 2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 17 18 19]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.3
+xfadeIn 2 2 $ loopAt 8 $ slice "64@15 128" "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 34 [36 37] [38 39]]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.3
 
 do
   d1 $ s "XORE_kicks*4" # n 3 # gain 1.1
-  d2 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
+  d2 $ chop 8 $ slow 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
   -- d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
   -- d2 $ chop 4 $ slow 8 $ s "horns" # n 1 # room 0.3 # cutoff (range 3000 5000 rand) # gain 1.05 # tremolodepth 0.5 # tremolorate "[8 8 4 2]*2" -- 140 bpm
-  -- d11 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 5 # gain 1 # hcutoff 100 # tremolodepth 0.5 # tremolorate 8 # fshift "<0 40>"
   d5 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.87
+  -- d11 $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[3,3,3,3,3,4]) # s "tb3" # sustain 0.08
+  -- jumpIn' 11 0 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave 2 # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
+  -- d11 silence
+  -- d11 $ slow 4 $ n "[~ e*2]*6@6 [~ c*2]*2@2 [~ a*2]*8@8" # octave 2 # s "superzow" # gain 0.95 # room 0.05 # cutoff 800
+  -- d11 $ slow 4 $ n "[~ e*2]*6@6 [~ c*2]*2@2 [~ a*2]*8@8" # octave 2 # s "superhammond" # gain 0.92
+  -- which sub bassssssssss ???? if any....
 
 
-
+  -- jumpIn' 11 0 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
   d10 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 2 # gain 0.92
 
 
@@ -115,30 +131,34 @@ do
 
 
 
-  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.6
+  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.6
 
 
 
 do -- 32 breakdown
   d1 silence
-  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.7
+  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.7
   d4 silence
   xfadeIn 6 16 silence
   xfadeIn 10 8 silence
+  -- xfadeIn 11 8 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0.9 1]*4" # cutoff 4000 # hcutoff 80 # distort (range 0.04 0.1 perlin)
 
 
 do
-  -- d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.7
-  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.8
+  -- d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.7
+  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.8
   d5 silence
+  d8 silence
   d10 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.9 # djf 0.95
   xfadeIn 10 24 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.9 # djf 0.7
+  -- xfadeIn 11 8 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0.78 0.88]*4" # cutoff 7000 # hcutoff 150 # distort (slow 8 $ range 0.02 0.15 perlin)
 
 
 do
-  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.88
+  xfadeIn 2 8 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.88
   xfadeIn 8 16 $ s "sn*16" # n 3 # gain 0.9 # djf (slow 16 $ range 0.4 1 saw)
-
+  -- d11 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0.78 0.88]*4" # cutoff 10000 # hcutoff 380 # distort 0.2
+  -- xfadeIn 11 8 silence
 
 do
   xfadeIn 2 8 silence
@@ -153,13 +173,16 @@ do
 
 do
   d1 $ s "XORE_kicks*4" # n 3 # gain 1.1
-  d2 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
+  d2 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
   d5 $ (0.25 ~>) $ s "sn*2" # n 2 # gain 0.87
   d6 $ sometimes (ghost) $ s "[~ UMRU_percussion_misc] [~ UMRU_percussion_misc]*2" # n 10 # gain 0.77
   d8 $ s "sn*16" # n 3 # gain 0.9 # djf 1.05
   xfadeIn 8 4 silence
+  -- jumpIn' 11 0 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave 2 # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
+  -- d11 $ slow 4 $ n "[~ e*2]*6@6 [~ c*2]*2@2 [~ a*2]*8@8" # octave 2 # s "superhammond" # gain 0.92
 
 
+  -- jumpIn' 11 0 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
   d10 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 2 # gain 0.92
 
 
@@ -168,26 +191,32 @@ do
 
 
 do -- 4
-  d2 $ chop 32 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
-  xfadeIn 2 4 $ chop 32 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.5 # djf 0.4
+  d2 $ chop 32 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
+  xfadeIn 2 4 $ chop 32 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.6 # djf 0.4
+  -- xfadeIn 11 4 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 5000 # distort (range 0.05 0.12 perlin)
 
 do
-  d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
+  d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
   d10 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.9
+  -- d11 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0 1.04]*4" # cutoff 3000 # distort (range 0.05 0.12 perlin)
+  -- d11 $ slow 4 $ n "[~ e*2]*6@6 [~ c*2]*2@2 [~ a*2]*8@8" # octave 2 # s "superhammond" # gain 0.92 # sustain 0.08
 
 
 do -- 4
   d1 $ slow 4 $ s "XORE_kicks*15@15 ~" # n 3 # gain 1.1
-  xfadeIn 2 4 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 17 18 19]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.5 # djf 0.7
+  xfadeIn 2 4 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*6@6 [~ 17 18 19]@2]*2" $ s "techno_bass_loops" # n 9 # gain 1.08 # room 0.5
   -- d2 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
-  -- xfadeIn 2 4 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5 # djf 0.7
-  d5 $ (0.25 ~>) $ s "[sn*6@6 [sn ~ ~ sn ~ sn ~ ~]@2]/4" # n 2 # gain 0.9
+  -- xfadeIn 2 4 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3 # djf 0.7
+  d5 $ (0.25 ~>) $ s "[sn*7@7 ~]/4" # n 2 # gain 0.9
+  -- xfadeIn 11 4 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0 1.04]*4" # cutoff 5000 # distort (range 0.08 0.18 perlin)
 
 do
   d1 $ s "XORE_kicks*4" # n 3 # gain 1.1
-  d2 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.5
-  -- d5 $ (0.25 ~>) $ s "[sn*6@6 [sn ~ ~ sn ~ sn ~ ~]@2]/4" # n 2 # gain 0.9
+  d2 $ chop 8 $ loopAt 8 $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
+  d5 $ (0.25 ~>) $ s "[sn*6@6 [sn ~ ~ sn ~ sn ~ ~]@2]/4" # n 2 # gain 0.9
   d10 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 2 # gain 0.92
+  -- d11 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
+  -- d11 $ slow 4 $ n "[~ e*2]*6@6 [~ c*2]*2@2 [~ a*2]*8@8" # octave 2 # s "superhammond" # gain 0.92
 
 
 
@@ -216,6 +245,8 @@ do
   d2 $ loopAt 8 $ slice 64 "[[~ 1]*6@6 [~ 15]*2@2 [~ 17]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
   clutchIn 6 8 silence
   xfadeIn 10 8 silence
+  -- d11 $ rarely (ghost) $ n "[e*16 [e*8 c*8] a*16 a*16]/4" # octave (choose[2,2,2,2,3,3,4]) # s "acid92" # sustain "0.1 0.08 0.25 0.1" # gain "[0 1.04]*4" # cutoff 3000 # distort (range 0.05 0.12 perlin)
+  -- xfadeIn 11 8 silence
 
 
 -- d2 $ loopAt 8 $ slice 128 "[[~ 2]*6@6 [~ 30]*2@2 [~ 34]*8@8]*2" $ s "techno_bass_loops" # n 9 # gain 1.05 # room 0.3
@@ -223,6 +254,7 @@ do
 do
   d1 silence
   d2 silence
+  d11 silence
   jumpIn' 12 0 $ s "slow_time*16" # gain 0 # cps (slow 8 $ range (130/60/4) (20/60/4) saw)
 
 

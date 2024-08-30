@@ -12,10 +12,14 @@ xfadeIn 4 4 $ s "XORE_hats*8" # n 16 # cutoff 2500 # room 0.6
 
 
 do
+  resetCycles
   hush
+  d3 $ gap 4 $ loopAt 16 $ s "DANNY_blue" # n 0 # cutoff 1000
+
+do
   d3 $ gap 4 $ loopAt 16 $ s "DANNY_blue" # n 0
   xfadeIn 3 12 silence
-  d4 $ chop 4 $ loopAt 16 $ s "DANNY_blue" # n 1
+  xfadeIn 4 4 $ chop 64 $ loopAt 16 $ s "DANNY_blue" # n 1
 
 
 xfadeIn 2 8 $ s "SOPHIE_subs*8" # n 5 # gain 1.1
@@ -45,7 +49,7 @@ do
 
 
 xfadeIn 6 4 silence
-d7 $ slice 32 "5*2" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
+xfadeIn 7 4 $ slice 32 "5*2" $ loopAt 16 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
 -- d7 $ slice 32 "5*4" $ loopAt 8 $ s "DANNY_blue" # n 1 # speed "-1" # djf 0.7
 
 do
