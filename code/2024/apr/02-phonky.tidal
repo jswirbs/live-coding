@@ -371,7 +371,7 @@ do
 
 
 d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
-d12 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
+d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
 
 
@@ -382,13 +382,14 @@ do
   d1 $ s "SOPHIE_kicks_dry*2" # n 1 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.3
   d2 $ fast 2 $ slice 64 "~ 30 30 30" $ s "FOOD_one_shots" # n 26 # hcutoff 300 # distort 0.15
   d6 silence
-  xfadeIn 11 4 silence
+  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
   d12 silence
 
 do
   d2 $ fast 2 $ slice 64 "~ 30 ~ 30" $ s "FOOD_one_shots" # n 26 # hcutoff 400 # distort 0.25
   -- d3 $ s "~ UMRU_percussion_misc [~ UMRU_percussion_misc] [~ UMRU_percussion_misc]" # n 8 # gain 0.85
   d4 silence
+  xfadeIn 11 2 silence
 
 do
   d1 silence
@@ -410,7 +411,7 @@ do
 
   d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6 # cutoff 3000 # room 0.2
 
-  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6
+  d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
 
 

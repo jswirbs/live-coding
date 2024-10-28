@@ -109,6 +109,7 @@ do
   d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
 
 
+
 do
   d1 $ s "XORE_kicks*4" # n 10 # gain 1.1 # djf 0.62
   xfadeIn 1 8 $ s "XORE_kicks*4" # n 10 # gain 1.1 # djf 0.69
@@ -142,38 +143,23 @@ do
 
 do
   d6 $ (0.125 ~>) $ slice 128 "32*4" $ s "trancey_synth_loops" # n 17 # gain 0.77 # cutoff 4000 # room 0.1 # speed "<-1 1>"
-  -- d7 silence
-  d7 silence
-  clutchIn 8 8 silence
-  -- d8 silence
-  d10 $ gap 16 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.55 # cutoff (fast 2 $ range 2000 6000 sine) # room 0.6 # size 0.8 # speed "-1"
+  d10 $ palindrome $ chop 128 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 1050 # room 0.5 # size 0.9 # speed "-1"
 
 
 -- fix d10 -- make it sparser and higher freq than the above d10
 do
+  xfadeIn 1 8 $ s "XORE_kicks*4" # n 10 # gain 1.1 # djf 0.66
   d3 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.3 # distort 0.1 # triode 2 # gain 1.1 # djf 0.42
   jumpIn 3 4 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.5 # distort 0.05 # triode 2 # gain 1.1 # djf 0.38
   d4 silence
   -- d6 $ (0.125 ~>) $ slice 128 "72*4" $ s "trancey_synth_loops" # n 17 # gain 0.8 # cutoff 4000 # room 0.1 # speed "<-1 1>"
-  d6 $ (0.125 ~>) $ slice 128 "96*4" $ s "trancey_synth_loops" # n 17 # gain 0.76 # cutoff 3500 # room 0.05 # speed "<-1 1>"
-  d10 $ gap 32 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.55 # cutoff (fast 2 $ range 2000 6000 sine) # room 0.6 # size 0.8 # speed "-1"
-  xfadeIn 10 8 $ gap 4 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.55 # cutoff (fast 2 $ range 1000 2000 sine) # room 0.8 # size 0.99 # speed "-1"
-  -- d11 $ slow 4 $ gap "128" $ s "SOPHIE_subs" # n 6 # room 0.3 # distort 0.1 # gain 1 # cutoff 800 # hcutoff 20
+  d6 $ (0.125 ~>) $ slice 128 "96*4" $ s "trancey_synth_loops" # n 17 # gain 0.73 # cutoff 3500 # room 0.02 # speed "<-1 1>"
+  xfadeIn 7 8 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*8" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.7 # pan "[0.2 0.8]*4"
+  clutchIn 8 8 silence
 
 
-  -- can take inspo from this, but come on, switch it up a bit
-  -- d12 $ whenmod 4 3 (const $ sometimes (ghost) $ s "SOPHIE_claps SOPHIE_claps SOPHIE_claps*2 SOPHIE_claps*4" # n 12 # gain 0.87) $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.87
-  -- ?? off beat clap might come in harder just leaveing d12 in in full
-  d12 $ rarely (ghost) $ slice "[5 6 7 8]/4" "0*4" $ s "SOPHIE_claps" # n 12 # gain 0.87
 
-do
-  xfadeIn 1 4 $ s "XORE_kicks*4" # n 10 # gain 1.1 # djf 0.66
-  -- d9 silence
-  xfadeIn 9 4 silence
-  -- xfadeIn 12 4 $ rarely (ghost) $ slice 4 "0*4" $ s "SOPHIE_claps" # n 12 # gain 0.87 # djf 0.5
-  xfadeIn 12 4 $ slice 2 "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.9 # djf 0.5
-
-  -- d4 $ slow 2 $ slice 18 "[~@7 <~ 0>] [~ ~ [~ ~] [~ 0]]" $ s "SOPHIE_subs" # n 16 # room 0 # gain 1
+d1 silence
 
 do
   -- d1 $ s "XORE_kicks*4" # n 3 # gain 1.1
@@ -184,24 +170,29 @@ do
   d4 $ slow 2 $ slice 18 "[~@7 <~ 0>] [~ ~ [~ 0] [~ 0]]" $ s "SOPHIE_subs" # n 16 # room 0 # gain 1
   d6 $ (0.125 ~>) $ slice 128 "0*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.9 # speed "<-1 1>" # orbit 5
   xfadeIn 6 8 $ (0.125 ~>) $ slice 128 "0*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.99 # speed "<-1 1>" # orbit 5
-  jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*8" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # pan "[0.2 0.8]*4"
-  d10 silence
-  d12 $ (0.125 ~>) $ rarely (ghost) $ slice 3 "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.87 # djf 0.5
+  jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*16" # n 8 # distort 0 # crush 8 # cutoff "[12000 10000 4000 3000]*2" # gain 0.8 # pan "[0.2 0.8]*4"
+  d8 silence
+  d12 silence
+  -- d12 $ (0.125 ~>) $ rarely (ghost) $ slice 3 "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.87 # djf 0.5
   -- or try low djf?
 
 
 do
-  d6 $ (0.125 ~>) $ slice 128 "24*4" $ s "trancey_synth_loops" # n 17 # gain 0.78 # cutoff 4500 # room 0.1 # size 0.6 # speed "<-1 1>"
-  jumpIn' 8 7 $ rarely (ghost) $ s (fast ((run 8) + 1) $ "techno_hats*8") # n 8 # distort "0.1 0.2" # crush "[7 6]" # cutoff 12000 # gain 0.8 # pan "[0.2 0.8]*4"
+  d6 $ (0.125 ~>) $ slice 128 "24*4" $ s "trancey_synth_loops" # n 17 # gain 0.75 # cutoff 4500 # room 0.1 # size 0.6 # speed "<-1 1>"
   -- jumpIn' 9 0 $ s "~ snares ~ [snares <~ ~ ~ snares>]" # n 14 # distort 0.2 # room 0.05
+  -- d7 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*16" # n 8 # distort 0 # crush 8 # cutoff "[12000 5000]*8" # gain 0.8 # pan "[0.2 0.8]*4"
+  xfadeIn 7 7 $ whenmod 8 7 (const $ rarely (ghost) $ s (fast ((run 8) + 1) $ "techno_hats*8") # n 8 # distort "0.1 0.2" # crush "[7 6]" # cutoff 12000 # gain 0.8 # pan "[0.2 0.8]*4")
+    $ rarely (ghost) $ s "techno_hats*16" # n 8 # distort 0 # crush 8 # cutoff "[12000 5000]*8" # gain 0.8 # pan "[0.2 0.8]*4"
   d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
+  jumpIn 9 7 $ s "~ SOPHIE_claps [~ SOPHIE_claps ~] SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
+  -- jumpIn 9 7 $ swingBy (1/8) 4 $ sometimes (ghost) $ s "~ SOPHIE_claps [~ SOPHIE_claps SOPHIE_claps] SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
 
 
 do
   d6 $ (0.125 ~>) $ slice 128 "32*4" $ s "trancey_synth_loops" # n 17 # gain 0.78 # cutoff 4000 # room 0.1 # speed "<-1 1>"
   jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats <techno_hats techno_hats techno_hats [techno_hats techno_hats <~ techno_hats> techno_hats]> <techno_hats*2 techno_hats techno_hats*2 [<~ techno_hats> techno_hats ~ ~]> <techno_hats techno_hats techno_hats techno_hats>" # n 4 # distort 0.3 # crush 6 # gain 0.9
   jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
-  -- d12 $ rarely (ghost) $ slice "8" "0*8" $ s "SOPHIE_claps" # n 5 # gain "[0.78 0.87]*4"
+  d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
   xfadeIn 10 8 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.48 # cutoff 1000 # room 0.5 # size 0.9 # speed "-1"
   d12 silence
 
@@ -222,7 +213,7 @@ do
     -- d7 silence
     -- d8 silence
     -- d9 silence
-    xfadeIn 10 8 $ gap 32 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 6000 # room 0.5 # size 0.7 # speed "-1" # orbit 9
+    -- xfadeIn 10 8 $ gap 32 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 6000 # room 0.5 # size 0.7 # speed "-1" # orbit 9
     -- d12 $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.87
 
 
@@ -250,21 +241,23 @@ do
       d6 $ (0.125 ~>) $ slice 128 "0*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.9 # speed "<-1 1>" # orbit 5
       xfadeIn 6 8 $ (0.125 ~>) $ slice 128 "0*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.99 # speed "<-1 1>" # orbit 5
       -- d6 $ (0.125 ~>) $ slice 128 "8*4" $ s "trancey_synth_loops" # n 17 # gain 0.8 # cutoff 4000 # room 0.1 # speed "<-1 1>"
+      -- d9 silence
       -- d12 $ (0.125 ~>) $ rarely (ghost) $ slice "3" "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.87 # djf 0.4
       -- d10 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 1000 # room 0.5 # size 0.9 # speed "-1"
       -- d10 $ gap 8 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 6000 # room 0.5 # size 0.7 # speed "-1"
-      d10 silence
-      xfadeIn 10 16 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.58 # cutoff 1000 # room 0.5 # size 0.9 # speed "-1"
+
 
 
     do
       d6 $ (0.125 ~>) $ slice 128 "8*4" $ s "trancey_synth_loops" # n 17 # gain 0.78 # cutoff 5000 # room 0.2 # size 0.6 # speed "<-1 1>"
       d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
-      d12 $ (0.125 ~>) $ rarely (ghost) $ slice "3" "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.8 # djf 0.45 # room 0.1 # hcutoff 200
+      d10 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.58 # cutoff 1000 # room 0.5 # size 0.9 # speed "-1"
+      -- d12 $ (0.125 ~>) $ rarely (ghost) $ slice "3" "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.8 # djf 0.45 # room 0.1 # hcutoff 200
+      -- jumpIn' 12 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats*16" # n 8 # distort (slow 6 $ range 0.1 0.5 sine) # crush (slow 4 $ range 3 5 sine) # cutoff "[12000 10000 4000 3000]*2" # gain (slow 2 $ range 0.63 0.77 sine) # pan "[0.2 0.8]*4"
 
 
     do
-      d6 $ (0.125 ~>) $ slice 128 "24*4" $ s "trancey_synth_loops" # n 17 # gain 0.78 # cutoff 5000 # room 0.2 # size 0.6 # speed "<-1 1>"
+      d6 $ (0.125 ~>) $ slice 128 "24*4" $ s "trancey_synth_loops" # n 17 # gain 0.76 # cutoff 5000 # room 0.2 # size 0.6 # speed "<-1 1>"
       jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats <techno_hats techno_hats techno_hats [techno_hats techno_hats <~ techno_hats> techno_hats]> <techno_hats*2 techno_hats techno_hats*2 [<~ techno_hats> techno_hats ~ ~]> <techno_hats techno_hats techno_hats techno_hats>" # n 4 # distort 0.3 # crush 6 # gain 0.9
       jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
       xfadeIn 10 16 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.59 # cutoff 4000 # room 0.2 # size 0.6 # speed "-1"
@@ -284,8 +277,9 @@ do
   -- d3 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.2 # distort 0.12 # triode 2 # gain 1.1
   d3 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.2 # distort 0.1 # triode 2 # gain 1.12 # djf 0.7
   jumpIn 3 4 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.2 # distort 0.1 # triode 2 # gain 1.15 # djf 0.78
-  d6 $ (0.125 ~>) $ slice 128 "32*4" $ s "trancey_synth_loops" # n 17 # gain 0.8 # cutoff 4000 # room 0.1 # speed "<-1 1>"
-  d7 silence
+  d6 $ (0.125 ~>) $ slice 128 "32*4" $ s "trancey_synth_loops" # n 17 # gain 0.76 # cutoff 1800 # room 0.25 # speed "<-1 1>"
+  -- d7 silence
+  xfadeIn 7 8 silence
   -- d8 silence
   clutchIn 8 8 silence
   d9 silence

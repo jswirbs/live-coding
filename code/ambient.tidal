@@ -123,7 +123,7 @@ do
 
 
   d4 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (80/150)
-  d4 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # cutoff 700 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.8 # speed (40/150)
+  d4 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # cutoff 700 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.4 # speed (40/150)
   d4 silence
 
 
