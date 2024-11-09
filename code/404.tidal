@@ -1,0 +1,175 @@
+bpm 128
+
+doctor jeep song bass and snare, slowly build out from there finding interesting sounds (glitchy atmospheric, vocal chops, risers like mimetic)
+* good sub bass kick (other bass? maybe not for now)
+* funky sn (umru / sophie?)
+* zore error / glitch? 404 sounds?
+
+
+do
+  bpm 128
+  resetCycles
+  d4 $ (0.125) ~> s "techno_hats" # n 14
+  d5 $ (0.125 ~>) $ sometimes (ghost) $ s "~ ~ [~ techno_hats*2] ~" # n (range 7 23 rand) # gain 0.9
+  d6 $ slow 2 $ s "~@15 XORE_error" # n (irand 9)
+  d7 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.85 # room 0 # hcutoff 200
+
+
+
+do
+  -- e
+  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.1@5 0@3"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.1"
+  d4 $ (0.125) ~> s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
+
+
+
+do
+  -- d2 $ s "[~ UMRU_snares]*2" # n 0
+  -- d2 $ s "[~ UMRU_snares]*2" # n 48
+  -- d2 $ s "[~ UMRU_snares]*2" # n 25
+  -- d2 $ s "[~ UMRU_snares]*2" # n 26
+  d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.9
+  -- d2 $ slow 4 $ s "[~ UMRU_snares]*7@7 [[~ UMRU_snares] ~]" # n 28 # gain 0.9
+  -- d3 $ s "~ [~ techno_perc]*2" # n 13 # room 0.2 # gain 1 # distort 0.02
+  -- d3 $ s "~ [~ 808_kicks]*2" # n "[3 5]*2" # room 0.3 # gain 1.1
+  d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9
+
+
+
+
+
+  --
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9
+  d8 $ slice 18 "0(14,16)" $ s "techno_vocals" # n 8 # gain 0.9
+  d8 $ slice 42 "0(14,16)" $ s "techno_vocals" # n 8 # gain 0.9 # crush 4
+
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # fshift (slow 4 $ run 200) # gain 0.9
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # fshift (slow 4 $ run 200) # cutoff 2800 # room 0.4 # size 0.8 # gain 0.8
+  d8 $ slice 18 "0(14,16)" $ s "techno_vocals" # n 8 # fshift (slow 4 $ run 200) # gain 0.9
+  --
+
+
+-- come in from 0.99 ->
+d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # djf (slow 8 $ range 0.99 0.8 saw)
+xfadeIn 4 8 silence
+
+
+
+do
+  d4 silence
+  xfadeIn 1 8 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.1@5 0@3" # djf 0.7
+  d9 $ (2.03 ~>) $ s "risers/4" # n 2 # room 0.3 # size 0.9
+  d9 $ (6.03 ~>) $ s "risers/8" # n 2 # room 0.3 # size 0.9
+  d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.85 # squiz 4 # pan "[1 1 1 0]*2"
+
+
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4
+
+  d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain "[0.85@10 0]/4" # squiz 2 # pan "[1 1 1 0]*2"
+  -- d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.85 # squiz 4 # pan "[1 0 0 0]*2"
+  -- d8 $ slice 18 "[~ <0 [0 <~ 5 4 5>] [0 0] 0>]*4" $ s "techno_vocals" # n 8 # gain 0.9 # squiz (slow 4 $ range 1.3 4 saw) # pan "<1 0>"
+
+
+
+
+do
+  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.1"
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 4 # pan "[1 1 0 0]*<6 1>"
+
+
+
+do
+  d6 $ slow 2 $ s "~@15 XORE_error" # n (irand 9)
+  d7 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.9 # room 0 # hcutoff 200
+  xfadeIn 7 16 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.86 # room 0.3 # size 0.85 # hcutoff 200
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 2 # pan "[1 1 0 0]*<6 1>"
+
+
+
+
+do
+  d4 $ (0.125) ~> s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 4 # pan "[1 1 0 0]*<6 1>"
+
+
+
+
+
+do
+  d4 $ (0.125) ~> s "techno_hats" # n 14
+  d5 $ (0.125 ~>) $ sometimes (ghost) $ s "~ ~ [~ techno_hats*2] ~" # n (range 7 23 rand) # gain 0.9
+  d8 $ slice 42 "0(14,16)" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 6
+  d10 $ slow 4 $ s "BABII_vocal_shots" # n "<6 7>" # cutoff 2000 # room 0.2
+  d10 $ slow 4 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.97 0.85>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.1 sine)
+
+
+
+
+do
+  d1 $ s "[SOPHIE_subs(5,16)]" # n 16 # gain "1.1"
+  d4 $ (0.125) ~> s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
+  d8 $ slice 42 "0(13,16)" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 8
+  d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.97 0.85>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.4 sine)
+
+
+
+
+do
+  d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.1" # djf "0.65 0.69@2"
+  xfadeIn 1 8 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.1" # djf "0.65 0.74@2"
+  d4 silence
+  d8 $ slice 42 "0(11,16)" $ s "techno_vocals" # n 8 # gain 0.9 # squiz 10
+  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
+
+
+do
+  d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.1" # djf "0.65 0.5@2"
+  d2 silence
+  d8 $ slice 42 "0(11,16)" $ s "techno_vocals" # n 8 # gain "[0.85@20 0]/8" # squiz (slow 8 $ range 12 16 saw)
+  d10 silence
+
+
+    d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.1" # djf "0.7 0.79@2"
+    d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.1" # djf "0.7 0.5@2"
+
+
+
+do
+  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.1" # djf "[0.5@3 [0.2 0.18 0.16 0.14]]/2"
+  d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.9
+  d4 $ (0.125) ~> s "techno_hats" # n 14
+  d8 $ slice 42 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz (slow 4 $ range 4 6 saw) -- # pan "<1 0>"
+  d7 silence
+
+
+do
+  d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.1" # djf "[0.5@2 [0.6 0.66 0.70 0.74] [0.2 0.18 0.16 0.14]]/2"
+  d4 $ (0.125) ~> s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
+  d7 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.88 # room 0 # hcutoff 200
+  xfadeIn 7 16 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.85 # room 0.3 # size 0.85 # hcutoff 200
+  -- d8 $ slice 42 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz (slow 4 $ range 6 8 saw) # pan "<1 [1 0]>"
+  d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz (slow 1 $ (2 - (run 16 / 32) * 2))
+
+
+  d4 $ (0.125) ~> s "techno_hats" # n 14
+
+  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "4000" "2000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
+
+do
+  d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.1" # djf "0.14"
+  d2 silence
+  d3 silence
+  d8 silence
+  d12 silence
+
+hush
+
+
+
+
+
+jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 4 $ range "800" "1200" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
+
+
+--
