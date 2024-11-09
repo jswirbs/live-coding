@@ -250,6 +250,7 @@ do
 
     do
       d6 $ (0.125 ~>) $ slice 128 "8*4" $ s "trancey_synth_loops" # n 17 # gain 0.78 # cutoff 5000 # room 0.2 # size 0.6 # speed "<-1 1>"
+      jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
       d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
       d10 $ rev $ chop 32 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.58 # cutoff 1000 # room 0.5 # size 0.9 # speed "-1"
       -- d12 $ (0.125 ~>) $ rarely (ghost) $ slice "3" "0*4" $ s "SOPHIE_claps" # n 5 # gain 0.8 # djf 0.45 # room 0.1 # hcutoff 200

@@ -678,8 +678,8 @@ do
   xfadeIn 4 8 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
   xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room 0.3 # size 0.4 # cutoff 300
   d7 silence
-  d8 silence
-  xfadeIn 9 8 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.8 sine) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # cutoff 15000
+  d9 silence
+  -- xfadeIn 9 8 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.8 sine) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 0.99 0.7 sine) # orbit 3 # hcutoff 6000 # cutoff 15000
   xfadeIn 10 16 silence
 
 
@@ -690,7 +690,8 @@ do -- 4
   xfadeIn 5 4 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.7 # room 0 # size 0.1 # cutoff 500
   d7 $ (0.125 ~>) $ s "[snares*2 ~]*4" # n 14 # distort 0.2 # gain 0.9
   xfadeIn 7 16 $ s "snares*16" # n 14 # distort 0.2
-  xfadeIn 9 12 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.8 sine) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # djf 0.66
+  -- can keep experimenting w this.. but needs work still
+  -- xfadeIn 9 12 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.8 sine) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # djf 0.66
 
 do -- 4
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 1300 5000 saw) # gain 0.95
@@ -710,7 +711,7 @@ do -- 2
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 5000 12000 saw) # djf (slow 8 $ range 0.7 1.05 saw) # gain 0.95
   xfadeIn 3 3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 9000 12000 saw) # gain 0.9 # djf (slow 4 $ range 0.7 1.1 saw)
   xfadeIn 7 2 $ s "snares*16" # n 14 # distort 0.2 # djf (slow 4 $ range 0.8 1.4 saw)
-  xfadeIn 9 2 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.85 saw) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # djf (slow 4 $ range 0.75 1 saw)
+  -- xfadeIn 9 2 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.85 saw) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # djf (slow 4 $ range 0.75 1 saw)
 
 do -- 2
   xfadeIn 2 2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
@@ -770,9 +771,9 @@ do
 
 
 do
-  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.02
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.03
   xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150
-  xfadeIn 3 32 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 6000 9000 sine) # gain 0.85 # room 0.6 # size 0.9 -- # orbit 2
+  xfadeIn 3 32 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 6000 9000 sine) # gain 0.85 # room 0.6 # size 0.85 -- # orbit 2
   xfadeIn 4 16 silence
   xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 800
   d9 silence

@@ -406,13 +406,34 @@ do
   d6 $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.15 # orbit 5
   -- d9 $ slow 8 $ chop 8 $ s "BABII_vocal_loops" # n 12 # gain 0.74 # room 0.3 # size 0.9
   d9 $ gap 16 $ s "BABII_vocal_loops" # n 16 # gain 0.74
-  d9 $ slice 32 "<0 0 2 9> <3 3 <2 3> <3 9>>" $ s "BABII_vocal_loops" # n 16 # gain 0.74
+  d9 $ (0.125 <~) $ slice 32 "<0 0 2 9> <3 3 <2 3> <3 9>>" $ s "BABII_vocal_loops" # n 16 # gain 0.74
 
 
   d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 0 # gain 0.88 # djf 0.6 # cutoff 3000 # room 0.2
 
   d11 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 9 # gain 0.88 # djf 0.9
 
+
+
+
+  d1 $ fast 2 $ s "techno_kicks(3,8)" # n 17 # gain 1.1
+
+
+  d6 $ (0.125 ~>) $ s "SOPHIE_kicks_dry*2" # n 2 # hcutoff 180 # cutoff 2000 # distort "0.3 0.2" # room 0.15 # orbit 5
+
+
+
+  d2 $ fast 2 $ slice 64 "~ 25 40 30" $ s "FOOD_one_shots" # n 26 # room 0.2
+
+
+
+  d10 $ (0.35 ~>) $ slow 2 $ s "XORE_glitch ~@2.2 XORE_glitch" # n "1 14" # gain "0.88 0.77"
+
+
+
+
+--
+nahhh too much
 
 
   -- vocal shits (Gmin)
