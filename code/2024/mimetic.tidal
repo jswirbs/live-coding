@@ -103,6 +103,7 @@ do
   d4 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine) # gain "[0@2 0.92 0@5]/2"
   d8 $ (0.125 ~>) $ slice 16 "[0]/2" $ s "BABII_vocal_loops" # n 12 # gain 0.85
   jumpIn 8 4 $ (0.125 ~>) $ slice 16 "[0 [0 1]]/4" $ s "BABII_vocal_loops" # n 12 # gain 0.85
+  xfadeIn 11 16 silence
 
 
 do
@@ -119,12 +120,12 @@ do
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
-  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]" # cutoff 6600
-  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "3@3 [3 14@3]"
-  d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "17"
-  d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "17@3 [17 18@3]"
-  d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "23@3 [23 20@3]"
-  d1 $ s "808_kicks*3@3 [808_kicks*3@3 ~]" # n "35"
+  -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]" # cutoff 6600
+  -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "3@3 [3 14@3]"
+  -- d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "17"
+  -- d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "17@3 [17 18@3]"
+  -- d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "23@3 [23 20@3]"
+  -- d1 $ s "808_kicks*3@3 [808_kicks*3@3 ~]" # n "35"
   -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "3@3 [3 14@3]" # gain "1.1@13 1@3"
   -- d1 $ s "SOPHIE_kicks_dry*3@3 [SOPHIE_kicks_dry XORE_kicks XORE_kicks ~]" # n "1@13 14@3"
   d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95
@@ -208,9 +209,9 @@ do
   -- d12 silence
 
 
--- ??
--- xfadeIn 3 4 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 0.9 # djf 0.97
-d3 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
+  -- ??
+  -- xfadeIn 3 4 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 0.9 # djf 0.97
+  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
 
 do
   d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
@@ -231,9 +232,9 @@ do
   d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.2 # crush 2 # gain 0.6 # room 0.15
 
 
-    do
-      d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
-      d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n 8 # cutoff 1800 # hcutoff 500 # distort 0.2 # crush 2 # gain 0.65 # room 0.2
+    -- do
+    --   d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
+    --   d12 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n 8 # cutoff 1800 # hcutoff 500 # distort 0.2 # crush 2 # gain 0.65 # room 0.2
 
 
 
@@ -267,8 +268,8 @@ do
   d1 silence
   -- try without?? or fading out??
   -- d3 silence
-  d3  $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
-  xfadeIn 3 3 silence
+  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
+  -- xfadeIn 3 3 silence
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
@@ -310,18 +311,63 @@ do
 d1 silence
 
 do
-  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "14"
   -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "14@3 [14 14@3]"
   d8 $ (0.125 ~>) $ slice "<64 64 32 32>" "~ ~ ~ <~ <10 11> ~ 1>" $ s "BABII_vocal_loops" # n 8 # gain 0.78
   d9 $ (0.125 ~>) $ slice 16 "~ 2" $ s "BABII_vocal_loops" # n 12 # gain 0.9
   d11 silence
   d12 silence
+  xfadeIn 4 32 $ swingBy (1/8) 4 $ slow 4 $ n "<[c6 a e c]*8 [b g e b4]*8>" # s "superzow" # octave 6 # cutoff (slow 7 $ range 1000 5000 sine) # room 0.3 # size 0.98 # detune (slow 3 $ range 0.3 2.1 sine) # sustain (slow 5 $ range 0.1 0.13 sine) # gain (slow 7 $ range 0.92 0.79 sine) # pan (fast 8 $ "0.2 0.45 0.55 0.8") # orbit 3
+
 
 
 hush
 
 
 --
+
+
+
+
+  do
+    d1 silence
+    d9 silence
+
+do
+  bpm 141
+  d1 silence
+  d2 $ slow 4 $ n (off "0" (+7) $ "<a3 e3>") # s "moogbass" # cutoff (slow 7 $ range 1800 2500 sine) # room 0.57 # size 0.9 # gain 0.95
+  d3 $ s "XORE_kicks XORE_kicks XORE_kicks [XORE_kicks ~]" # n 14
+  xfadeIn 3 16 silence
+  d5 $ n "8 ~ [~ 8] [~]" # s "SOPHIE_subs" # gain 0.95 # room 0.1
+  d8 silence
+
+  bpm 140
+
+
+  d2 $ slow 4 $ n (off "0" (+7) $ "<a3 e3>") # s "moogbass" # cutoff (slow 7 $ range 1800 2500 sine) # room 0.57 # size 0.9 # gain 0.95
+
+  d3 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 1.08
+
+
+  d3 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 1.08 # release 7
+  d8 silence
+
+    -- cut out bass before coming in
+    d5 silence
+
+  do
+    d3 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 1.13 # cutoff 900
+    xfadeIn 3 16 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 1.08
+    d5 $ n "[[a2,a3]*2 [a2,a4]*2 [e2,e3]*2 [e2,e3]*2]/8" # s "warsawbass" # gain 1.1 # room 0.33 # distort 0.2 # waveloss 6
+    --d5 $ n "[[a2,a3]*2 [a2,a4]*2 [e2,e3]*2 [e2,e3]*2]/8" # s "warsawbass" # gain 1.1 # room 0.3
+    d6 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 2 # gain 0.92 # cutoff (slow 4 $ range 7500 6000 sine)
+    d8 silence
+    d9 silence
+    d10 $ s "UMRU_stomps/2" # n 4 # gain 1.1 # room 1 # size 0.85 # speed "0.5"
+    jumpIn 10 1 silence
+    d11 $ slow 4 $ whenmod 2 2 (0.1 <~) $ s "happiness" # room 0.85 # size 0.8 # cutoff 850 # speed 0.77
+    d12 $ (1.86 ~>) $ slow 4 $ s "loneliness" # room 0.85 # size 0.8 # cutoff 850 # speed 0.77 # gain 0.95
 
 
 

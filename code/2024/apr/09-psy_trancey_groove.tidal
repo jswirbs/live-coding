@@ -1,4 +1,4 @@
-bpm 140
+bpm 132
 
 
 d1 $ s "XORE_kicks*4" # n 0
@@ -119,7 +119,7 @@ do
 -- d6 silence
 do
   jumpIn' 1 0 $ s "techno_kicks ~@3" # n 3 # gain 1.1
-  xfadeIn 6 1 $ (0.125 ~>) $ s "UMRU_hihats*16" # n 0 # gain 0.85
+  xfadeIn 6 1 $ (0.125 ~>) $ s "UMRU_hihats*4" # n 0 # gain 0.85
 
 
 do
@@ -150,8 +150,7 @@ do
 d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 8 9 ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
 -- d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 4 [4 [4,10]] ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
 d7 $ slow 2 $ s "~@2 [~ UMRU_percussion_misc*2] [UMRU_percussion_misc*3@3 ~] ~@4" # n "~@2 26 25 ~@4" # distort 0.5 # gain 0.7 # room 0.3 # cutoff 4000
-
-
+d7 silence
 
 solo 2
 unsolo 2

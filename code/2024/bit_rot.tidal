@@ -323,28 +323,29 @@ d5 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 9000 # gain 0.9
 do
   d5 silence
   xfadeIn 1 16 silence
-  xfadeIn 11 14 $ s "techno_hats*16" # n 3 # gain 0.95
+  xfadeIn 11 16 $ s "techno_hats*16" # n 3 # gain 0.95
 
 
 
 do
   d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1000 # room 0.4 # size 0.95 # note "-2"
+  xfadeIn 4 8 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 800 # room 0.8 # size 1 # note "-2"
   d7 $ slow 2 $ n "<a a a g>(5,16)" # s "warsawbass" # octave "[2,3]" # sustain 0.4 # room 0.8 # size 0.6 # gain 1 # djf (slow 4 $ range 0.5 0.8 saw)
   xfadeIn 12 1 $ slow 2 $ n "a*32" # octave "5" # s "basslow" # voice 5 # gain 0.75 # pan (range 0 1 sine) # cutoff (slow 2 $ range 500 5000 sine) # hcutoff 120 # fshift (slow 4 $ range 0 "200" saw)
 
-  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.5 # size 0.97 # note "-1"
-
-  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.7 # size 0.98 # note "0"
-  -- xfadeIn 11 2 $ s "techno_hats*16" # n 3 # gain (slow 4 $ range 0.95 0.5 saw) # djf (slow 4 $ range 0.8 1.1 saw)
-
-  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.9 # size 0.99 # note "2"
+  -- d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.5 # size 0.97 # note "-1"
+  --
+  -- d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.7 # size 0.98 # note "0"
+  -- -- xfadeIn 11 2 $ s "techno_hats*16" # n 3 # gain (slow 4 $ range 0.95 0.5 saw) # djf (slow 4 $ range 0.8 1.1 saw)
+  --
+  -- d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.9 # size 0.99 # note "2"
 
 do
   hush
   d1 $ s "techno_kicks*4" # gain 1.2 # n 0
   d2 $ (0.375 <~) $ palindrome $ gap 8 $ s "UMRU_fx_risers" # n 1 # room 0.3 # size 0.8 # cutoff 2000 # gain 0.8 # distort 0.1
   -- d3 $ s "UMRU_fx_impacts" # note "a" # octave 0 # gain 1.3
-  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.9 # size 0.994 # note "7"
+  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0.8 # cutoff 1500 # room 0.9 # size 0.994 # note "10"
   jumpIn 4 1 silence
   -- d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0 # cutoff 1000 # room 0 # size 0 # note "-2"
   d7 $ slow 2 $ n "<a a a g>(5,16)" # s "warsawbass" # octave "[2,3]" # sustain 0.4 # room 0.9 # size 0.6 # gain 1
@@ -365,7 +366,7 @@ do
 
 do
   d3 $ s "UMRU_fx_impacts" # note "a" # octave 0 # gain 1.3
-  d4 $ slow 2 $ s "UMRU_fx_impacts" # gain 0 # cutoff 1000 # room 0 # size 0.88 # note "-2" -- GAIN 0 -- clearing size
+  d4 $ slow 2 $ s "UMRU_fx_impacts" # cutoff 1000 # room 0 # size 0.88 # note "-2" # gain 0 -- GAIN 0 -- clearing size
   d6 $ arp "up" $ n "<a'min a'min a'min a'min a'min a'min a'min g'maj>(5,16)" # s "superzow" # octave 4 # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 2000 # room 0.4
   xfadeIn 11 1 $ s "XORE_hats*16" # n 3 # cutoff (slow 8 $ range 8000 5000 sine) # distort (slow 8 $ range 0 0.1 sine)
   -- d13 $ slow 2 $ gap 48 $ s "UMRU_fx_risers" # n 1 # room 0 # size 0 # cutoff 4000 # hcutoff 500 # gain 0.86
@@ -375,6 +376,7 @@ do
 
 do
   d5 $ (0.125 ~>) $ s "techno_hats*4" # n 2 # cutoff 9000 # gain 0.9
+  -- or just come in hard (8 & 9)
   clutchIn 8 16 $ slow 2 $ n "a*32" # octave "<5 4 3 2>" # s "basslow" # voice 5 # gain 0.75 # pan (range 0 1 sine) # cutoff (slow 2 $ range 500 5000 sine) # hcutoff 120
   clutchIn 9 16 $ slow 2 $ n "a*32" # octave "<2 3 4 5>" # s "basshigh" # voice 5 # gain 0.75 # pan (range 1 0 sine) # cutoff (slow 2 $ range 5000 500 sine) # gain 0.8 # hcutoff 120
 
@@ -468,12 +470,12 @@ do
 
 do
   d5 $ (0.125 ~>) $ s "techno_cymbals*4" # n 1 # room (slow 2 $ range 0 0.1 saw) # gain 0.9 # cutoff 8000
-  -- d5 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 7000 # gain 0.95
+  d5 $ (0.125 ~>) $ s "techno_hats*4" # n 3 # cutoff 7000 # gain 0.95
   jumpIn' 12 0 $ slow 1 $ n "a*16" # octave "5" # s "basslow" # voice 5 # gain 0.75 # pan (range 0 1 sine) # cutoff (slow 0.5 $ range 3000 7000 sine) # hcutoff 120 # fshift (slow 4 $ range "0" "400" saw)
 
 do
   d5 $ (0.125 ~>) $ s "techno_cymbals(<4 4 5 5>,16)" # n 1 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 300>" "<0 0 300 600>" saw) # gain 0.9 # cutoff 8000
-  -- d5 $ (0.125 ~>) $ s "techno_hats(<4 4 5 5>,16)" # n 3 # cutoff 7000 # gain 0.95 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 300>" "<0 0 300 600>" saw)
+  d5 $ (0.125 ~>) $ s "techno_hats(<4 4 5 5>,16)" # n 3 # cutoff 7000 # gain 0.95 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 300>" "<0 0 300 600>" saw)
   -- jumpIn' 12 0 $ slow 0.5 $ n "a*8" # octave "5" # s "basslow" # voice 5 # gain 0.75 # pan (range 0 1 sine) # cutoff (slow 0.25 $ range 5000 10000 sine) # hcutoff 120 # fshift (slow 4 $ range "400" "800" saw)
   d13 $ slow 2 $ gap 16 $ s "UMRU_fx_risers" # n 1 # room 0.3 # size 0.99 # cutoff 5000 # hcutoff 400 # gain 0.47 # distort 0.2
 
@@ -483,6 +485,7 @@ do
 
 
 do
+  d2 $ (0.375 <~) $ palindrome $ gap 8 $ s "UMRU_fx_risers" # n 1 # room 0.3 # size 0.8 # cutoff 4000 # gain 0.8 # distort 0.1
   d4 $ s "techno_hats(<10 10 11 11>,16)" # n 22 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 -300>" "<0 0 -300 -600>" saw) # gain 0.8 # djf 0.5
   -- d5 $ (0.125 ~>) $ s "techno_cymbals(<4 4 5 5>,16)" # n 1 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 300>" "<0 0 300 600>" saw) # gain 0.95
   -- d5 $ (0.125 ~>) $ s "techno_hats(<4 4 5 5>,16)" # n 3 # cutoff 7000 # gain 0.95 # room (slow 2 $ range 0 0.1 saw) # fshift (range "<0 0 0 300>" "<0 0 300 600>" saw)
@@ -500,7 +503,7 @@ do
   --   d12 $ slow 0.5 $ n "a*8" # octave "5" # s "basslow" # voice 5 # gain 0.75 # pan (range 0 1 sine) # cutoff (slow 0.125 $ range 6000 13000 sine) # hcutoff 120 # fshift (slow 4 $ range "800" "1200" saw)
 
 do
-  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 4000 8000 sine) # hcutoff 120 # fshift (slow 4 $ range "800" "1200" saw)
+  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 4000 8000 sine) # hcutoff 120 # fshift (slow 4 $ range "800" "1200" saw) # release 0.3
 
 
 do
