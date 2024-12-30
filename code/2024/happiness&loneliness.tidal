@@ -112,7 +112,7 @@ do
   d10 silence -- riser into snare?
 
 do
-  d6 $ chop 4 $ loopAt 4 $ gap "[128 64]*8" $ s "techno_drum_loops" # n 8 # gain 0.96
+  d6 $ chop 4 $ loopAt 4 $ gap "[128 64]*8" $ s "techno_drum_loops" # n 8 # gain 0.97
   d7 $ ghost $ fast 2 $ s "~ UMRU_snares" # n (slow 16 $ "10 11") # room 0.3 # gain "[0.97 0.91]/16"
   d10 silence -- riser into snare?
 
@@ -135,6 +135,9 @@ do
 
   d9 silence
   --
+
+  d6 $ chop 4 $ loopAt 4 $ gap "[64 64]*8" $ s "techno_drum_loops" # n 8 # gain 0.97
+
 
 do
   d6 $ chop 4 $ loopAt 4 $ gap "[64 <64 96>]*8" $ s "techno_drum_loops" # n 8 # gain 0.96
@@ -171,7 +174,7 @@ do
   xfadeIn 3 8 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff 300 # gain 0.97 # room 0.9 # size 0.985 # orbit 2 # tremolodepth 0.9 # tremolorate 8
 
 
-  d10 $ loopAt 4 $ (1 <~) $ s "risers:2" # room 0.8 # size 0.97 # cutoff 8000 # hcutoff 200 # fshift 20 # orbit 2
+    d10 $ loopAt 4 $ (1 <~) $ s "risers:2" # room 0.8 # size 0.97 # cutoff 8000 # hcutoff 200 # fshift 20 # orbit 2
 
 
 do

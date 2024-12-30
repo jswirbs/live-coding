@@ -211,7 +211,7 @@ do
 
   -- ??
   -- xfadeIn 3 4 $ (0.125 ~>) $ s "XORE_hats*8" # n 15 # gain 0.9 # djf 0.97
-  d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
+  d3 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
 
 do
   d3 $ ghost $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.1 sine)
@@ -261,7 +261,7 @@ d8 silence
 do
   d3 $ ghost $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.08 sine)
   d8 $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 8 # gain 0.8
-  d12 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.4 # size 0.8
+  d12 $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <11 14 4 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.5 # size 0.8
 
 
 do
@@ -279,7 +279,7 @@ do
   d8 $ slow 4 $ chop 16 $ s "BABII_vocal_loops" # n 12 # gain 0.8
   -- d9 $ (0.125 ~>) $ slice 16 "~ 2" $ s "BABII_vocal_loops" # n 12 # gain 0.9
   -- d12 silence
-  d12 $ sometimes (ghost) $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 14 ~ 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.5 # size 0.8 # cutoff 3000
+  d12 $ sometimes (ghost) $ (0.125 ~>) $ s "<~ [~ ~ [UMRU_percussion_impacts*4] ~]>" # n "<~ <~ 14 ~ 15>>" # gain (range 0.3 0.7 saw) # crush (range 10 5 saw) # pan (whenmod 4 3 (rev) $ fast 4 $ range 1 0 saw) # room 0.55 # size 0.8 # cutoff 3000
 
 
 
@@ -336,11 +336,13 @@ hush
 do
   bpm 141
   d1 silence
-  d2 $ slow 4 $ n (off "0" (+7) $ "<a3 e3>") # s "moogbass" # cutoff (slow 7 $ range 1800 2500 sine) # room 0.57 # size 0.9 # gain 0.95
-  d3 $ s "XORE_kicks XORE_kicks XORE_kicks [XORE_kicks ~]" # n 14
+  d2 silence
+  -- d2 $ slow 4 $ n (off "0" (+7) $ "<a3 e3>") # s "moogbass" # cutoff (slow 7 $ range 1800 2500 sine) # room 0.57 # size 0.9 # gain 0.95
+  d3 $ s "XORE_kicks XORE_kicks XORE_kicks [XORE_kicks ~]" # n 14 # gain 1.05
   xfadeIn 3 16 silence
-  d5 $ n "8 ~ [~ 8] [~]" # s "SOPHIE_subs" # gain 0.95 # room 0.1
+  d5 $ n "8 ~ [~ 8] [~]" # s "SOPHIE_subs" # gain 0.98 # room 0.1
   d8 silence
+  xfadeIn 10 16 silence
 
   bpm 140
 
@@ -351,7 +353,7 @@ do
 
 
   d3 $ slow 4 $ n (off "0" (+7) $ "<a6 e6>") # s "moogbass" # hcutoff (slow 8 $ range 0 1500 sine) # gain 1.08 # release 7
-  d8 silence
+
 
     -- cut out bass before coming in
     d5 silence

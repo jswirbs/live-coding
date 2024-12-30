@@ -705,6 +705,7 @@ do -- 4
   -- d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 2000 5000 saw) # gain 0.9
   -- xfadeIn 5 4 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.66 # room 0 # size 0 # cutoff 500
   xfadeIn 5 10 silence
+  xfadeIn 10 12 silence
 
 do -- 4
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 2800 8000 saw) # gain 0.95
@@ -932,7 +933,7 @@ do
   d11 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
   xfadeIn 11 16 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.72
 
-  bpm 132
+  bpm 139
   bpm 141
 
   d10 $ (2.1 <~) $ slow 8 $ s "BABII_risers" # n 2
@@ -956,8 +957,8 @@ do
   -- d10 $ (0.63 <~) $ slow 2 $ s "BABII_risers" # n 5
   -- d10 $ loopAt 2 $ s "BABII_risers" # n 2 # cutoff 4000 # gain 0.9
   d10 silence
-  d11 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.75 # hcutoff 200
-  xfadeIn 11 16 $ (0.125 ~>) $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.8 # hcutoff 400
+  d11 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.75 # hcutoff 200 # note 2
+  xfadeIn 11 16 $ (0.125 ~>) $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.8 # hcutoff 400 # note 2
 
 
 
