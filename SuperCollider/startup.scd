@@ -3,6 +3,7 @@ This is an example startup file. You can load it from your startup file
 (to be found in Platform.userAppSupportDir +/+ "startup.scd")
 */
 
+
 (
 s.reboot { // server options are only updated on reboot
 	Server.killAll();
@@ -15,6 +16,10 @@ s.reboot { // server options are only updated on reboot
 	s.options.maxNodes = 1024 * 32; // increase this if you are getting drop outs and the message "too many nodes"
 	s.options.numOutputBusChannels = 2; // set this to your hardware output channel size, if necessary
 	s.options.numInputBusChannels = 2; // set this to your hardware output channel size, if necessary
+
+	// blackhole as output, comment out to use default out
+	s.options.outDevice_("BlackHole 2ch");
+
 	// boot the server and start SuperDirt
 	s.waitForBoot {
 		~dirt = SuperDirt(2, s); // two output channels, increase if you want to pan across more channels
@@ -40,6 +45,10 @@ s.reboot { // server options are only updated on reboot
 		// https://www.youtube.com/watch?v=cdB0dBGiar4&ab_channel=DanDerks
 
 		MIDIClient.init;
+
+		/*~midiTb3Out = MIDIOut.newByName("TB-3", "TB-3");
+		~midiTb3Out.latency = 0;
+		~dirt.soundLibrary.addMIDI(\tb3, ~midiTb3Out);*/
 
 		~midi1Out = MIDIOut.newByName("IAC Driver", "Tidal1");
 		~midi1Out.latency = 0;
@@ -67,14 +76,22 @@ s.reboot { // server options are only updated on reboot
 
 		/*~lc = LinkClock.new.latency_(Server.default.latency);
 		~lc.numPeers;
-		~ltmc = LinkToMidiClock(~midi1Out, ~lc);
-		~ltmc.start;*/
+		~ltmc = LinkToMidiClock(~midiTb3Out, ~lc);
+		~ltmc.start;
+		// ~ltmc.stop;*/
 	};
 
 	s.latency = 0.1; // increase this if you get "late" messages
+
+	// https://github.com/calumgunn/StageMaster/tree/master
+	StageMaster.activate(numChannels: 2, compThreshold: 0.7, limiterLevel: 1.0, highEndDb: 2.0);
+	// StageMaster.deactivate;
 };
 
 // Start Tidal clock popup
 this.executeFile("/Users/justinswirbul/Library/Application\ Support/SuperCollider/tidal_clock_popup.scd");
 
 );
+
+
+MIDIClient.init;
