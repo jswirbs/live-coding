@@ -1,0 +1,132 @@
+bpm 112
+
+-- microtonic: SC SD Elec Short
+
+do
+  resetCycles
+  d1 $ swingBy (1/16) (1/16) $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0
+  d2 $ n "[~ 0]*4" # s "m1" # midichan 6
+  d3 $ n "[~ 0]*2" # s "m1" # midichan "[4]" # ccv (slow 8 $ range 90 110 sine) # ccn 16
+  d4 $ n "[~ 0]*2" # s "m1" # midichan "[5]" # ccv (slow 8 $ range 0 100 sine) # ccn 17
+  d5 $ n "[0 ~ 0 ~]*3@3 [<0 ~> 0 ~ 0]" # s "m1" # midichan 3
+  -- d6 $ slow 2 $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "m1" # midichan 7
+
+
+
+  d6 $ ghost $ ghost $ slow 2 $ ghost $ ghost $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[4,5]" # gain 0.9 # room 0.4 # size 0.9 # triode 4 # sustain 0.18 # hcutoff 100
+
+  d6 $ ghost $ ghost $ slow 2 $ ghost $ stack [
+     (n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[5]" # gain 0.9),
+     ((0.06 ~>) $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[4]" # gain 0.9),
+     ((0.12 ~>) $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[3]" # gain 0.9)
+    ] # room 0.4 # size 0.9 # distort 0.15 # sustain 0.18 # hcutoff 100
+
+  d7 $ swingBy (1/16) (1) $ slow 2 $ ghost $ n ("0*8" + "0 2 3 <5 7>") # s "acid92" # octave 6 # gain 0.9 # room (slow 1 $ range 0 0.6 saw) # size 0.93 # triode (slow 8 $ range 0 3 sine) # sustain 0.08 # hcutoff 100
+
+
+
+d2 silence
+
+do
+  d3 silence
+  d4 silence
+
+
+d1 silence
+
+do
+  resetCycles
+  d1 $ swingBy (1/16) (1/16) $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0
+  d2 $ n "[~ 0]*4" # s "m1" # midichan 6
+  d3 $ n "[~ 0]*2" # s "m1" # midichan "[4]" # ccv (slow 8 $ range 90 110 sine) # ccn 16
+  d5 $ n "[0 ~ 0 ~]*3@3 [<0 ~> 0 ~ 0]" # s "m1" # midichan 3
+  d6 $ ghost $ ghost $ slow 2 $ ghost $ ghost $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[5,6]" # gain 0.9 # room 0.4 # size 0.8 # triode 1 # sustain 0.18 # hcutoff 100
+  d8 $ swingBy (1/16) (1/16) $ slow 2 $ ghost $ n ("0*8" + "0 2 3 <5 7>") # s "acid92" # octave 4 # gain 0.9 # room (slow 1 $ range 0 0.6 saw) # size 0.93 # triode (slow 8 $ range 0 3 sine) # sustain 0.08 # hcutoff 100
+
+
+
+do
+  d4 $ n "[~ 0]*2" # s "m1" # midichan "[5]" # ccv (slow 8 $ range 0 100 sine) # ccn 17
+  d6 $ ghost $ ghost $ slow 2 $ ghost $ stack [
+     (n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[5]" # gain 0.9),
+     ((0.06 ~>) $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[4]" # gain 0.9),
+     ((0.12 ~>) $ n "~ ~ ~ [~ 3] ~ 2 [~ 0] ~" # s "moogbass" # octave "[3]" # gain 0.9)
+    ] # room 0.4 # size 0.9 # distort 0.15 # sustain 0.18 # hcutoff 100
+
+
+d1 silence
+
+
+
+
+--
+bpm 140
+
+d1 $ n "<0*4 0*4 0*4 0*4 2*4 2*4 1*4 1*4>" # s "m1" # midichan 0
+d1 $ n "1*4" # s "m1" # midichan 0
+
+d2 $ (0.125 ~>) $ n "~ ~ 0 0" # s "m1" # midichan 1
+
+d3 $ slow 2 $ n ("0(13,16)" + ((run "[1 16]/2"))) # s "m1" # midichan 3
+d3 $ slow 2 $ n "1(13,16)" # s "m1" # midichan 3
+d3 silence
+
+d2 $ slice 4 "0 1" $ s "techno_synth_loops" # n 18
+d2 $ gap 16 $ slice 4 "0 1" $ s "techno_synth_loops" # n 18 # cutoff 1000 # room 0.4 # size 0.7
+d2 $ chop 4 $ slice 4 "0 1" $ s "techno_synth_loops" # n 18 # cutoff 1000
+d2 $ chop 4 $ slice 8 "0 0 1 0" $ s "techno_synth_loops" # n 18 # cutoff 1000
+
+d2 $ chop 4 $ slice 8 "0*4" $ s "techno_synth_loops" # n 18
+
+
+d4 $ (0.125 ~>) $ s "XORE_hats*16" # n 1 # gain "0.9(5,8)" # room 0.1
+d5 $ (0.125 ~>) $ s "XORE_hats*16" # n 3 # gain 0.75 # room 0.2
+
+
+
+bpm 134
+
+do
+  resetCycles
+  d1 $ swingBy (1/16) (1/16) $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0
+  d2 $ n "[~ 0]*4" # s "m1" # midichan 6
+  d3 $ n "[~ 0]*2" # s "m1" # midichan "[4]" # ccv (slow 8 $ range 90 110 sine) # ccn 16
+  d5 $ n "[0 ~ 0 ~]*3@3 [<0 ~> 0 ~ 0]" # s "m1" # midichan 3
+  d8 $ swingBy (1/16) (1/16) $ slow 2 $ ghost $ n ("0*8" + "0 2 3 <5 7>") # s "acid92" # octave 4 # gain 0.9 # room (slow 1 $ range 0 0.6 saw) # size 0.93 # triode (slow 8 $ range 0 3 sine) # sustain 0.08 # hcutoff 100
+
+
+
+
+
+
+--
+
+do
+  d2 $ n "e e f d" # octave 4 # s "m2" # sustain 0.3
+  d3 $ n "0 [~ ~ ~ ~ 0 ~ ~ ~] ~ ~" # s "m1" # midichan 2 # ccv ((1 <~) $ slow 16 $ range 20 120 sine) # ccn 18
+
+do
+  d1 $ n "0*4" # s "m1"
+  d4 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 6
+
+do
+  d5 $ n "0*16" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 90 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13)]
+  d6 $ n "~ ~ [~ 0] [0*2]" # s "m1" # midichan 3 # ccv ((1 <~) $ slow 8 $ range 0 100 sine) # ccn 18
+  d7 $ n "fs*8" # s "m3" # sustain (choose[0.06,0.07,0.15]) # stack [(ccv ((1 <~) $ slow 16 $ range 40 120 sine) # ccn 38), (ccv ((9 <~) $ slow 16 $ range 0 127 sine) # ccn 34)]
+  -- d7 $ n "[<fs*32@32 e*32@32>]*8" # s "m3" # sustain (choose[0.05,0.05,0.2]) # ccv ((1 <~) $ slow 16 $ range 40 120 sine) # ccn 38
+
+
+d6 silence
+
+do
+  d3 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 6
+  d4 silence
+  d5 silence
+
+do
+  d3 silence
+  d4 $ n "0*8" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 90 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13)]
+
+
+
+--
