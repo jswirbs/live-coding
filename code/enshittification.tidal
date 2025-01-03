@@ -129,4 +129,162 @@ do
 
 
 
+
+
+--
+bpm 142
+
+d7 $ chop 2 $ slice 36 14 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.1 # gain 0.7 # room 0.6
+
+d1 $ n "0*4" # s "m1"
+d1 $ n "0 [~ 0] [~ 0] ~" # s "m1"
+d1 $ n "0 ~ [~ 0] 0*2" # s "m1"
+d1 silence
+
+d3 $ n "~ 0 ~ 0" # s "m1" # midichan 4
+
+
+d2 $ slow 2 $ n "c" # s "m2" # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "0 100@3" # ccn 2), (ccv (slow 4 $ range 0 90 saw) # ccn 1)]
+d2 $ slow 2 $ n "c cs" # s "m2" # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "0 100@3" # ccn 2), (ccv (slow 4 $ range 0 90 saw) # ccn 1)]
+d2 $ n "c*16" # octave 5 # s "m2" # sustain 0.04 # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11)]
+d2 $ n ("c*16" + "<0 1 [0*2 [0 1]*2] [3 4]>") # octave 5 # s "m2" # sustain (range 0.02 0.05 rand) # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "<[20@7 100]*3@3 [20 100@7]>" # ccn 2), (ccv (slow 4 $ range 0 90 saw) # ccn 1)]
+
+
+d5 $ slow 2 $ n "~ [~@3 [0*4]]" # s "m1" # midichan "<7 6>"
+
+
+
+d4 $ n "0*16" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
+d4 $ n "0(13,16)" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13)]
+d4 $ n "0(9,16)" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 50 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13)]
+
+
+
+
+
+
+  d8 $ gap 4 $ chop 16 $ slice 4 "1" $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # gain 0.8
+  d8 $ (0.125 ~>) $ slice 32 "[13 <~ ~ ~ [12]>]*4" $ s "BABII_vocal_loops" # n 6 # room 0.2 # size 0.3 # hcutoff 500 # gain 0.73 # note "<0 0 0 <3 [5 5 3 0]>>"
+  d8 silence
+
+  d7 $ gap 8 $ chop 16 $ slow 4 $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # gain "0.7 0.85@3"
+
+  d7 $ palindrome $ chop "32 64" $ slow 4 $ s "BABII_vocal_loops" # n 5
+
+  d7 $ chop 64 $ slow 4 $ s "misc_vocals" # cutoff 1000 # room 0.5 # size 0.6
+  d7 $ palindrome $ chop 16 $ slow 4 $ s "misc_vocals" # cutoff 1000 # gain 0.9 # room 0.4
+  d7 $ (2 ~>) $ gap 64 $ slow 4 $ s "misc_vocals" # cutoff 1000 # room 0.5 # size 0.6
+
+  d7 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "misc_vocals" # hcutoff 300 # cutoff 1200 # room 0.3 # gain 0.8
+  d7 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "misc_vocals" # hcutoff 300 # cutoff 1800 # room 0.7 # gain 0.8
+  d7 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "<~ misc_vocals [~@2.25 misc_vocals] misc_vocals>" # hcutoff 300 # cutoff 1800 # room 0.7 # gain 0.8
+  d7 silence
+
+
+d8 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0.1 # gain 0.75 # room 0.5 # size 0.7
+d8 $ gap 16 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0.15 # gain 0.92 # room 0.2
+d8 $ gap 32 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0.2 # gain 0.88 # room 0.5
+
+d7 $ chop 2 $ slice 36 14 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.1 # gain 0.7 # room 0.6
+d7 $ chop 2 $ slice 34 21 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.1 # gain 0.7 # room 0.6
+
+
+d1 $ n "0 ~ [~ 0] 0*2" # s "m1"
+
+do
+  d1 $ slow 2 $ n "0 ~ ~ ~ 0 ~ [~ 0] 0*2" # s "m1"
+  d2 $ slow 2 $ n "c cs" # s "m2" # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "0 100@3" # ccn 2), (ccv (slow 4 $ range 90 0 saw) # ccn 1)]
+  d6 silence
+  d7 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0 # gain 0.8 # room 0.5
+  -- d2 silence
+  d8 $ gap 32 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0.18 # gain 0.9 # room 0.5
+
+
+  d1 silence
+
+do
+  d2 $ slow 2 $ n "c cs" # s "m2" # stack [(ccv 60 # ccn 10), (ccv 60 # ccn 11), (ccv 100 # ccn 2), (ccv 0 # ccn 1)] # amp (slow 4 $ range 0.5 0.15 saw)
+  d3 silence
+  -- d6 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 3 # ccv (slow 8 $ range 50 0 saw) # ccn 3
+
+
+
+  d2 $ slow 2 $ n "c cs" # s "m2" # stack [(ccv 60 # ccn 10), (ccv 60 # ccn 11), (ccv 100 # ccn 2), (ccv 0 # ccn 1)] # amp (slow 4 $ range 0.5 0.15 saw) # sustain "2 0.75"
+
+
+do
+  jumpIn' 2 0 $ n ("c*16" + "<0 1 [0*2 [0 1]*2] [3 4]>") # octave 5 # s "m2" # sustain (range 0.02 0.05 rand) # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "<[20@7 100]*3@3 [20 100@7]>" # ccn 2), (ccv (slow 4 $ range 0 90 saw) # ccn 1)]
+  d4 silence
+  d5 silence
+  d6 silence
+  d7 $ gap 16 $ slice 32 0 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # distort 0.15 # gain 0.95 # room 0.1
+
+
+
+d1 $ n "0*4" # s "m1"
+
+do
+  d1 $ n "0 [~ 0] [~ 0] 0*2" # s "m1"
+  d5 $ slow 2 $ n "~ [~@3 [0*4]]" # s "m1" # midichan "<7 6>"
+
+do
+  d1 $ n "0*4" # s "m1"
+  d3 $ n "~ 0 ~ 0" # s "m1" # midichan 4
+  d4 $ n "0*16" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
+  d5 $ slow 2 $ n "~ [~@3 [0*4]]" # s "m1" # midichan "<7 6>"
+
+
+
+do
+  -- d4 silence
+  d6 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 3 # ccv 50 # ccn 3
+  d9 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "<~ misc_vocals [~@2.25 misc_vocals] misc_vocals>" # hcutoff 300 # cutoff 1800 # room 0.9 # size 0.6 # gain "<0.8 0.8 0.7 0.7>"
+
+
+do
+  d1 $ n "0 [~ 0] [~ 0] 0*2" # s "m1"
+  d7 $ chop 2 $ slice 36 14 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.2 # gain 0.75 # room 0.6
+  d9 silence
+
+
+do
+  d6 silence
+  d7 $ chop 2 $ slice 34 21 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.2 # gain 0.73 # room 0.6
+  d9 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "<~ misc_vocals [~@2.25 misc_vocals] misc_vocals>" # hcutoff 300 # cutoff 1800 # room 0.9 # size 0.6 # gain "<0.8 0.8 0.7 0.7>"
+
+  d9 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "misc_vocals" # hcutoff 300 # cutoff 1800 # room 0.7 # gain 0.8
+
+
+  d3 silence
+
+do
+  d1 $ n "0*4" # s "m1"
+  d3 $ n "~ 0 ~ 0" # s "m1" # midichan 4
+  d6 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 3 # ccv 50 # ccn 3
+  d9 silence
+
+
+
+
+
+  d6 silence
+
+  d7 $ chop 2 $ slice 36 14 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.2 # gain 0.75 # room 0.6
+
+
+  d6 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 3 # ccv 50 # ccn 3
+
+
+do
+  d7 $ chop 2 $ slice 34 21 $ s "DJ_DAVE_castles" # n 12 # hcutoff 400 # cutoff 3000 # distort 0.2 # gain 0.73 # room 0.6
+  d9 $ gap 16 $ slice 32 ("0*8" + (slow 4 $ run 16)) $ s "<~ misc_vocals [~@2.25 misc_vocals] misc_vocals>" # hcutoff 300 # cutoff 1800 # room 0.9 # size 0.6 # gain "<0.8 0.8 0.7 0.7>"
+
+
+
+
+  d8 $ gap 4 $ chop 16 $ slice 4 "1" $ s "BABII_vocal_loops" # n 6 # room 0.4 # size 0.8 # hcutoff 500 # gain 0.74
+  -- d8 $ (0.125 ~>) $ slice 32 "[13 <~ ~ ~ [12]>]*4" $ s "BABII_vocal_loops" # n 6 # room 0.2 # size 0.3 # hcutoff 500 # gain 0.74 # note "<0 0 0 <3 [5 5 3 0]>>"
+  d8 silence
+
+
 --
