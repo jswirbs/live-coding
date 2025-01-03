@@ -107,7 +107,8 @@ do
   bpm 130
   -- resetCycles
   T.changeTempo (sTempoMV tidal) (\t tempo -> tempo {T.atTime = t + 0.1, T.atCycle = -0.125})
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3" -- E
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3" -- E
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3" -- E
   -- d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3" -- E
   d4 $ (0.125) ~> s "techno_hats" # n 14
   d5 $ (0.125 ~>) $ sometimes (ghost) $ s "~ ~ [~ techno_hats*2] ~" # n (range 7 23 rand) # gain 0.9
@@ -158,6 +159,9 @@ do
 
     d10 $ (1 ~>) $ palindrome $ slow 1 $ gap 8 $ slice 204 "17 24" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0
 
+
+    d10 $ n "e [~ ~ ~ ~ e ~ ~ ~] ~ ~" # s "m2" # octave 5 # sustain 0.2
+    d10 silence
     --
 
 
@@ -226,10 +230,11 @@ do
 
 do
   d4 silence
-  xfadeIn 1 8 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3" # djf 0.7
+  -- xfadeIn 1 8 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3" # djf 0.7
+  xfadeIn 1 8 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3" # djf 0.7
   xfadeIn 7 8 silence
   -- d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # squiz 4 # pan "[0.8@3 0.2]*2" # gain "[0.8@10 0]/4"
-  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin) # gain "1.09@5 0@2 1.09"
+  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin) # gain "1.09@5 0@3"
   xfadeIn 8 8 $ rarely (ghost) $ s "[techno_claps(5,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin)
   -- d8 $ s "[techno_claps(3,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin) # room (slow 8 $ range 0 0.2 saw) # size (slow 8 $ range 0 0.8 saw)
   -- d9 $ (2.03 ~>) $ s "risers/4" # n 2 # room 0.3 # size 0.9
@@ -244,7 +249,8 @@ do
 
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
   -- d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" -- E
   d3 silence
   d4 silence
@@ -254,11 +260,28 @@ do
   d9 silence
 
 
+    d10 $ (0.125 ~>) $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "0 1" # djf "0.3" # note 48
 
+    d10 $ (0.125 ~>) $ slice 18 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "SOPHIE_textures" # n 13 # gain 0.85 # room 0.8 # size 0.9 # orbit 11
+    d10 $ (0.125 ~>) $ slice 18 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "SOPHIE_textures" # n 13 # gain 0.85 # room 0.8 # size 0.9 # orbit 11
+
+    d10 $ (0.125 ~>) $ slice 16 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "trancey_synth_loops" # n 7 # gain 0.85 # room 0.8 # size 0.9 # orbit 11 # cutoff 1000
+    d10 $ (0.125 ~>) $ slice 8 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "trancey_synth_loops" # n 0 # gain 0.85 # room 0.8 # size 0.9 # orbit 11
+    d10 $ (0.125 ~>) $ slice 8 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "trancey_synth_loops" # n 1 # gain 0.85 # room 0.8 # size 0.9 # orbit 11
+    d10 $ (0.125 ~>) $ slice 8 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "trancey_synth_loops" # n 4 # gain 0.85 # room 0.8 # size 0.6 # orbit 11
+
+
+    d10 $ (0.125 ~>) $ slice 8 ("[~ 0(3,8)]" + (slow 16 $ run 16)) $ s "techno_vocals" # n 8 # gain 0.85 # room 0.8 # size 0.6 # orbit 11
+    d10 $ slice 16 "[0(5,8)]" $ s "techno_vocals" # n 8 # gain 0.85 # room 0.8 # size 0.6 # orbit 11
+
+    d10 $ rev $ chop 8 $ slow 4 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf 0.6
+    d10 $ rev $ slow 4 $ gap 64 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf 0.6
+    d10 $ rev $ chop 8 $ slow 4 $ s "techno_textures" # n 8 # gain 1 # speed "-1" # distort 0.12 # djf 0.6
 
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
   d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9
   d6 $ slow 2 $ s "~@15 XORE_error" # n (irand 9)
@@ -266,17 +289,19 @@ do
   xfadeIn 7 4 $ (0.125 ~>) $ s "[XORE_glitch(9,16)]/2" # n (range 19 26 rand) # gain 0.82 # room 0 # hcutoff 200 # distort 0.2
   -- xfadeIn 7 16 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.86 # room 0.3 # size 0.85 # hcutoff 250 # orbit 6
   -- d8 $ slice 24 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # squiz 2 # pan "[0.2 0.8]*<6 1>"
-  d8 $ sometimes (ghost) $ s "[techno_claps(<3 5>,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin)
+  d8 $ sometimes (ghost) $ s "[techno_claps(3,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin)
   -- d13 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.18 0.3 sine) # gain (slow 6 $ range 1 0.94 sine) # room 0.3 # hcutoff 80
   -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 1 # room 0 # size 0.95 # cutoff 1000 # hcutoff 300 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.8
   -- d14 $ slice 64 "32 ~ ~ [<~ ~ ~ 14> <50 47>]" $ s "misc_vocals" # gain 0.9 # triode (slow 4 $ range 0 2 sine)
   -- d10 $ (1 ~>) $ palindrome $ slow 1 $ gap 8 $ slice 204 "17 24" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0 # cutoff 2000 # gain 0.85
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.95 0.8 saw)
 
 
 
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
   d3 silence -- ??
   d4 $ (0.125 ~>) $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
@@ -285,14 +310,16 @@ do
   d8 $ rarely (ghost) $ s "[techno_claps(5,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin)
   -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.2 # size 0.95 # cutoff 1000 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.8
   -- d10 $ (1 ~>) $ fast 4 $ whenmod 2 1 (palindrome) $ slow 4 $ slow 2 $ chop 32 $ slice 102 "9 11" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0
-  xfadeIn 11 8 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>" # orbit 9
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.8 0.9 saw)
+  -- xfadeIn 11 8 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>" # orbit 9
 
 
 
 
 do
   -- ??
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
   d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9
   d4 $ (0.125) ~> s "techno_hats" # n 14
   d5 $ (0.125 ~>) $ sometimes (ghost) $ s "~ ~ [~ techno_hats*2] ~" # n (range 7 23 rand) # gain 0.9
@@ -307,13 +334,15 @@ do
   -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.2 # size 0.95 # cutoff 500 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.75
   -- xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "22 26" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.2 # size 0.3 # gain 1.1
   -- d9 $ chop 128 $ s "risers/8" # n 2 # gain 0.95 # cutoff 2000 # room 0.8 # triode 2 # note (slow 8 $ "-48" + (run 64))
-  d10 $ gap "<8 32>" $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 1200 # room 0.8 # size (slow 8 $ range 0 1.15 saw) # gain "<0.95 1.15>" # orbit 9 # crush 3
+  -- d10 $ gap "<8 32>" $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 1200 # room 0.8 # size (slow 8 $ range 0 1.15 saw) # gain "<0.95 1.15>" # orbit 9 # crush 3
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.9 0.75 saw)
 
 
 
 
 do
-  d1 $ s "[SOPHIE_subs(5,16)]" # n 16 # gain "1.09"
+  -- d1 $ s "[SOPHIE_subs(5,16)]" # n 16 # gain "1.09"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
   d4 $ (0.125 ~>) $ ghost $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
   d3 silence -- ??
   -- d8 $ slice 42 "0(13,16)" $ s "techno_vocals" # n 8 # gain 0.8 # squiz 8
@@ -324,11 +353,13 @@ do
   -- d10 $ (1 ~>) $ fast 4 $ whenmod 2 1 (palindrome) $ slow 4 $ slow 2 $ chop 32 $ slice 102 "9 11" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0
   -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.2 # size 0.95 # cutoff 1000 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.8
   -- d10 $ palindrome $ slow 2 $ chop 16 $ slice 204 "30 21" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # cutoff 5000 # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.7 # size 0.8 # gain 1
-  d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 1200 # room 0.8 # size (slow 8 $ range 0 1.2 saw) # gain 1
+  -- d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 1200 # room 0.8 # size (slow 8 $ range 0 1.2 saw) # gain 1
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.75 0.85 saw) # hcutoff 200
 
 
 do
-  d1 $ s "[SOPHIE_subs(5,16)]" # n 16 # gain "1.09" # djf (slow 8 $ range 0.6 0.69 saw)
+  -- d1 $ s "[SOPHIE_subs(5,16)]" # n 16 # gain "1.09" # djf (slow 8 $ range 0.6 0.69 saw)
+  d1 $ slice 8 "[0(5,16)]" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf (slow 8 $ range 0.6 0.69 saw)
   -- xfadeIn 1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.65 0.69@2"
   -- xfadeIn 1 8 $ s "[SOPHIE_subs(11,16)]" # n 16 # gain "1.09" # djf "0.65 0.74@2"
   d4 silence
@@ -340,12 +371,15 @@ do
   -- d13 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.18 0.3 sine) # gain (slow 6 $ range 1 0.94 sine) # room 0.3 # hcutoff 150
   -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.3 # size 0.95 # cutoff 3000 # hcutoff 600 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.8
   -- d10 $ palindrome $ slow 2 $ chop 16 $ slice 204 "31 21" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 600 900 sine) # cutoff 2000 # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.9 # size 0.8 # gain 1
-  d10 $ swingBy (1/4) 8 $ gap 24 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 800 # room 0.8 # size (slow 8 $ range 0 1.07 saw) # gain 1 # triode 2
+  -- d10 $ swingBy (1/4) 8 $ gap 24 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 800 # room 0.8 # size (slow 8 $ range 0 1.07 saw) # gain 1 # triode 2
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.85 0.7 saw) # hcutoff 200
 
 
 do
-  d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.69 0.55@2"
-  xfadeIn 1 6 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.6 0.7@2"
+  -- d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.69 0.55@2"
+  -- xfadeIn 1 6 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.6 0.7@2"
+  d1 $ slice 8 "[0(13,16)]" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "0.69 0.55@2"
+  xfadeIn 1 6 $ slice 8 "[0(13,16)]" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "0.6 0.7@2"
   d2 silence
   -- d8 $ slice 42 "0(9,16)" $ s "techno_vocals" # n 8 # gain "[0.85@20 0]/8" # squiz (slow 8 $ range 12 16 saw)
   d8 $ s "[techno_claps(9,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
@@ -353,6 +387,8 @@ do
   -- d9 $ (6.03 ~>) $ s "risers/8" # n 2 # room 0 # size 0 # waveloss 40 # distort 0.1
   -- d10 silence
   -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0.4 # size 0.98 # note "-5" # triode 7 # squiz 6
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.7 0.99 saw) # hcutoff 200
+  -- jumpIn 10 7 silence
   -- jumpIn' 12 0 $ slow 0.25 $ n "[e]*4" # octave "[4,5]" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
   jumpIn' 12 0 $ slow 0.25 $ n "[e]*4" # octave "[4,5]" # s "acid91" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 3000 12000 sine) # hcutoff (slow 32 $ range 300 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
   -- d13 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.18 0.3 sine) # gain (slow 6 $ range 1 0.94 sine) # room 0.3 # hcutoff (slow 4 $ range 80 500 saw)
@@ -360,17 +396,20 @@ do
   -- xfadeIn 14 6 silence
   -- clutchIn 10 7 silence
   -- d9 $ chop 128 $ s "risers/8" # n 2 # gain 0.95 # cutoff 3000 # room 0.8 # triode 2 # note (slow 8 $ "32" - (run 64))
-  d10 $ swingBy (1/4) 8 $ gap 24 $ slice 408 "<19*4@4>*4" $ s "flow2000" # n 0 # cutoff (slow 8 $ range 1200 0 saw) # hcutoff 800 # room 0.6 # size (slow 8 $ range 0 1.07 saw) # gain 1 # triode 2
-  xfadeIn 11 4 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0 saw) # size (slow 8 $ range 0 0 saw) # gain "<0.8 0.9>" # orbit 9
+  -- d10 $ swingBy (1/4) 8 $ gap 24 $ slice 408 "<19*4@4>*4" $ s "flow2000" # n 0 # cutoff (slow 8 $ range 1200 0 saw) # hcutoff 800 # room 0.6 # size (slow 8 $ range 0 1.07 saw) # gain 1 # triode 2
+  -- xfadeIn 11 4 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0 saw) # size (slow 8 $ range 0 0 saw) # gain "<0.8 0.9>" # orbit 9
 
 
-    d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.6 0.75@2"
-    d1 $ s "[SOPHIE_subs(11,16)]" # n 16 # gain "1.09" # djf "0.69 [0.45 0.5]"
+    -- d1 $ s "[SOPHIE_subs(13,16)]" # n 16 # gain "1.09" # djf "0.6 0.75@2"
+    -- d1 $ s "[SOPHIE_subs(11,16)]" # n 16 # gain "1.09" # djf "0.69 [0.45 0.5]"
+    d1 $ slice 8 "[0(13,16)]" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "0.6 0.75@2"
+    d1 $ slice 8 "[0(11,16)]" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "0.69 [0.45 0.5]"
 
 
 do
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09" # djf "[0.5@3 [0.2 0.18 0.16 0.14]]/2"
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
   d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.88
   d4 $ (0.125 ~>) $ s "techno_hats" # n 14
   d7 silence
@@ -383,12 +422,13 @@ do
   -- d13 $ slice 32 "~ 0" $ s "mona_lisa" # cutoff 600 # hcutoff 300 # room 0.5 # size 0.7 # gain 0.7
   -- d14 $ (0.75 ~>) $ slice 12 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.2 # size 0.95 # cutoff 1300 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.82
   d10 silence
-  xfadeIn 11 4 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.7 saw) # size (slow 8 $ range 0 0.9 saw) # gain "<0.85 1>" # orbit 9
+  -- xfadeIn 11 4 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.7 saw) # size (slow 8 $ range 0 0.9 saw) # gain "<0.85 1>" # orbit 9
 
 
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09" # djf "[0.5@3 [0.23 0.19 0.16 0.14]]/2"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09" # djf "[0.5@3 [0.23 0.19 0.16 0.14]]/2"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" -- # djf "[0.5@3 [0.23 0.19 0.16 0.14]]/2"
   -- d8 $ slice 42 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.9 # squiz (slow 4 $ range 6 8 saw) # pan "<1 [1 0]>"
   -- d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz 6
   d8 $ rarely (ghost) $ s "[techno_claps(5,8)]*2" # n 4 # crush (fast 2 $ range 5 8 perlin)
@@ -400,18 +440,21 @@ do
 
 
 do
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@3 [0.23 0.19 0.16 0.14]]/2"
   d4 $ (0.125 ~>) $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
   -- d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz (slow 1 $ (4 - (run 16 / 32) * 2))
   -- d10 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0 # size 0.9 # note "-5" # triode 8 # squiz 6
   -- d10 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0 # size 0 # gain 1.05
   -- xfadeIn 10 4 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.3 # size 0.6 # gain 1.05
-  xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "22 26" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.4 # size 0.3 # gain 1
+  -- xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "22 26" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.4 # size 0.3 # gain 1
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.95 0.8 saw) # hcutoff 200
+  -- d10 $ slice 32 "[~ 0]*4" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf (slow 8 $ range 0.9 0.6 saw)
 
 
 do
   -- maybe slice 2
   -- d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2"
-  d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2"
   d4 $ (0.125 ~>) $ ghost $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
   -- d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz (slow 1 $ (4 - (run 16 / 32) * 2))
   d8 $ rarely (ghost) $ s "[techno_claps(14,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
@@ -420,7 +463,10 @@ do
   xfadeIn 7 16 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.85 # room 0.3 # size 0.85 # hcutoff 200
   d9 $ chop 128 $ s "risers/8" # n 2 # gain 0.95 # cutoff 3000 # room 0.8 # size 0.4 # triode 2 # note (slow 8 $ "32" - (run 64))
   -- xfadeIn 13 4 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 8 $ range 0.25 0 saw) # gain (slow 6 $ range 1 0.94 sine) # room 0.3 # hcutoff 80 # cutoff (slow 8 $ range 1500 0 saw)
-  xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "20 24" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.7 # size 0.8 # gain 1.1
+  -- xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "20 24" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.7 # size 0.8 # gain 1.1
+  -- d10 silence
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.8 0.4 saw) # hcutoff 200
+  -- xfadeIn 10 8 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf 0.6
 
 
 
@@ -430,72 +476,51 @@ do
     jumpIn' 12 0 $ slow 0.25 $ n "[e]*4" # octave "[4,5]" # s "acid91" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 3000 12000 sine) # hcutoff (slow 32 $ range 300 1000 saw) # fshift (slow 8 $ range "4000" "2000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
 
 
+        -- to reality
+
+        do
+          -- d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.0" # djf "0.14"
+          d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
+          xfadeIn 1 8 silence
+          xfadeIn 11 8 $ slice 4 "[0(<3 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
+          d2 silence
+          d3 silence
+          d4 silence
+          clutchIn 8 8 silence
+          d9 $ slice 24 "22 23" $ s "risers/8" # n 2 # gain 0.9 # cutoff 1000 # room 0.8 # size 0.995 # triode 2 # note "-34"
+          xfadeIn 9 1 silence
+          d12 silence
+
+          do
+            -- d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9 # hcutoff 200
+            -- clutchIn 8 8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz 1.005
+            -- d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 500 1000 saw) # hcutoff 500 # room 0.1
+            -- reality
+            d8 $ (0.25 ~>) $ rarely (ghost) $ s "techno_claps*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 600 1000 saw) # hcutoff 500 # room 0.1
+            -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "-5" # gain "<0.8 0.75>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.4 sine)
+            -- d10 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0 # size 0.9 # note "-5" # triode 8 # squiz 6
+            -- d10 $ slow 4 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.82 0.72>" # hcutoff 250 # cutoff (slow 6 $ range 1000 2000 sine) # room 0.6 # size 0.95 # note "-5" # triode 2 # squiz 2
+            -- d13 $ slice 16 "<0 1 2 3 4 5 6 7>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # room 0 # size 0 # gain 0.7
+            d10 $ gap 32 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>"
+            xfadeIn 11 8 $ slice 4 "[0(<2 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
 
 
-do
-  -- d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.0" # djf "0.14"
-  d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
-  xfadeIn 1 8 silence
-  xfadeIn 11 8 $ slice 4 "[0(<3 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
-  d2 silence
-  d3 silence
-  d4 silence
-  -- d7 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.88 # room 0 # hcutoff 200
-  -- xfadeIn 7 16 $ (0.125 ~>) $ s "[XORE_glitch(14,16)]/2" # n (range 19 26 rand) # gain 0.85 # room 0.3 # size 0.85 # hcutoff 200
-  -- d8 silence
-  -- d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz 1.011
-  -- clutchIn 8 8 $ slice 18 "[0(6,16)]" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz 1.008
-  clutchIn 8 8 silence
-  -- d9 silence
-  d9 $ slice 24 "22 23" $ s "risers/8" # n 2 # gain 0.9 # cutoff 1000 # room 0.8 # size 0.99 # triode 2 # note "-32"
-  xfadeIn 9 2 silence
-  -- d9 $ gap 8 $ s "risers/8" # n 2 # gain 0.9 # cutoff 600 # room 0.4 # size 0.9 # triode 0
-  -- d10 $ palindrome $ slow 2 $ chop 8 $ slice 204 "22 26" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.4 # size 0.98 # cutoff 1500 # gain 0.75
-  -- xfadeIn 10 8 silence
-  -- xfadeIn 10 16 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room 0.7 # size 0.98 # gain 0.78
-  d10 $ gap 32 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 700 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>"
-  d12 silence
-  -- d13 silence
-  -- d13 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.12 0.05 sine) # room 0.3 # hcutoff 80 # cutoff 100
-  -- d13 $ slice 16 "<0 1 2 3 4 5 6 7>" $ loopAt 16 $ s "mona_lisa" # cutoff 700 # hcutoff 300 # room 0.5 # size 0.7 # gain 0.7
-  -- d14 $ slice 4 "<0 0 0 1 0 1 2 3>" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 500 # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.85
-  -- xfadeIn 14 20 silence
+            d11 silence
+
+            -- realityyyy
+            do
+              -- note: E
+              d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
+              d10 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>"
+              d11 $ slice 4 "[0(<3 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
+              -- d1 $ s "SOPHIE_subs*4" # n 10
+              xfadeIn 2 64 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+              xfadeIn 7 24 silence
+              d8 $ (0.25 ~>) $ rarely (ghost) $ s "techno_claps*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1000 1200 saw) # hcutoff 500 # room 0.1
+              d11 $ slice 4 "[0(<2 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
 
 
-
-
-
-
-do
-  -- d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9 # hcutoff 200
-  -- clutchIn 8 8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.8 # crush 4 # squiz 1.005
-  -- d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 500 1000 saw) # hcutoff 500 # room 0.1
-  -- reality
-  d8 $ (0.25 ~>) $ rarely (ghost) $ s "techno_claps*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 600 1000 saw) # hcutoff 500 # room 0.1
-  -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "-5" # gain "<0.8 0.75>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.4 sine)
-  -- d10 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0 # size 0.9 # note "-5" # triode 8 # squiz 6
-  -- d10 $ slow 4 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.82 0.72>" # hcutoff 250 # cutoff (slow 6 $ range 1000 2000 sine) # room 0.6 # size 0.95 # note "-5" # triode 2 # squiz 2
-  -- d13 $ slice 16 "<0 1 2 3 4 5 6 7>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # room 0 # size 0 # gain 0.7
-  d10 $ gap 32 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>"
-  xfadeIn 11 8 $ slice 4 "[0(<2 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
-
-
-    d11 silence
-
-    -- realityyyy
-    do
-      -- note: E
-      d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
-      d10 $ (2 <~) $ gap 16 $ slice 408 "<19 19 19 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 0.99 saw) # gain "<0.87 1.08>"
-      d11 $ slice 4 "[0(<3 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
-      -- d1 $ s "SOPHIE_subs*4" # n 10
-      xfadeIn 2 64 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
-      xfadeIn 7 24 silence
-      d8 $ (0.25 ~>) $ rarely (ghost) $ s "techno_claps*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1000 1200 saw) # hcutoff 500 # room 0.1
-      d11 $ slice 4 "[0(<2 2>,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
-
-
-      jumpIn' 3 0 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.88
+              jumpIn' 3 0 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.88
 
 
       -- onwards
@@ -503,71 +528,100 @@ do
 
 
 
+do
+  -- d1 $ s "[SOPHIE_subs(5,8)]*2" # n 16 # gain "1.0" # djf "0.14"
+  d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
+  xfadeIn 1 8 silence
+  xfadeIn 11 8 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.0" # djf "0.14" # hcutoff 20
+  d2 silence
+  d3 silence
+  d4 silence
+  clutchIn 8 8 silence
+  d9 $ slice 24 "22 23" $ s "risers/8" # n 2 # gain 0.9 # cutoff 1000 # room 0.8 # size 0.995 # triode 2 # note "-33"
+  xfadeIn 9 1 silence
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.4 0.2 saw) # hcutoff 200
+  -- d10 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.16 0.25 rand) # hcutoff 200 # djf "[0.45 0.22]*4"
+  jumpIn' 12 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "10000" "2000" saw) # sustain (slow 32 $ range 0.01 0.04 saw)
+  xfadeIn 13 8 silence
+
 
 
 do
-  d11 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "[1.09@5 0@3 ~@8]/2" # hcutoff 60
+  d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9 # hcutoff 200
+  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 500 1200 saw) # hcutoff 500 # room 0.1
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.2 0 saw) # hcutoff 200
+  -- xfadeIn 10 8 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.16 0.25 rand) # hcutoff 200 # djf "[<0.22 0.45> 0.22]*4"
+  xfadeIn 10 8 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.16 0.25 rand) # hcutoff 200 # djf 0.9
+  jumpIn' 12 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "2000" "0" saw) # sustain (slow 32 $ range 0.04 0.07 saw)
+
+
+
+do
+  -- d11 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "[1.09@5 0@3 ~@8]/2" # hcutoff 60
+  d11 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
+  -- d11 $ slice 8 "[0(3,8)]" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
   d2 $ s "~ ~ ~ UMRU_snares" # n 28 # gain 0.9
-  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1000 1500 saw) # hcutoff 500 # room 0.1
+  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.88@5 0@3" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1200 2000 saw) # hcutoff 500 # room 0.1
   -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 300 # cutoff (slow 6 $ range 4000 6000 sine) # room 0.1 # size 0.95 # note "-5" # triode 6 # squiz 2
   -- d10 $ slow 4 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.8 0.72>" # hcutoff 300 # cutoff (slow 6 $ range 2000 3000 sine) # room 0.5 # size 0.93 # note "-5" # triode 2 # squiz 1
   -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.9 0.78>" # hcutoff 500 # cutoff (slow 6 $ range 2000 3000 sine) # room 0 # size 0 # note "7" # triode 0 # squiz 0
   -- d13 $ (0.25 ~>) $ slow 2 $ slice 32 "0 3" $ s "conversation"
   -- d13 $ gap 16 $ slice 16 "<0 1 2 3 4 5 6 7>" $ loopAt 16 $ s "mona_lisa" # cutoff 1000 # hcutoff 300 # room 0 # size 0 # gain 0.7
   -- d13 $ slice 32 "~ 0" $ s "mona_lisa" # cutoff 600 # hcutoff 300 # room 0.5 # size 0.7 # gain 0.7
-  d10 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # gain (slow 8 $ range 0.8 0.84 saw)
+  -- d10 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1200 # hcutoff 800 # gain (slow 8 $ range 0.8 0.84 saw)
+  jumpIn' 12 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "0" "-2000" saw) # sustain (slow 32 $ range 0.07 0.09 saw)
+  -- xfadeIn 10 16 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf 0.6
+  d10 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.16 0.25 rand) # hcutoff 200 # djf (slow 8 $ range 0.9 0.75 saw)
+
 
 
 do
   d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9 # hcutoff 200
-  d4 $ (0.125) ~> s "techno_hats" # n 14
-  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.9" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1500 2000 saw) # hcutoff 500 # room 0.1
-  -- d8 $ slice 18 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain "[0.8@20 0]/8" # crush 4 # squiz 1.008
-  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 32 $ range "2000" "10000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
-  -- d9 $ (6.03 ~>) $ s "risers/8" # n 2 # room 0 # size 0 # waveloss 40 # distort 0.1
-  -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 300 # cutoff (slow 6 $ range 4000 6000 sine) # room 0.1 # size 0.95 # note "-5" # triode 7 # squiz 4
-  -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.9 0.78>" # hcutoff 500 # cutoff (slow 6 $ range 2000 3000 sine) # room 0 # size 0 # note "7" # triode 0 # squiz 0
-  -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.9 0.78>" # hcutoff 500 # cutoff (slow 6 $ range 2000 3000 sine) # room 0 # size 0 # note "7" # triode 2 # squiz 2
-  d10 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room (slow 8 $ range 0.5 0.8 saw) # size (slow 8 $ range 0.85 1 saw) # gain (slow 8 $ range 0.84 0.9 saw)
-  -- d13 $ slow 2 $ n "f ~ ~ ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.12 0.05 sine) # room 0.3 # hcutoff 80 # cutoff 100
-  -- d13 $ (0.25 ~>) $ slow 2 $ slice 32 "0 3" $ s "conversation" # speed "-1"
-  -- d14 $ (0.125 ~>) $ slow 8 $ slice 32 (run 32) $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size (slow 4 $ range 0.2 0.99 saw) # cutoff (1000 + (run 32 * (3000 / 32))) # triode (fast 2 $ range 0 2 sine) # orbit 8 # gain 0.83
-  -- xfadeIn 14 2 $ (0.125 ~>) $ slice 32 "[0 1 2 3 4 5 6 7]/2" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.2 # size (slow 8 $ range 0.2 0.99 saw) # cutoff (slow 8 $ range 1000 3000 saw) # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.83
+  -- d4 $ (0.125) ~> s "techno_hats" # n 14
+  d8 $ rarely (ghost) $ s "[techno_claps(3,8)]*2" # gain "0.9" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 2000 2800 saw) # hcutoff 500 # room 0.1
+  d10 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.16 0.25 rand) # hcutoff 200 # djf (slow 8 $ range 0.75 0.55 saw)
+  jumpIn' 12 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "-2000" "-8000" saw) # sustain (slow 32 $ range 0.09 0.1 saw)
+
 
 
   do
-    d2 silence
-    d3 silence
-    d5 silence
-    d7 silence
-    -- d8 $ rarely (ghost) $ s "[techno_claps(<3 5>,8)]*2" # gain "0.9" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1100 1600 saw) # hcutoff 500 # room 0.3
-    d13 silence
+    -- d3 silence
+    -- d5 silence
+    -- d7 silence
+    d10 silence
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09@5 0@3"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
   d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.88
   d3 silence
-  d4 $ (0.125 ~>) $ ghost $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
+  d4 $ (0.125) ~> s "techno_hats" # n 14
+  -- d4 $ (0.125 ~>) $ ghost $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
   d5 $ (0.125 ~>) $ sometimes (ghost) $ s "~ ~ [~ techno_hats*2] ~" # n (range 7 23 rand) # gain 0.9
-  d8 $ rarely (ghost) $ s "[techno_claps(5,8)]*2" # gain "0.9" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 1500 2000 saw) # hcutoff 500 # room 0.1 -- # room 0.3 # size (range 0 0.9 saw)
+  d8 $ rarely (ghost) $ s "[techno_claps(5,8)]*2" # gain "0.9" # n 4 # crush (fast 2 $ range 5 8 perlin) # cutoff (slow 8 $ range 2800 4000 saw) # hcutoff 500 # room 0.15 -- # room 0.3 # size (range 0 0.9 saw)
   -- d8 $ slice 42 "[0(3,8)]*2" $ s "techno_vocals" # n 8 # gain 0.82 # squiz (slow 4 $ range 4 6 saw) -- # pan "<1 0>"
   -- d9 $ (6.03 ~>) $ s "risers/8" # n 2 # room 0.3 # size 0.9 # waveloss 25
   -- d10 $ slow 4 $ gap 64 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0 # size 0.9 # note "-5" # triode 8 # squiz 6
-  d10 $ gap "<8 32>" $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room (slow 8 $ range 0 0.6 saw) # size (slow 8 $ range 0 1.15 saw) # gain "<0.9 1.1>"
+  -- d10 $ gap "<8 32>" $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room (slow 8 $ range 0 0.6 saw) # size (slow 8 $ range 0 1.15 saw) # gain "<0.9 1.1>"
+  d10 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.2 # hcutoff 200
+  -- d10 $ rev $ slow 4 $ gap 40 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.2 # hcutoff 200
   d11 silence
   -- jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw)
   -- panning out? necessary? does it add? -- try it and see if i can tell a difference
-  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw) # pan (fast 2 $ range (range 0.5 0 saw) (range 0.5 1 saw) square)
+  jumpIn' 13 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 360 1000 saw) # fshift (slow 8 $ range "2000" "4000" saw) # sustain (slow 32 $ range 0.05 0.0 saw) # pan (fast 2 $ range (range 0.5 0 saw) (range 0.5 1 saw) square)
   -- d13 $ slow 2 $ n "f ~ [~ f] ~ e ~ ~ ~" # s "superhammond" # octave 3 # sustain 0.4 # distort (slow 6 $ range 0.12 0.05 sine) # room 0.3 # hcutoff 80 # cutoff 100
   -- d13 $ silence
   -- d13 $ slice 32 "~ 0" $ s "mona_lisa" # cutoff 600 # hcutoff 300 # room 0.5 # size 0.7 # gain 0.7
   -- d14 $ (0.125 ~>) $ slice 32 "[0 1 2 3 4 5 6 7]/2" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.3 # size (slow 8 $ range 0.2 0.99 saw) # cutoff (slow 8 $ range 3000 4000 saw) # triode (slow 4 $ range 0 2 sine) # orbit 8 # gain 0.83
+  -- xfadeIn 13 8 silence
+  -- jumpIn' 13 0 $ slow 0.25 $ n "e*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "-8000" "-14000" saw) # sustain (slow 32 $ range 0.1 0.05 saw)
 
 
 
 do
-  d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
+  -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
   -- d3 $ s "~ [~ 808_toms]*2" # n "[4 2]*2" # room 0.2 # gain 0.9 # hcutoff 100
   -- d8 $ slice 18 "[0(5,8)]*2" $ s "techno_vocals" # n 8 # gain 0.77 # crush 4 # squiz (slow 1 $ (2 - (run 16 / 32) * 2))
@@ -576,30 +630,28 @@ do
   -- d10 $ slow 4 $ s "BABII_vocal_shots" # n "<6 7>" # cutoff 2000 # room 0.2
   -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "-5" # gain "<0.9 0.85>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.4 sine)
   -- d11 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.97 0.85>" # cutoff (slow 6 $ range "<2000 1000>" "<5000 3000>" sine) # room (slow 4 $ range 0 0.4 sine) # note "-5" # gain 0.92
+  -- d10 $ rev $ slow 4 $ gap 48 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1"
+
 
 
 do
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09@5 0@3"
   d4 $ (0.125 ~>) $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
-  -- d8 $ slice 42 "0(14,16)" $ s "techno_vocals" # n 8 # gain 0.78 # squiz 4 # crush "[3.5 3.5 10 3]/2"
-  d8 $ rarely (ghost) $ s "[techno_claps(14,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
-  -- d10 $ slow 4 $ gap 128 $ s "BABII_vocal_shots" # n "<7 6>" # gain "<0.95 0.92>" # hcutoff 400 # cutoff (slow 6 $ range 6000 9000 sine) # room 0 # size 0.8 # note "-5" # triode 4 # squiz 8
-  -- d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1400 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 1 saw) # gain (slow 8 $ range 1.15 1.05 saw) # crush 5 # distort (slow 8 $ range 0.25 1 saw)
-  d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 800 # room (slow 8 $ range 0 0.8 saw) # size (slow 8 $ range 0 1.2 saw) # gain 1 # triode 2
+  -- d8 $ rarely (ghost) $ s "[techno_claps(14,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
+  d10 $ rev $ slow 4 $ gap 40 $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.22 # hcutoff 200
 
 
 
 
 do
   -- d1 $ s "[SOPHIE_subs(3,8)]*2" # n 16 # gain "1.09"
-  d1 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2"
+  d1 $ slice 8 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.65 0.67 0.68] [0.2 0.18 0.16 0.14]]/2"
   d4 $ (0.125 ~>) $ ghost $ s "[[techno_hats*4]*3@3 [techno_hats techno_hats techno_hats*4 techno_hats]]/4" # n 14 # distort "[0@3 [0 0 [0.2 0.4 0.6 0.8] 0.4]]/4"
-  d8 $ sometimes (ghost) $ s "[techno_claps(13,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
-  -- d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 800 # room (slow 8 $ range 0 0.5 saw) # size (slow 8 $ range 0 1 saw) # gain (slow 8 $ range 1.05 0.9 saw) # crush 5 # distort (slow 8 $ range 0.9 2 saw)
-  d10 $ gap 32 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1800 # hcutoff 800 # room (slow 8 $ range 0 0.8 saw) # size (slow 8 $ range 0 1.4 saw) # gain 1 # triode 2
+  -- d8 $ sometimes (ghost) $ s "[techno_claps(13,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
+  d8 $ sometimes (ghost) $ s "[techno_claps(14,16)]" # n 4 # crush (fast 2 $ range 5 8 perlin)
   jumpIn 6 7 $ slow 2 $ s "~@15 XORE_error" # n "2"
 
-
+    d6 $ slow 2 $ s "~@15 XORE_error" # n (irand 9)
 
 
 
@@ -621,16 +673,18 @@ do
   d9 silence
   d10 silence
   d12 silence
-  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "10000" "2000" saw) # sustain (slow 32 $ range 0.0 0.05 saw)
+  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "10000" "2000" saw) # sustain (slow 32 $ range 0.01 0.05 saw)
 
 
 do
   d2 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.4@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2" # note (slow 8 $ 36 - run 36)
-  jumpIn' 12 0 $ silence
+  jumpIn' 12 0 $ slow 0.25 $ n "a*4" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift (slow 32 $ range "2000" "0" saw) # sustain (slow 32 $ range 0.05 0.08 saw)
 
 
 d2 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09" # djf "[0.5@2 [0.62 0.66 0.69 0.72] [0.2 0.18 0.16 0.14]]/2" # note 0
 
+do
+jumpIn' 12 0 $ slow 0.25 $ n "a(3,8)" # octave "5" # s "superzow" # voice 5 # gain 0.75 # pan (slow 2 $ range 0.25 0.75 sine) # cutoff (slow 0.125 $ range 6000 12000 sine) # hcutoff (slow 32 $ range 1000 360 saw) # fshift 0 # sustain 0.08
 
   d2 $ slice 4 "[0(3,8)]*2" $ s "SOPHIE_subs" # n 16 # gain "1.09"
 
