@@ -98,15 +98,16 @@ do
   -- d5 $ slow 2 $ s "~ sn <~ ~ ~ [~ sn]> <sn sn sn ~> ~ sn [~ sn] sn*2" # n 2 # gain 0.9
   d5 $ slow 2 $ s "~ snares <~ ~ ~ [~ snares]> <snares snares snares ~>  ~ snares [~ snares] snares*2" # n 3 # gain 0.94
   d6 $ s "UMRU_hihats*16" # n 0 # gain 0.8
-  d6 $ n "e*16" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
-  d6 $ n "[e*24@6 f*4 d*4]/2" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
   d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 26 # gain 0.7 # room 0.4 # size 0.9
   d11 silence
 
 
 
-
+do
   d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 3 # gain 0.95
+  d6 $ n "e*16" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
+  d6 $ n "[e*24@6 f*4 d*4]/2" # s "m1" # midichan 5 # stack [((1 <~) $ ccv (range 0 80 rand) # ccn 22), ((1 <~) $ slow 8 $ ccv (range 10 90 sine) # ccn 13), (ccv (slow 2 $ range 76 "76 100" saw) # ccn 10)]
+
 
 do
   d1 $ s "[techno_kicks ~ ~ techno_kicks] [~ techno_kicks] [~ techno_kicks] [~ <techno_kicks ~>]" # n 3 # gain 1.1
@@ -134,8 +135,9 @@ do
   d10 $ chop 32 $ randslice 8 $ s "XORE_ambient" # n 26 # gain 0.7 # room 0.4 # size 0.9
 
 
-
+do
   d2 $ slow 2 $ n "e*24@6 f*4 d*4" # octave 3 # s "warsawbass" # distort 0.13 # room 0.2 # sustain (slow 3 $ range 0.07 0.08 sine) # crush 6 # gain 1.05
+  d3 $ fast 2 $ n (randcat ["~ [f ~ d e]", "~ [f ~ d e]", "~ [f d ~ e]", "~ [f d ~ e]", "~ [f ~ ~ e]"]) # s "acid92" # octave 6 # cutoff (slow 16 $ range 8000 4000 sine) # room ((0.5 <~) $ slow 4 $ range 0 0.25 saw) # gain 0.82 # distort 0.6
 
 do
   d1 $ s "techno_kicks*4" # n 3 # gain 1.1

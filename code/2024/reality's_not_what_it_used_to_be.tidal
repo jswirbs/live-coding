@@ -717,7 +717,8 @@ do -- 4
 
 do -- 2
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.75 <~) $ slow 8 $ range 5000 12000 saw) # djf (slow 8 $ range 0.7 1.05 saw) # gain 0.95
-  xfadeIn 3 3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 9000 12000 saw) # gain 0.9 # djf (slow 4 $ range 0.7 1.1 saw) # orbit 4
+  -- silencing this?
+  -- xfadeIn 3 3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 9000 12000 saw) # gain 0.9 # djf (slow 4 $ range 0.7 1.1 saw) # orbit 4
   xfadeIn 7 2 $ s "snares*16" # n 14 # distort 0.2 # djf (slow 4 $ range 0.8 1.4 saw)
   -- xfadeIn 9 2 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.85 saw) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 1 0.7 sine) # orbit 3 # hcutoff 6000 # djf (slow 4 $ range 0.75 1 saw)
 
