@@ -97,7 +97,7 @@ d3 $ n "[e2, e3]" # s "warsawbass" # gain 1.15
 d4 $ n "~ [~ e4 e4 e4]" # s "default" # distort 0.15
 
 
-d5 $ n (arp "thumbup" "e'min7 c'maj7" - (slow 4 $ "<0 12>")) # s "midsaw"
+d5 $ n (arp "thumbup" "e'min7 c'maj7" - (slow 4 $ "<0 12>")) # s "midsaw" # gain 1.1
 d5 $ n (arp "thumbup" "e'min7 c'maj7" + "12") # s "midsaw" # distort 0.3
 d5 $ silence
 
