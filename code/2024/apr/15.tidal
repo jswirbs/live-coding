@@ -85,6 +85,7 @@ d1 silence
 
 -- b45, b37
 d6 $ n "[e ~ ~ e] [~ ~ f ~] [~ ~ ~ f8] [d ~ d ~]" # octave 3 # s "tb3"
+d8 $ n "[e ~ e? e] [~ ~ f ~] [~ ~ g? f7] [d ~ d ~]" # octave 5 # s "m2"
 
 
 d3 $ slow 2 $ s "[FOOD_808s ~ ~ <FOOD_808s [~ FOOD_808s]>] [FOOD_808s ~ ~ [FOOD_808s FOOD_808s]]" # n "4@7 <4 [6 8]>" # room 0.5 # size 0.7 # cutoff 700

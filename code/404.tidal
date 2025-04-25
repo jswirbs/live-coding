@@ -484,7 +484,7 @@ do
   -- d10 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0 # size 0 # gain 1.05
   -- xfadeIn 10 4 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.3 # size 0.6 # gain 1.05
   -- xfadeIn 10 8 $ palindrome $ slow 2 $ chop 16 $ slice 204 "22 26" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.4 # size 0.3 # gain 1
-  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.95 0.8 saw) # hcutoff 200 # room (slow 8 $ range 0 0.3 saw) # size (slow 8 $ range 0 0.3 saw)
+  d10 $ slice 8 "~ 0" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort (range 0.07 0.13 rand) # djf (slow 8 $ range 0.92 0.8 saw) # hcutoff 200 # room (slow 8 $ range 0 0.3 saw) # size (slow 8 $ range 0 0.3 saw)
   -- d10 $ slice 32 "[~ 0]*4" $ s "techno_textures" # n 5 # gain 0.95 # speed "-1" # distort 0.1 # djf (slow 8 $ range 0.9 0.6 saw)
   -- d11 $ rev $ slow 4 $ gap 40 $ s "techno_textures" # n 5 # gain "[0 0.95]*4" # speed "-1" # distort 0.22 # hcutoff 200
 
@@ -784,7 +784,8 @@ do
   d14 $ arp "up" $ n "<a'min a'min a'min a'min a'min a'min a'min g'maj>(5,16)" # s "superzow" # octave 4 # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 2000 # room 0.4
   d14 $ n "[f e](5,16)" # s "superzow" # octave 5 # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 2000 # room 0.4
 
-  d14 $ rarely (ghost) $ n "[<e@4 f@4> <f@3 e@3> e](5,16)" # s "superzow" # octave "<5@7 6>" # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 6000 # room 0.2
+  d14 $ slice 4 "0" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 1000 # triode (slow 4 $ range 2 0 sine) # orbit 8 # gain 0.85
+  d15 $ rarely (ghost) $ n "[<e@4 f@4> <f@3 e@3> e](5,16)" # s "superzow" # octave "<5@7 6>" # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 6000 # room 0.2
 
   d14 $ rev $ chop 128 $ slow 8 $ s "trancey_synth_loops" # n 10 # room 0.2 # size 0.8 # speed "-1"
   d14 $ rev $ chop 128 $ slow 8 $ s "trancey_synth_loops" # n 10 # room 0 # size 0.99 # speed "-1" # cutoff 1000 # hcutoff 500 # gain 0.85
