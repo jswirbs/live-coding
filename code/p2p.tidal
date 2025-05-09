@@ -68,6 +68,13 @@ d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 21 # gain 1.1
 d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
 d2 silence
 
+-- try some other bass grooves?
+d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.15 # cutoff 900
+d2 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+-- d2 $ n "e*16" # octave 2 # s "supersaw" # gain ("[0.83 0.88 0.98 0.96]*4" - "0.15" ) # cutoff 1000 # hcutoff 70
+d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+
+
 -- d2 $ chop 2 $ loopAt 2 $ s "techno_perc_loops" # n 12 # gain 1.2
 
 d3 $ n "0 ~ [~ 0] [~ 0]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
@@ -94,7 +101,7 @@ d5 silence
 d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room 0.05 # gain 0.88
 -- d6 $ (0.125 ~>) $ sometimesBy 0.75 (ghost) $ s "XORE_hats*4" # n 3 # room 0.05 # gain 0.88
 d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room 0.05 # gain 0.88
-d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 7 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
 
 
 
@@ -106,11 +113,61 @@ d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 7 $ range 0.02 0.055 sine) 
 do
   bpm 136
   resetCycles
-  d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
+  xfadeIn 4 32 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 800 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
+  d2 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+  -- d2 $ slice 8 "[7]*4" $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+  -- d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
   -- d5 $ swingBy (1/16) 1 $ chop 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  -- xfadeIn 11 16 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "default" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 8 # room 0.3 # size 0.5 # distort (slow 4 $ range 0.1 0.25 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # orbit 4 # hcutoff 1000
+  -- d11 $ n "[e ~ e? e] [~ ~ f ~] [~ ~ a? f7] [d ~ d ~]" # octave 5 # s "m2"
+  -- d9 $ (1.875 <~) $ fast 2 $ n ((8 ~>) $ slow 2 $ "a4 e ~ ~ ~ ~ a6 ~") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  -- d9 $ (2 <~) $ swingBy (1/16) 1 $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  -- d9 $ (2 <~) $ swingBy (1/16) 1 $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "soshats" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
 
 
-xfadeIn 4 32 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 800 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
+
+  d1 silence -- ??
+
+do
+  d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
+  d9 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 200
+
+
+
+
+  -- try without d5... lean into arps
+  d11 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.3 # size 0.5 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "default" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.3 # size 0.5 # distort (slow 4 $ range 0.1 0.25 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # orbit 4 # hcutoff 1000
+  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "moogbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.3 # size 0.5 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # orbit 4 # hcutoff 1000
+
+  d11 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 2 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 4 # room 0.3 # size 0.9 # distort (slow 4 $ range 0.1 0.2 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain 8 # gain 0.85 # orbit 4 # hcutoff 1000
+  d11 silence
+
+
+  d11 $ rarely (ghost) $ n "~ e e e ~@4" # octave 5 # s "superzow" # detune (slow 8 $ range 0 3 sine) # distort 0.5 # gain 0.6 # tremolodepth 0.6 # tremolorate 4 # sustain (slow 4 $ range 0.12 0.18 sine) # room "[0.4@3 0]*2" # size "[0.4@3 0]*2" # pan (fast 2 $ range "<-0.1 -0.1 1.1 1.1>" 0.5 saw)
+
+    -- d8 $ fast 1 $ n "a4 e a b c6 e6 f6 a6" # s "warsawbass" # octave 8 # djf (slow 2 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+    -- d8 $ fast 2 $ n "a4 e a b c6 e6 f6 a6" # s "warsawbass" # octave 8 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+
+  d11 silence
+
+
+  -- d10 $ chop 8 $ slice 24 "0 <21 22>" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8 # cutoff (slow 8 $ range 2000 10000 sine) # speed "1"
+
+
+  d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+xfadeIn 2 16 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+
+
+
+
+  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+  d6 $ (0.125 ~>) $ s "CXCX_hh*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # hcutoff 1000
+
+  d6 $ (0.125 ~>) $ s "[XORE_hats*2 ~@3]/2" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 6000 # gain 1
 
 
 do
@@ -118,23 +175,21 @@ do
 
 
 
-do
-  -- try some other bass grooves?
-  d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.15 # cutoff 900
-  d2 $ n "e*16" # octave 2 # s "subbass" # gain "[0.9 0.95 1.15 1.12]*4" # room 0.1
-  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 7 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+-- need to do something for another 8 before break down
 
 
 
 
 do
   -- d1 silence
-  xfadeIn 2 30 silence
+  xfadeIn 2 32 silence
   xfadeIn 4 24 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.88 # cutoff 1200 # triode (slow 4 $ range 1 0 sine) # gain 0.7 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
   d6 silence
   -- clutchIn 8 8 $ (2 <~) $ fast 4 $ n (slow 8 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
   clutchIn 8 16 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
-  d9 silence
+  -- xfadeIn 8 16 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  -- d9 silence
+  xfadeIn 9 16 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 400
 
 
 do
@@ -143,23 +198,33 @@ do
 
 
 do
-  d1 silence
+  -- d1 silence
   d1 $ n "0*4" # s "m1" # ccv (slow 8 $ range 98 83 saw) # ccn 5
   d8 $ (2 <~) $ fast 4 $ n (slow 2 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
   -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 16 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
   -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 16 $ "a4 e a b c6 e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
   -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 8 $ "a4 e a b c6 e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  -- xfadeIn 11 16 silence
+  -- clutchIn 11 8 $ n "~ ~ [~ ~ ~ f7] [d? ~ ~ ~]" # octave 5 # s "m2"
+  xfadeIn 5 16 silence
+  xfadeIn 9 8 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.86 # orbit 4 # hcutoff 600
+
 
 do
   d1 silence
+  -- xfadeIn 2 8 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
   -- xfadeIn 2 8 $ chop 2 $ loopAt 2 $ s "techno_perc_loops" # n 5 # gain 1.2 # fshift 6
   xfadeIn 3 8 silence
   d3 silence
-  clutchIn 5 8 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  -- clutchIn 5 8 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  -- clutchIn 5 8 $ (0.125 ~>) $ gap 8 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  -- d5 $ swingBy (1/16) 1 $ gap 4 $ gap 4 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
   -- d7 $ swingBy (1/16) 4 $ n "[e(7,16)]/2" # s "m1" # midichan 5 # stack [(ccv (slow 8 $ range 62 124 saw) # ccn 13)]
   -- d7 silence
   d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4
   d8 $ (2 <~) $ fast 4 $ n (slow 1 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  -- xfadeIn 9 8 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.86 # orbit 4 # hcutoff 800 # djf ((5 ~>) $ slow 16 $ range 0.7 0.9 saw)
+  xfadeIn 9 6 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.86 # orbit 4 # hcutoff 720 # djf ((5 ~>) $ slow 16 $ range 0.7 0.9 saw)
 
 -- d8 $ swingBy (1/8) 7 $ arp "up" $ n "<a'min a'min a'min a'min e'min e'min e'min e'min>@3 ~@5" # s "warsawbass" # octave "[2,3,4]" # detune (choose[1,1,2,2,3,4]) # cutoff (slow 4 $ range 3000 6000 sine) # room (slow 8 $ range 0.15 0.3 sine) # size 0.9 # gain 0.8
 -- d8 $ swingBy (1/8) 7 $ arp "up" $ n "<a'min a'min a'min a'min e'min e'min e'min e'min>@3 ~@5" # s "acid91" # octave "[3,4,5]" # detune (choose[1,1,2,2,3,4]) # cutoff (slow 4 $ range 1500 3000 sine) # room (slow 8 $ range 0.15 0.3 sine) # size 0.8 # gain 0.8 # hcutoff 500
@@ -169,39 +234,55 @@ do
 
 
 
-  d1 $ n "0 ~ [~ 0] 0*2" # s "m1" # ccv 113 # ccn 5
+  -- d1 $ n "0 ~ [~ 0] 0*2" # s "m1" # ccv 113 # ccn 5
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "default" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.15 # size 0.25 # distort (slow 4 $ range 0.1 0.25 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.12 sine) # gain 0.8 # orbit 1 # hcutoff 1200
+  -- d11 $ (2 <~) $ (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "moogbass" # octave 6 # djf (slow 16 $ range 0.9 0.7 sine) # waveloss 4 # room 0.15 # size 0.25 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.16 sine) # gain 0.8 # orbit 4 # hcutoff 1000
+  xfadeIn 9 2 $ (2 <~) $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.86 # orbit 4 # djf ((5 ~>) $ slow 16 $ range 1 0.66 saw) # hcutoff 50
 
 do
   d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
   -- d2 $ chop 2 $ loopAt 2 $ s "techno_perc_loops" # n 5 # gain 1.1 # fshift 16
-  d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
-  xfadeIn 4 16 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.25 # size 0.75 # cutoff 1500 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
-  d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  d2 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+  -- d2 $ slice 8 "[7]*4" $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+  -- xfadeIn 4 16 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.15 # size 0.75 # cutoff 1000 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
+  -- d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
   d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 49 # ccn 21), (ccv 120 # ccn 16), (ccv 79 # ccn 17)]
   d8 $ (2 <~) $ fast 4 $ n (slow 2 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
-  d9 silence
+  -- d9 silence
+  d9 $ (2 <~) $ swingBy (1/16) 1 $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 200
+  -- d11 silence
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "moogbass" # octave 6 # djf (slow 16 $ range 0.9 0.7 sine) # waveloss 4 # room 0.15 # size 0.25 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.16 sine) # gain 0.8 # orbit 4 # hcutoff 1000
+  -- d11 $ n "[e ~ e? e] [~ ~ f ~] [~ ~ a? f7] [d ~ d ~]" # octave 5 # s "m2"
 
-  d2 $ n "e*16" # octave 2 # s "subbass" # gain "[0.9 0.98 1.2 1.15]*4" # room 0.1
-  d2 silence
-  d2 $ n "e*16" # octave 2 # s "subbass" # gain "[0.8 1]*4" # gain 1.3
+  -- try d8 with swing to match d5? how to sync these more??
+  -- d8 $ swingBy (1/16) 1 $ (2 <~) $ fast 4 $ n (slow 2 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+
+
+
+    d2 $ n "e*16" # octave 2 # s "subbass" # gain "[0.9 0.98 1.2 1.15]*4" # room 0.1
+    d2 silence
+    d2 $ n "e*16" # octave 2 # s "subbass" # gain "[0.8 1]*4" # gain 1.3
 
 
 do
   -- d5 $ swingBy (1/16) 1 $ chop 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  -- maybe fade 7 out a little or something else foreshaddowing
   -- d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv (slow 8 $ range 49 66 saw) # ccn 21), (ccv 0 # ccn 16), (ccv (slow 8 $ range 79 79 saw) # ccn 17)]
   d8 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
-
+  -- xfadeIn 11 32 silence
 
 do
-  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
   d8 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 8 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  -- clutchIn 11 16 $ n "~ ~ [~ ~ ~ f7] [d? ~ ~ ~]" # octave 5 # s "m2"
+  xfadeIn 9 8 $ (2 <~) $ swingBy (1/16) 1 $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 300
 
 
 
 do
-  xfadeIn 4 32 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 200 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
-  d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  xfadeIn 4 24 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.4 # size 0.95 # cutoff 200 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
   d8 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 16 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  xfadeIn 9 8 $ (2 <~) $ swingBy (1/16) 1 $ rev $ palindrome $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 2 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.05 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 600
   -- d10 $ swingBy (1/16) 4 $ n "[e(7,16)]/2" # s "m1" # midichan 5 # stack [(ccv (slow 8 $ range 62 124 saw) # ccn 13)]
 
 
@@ -211,9 +292,10 @@ do
   d1 $ n "0*4" # s "m1" # ccv (slow 8 $ range 113 98 saw) # ccn 5
   xfadeIn 2 24 silence
   d3 silence
-  d9 silence
+  -- d9 silence
   -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
-  clutchIn 9 20 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  clutchIn 9 20 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 100
+  d11 silence
 
 
 do
@@ -224,15 +306,19 @@ do
 
 do
   d1 silence
+  xfadeIn 4 24 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0 # size 0 # cutoff 400 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
   clutchIn 5 12 silence
   -- d7 silence
-  d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv (slow 8 $ range 49 100 saw) # ccn 21), (ccv 0 # ccn 16), (ccv (slow 8 $ range 79 60 saw) # ccn 17)]
-  xfadeIn 9 1 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 1 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv (slow 8 $ range 49 95 saw) # ccn 21), (ccv 0 # ccn 16), (ccv (slow 8 $ range 79 48 saw) # ccn 17)]
+  -- xfadeIn 9 0.33 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 1 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 6 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 100
+  xfadeIn 9 0.5 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 1 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 24 $ range 0.75 0.33 sine) # waveloss 6 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 50
+  -- fade or nah?
+  -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 1 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 6 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.2 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
 
 
-do -- too much>
+do -- too much? soften
   -- d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 119 # ccn 21), (ccv 0 # ccn 16)]
-  d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 121 # ccn 21), (ccv 0 # ccn 16), (ccv 60 # ccn 17)]
+  d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 121 # ccn 21), (ccv 0 # ccn 16), (ccv 48 # ccn 17)]
 
 
   do
@@ -242,24 +328,30 @@ do -- too much>
 
 do
   d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
-  d2 $ chop 2 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
-  d4 silence
+  d2 $ chop 8 $ loopAt 2 $ s "techno_drum_loops" # n 47 # gain 1.05 # cutoff 900
+  -- d4 silence
+  -- d4 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.8 # size 0.88 # cutoff 500 # hcutoff 200 # triode (slow 4 $ range 1 0 sine) # gain 0.72 # tremolodepth (slow 16 $ range 0.6 0.9 sine) # tremolorate 4
+  -- xfadeIn 4 24 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.3 # size 0.88 # cutoff 1000 # hcutoff 200 # triode (slow 4 $ range 1 0 sine) # gain 0.7 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
   -- d4 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.25 # size 0.75 # cutoff 1500 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
-  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
   -- or silence 8?
   d8 $ (2 <~) $ fast 4 $ n (slow 8 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
   d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+  d10 silence
+  d11 silence
 
 
 
 do
-  d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
   d8 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
 
 
 do
-  d3 $ n "0*2 0 [~ 0*2] [0 0*2]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
-  d3 $ n "0*2 0 [~ 0?*2] [0? 0*2]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
+  -- d3 $ n "0*2 0 [~ 0*2] [0 0*2]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
+  -- d3 $ n "0*2 0 [~ 0?*2] [0? 0*2]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
+  -- d3 $ n "[0 0?] [0 ~] [~ 0] [0 0*2]" # s "m1" # midichan 6 # ccv (slow 16 $ range 80 120 sine) # ccn 1
+  -- d3 silence
   d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 49 # ccn 21), (ccv 0 # ccn 16), (ccv 79 # ccn 17)]
   d7 $ (0.21 ~>) $ n "0*2" # s "m1" # midichan 4 # stack [(ccv 49 # ccn 21), (ccv 120 # ccn 16), (ccv 79 # ccn 17)]
   d8 $ (2 <~) $ fast 4 $ n (slow 2 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
@@ -267,10 +359,12 @@ do
 
 
 do
-  xfadeIn 4 16 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.25 # size 0.95 # cutoff 8500 # hcutoff 1000 # djf (slow 16 $ range 0.6 0.85 sine) # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.5 sine) # tremolorate 4
-  -- d5 $ swingBy (1/16) 1 $ gap 16 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
-  d8 $ (2 <~) $ fast 4 $ n (slow 1 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77
-
+  -- necessary?? nice to bring it back to beginning but maybe too much going on here (d8 is kinda pad/drone/trancey synth now)
+  -- xfadeIn 4 24 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.25 # size 0.95 # cutoff 8500 # hcutoff 1000 # djf (slow 16 $ range 0.6 0.85 sine) # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.5 sine) # tremolorate 4
+  -- d5 $ swingBy (1/16) 1 $ gap 4 $ gap 4 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  d8 $ (2 <~) $ fast 4 $ n (slow 1 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.46 0.33 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.43 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.73
+  -- d11 $ n "[e ~ e? e] [~ ~ f ~] [~ ~ a? ~] [d ~ d ~]" # octave 5 # s "m2"
+  -- d11 silence
 
 
   -- hcutoff
@@ -280,22 +374,97 @@ do
   -- d10 $ (2 <~) $ rev $ fast 4 $ n ((8.0 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 4 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 300
   -- d10 $ (2 <~) $ rev $ fast 4 $ n ((choose([8.0625,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 4 # djf (slow 16 $ range 0.85 0.6 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 500
 
-do -- ?? too much ??
-  d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.0625,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave 4 # djf 0.89 # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.82 # hcutoff 800
-  xfadeIn 10 4 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.0625,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave 4 # djf (slow 16 $ range 0.92 0.74 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.82 # hcutoff 500
-
-  d10 silence
 
   --
   -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.2 # size 0.9 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
   -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 4 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.2 # size 0.9 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
   -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.2 # size 0.9 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
 
-  xfadeIn 11 4 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.9 # size 1.1 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
 
-  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ ghost $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
-  d11 silence
+  -- do
+  --   -- d5 $ swingBy (1/16) 1 $ gap 2 $ gap 4 $ slice 8 "<1 2 2 3>" $ s "trancey_synth_loops" # n 0 # speed 1 # room (slow 12 $ range 0 0.35 sine) # size (slow 9 $ range 0 0.8 sine) # cutoff (slow 8 $ range 4000 7000 sine) # hcutoff 600 # gain 0.8 # tremolodepth 0.8 # tremolorate (range 8 16 saw)
+  --   -- clutchIn 11 8 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+  --   xfadeIn 11 8 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.25 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+  --
+  --
+  --   d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ ghost $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+  --   d11 silence
 
+
+  do
+    d1 silence
+    xfadeIn 4 32 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.25 # room 0.4 # size 0 # cutoff 600 # triode (slow 4 $ range 1 0 sine) # gain 0.82 # tremolodepth (slow 16 $ range 0.7 1 sine) # tremolorate 4
+    d6 silence
+    d8 $ (2 <~) $ fast 4 $ n (slow 0.5 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.48 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.72
+    xfadeIn 8 8 $ (2 <~) $ fast 4 $ n (slow 0.5 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.48 0.3 sine) # waveloss 10 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.13 sine) # gain 0.73 # orbit 7
+    -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+    -- d11 $ (2 <~) $ sometimesBy (slow 8 $ range 0 0.66 saw) (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+    -- d11 $ (2 <~) $ sometimesBy (slow 8 $ range 0 1 saw) (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+    d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave 4 # djf 0.89 # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.8 # hcutoff 800
+    xfadeIn 10 8 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave (choose[4,4,5]) # djf (slow 16 $ range 0.92 0.74 sine) # waveloss 2 # room 0.4 # size 0.6 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 8 $ range 0.33 0.66 square) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.82 # hcutoff 1000
+    -- clutchIn 10 8 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+    -- clutchIn 10 3.5 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+    -- d9 $ (2 <~) $ fast 4 $ n ((8 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+    -- d9 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ fast 4 $ n ((8 ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 3 # djf (slow 8 $ range 0.5 0.35 sine) # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4
+
+    d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+
+    -- d1 $ n "0 ~ [~ 0] 0*2" # s "m1" # ccv 113 # ccn 5
+    -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+    -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave (choose[5]) # waveloss 0 # room 0.5 # size (slow 20 $ range 0.6 0.95 sine) # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 8 $ range 0.33 0.66 square) # sustain (slow 3 $ range 0.08 0.14 sine) # gain 0.66
+    d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300 # cutoff 6000
+
+  do
+    d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
+    -- d4 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0 # size 0 # cutoff 400 # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.9 sine) # tremolorate 4
+    d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+    d8 $ (2 <~) $ fast 4 $ n (slow 1 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.48 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.75
+    d8 $ (2 <~) $ fast 4 $ n (slow 1 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.48 0.3 sine) # waveloss 30 # room 0.9 # size 0.5 # distort (slow 4 $ range 0.2 0.5 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.15 sine) # gain 0.75
+    -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+    -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid91" # octave 4 # waveloss 3 # room 0.3 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.55 # hcutoff 300
+    -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave (choose[5]) # waveloss 0 # room 0.5 # size (slow 20 $ range 0.6 0.95 sine) # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 8 $ range 0.33 0.66 square) # sustain (slow 3 $ range 0.08 0.14 sine) # gain 0.66
+    -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+    d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave (choose[4,4,5]) # djf (slow 16 $ range 0.9 0.7 sine) # waveloss 2 # room 0.4 # size 0.6 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 8 $ range 0.33 0.66 square) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.72 # hcutoff 100
+    d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+
+
+    d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room (slow 12 $ range 0.02 0.055 sine) # cutoff 10000 # gain 1.02
+
+
+
+
+  -- d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+  -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a b c6 e6 f6 a6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+
+  --     -- clutchIn 10 3.5 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 4 $ "a4 e a c6 b e6 a6 f6") # s "acid91" # octave (choose[4,5,5]) # djf (slow 16 $ range 0.9 0.7 sine) # waveloss 2 # room 0.1 # size 0.2 # distort (slow 4 $ range 0.2 0.4 sine) # pan (fast 8 $ range 0.33 0.66 square) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.75 # hcutoff 200
+  --     clutchIn 10 3.5 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[4,5,5]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+  --
+  --     clutchIn 10 3.5 silence
+  --
+  --     d1 silence
+  --
+  -- do
+  --   d1 $ n "0*4" # s "m1" # ccv 113 # ccn 5
+  --   d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  --   -- d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 3 # room 0.05 # gain 0.85
+  --   -- d6 $ (0.125 ~>) $ ghost $ s "XORE_hats*4" # n 15 # gain 0.88
+  --   d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+
+
+
+    -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ ghost $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.93 0.7 sine) # waveloss 12 # room 0.7 # size 0.95 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
 
   -- d12 silence
   -- d12 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 16 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 1 0.9 sine) # waveloss 12 # room 0.9 # size 0.99 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.3 0.7 sine) # gain 0.9 # resonance 0.2 # cutoff 4500 # orbit 4 # hcutoff 1300
@@ -310,9 +479,13 @@ do
   d2 silence
   -- xfadeIn 4 8 $ (0.125 ~>) $ slice 16 "0*4" $ s "trancey_synth_loops" # n 1 # speed 0.5 # room 0.25 # size 0.95 # cutoff 2000 # hcutoff 800 # djf (slow 16 $ range 0.6 0.85 sine) # triode (slow 4 $ range 1 0 sine) # gain 0.8 # tremolodepth (slow 16 $ range 0.2 0.5 sine) # tremolorate 4
   d4 silence
+  d5 silence
   d8 $ (2 <~) $ fast 4 $ n (slow 2 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
-  d10 silence
-  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.9 # size 1.1 # distort (slow 4 $ range 0.1 0.4 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # orbit 4 # hcutoff 1000
+  -- d10 silence
+  d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 2 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid91" # octave 4 # waveloss 3 # room 0.3 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.55 # hcutoff 300
+  d10 $ (2 <~) $ rev $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "superzow" # octave (choose[5,5,6]) # waveloss 3 # room 0.4 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.48 # hcutoff 300
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.9 # size 1.1 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # orbit 4 # hcutoff 1000
+  d11 silence
 
 
 
@@ -321,22 +494,47 @@ do
   d3 silence
   -- d4 silence
   -- xfadeIn 4 8 silence
-  d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  -- d6 $ (0.125 ~>) $ s "XORE_hats*4" # n 3 # room 0.05 # cutoff 10000 # gain 1.02
+  d6 silence
+  d8 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 0.5 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave 4 # djf 0.89 # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.82 # hcutoff 800
+  xfadeIn 11 32 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 2 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 1 # room 0.3 # size 0.9 # distort (slow 4 $ range 0.1 0.2 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain 8 # gain 0.85 # orbit 4 # hcutoff 1000
 
 
 do
   d6 silence
   d7 silence
-  d8 silence
+  -- d8 silence
+  d8 $ (2 <~) $ fast 4 $ n (slow 8 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  xfadeIn 9 16 silence
+  -- d10 $ (2 <~) $ sometimes (ghost) $ rev $ fast 0.5 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "a4 e a c6 b e6 a6 f6") # s "acid92" # octave 4 # djf 0.89 # waveloss 12 # room 0.1 # size 0.15 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.82 # hcutoff 800
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.1 # size 0.4 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.85 # hcutoff 1000
 
 
 do
   d1 silence
-  d9 silence
-  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.2 # size 0.5 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # hcutoff 1000
+  d8 $ (2 <~) $ fast 4 $ n (slow 8 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.6 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.2 # tremolodepth 0.5 # tremolorate 36 # orbit 4
+  xfadeIn 8 16 silence
+  -- d9 silence
+  -- clutchIn 9 6 silence
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.2 # size 0.5 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.83 # hcutoff 1000
+  -- xfadeIn 10 32 silence
+  clutchIn 10 16 silence
+  -- xfadeIn 11 16 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 2 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 1 # room 0.3 # size 0.9 # distort (slow 4 $ range 0.1 0.2 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain 8 # gain 0.85 # orbit 4 # hcutoff 1000
 
-  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.35 # size 0.8 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # hcutoff 1000
-  d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.9 # size 0.96 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.88 # hcutoff 1000
+
+
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.35 # size 0.8 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.79 # hcutoff 1000
+  -- d11 $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 4 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "superhoover" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 12 # room 0.6 # size 0.96 # distort (slow 4 $ range 0.1 0.4 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.75 # hcutoff 1000
+  --
+
+  -- cut out and it'll fall apart nicely
+  hush
+
+  -- or fade out to moody static
+  d11 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 2 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 2 # room 0.3 # size 0.9 # distort (slow 4 $ range 0.1 0.2 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain 8 # gain 0.85 # orbit 4 # hcutoff 1000
+  d11 $ sometimes (ghost) $ (2 <~) $ sometimesBy 0.66 (palindrome) $ rev $ fast 2 $ n (slow 8 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # octave 6 # djf (slow 16 $ range 0.95 0.7 sine) # waveloss 100 # room 0.3 # size 0.9 # distort (slow 4 $ range 0.1 0.2 sine) # pan (slow 4 $ range 0.25 0.75 saw) # sustain 8 # gain 0.85 # orbit 4 # hcutoff 1000
+
 
 
 hush
@@ -447,6 +645,8 @@ do
 
 
 
+
+
   d8 $ (2 <~) $ fast 4 $ n (slow 4 $ "a4 e a b c6 e6 f6 a6") # s "warsawbass" # octave 8 # djf (slow 8 $ range 0.5 0.3 sine) # waveloss 40 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.77 # tremolodepth 0.5 # tremolorate 36 # orbit 4
 
 
@@ -511,22 +711,23 @@ d9 $ (2 <~) $ fast 4 $ n (slow 16 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # o
 
     d8 $ slow 2 $ n "<a a a g>(5,16)" # s "warsawbass" # octave "[2,3]" # sustain 0.4 # room 0.8 # size 0.6 # gain 1 # djf (slow 4 $ range 0.5 0.8 saw)
     d8 $ arp "up" $ n "<a'min a'min a'min a'min a'min a'min a'min g'maj>(5,16)" # s "superzow" # octave 4 # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 2000 # room 0.4
+    d8 $ arp "up" $ n (off (0.0625) (+12) $ off (0.0625/2) (+12) $ "<a'min a'min a'min a'min a'min a'min a'min g'maj>(5,16)") # s "superzow" # detune (slow 4 $ range 0.12 0.17 sine) # gain 0.7 # cutoff 2000 # room 0.4
 
 
     d8 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 400 200 sine) # room 0.2 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
     d8 $ (2 <~) $ chop 64 $ slow 8 $ s "nebula" # n 2 # cutoff (range 2000 800 sine) # room 0.1 # gain ((2 ~>) $ fast 4 $ "<[0 0 [0 1] [0 1]] ~> [1 [0 1] [0 1] 0]")
 
 
-    d9 $ fast 2 $ slow (5/4) $ n "c d ef f g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.9 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
+    d8 $ fast 2 $ slow (5/4) $ n "c d ef f g" # octave 6 # s "acid91" # tremolodepth 0.8 # tremolorate (slow 8 $ range 4 24 sine) # pan (range 0.2 0.8 saw) # distort (slow 7 $ range 0.4 0.9 sine) # gain 0.9 # sustain (slow 3 $ range 0.11 0.22 sine) # crush 4
 
 
 
 
-  d10 $ n "[e ds cs ds]*4" # s "basshigh" # octave 8 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
+  d8 $ n "[e ds cs ds]*4" # s "basshigh" # octave 8 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
 
-  d11 $ n "[e ds cs ds]*8" # s "basshigh" # octave 9 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
+  d8 $ n "[e ds cs ds]*8" # s "basshigh" # octave 9 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
 
-  d12 $ n "[e ds cs ds]*16" # s "basshigh" # octave 10 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
+  d8 $ n "[e ds cs ds]*16" # s "basshigh" # octave 10 # djf (slow 4 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.18 0.4 sine) # gain (slow 3 $ range 0.66 0.58 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 8
 
 
 
@@ -539,9 +740,10 @@ d9 $ (2 <~) $ fast 4 $ n (slow 16 $ "a4 e a c6 b e6 a6 f6") # s "warsawbass" # o
   d8 silence
 
 
-d9 $ chop 8 $ slice 24 "0 <21 22>" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8
-d9 $ chop 8 $ slice 24 "20 21" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8
-d9 silence
+  d8 $ chop 8 $ slice 24 "0 <21 22>" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8 # cutoff 4000
+  d8 $ chop 8 $ slice 24 "0 <21 22>" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8 # cutoff (slow 8 $ range 2000 10000 sine) # speed "1"
+  d8 $ chop 8 $ slice 24 "20 21" $ s "XORE_bass" # n 17 # fshift 0 # gain 0.8
+  d11 silence
 
 
 

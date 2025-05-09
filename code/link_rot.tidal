@@ -108,7 +108,7 @@ do
 do
   d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 0 # ccn 9)]
   clutchIn 5 8 silence
-  d6 $ slice 32 "[[<0 ~> 1 2 ~ ~ 1 2 ~] [~ 1 2 3 8 9 12 13]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
+  -- d6 $ slice 32 "[[<0 ~> 1 2 ~ ~ 1 2 ~] [~ 1 2 3 8 9 12 13]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
   d10 silence
 
 
