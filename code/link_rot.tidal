@@ -2,7 +2,8 @@ bpm 112
 
 -- microtonic: SC SD Elec Short
 
-do
+
+do -- link_rot_2
   bpm 112
   resetCycles
   d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 120 # ccn 9)]
