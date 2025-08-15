@@ -689,6 +689,7 @@ do
   d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
 
 
+
 do -- 4
   xfadeIn 1 12 silence
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 400 3000 saw) # gain 0.95
@@ -788,6 +789,8 @@ do
   d9 silence
   xfadeIn 10 16 silence
 
+
+
 do
   -- d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.72 # hcutoff 200
   xfadeIn 1 16 silence
@@ -842,6 +845,7 @@ do -- 2
   d9 $ chop 8 $ loopAt 4 $ s "trancey_synth_loops" # n 2 # room 0.2 # gain 0.82
 
 do -- 2
+  -- maybe try fading this in 2 earlier?
   xfadeIn 2 2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95 # orbit 1
   -- d7 $ s "[~ snares*3@3]*4" # n 14 # distort (slow 2 $ range 0.2 0.4 saw) # djf (slow 2 $ range 1.1 0.7 saw)
   -- d9 $ chop 8 $ loopAt 4 $ s "trancey_synth_loops" # n "[2 3]*2" # room 0.2 # gain 0.82

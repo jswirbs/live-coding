@@ -95,6 +95,11 @@ do
 
 
 
+  d1 $ slow 2 $ s "~@7 [m1*3@3 ~]" # n 14
+  d1 $ s "m1 m1*2 m1 [m1*3@3 ~]" # n "[d]" # midichan 0
+
+
+
 d3 $ (0.125 ~>) $ s "XORE_hats*4" # n 15 # gain 0.92 # room ((2 ~>) $ slow 4 $ range 0 0.06 sine)
 
 
@@ -120,6 +125,7 @@ do
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  d1 $ s "m1 m1*2 m1 [m1*3@3 ~]" # n "[d]" # midichan 0
   -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]" # cutoff 6600
   -- d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "3@3 [3 14@3]"
   -- d1 $ s "techno_kicks*3@3 [techno_kicks*3@3 ~]" # n "17"
@@ -156,6 +162,7 @@ do
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  d1 $ s "m1 m1*2 m1 [m1*3@3 ~]" # n "[d]" # midichan 0
   -- d4 $ whenmod 4 3 (ghost) $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.8
   d4 $ whenmod 4 3 (const $ sometimes (ghost) $ s "SOPHIE_claps SOPHIE_claps SOPHIE_claps*2 SOPHIE_claps*4" # n 12 # gain 0.8) $ rarely (ghost) $ s "SOPHIE_claps*4" # n 12 # gain 0.8
   -- d8 $ (0.125 ~>) $ slow 4 $ gap 16 $ s "BABII_vocal_loops" # n 12 # gain 0.88
@@ -189,8 +196,9 @@ do
 do
   hush
   d1 $ s "XORE_kicks XORE_kicks*2 XORE_kicks [XORE_kicks*3@3 ~]" # n 14
-  d1 $ n "c c*2 c[c*3@3 ~]" # s "m1" # midichan 1 # ccv "73" # ccn 13
+  d1 $ s "m1 m1*2 m1 [m1*3@3 ~]" # n "[d]" # midichan 0
   d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95
+  d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs" # gain 0.95 # cutoff 2000 # room 0.1
   -- d2 $ slice "2@2 4 2" "~ ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs"
 
 
@@ -203,6 +211,7 @@ do
 
 do
   d1 $ s "XORE_kicks*3@3 [XORE_kicks*3@3 ~]" # n "5@3 [5 14@3]"
+  d1 $ s "m1 m1 m1 [m1*2 ~]" # n "[d]" # midichan 0
   -- d1 $ n "c*3@3 [c*3@3 ~]" # s "m1" # midichan 1 # ccv "60@3 [60 70 80 90]" # ccn 13
   -- d2 $ n "8 ~ [~ 1] [~ 1]" # s "SOPHIE_subs"
   d2 $ slice "2@2 4 2" "[0 1] ~ [~ 0] [~ 0]" $ n "8 1" # s "SOPHIE_subs" # gain 0.95

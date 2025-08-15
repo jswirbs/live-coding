@@ -69,48 +69,10 @@ d11 $ chop 16 $ slice 32 "<6 7>" $ slow 8 $ s "good_ones:5" # gain 0.87
 
 
 
-
-
---
-
-bpm 133
-bpm 129
-
-
-do
-  -- d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.05
-  d1 $ n "[0*16 1*16]/8" # s "m1" # midichan 0
-  d1 $ n "[0*16 2*16]/8" # s "m1" # midichan 0
-  d1 $ n "0*4" # s "m1" # midichan 0
-  -- c
-  -- d2 $ slice 8 "[~ [1 2]]*4" $ s "SOPHIE_subs" # n 11 # gain 1.2 # room 0.4
-  d2 $ slice 16 "[~ [2 3]]*4" $ s "SOPHIE_subs" # n 11 # gain 1.2
-
-
-
-
-  d3 $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # hcutoff 400 # cutoff (slow 16 $ range 1500 6000 sine) # gain (slow 16 $ range 0.95 0.85 sine)
-  -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 500 # gain (slow 16 $ range 0.82 0.7 sine)
-  d3 silence
-
-
-d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8
--- d4 $ rev $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "1"
-d5 silence
-
-
-do
-  d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8 # cutoff 2500 # room 0.3
-  d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
-  -- d5 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # 22 # gain 0.95
-  -- d5 silence
-
-
-
+  --
   d3 $ (0.25 <~) $ n ((0.25 ~>) $ "[0*4 1*4]/8") # s "m3" # stack [(ccv (slow 16 $ range 100 60 sine) # ccn 11), (ccv (slow 8 $ range 0 120 sine) # ccn 12)]
   d3 $ (0.25 <~) $ n "0*4" # s "m3" # midichan 0 # stack [(ccv (slow 16 $ range 100 60 sine) # ccn 11), (ccv (slow 8 $ range 0 120 sine) # ccn 12)]
   d3 silence
-
 
 
   --
@@ -164,6 +126,48 @@ do
 
 
 
+
+
+
+
+--
+
+bpm 133
+bpm 129
+
+
+do
+  -- d1 $ s "SOPHIE_kicks_dry*4" # n 1 # gain 1.05
+  d1 $ n "[0*16 1*16]/8" # s "m1" # midichan 0
+  d1 $ n "[0*16 2*16]/8" # s "m1" # midichan 0
+  d1 $ n "0*4" # s "m1" # midichan 0
+  -- c
+  -- d2 $ slice 8 "[~ [1 2]]*4" $ s "SOPHIE_subs" # n 11 # gain 1.2 # room 0.4
+  d2 $ slice 16 "[~ [2 3]]*4" $ s "SOPHIE_subs" # n 11 # gain 1.2
+
+
+
+
+  -- d3 $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # hcutoff 400 # cutoff (slow 16 $ range 1500 6000 sine) # gain (slow 16 $ range 0.95 0.85 sine)
+  -- -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 500 # gain (slow 16 $ range 0.82 0.7 sine)
+  -- d3 silence
+
+
+d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8
+-- d4 $ rev $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "1"
+d5 silence
+
+
+do
+  d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8 # cutoff 2500 # room 0.3
+  d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
+  -- d5 $ (0.125 ~>) $ ghost $ s "techno_hats*4" # 22 # gain 0.95
+  -- d5 silence
+
+
+
+
+
   d9 $ n "0 ~@7" # s "m3" # midichan 0 # stack [(ccv (slow 16 $ range 100 60 sine) # ccn 11), (ccv (slow 8 $ range 0 120 sine) # ccn 12)]
 
 
@@ -183,7 +187,6 @@ do
   -- d8 $ ((choose[0.0625, 0.0625, 0.075, 0.05, 0.125]) ~>) $ s "~ sweetbell ~ sweetbell ~@4" # distort (choose[0,0,0.1,0.2]) # triode (choose[0,0,1,2]) # room 0.5 # size 0.9 # gain 1 # speed "[1 -1]/4"
 
 do
-  clutchIn 3 8 silence
   -- xfadeIn 6 16 $ slice 8 "[0*4@4 4*3@3 6]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1500 # distort 0.15 # crush (range 5 8 perlin) # gain 0.77
   xfadeIn 6 16 $ slice 32 "[0*4]" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1500 # distort 0.15 # crush (range 5 8 perlin) # gain 0.77
   xfadeIn 7 16 silence
@@ -198,49 +201,46 @@ do
   xfadeIn 6 24 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
   -- d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 400 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7 # room 0.3
   -- xfadeIn 7 8 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
-  -- d7 $ slice 64 "[[[~ 0]*4]*4@4 [[~ 48]*4]*2@2 [[~ 32]*4]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1500 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
 
-  do -- ??
-    d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 1200 # gain (slow 16 $ range 0.82 0.7 sine)
-    xfadeIn 3 8 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
-    -- d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
-
-    d3 silence
+do
+  d7 $ slice 64 "[[[~ 0]*4]*4@4 [[~ 48]*4]*2@2 [[~ 32]*4]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1500 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
 
 
 do
-  d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
+  -- d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
+  d5 $ n "0*8" # s "m1" # midichan 7 # stack [(ccv (range 20 100 rand) # ccn 22), (ccv (range 55 75 rand) # ccn 5)]
   d9 $ (0.25 <~) $ n "0*8" # s "m3" # midichan 0 # sustain 0.08 # stack [(ccv (slow 16 $ range 100 60 sine) # ccn 11), (ccv (slow 8 $ range 0 120 sine) # ccn 12)]
 
 
-  do -- everything non-reversed for a sec
-    d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
-    d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "1" # gain 0.8
-    d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
-    d7 $ slice 64 "[[~ [~ 3]*2]*4@4 [~ [~ 51]*2]*2@2 [~ [~ 35]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
-
-
-  do -- reverse! reverse!
-    d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
-    d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8
-    d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
-    d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
 
 
+      do -- everything non-reversed for a sec
+        -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
+        d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "1" # gain 0.8
+        d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
+        d7 $ slice 64 "[[~ [~ 3]*2]*4@4 [~ [~ 51]*2]*2@2 [~ [~ 35]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
-  do -- back n forth
-    d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "[1 -1]*4" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
-    d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "[1 -1]*2" # gain 0.8
-    d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "[1 -1]" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
-    d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "[1 -1]" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
+
+      do -- reverse! reverse!
+        -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
+        d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8
+        d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
+        d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
+
+
+      do -- back n forth
+        -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "[1 -1]*4" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
+        d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "[1 -1]*2" # gain 0.8
+        d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "[1 -1]" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
+        d7 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "[1 -1]" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
 
 
   do -- randomized
-    d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed (choose([-1,1])) # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
+    -- d3 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed (choose([-1,1])) # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
     d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed (choose([-1,1])) # gain 0.8
     d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed (choose([-1,1])) # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
     d6 $ slice 32 "[[1 0 ~@2]*4@4 [12 11 ~@2]*2@2 [8 7 ~@2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed (choose([-1,1])) # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
@@ -267,8 +267,9 @@ do
   d1 $ n "0*4" # s "m1" # midichan 0
   d4 $ slice 8 "0 1 1 1" $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "1" # gain 0.8
   d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
+  d5 $ n "0*8" # s "m1" # midichan 7 # stack [(ccv (range 20 100 rand) # ccn 22), (ccv (range 55 75 rand) # ccn 5)]
   -- d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 400 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8 # room 0.3
-  xfadeIn 6 8 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1200 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8 # room 0.3
+  d6 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 1200 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8 # room 0.3
   -- d7 silence
   -- xfadeIn 7 16 $ slice 64 "[[~ [~ 0]*2]*4@4 [~ [~ 48]*2]*2@2 [~ [~ 32]*2]*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 2000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.7
 
@@ -280,6 +281,11 @@ do
   -- xfadeIn 3 8 $ palindrome $ chop 16 $ loopAt 4 $ s "XORE_drum_loops" # n 11 # speed "-1" # hcutoff 600 # gain (slow 16 $ range 0.82 0.7 sine)
   d4 $ chop 8 $ loopAt 2 $ s "techno_perc_loops" # n 16 # speed "-1" # gain 0.8
   xfadeIn 6 8 $ slice 16 "[0*4@4 12*2@2 8*2@2]/8" $ s "trancey_synth_loops" # n 15 # speed "-1" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.8
+
+
+
+  d5 $ (0.125 ~>) $ s "techno_hats*4" # 22 # gain 0.9
+
 
 
 

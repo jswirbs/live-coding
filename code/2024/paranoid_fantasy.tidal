@@ -131,6 +131,7 @@ do
       (s "XORE_kicks*4" # n 10 # gain 1.1),
       (s "SOPHIE_kicks_dry*4" # n 10 # gain 0.8)
     ]
+  -- d1 $ n "0*4" # s "m1" # midichan 0
   -- d2 $ n "[e ~ ~ e] [~ e] [~ e] [<~ e*2> <e ~ e e>]" # octave 2 # s "supersaw" # sustain 0.2 # gain 0.95 # distort 0.03 # pitch1 2 # cutoff (slow 8 $ range 900 1100 sine) # room 0.15
   d2 $ n "[e ~ ~ e] [~ e] [~ e] [<~ e*2> <e ~ e e>]" # octave 2 # s "warsawbass" # sustain 0.2 # gain 1.1 # distort 0.04 # cutoff (slow 8 $ range 2000 1100 sine) # room (slow 6 $ range 0.25 0.4 sine)
   d3 $ slow 4 $ s "SOPHIE_subs" # n 6 # room 0.2 # distort 0.12 # triode 2 # gain 1.1
@@ -141,8 +142,8 @@ do
 
 
 
-  d13 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1
-  d13 silence
+  -- d13 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1
+  -- d13 silence
 
 
 do
@@ -201,6 +202,7 @@ do
   -- jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
   d8 silence
   -- d11 silence
+  -- d11 $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
   d11 $ (0.125 ~>) $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
 
 
@@ -211,6 +213,7 @@ do
   --   $ rarely (ghost) $ s "techno_hats*16" # n 8 # distort 0 # crush 8 # cutoff "[12000 5000]*8" # gain 0.8 # pan "[0.2 0.8]*4"
   -- jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
   d9 $ (0.25 ~>) $ s "SOPHIE_claps*2" # n 5 # gain 0.9 # triode 2
+  -- d11 $ (0.125 ~>) $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
 
 
 do
@@ -226,7 +229,7 @@ do
 do
   d6 $ (0.125 ~>) $ slice 128 "72*4" $ s "trancey_synth_loops" # n 17 # gain 0.8 # cutoff 4000 # room 0.1 # speed "<-1 1>"
   -- d12 $ (0.125 ~>) $ rarely (ghost) $ slice "5" "0*4" $ s "SOPHIE_claps" # n 5 # gain "[0.78 0.87]*4"
-  -- d11 $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
+  d11 $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
   xfadeIn 11 12 silence
 
 
@@ -318,12 +321,13 @@ do
 
     -- ???
     do
+      d6 $ (0.125 ~>) $ slice 128 "32*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.9 # speed "<-1 1>" # orbit 5
+      d6 $ (0.125 ~>) $ slice 128 "72*4" $ s "trancey_synth_loops" # n 17 # gain 0.8 # cutoff 4000 # room 0.1 # speed "<-1 1>"
       jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats <techno_hats techno_hats techno_hats [techno_hats techno_hats <~ techno_hats> techno_hats]> <techno_hats*2 techno_hats techno_hats*2 [<~ techno_hats> techno_hats ~ ~]> <techno_hats techno_hats techno_hats techno_hats>" # n 4 # distort 0.3 # crush 6 # gain 0.9
-      d6 $ (0.125 ~>) $ slice 128 "0*4" $ s "trancey_synth_loops" # n 17 # gain 0.9 # cutoff 6000 # room 0.4 # size 0.9 # speed "<-1 1>" # orbit 5
-      -- jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
-      d8 silence
+      jumpIn' 8 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
       d10 $ palindrome $ chop 128 $ slow 16 $ s "trancey_synth_loops" # n 17 # gain 0.6 # cutoff 1050 # room 0.5 # size 0.9 # speed "-1"
       d11 $ (0.125 ~>) $ rarely (ghost) $ s "techno_hats*4" # n 8 # distort 0 # crush 8 # cutoff 12000 # gain 0.8 # room 0.3
+
 
     do
       -- jumpIn' 7 0 $ rarely (ghost) $ (0.125 ~>) $ s "techno_hats <techno_hats techno_hats techno_hats [techno_hats techno_hats <~ techno_hats> techno_hats]> <techno_hats*2 techno_hats techno_hats*2 [<~ techno_hats> techno_hats ~ ~]> <techno_hats techno_hats techno_hats techno_hats>" # n 4 # distort 0.3 # crush 6 # gain 0.9
