@@ -79,6 +79,25 @@ s.reboot { // server options are only updated on reboot
 		~ltmc = LinkToMidiClock(~midiTb3Out, ~lc);
 		~ltmc.start;
 		// ~ltmc.stop;*/
+
+
+		// Sidechaining (creds: c_robo -- https://discord.com/channels/779427371270275082/827264480999243836/1397655792236232704)
+		// in tandem with sidechain synthdef
+		(
+			~dirt.addModule('sidechain', { |dirtEvent|
+				dirtEvent.sendSynth('sidechain' ++ ~dirt.numChannels,
+					[
+						sidechain: ~sidechain,
+						sidechain_thresh: ~sidechain_thresh,
+						sidechain_compression: ~sidechain_compression,
+						sidechain_attack: ~sidechain_attack,
+						sidechain_release: ~sidechain_release,
+				out: ~out])
+			}, {~sidechain.notNil}); // play effect only if tape value was given
+
+			~busses = ~dirt.orbits.collect { |x| x.dryBus };
+		);
+
 	};
 
 	s.latency = 0.1; // increase this if you get "late" messages
@@ -91,7 +110,39 @@ s.reboot { // server options are only updated on reboot
 // Start Tidal clock popup
 this.executeFile("/Users/justinswirbul/Library/Application\ Support/SuperCollider/tidal_clock_popup.scd");
 
+
+s.waitForBoot {
+	(
+
+		SynthDef("sidechain" ++ ~dirt.numChannels, {
+			|out, sidechain=0, sidechain_thresh=(1/100), sidechain_compression=0.001, sidechain_attack=0.01 , sidechain_release=0.7|
+
+			var in = In.ar(out, ~dirt.numChannels); // signal for orbit where sidechain is applied
+
+			var sidechain_bus = Select.kr(sidechain, ~busses);
+			var sidechain_signal = InFeedback.ar(sidechain_bus, ~dirt.numChannels); // signal sidechained against
+
+			var new_signal = Compander.ar(
+				in,
+				sidechain_signal,
+				sidechain_thresh,
+				1,
+				sidechain_compression,
+				sidechain_attack,
+				sidechain_release
+			);
+
+			ReplaceOut.ar(out, new_signal);
+
+		}).add;
+	)
+
+}
+
+
 );
 
 
 MIDIClient.init;
+
+

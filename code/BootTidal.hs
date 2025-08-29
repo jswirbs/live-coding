@@ -67,6 +67,11 @@ let p = streamReplace tidal
     d14 = p 14
     d15 = p 15
     d16 = p 16
+    sidechain = pI "sidechain"
+    sidechain_thresh = pF "sidechain_thresh"
+    sidechain_compression = pF "sidechain_compression"
+    sidechain_attack = pF "sidechain_attack"
+    sidechain_release = pF "sidechain_release"
 :}
 
 :{
