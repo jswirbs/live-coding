@@ -1,17 +1,17 @@
 SynplantPatch: {
 	branches: {
-		{ id: 0x251823e1, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e2, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e3, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e4, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e5, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e6, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e7, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e8, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823e9, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823ea, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823eb, length: "0.0%", volume: "0.0 dB" },
-		{ id: 0x251823ec, length: "0.0%", volume: "0.0 dB" }
+		{ id: 0xb9d2f662, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f663, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f664, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f665, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f666, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f667, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f668, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f669, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f66a, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f66b, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f66c, length: "0.0%", volume: "0.0 dB" },
+		{ id: 0xb9d2f66d, length: "0.0%", volume: "0.0 dB" }
 	}
 	control: {
 		atonality: "50.0%"
@@ -19,66 +19,66 @@ SynplantPatch: {
 		effect: "+0.0%"
 		glideTime: "0.0 s"
 		modWheel: "0.0%"
-		release: "3.1332882223293845 s"
+		release: "0.9743411230445789 s"
 		rotation: "0.0 degrees"
 		tempoSync: "off"
 		tuning: "0.0 sm"
 		velSens: "0.0%"
 		voiceMode: "poly"
-		volume: "-7.427865325134061 dB"
+		volume: "-3.7348683826862534 dB"
 		wheelScale: "100.0%"
 		wheelTarget: "growth +"
 	}
 	format: 28
 	genome: {
-		a_color: 0.32272738
-		a_form: 0.90515494
-		a_freq: 0.29743883
-		a_mod: 0.50068736
-		a_noise: 0.51982784
-		adj_bass: 0.6365432
-		adj_clip: 0.7923531
-		adj_pan: 0.6625
-		adj_treb: 0.5958884
-		b_form: 0.38468748
-		b_freq: 0.6061203
-		b_mod: 0.5401801
-		b_noise: 0.25876364
-		b_sh: 0.5964031
-		env_kf: 0.76595575
-		env_loop: 0.48304924
-		env_tilt: 0.5672508
-		env_time: 0.57552415
-		flt_freq: 0.053969704
-		flt_kf: 0.829807
-		flt_mod: 0.52830565
-		flt_q: 0.8471896
-		flt_sep: 0.5288423
-		flt_type: 0.8432683
-		fm_amt: 0.06480684
-		fm_mod: 0.322367
-		lfo_amt: 0.83772296
-		lfo_bal: 0.6512135
-		lfo_dly: 0.93927205
-		lfo_rate: 0.5404949
-		mix_mod: 0.61469483
-		mod_atk: 0.75894403
-		mod_dcy: 0.6167255
-		mod_sh: 0.32104167
-		mod_vel: 0.5693237
-		osc_mix: 0.971253
-		rvb_atk: 0.7875
-		rvb_chor: 0.7075
-		rvb_damp: 0.579835
-		rvb_len: 0.15
-		rvb_mix: 0.77001816
-		rvb_size: 0.0724952
-		saturate: 0.42710307
-		sub_am: 0.29017225
-		vol_atk: 0.5529687
-		vol_dcy: 0.45275694
-		vol_fade: 0.541051
-		vol_sus: 0.62048477
+		a_color: 0.46948114
+		a_form: 0.9735873
+		a_freq: 0.47636524
+		a_mod: 0.44870597
+		a_noise: 0.39760602
+		adj_bass: 0.6680689
+		adj_clip: 0.6241646
+		adj_pan: 0.5
+		adj_treb: 0.518836
+		b_form: 0.11426215
+		b_freq: 0.5402466
+		b_mod: 0.48160106
+		b_noise: 0.0750144
+		b_sh: 0.32573864
+		env_kf: 0.07753895
+		env_loop: 0.46591154
+		env_tilt: 0.5900128
+		env_time: 0.56304777
+		flt_freq: 0.108075
+		flt_kf: 0.38770816
+		flt_mod: 0.5182178
+		flt_q: 0.50251716
+		flt_sep: 0.31927007
+		flt_type: 0.8521321
+		fm_amt: 0.062239032
+		fm_mod: 0.51541346
+		lfo_amt: 0.7362077
+		lfo_bal: 0.5275163
+		lfo_dly: 0.6163592
+		lfo_rate: 0.43519938
+		mix_mod: 0.51558757
+		mod_atk: 0.52419513
+		mod_dcy: 0.32966456
+		mod_sh: 0.5882333
+		mod_vel: 0.4026212
+		osc_mix: 0.9965542
+		rvb_atk: 0.66321397
+		rvb_chor: 0.26716793
+		rvb_damp: 0.25433645
+		rvb_len: 0.4002655
+		rvb_mix: 0.76032805
+		rvb_size: 0.26377407
+		saturate: 0.6981534
+		sub_am: 0.033146415
+		vol_atk: 0.58000267
+		vol_dcy: 0.53196883
+		vol_fade: 0.2712664
+		vol_sus: 0.30734104
 	}
 	implementation: 29
 	layers: {
@@ -98,5 +98,5 @@ SynplantPatch: {
 	legacyMode: false
 	modified: false
 	pitchAdjust: 0.23814707
-	seedId: 0x251823e1
+	seedId: 0xb9d2f662
 }

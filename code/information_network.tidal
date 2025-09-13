@@ -78,7 +78,7 @@ do
   d2 $ s "[~@3 snares] snares ~ snares" # n "10 0@3" # gain "0.88 1@3"
   -- dragonfly A
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.133 ~>) $ n "a4*2" # s "m2"
+  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   -- d3 $ (0.25 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
   -- d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.95 1.03 rand)
   d5 $ swingBy (1/16) 1 $ sometimesBy 0.5 (ghost) $ gap 16 $ s "techno_fx" # n "[5 6]/8" # gain "[0.82 0.73]/8"
@@ -179,7 +179,7 @@ do
 
   -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.133 ~>) $ n "a4*2" # s "m2"
+  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
 
 do
   d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] ~" # n 1 # gain 1.08
@@ -190,7 +190,7 @@ do
   -- dragonfly A
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.133 ~>) $ n "a4*2" # s "m2"
+  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   -- d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.95 1.03 rand)
   -- d5 $ swingBy (1/16) 1 $ sometimesBy 0.5 (ghost) $ gap 16 $ s "techno_fx" # n "[5 6]/8" # gain "[0.95 0.8]/8"
   d5 silence
@@ -271,13 +271,19 @@ do
   -- d1 $ n "a [~ ~ ~ a] [~ a] ~" # s "m1" # octave 4 # midichan 0
   d2 $ s "[~@3 ~] UMRU_snares ~ UMRU_snares" # n 20 # gain 0.9
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 7000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.135 ~>) $ n "a4*2" # s "m2"
+  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   d5 silence
   d6 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 400 1500 sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.8 0.4 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.78 # sustain (slow 10 $ range 0.1 0.17 saw)
   d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 3 $ range 0.06 0.12 sine)
   -- d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "basslow" # cutoff (slow 4 $ range 800 3000 sine) # pan (slow 8 $ range 0.2 0.8 rand) # gain 0.66 # detune (slow 8 $ range 1 2.5 saw) # hcutoff 300 # squiz 4 # sustain (slow 3 $ range 0.06 0.12 sine)
 
 
+
+
+    d9 $ echoWith 3 0.0625 (|* squiz 1) $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 3 $ range 0.06 0.12 sine)
+    d9 $ echoWith 3 0.0625 (|* squiz 2) $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "supersaw" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # sustain (slow 3 $ range 0.06 0.12 sine)
+    d9 $ echo 3 0.0625 0.5 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "supersaw" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # sustain (slow 3 $ range 0.06 0.12 sine)
+    d9 silence
 
 
   d5 $ swingBy (1/16) 0.5 $ sometimesBy 0.5 (ghost) $ gap 32 $ s "techno_fx" # n "[5 6]/8" # gain "[0.8 0.7]/8" # distort 0.4 # squiz 1.2

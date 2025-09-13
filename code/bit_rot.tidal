@@ -23,6 +23,10 @@ do -- bit rot take 2
 
 
 
+  d10 $ rev $ swingBy (1/16) 1 $ slice 12 ("[0 0] [~ 0] [~ 0 ~ 0] [0 ~ 0 ~]" + (run 12)) $ s "XORE_bass" # n 34 # speed "1.21"
+  d10 $ rev $ swingBy (1/16) 1 $ slice 12 ("[0 0] [~ 0] [~ 0 ~ 0] [0 ~ 0 ~]" + (run 9)) $ s "XORE_bass" # n 34 # speed "1.21"
+  d10 $ swingBy (1/16) 1 $ slice 12 ("[0 0] [0 0] [~ 0 ~ 0] [0 ~ 0 ~]" + (run 8)) $ s "XORE_bass" # n 34 # speed "1.21"
+
 
 d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 1 # stack[(ccv 0 # ccn 9), (ccv 60 # ccn 22)]
 
@@ -30,7 +34,7 @@ d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 1 # stack[(
 
 
 
-d11 $ slow 2 $ n "~ [~@3 [<0*4 -2*4>]]" # s "m1" # midichan "<6 7>"
+d7 $ slow 2 $ n "~ [~@3 [<0*4 -2*4>]]" # s "m1" # midichan "<3 7>"
 
 
 do
@@ -48,6 +52,7 @@ do
   d1 silence
   d2 silence
   xfadeIn 6 12 silence
+  d7 silence
   -- clutchIn 8 8 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room (rev $ palindrome $ "[0 0.3]") # size (rev $ palindrome $ "[0 [0.7 0.82 0.94 0.98]]")
   clutchIn 8 8 $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room "[0 0.3]" # size "[0 [0.7 0.82 0.94 0.98]]"
   d9 $ swingBy (1/16) 1 $ chop 8 $ slow 4 $ s "techno_textures*4" # n 34 # gain 0.8 # cutoff 600 # room 0.3 # crush 4
@@ -79,6 +84,8 @@ do
   -- d10 $ n ("[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" + "8") # s "808_kicks" # gain 1.15
   d2 silence
   d5 silence
+  d5 $ swingBy (1/16) 1 $ n "[0 ~ 0 ~]*2 0*2" # s "m1" # midichan 3 # ccv 88 # ccn 5
+  clutchIn 5 10 silence
   -- d6 $ slice 32 "[[0 1 2 ~@5] [1 1 2 ~@5]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
   -- d6 $ slice 32 "[[0 1 2 ~ 1 2 ~ ~] [0 1 2 ~ 1 ~ ~ ~]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
   d6 $ slice 32 "[[~ 1 2 ~ ~ 1 2 ~] [~ 1 2 ~ ~ 1 ~ ~]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
@@ -96,7 +103,7 @@ do
   d6 $ slice 32 "[[~ 1 2 ~ ~ 1 2 ~] [~ 1 2 ~ ~ 1 ~ ~]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
   -- d6 $ slice 32 "[[0 1 2 ~ 1 1 2 ~] [0 1 2 ~ 1 1 2 ~]]/4" $ s "nebula" # hcutoff 50 # cutoff 2000 # gain 1.05 # n 4 # room 0.2
   d8 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room (rev $ palindrome $ "[0 0.3]") # size (rev $ palindrome $ "[0 [0.7 0.82 0.94 0.98]]")
-  d9 silence
+  d12 silence
   -- d11 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares][~ ~ ~ SOPHIE_snaps] [~ SOPHIE_snaps]" # n "[2@3 16] 1" # gain "[0.92@3 0.88] 0.95" # crush 5
 
 
@@ -116,6 +123,7 @@ do
     d5 $ sometimesBy (0.33) ghost $ swingBy (1/16) 1 $ n "[0 ~ 0 ~]*3@3 [<0 ~> 0 ~ 0]" # s "m1" # midichan 3 # ccv 88 # ccn 5
     xfadeIn 8 8 $ rev $ palindrome $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room "[0.1 0.3]" # size "[0 [0.7 0.82 0.94 0.98]]" # cutoff 1200
     -- d11 $ rarely (ghost) $ s "~ ~ [~ ~ ~ SOPHIE_snaps] [~ SOPHIE_snaps]" # n "[2@3 16] 1" # gain "[0.92@3 0.88] 0.95" # crush (slow 8 $ range 4 2.5 saw)
+    d11 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares][~ ~ ~ FOOD_snares] [~ FOOD_snares]" # n "[2@3 16] 13" # gain "[0.95@3 0.9] 0.9" # crush 5
 
 
 
@@ -123,33 +131,43 @@ do
     -- d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ ~ ~ ~] [~ ~ 0 ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 0 # ccn 9)]
 
 
+    d7 $ slow 2 $ n "~ [~@3 [<0*4 -2*4>]]" # s "m1" # midichan "<3 7>" # stack [(ccv (slow 4 $ range 30 60 sine) # ccn 21)]
+    d7 $ fast 2 $ n "[~ [-2*4]]" # s "m1" # midichan "<3 7>" # stack [(ccv (slow 4 $ range 30 60 sine) # ccn 21)]
+    d7 $ n "~ [~ [<0*4 -2*4>]]" # s "m1" # midichan "<3 7>" # stack [(ccv (slow 4 $ range 30 60 sine) # ccn 21), (ccv (slow 5 $ range 25 40 sine) # ccn 18)]
+
+
 do
-  d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 120 # ccn 9)]
+  d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ ~ 0 ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 120 # ccn 9)]
   -- d10 $ n ("[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" + "8") # s "808_kicks" # gain 1.15
   d2 silence
+  d3 silence
   d5 silence
-  d11 silence
-  d12 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 64 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.3 # crush 6 # hcutoff 500 # tremolodepth 0.8 # tremolorate 8
-
+  -- d8 $ swingBy (1/16) 1 $ slice 48 ("0*16" + (slow 8 $ run 32)) $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room (rev $ palindrome $ "[0 0.3]") # size (rev $ palindrome $ "[0 [0.7 0.82 0.94 0.98]]") # cutoff 1000
+  d8 $ rev $ palindrome $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room "[0.1 0.3]" # size "[0 [0.7 0.82 0.94 0.98]]" # cutoff 1200
+  d11 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares] ~ ~" # n "[2@3 16] 1" # gain "[0.92@3 0.88] 0.95" # crush 5 # cutoff 2200
+  -- d12 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 64 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.3 # crush 6 # hcutoff 500 # tremolodepth 0.8 # tremolorate 8
 
 
 
 
 
 do
+  d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 120 # ccn 9)]
   d2 $ n "[~ 0]*4" # s "m1" # midichan 6 # ccv 80 # ccn 5
+  d3 $ n "[~ 0]*2" # s "m1" # midichan 4 # stack[(ccv 92 # ccn 5), (ccv (slow 8 $ range 90 110 sine) # ccn 16)]
   -- d5 $ swingBy (1/16) 1 $ n "[0 ~ 0 ~]*2 0*2" # s "m1" # midichan 3 # ccv 88 # ccn 5
   d8 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 32 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.2 # room (rev $ palindrome $ "[0 0.3]") # size (rev $ palindrome $ "[0 [0.7 0.82 0.94 0.98]]")
   d9 $ swingBy (1/16) 1 $ chop 8 $ slow 4 $ s "techno_textures*4" # n 34 # gain 0.8 # cutoff 600 # room 0.3 # crush 4
   -- d9 $ swingBy (1/16) 1 $ chop 8 $ slow 4 $ s "techno_textures*4" # n 34 # gain 0.85 # cutoff 600 # room 0 # crush (slow 16 $ range 0.5 6 sine) # speed "0.5"
-  d12 silence
+  -- d12 silence
+  -- d12 $ slow 4 $ rev $ palindrome $ fast 4 $ swingBy (1/16) 1 $ chop 64 $ slow 4 $ s "techno_textures" # n 34 # gain 0.95 # distort 0.3 # crush 6 # hcutoff 500 # tremolodepth 0.8 # tremolorate 8
 
 
 
 
 
 do
-  d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ 0 ~ ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 0 # ccn 9)]
+  d1 $ n "[0 ~ ~ 0] [0 ~ ~ 0] [~ 0 ~ ~] [~ ~ 0 ~]" # s "m1" # midichan 0 # stack[(ccv 96 # ccn 5), (ccv 0 # ccn 9)]
   d2 silence
   d5 silence
   d9 silence
@@ -193,6 +211,8 @@ hush
   d12 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares] ~ ~" # n "[2@3 16] 1" # gain "[0.95@3 0.9] 0.97" # crush 6
   d12 $ rarely (ghost) $ s "~ ~ [~ ~ ~ SOPHIE_snaps] [~ SOPHIE_snaps]" # n "[2@3 16] 1" # gain "[0.95@3 0.9] 0.97" # crush 6
   d12 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares][~ ~ ~ SOPHIE_snaps] [~ SOPHIE_snaps]" # n "[2@3 16] 1" # gain "[0.95@3 0.9] 0.97" # crush 6
+  d12 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares][~ ~ ~ SOPHIE_snaps] [~ SOPHIE_snaps]" # n "[2@3 16] 4" # gain "[0.95@3 0.9] 0.97" # crush 6
+  d12 $ rarely (ghost) $ s "~ [FOOD_snares ~ ~ FOOD_snares][~ ~ ~ FOOD_snares] [~ FOOD_snares]" # n "[2@3 16] 13" # gain "[0.95@3 0.9] 0.9" # crush 5
   d12 $ whenmod 4 3 (0.0625 <~) $ s "~@7 BABII_vocal_shots" # n "<20 22 23 21>" # room 0.2 # distort 0.4 # crush 3 # gain "<0.71 0.81 0.72 0.7>" # pan "<0.66 0.33>"
   d12 $ slow 4 $ s "~@3 UMRU_fx_risers" # n 14 # speed 0.86 # room 0.5 # size 0.95 # cutoff 12000 # gain 0.85
   d12 $ gap 64 $ (2.5 ~>) $ slow 4 $ s "UMRU_fx_risers" # n 14 # speed 0.5 # room 0.5 # size 0.95 # cutoff 8000 # gain 0.8
