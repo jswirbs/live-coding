@@ -53,6 +53,12 @@ d6 $ s "XORE_hats*16" # n 24 # gain 0.9
 d6 $ s "XORE_hats(14,16)" # n 24 # gain 0.9
 
 
+d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain 0 # sidechain_thresh 0.06 # sidechain_compression 0.1 # sidechain_attack 0.001 # sidechain_release 0.7
+d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+
+
+
 
 --
 
@@ -60,20 +66,234 @@ d6 $ s "XORE_hats(14,16)" # n 24 # gain 0.9
 echoWith
 
 
-resetCycles
+bpm 133
 
-d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1 # orbit 0
-
-d2 $ stutter 4 (1/16) $ rarely rev $ gap 8 $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
-
-
-d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
-d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain 0 # sidechain_thresh 0.06 # sidechain_compression 0.1 # sidechain_attack 0.001 # sidechain_release 0.7
-d2 $ n "c3*16" # s "supersaw" # gain 1 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+do
+  resetCycles
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.1 # orbit 0
+  d4 $ chop 16 $ loopAt 2 $ s "techno_perc_loops" # n 12 # hcutoff 300
 
 
-d3 $ s "XORE_hats*16" # n 11 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+-- c
+d2 $ stutter 4 (1/16) $ whenmod 2 1 (rarely rev) $ gap 8 $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("6"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+d2 $ (2 ~>) $ stutter 4 (1/16) $ rarely rev $ gap 8 $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+d2 $ sometimesBy 0.75 rev $ gap 8 $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+d2 $ (1 <~) $ gap 16 $ stutter 4 (1/16) $ rarely rev  $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
+d2 $ (0 <~) $ gap 16 $ stutter 4 (1/16) $ rarely rev  $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("7"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("90"/100)
+d2 $ stutter 4 (1/16) $ whenmod 2 1 (sometimesBy 0.75 rev) $ gap 8 $ s "UMRU_bass_one_shots_808" # n 5 # gain 0.9 # sidechain ("0") # sidechain_thresh ("6"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("70"/100)
 
-d2 silence
+
+
+d3 $ s "XORE_hats*16" # n 11 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+d3 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+d3 $ s "XORE_hats(13,16)" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+d3 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+
+
+
+d5 $ (1 ~>) $ rev $ chop 16 $ slow 2 $ s "~ techno_stabs" # n 2 # note "[-24 -12]*8"
+
+
+d6 $ rev $ chop 16 $ slow 4 $ s "~ ~ ~ techno_stabs" # n 2 # cutoff 900 # hcutoff 200 # crush 3 # distort 0.1 # gain 0.85
+
+
+d7 $ palindrome $ chop 256 $ slow 16 $ s "tchami" # n 0
+d7 $ s "[~ techno_hats] ~@3" # n 8 # gain 0.8 # room (range 0 0.1 rand) # size 0.4 # djf 0.6
+d7 $ ghost $ s "[~ techno_hats] ~@3" # n 8 # gain 0.75
+d7 $ silence
+
+
+
+
+d7 $ n "c4" # s "m2"
+d7 $ n "[c(3,8)]*4" # s "m2"
+d7 silence
+
+d7 $ s "UMRU_fx_impacts/4" # gain 0.7 # n 1 # room 0.5 # size 0.92 # cutoff 4000
+d7 $ s "UMRU_fx_impacts/4" # gain 0.7 # n 1 # room 0.5 # size 0.92 # cutoff 4000
+d7 $ s "UMRU_fx_impacts/4" # gain 0.7 # n 1 # room 0.5 # size 0.92 # cutoff 4000
+
+d7 $ (0.4 <~) $ s "UMRU_fx_risers/4" # n 8
+
+d7 $ chop 128 $ slow 8 $ s "XORE_ambient" # n 8
+d7 silence
+
+d1 silence
+
+d7 $ chop 64 $ slow 8 $ s "XORE_ambient" # n 8
+d7 silence
+
+d7 $ chop 8 $ slow 2 $ s "techno_synth_loops" # n 21 # gain 0.8
+
+
+
+do
+  d1 silence
+  d3 silence
+  -- d7 $ chop 64 $ slow 4 $ s "XORE_ambient" # n 32
+
+
+
+xfadeIn 3 8 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+
+
+
+
+do
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.1 # orbit 0
+
+
+
+
+
+-----
+
+
+
+do
+  bpm 133
+  resetCycles
+  d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.1 # orbit 0
+  d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 10 # gain 1.1 # orbit 0
+  d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1.1 # orbit 0
+  d1 $ echoWith 2 (0.25) (# gain 0.8) $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1.1 # orbit 0
+  -- this vs ghost???
+  d1 $ echo 2 (0.25) 0.66 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1.1 # orbit 0
+  d1 $ ghost $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1.1 # orbit 0
+  d4 $ chop 16 $ loopAt 2 $ s "techno_perc_loops" # n 12 # hcutoff 300
+
+
+
+d3 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+
+
+
+  d2 $ (0.125 ~>) $ slice 16 "1" $ s "XORE_bass"
+  d2 $ (0.125 ~>) $ slice 16 "0" $ s "XORE_bass" # n 1
+  d2 $ (0.125 ~>) $ slice 16 "1" $ s "XORE_bass" # n 1
+  d2 $ (0.125 ~>) $ slice 16 "5" $ s "XORE_bass" # n 1 # distort 0.2 # room 0.2
+  d2 $ (0.125 ~>) $ slice 16 "7" $ s "XORE_bass" # n 2 # distort 0.2 # room 0.2
+
+
+  d2 $ chop 64 $ slow 4 $ s "XORE_bass" # n 2 # distort 0.2 # room 0.2 # note "-2"
+  d2 $ slow 4 $ gap 64 $ s "XORE_bass" # n 2 # distort 0.2 # room 0.2 # note "-2"
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 2 # distort 0.2 # room 0.2 # note "-2"
+
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 2 # note "-2" # distort 0.2 # room 0.25 # cutoff 5000
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 7 # note "-2" # distort 0.2 # room 0.25 # cutoff 5000
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 10 # note "-2" # distort (slow 4 $ range 0.06 0.12 saw) # room 0.18 # gain 0.95
+
+
+  -- riser-y
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "<0 1>" $ s "XORE_bass" # n 13 # note "-2" # distort 0.12 # room 0.2 # gain 0.95
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "<0 1>" $ s "XORE_bass" # n 10 # note "-2" # distort (slow 4 $ range 0.06 0.12 saw) # room 0.18 # gain 0.95
+
+
+
+  d5 $ (0.0625 <~) $ s "fire/4" # n "<0 1>" # cutoff 6000 # room 0.2 # size 0.9 # gain 0.7
+  d5 $ (0.125 <~) $ s "fire/4" # n "<0 1>" # cutoff 6000 # room 0.2 # size 0.9 # gain 0.7 # speed 0.5
+
+  d5 $ (0.125 <~) $ gap 32 $ s "fire/4" # n "<0 1>" # cutoff 6000 # room 0.2 # size 0.9 # gain 0.7 # speed 0.5
+  d5 $ (0.125 <~) $ gap 32 $ s "fire/4" # n "<0 1>" # cutoff 4000 # room 0.2 # size 0.9 # gain 0.66 # speed 0.5
+
+
+
+do
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 10 # note "-2" # distort (slow 4 $ range 0.06 0.12 saw) # room 0.18 # gain 0.95
+  d5 $ (0.125 <~) $ gap 32 $ s "fire/4" # n "<0 1>" # cutoff 2600 # room 0.2 # size 0.9 # gain 0.66 # speed 0.5
+
+
+
+
+  d6 $ ghost $ s "[~ soshats]*4"
+  d6 $ ghost $ s "[~ XORE_hats]*4" # n 0
+  d6 $ ghost $ s "[~ XORE_hats]*4" # n 23 # gain 0.95
+  d6 $ ghost $ s "[~ techno_hats]*4" # n 8 # gain 0.72 # crush 4
+  d6 silence
+
+
+
+
+
+d6 silence
+
+
+d3 silence
+
+
+d1 silence
+
+do
+  -- ??
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "<0 1>" $ s "XORE_bass" # n 10 # note "-2" # distort (slow 4 $ range 0.06 0.12 saw) # room 0.18 # gain 0.95
+  xfadeIn 3 8 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+  d5 silence
+
+do
+  d1 $ ghost $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1.1 # orbit 0
+  d2 $ swingBy (1/16) 8 $ gap 32 $ slow 4 $ slice 2 "0" $ s "XORE_bass" # n 10 # note "-2" # distort (slow 4 $ range 0.06 0.12 saw) # room 0.18 # gain 0.95
+  d3 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+  d5 $ (0.125 <~) $ gap 32 $ s "fire/4" # n "<0 1>" # cutoff 2600 # room 0.2 # size 0.9 # gain 0.66 # speed 0.5
+
+
+  d6 $ ghost $ ghost $ s "[~ techno_hats]*4" # n 8 # gain 0.72 # crush 3.5
+
+
+
+
+d7 $ ghost $ (0.125 ~>)  $ s "techno_perc techno_perc ~ ~" # n "17 18 ~ ~ " # gain 0.9
+
+
+
+--
+
+
+d8 $ echoWith 3 (0.125) (|* triode 2) $ chop 8 $ slow 4 $ s "SOPHIE_textures" # n 7
+d8 silence
+
+
+-- long held note, good outtr0?
+d8 $ s "XORE_ambient" # n 7
+d8 $ s "XORE_ambient" # n 29
+d8 silence
+
+
+-- smerz stuff?
+d8 $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # cutoff 1000 # room 0.7 # size 0.95 # gain 0.9 # speed (80/150)
+-- could maybe breakdown drums at end and then slow down into an ambient finish
+
+-- would be nice to make it a little funkier...
+
+xfadeIn 8 16 $ (1 ~>) $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150)
+
+d8 $ (1 ~>) $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150)
+d8 $ (1 ~>) $ slice 144 ("<69 70 71 72 73 74 75 76>" + "32") $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150)
+
+
+
+  -- trying sidechain
+  d8 $ (1 ~>) $ slice 144 "<69 70 71 72 73 74 75 76>" $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150) # sidechain ("0") # sidechain_thresh ("12"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+  xfadeIn 1 8 silence
+
+
+  d8 $ (1 ~>) $ slice 144 "71" $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150)
+  d8 $ (1 ~>) $ slice 288 "140*2" $ s "SMERZ_talk" # cutoff 1000 # hcutoff 200 # room 0.7 # size 0.95 # gain 0.85 # speed (133/150)
+
+  d8 silence
+
+
+
+
+  d9 $ slice 144 "72/2" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.9 # speed (-133/150)
+  d9 $ slice 144 "83" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.9 # speed (-133/150)
+  d9 $ slice 144 "90" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.9 # speed (-133/150)
+  d9 $ slice 144 "96" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.9 # speed (-133/150)
+  d9 $ slice 144 "97" $ s "SMERZ_talk" # n 1 # n 1 # hcutoff 400 # cutoff 800 # room 0.8 # size 0.8 # gain 1 # tremolorate 8 # tremolodepth 0.9 # speed (-133/150)
+
+  d9 silence
+
+
+
+-- tidalvim - ??
 
 --
