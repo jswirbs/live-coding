@@ -78,7 +78,7 @@ do
   d2 $ s "[~@3 snares] snares ~ snares" # n "10 0@3" # gain "0.88 1@3"
   -- dragonfly A
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
+  -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   -- d3 $ (0.25 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
   -- d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.95 1.03 rand)
   d5 $ swingBy (1/16) 1 $ sometimesBy 0.5 (ghost) $ gap 16 $ s "techno_fx" # n "[5 6]/8" # gain "[0.82 0.73]/8"
@@ -95,7 +95,8 @@ do
 
 do
   d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.92 0.98 rand)
-  clutchIn 6 16 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 200 1000 sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.9 0.6 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.9 # orbit 5 # detune 0
+  d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 2 # gain (range 0.9 0.96 rand) # waveloss (range 20 40 rand)
+  clutchIn 6 16 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 200 1000 sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.9 0.6 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.95 # orbit 5 # detune 0
 
 
 
@@ -176,10 +177,11 @@ do
   clutchIn 9 10 silence
   -- or wait and bring this in more frequently with drop??
   -- d10 $ n "[~ a]/2" # s "m1" # midichan 1 # stack [(ccv (range 60 90 rand) # ccn 18), (ccv "[1 127]/4" # ccn 19)]
+  xfadeIn 11 8 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("2"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
 
   -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
+  -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
 
 do
   d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] ~" # n 1 # gain 1.08
@@ -190,7 +192,7 @@ do
   -- dragonfly A
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 3000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
+  -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   -- d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.95 1.03 rand)
   -- d5 $ swingBy (1/16) 1 $ sometimesBy 0.5 (ghost) $ gap 16 $ s "techno_fx" # n "[5 6]/8" # gain "[0.95 0.8]/8"
   d5 silence
@@ -203,17 +205,21 @@ do
   -- d8 $ n (off "0.0625" (+"<7@4 8@3.5 [12 15]@0.5>") $ "a*8") # octave "[5]" # s "warsawbass" # cutoff (slow 4 $ range 500 (slow 4 $ range 1100 5000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.9 0.6 sine) # pan (slow 8 $ range 0.2 0.8 sine) # gain 0.66 # sustain 0.07
   -- d8 silence
   d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 800 2000 sine) # pan (slow 8 $ range 0.2 0.8 rand) # gain 0.45 # detune (slow 8 $ range 1 0 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 10 $ range 0.15 0.2 saw)
-  d10 $ n "[~ a]/2" # s "m1" # midichan 1 # stack [(ccv (range 60 90 rand) # ccn 18), (ccv "[1 127]/4" # ccn 19)]
+  -- d10 $ n "[~ a]/2" # s "m1" # midichan 1 # stack [(ccv (range 60 90 rand) # ccn 18), (ccv "[1 127]/4" # ccn 19)]
 
 
 
 do
   d5 $ swingBy (1/16) 1 $ sometimesBy 0.5 (ghost) $ gap 16 $ s "techno_fx" # n "[5 6]/8" # gain "[0.82 0.73]/8"
   d6 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 600 1800 sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.8 0.4 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.72 # sustain (slow 10 $ range 0.1 0.17 saw)
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("3"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
 
 
 
-d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.92 0.96 rand)
+do
+  d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.92 0.96 rand)
+  d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 2 # gain (range 0.9 0.96 rand) # waveloss (range 20 40 rand)
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
 
 
 
@@ -226,6 +232,8 @@ clutchIn 9 16 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+1
   d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "warsawbass" # cutoff (slow 4 $ range 1000 3000 sine) # pan (slow 8 $ range 0.2 0.8 rand) # gain 0.68 # hcutoff 300 # squiz 2 # distort 0.4 # crush 6 # sustain (slow 10 $ range 0.12 0.22 saw)
   d9 $ rarely ghost $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "supercomparator" # cutoff (slow 4 $ range 800 3000 sine) # pan (slow 8 $ range 0.25 0.75 rand) # gain 0.68 # detune (slow 8 $ range 1 2.5 saw) # hcutoff 300 # squiz 4 # crush 6 # sustain (slow 10 $ range 0.12 0.22 saw)
 
+
+  xfadeIn 11 12 $ s "XORE_hats*16" # n 15 # djf 0.9 # sidechain ("0") # sidechain_thresh ("6"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.95
 
 
 
@@ -248,42 +256,33 @@ do
   d4 silence
   d6 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 200 1100 sine) # hcutoff 50 # room (slow 4 $ range 0.9 0.7 sine) # size (slow 4 $ range 0.95 0.75 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.73
   d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # pan (slow 8 $ range 0.2 0.8 rand) # gain 0.53 # detune (slow 8 $ range 1 2.5 saw) # hcutoff 400 # squiz 4
-
-
-  d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ <~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry>]" # n 1 # gain 1.08 # djf (slow 2 $ range 0.81 0.66 saw)
-  d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ <SOPHIE_kicks_dry ~ ~ <SOPHIE_kicks_dry ~>>]" # n 1 # gain 1.08 # djf (slow 2 $ range 0.66 0.81 saw)
+  xfadeIn 11 8 silence
 
 
 
 
     d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ <~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry*2>]" # n 1 # gain 1.08 # djf (slow 4 $ range 0.81 0.55 saw)
 
-    do
-      d1 $ s "SOPHIE_kicks_dry [~ ~ ~ <SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry ~>] [~ <SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry ~>] [~ <~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry*2>]" # n 1 # gain 1.08 # djf (slow 4 $ range 0.81 0.55 saw)
-      -- somehow bring harsher d9 in? like high frequencies comes in??
-      -- d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 4 $ "[48 36 24 12]")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.55 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 3 $ range 0.06 0.12 sine)
+    d1 $ s "SOPHIE_kicks_dry [~ ~ ~ <SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry ~>] [~ <SOPHIE_kicks_dry SOPHIE_kicks_dry SOPHIE_kicks_dry ~>] [~ <~ SOPHIE_kicks_dry ~ SOPHIE_kicks_dry*2>]" # n 1 # gain 1.08 # djf (slow 4 $ range 0.81 0.55 saw)
 
-      d2 silence -- ??
+    d2 silence -- ??
+    d1 silence
 
 do
   d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] ~" # n 1 # gain 1.08
-  d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ <~ SOPHIE_kicks_dry>]" # n 1 # gain 1.08
+  -- d1 $ s "SOPHIE_kicks_dry [~ ~ ~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ <~ SOPHIE_kicks_dry>]" # n 1 # gain 1.08
   -- d1 $ n "a [~ ~ ~ a] [~ a] ~" # s "m1" # octave 4 # midichan 0
   d2 $ s "[~@3 ~] UMRU_snares ~ UMRU_snares" # n 20 # gain 0.9
   d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ s "techno_fx*2" # n 10 # cutoff 7000 # room 0.3 # gain 0.9
-  d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
+  -- d3 $ swingBy (1/16) 1 $ (0.125 ~>) $ n "a4*2" # s "m2"
   d5 silence
   d6 $ rarely palindrome $ arp "down" $ n (off "0.25 0.125" (+12) $ "[[f6 a]*16 [e6 a]*16]/8" + (fast 8 $ "<24 12 0 -12 -24 -36 -48 -64>")) # s "warsawbass" # cutoff (slow 4 $ range 400 1500 sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.8 0.4 sine) # pan (slow 8 $ range 0.2 0.8 saw) # gain 0.78 # sustain (slow 10 $ range 0.1 0.17 saw)
   d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 3 $ range 0.06 0.12 sine)
   -- d9 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "basslow" # cutoff (slow 4 $ range 800 3000 sine) # pan (slow 8 $ range 0.2 0.8 rand) # gain 0.66 # detune (slow 8 $ range 1 2.5 saw) # hcutoff 300 # squiz 4 # sustain (slow 3 $ range 0.06 0.12 sine)
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("1"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
 
 
 
-
-    d9 $ echoWith 3 0.0625 (|* squiz 1) $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "superzow" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # squiz 1.2 # sustain (slow 3 $ range 0.06 0.12 sine)
-    d9 $ echoWith 3 0.0625 (|* squiz 2) $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "supersaw" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # sustain (slow 3 $ range 0.06 0.12 sine)
-    d9 $ echo 3 0.0625 0.5 $ swingBy (1/16) 0.5 $ rarely palindrome $ n (off "0.25 0.125" (+12) $ "[[f6 a es c]*16 [e6 a f c]*16]/8" + (fast 8 $ "<24 12 0 -12 0 12 24 36>")) # s "supersaw" # cutoff (slow 4 $ range 1000 4000 sine) # gain 0.53 # detune (slow 8 $ range 1 2 saw) # hcutoff 400 # sustain (slow 3 $ range 0.06 0.12 sine)
-    d9 silence
 
 
   d5 $ swingBy (1/16) 0.5 $ sometimesBy 0.5 (ghost) $ gap 32 $ s "techno_fx" # n "[5 6]/8" # gain "[0.8 0.7]/8" # distort 0.4 # squiz 1.2
@@ -292,9 +291,17 @@ do
 
 
   d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 1 # gain (range 0.92 0.98 rand)
+  d4 $ (0.125 ~>) $ sometimesBy 0.5 (ghost) $ s "techno_hats*4" # n 2 # gain (range 0.9 0.96 rand) # waveloss (range 20 40 rand)
   d4 silence
 
 
+  d11 $ s "XORE_hats(13,16)" # n 15 # sidechain ("0") # sidechain_thresh ("6"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+  d11 $ (0.125 ~>) $ sometimesBy 0.75 (ghost) $ s "XORE_hats*4" # n 15 # sidechain ("0") # sidechain_thresh ("12"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("6"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("0") # sidechain_thresh ("3"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
+
+  d11 $ s "XORE_hats*16" # n 15 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) # gain 0.9
 
 
 
@@ -314,7 +321,7 @@ do
     clutchIn 6 16 silence
     d9 silence
     d10 $ n "[~@3 a]/4" # s "m1" # midichan 1 # stack [(ccv (range 60 90 rand) # ccn 18), (ccv "[1 127]/4" # ccn 19)]
-
+    xfadeIn 11 16 silence
 
     d3 silence
 
