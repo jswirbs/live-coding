@@ -35,6 +35,9 @@ d6 silence
 d5 silence
 d5 silence
 
+d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [2 7]>" $ s "trancey_synth_loops" # n 11 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.32 0.38 saw) # gain 0.9
+
+d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [2 7]>" $ s "trancey_synth_loops" # n 15 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.32 0.38 saw) # gain 0.9
 
 
 
@@ -42,7 +45,7 @@ d5 silence
 
 do
   resetCycles
-  bpm 130
+  bpm 131
   d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "1*2" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf (segment 8 $ slow 8 $ range 0.9 0.6 saw) # gain 0.75
   jumpIn 3 8 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "1*2" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf 0.6 # gain 0.75
 
@@ -54,6 +57,7 @@ do
   d2 $ loopAt 4 $ chop 4 $ s "SOPHIE_love" # n 2 # room 0.15 # cutoff 6000
   d2 $ chop 16 $ slow 4 $ s "SOPHIE_love" # n 2 # note "-1" # sidechain ("0") # sidechain_thresh ("20"/100) # sidechain_compression ("30"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
   d2 $ chop 4 $ slow 2 $ s "techno_bass_loops" # n 30 # sidechain ("0") # sidechain_thresh ("10"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+  d2 $ n "0*2" # octave 3 # s "superhammond" # attack 1 # stack[(voice 2 # gain 0.8), (voice 6 # gain 1.05)] # sidechain ("0") # sidechain_thresh ("16"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) -- # distort (slow 12 $ range 0 0.1 sine)
   d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf 0.6 # gain 0.75
   -- d11 $ slow 8 $ chop 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.3 # cutoff 5000 # pan (segment 128 $ range 0.66 0.33 saw) -- noise riser come down
   -- xfadeIn 11 16 silence
@@ -61,52 +65,31 @@ do
 
 
 
-  d4 $ s "XORE_hats(11,16)" # n 3 # gain 0.8 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
-  d4 $ s "XORE_hats(16,16)" # n 3 # gain 0.8 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
-  d4 $ s "XORE_hats(10,16)" # n 3 # gain 0.8 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
 
-
-
-
-  d5 $ s "[~ snares]*2" # n 6 # gain 0.9
-  d5 $ s "[~ snares]*2" # n 9 # gain 0.9
-  d5 $ s "[~ SOPHIE_claps]*2" # n 15 # gain 0.75 # cutoff 8000
-  d5 $ s "~ SOPHIE_claps [~@3 SOPHIE_claps] ~" # n 15 # gain 0.7 # cutoff 6000
-  d5 $ s "[~ SOPHIE_claps]*2" # n 5 # gain 0.75 # cutoff 8000
-  d5 $ s "[~ techno_snares]*2" # n 0
-  d5 $ s "[~ techno_snares]*2" # n 13 # distort 0.15
-  d5 $ s "~ techno_snares [~@3 techno_snares] ~" # n 13 # distort 0.15
-
-  d5 $ stack[(s "~ techno_snares [~@3 techno_snares] ~" # n 13 # distort 0.15), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
-  d5 $ stack[(sometimesBy 0.25 (("0 0.0625" <~)) $ s "[~ techno_snares]*2" # n 13 # distort 0.15), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
-  d5 $ stack[(s "[~ techno_snares]*2" # n 13 # distort 0.15 # gain 0.8), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
-
-
-  d11 $ slow 8 $ rev $ chop 128 $ s "DJ_DAVE_castles" # n 14 # gain (segment 128 $ "0 0.7@127") # room 0.3 # cutoff 5000 # pan (segment 128 $ range 0.66 0.33 saw) # speed "-1" -- noise riser come down
-
-
-
-
-
-  d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf (segment 8 $ slow 8 $ range 0.6 0.33 saw) # gain 0.8
+  d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf (segment 8 $ slow 8 $ range 0.6 0.32 saw) # gain 0.75
 
 
   d1 silence
 
 do
   d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 600
-  d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.33 0.4 saw) # gain 0.8
+  d3 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan (segment 2 $ "[0.66 0.33]") # distort 0.2 # djf 0.2 # gain 0.9 # room 0.2
+  d3 $ whenmod 4 3.5 (swingBy (1/16) 0.5) $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # distort 0.2 # djf (slow 12 $ range 0.3 0.34 sine) # gain 0.78
+  d3 $ whenmod 4 3.5 (swingBy (1/16) 0.5) $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # distort 0.2 # djf (slow 4 $ range 0.32 0.28 saw) # gain 0.78
+  -- d3 $ swingBy (1/16) 0.5 $ chop 8 $ slice 8 "<1*6@3 [1 3]>" $ s "trancey_synth_loops" # n 13 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.3 0.34 saw) # gain 0.8
   d5 $ stack[(s "[~ techno_snares]*2" # n 13 # distort 0.15 # gain 0.8), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
-  d5 $ (0.125 <~) $ n "[~ 0]*2" # octave 4 # s "sostoms" # gain 1.05 # sustain (slow 2 $ range 0.08 0.11 perlin) # cutoff 2700 # hcutoff 90
+  d5 $ (0.125 <~) $ n "[~ 0]*2" # octave 4 # s "sostoms" # gain 1.05 # sustain (slow 2 $ range 0.08 0.11 perlin) # cutoff 2700 # hcutoff 170
   d8 $ ghost $ n "[[c]*16]/6" # s "basslow" # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.83 0.7 sine) # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 600 6000 sine)
-  d8 $ sometimes (swingBy (1/16) 1) $ ghost $ n "[[c]*16]/6" # s "basslow" # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.86 0.66 sine) # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 600 6000 sine)
-  xfadeIn 11 16 silence
+  d8 $ sometimes (swingBy (1/16) 1) $ sometimesBy 0.75 ghost $ n "[[c6]*16]/6" # s "basslow" # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.84 0.6 sine) # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 400 4000 sine)
+  d8 $ rarely (swingBy (1/16) 1) $ sometimesBy 0.75 ghost $ n "[[c]*16]/6" # s "basslow" # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.84 0.5 sine) # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 500 5000 sine)
+  d8 $ rarely (swingBy (1/16) 1) $ rarely ghost $ n "[[c,c6]*16]/6" # s "warsawbass" # gain (slow 16 $ range 0.8 0.58 sine) # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # sustain (range 0.05 0.07 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 500 5000 sine)
 
 
 
 
 
-xfadeIn 9 16 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort 0 # gain 0.75 # room 0.2 # size 0 # cutoff 800 # hcutoff 100 -- # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+
+xfadeIn 9 8 silence $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort 0 # gain 0.75 # room 0.2 # size 0 # cutoff 800 # hcutoff 100 -- # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
 
 
   -- fun little back & forth (could use this to bring things in every once in a while, like d4 hats?)
@@ -115,8 +98,10 @@ xfadeIn 9 16 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave
   xfadeIn 9 4 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort (slow 8 $ range 0 0.3 saw) # gain (slow 8 $ range 0.77 0.74 saw) # room (slow 8 $ range 0.1 0.3 saw) # size (slow 8 $ range 0.3 1 saw) -- # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
 
 do
-  d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 900 # hcutoff 100
-  d2 silence
+  d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 900 # hcutoff 80
+  xfadeIn 1 4 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 900 # hcutoff 120
+  d2 $ n "[0*7@7 ~]/4" # octave 3 # s "superhammond" # attack 1 # stack[(voice 2 # gain 0.8), (voice 6 # gain 1.05)] # sidechain ("0") # sidechain_thresh ("16"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) -- # distort (slow 12 $ range 0 0.1 sine)
+  xfadeIn 2 5 silence
   d9 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort (slow 8 $ range 0 0.3 saw) # gain (slow 8 $ range 0.77 0.74 saw) # room (slow 8 $ range 0.1 0.3 saw) # size (slow 8 $ range 0.3 1 saw) -- # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
 
   d1 silence
@@ -124,23 +109,121 @@ do
 do
   d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 600
   d2 $ chop 4 $ slow 2 $ s "techno_bass_loops" # n 30 # sidechain ("0") # sidechain_thresh ("10"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+  d2 $ n "0*2" # octave 3 # s "superhammond" # attack 1 # stack[(voice 2 # gain 0.8), (voice 6 # gain 1.05)] # sidechain ("0") # sidechain_thresh ("16"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
   d4 $ s "XORE_hats(16,16)" # n 3 # gain 0.8 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+  d4 $ s "XORE_hats(9,16)" # n 3 # gain 0.8 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
   d4 $ s "XORE_hats(10,16)" # n 3 # gain 0.8 # sidechain ("1") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+  d7 silence
   d9 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort 0 # gain 0.8 # room 0.1 # size 0.3 # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
   d13 $ chop 64 $ slow 4 $ s "sweetbell" # gain 1.15 # room 0.2
 
 
+  d1 silence
+
   do -- same thing but diff hats...
     d1 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 18 # gain 1.05 # orbit 0 # cutoff 600
     d2 $ chop 4 $ slow 2 $ s "techno_bass_loops" # n 30 # sidechain ("0") # sidechain_thresh ("10"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
-    d4 $ s "XORE_hats(16,16)" # n 3 # gain 0.84 # sidechain ("0") # sidechain_thresh ("4"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+    d2 $ n "c*2" # octave 3 # s "superhammond" # attack 1 # stack[(voice 2 # gain 0.8), (voice 6 # gain 1.05)] # sidechain ("0") # sidechain_thresh ("16"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) -- # distort (slow 12 $ range 0 0.1 sine)
+    d4 $ s "XORE_hats(16,16)" # n 3 # gain "[0.85@7 0.6]*2" # sidechain ("0") # sidechain_thresh ("3"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+    d4 $ s "XORE_hats(14,16)" # n 3 # gain 0.85 # sidechain ("0") # sidechain_thresh ("3"/100) # sidechain_compression ("8"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
     d9 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*16]/6") # octave 5 # s "soskick" # distort 0 # gain 0.8 # room 0.1 # size 0.3 # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
 
 
 
 
 
+
+
+    -- reverse cutoff from d8?
+    clutchIn 7 32 $ swingBy (1/16) 1 $ ghost $ n "[[c ds g c6 g ds]*16]/6" # s "basslow" # room (slow 8 $ range 0.2 0.25 sine) # size 0.5 # gain 0.77 # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.3 0.7 rand) # djf 0.33 # cutoff (slow 16 $ range 600 6000 sine)
+    d7 $ swingBy (1/16) 1 $ ghost $ n "[[c ds g c6 g ds]*16]/6" # s "basslow" # room (slow 8 $ range 0.2 0.25 sine) # size 0.5 # gain 0.77 # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.3 0.7 rand) # djf 0.33 # cutoff (slow 16 $ range 600 6000 sine)
+    d7 silence
+
+
+
+    d9 $ n (off "0.0625 0.125" (+12) $ "[[c ds g c6 g ds]*8]/6") # octave 5 # s "soskick" # distort 0 # gain 0.8 # room 0.1 # size 0.3 # sidechain ("4") # sidechain_thresh ("4"/100) # sidechain_compression ("4"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100)
+
+
+    d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "c ds g c6 ds6 g6 c7 g6") # s "superzow" # octave (choose[5,5,6]) # waveloss ((8 <~) $ slow 32 $ range 3 33 sine) # room 0.2 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.46 # hcutoff 300
+    d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "c ds g c6 ds6 g6 c7 g6") # s "sossnare" # octave (choose[5,5,6]) # waveloss ((8 <~) $ slow 32 $ range 3 33 sine) # room 0.2 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.7 # hcutoff 300
+    d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "c ds g c6 ds6 g6 c7 g6") # s "soshats" # octave (choose[5,5,6]) # waveloss ((8 <~) $ slow 32 $ range 3 33 sine) # room 0.2 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.46 # hcutoff 300
+    d10 $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "c ds g c6 ds6 g6 c7 g6") # s "soshats" # octave (choose[5,5,6]) # waveloss ((8 <~) $ slow 32 $ range 3 33 sine) # room 0.2 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.55 # hcutoff 300
+
+    d10 $ swingBy (1/16) 1 $ ghost $ n "[[c ds f g as c6]*16]/6" # s "basshigh" # octave 8 # djf (slow 6 $ range 0.5 0.3 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.6 0.5 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 10 # hcutoff 800
+    d10 $ swingBy (1/16) 1 $ ghost $ n "[[c ds f g as c6]*16]/6" # s "soshats" # octave 6 # djf (slow 6 $ range 0.5 0.4 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.6 0.5 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 10 # hcutoff 800
+
+    d10 $ swingBy (1/16) 1 $ ghost $ n "[[c ds f g as c6]*16]/6" # s "soshats" # octave 6 # djf (slow 6 $ range 0.5 0.4 sine) # waveloss 10 # room 0.8 # size 0.3 # distort (slow 4 $ range 0.2 0.5 sine) # pan (fast 2 $ range 0.25 0.75 square) # sustain (slow 3 $ range 0.1 0.2 sine) # gain (slow 3 $ range 0.6 0.5 sine) # tremolodepth 0.5 # tremolorate 9 # orbit 10 # hcutoff 800
+
+
+    d10 $ slice 256 ("0*8" + (slow 8 $ run 128)) $ s "XORE_weirdness" # n 2 # gain (slow 8 $ range 0.75 0.66 saw) # room 0.2
+    d10 silence
+
+
+
+
+    d2 $ n "0*2" # s "m4"
+    d2 $ n "0*2" # octave 3 # s "supersaw" # attack 1
+    d2 $ n "0*2" # octave 3 # s "superhammond" # voice 2 # attack 1 # gain 1.1 -- # distort (slow 12 $ range 0 0.1 sine)
+    d2 $ n "0*2" # octave 3 # s "superhammond" # voice 5 # attack 1 # gain 1.1 -- # distort (slow 12 $ range 0 0.1 sine)
+    d2 $ n "0*2" # octave 3 # s "superhammond" # voice "[2,6]" # attack 1 # gain 1 -- # distort (slow 12 $ range 0 0.1 sine)
+    d2 $ n "0*2" # octave 3 # s "superhammond" # attack 1 # stack[(voice 2 # gain 0.8), (voice 6 # gain 1.05)] # sidechain ("0") # sidechain_thresh ("16"/100) # sidechain_compression ("10"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) -- # distort (slow 12 $ range 0 0.1 sine)
+
+
+
+
+    d5 $ s "[~ snares]*2" # n 6 # gain 0.9
+    d5 $ s "[~ snares]*2" # n 9 # gain 0.9
+    d5 $ s "[~ SOPHIE_claps]*2" # n 15 # gain 0.75 # cutoff 8000
+    d5 $ s "~ SOPHIE_claps [~@3 SOPHIE_claps] ~" # n 15 # gain 0.7 # cutoff 6000
+    d5 $ s "[~ SOPHIE_claps]*2" # n 5 # gain 0.75 # cutoff 8000
+    d5 $ s "[~ techno_snares]*2" # n 0
+    d5 $ s "[~ techno_snares]*2" # n 13 # distort 0.15
+    d5 $ s "~ techno_snares [~@3 techno_snares] ~" # n 13 # distort 0.15
+
+    d5 $ stack[(s "~ techno_snares [~@3 techno_snares] ~" # n 13 # distort 0.15), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
+    d5 $ stack[(sometimesBy 0.25 (("0 0.0625" <~)) $ s "[~ techno_snares]*2" # n 13 # distort 0.15), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
+    d5 $ stack[(s "[~ techno_snares]*2" # n 13 # distort 0.15 # gain 0.8), (s "[~ SOPHIE_claps]*2" # n 15 # gain 0.5 # hcutoff 200 # room 0.2 # size 0.9 # orbit 3)]
+
+
+
+
+
+
+
+
+    d7 $ swingBy (1/16) 1 $ ghost $ n "[[c ds g c6 g ds]*16]/6" # s "basslow" # room (slow 8 $ range 0.2 0.25 sine) # size 0.5 # gain 0.77 # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.3 0.7 rand) # djf 0.33 # cutoff (slow 16 $ range 600 6000 sine)
+    d7 silence
+
+    d8 $ swingBy (1/16) 2 $ n "[[c6]*16]/6" # s "m3" -- # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.84 0.6 sine) # sustain (range 0.05 0.06 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 400 4000 sine)
+
+    d3  $ slice 32 "[3*16]/6" $ s "trancey_synth_loops" # n 13 # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.84 0.6 sine) # sustain (range 0.08 0.1 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 400 4000 sine)
+
+    d3 $ slice 32 "0" $ s "trancey_synth_loops" # n 15 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.3 0.34 saw) # gain 0.8
+
+    d3 $ slice 64 "1" $ s "trancey_synth_loops" # n 15 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.3 0.34 saw) # gain 0.8
+    d3 $ slice 64 "6" $ s "trancey_synth_loops" # n 15 # pan "[0.66 0.33]" # distort 0.2 # djf (slow 8 $ range 0.3 0.34 saw) # gain 0.8
+
+    d8 $ slice 64 "[1*16]/6" $ s "trancey_synth_loops" # n 15 # room (slow 8 $ range 0.4 0.2 sine) # size 0.5 # gain (slow 16 $ range 0.84 0.6 sine) # sustain (range 0.08 0.1 perlin) # pan (fast 4 $ range 0.2 0.8 rand) # cutoff (slow 16 $ range 400 4000 sine)
+
+
+    d10 $ slice 16 "0" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.9
+    d10 $ slice 16 "1" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # cutoff 5000 # distort 0.15 # crush (range 5 8 perlin) # gain 0.9
+
+    d10 $ slice 16 "0" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+    d10 $ slice 16 "1" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+    d10 $ slice 16 "3" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+    d10 $ slice 16 "4" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+    d10 $ slice 16 "12" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+    d10 $ slice 16 "13" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+
+    d10 $ slice 16 "15" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+
+    d10 $ slice 16 "[0*4 1*4 3*4 [4*3@3 [15 13]]]/16" $ s "trancey_synth_loops" # n 15 # speed "-0.25" # gain 0.9 # cutoff 5000 -- # distort 0.15 # crush (range 5 8 perlin)
+
+
     d7 $ slice 128 ("[~ 0]*2" + (slow 16 $ run 64)) $ s "XORE_weirdness" # n 1 # gain 0.8 # size 0.8
+    d7 $ slice 256 ("0*8" + (slow 8 $ run 128)) $ s "XORE_weirdness" # n 1 # gain (slow 8 $ range 0 0.9 saw) # room 0.2 # size 0.8
+    d7 silence
 
 
 
@@ -288,7 +371,7 @@ do
   d10 $ (2 <~) $ sometimes (ghost) $ fast 4 $ n ((choose([8.03125,8,8]) ~>) $ slow 2 $ "c ds g c6 ds6 g6 c7 g6") # s "superzow" # octave (choose[5,5,6]) # waveloss ((8 <~) $ slow 32 $ range 3 33 sine) # room 0.2 # size 0.3 # distort (slow 4 $ range 0.1 0.3 sine) # pan (fast 4 $ range 0.25 0.75 saw) # sustain (slow 3 $ range 0.08 0.18 sine) # gain 0.46 # hcutoff 300
   -- d11 $ slow 8 $ chop 128 $ s "DJ_DAVE_castles" # n 14 # gain 0.7 # room 0.3 # cutoff 5000 # pan (segment 128 $ range 0.66 0.33 saw) -- noise riser come down
   -- d11 silence
-  xfadeIn 11 32 silence
+  -- xfadeIn 11 32 silence
   d13 $ chop 64 $ slow 4 $ s "sweetbell" # gain 1.15 # room 0.2
 
 
