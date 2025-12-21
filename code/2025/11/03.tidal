@@ -1,0 +1,30 @@
+
+bpm 128
+
+d1 $ n "0 ~ ~ 0 ~ ~ 0 ~" # s "m1"
+d1 $ n "0 0 ~ 0 ~ 0 0 ~" # s "SOPHIE_subs"
+
+d2 $ n "0*16" # s "m1" # midichan 6
+d2 silence
+
+
+
+d2 $ arp "thumbup" $ n "c'min" # s "warsawbass"
+d3 $ swingBy (1/16) 0.5 $ arp "thumbup" $ n "c'min" # s "acid91" # octave 3
+d3 $ sometimesBy 0.15 (rev) $ n "f*16" # s "sostoms" # fshift (slow 8 $ range 2000 "0" saw) # squiz 4
+d3 silence
+
+
+
+
+
+
+d2 $ chop 6 $ slice 16 ("~@6 0 ~" + (slow 16 $ run 16)) $ s "XORE_bass" # n 58 # gain 0.7 # speed "0.85" # room 0 -- # cutoff 9000
+
+
+
+
+d8 $ arp "up" $ n "[<a'min a'min a'min a'min a'min a'min a'min g'maj>([4 5],8)]*2" # s "acid92" # octave 5 # cutoff (slow 4 $ range 400 700 sine) # sustain (range 0.09 0.13 rand) # room 0.2 # size 0.5 # gain 0.85
+d8 silence
+
+--

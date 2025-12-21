@@ -1,0 +1,60 @@
+bpm 124
+
+
+d1 $ s "SOPHIE_kicks_dry [~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]" # n 1
+d1 $ s "SOPHIE_kicks_dry [~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]" # n 10
+-- f fs@3
+d1 $ slice "4 8@3" "0 [~ 0]*3@3" $ s "SOPHIE_subs" # n "3 4@3"
+d1 $ slice "2" "0" $ s "SOPHIE_subs" # n "3 4@3"
+d1 silence
+
+
+d2 $ s "[~ SOPHIE_claps]*2" # n 5
+d2 $ s "[~ SOPHIE_claps]*2" # n 12
+
+
+
+d3 $ sometimes (ghost) $ n ((slow (15/16) $ "0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~")) # s "XORE_hats" # n (choose[3,4,5]) # gain (range 0.75 0.8 rand) # room 0.15 -- # distort 0.15
+
+
+d4 $ sometimesBy 0.15 (rev) $ n "f*16" # s "sostoms" # fshift (slow 8 $ range 2000 0 saw) # squiz 4 # waveloss 5 # gain 0.75
+d5 $ sometimesBy 0.15 (rev) $ n "f*16" # s "sostoms" # fshift (slow 8 $ range 0 2000 saw) # squiz 4 # waveloss 5 # gain 0.75
+d5 $ sometimesBy 0.15 (rev) $ n "f*16" # s "sostoms" # fshift (slow 8 $ range 0 "-2000" saw) # squiz 4 # waveloss 5 # gain 0.75
+d5 silence
+
+
+
+-- play around with vital?? some interesting textural stuff?
+
+
+
+
+  --
+
+  d5 $ slow 4 $ s "XORE_bass" # n 7 # gain 0.9 # cutoff (slow 6 $ range 2000 7000 sine) # distort (range 0.05 0.15 perlin) # speed 0.7
+  d5 $ chop 6 $ slice 16 ("~@6 0 ~" + (slow 16 $ run 16)) $ s "XORE_bass" # n 58 # gain 0.7 # speed "0.85" # room 0 -- # cutoff 9000
+  d5 $ chop 6 $ slice 16 ("~ 0 ~@6" + (slow 16 $ run 16)) $ s "XORE_bass" # n 58 # gain 0.7 # speed "0.85" # room 0 -- # cutoff 9000
+  d5 silence
+
+
+  d8 $ n (off "0.0625" (+"<8@3.5 [12 15]@0.5 7@4 >") $ "a*8") # octave "[3]" # s "warsawbass" # cutoff (slow 4 $ range 500 (slow 4 $ range 1100 4000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.6 0.3 sine) # size (slow 4 $ range 0.8 0.5 sine) # pan (slow 8 $ range 0.333 0.666 sine) # gain 0.74
+  d8 $ n (off "0.0625" (+"<8@3.5 [12 15]@0.5 7@4 >") $ "f*8") # octave "[3]" # s "warsawbass" # cutoff (slow 4 $ range 500 (slow 4 $ range 1100 4000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.6 0.3 sine) # size (slow 4 $ range 0.8 0.5 sine) # pan (slow 8 $ range 0.333 0.666 sine) # gain 0.74
+  d8 $ n (off "0.0625" (+"<8@3.5 [12 15]@0.5 7@4 >") $ "f*8") # octave "[6]" # s "warsawbass" # cutoff (slow 4 $ range 1000 (slow 4 $ range 2000 4000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.6 0.3 sine) # size (slow 4 $ range 0.8 0.5 sine) # pan (slow 8 $ range 0.333 0.666 sine) # gain 0.74
+  d8 $ n (off "0.0625" (+"<8@3.5 [12 15]@0.5 7@4 >") $ "f*8") # octave "[6]" # s "warsawbass" # cutoff (slow 4 $ range 1000 (slow 4 $ range 2000 4000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.6 0.3 sine) # size (slow 4 $ range 0.8 0.5 sine) # pan (slow 8 $ range 0.333 0.666 sine) # gain 0.7 # sustain (slow 16 $ range 0.08 0.2 sine)
+
+  d8 $ n (off "0.5" (+7) $ "[f*32 e*32]/8") # octave "[3]" # s "warsawbass" # cutoff (slow 4 $ range 500 (slow 4 $ range 1100 5000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.9 0.6 sine) # pan (slow 8 $ range 0.2 0.8 sine) # gain 0.75
+  d8 $ n (off "0.5" (+7) $ "[f*32 e*32]/8") # octave "[6]" # s "warsawbass" # cutoff (slow 4 $ range 700 (slow 4 $ range 1100 3000 sine) sine) # hcutoff 50 # room (slow 4 $ range 0.7 0.4 sine) # size (slow 4 $ range 0.9 0.6 sine) # pan (slow 8 $ range 0.2 0.8 sine) # gain 0.75
+  d8 silence
+
+
+  d6 $ slow 4 $ chop 8 $ s "BABII_vocal_loops" # n 7
+
+  d6 $ chop 4 $ slow 8 $ s "XORE_ambient" # n 4
+  d6 $ chop 4 $ slow 8 $ s "XORE_ambient" # n 11
+  d6 $ chop 4 $ slow 8 $ s "XORE_ambient" # n 13
+  d6 silence
+  --
+
+
+
+--

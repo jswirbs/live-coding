@@ -1,0 +1,96 @@
+bpm 133
+
+
+-- f eeeeee
+d2 $ slice "12 3 ~ ~" "0 [~ 0] ~ ~" $ s "SOPHIE_subs" # n "8 7 ~ ~"
+
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 1
+d1 $ s "techno_kicks*4" # n 1
+d1 $ echo 2 (0.25) 0.66 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 6 # gain 1 # orbit 0 # cutoff 3000
+d1 $ echo 2 (0.25) 0.66 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 10 # gain 1 # orbit 0
+
+
+d3 $ rarely ghost $ ghost $ s "[~ sostoms] [~ sostoms] ~ ~" # n "[-5 -6 ~ ~]" # crush (range 3.5 5.5 rand) # gain 0.92
+-- d3 $ rarely ghost $ ghost $ s "[[~ sostoms [~ sostoms] ~] [sostoms [~ sostoms] ~ sostoms]]/2" # n "-5" # crush (range 3.5 5.5 rand) # gain 0.95
+
+
+
+
+
+  d4 $ chop 4 $ slow 2 $ s "techno_textures" # n 1
+  d4 $ chop 4 $ slow 2 $ s "techno_textures" # n 1 # speed "-1" # hcutoff 200
+  d4 $ chop 16 $ slow 8 $ s "trancey_synth_loops" # n 16 # gain 0.7 # cutoff 4000
+  d4 $ chop 32 $ slow 8 $ s "trancey_synth_loops" # n 16 # gain 0.7 # cutoff 4000 # speed "-1"
+
+
+-- f'min
+d4 $ chop 32 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.9 # hcutoff 400 # speed "-1"
+d4 $ chop 128 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.9 # hcutoff 400 # speed "-1"
+d4 $ chop 64 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.9 # hcutoff 400 # speed "-1"
+
+d4 $ sometimesBy 0.12 rev $ chop 64 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.8 # hcutoff 400 # cutoff 1000 # speed "1" # rvb 0.3 0.7
+d4 $ sometimesBy 0.12 rev $ chop 64 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.8 # hcutoff 400 # speed "-1" # rvb 0.3 0.7
+d4 silence
+
+
+d6 $ sometimes (ghost) $ n ((slow (15/16) $ "0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~")) # s "XORE_hats" # n (choose[3,4,5]) # gain (range 0.75 0.8 rand) # room 0.15
+d6 $ sometimes (ghost) $ n "[0(9,16)]" # s "XORE_hats" # n 25 # gain (range 0.75 0.8 rand) # room 0 # orbit 5
+d6 $ sometimes (ghost) $ n "[0(9,16)]" # s "XORE_hats" # n 3 # gain (range 0.75 0.8 rand)
+d6 $ sometimes (ghost) $ n "[0(9,16)]" # s "XORE_hats" # n 4 # gain (range 0.75 0.8 rand)
+d6 $ sometimes (ghost) $ n "[0(9,16)]" # s "XORE_hats" # n 14 # gain (range 0.75 0.8 rand)
+d6 silence
+
+d5 $ sometimes (ghost) $ n "[~ 0]*4" # s "XORE_hats" # n 27 # gain (range 0.75 0.8 rand)
+-- d5 $ sometimes (ghost) $ n "[[~ 0 [~ 0] ~] [0 [~ 0] ~ 0]]/2" # s "XORE_hats" # n 27 # gain (range 0.75 0.8 rand)
+d5 silence
+
+
+
+
+
+
+
+do
+  resetCycles
+  bpm 133
+  d4 $ sometimesBy 0.12 rev $ chop 64 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.8 # hcutoff 400 # speed "-1" # rvb 0.3 0.7
+
+
+
+do
+  d1 $ echo 2 (0.25) 0.66 $ fast 2 $ s "SOPHIE_kicks_dry(3,8)" # n 10 # gain 1 # orbit 0
+  -- f eeeeee
+  d2 $ slice "12 3 ~ ~" "0 [~ 0] ~ ~" $ s "SOPHIE_subs" # n "8 7 ~ ~"
+
+
+d3 $ rarely ghost $ ghost $ s "[~ sostoms] [~ sostoms] ~ ~" # n "[-5 -6 ~ ~]" # crush (range 3.5 5.5 rand) # gain 0.92
+
+
+d5 $ sometimes (ghost) $ n "[~ 0]*4" # s "XORE_hats" # n 27 # gain (range 0.75 0.8 rand)
+
+
+  d5 silence
+
+do
+  d5 $ sometimes (ghost) $ n "[~ 0]*4" # s "XORE_hats" # n 27 # gain (range 0.75 0.8 rand)
+  d6 $ sometimes (ghost) $ n "[0(9,16)]" # s "XORE_hats" # n 14 # gain (range 0.75 0.8 rand)
+
+
+
+  d5 silence
+
+
+do
+  d4 $ chop 128 $ slow 8 $ s "UMRU_lead_loops" # n 13 # gain 0.9 # hcutoff 400 # speed "-1"
+  d5 silence
+  d6 silence
+
+
+
+
+
+
+
+
+--

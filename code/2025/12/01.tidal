@@ -1,0 +1,478 @@
+
+bpm 133
+
+d1 $ n "c*4" # s "m1" # midichan 0
+d1 $ s "techno_kicks*4" # n 2 # djf 0.66
+d1 $ s "techno_kicks*4" # n 2 # room 0.05
+
+d2 $ s "[~ snares]*2" # n 14 # distort 0.4 # gain 1.03
+d2 $ s "[~ UMRU_snares]*2" # n 5 # gain 0.85
+d2 $ s "[~ UMRU_snares]*2" # n "<0 1>" # crush 4 # gain 0.8
+d2 $ s "[~ UMRU_snares]*2" # n 28 # triode 2 # gain 0.83
+
+
+d3 $ n "~ ~ c ~" # s "m1" # midichan 2
+d3 $ n "[c*8]/5" # s "m1" # midichan 2
+-- A/A#
+d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv 34 # ccn 10
+-- B G#
+d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[35 32]/16" # ccn 10
+d3 silence
+
+
+  d4 $ n "c*4" # s "m1" # midichan 4
+  d4 $ n "c(5,8)" # s "m1" # midichan 4
+  d4 $ (0.125 ~>) $ n "c*4" # s "m1" # midichan 4
+  d4 silence
+
+
+d5 $ rarely (ghost) $ s "techno_hats?*16?" # n 8 # distort 0.2 # crush 5 # cutoff 12000 # gain 0.9 # pan "[0.2 0.8]*4"
+d5 $ sometimes (ghost) $ s "techno_hats*8" # n 8 # cutoff 12000 # gain 0.9
+d5 $ rarely (ghost) $ s "techno_hats*16" # n 4 # distort (range 0.1 0.3 rand) # crush 5 # gain (range 0.6 0.8 rand)
+d5 $ sometimes (ghost) $ s "techno_hats(14,16)" # n 8 # cutoff 12000 # gain "[0.9 0.75]*8"
+
+d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 33 # gain 0.9
+d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 4 # gain 1.1
+d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 16 # gain 0.9
+d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+d6 silence
+
+d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+
+  d6 $ (0.125 ~>) $ slice 128 "24*4" $ s "trancey_synth_loops" # n 17 # gain 0.77 # cutoff 3000 # room 0.1 # speed "<-1 1>"
+  d6 $ (0.125 ~>) $ slice 128 "~@3 72" $ s "trancey_synth_loops" # n 17 # gain 0.77 # cutoff 7000 # room 0.1 # note "1" -- # speed "<-1 1>"
+
+  d6 $ (0.125 ~>) $ slice 64 "~@3 24" $ s "trancey_synth_loops" # n 26 # gain 0.77 # cutoff 3000 # room 0.1 # speed "<-1 1>"
+  d6 $ (0.125 ~>) $ slice 64 "~@3 1" $ s "trancey_synth_loops" # n 20 # gain 0.77 # cutoff 3000 # room 0.1 # speed "<-1 1>"
+
+  d6 $ (0.125 ~>) $ slice 64 "~@3 [4 16 ~ ~]" $ s "nebula" # n 6 # gain 0.77 # cutoff 3000 # room 0.1 # speed "<-1 1>"
+  d6 silence
+
+
+  d6 $ s "[~@7 techno_fx]/2" # n 3 # cutoff 2000 # room 0 # waveloss 30 # distort 0.12
+  d6 $ n "[~@7 c]" # s "m1" # midichan 3
+  d6 $ n "[~@15 c]/2" # s "m1" # midichan 3
+
+
+  d6 $ chop 64 $ slow 4 $ s "techno_textures" # n 10 # gain 1.1 # distort (slow 2 $ (0.13 * (run 64 / 64)))
+
+
+
+d6 $ stutter 2 (1/8) $ slice 32 ("0 1 2 3" + 0) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 1000
+d6 $ stutter 2 (1/8) $ slice 32 ("0 1 2 3" + 8) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 1000
+d6 $ stutter 2 (1/8) $ slice 32 ("0 1 2 3" + 24) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff 1000
+d6 $ stutter 2 (1/8) $ slice 32 ("0 1 2 3" + 13) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff (slow 24 $ range 800 3000 sine) # gain 0.9 # distort (segment 8 $ slow 4 $ range 0 0.2 saw)
+
+d6 $ stutter 2 (1/8) $ slice 64 ("0 2 4 6" + 26) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff (slow 24 $ range 800 3000 sine) # gain 0.9 # distort (segment 8 $ slow 4 $ range 0 0.2 saw)
+
+
+
+
+  d7 $ n "[c*8]/3" # s "m1" # midichan 7 # stack [(ccn 22 # ccv (segment 8 $ range 40 90 rand))]
+  d7 $ n "c(5,8)" # s "m1" # midichan 7 # stack [(ccn 22 # ccv (segment 8 $ range 40 90 rand)), (ccn 10 # ccv 84)]
+  d7 silence
+
+
+  d7 $ n "[c*4 b4*4]/16" # s "moogbass" # gain 0.85
+  d7 $ n "[c*4 b4*4]/16" # s "supersaw" # pitch1 3 # cutoff 5000 # gain 0.7 # octave 6 # sustain 3.83
+  d7 silence
+
+  d7 $ n "[c*64 b4*64]/16" # s "moogbass" # gain (range 0.85 0.5 rand) # distort (fast 2 $ range 0.1 0.3 perlin) # room 0.4 # size 0.9
+  d7 $ n "[c*128 b4*128]/16" # s "moogbass" # gain (range 0.85 0.5 rand) # distort (fast 2 $ range 0.1 0.3 perlin) # room 0.4 # size 0.9
+  d7 $ swingBy (1/16) 4 $ n "[c*128 b4*128]/16" # s "moogbass" # octave 6 # gain (range 0.8 0.5 rand) # distort (fast 2 $ range 0.1 0.3 perlin) # room 0.4 # size 0.9 # cutoff (slow 16 $ range 500 2000 sine)
+  d7 silence
+
+
+
+  d8 $ s "[[~ [techno_perc techno_perc] ~ techno_perc] [~@3 techno_perc ~@3 techno_perc]]/2" # n "5 <[7 5] 18> 5 5"
+  d7 silence
+
+d8 $ slow 4 $ slice "16 2@31" "0 0 ~@30" $ s "SOPHIE_crashes" # n "[0 1]/4" # room 0.5 # size 0.99 # cutoff 5000 # gain 0.62 # distort 0.12
+
+
+
+
+
+
+d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+do
+  d1 $ s "techno_kicks*4" # n 2 # room 0.05
+  d2 $ s "[~ UMRU_snares]*2" # n 28 # triode 2 # gain 0.85
+  -- B G#
+  d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[35 32]/16" # ccn 10
+  d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[34 32]/16" # ccn 10
+  -- d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 16 # gain 0.9
+  d6 silence
+  -- d6 $ stutter 2 (1/8) $ slice 32 ("0 1 2 3" + 13) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff (slow 24 $ range 800 3000 sine) # gain 0.9 # distort (segment 8 $ slow 4 $ range 0 0.2 saw)
+
+
+
+  d1 $ s "techno_kicks*4" # n 2 # djf 0.69
+
+
+  d1 $ s "techno_kicks*2 techno_kicks*4" # n 2 # djf (range 0.69 0.5 saw)
+
+do
+  d1 $ s "techno_kicks*4" # n 2 # room 0.05
+  d1 $ s "[techno_kicks*14@7 techno_kicks*4]/4" # n 2 # room 0.05
+  d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 16 # gain 0.9
+  d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+  -- d6 $ stutter 2 (1/8) $ slice 64 ("0 2 4 6" + 26) $ slow 8 $ s "UMRU_chord_loops" # n 10 # cutoff (slow 24 $ range 800 3000 sine) # gain 0.9 # distort (segment 8 $ slow 4 $ range 0 0.2 saw) # crush 4
+
+
+
+  d5 $ loopAt 2 $ chop 8 $ s "techno_perc_loops" # n 14 # gain 0.95 # speed "[1 -1 1 1]*2"
+  d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+  d5 $ loopAt 2 $ slice 8 "0*4@4 0 0 0 1" $ s "techno_perc_loops" # n 14 # gain 0.95
+  d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+
+
+  -- A#
+  d8 $ chop 64 $ slow 4 $ s "techno_textures" # n 0 # gain 1.1 # distort (slow 2 $ (0.13 * (run 64 / 64))) # hcutoff 300
+  d8 $ chop 64 $ slow 4 $ s "techno_textures" # n 6 # gain 1.1 # distort (slow 2 $ (0.13 * (run 64 / 64))) # hcutoff 300
+  -- A
+  d8 $ chop 64 $ slow 4 $ s "techno_textures" # n 3 # gain 1.1 # distort (slow 2 $ (0.13 * (run 64 / 64))) # hcutoff 500
+  -- G#
+  d8 $ chop 64 $ slow 4 $ s "techno_textures" # n 7 # gain 1 # distort (slow 2 $ (0.13 * (run 64 / 64))) # hcutoff 700 # cutoff 1300
+  d8 $ chop 64 $ slow 4 $ s "techno_textures" # n 7 # gain 1 # distort (slow 2 $ (0.13 * (run 64 / 64))) # hcutoff 700 # cutoff 1300
+  d8 silence
+
+
+  -- c'min g'min
+  d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.95
+
+
+  d7 $ s "~ ~ [~ ~ techno_perc ~ ~ ~ ~ ~] ~" # n 2
+  d7 $ s "~ ~ [~ techno_perc] ~" # n 2 # gain 0.78 # cutoff 800 # room 0.2
+
+
+
+
+
+bpm 133
+
+
+
+
+
+do
+  bpm 133
+  resetCycles
+  d1 $ s "techno_kicks*4" # n 2 # room 0.05
+  d1 $ s "[techno_kicks*14@7 techno_kicks*4]/4" # n 2 # room 0.05
+  d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # djf 0.66
+  d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.85 # triode 4
+  -- d4 $ s "[~@3 snares] ~ ~ ~" # n 10 # gain 0.85
+  -- B G#
+  d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[35 32]/16" # ccn 10
+  d3 $ n "[c*8]/3" # s "m1" # midichan 2 # stack [(ccv "[34 32]/16" # ccn 10), (ccv 57 # ccn 3)]
+  d3 $ n "[c*8]/3" # s "m1" # midichan 2 # stack [(ccv "[34 32]/16" # ccn 10), (ccv (slow 24 $ range 48 64 sine) # ccn 3)]
+  d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+  -- c'min g'min
+  -- d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.95
+  -- d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.95 # cutoff 1500 # distort 0.3
+  -- d7 $ s "~ ~ [~ techno_perc] ~" # n 2 # gain 0.78 # cutoff 800 # room 0.2
+
+
+
+
+
+  d7 $ (0.125 ~>) $ s "[XORE_glitch(9,16)]/2" # n (range 19 24 rand) # gain 0.75 # room 0 # hcutoff 300
+
+
+
+
+
+  d4 $ slice 4 0 $ s "XORE_bass" # n 12 # room 0.3 # sc 0 4 # cutoff (range 2400 2700 perlin) # distort (range 0 0.2 perlin)
+  xfadeIn 4 16 $ slice 4 0 $ s "XORE_bass" # n 12 # room 0.3 # sc 0 4 # cutoff (range 2400 2700 perlin) # distort (range 0 0.2 perlin)
+
+  d4 $ n ("[~ gs]*4" - "[0 1]/16") # octave 2 # s "warsawbass" # room 0.1 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain 0.95
+  d4 silence
+
+  d4 $ (1 <~) $ n ("gs(5,8)" - ((1 ~>) $ "[0 1]/16")) # octave 2 # s "warsawbass" # room 0 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain "0 0.95@3"
+  xfadeIn 4 16 $ (1 <~) $ n ("gs(5,8)" - ((1 ~>) $ "[0 1]/16")) # octave 2 # s "warsawbass" # room 0 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain "0 0.95@3" # orbit 3
+
+      xfadeIn 4 16 $ n ("~ gs ~ ~" - ("[0 1]/16")) # sustain 1.78 # octave 2 # s "warsawbass" # room 0.1 # cutoff (range 1000 2000 perlin) # distort (range 0 0.2 perlin) # gain 0.9 # orbit 3
+
+
+
+
+  d1 silence
+
+do
+  d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # room 0.05 # gain 1.02
+  d4 $ (1 <~) $ n ("gs(5,8)" - ((1 ~>) $ "[0 1]/16")) # octave 2 # s "warsawbass" # room 0 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain "0 0.95@3"
+  d8 $ n "[~ c] ~ ~ ~" # s "acid91" # gain "0.77" # octave 4 # squiz (range 2 3.3 perlin) # waveloss 6 # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine) # sustain 0.2
+
+
+
+  d8 silence
+
+do
+  d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # room 0.05 # gain 1.02
+  -- d4 $ n ("[~ gs]*4" - "[0 1]/16") # octave 2 # s "warsawbass" # room 0.1 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain 0.95
+  d4 $ (1 <~) $ n ("gs(5,8)" - ((1 ~>) $ "[0 1]/16")) # octave 2 # s "warsawbass" # room 0 # cutoff (range 2400 3000 perlin) # distort (range 0 0.2 perlin) # gain "0 0.95@3"
+  -- d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.68 # rvb 0.3 (slow 8 $ range 0.7 0.97 saw) # cutoff 7500 # resonance (range 0 0.25 rand)
+  -- d6 $ s "~ SOPHIE_crashes ~@6" # n 0 # gain 0.6 # waveloss 30
+  -- d6 $ s "[~ SOPHIE_crashes ~@12]/2" # n 0 # gain 0.6 # waveloss (slow 16 $ range 30 88 saw)
+  -- jumpIn 6 16 $ s "[~ SOPHIE_crashes ~@12]/2" # n 0 # gain 0.6 # waveloss 88
+  d8 $ (1 <~) $ n "c(5,8)" # s "acid91" # gain "0 0.77@3" # octave 4 # squiz (range 2 3.3 perlin) # waveloss 6 # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine)
+  -- d10 $ rarely (rev) $ chop 32 $ slow 8 $ s "BABII_vocal_loops" # n 16 # gain 0.83 # waveloss 20 # crush 5
+
+
+
+
+  do
+    d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # djf 0.66
+    xfadeIn 1 16 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # djf 0.72
+    d8 $ n "[~ c] ~ ~ ~" # s "acid91" # gain "0.77" # octave 4 # squiz (range 2 3.3 perlin) # waveloss 6 # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine) # sustain 0.2
+    xfadeIn 10 24 $ rarely (rev) $ chop 32 $ slow 8 $ s "BABII_vocal_loops" # n 16 # gain 0.7 # rvb 0.5 0.97 # waveloss 10 # orbit 9
+
+
+  do
+    -- d1 silence
+    xfadeIn 1 16 silence
+    d5 silence
+    xfadeIn 5 16 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+    d5 silence
+
+  do
+    d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # room 0.05 # gain 1.02
+    d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+    d10 $ rarely (rev) $ chop 32 $ slow 8 $ s "BABII_vocal_loops" # n 16 # gain 0.81 # waveloss 20 # crush 4.5
+
+
+
+  -- ??
+  xfadeIn 5 20 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+    d8 silence
+
+  do
+    d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+    d8 $ (1 <~) $ n "c(5,8)" # s "acid91" # gain "0 0.77@3" # octave 4 # squiz (range 2 3.3 perlin) # waveloss 6 # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine)
+    d10 $ slice 32 ("~ 0 ~@6" + (slow 32 $ run 32)) $ s "BABII_vocal_loops" # n 16 # gain 0.77 # waveloss 25 # crush 4
+
+
+
+
+
+    d7 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 0.85 # tremolo 8 1 # distort 0.1 # gain 0.65 # waveloss 0 # rvb 0.5 0.95
+
+    d7 $ s "[~ default] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 0.16 # distort 0.1 # gain 0.65 # waveloss 25 # rvb 0.5 0.97
+
+
+
+do
+  d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # djf 0.66
+  xfadeIn 1 16 silence
+  d5 silence
+
+
+  -- waveloss (slow 16 $ range 0 90 saw)
+  d8 $ (1 <~) $ n "c(5,8)" # s "acid91" # gain "0 0.77@3" # octave 4 # squiz (range 2 3.3 perlin) # waveloss (slow 16 $ range 0 90 saw) # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine)
+
+
+do
+  d2 $ s "[~ UMRU_snares]*2" # n 28 # gain 0.8 # triode 4 # cutoff 800
+  xfadeIn 2 16 silence
+  d3 silence
+  xfadeIn 4 16 $ n ("~ gs ~ ~" - ("[0 1]/16")) # sustain 1.78 # octave 2 # s "warsawbass" # room 0.1 # cutoff (range 1000 2000 perlin) # distort (range 0 0.2 perlin) # gain 0.8 # orbit 3
+  d8 silence
+
+
+do
+  -- d4 silence -- or maybe fade to low single warping bass note? before fading out`
+  xfadeIn 4 16 $ n ("~ gs ~ ~" - ("[0 1]/16")) # sustain 1.78 # octave 2 # s "warsawbass" # room 0.3 # cutoff (range 700 1200 perlin) # distort (range 0 0.2 perlin) # gain 0.66 # orbit 3
+  d10 silence
+
+
+
+
+
+  d9 $ sometimes (ghost) $ s "techno_hats(14,16)" # n 8 # cutoff 12000 # gain "[0.86 0.73]*8" # crush (fast 16 $ range 2 6 rand)
+  d9 silence
+
+  xfadeIn 5 16 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+  d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+  d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+
+
+
+
+d6 silence
+d8 silence
+
+d4 silence
+
+d5 silence
+
+
+
+
+
+
+
+    d9 $ slice 16 "15" $ gap 8 $ s "misc_vocals" # n 1 # room 0.4 # size 0.95 # sc 7 2 # waveloss 10
+    d9 $ slice 16 "15" $ gap 8 $ s "misc_vocals" # n 1 # room 0.4 # size 0.95 # sc 7 2 # waveloss 10
+    d9 $ (5.9 ~>) $ slow 8 $ slice 2 0 $ s "misc_vocals" # n 1 # room 0.4 # size 0.94 # waveloss 8 # gain 0.62
+    d9 silence
+
+    d9 $ slice 48 ("0*8" + (slow 8 $ run 16)) $ s "misc_vocals" # n 1 # room 0.4 # size 0.9 # waveloss 8 # gain 0.66 # size (segment 16 $ slow 8 $ range 0.3 0.98 saw)
+    d9 $ slice 48 ("0*8" + (slow 32 $ run 32)) $ s "misc_vocals" # n 1 # room 0.4 # size 0.9 # waveloss 8 # gain 0.66 # size (segment 16 $ slow 8 $ range 0.3 0.98 saw)
+
+    d9 $ slice 48 "20*8" $ s "misc_vocals" # n 1 # room 0.4 # size 0.9 # waveloss 8 # gain 0.66 # size (segment 16 $ slow 8 $ range 0.3 0.98 saw)
+
+    d9 $ slice 48 "[~ 20]*4" $ s "misc_vocals" # n 1 # room 0.4 # size (segment 16 $ slow 8 $ range 0.3 0.98 saw) # waveloss 8 # gain 0.66
+    d9 $ slice 48 ("[~ 0]*4" + (slow 32 $ run 32)) $ s "misc_vocals" # n 1 # room 0.4 # size 0.9 # waveloss 8 # gain 0.66 # size (segment 16 $ slow 8 $ range 0.3 0.98 saw)
+
+
+
+
+      d9 silence
+
+
+        d4 $ gap 8 $ slow 4 $ s "techno_textures" # n 10 # gain 1 # room 0.2 # sc 0 2 # waveloss 10 # note "[gs g]/4" # octave 4
+        d4 $ chop 8 $ slow 4 $ s "techno_textures" # n 19 # gain 0.82 # room 0.4 # size 0.5 # sc 0 2 # waveloss 10 # note "[gs g]/4" # octave 5
+        -- or layer together?
+
+
+
+
+  d4 $ slice 2 "1" $ s "XORE_bass" # n 0 # room 0.1 # sc 0 4
+  d4 $ slice 2 "1" $ s "XORE_bass" # n 2 # room 0.1 # sc 0 4
+  d4 $ slice 2 "1" $ s "XORE_bass" # n 7 # room 0.1 # sc 0 4
+  d4 $ slice 2 "[1*8 0*8]/16" $ s "XORE_bass" # n 12 # room 0.1 # sc 0 4
+  d4 $ slice 4 0 $ s "XORE_bass" # n 12 # room 0.3 # sc 0 4 # cutoff (range 2400 2700 perlin) # distort (range 0 0.2 perlin)
+
+
+
+
+do
+  d8 $ (1 <~) $ n "c(5,8)" # s "acid91"
+  d8 $ (1 <~) $ n "c(5,8)" # s "acid91" # gain "0 0.77@3" # octave 4 # squiz (range 2 3.3 perlin) -- # cutoff 1800 # resonance 0.1 --  # resonance 0.4 # cutoff 6000
+  d8 $ (1 <~) $ n "c(5,8)" # s "acid91" # gain "0 0.77@3" # octave 4 # squiz (range 2 3.3 perlin) # waveloss 6 # cutoff (slow 16 $ range 1600 1800 sine) # resonance (slow 20 $ range 0.1 0.22 sine)
+  d7 silence
+  d7 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 1 # distort 0.1 # gain 0.55 # waveloss 20 # rvb 0.5 0.9 # cutoff 3000
+  xfadeIn 7 24 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 1 # tremolo 8 1 # distort 0.1 # gain 0.58 # waveloss 20 # rvb 0.5 0.95 # cutoff 4000
+
+
+
+
+
+  d6 $ s "[~@15 [soskick*4]]/4" # n (choose[0,2,3,5]) # octave 2 # distort 0.3 # gain 0.8 # squiz (range 2 3.3 perlin) # waveloss 18 # sustain 0.09
+
+do
+  d1 $ s "[techno_kicks*15@15 techno_kicks*2]/4" # n 2 # room 0.05
+  d7 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 1 # tremolo 8 1 # distort 0.1 # gain 0.65 # waveloss 20 # rvb 0.5 0.95
+
+
+
+
+
+
+
+
+    -- c'min g'min
+    d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.9
+    d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.7 # rvb 0.3 0.8 # cutoff 8000
+    d6 silence
+
+    d7 $ s "~ ~ [~ techno_perc] ~" # n 2 # gain 0.78 # cutoff 800 # room 0.2
+    d7 silence
+
+
+
+
+    d9 $ s "[~@15 [default*4]]/4" # n (choose[0,2,3,5]) # octave 5 # distort 0.2 # gain 0.88 # cutoff 3000
+    d9 $ s "[~@15 [default*4]]/4" # n (choose[0,2,3,5]) # sustain 0.3 # decay 0.4 # rvb 0.3 0.5 # waveloss 10
+    d9 $ s "[~@15 [acid91*4]]/4" # n (choose[0,2,3,5]) # octave 5 # distort 0.2 # gain 0.75
+    d9 $ s "[~@15 [acid91*4]]/4" # n (choose[0,2,3,5,7,10]) # octave 5 # distort 0.2 # gain 0.7 # rvb 0.3 "[~@15 [0 0 0.8 0.98]]/4" # waveloss 30 # sustain 0.08
+    d9 $ s "[~@15 [acid91*4]]/4" # n (choose[0,2,3,5,7,10]) # octave 4 # distort 0.2 # gain 0.7 # squiz (range 2 3.3 perlin) # waveloss 8 # sustain 0.09 # rvb 0.3 "[~@15 [0 0 0.8 0.9]]/4"
+
+    d9 $ s "[~@15 [soskick*4]]/4" # n (choose[0,2,3,5,7,10]) # octave 3 # distort 0.3 # gain 0.8 # squiz (range 2 3.3 perlin) # waveloss 18 # sustain 0.09
+    d9 $ s "[~@15 [soshats*4]]/4" # n (choose[0,2,3,5,7,10]) # octave 3 # distort 0.3 # gain 0.8 # squiz (range 2 3.3 perlin) # waveloss 18 # sustain 0.2 # rvb 0.2 "[~@15 [0 0 0.8 0.98]]/4"
+
+      d10 $ s "[~ soshats] ~@3" # n (choose[0,2,3,5,7,10]) # octave 3 # distort 0.3 # gain 0.8 # squiz (range 2 3.3 perlin) # waveloss 18 # sustain 0.2
+
+
+
+    d7 $ s "~ ~ [~ default] ~" # n (choose[0,2,3,5,7,10,12]) # octave 6 # distort 0.1 # gain 0.75 # waveloss 6
+    d7 $ s "[~ default] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # distort 0.1 # gain 0.75 # waveloss 6
+    d7 $ s "[~ default] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 0.16 # distort 0.1 # gain 0.65 # waveloss 25 # rvb 0.5 0.97
+
+    d7 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 0.16 # distort 0.1 # gain 0.65 # waveloss 20 # rvb 0.5 0.97
+    d7 $ s "[~ moogbass] ~@3" # n (choose[0,2,3,5,7,10,12]) # octave 6 # sustain 1 # tremolo 8 1 # distort 0.1 # gain 0.65 # waveloss 20 # rvb 0.5 0.95
+    d7 silence
+
+
+
+
+
+
+
+
+
+
+
+
+
+  do
+    d5 silence
+    xfadeIn 1 16 $ s "techno_kicks*4" # n 2 # djf 0.7
+    xfadeIn 7 16 $ s "~ ~ [~ techno_perc] ~" # n 2 # gain 0.7 # cutoff 500 # room 0.8 # size (slow 8 $ range 0.8 1 saw) # orbit 6
+
+
+
+  d6 silence
+
+
+
+    d1 silence
+
+  do
+    d1 silence
+    d2 $ s "[~ UMRU_snares]*2" # n 28 # triode 2 # gain 0.85 # triode 4
+    -- B G#
+    d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[35 32]/16" # ccn 10
+    d3 $ n "[c*8]/3" # s "m1" # midichan 2 # ccv "[34 32]/16" # ccn 10
+    d3 $ n "[c*8]/3" # s "m1" # midichan 2 # stack [(ccv "[34 32]/16" # ccn 10), (ccv (slow 24 $ range 48 64 sine) # ccn 3)]
+    d5 $ loopAt 2 $ gap 4 $ s "techno_perc_loops" # n 14 # gain 0.95
+    xfadeIn 5 16 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+    -- c'min g'min
+    d6 $ s "[~ techno_synth_one_shots] ~@3" # n "[8 11]/16" # gain 0.95
+
+
+
+
+  do
+    d1 $ s "[techno_kicks*14@7 techno_kicks*4]/4" # n 2 # room 0.05
+    d5 $ loopAt 2 $ chop 2 $ s "techno_perc_loops" # n 14 # gain 0.95
+    d7 $ s "~ ~ [~ techno_perc] ~" # n 2 # gain 0.78 # cutoff 800 # room 0.2 # size ((1 <~) $ slow 8 $ range 0 0.99 saw)
+    d9 $ s "[~@15 [acid91*4]]/4" # n (choose[0,2,3,5,7,10]) # octave 5 # distort 0.3 # gain 0.7 # rvb 0.3 "[~@15 [0 0 0.8 0.98]]/4" # waveloss 30
+
+
+
+
+
+-- subtle texture that builds tension?
+
+
+
+--
