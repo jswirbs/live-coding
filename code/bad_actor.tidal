@@ -1,0 +1,136 @@
+bpm 110
+
+flow2000
+
+-- g6 // 125 bpm, eb maj
+
+-- lean into the organic ebbs and flows (more subtle movement throughout the song, more akin to realityyyy)
+
+d1 $ s "SOPHIE_kicks_dry*4" # n 10 # gain 1.05
+d1 $ s "techno_kicks*4" # n 2 # gain 1.08
+
+d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n "[3 4]"
+-- at some point, bring that cutoff uppppppppp
+d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff 900 # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
+
+do
+  resetCycles
+  d3 $ chop 16 $ slow 16 $ s "g6" # n 0 # speed 0.5
+
+
+  d3 $ chop 8 $ loopAt 8 $ s "g6" # n 0
+
+
+do
+  d3 $ chop 8 $ loopAt 8 $ s "g6" # n 1
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2
+
+
+d3 $ loopAt 4 $ slice 2 "0 0" $ s "g6" # n 1
+
+d3 $ loopAt 4 $ slice 2 "0 0" $ s "g6" # n 1
+
+
+
+d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1
+d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff 2000 # resonance 0.5
+d3 silence
+
+d3 $ chop 8 $ loopAt 8 $ s "g6" # n 1 # speed "-1"
+d3 $ chop 8 $ loopAt 8 $ s "g6" # n 5 # speed "-1"
+
+
+
+d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff 2000 # resonance 0.5 # speed "-1"
+d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1"
+d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1"
+
+
+
+
+
+do
+  d4 silence
+  -- d5 $ s "~ SOPHIE_percussion [~@6 SOPHIE_percussion ~] ~" # n 3
+  d5 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 0 saw)
+
+
+
+  do
+    d1 silence
+    d7 $ ghost $ "[XORE_hats ~@32 XORE_hats*2]/4" # n 15
+
+
+do
+  d1 $ s "techno_kicks*4" # n 2 # gain 1.08
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2
+
+
+
+
+
+
+    d6 $ ghost $ s "~ alice ~ ~" # n 2 # gain 1.2 # rvb 0.4 0.7 # cutoff 3000 # speed "0.7"
+
+
+  do
+    d6 $ slice 2 "0*4" $ s "XORE_hats" # n 20 # distort (range 0.1 0.4 perlin) # fshift (segment 4 $ slow 2 $ range 0 "-2500" saw)
+    d6 $ slice 2 "0*4" $ s "XORE_hats" # n 15 # distort (range 0.1 0.4 perlin) # fshift (segment 4 $ slow 2 $ range 0 "-2500" saw)
+    d8 $ (0.0625 <~) $ s "XORE_hats*4" # n 0 # squiz 4 # gain 0.95
+
+    do
+      d6 silence
+      d8 silence
+
+      d6 $ s "[XORE_hats(9,16)]/2" # n 15
+      d6 $ s "[XORE_hats(7,16)]/2" # n 15 # distort (range 0 0.2 perlin) # fshift (segment 4 $ slow 2 $ range 0 "-2000" saw)
+
+
+
+
+
+d9 $ chop 16 $ loopAt 8 $ s "g6" # n 6 # speed "-1" # cutoff 2000 # hcutoff 1000 # rvb (segment 16 $ range 0 0.8 sine) 0.5 # gain (segment 16 $ range 1 0.8 sine)
+d9 silence
+
+
+  d9 $ slice 32 "13*4" $ loopAt 8 $ s "g6" # n 6
+  d9 $ slice 32 "6*4" $ loopAt 8 $ s "g6" # n 6 # cutoff 3000 # hcutoff 800 # waveloss 30
+
+  d9 $ slice 32 "<13*12@12 <[5*3@3 6] [5*2@2 6*2@2]>@4>*4" $ loopAt 8 $ s "g6" # n 6 # cutoff 3000 # hcutoff 800 # waveloss 30
+
+
+
+do
+  xfadeIn 1 16 silence
+  d9 $ chop 16 $ loopAt 8 $ s "g6" # n 6 # speed "-1" # cutoff 2000 # hcutoff 1000 # rvb (segment 16 $ range 0 0.8 sine) 0.5 # gain (segment 16 $ range 1 0.8 sine)
+
+
+  d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff (slow 8 $ range 900 2000 saw) # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
+
+
+d4 silence
+
+do
+  d1 $ s "techno_kicks*16" # n 2 # gain 1.08
+  d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff (slow 8 $ range 900 200 saw) # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
+  d5 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-2000" saw)
+
+
+  d1 silence
+
+do
+  d1 $ s "techno_kicks*4" # n 2 # gain 1.08
+  d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff 900 # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2
+  d5 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-2000" "-4000" saw)
+
+
+  d5 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 0 saw)
+
+
+
+d9 silence
+
+
+
+--
