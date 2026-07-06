@@ -1,0 +1,342 @@
+bpm 136
+bpm 140
+
+
+
+d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "acid92" # octave (choose[4,4,5]) # gain 0.75 # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "basslow" # octave (choose[4,4,5]) # gain 0.75 # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "basshigh" # octave (choose[4,4,5]) # gain 0.75 # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "moogbass" # octave (choose[4,4,5]) # gain 0.75 # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "warsawbass" # octave (choose[4,4,5]) # gain 0.75 # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+
+
+do
+  resetCycles
+  -- c24 (delays for days), a10 (slidey, echoey),
+  d4 $ n "[<fs <g g a a>> fs fs fs]*4" # s "m4" # octave (choose[4,4,5])
+
+
+
+
+
+d1 $ n "0*4" # s "m1" # stack[(ccv 113 # ccn 5), (ccv (slow 24 $ range 50 75 sine) # ccn 12), (ccv (slow 16 $ range 72 90 sine) # ccn 21)]
+d1 $ n "0 0 [0 ~@2 0] ~" # s "m1"
+d1 $ n "0 0 [0 ~@2 0] [~ <~ ~ ~ 0>]" # s "m1"
+d4 silence
+
+
+
+d3 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+
+
+
+  d5 $ n "[fs e cs cs]/4" # s "warsawbass" # octave 6 # gain 0.75 -- # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+  d5 $ n "[cs e <a> fs]/4" # s "warsawbass" # octave 6 # gain 0.85 # tremolo 3 0.6 # release 4 # attack 0.5 # rvb 0.4 0.8 # waveloss 30  -- # sustain (slow 16 $ range 0.075 0.1 sine) # distort 0.4 # cutoff (slow 12 $ range 4000 7000 sine) # resonance (fast 3 $ range 0 0.4 sine)
+  d5 silence
+
+
+
+d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4"
+
+
+  d7 $ n (slow (15/16) $ "0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~") # s "XORE_hats" # n 3 # gain 0.95
+  d7 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # triode "[0 1]/4" # gain 0.92
+
+
+
+d11 $ echo 8 0.0625 0.9 $ s "[~ XORE_hats ~ ~]" # n (segment 16 $ choose[3,4,12,13,14,15,18,21]) # rvb 0.6 0.97 # gain 0.7
+
+
+
+
+do
+  d1 silence
+  d5 silence
+  xfadeIn 8 8 silence
+
+
+do
+  d5 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 1 0 1 0 1]")
+
+
+do
+  d1 $ n "0 0 [0 ~@2 0] [~ <~ 0>]" # s "m1"
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+  d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+
+
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4"
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw)
+
+
+
+
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw) # rvb (slow 10 $ range 0.2 0.6 sine) (slow 20 $ range 0 0.8 sine)
+
+
+
+
+do
+  d3 silence
+  d5 silence
+  d6 silence
+  d8 silence
+
+
+
+  d7 silence
+
+  d2 silence
+
+
+hush
+
+
+
+
+
+--------------
+
+
+
+
+bpm 136
+bpm 140
+
+
+do
+  resetCycles
+  -- setCycle(-4)
+  d3 $ rev $ slow 4 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0.9 # hcutoff 500
+  d4 $ (2 ~>) $ rev $ slow 4 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0 # speed "-1" # hcutoff 700
+
+
+
+
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin)
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+
+
+
+
+
+
+
+
+  d5 $ slow 2 $ s "[~ UMRU_percussion_misc [~ UMRU_percussion_misc] ~] [UMRU_percussion_misc [~ UMRU_percussion_misc] ~ UMRU_percussion_misc]" # n 8 # gain 0.71 # crush (slow 8 $ range 2.5 5 sine)
+  d5 silence
+
+
+
+
+d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4"
+d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw)
+
+
+
+
+
+d11 $ echo 8 0.0625 0.9 $ s "[~ XORE_hats ~ ~]" # n (segment 16 $ choose[3,4,12,13,14,15,18,21]) # rvb 0.6 0.97 # gain 0.7
+
+
+
+  xfadeIn 9 32 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.6 # rvb 0.5 0.9 # cutoff 1000 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+  xfadeIn 9 32 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.6 # rvb 0.5 0.9 # cutoff 1000 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+
+  d9 silence
+  -- 1, 27, 32
+  d9 $ chop 16 $ loopAt 8 $ s "XORE_ambient" # gain 1.2 # n 0
+  d9 $ chop 16 $ loopAt 8 $ s "XORE_ambient" # gain 1.2 # n 2
+  d9 $ chop 16 $ loopAt 8 $ s "XORE_ambient" # gain 1.1 # n 27
+
+  d9 $ chop 16 $ loopAt 8 $ s "SOPHIE_textures" # gain 1.2 # n 1
+  d9 $ chop 16 $ loopAt 8 $ s "SOPHIE_textures" # gain 1.2 # n 13 -- # sc 0 12
+
+xfadeIn 9 32 $ chop 16 $ loopAt 16 $ s "SOPHIE_textures" # gain 0.81 # n 3 # sc 0 12 # rvb 0.3 0.5 # orbit 8 # distort (range 0 0.2 perlin)
+
+
+
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin) # djf (slow 8 $ range 0.65 0.77 saw)
+  xfadeIn 8 8 silence
+
+
+do
+  -- d1 silence
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin) # djf (slow 8 $ range 0.77 0.85 saw)
+  d5 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 1 0 1 0 1]")
+
+
+
+  do
+    d1 silence
+    d2 silence
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin)
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+
+  d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+
+
+
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4"
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw)
+
+
+
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw) # rvb (slow 10 $ range 0.2 0.6 sine) (slow 20 $ range 0 0.8 sine)
+
+
+
+
+
+do
+  -- djf
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin) # djf (slow 8 $ range 0.64 0.69 saw)
+  d3 $ rev $ slow 2 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0.9 # hcutoff 500
+  d4 $ (1 ~>) $ rev $ slow 2 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0 # speed "-1" # hcutoff 700
+  d7 silence
+  clutchIn 8 8 silence
+  -- xfadeIn 9 8 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.63 # rvb 0.5 0.9 # cutoff 1500 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+  -- xfadeIn 9 8 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.63 # rvb 0.5 0.9 # cutoff 1500 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+
+
+
+  d2 silence
+
+  d5 silence
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin)
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+  d3 $ rev $ slow 4 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0.9 # hcutoff 500
+  d4 $ (2 ~>) $ rev $ slow 4 $ gap 32 $ s "trancey_synth_loops" # n 16 # gain 0.7 # rvb 0.4 0 # speed "-1" # hcutoff 700
+  d5 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 1 0 1 0 1]")
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+  -- xfadeIn 9 16 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff 2000 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+  -- xfadeIn 9 16 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff 2000 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+
+
+
+
+d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+
+
+
+d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw)
+
+
+
+
+
+
+
+do
+  xfadeIn 1 24 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 0 0 1 0 1]" + "0.1")
+  -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 2000 3000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine)
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 2000 3000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine)
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw) # rvb (slow 10 $ range 0.2 0.6 sine) (slow 20 $ range 0 0.8 sine)
+
+
+do
+  xfadeIn 2 16 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 0 0 1 0 0]" + "0.1")
+  clutchIn 8 16 silence
+  -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 3000 4000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine)
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 3000 4000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine)
+
+
+do
+  d5 silence
+  d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 0 0 0 0 0]" + "0.1")
+  -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 4000 5000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # crush (slow 8 $ range 10 4 saw)
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 4000 5000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # crush (slow 8 $ range 9 3 saw)
+  -- clutchIn 9 8 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0.9 # cutoff (slow 8 $ range 4000 5000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # crush (slow 8 $ range 10 4 saw)
+
+
+-- do
+--   d7 silence
+--   -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 (slow 8 $ range 0.9 0 saw) # cutoff (slow 8 $ range 5000 6000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # crush (slow 8 $ range 4 2.2 saw)
+--   -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.67 # rvb 0.5 (slow 8 $ range 0.9 0 saw) # cutoff (slow 8 $ range 5000 6000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # crush (slow 8 $ range 3 2.15 saw)
+--   -- xfadeIn 9 32 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.6 # rvb 0.5 0.9 # cutoff 1000 # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine) # orbit 8
+--
+
+
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin)
+  d2 $ s "~ XORE_snares ~ XORE_snares" # n 6 # waveloss 10 # cutoff 8000 # gain 0.8 # rvb (slow 4 $ range (slow 3 $ range 0.06 0.2 saw) 0 square) 0.1
+  -- d7 $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 1 0 1 0 1]")
+  -- d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+  -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.7 # rvb 0.5 0.9 # cutoff (slow 8 $ range 3000 2000 saw) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0 1 sine)
+  -- d9 $ arp "up" $ n (off 0.0625 (+12) $ "g'min*4") # s "warsawbass" # gain 0.66 # rvb 0.5 0 # cutoff (slow 8 $ range 5500 7000 sine) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0.25 0.75 sine) # crush (range 2.2 2.3 perlin)
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.68 # rvb 0.5 0 # cutoff (slow 8 $ range 5500 7000 sine) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0.25 0.75 sine) # crush (range 2.2 2.3 perlin)
+
+
+  -- ??
+  d1 silence
+
+do
+  d1 $ s "808_subs 808_subs [808_subs ~ ~ 808_subs] [~ ~ 808_subs ~]" # n 3 # gain 1.25 # distort (slow 4 $ range 0 0.05 perlin)
+  d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+
+
+
+d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.62 0.65 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+do
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw)
+  -- xfadeIn 9 8 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.68 # rvb 0.5 0.7 # cutoff (slow 8 $ range 5000 4000 sine) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0.25 0.75 sine) # crush (slow 8 $ range 2.2 2.5 saw) # orbit 8
+
+
+do
+  d8 $ s "XORE_hats*16" # waveloss (range 5 20 rand) # gain "[0.9 1]*4" # squiz (slow 4 $ range 12 0 saw) # rvb (slow 10 $ range 0.2 0.6 sine) (slow 20 $ range 0 0.8 sine)
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain 0.68 # rvb 0.5 0.8 # cutoff (slow 8 $ range 4000 3000 sine) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0.25 0.75 sine) # crush (slow 8 $ range 2.5 3 saw) # orbit 8
+
+
+
+
+
+do
+  d3 silence
+  d5 silence
+  d6 silence
+  d7 $ rarely rev $ palindrome $ (1 ~>) $ gap 8 $ loopAt 2 $ s "techno_perc_loops" # n 9 # gain (segment 16 $ "[0 1 1 0 1 0 1]") # cutoff 4000
+  clutchIn 8 16 silence
+  -- d9 $ arp "thumbup" $ n ("g'min*4") # s "warsawbass" # gain (slow 8 $ range 0.68 0.6 saw) # rvb 0.5 0.9 # cutoff (slow 8 $ range 3000 2000 sine) # triode (slow 20 $ range 0 2 sine) # pan (slow 2 $ range 0.25 0.75 sine) # crush (slow 8 $ range 3 6 saw) # orbit 8
+  xfadeIn 9 16 silence
+
+
+
+  d2 silence
+
+
+  d7 silence
+
+
+
+hush
+
+
+--

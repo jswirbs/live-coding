@@ -1,0 +1,271 @@
+bpm 142
+
+-- E
+d1 $ s "SOPHIE_subs*4" # n 10
+d1 $ slice "2 3 2 <4 6>" "0*4" $ s "SOPHIE_subs" # n 10
+d1 $ slice "2 3 2 <4 6>" "0*4" $ s "SOPHIE_subs" # n 10 # distort (segment 4 $ fast 4 $ range 0 0.1 perlin) # gain 1.05
+
+
+
+
+
+d2 $ slow 8 $ chop 32 $ s "trancey_synth_loops" # n 19
+
+d2 $ n "~ [0 0 ~ 0] 0 ~" # s "sostoms" # triode 2 # cutoff (slow 12 $ range 2000 6000 sine) # resonance (slow 8 $ range "[0.2 0.3 0.4 0.5]*2" 0 square)
+d2 $ n "~ [0 ~ ~ 0] 0 0" # s "sostoms"
+
+d2 $ n "~ [0 ~ ~ 0 ~] 0*2 0" # s "sostoms"
+d2 $ n "~ [0 ~ ~ 1 ~ ~] [~ 0] [0 ~]" # s "sostoms"
+d2 $ n ("~ [0 ~ ~ 0 ~ ~] [~ 0] [0 ~]") # octave 6 # s "soshats"
+
+d3 silence
+
+
+  d3 $ n "e4*4" # s "acid91" # sustain (range 0.08 0.14 rand) # triode 2 # cutoff (range 2000 3000 perlin) # resonance (slow 8 $ range (range 0.1 0.3 saw) 0 square)
+  d3 $ n "e4*4" # s "acid91" # gain 0.94 # sustain (range (slow 16 $ range 0.08 0.12 sine) (slow 16 $ range 0.14 0.18 sine) rand) # triode 2 # cutoff (range 2000 3000 perlin) # resonance (slow 8 $ range (range 0.1 0.3 saw) 0 square)
+  d3 $ n "e4*4" # s "acid91" # gain 0.94 # sustain (range (slow 16 $ range 0.08 0.12 sine) (slow 16 $ range 0.14 0.18 sine) rand) # triode 2 # cutoff (range 2000 3000 perlin) # resonance (slow 8 $ range (range 0.1 0.3 saw) 0 square)
+
+
+
+--
+
+bpm 142
+
+
+d1 $ n "0*4" # s "m1" # midichan 0
+
+
+d2 $ n "~ [0 0 ~ 0] 0 ~" # s "sostoms" # triode 2 # cutoff (slow 12 $ range 2000 6000 sine) # resonance (slow 8 $ range "[0.2 0.3 0.4 0.5]*2" 0 square)
+
+
+d3 $ n "e [~ ~ ~ ~ e ~ ~ ~] ~ ~" # s "m2" # octave 5 # sustain 0.4
+
+d4 $ (0.125 ~>) $ n "0*4" # s "m1" # midichan 4
+d7 silence
+
+
+d10 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room 0.7 # size 0.98 # gain 0.7
+d10 $ slice 408 "<16 16 16 <27 27 23 25> 19*4@4>*2" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room 0.7 # size 0.98 # gain 0.7
+d10 $ slice 408 "23*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # room 0.7 # size 0.98 # gain 0.7
+
+d10 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0
+
+
+
+
+
+
+
+----------------------------------
+
+bpm 136
+
+
+
+
+
+do
+  -- resetCycles
+  d1 $ n "0*4" # s "m1" # midichan 0 # stack [(ccv (slow 32 $ range 60 75 sine) # ccn 4)]
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # gain 0.85 -- # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.2 0.4 sine) # gain 0.85
+
+
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # gain 0.85 # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.2 0.4 sine)
+  xfadeIn 6 32 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # gain 0.85 # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.2 0.4 sine)
+
+
+
+d2 $ s "[[~@3 SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]]*2" # n 10 # gain 1.05 # cutoff 2000
+d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+
+
+
+
+d3 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # triode "[0 1]/4" # gain 0.92 # rvb (slow 3 $ range 0.1 0.25 sine) 0.2
+d3 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # triode "[0 1]/4" # gain 0.92
+d3 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # cutoff 7000 # triode "[0 1]/4" # gain 0.92
+
+
+
+
+
+    d4 $ slice 408 "<23*32@8 16*32@8 30*32@8 38*32@8>" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+    d4 $ slice 408 "16*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+    d4 $ slice 408 "19*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+    d4 $ slice 408 "23*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+
+    d4 $ slice 408 "<24*4 27*4 24*4 19*4>" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+
+
+
+    d4 $ slice 408 ("16*4" + (slow 16 $ run 16)) $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.8
+    d4 $ slice 408 ("16*4" + (slow 16 $ run 16)) $ s "flow2000" # n 0 # gain 1.1
+    d4 $ (0.125 ~>) $ slice 816 ("32*4" + (4 * (slow 16 $ run 16))) $ s "flow2000" # n 0 # gain 1.1
+
+    d4 $ slice 408 "30*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.75
+    d4 $ slice 408 "38*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.75
+
+
+    d4 $ rarely (rev) $ chop 32 $ slow 8 $ s "BABII_vocal_loops" # n 16 # gain 0.7 # rvb 0.5 0.97 # waveloss 10 # orbit 9
+    d4 $ rarely (rev) $ chop 32 $ slow 8 $ s "BABII_vocal_loops" # n 8 # gain 0.7 # rvb 0.5 0.97 # waveloss 10 # orbit 9
+
+
+
+    d4 $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # hcutoff (slow 4 $ range 300 600 sine) # triode (fast 4 $ choose[0,0,0,2,4]) # room 0.1 # size 0
+    d4 $ (0.5 ~>) $ rev $ palindrome $ slow 2 $ chop 16 $ slice 204 "18 22" $ s "flow2000" # n 0 # resonance 0.1 # cutoff (segment 8 $ slow 6 $ range 2000 1000 sine) # rvb 0.1 0.2
+    d4 silence
+
+
+
+    d7 $ ghost $ s "techno_hats [~ ~ ~ ~ techno_hats ~ ~ ~] ~ ~" # n "15"
+    d7 $ sometimesBy (1/3) (ghost) $ s "XORE_one_shots [~ ~ ~ ~ XORE_one_shots ~ ~ ~] ~ ~" # n 13 # gain 0.9 # distort 0.3 # fshift "-70"
+
+    d7 $ n "0 [~ ~ ~ ~ 0 ~ ~ ~] ~ ~" # s "m1" # midichan 5 # sustain (range 0.01 0.03 rand)
+    d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand)
+
+    d8 silence
+
+
+    do
+      unsolo 1
+      unsolo 2
+
+
+    d5 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+    xfadeIn 5 16 silence
+
+
+
+
+
+    d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.2 0.4 sine) # gain 0.85
+
+
+
+
+do
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 109 98 saw) # ccn 1), (ccv (slow 8 $ range 75 40 saw) # ccn 13)]
+  clutchIn 3 16 silence
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.3 0.7 saw) # gain 0.85
+
+
+do
+  d1 $ n "0*4" # s "m1" # midichan 0 # stack [(ccv (slow 8 $ range 60 30 saw) # ccn 4)]
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 98 94 saw) # ccn 1), (ccv (slow 8 $ range 40 5 saw) # ccn 13)]
+  d5 silence
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.7 1.1 saw) # gain (slow 8 $ range 0.85 0.65 saw)
+
+
+  d1 silence -- ??
+
+do
+  d1 $ s "techno_kicks*4" # n 3 # cutoff 2000 # gain 1.05
+  d1 $ n "0*4" # s "m1" # midichan 0 # stack [(ccv (slow 32 $ range 60 75 sine) # ccn 4)]
+  -- d2 $ s "[[~@3 SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]]*2" # n 10 # gain 1.05 # cutoff 2000
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 94 98 saw) # ccn 1), (ccv 75 # ccn 13)]
+  -- d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+  d3 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # triode "[0 1]/4" # gain 0.92
+  -- d4 $ slice 408 "<23*32@8 16*32@8 30*32@8 38*32@8>" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+  -- xfadeIn 4 16 $ slice 408 "30*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.75
+  d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.1 0.3 # resonance (slow 8 $ range 0.7 1.1 saw) # gain (slow 8 $ range 0.85 0.65 saw)
+
+  -- keep bringing d2 back to higher pitch mod rate
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 98 109 saw) # ccn 1), (ccv 75 # ccn 13)]
+  -- back to normal
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+
+
+  -- b46 (bouncy, echoey); b48 (distorted saw w reverb); c3 (glitchy computer sounds, panning left/right crazily)
+  d2 $ n "[[~@3 -2] [~ -2]]*2" # s "m4" # octave 3 -- # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+  d2 $ n "[[<-2*8@8 3*2@2 5*2@2 8*2@2 10*2@2>] [~ -2]]*2" # s "m4" # octave 3 -- # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+  d2 $ n "[[-2] [<-2*8@8 3*2@2 5*2@2 8*2@2 10*2@2>]]*2" # s "m4" # octave 3 -- # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+
+
+
+
+
+
+
+
+
+
+  d7 $ slow 4 $ n "~ 0" # s "m1" # midichan 2
+
+
+do
+  d6 silence
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+    d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,1,1,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+    d2 silence
+
+
+
+do
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 94 98 saw) # ccn 1), (ccv 75 # ccn 13)]
+  xfadeIn 6 8 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.2 0.4 sine) # gain 0.85 # orbit 5
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,1,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+
+do
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 109 98 saw) # ccn 1), (ccv (slow 8 $ range 75 40 saw) # ccn 13)]
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.3 0.7 saw) # gain 0.85
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,1,1,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+do
+  d1 silence
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 98 94 saw) # ccn 1), (ccv (slow 8 $ range 40 5 saw) # ccn 13)]
+  d5 silence
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.2 0.3 # resonance (slow 8 $ range 0.7 1.1 saw) # gain (slow 8 $ range 0.85 0.65 saw)
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,1,1,1,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+  xfadeIn 8 8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,0]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+  d8 silence
+
+do
+  d1 $ s "techno_kicks*4" # n 3 # cutoff 2000 # gain 1.05
+  d1 $ n "0*4" # s "m1" # midichan 0 # stack [(ccv (slow 32 $ range 60 75 sine) # ccn 4)]
+  -- d2 $ s "[[~@3 SOPHIE_kicks_dry] [~ SOPHIE_kicks_dry]]*2" # n 10 # gain 1.05 # cutoff 2000
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 94 98 saw) # ccn 1), (ccv 75 # ccn 13)]
+  -- d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+  d3 $ s "[techno_perc(11,32)]/2" # n 19 # crush 7 # triode "[0 1]/4" # gain 0.92
+  -- d4 $ slice 408 "<23*32@8 16*32@8 30*32@8 38*32@8>" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.7
+  -- xfadeIn 4 16 $ slice 408 "30*4" $ s "flow2000" # n 0 # cutoff 1000 # hcutoff 800 # rvb 0.7 0.98 # gain 0.75
+  -- d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+  d5 silence
+  d6 $ s "XORE_hats*<16*7@7 [8 4]>" # n 9 # note "-12" # cutoff (fast 3 $ range 3000 8000 sine) # distort 0.2 # rvb 0.1 0.3 # resonance (slow 8 $ range 0.7 1.1 saw) # gain (slow 8 $ range 0.85 0.65 saw)
+  d8 silence
+
+  -- keep bringing d2 back to higher pitch mod rate
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv (slow 8 $ range 98 109 saw) # ccn 1), (ccv 75 # ccn 13)]
+  -- back to normal
+  d2 $ n "[[~@3 0] [~ 0]]*2" # s "m1" # midichan 1 # sustain (range 0.01 0.03 rand) # stack [(ccv 109 # ccn 1), (ccv 75 # ccn 13)]
+
+
+  d5 $ (0.125 ~>) $ ghost $ s "UMRU_hihats*4" # n "[16 18]/8" # gain 0.9
+
+
+
+
+
+
+do
+  d6 silence
+  d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,0,0,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+  d9 silence
+
+    d8 $ s "FOOD_hihats*16" # n (choose[0,0,0,1,1,1]) # gain (fast 4 $ range (range 0.65 0.7 rand) (range 0.75 0.8 rand) square) # pan (fast 2 $ range 0.4 0.6 sine)
+
+
+
+
+
+
+--
+--
