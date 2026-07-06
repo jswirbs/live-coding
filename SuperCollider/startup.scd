@@ -103,6 +103,8 @@ s.reboot { // server options are only updated on reboot
 	s.latency = 0.1; // increase this if you get "late" messages
 
 	// https://github.com/calumgunn/StageMaster/tree/master
+	// -- run the below once to install the quark
+	// Quarks.install("https://github.com/calumgunn/StageMaster.git");
 	StageMaster.activate(numChannels: 2, compThreshold: 0.7, limiterLevel: 1.0, highEndDb: 2.0);
 	// StageMaster.deactivate;
 };
@@ -144,5 +146,3 @@ s.waitForBoot {
 
 
 MIDIClient.init;
-
-

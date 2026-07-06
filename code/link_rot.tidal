@@ -1,3 +1,7 @@
+-- play around with the perc here, make it into something less electro
+-- and replace some of the clashy/too many non-cohesive samples with ~sound design~
+
+
 bpm 142
 
 
@@ -132,6 +136,8 @@ do
 
 
 
+  setCycle (-0.3)
+
 
 
   d6 silence
@@ -204,11 +210,14 @@ do
   d7 $ slice 32 "0 1 2 3" $ s "trancey_synth_loops" # n 14 # pan "[0.66 0.33]*16" # distort 0.2 # gain "1.1 1 0.9@12 1 1.1" # djf (slow 8 $ range 0.2 0.5 saw)
   -- d10 $ s "SOPHIE_crashes/2" # n 1 # room 0.66 # size 0.98 # gain 0.7
   -- jumpIn 10 1 silence
-  d10 $ slow 8 $ s "SOPHIE_crashes" # n 3 # speed 0.8 # waveloss 50 # crush 6 # distort 0.25 # room 0.6 # size 0.99 # cutoff 3000 # hcutoff 500 # gain 0.86
+  d10 $ slow 8 $ s "SOPHIE_crashes" # n 3 # speed 0.8 # waveloss 50 # crush 6 # distort 0.25 # room 0.6 # size 0.99 # cutoff 3000 # hcutoff 500 # gain 0.86 # orbit 9
   xfadeIn 10 32 silence
   -- ??
   -- d11 $ whenmod 8 4 (# distort (slow 4 $ range 0 0.2 saw)) $ slice 80 "51?*4" $ s "DJ_DAVE_castles" # n 12 # room 0.4 # hcutoff 300 # cutoff 2000 # pan (range 0.25 0.75 rand) # gain 0.8
   -- xfadeIn 11 16 silence
+
+
+  d2 $ n ("c*16" + "[0 3 2 -1]/2") # octave "[3,4]" # s "supersquare" # cutoff (slow 12 $ range 500 3000 sine) # gain "[0.78 0.89 0.83 0.95]*2" # distort (range 0.1 0.3 perlin) # sustain (slow 8 $ range 0.1 0.115 sine) # cutoff 800 # orbit 1 # sidechain ("0") # sidechain_thresh ("1"/100) # sidechain_compression ("1"/100) # sidechain_attack ("1"/1000) # sidechain_release ("30"/100) -- # crush 3
 
 
 
@@ -243,6 +252,7 @@ d7 $ chop 32 $ slow 8 $ s "trancey_synth_loops" # n 14 # pan "[0.66 0.33]*16" # 
 -- jumpIn' 11 0 $ n "c*16" # octave 5 # s "m4" # sustain (range 0.02 0.05 rand) # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "<[20@7 100]*3@3 [20 100@7]>" # ccn 2), (ccv (slow 24 $ range 0 90 sine) # ccn 1)]
 
 -- jumpIn' 11 0 $ n ("c(11,16)" + "<0 1 [0*2 [0 1]*2] [3 4]>") # octave 5 # s "m4" # sustain (range 0.02 0.05 rand) # stack [(ccv (slow 2 $ range 10 110 perlin) # ccn 10), (ccv (slow 4 $ range 100 30 sine) # ccn 11), (ccv "<[20@7 100]*3@3 [20 100@7]>" # ccn 2), (ccv (slow 4 $ range 0 90 saw) # ccn 1)]
+
 
 
 
@@ -482,6 +492,11 @@ d5 silence
 hush
 
 
+
+
+
+
+unsolo 2
 
 
 

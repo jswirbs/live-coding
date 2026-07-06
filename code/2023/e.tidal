@@ -105,7 +105,7 @@ do
 
 
 do
-  xfadeIn 1 1 silence
+  xfadeIn 1 8 silence
   d3 $ (0.125 ~>) $ slice "24 28" "0*4" $ s "misc_vocals" # n 9 # room 0.1 # gain 0.85 # fshift "[0 -120]/8" # djf (slow 4 $ range 0.34 0.9 sine)
   xfadeIn 6 1 $ loopAt 4 $ gap 128 $ s "techno_drum_loops" # n 2 # speed "-1"
   d7 $ degradeBy 0.5 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9
@@ -120,19 +120,19 @@ do
 
 
 
-clutchIn 6 8 silence
 
 do
   d4 silence
+  clutchIn 6 8 silence
   xfadeIn 5 8 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.7 # cutoff 500
   -- xfadeIn 7 6 $ ghost $ degradeBy 0.25 $ rev $ palindrome $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.1 # gain 0.9 # hcutoff 200
   xfadeIn 7 6 $ ghost $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
 
 
-do
-  d2 silence
-  d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.25 # cutoff 150
-  d7 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
+  do
+    d2 silence
+    d5 $ chop 8 $ slow 2 $ s "techno_textures" # n 11 # room 0.25 # cutoff 150
+    d7 $ slice 16 "8 14 13 10" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
 
 do
   hush
@@ -146,11 +146,11 @@ do
   d7 $ slice 32 "[16 17 ~@2] 28 26 20" $ s "misc_vocals" # n 10 # gain 0.75 # room 0.4 # size 0.5 # cutoff 5000
 
 
-do
-  d1 $ gap 2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.85
-  -- d3 silence
-  d4 $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.05 # gain 0.9
-  d7 silence
+  do
+    d1 $ gap 2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.85
+    -- d3 silence
+    d4 $ chop 4 $ gap 4 $ loopAt 2 $ s "misc_vocals" # n 10 # distort 0.05 # gain 0.9
+    d7 silence
 
 do
   d1 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
@@ -165,6 +165,8 @@ do
 
 
 d8 $ ghost $ s "sostoms*4 ~@3" # n "[d ds e f] ~@3" # distort 0.5 # gain 0.8 # cutoff 3000 # hcutoff 200 # room 0.3 # size 0.8 # waveloss 25 # sustain 0.06 # pan (fast 4 $ range 0 1 saw)
+
+
 
 do
   d1 $ gap 2 $ chop 4 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.85
@@ -191,12 +193,15 @@ do
 
 
 
+
 d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1 # djf 0.75
+
 
 do
   d1 $ chop 16 $ loopAt 4 $ s "techno_drum_loops" # n 5 # gain 1.1
   d6 silence
   d7 silence
+
 
 clutchIn 11 4 silence
 d2 silence

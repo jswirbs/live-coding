@@ -162,9 +162,11 @@ d6 silence
 
 do
   bpm 110
+  -- bpm 112
   -- resetCycles
   setCycle(-1)
-  d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
+  d3 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0 0 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
+  jumpIn 3 1 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
 
 
 
@@ -184,7 +186,8 @@ do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.1 # djf (slow 8 $ range 0.66 0.7 saw)
   -- xfadeIn 1 8 $ s "techno_kicks*4" # n 2 # gain 1.08 # djf 0.7 # orbit 0
   xfadeIn 3 8 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1100 2500 sine) # resonance 0.1 # speed "-1" # gain 0.95
-  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 0 saw) # cutoff 8000
+  -- jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 0 saw) # cutoff 8000
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 1000 saw) # cutoff 8000
 
 
 
@@ -196,13 +199,15 @@ do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.1
   d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff 900 # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
   d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 1000 0 saw) # cutoff 8000
 
 
 
 -- perc of some sorts?
 -- d6 $ s "[XORE_hats(7,16)]/2" # n 15 # distort (range 0 0.2 perlin) # fshift (segment 4 $ slow 2 $ range 0 "-2000" saw)
 d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 3 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw)
-d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 9 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw) # rvb 0.8 0.9
+d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 9 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw) # rvb 0.8 0.99
+jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-1000" saw) # cutoff 8000
 
 
 
@@ -214,7 +219,8 @@ do
   xfadeIn 1 24 silence
   d4 silence
   -- have d5 fade out
-  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-2000" saw) # cutoff 8000
+  -- jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-2000" saw) # cutoff 8000
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-1000" "-2000" saw) # cutoff 8000
   -- fade in some other texture
   xfadeIn 9 16 $ loopAt 4 $ gap 128 $ s "g6" # n "<1 2>" # rvb 0.2 0.5 # cutoff (segment 16 $ slow 1.5 $ range 8000 3000 sine) # resonance 0.2 # speed "-1" # gain 0.9 # distort 0.2
 
@@ -235,40 +241,44 @@ do
   d2 silence
   d3 silence
   d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2 # room 0.2
-  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.2 # distort 0.14
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.22 # distort (range 0.07 0.09 perlin)
   -- jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-4000" "-6000" saw)
   d5 silence
+  -- jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-3000" "-4000" saw) # cutoff 8000
   d9 $ loopAt 4 $ gap 128 $ s "g6" # n "<1 2>" # rvb 0.2 0.5 # cutoff (segment 16 $ slow 1.5 $ range 8000 3000 sine) # resonance 0.25 # speed "-1" # gain 0.9 # distort 0.4
 
 
 
-  d4 $ slice 16 "<0 <7 7 7 6>>" $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.2 # distort 0.14
+  d4 $ slice 16 "<0 <7 7 7 6>>" $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.22 # distort 0.08
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.1
   d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff 900 # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
-  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.2 # distort 0.14
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.22 # distort (range 0.07 0.09 perlin)
   -- jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-1200" saw) # cutoff 8000
   -- d5 $ s "SOPHIE_snaps*8" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.66 0.9]*4" # fshift (slow 8 $ range 2000 0 saw)
-  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 0 saw) # cutoff 8000
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 2000 1000 saw) # cutoff 8000
+
+
+
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 1000 0000 saw) # cutoff 8000
+
+
+
+  do
+    -- organic, gradual.. simple as
+    xfadeIn 3 16 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
+    jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-1000" saw) # cutoff 8000
 
 
 
 
-  xfadeIn 5 16 silence
-
-
-  -- organic, gradual.. simple as
-  xfadeIn 3 16 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
 
 
 
-
-
-
-
-
-  d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 3 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw)
+  do
+    d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 3 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw)
+    jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-1000" "-2000" saw) # cutoff 8000
 
 
 
@@ -280,8 +290,12 @@ do
   d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2 # room 0.2
   xfadeIn 9 16 $ loopAt 4 $ gap 128 $ s "g6" # n "<1 2>" # rvb 0.2 0.5 # cutoff (segment 16 $ slow 1.5 $ range 8000 3000 sine) # resonance 0 # speed "-1" # gain 1 # distort 0
   -- d10 $ (1 ~>) $ ghost $ swingBy (choose[0,0.125]) 1 $ s "[XORE_hats(10,16)]/2" # n 9 # gain "[[0 0.9@3] [0.9 0] 0 0]/2" # distort (range 0.1 0.3 perlin) # fshift (segment 4 $ slow 2 $ range "-0" "-4000" saw) # room 0.2
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-2000" "-3000" saw) # cutoff 8000
 
 
+
+
+  d4 $ slice 16 "<0 <7 7 7 6>>" $ loopAt 8 $ s "g6" # n 3 # gain 1.2 # room 0.2
 
 do
   d1 $ s "techno_kicks*16" # n 2 # gain 1.08
@@ -290,25 +304,29 @@ do
   xfadeIn 2 7 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]] ~" # n 11 # cutoff (slow 8 $ range 900 2000 saw) # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
   d4 $ slice 16 "<0 <7 7 7 6>>" $ loopAt 8 $ s "g6" # n 3 # gain 1.2 # rvb (range 0.1 0.4 saw) 0.5
   d6 silence
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-3000" "-4000" saw) # cutoff 8000
 
 
 
-
-  d1 silence
+  do
+    d1 silence
+    d2 silence
+    d5 silence
 
 do
   d1 $ s "techno_kicks*4" # n 2 # gain 1.1
   d2 $ s "[[~ ~ ~ SOPHIE_percussion] [~ SOPHIE_percussion]]*2" # n 11 # cutoff 900 # rvb 0.5 0.7 # tremolo 4 (slow 8 $ range 1 0 saw)
   d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.2
-  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-1200" saw) # cutoff 8000
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range 0 "-1000" saw) # cutoff 8000
   d9 $ loopAt 4 $ gap 128 $ s "g6" # n "<1 2>" # rvb 0.2 0.5 # cutoff (segment 16 $ slow 1.5 $ range 8000 3000 sine) # resonance 0.25 # speed "-1" # gain 0.9 # distort 0.4
 
 
-  do
-    xfadeIn 5 16 silence
-    xfadeIn 3 16 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
 
-
+do
+  xfadeIn 3 16 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1800 4000 sine) # resonance 0.1 # speed "-1" # gain 0.95
+  d4 $ chop 8 $ loopAt 8 $ s "g6" # n 3 # gain 1.15 # room 0.22 # distort (range 0.07 0.09 perlin)
+  -- xfadeIn 5 16 silence
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain "[0.78 0.9]*4" # fshift (slow 8 $ range "-1000" "-2000" saw) # cutoff 8000
   d6 $ sometimes ghost $ swingBy (choose[0,0,0,0.125]) 1 $ s "[techno_perc(10,16)]/2" # n 17 # gain "[[0 1@3] [1 0] 0 0]/2" # distort (range 0 0.2 perlin) # waveloss 10 # note "-1" # rvb 0.1 0
 
 
@@ -316,14 +334,20 @@ do
 
 
 
+  jumpIn' 5 0 $ s "SOPHIE_snaps*16" # n 1 # distort (range 0.1 0.4 perlin) # gain ("[0.78 0.9]*4" - (slow 8 $ range 0 1 saw)) # fshift (slow 8 $ range "-2000" "-23000" saw) # cutoff 8000
 
 
+
+do
   xfadeIn 3 16 $ slice 4 "0" $ loopAt 8 $ s "g6" # n 1 # rvb 0.3 0.67 # cutoff (segment 16 $ slow 1.5 $ range 1100 2500 sine) # resonance 0.1 # speed "-1" # gain 0.95
+  d5 silence
+
 
 
 
 do
   d1 silence
+  d5 silence
 
 
   d3 silence -- needs to come out > 1 bar early

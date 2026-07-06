@@ -140,8 +140,67 @@ do
 
 
 
+
+
+
   xfadeIn 2 8 silence
 
   hush
+
+
+
+------------
+
+bpm 80
+
+-- axiom
+
+-- 64 bars with 8 notes, gap on first anchored note, and gap at end (64) -- gives it a little swing
+d3 $ sometimes (ghost) $ stack [
+    -- (n "e ~@3"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "g ~@3"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "b ~@3"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "e6 ~@3"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "g6 ~@3"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "b6 ~@3"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "e7 ~@3"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "g7 ~@3"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "b7 ~@3"),
+    -- (n "~ f ~@2"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~ a ~@2"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~ c6 ~@2"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~ f6 ~@2"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~ a6 ~@2"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~ c7 ~@2"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~ f7 ~@2"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "~ a7 ~@2"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~ c8 ~@2"),
+    -- (n "~@2 g ~"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@2 b ~"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@2 d6 ~"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@2 g6 ~"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@2 b6 ~"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~@2 d7 ~"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~@2 g7 ~"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "~@2 b7 ~"),
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~@2 d8 ~"),
+    -- (n "~@3 a"),
+    (pressBy (slow 8 $ (run 8)/8) $ n "~@3 c6"),
+    (pressBy (slow 16 $ (run 16)/16) $ n "~@3 e6"),
+    (pressBy (slow 24 $ (run 24)/24) $ n "~@3 a6"),
+    (pressBy (slow 32 $ (run 32)/32) $ n "~@3 c7"),
+    (pressBy (slow 40 $ (run 40)/40) $ n "~@3 e7"),
+    (pressBy (slow 48 $ (run 48)/48) $ n "~@3 a7"),
+    (pressBy (slow 56 $ (run 56)/56) $ n "~@3 c8")
+    -- (pressBy (slow 64 $ (run 64)/64) $ n "~@3 e8")
+  -- ] # s "basslow" # cutoff (slow 16 $ range 300 1900 saw) # gain (slow 16 $ range 0.87 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (fast 4 $ range 0.5 "<0.2 0.8>" saw) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
+  ] # s "basslow" # cutoff (slow 16 $ range 1300 5000 sine) # gain (slow 16 $ range 0.84 0.75 sine) # distort (range 0.05 ((2 ~>) $ slow 16 $ range 0.05 0.2 sine) rand) # pan (fast 4 $ range 0.5 "<0.25 0.75>" saw) # tremolodepth (slow 32 $ range 0 0.7 saw) # tremolorate 8
+
+
+
+  d2 $ rarely (ghost) $ n "[e*2 [e c] a*2 a*2]/4" # octave 2 # s "superhammond" # gain 1.03 # cutoff 2000 # distort (range 0.02 0.09 perlin)
+
+
+
 
 --

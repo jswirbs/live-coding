@@ -626,9 +626,9 @@ do
   resetCycles
   bpm 130
   -- note: E
-  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # orbit 0
   -- d1 $ s "SOPHIE_subs*4" # n 10
-  xfadeIn 2 64 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  xfadeIn 2 64 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95 # orbit 1
 
 
 
@@ -646,13 +646,13 @@ do
 
 
 do
-  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
-  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.88
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # orbit 0
+  d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.88 # orbit 2
   d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
   -- d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 800 # gain 1.05
   -- d5 $ chop 2 $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room 0.5 # size 0.9 # cutoff 180
   d5 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.77 # room (slow 4 $ range 0.5 0.7 sine) # size 0.75 # cutoff 180
-  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.85 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 200
+  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.85 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 200 # orbit 4
   -- d11 silence
 
 
@@ -672,14 +672,14 @@ do
 do
   -- d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150
   -- xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # djf 0.77 # hcutoff 175
-  xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # djf 0.66 # hcutoff 150
-  xfadeIn 2 16 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
+  xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # djf 0.66 # hcutoff 150 # orbit 0
+  xfadeIn 2 16 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95 # orbit 1
   -- d3 silence -- ?? or a different version of d3.. i like having it come back in half way through
   -- xfadeIn 3 8 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 9000 12000 sine) # gain 0.5 # room 0.6 # size 0.9 # orbit 2
   xfadeIn 3 24 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 9000 12000 sine) # gain 0.8 # room 0.6 # size 0.9 # orbit 2
   -- xfadeIn 4 12 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
   d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
-  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room 0.3 # size 0.4 # cutoff 300
+  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room 0.3 # size 0.4 # cutoff 300 # orbit 4
   d7 silence
   d9 silence
   -- xfadeIn 9 8 $ ghost $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.63 0.8 sine) # room (slow 3 $ range 0.6 0.4 sine) # size (slow 3 $ range 0.99 0.7 sine) # orbit 3 # hcutoff 6000 # cutoff 15000
@@ -694,7 +694,7 @@ do -- 4
   xfadeIn 1 12 silence
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 400 3000 saw) # gain 0.95
   -- jumpIn' 3 0 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 2000 saw) # gain 0.9
-  xfadeIn 5 4 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.7 # room 0 # size 0.1 # cutoff 500
+  xfadeIn 5 4 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.7 # room 0 # size 0.1 # cutoff 500 # orbit 4
   d7 $ (0.125 ~>) $ s "[snares*2 ~]*4" # n 14 # distort 0.2 # gain 0.9
   xfadeIn 7 16 $ s "snares*16" # n 14 # distort 0.2
   -- can keep experimenting w this.. but needs work still
@@ -754,14 +754,14 @@ d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.8 
 xfadeIn 1 6 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66
 
 do
-  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09
+  d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # orbit 0
   d2 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.95
   -- d3 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.95
   d3 $ (0.125 ~>) $ s "[<UMRU_hihats*2 UMRU_hihats*2 UMRU_hihats*2 UMRU_hihats> ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.88
   d4 $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room 0.2
   -- d5 $ chop 4 $ loopAt 4 $ s "techno_textures" # n 11 # room 0.5 # hcutoff 100 # cutoff 800 # gain 1
   d5 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.82 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 180
-  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.84 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 240
+  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.84 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 240 # orbit 4
   d7 $ s "~ sn ~ sn" # n 2 # gain 0.9 -- # crush (slow 4 $ range 3.3 6 sine) # distort (slow 3 $ range 0.2 0.4 sine)
 
 
@@ -769,7 +769,7 @@ do
 
 
 do
-  xfadeIn 1 10 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150
+  xfadeIn 1 10 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150 # orbit 0
   -- d3 $ sometimes (ghost) $ (0.125 ~>) $ s "[<UMRU_hihats*2 UMRU_hihats*2 UMRU_hihats*2 UMRU_hihats> ~]*4" # n 10 # hcutoff (slow 4 $ range 100 5000 sine) # gain 0.9 # djf 0.5
   d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.4 0.5 sine) # orbit 3
 
@@ -782,10 +782,10 @@ do
 
 do
   d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.03
-  xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150
+  xfadeIn 1 16 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150 # orbit 0
   xfadeIn 3 32 $ (0.125 ~>) $ s "[UMRU_hihats*2 ~]*4" # n 10 # hcutoff (slow 4 $ range 6000 9000 sine) # gain 0.85 # room 0.6 # size 0.85 -- # orbit 2
   xfadeIn 4 16 silence
-  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 800
+  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.8 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 800 # orbit 4
   d9 silence
   xfadeIn 10 16 silence
 
@@ -795,7 +795,7 @@ do
   -- d1 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.72 # hcutoff 200
   xfadeIn 1 16 silence
   xfadeIn 2 16 $ (0.25 ~>) $ fast 2 $ s "UMRU_percussion_misc(3,8)" # n 39 # triode 2 # hcutoff ((0.8 <~) $ slow 8 $ range 100 2000 saw) # gain 0.9 # room 0.7
-  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.85 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9
+  xfadeIn 5 16 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.85 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # orbit 4
   d7 $ s "[~ snares*3@3]*4" # n 14 # djf (slow 16 $ range 0.5 0.75 sine) # gain 0.92
   xfadeIn 7 16 $ s "snares*16" # n 14 # djf (slow 16 $ range 0.6 0.8 sine) # room 0.4 # size 0.8
 
@@ -874,7 +874,7 @@ do
 
   d7 $ s "~ sn ~ sn" # n 2 # gain 0.92 # room (slow 4 $ range 0 0.17 sine) -- # crush (slow 4 $ range 3.3 6 sine) # distort (slow 3 $ range 0.2 0.4 sine)
 
-xfadeIn 1 6 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150
+xfadeIn 1 6 $ s "SOPHIE_subs*4" # n 16 # gain 1.09 # djf 0.66 # hcutoff 150 # orbit 0
 -- xfadeIn 4 8 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.82 0.95 sine) # room (slow 3 $ range 0.2 0.4 sine) # orbit 3
 
 
@@ -889,7 +889,7 @@ do
 
 do -- 16 or 8 ..?
   d4 $ ghost $ s "[~ XORE_hats]*4" # n 4 # distort 0.2 # gain (slow 4 $ range 0.8 0.92 sine) # room (slow 3 $ range 0.4 0.5 sine) # orbit 3
-  xfadeIn 5 8 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.81 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 200
+  xfadeIn 5 8 $ slice 4 "1*2" $ loopAt 2 $ s "trancey_synth_loops" # n 1 # gain 0.81 # room (slow 4 $ range 0.5 0.7 sine) # size 0.9 # cutoff 200 # orbit 4
   d9 $ sometimesBy 0.2 (palindrome) $ rev $ chop 64 $ loopAt 4 $ s "trancey_synth_loops" # n 3 # room 0 # gain 0.82 # hcutoff 200
   clutchIn 9 9 silence
 

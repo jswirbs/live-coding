@@ -568,10 +568,13 @@ do
 
 
 
-d4 $ ghost $ ghost $ slow 4 $ n "[c6 a ~ c6 a ~ a ~] [b g ~ b g ~ g ~] [a f ~ a f ~ ~ ~] [g e ~ g e ~ e ~]" # s "basslow" # octave "5" # sustain (slow 2 $ range 0.18 0.48 sine) # cutoff (slow 3 $ range 6000 2000 sine) # room 0.3 # gain 0.85
+  d4 $ ghost $ ghost $ slow 4 $ n "[c6 a ~ c6 a ~ a ~] [b g ~ b g ~ g ~] [a f ~ a f ~ ~ ~] [g e ~ g e ~ e ~]" # s "basslow" # octave "3" # sustain (slow 2 $ range 0.18 0.48 sine) # cutoff (slow 3 $ range 6000 2000 sine) # rvb 0.4 0.7 # gain 0.6
+  d4 $ ghost $ ghost $ slow 4 $ n (off (+12) 0.125 $ "[c6 a ~ c6 a ~ a ~] [b g ~ b g ~ g ~] [a f ~ a f ~ ~ ~] [g e ~ g e ~ e ~]") # s "basslow" # octave "5" # sustain (slow 2 $ range 0.18 0.48 sine) # cutoff (slow 3 $ range 6000 2000 sine) # room 0.3 # gain 0.85
+  d4 $ ghost $ ghost $ slow 4 $ n (off 0.125 (+12) $ off 0.0625 (+12) $ "[c6 a ~ c6 a ~ a ~] [b g ~ b g ~ g ~] [a f ~ a f ~ ~ ~] [g e ~ g e ~ e ~]") # s "basslow" # octave "4" # sustain (slow 3 $ range 0.18 0.05 sine) # cutoff (slow 3 $ range 6000 2000 sine) # rvb 0.3 0.5 # gain 0.8 # sc 0 15
 -- djf up up and away
 
 
+d6 $ ghost $ ghost $ slow 4 $ n "[c6 a ~ c6 a ~ a ~] [b g ~ b g ~ g ~] [a f ~ a f ~ ~ ~] [g e ~ g e ~ e ~]" # s "basslow" # octave "3" # sustain (slow 2 $ range 0.18 0.48 sine) # cutoff (slow 3 $ range 6000 2000 sine) # rvb 0.4 0.7 # gain 0.6
 
 d7 $ swingBy (1/8) 2 $ ghost $ ghost $ slow 4 $ n "[c6*4] [b*4] [e6*4] [f6*2 e6*2]" # s "supersaw" # pitch1 5 # octave 6 # sustain (slow 2 $ range 0.1 0.05 sine) # cutoff ((1.5 ~>) $ slow 3 $ range 4000 10000 sine) # room 0.1 # gain 0.92
 d7 $ ghost $ swingBy (1/8) 2 $ ghost $ slow 4 $ n "[c6*4] [b*4] [e6*4] [f6*2 e6*2]" # s "moogbass" # pitch1 5 # octave 6 # sustain (slow 2 $ range 0.1 0.05 sine) # cutoff ((1.5 ~>) $ slow 3 $ range 4000 10000 sine) # room 0.4 # gain 1
